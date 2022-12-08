@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+Conference app is an app for (yes) conferences. The scope of this app is audiences and the interaction between them and organizers.
 
-* Ruby version
+It's built with Ruby on Rails.
 
-* System dependencies
+## Features
 
-* Configuration
+No features implemented yet! Currently planned features are:
 
-* Database creation
+* Anonymous Q&A for each talk
+* Forum for each talk and the whole event
+* Announcement from organizers with push notification
 
-* Database initialization
+## Stack
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is built with Ruby on Rails 7. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
