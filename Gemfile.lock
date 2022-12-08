@@ -75,7 +75,13 @@ GEM
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    diff-lcs (1.5.0)
     erubi (1.11.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -149,6 +155,23 @@ GEM
     redis (4.8.0)
     reline (0.3.1)
       io-console (~> 0.5)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.21-x86_64-darwin)
@@ -177,12 +200,14 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  factory_bot_rails (~> 6.2.0)
   importmap-rails
   pg (~> 1.1)
   propshaft
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)
+  rspec-rails (~> 6.0)
   stimulus-rails
   tailwindcss-rails
   turbo-rails
