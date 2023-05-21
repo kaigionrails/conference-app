@@ -1,0 +1,10 @@
+<div>
+  <h1 class="font-bold text-4xl">Profiles#new</h1>
+  <p>Find me in app/views/profiles/new.html.erb</p>
+
+  <%= form_with model: @profile do |f| %>
+    <%= f.text_field :name, placeholder: "見せたい名前" %>
+    <%= f.text_area :description, size: "20x10", placeholder: "Markdown記法が使用できます" %>
+    <%= f.submit "作成" %>
+  <% end %>
+</div>

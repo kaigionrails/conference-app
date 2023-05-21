@@ -1,0 +1,12 @@
+<div>
+  <h1 class="font-bold text-4xl">Profiles#index</h1>
+  <p>Find me in app/views/profiles/index.html.erb</p>
+  <% if @profile %>
+  <p><%= @profile.name %></p>
+  <p><%= @profile.description %></p>
+  <%= link_to "編集する", edit_profile_path(@profile) %>
+  <% else %>
+  <div>プロフィールがまだ登録されていません</div>
+  <%= link_to "作成する", new_profile_path %>
+  <% end %>
+</div>
