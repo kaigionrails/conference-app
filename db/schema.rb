@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_084855) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_21_100536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_084855) do
     t.index ["user_id"], name: "index_authentication_provider_githubs_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", default: "", null: false
+    t.text "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "role", default: "participant", null: false
@@ -31,4 +40,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_084855) do
   end
 
   add_foreign_key "authentication_provider_githubs", "users"
+  add_foreign_key "profiles", "users"
 end
