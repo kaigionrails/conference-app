@@ -1,0 +1,8 @@
+<div>
+  <h1 class="font-bold text-4xl">Sessions#new</h1>
+  <p>Find me in app/views/sessions/new.html.erb</p>
+  <code><%= flash[:alert].to_s %></code>
+  <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
+    <%= submit_tag "Login with GitHub" %>
+  <% end %>
+</div>
