@@ -4,7 +4,9 @@
   <% if @profile %>
   <p><%= @profile.name %></p>
   <p><%= @profile.description %></p>
-  <%= image_tag @profile.images.first.representation(resize_to_limit: [200, 200]) %>
+  <% @profile.images.each do |profile_image| %>
+    <%= image_tag profile_image.representation(resize_to_limit: [200, 200]) %>
+  <% end %>
   <%= link_to "編集する", edit_profile_path(@profile) %>
   <% else %>
   <div>プロフィールがまだ登録されていません</div>

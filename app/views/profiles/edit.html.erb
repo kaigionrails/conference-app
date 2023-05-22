@@ -1,6 +1,9 @@
 <div data-controller="profiles">
   <h1 class="font-bold text-4xl">Profiles#edit</h1>
   <p>Find me in app/views/profiles/edit.html.erb</p>
+  <% @profile.images.each do |profile_image| %>
+    <%= image_tag profile_image.representation(resize_to_limit: [200, 200]) %>
+  <% end %>
 
   <%= form_with model: @profile, multipart: true do |f| %>
     <%= f.text_field :name, placeholder: "見せたい名前" %>
