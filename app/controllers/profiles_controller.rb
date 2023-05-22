@@ -26,7 +26,13 @@ class ProfilesController < ApplicationController
 
   def update
     profile = Profile.find_by(user: current_user)
-    if profile.update(**profile_params)
+    ApplicationRecord.transaction do
+      profile.update!(**profile_non_image_params)
+      profile_image_params[:images].each do |image|
+        profile.images.attach(image)
+      end
+    end
+    if profile
       flash[:success] = "プロフィールを更新しました。"
       redirect_to profiles_path
     else
@@ -37,5 +43,13 @@ class ProfilesController < ApplicationController
 
   private def profile_params
     params.require(:profile).permit(:name, :description, images: [])
+  end
+
+  private def profile_non_image_params
+    profile_params.except(:images)
+  end
+
+  private def profile_image_params
+    profile_params.slice(:images)
   end
 end
