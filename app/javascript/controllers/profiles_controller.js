@@ -1,9 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-const profileFormField = ""
-
 export default class extends Controller {
-
   connect() {
     console.info("profiles controller")
   }
