@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     profile = Profile.find_by(user: current_user)
     ApplicationRecord.transaction do
       profile.update!(**profile_non_image_params)
-      profile_image_params[:images].each do |image|
+      profile_image_params[:images]&.each do |image|
         profile.images.attach(image)
       end
     end
