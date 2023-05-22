@@ -3,6 +3,9 @@
   <p>Find me in app/views/profiles/edit.html.erb</p>
   <% @profile.images.each do |profile_image| %>
     <%= image_tag profile_image.representation(resize_to_limit: [200, 200]) %>
+    <%= form_with url: profile_profile_image_path(@profile.id, profile_image.id), method: :delete do |f| %>
+      <%= f.submit "この写真を削除する" %>
+    <% end %>
   <% end %>
 
   <%= form_with model: @profile, multipart: true do |f| %>
