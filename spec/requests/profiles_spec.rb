@@ -38,5 +38,16 @@ RSpec.describe "Profiles", type: :request do
         expect(Profile.where(user: user).count).to eq 1
       end
     end
+
+    context "valid profile with image" do
+      it "should create profile and image" do
+        image = fixture_file_upload(Rails.root.join("spec", "assets", "sample.png"), "image/png")
+        post "/profiles", params: { profile: { name: "foobar", description: "I'm foobar!", images: [image] } }
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(profiles_path)
+        expect(Profile.where(user: user).count).to eq 1
+        expect(Profile.find_by(user: user).images.count).to eq 1
+      end
+    end
   end
 end
