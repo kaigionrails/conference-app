@@ -32,3 +32,4 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/.gem_rbs_collection/
