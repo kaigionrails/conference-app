@@ -11,7 +11,6 @@ class Profile < ApplicationRecord
   private def fetch_profile_image_from_github
     client = Octokit::Client.new
     url = client.user(user.authentication_provider_github.uid.to_i).avatar_url
-    require "open-uri"
     URI.open(url)
   end
 end
