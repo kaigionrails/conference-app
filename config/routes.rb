@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   get "/auth/:provider/callback", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+
+  resources :profiles, only: [:index, :new, :create, :edit, :update] do
+    resources :profile_images, only: [:destroy]
+  end
 end
