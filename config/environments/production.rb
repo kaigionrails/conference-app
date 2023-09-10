@@ -84,4 +84,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.session_store = :redis_store,
+    servers: [ENV.fetch("REDIS_URL")],
+    key: "_conference_app_session",
+    expire_after: 5.days
 end
