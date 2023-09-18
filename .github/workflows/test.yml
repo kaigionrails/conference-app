@@ -19,9 +19,14 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: conference_app_test
+      redis:
+        image: redis:7.2-bookworm
+        ports:
+          - 6379:6379
     env:
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/conference_app_test
+      REDIS_URL: redis://localhost:6379
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
