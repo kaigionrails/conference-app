@@ -17,3 +17,6 @@ No features implemented yet! Currently planned features are:
 ## Stack
 
 The app is built with Ruby on Rails 7. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
+
+## Setup dev environment
+See [`.env.sample`](.env.sample) for required/optional environment variables.
