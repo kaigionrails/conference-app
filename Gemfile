@@ -30,6 +30,8 @@ gem "tailwindcss-rails"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+gem "redis-actionpack"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -53,6 +55,7 @@ gem "octokit"
 gem "open-uri"
 
 gem "rails_semantic_logger"
+gem "sidekiq"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -75,4 +78,3 @@ group :development do
   gem 'rbs_rails', require: false
   gem "steep", require: false
 end
-
