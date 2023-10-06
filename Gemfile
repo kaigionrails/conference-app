@@ -54,6 +54,7 @@ gem "omniauth-github"
 gem "octokit"
 gem "open-uri"
 
+gem "sidekiq"
 gem "woothee"
 
 group :development, :test do

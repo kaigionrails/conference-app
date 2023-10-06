@@ -74,6 +74,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     csv (3.2.6)
     date (3.3.3)
@@ -223,6 +224,8 @@ GEM
       actionpack (>= 5, < 8)
       redis-rack (>= 2.1.0, < 3)
       redis-store (>= 1.1.0, < 2)
+    redis-client (0.17.0)
+      connection_pool
     redis-rack (2.1.4)
       rack (>= 2.0.8, < 3)
       redis-store (>= 1.2, < 2)
@@ -254,6 +257,11 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.2.2)
+    sidekiq (7.1.4)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -334,6 +342,7 @@ DEPENDENCIES
   redis (~> 4.0)
   redis-actionpack
   rspec-rails (~> 6.0)
+  sidekiq
   steep
   stimulus-rails
   tailwindcss-rails
