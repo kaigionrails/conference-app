@@ -54,6 +54,7 @@ gem "omniauth-github"
 gem "octokit"
 gem "open-uri"
 
+gem "amazing_print"
 gem "rails_semantic_logger"
 gem "sidekiq"
 
