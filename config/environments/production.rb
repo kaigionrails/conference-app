@@ -78,7 +78,7 @@ Rails.application.configure do
 
   # https://logger.rocketjob.io/rails
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    SDTOUT.sync = true
+    STDOUT.sync = true
     config.rails_semantic_logger.add_file_appender = false
     config.semantic_logger.add_appender(io: STDOUT, formatter: config.rails_semantic_logger.format)
   end
