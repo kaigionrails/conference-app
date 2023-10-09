@@ -51,6 +51,8 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-github"
 
+gem "faraday"
+gem "faraday-retry"
 gem "octokit"
 gem "open-uri"
 

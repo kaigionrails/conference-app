@@ -109,6 +109,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    faraday-retry (2.2.0)
+      faraday (~> 2.0)
     ffi (1.15.5)
     fileutils (1.7.1)
     globalid (1.0.0)
@@ -359,6 +361,8 @@ DEPENDENCIES
   bootsnap
   debug
   factory_bot_rails (~> 6.2.0)
+  faraday
+  faraday-retry
   image_processing (~> 1.2)
   importmap-rails
   octokit
