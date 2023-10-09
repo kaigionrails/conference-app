@@ -15,6 +15,7 @@ class AuthenticationProviderGithub < ApplicationRecord
       user.save!
       auth_provider.save!
     end
+    DetermineUserRoleJob.perform_later(user.id)
     user
   end
 end
