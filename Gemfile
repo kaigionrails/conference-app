@@ -63,6 +63,7 @@ gem "woothee"
 
 gem "sentry-rails"
 gem "scout_apm"
+gem "jwt"
 
 gem "aws-sdk-s3", require: false
 

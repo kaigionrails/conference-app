@@ -365,6 +365,7 @@ DEPENDENCIES
   faraday-retry
   image_processing (~> 1.2)
   importmap-rails
+  jwt
   octokit
   omniauth
   omniauth-github
