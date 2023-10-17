@@ -1,4 +1,3 @@
-// Install service worker (See public/sw.js)
 const registerServiceWorker = async () => {
   if ("serviceWorker" in navigator) {
     try {
