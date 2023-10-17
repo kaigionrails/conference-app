@@ -109,6 +109,7 @@ GEM
     io-console (0.5.11)
     irb (1.5.1)
       reline (>= 0.3.0)
+    jb (0.8.1)
     json (2.6.3)
     jwt (2.7.0)
     language_server-protocol (3.17.0.3)
@@ -336,6 +337,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   image_processing (~> 1.2)
   importmap-rails
+  jb
   octokit
   omniauth
   omniauth-github
