@@ -5,4 +5,8 @@ class PwaController < ApplicationController
   def service_worker
     response.headers['Cache-Control'] = "no-cache"
   end
+
+  def manifest
+    response.headers['Cache-Control'] = "no-cache"
+  end
 end

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # For PWA
   get "/sw.js", to: "pwa#service_worker"
+  get "/manifest.json", to: "pwa#manifest"
 
   resources :profiles, only: [:index, :new, :create, :edit, :update] do
     resources :profile_images, only: [:destroy]
