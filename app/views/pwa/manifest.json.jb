@@ -17,7 +17,13 @@ manifest = {
       src: image_path("icons/2023/1024.png"),
       type: "image/png",
       sizes: "1024x1024",
-    }
+    },
+    {
+      src: image_path("icons/2023/1024_maskable.png"),
+      type: "image/png",
+      sizes: "1024x1024",
+      purpose: "maskable",
+    },
   ],
 }
 
