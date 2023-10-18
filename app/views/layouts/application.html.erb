@@ -11,6 +11,9 @@
     <%= javascript_importmap_tags %>
     <%= javascript_import_module_tag "service_worker_installer" %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
+    <script>
+      window.vapidPublicKey = new Uint8Array(<%= vapid_public_key_bytes %>)
+    </script>
   </head>
 
   <body class="bg-[#84240f] w-full">
