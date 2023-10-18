@@ -68,4 +68,5 @@ Rails.application.configure do
 
   config.x.webpush.vapid_public_key = ENV.fetch("VAPID_PUBLIC_KEY")
   config.x.webpush.vapid_private_key = ENV.fetch("VAPID_PRIVATE_KEY")
+  config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO", "mailto:mail@kaigionrails.example")
 end

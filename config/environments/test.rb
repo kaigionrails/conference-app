@@ -62,4 +62,5 @@ Rails.application.configure do
     config.x.webpush.vapid_public_key = key.public_key
     config.x.webpush.vapid_private_key = key.private_key
   end
+  config.x.webpush.vapid_subject_mailto = "mailto:mail@kaigionrails.test"
 end
