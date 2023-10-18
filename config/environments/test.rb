@@ -57,4 +57,9 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  WebPush.generate_key.tap do |key|
+    config.x.webpush.vapid_public_key = key.public_key
+    config.x.webpush.vapid_private_key = key.private_key
+  end
 end
