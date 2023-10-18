@@ -59,7 +59,6 @@ gem "rails_semantic_logger"
 gem "sidekiq"
 gem "woothee"
 
-gem "sentry-ruby"
 gem "sentry-rails"
 gem "scout_apm"
 

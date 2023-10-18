@@ -360,7 +360,6 @@ DEPENDENCIES
   rspec-rails (~> 6.0)
   scout_apm
   sentry-rails
-  sentry-ruby
   sidekiq
   steep
   stimulus-rails
