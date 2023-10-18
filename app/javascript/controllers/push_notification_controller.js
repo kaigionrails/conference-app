@@ -22,8 +22,6 @@ export default class extends Controller {
             })
             .then(
               (pushSubscription) => {
-                console.log(pushSubscription);
-                console.log(pushSubscription.toJSON());
                 const request = new FetchRequest(
                   "post",
                   "/webpush_subscription",
@@ -31,7 +29,7 @@ export default class extends Controller {
                 );
                 request.perform().then((response) => {
                   if (response.ok) {
-                    this.alreadySubscribedValue = true
+                    this.alreadySubscribedValue = true;
                   } else {
                     console.error(response);
                   }
@@ -42,12 +40,13 @@ export default class extends Controller {
               }
             );
         }
-        this.updateSubscriptionButton()
+        this.updateSubscriptionButton();
       });
     } else {
       window.alert("お使いのブラウザはプッシュ通知に対応していません");
     }
   }
+
   async getSubscriptionStatus() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
@@ -64,6 +63,7 @@ export default class extends Controller {
       });
     }
   }
+
   async sendSamplePushNotification() {
     const request = new FetchRequest("post", "/sample_webpush_notifications");
     const response = await request.perform();
