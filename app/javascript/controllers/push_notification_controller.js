@@ -64,6 +64,14 @@ export default class extends Controller {
       });
     }
   }
+  async sendSamplePushNotification() {
+    const request = new FetchRequest("post", "/sample_webpush_notifications");
+    const response = await request.perform();
+    if (!response.ok) {
+      console.error(response);
+    }
+  }
+
   updateSubscriptionButton() {
     if (this.alreadySubscribedValue) {
       this.statusTarget.innerText = "講読済み";

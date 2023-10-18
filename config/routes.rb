@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/manifest.json", to: "pwa#manifest", as: "pwa_manifest"
 
   post '/webpush_subscription', to: "webpush_subscription#create"
+  post '/sample_webpush_notifications', to: "sample_webpush_notifications#create"
 
   resources :profiles, only: [:index, :new, :create, :edit, :update] do
     resources :profile_images, only: [:destroy]
