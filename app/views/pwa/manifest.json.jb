@@ -1,6 +1,6 @@
 manifest = {
   name: "Kaigi on Rails 2023 conference-app",
-  short_name: "Kaigi on Rails 2023",
+  short_name: "Kaigi on Rails",
   theme_color: "#84240f",
   background_color: "#fff",
   display: "standalone",
