@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   before_action :require_organizer
+  layout "admin"
 
   def index
   end
