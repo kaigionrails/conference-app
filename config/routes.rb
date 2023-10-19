@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     resources :profile_images, only: [:destroy]
   end
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :update]
+  end
   get "/admin", to: "admin#index"
 end
