@@ -1,6 +1,10 @@
 class DetermineUserRoleJob < ApplicationJob
   queue_as :default
 
+  discard_on(Octokit::Error) do |_job, error|
+    Sentry.capture_exception(error)
+  end
+
   def perform(user_id)
     user = User.find(user_id)
 
