@@ -2,17 +2,17 @@
   <section class="p-4">
     <h1 class="font-bold text-xl">ConferenceApp Admin</h1>
   </section>
-  <section class="p-4 hover:bg-gray-100 hover:cursor-pointer">
-    <span class="text-lg">
-      <%= link_to "Users", admin_users_path %>
-    </span>
-  </section>
-  <section class="p-4 hover:bg-gray-100 hover:cursor-pointer">
-    <span class="text-lg">
-      <%= link_to "Talks", admin_talks_path %>
-    </span>
-  </section>
-  <section class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+  <%= link_to admin_users_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">Users</span>
+    </div>
+  <% end %>
+  <%= link_to admin_talks_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">Talks</span>
+    </div>
+  <% end %>
+  <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
     <span class="text-lg">Announcements</span>
-  </section>
+  </div>
 </nav>
