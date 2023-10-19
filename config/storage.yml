@@ -12,7 +12,7 @@ cloudflare:
   secret_access_key: <%= ENV["CLOUDFLARE_SECRET_ACCESS_KEY"] %>
   region: auto
   force_path_style: true
-  bucket: <%= ENV["CLOUDFLARE_R@_BUCKET_NAME"] %>
+  bucket: <%= ENV["CLOUDFLARE_R2_BUCKET_NAME"] %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
