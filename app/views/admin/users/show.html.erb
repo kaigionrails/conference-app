@@ -6,5 +6,5 @@
   <p class="mb-4"><%= @user.name %></p>
   <h3  class="font-bold text-lg mb-2">Role</h3>
   <p class="mb-4"><%= @user.role %></p>
-  <%= link_to "edit", nil, class: "underline" %>
+  <%= link_to "edit", edit_admin_user_path(@user), class: "underline" %>
 </div>
