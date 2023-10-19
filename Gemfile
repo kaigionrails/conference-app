@@ -59,6 +59,9 @@ gem "rails_semantic_logger"
 gem "sidekiq"
 gem "woothee"
 
+gem "sentry-rails"
+gem "scout_apm"
+
 gem "jb"
 
 group :development, :test do
