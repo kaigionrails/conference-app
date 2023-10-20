@@ -12,7 +12,11 @@
     <tbody class="divide-y divide-gray-100 bg-white">
       <% @users.each do |user| %>
         <tr>
-          <td class="p-3"><%= image_tag user.profile.images.first.representation(resize_to_limit: [50, 50]), class: "rounded" %></td>
+          <td class="p-3">
+            <% if user.profile&.images&.first %>
+              <%= image_tag user.profile.images.first.representation(resize_to_limit: [50, 50]), class: "rounded" %>
+            <% end %>
+          </td>
           <td class="p-3"><%= user.name %></td>
           <td class="p-3"><%= user.role %></td>
           <td class="p-3"><%= link_to "Show", admin_user_path(user), class: "underline" %></td>
