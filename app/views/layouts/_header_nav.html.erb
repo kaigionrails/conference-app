@@ -1,8 +1,57 @@
 <nav class="bg-white border-b">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-    <a class="flex items-center">
-    <%= image_tag "icon.png", class: "h-8 mr-3" %>
-    <span class="font-semibold">Kaigi on Rails Conference App</span>
-    </a>
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-3 py-2">
+    <%= link_to root_path, class: "flex items-center" do %>
+      <%= image_tag "icon.png", class: "h-8 mr-3" %>
+      <span class="font-semibold">Kaigi on Rails Conference App</span>
+    <% end %>
+    <div data-controller="dropdown" class="flex items-center relative">
+      <button class="cursor-pointer" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+      <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-52"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-to="opacity-0 scale-95"
+      >
+        <div class="w-full flex flex-col p-3">
+          <div class="flex flex-row items-center mb-4">
+            <% if logged_in? %>
+              <%= image_tag current_user.profile&.images&.first&.representation(resize_to_limit: [50, 50]), class: "rounded-lg mr-3" %>
+              <span class="text-gray-900 text-lg"><%= "@#{current_user.name}"%></span>
+            <% else %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-gray-500 mr-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="text-gray-700 text-sm">ログインしていません</span>
+            <% end %>
+          </div>
+          <% if logged_in? %>
+            <%= link_to profiles_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+              <span>Profile</span>
+            <% end %>
+          <% end %>
+          <%= link_to "#", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+            <span>Talks</span>
+          <% end %>
+          <%= link_to about_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+            <span>About</span>
+          <% end %>
+          <% if logged_in? %>
+            <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+              <span>Logout</span>
+            <% end %>
+          <% else %>
+            <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
+              <%= button_tag type: "submit", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" do %>
+                <span>Login with GitHub</span>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
