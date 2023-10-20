@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :new, :create, :edit, :update] do
     resources :profile_images, only: [:destroy]
   end
+
+  scope "/:event_slug", as: "event" do
+    get "/", to: "events#show"
+    resources :talks, only: [:index, :show]
+  end
 end
