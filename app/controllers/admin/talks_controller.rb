@@ -27,6 +27,6 @@ class Admin::TalksController < AdminController
   end
 
   private def talk_params
-    params.require(:talk).permit(:title, :abstract, :start_at_date, :start_at_time, :track, :dutation_minutes)
+    params.require(:talk).permit(:title, :abstract, :start_at_date, :start_at_time, :track, :duration_minutes)
   end
 end
