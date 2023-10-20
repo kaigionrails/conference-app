@@ -12,14 +12,7 @@
   </head>
 
   <body class="bg-[#84240f] w-full flex flex-col h-screen">
-    <nav class="bg-white border-b">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-        <a class="flex items-center">
-          <%= image_tag "icon.png", class: "h-8 mr-3" %>
-          <span class="font-semibold">Kaigi on Rails Conference App</span>
-        </a>
-      </div>
-    </nav>
+    <%= render partial: "layouts/header_nav" %>
     <main class="w-full mx-auto flex text-white flex-grow overflow-scroll">
       <%= yield %>
     </main>
