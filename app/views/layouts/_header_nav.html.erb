@@ -19,7 +19,7 @@
         <div class="w-full flex flex-col p-3">
           <div class="flex flex-row items-center mb-4">
             <% if logged_in? %>
-              <%= image_tag current_user.profile&.images&.first&.representation(resize_to_limit: [50, 50]), class: "rounded-lg mr-3" %>
+              <%= image_tag current_user.profile&.images&.first&.representation(resize_to_limit: [50, 50]) || "", class: "rounded-lg mr-3" %>
               <span class="text-gray-900 text-lg"><%= "@#{current_user.name}"%></span>
             <% else %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-gray-500 mr-3">
