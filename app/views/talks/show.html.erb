@@ -1,0 +1,47 @@
+<div class="w-full max-w-screen-xl pt-4 px-4 pb-6">
+  <h2 class="text-2xl mb-2"><%= @talk.title %></h2>
+  <div class="mb-3 text-sm flex flex-row justify-between items-center">
+    <div>
+      <span class="mr-2"><%= @talk.start_at.in_time_zone("Tokyo").strftime("%d日 %H:%M~") %></span>
+      <span class="mr-2"><%= @talk.track %></span>
+      <span><%= "#{@talk.duration_minutes} 分間" %></span>
+    </div>
+    <button class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 hidden">
+        <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <div class="mb-4 md:mb-6">
+    <% @talk.speakers.each do |speaker| %>
+      <div class="flex flex-col">
+        <div class="flex flex-row items-center mb-2">
+          <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded-lg w-12 h-12 md:w-14 md:h-14 mr-5" %>
+          <p class="text-lg block"><%= speaker.name %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mb-4 md:mb-6">
+    <h3 class="text-xl mb-2 font-bold">概要</h3>
+    <p class="break-words"><%= @talk.abstract %></p>
+  </div>
+  <div class="mb-4 md:mb-6">
+    <h3 class="text-xl mb-2 font-bold">発表者</h3>
+    <% @talk.speakers.each do |speaker| %>
+      <div class="mb-4">
+        <h4 class="text-xl mb-2"><%= "#{speaker.name} " %><%= link_to "@#{speaker.github_username}", "https://github.com/#{speaker.github_username}", class: "underline" %></h4>
+        <div class="flex flex-col">
+          <div class="flex flex-row items-start mb-2">
+            <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded-lg w-14 h-14 md:w-24 md:h-24 mr-5" %>
+            <p class="block"><%= speaker.bio %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "発表一覧に戻る", event_talks_path(event: @event), class: "underline" %>
+</div>

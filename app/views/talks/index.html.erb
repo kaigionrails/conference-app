@@ -26,7 +26,9 @@
                 <p class="text-white break-words mb-2 min-h-[5rem]"><%= truncate(talk.abstract, length: talk.speakers.size > 1 ? 250 : 150) %></p>
               </div>
             </div>
-            <p class="underline text-right cursor-pointer">詳細を見る&nbsp;&gt;&gt;</p>
+            <div class="text-right">
+              <%= link_to "詳細を見る >>", event_talk_path(event_slug: @event.slug, id: talk.id), class: "underline text-right cursor-pointer w-full" %>
+            </div>
         </div>
           <% end %>
       </section>
