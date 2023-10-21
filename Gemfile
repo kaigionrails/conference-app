@@ -62,7 +62,6 @@ gem "woothee"
 gem "sentry-rails"
 gem "scout_apm"
 
-gem "jb"
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
