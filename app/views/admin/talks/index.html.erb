@@ -1,0 +1,36 @@
+<div class="mb-16">
+<h2 class="font-bold text-xl mb-8">Talks</h2>
+<div class="rounded w-full pr-8 shadow-sm">
+  <table class="w-full divide-y border">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="py-2 px-3 text-left">Speaker Icon</th>
+        <th class="py-2 px-3 text-left">Speaker</th>
+        <th class="py-2 px-3 text-left">Title</th>
+        <th class="py-2 px-3 text-left">Start at</th>
+        <th class="py-2 px-3 text-left">Track</th>
+        <th class="py-2 px-3 text-left sr-only">Show</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 bg-white">
+      <% @talks.each do |talk| %>
+        <tr>
+          <td class="p-3">
+            <div class="flex flow-row flex-wrap">
+              <% talk.speakers.each do |speaker| %>
+                <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=50", class: "rounded mb-1" %>
+              <% end %>
+            </div>
+          </td>
+          <td class="p-3"><%= talk.speakers.map(&:name).join(" ,") %></td>
+          <td class="p-3"><%= talk.title %></td>
+          <td class="p-3"><%= talk.start_at.in_time_zone("Tokyo") %></td>
+          <td class="p-3"><%= talk.track %></td>
+          <td class="p-3"><%= link_to "Show", admin_talk_path(talk), class: "underline" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @talks %>
+</div>

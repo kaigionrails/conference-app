@@ -1,0 +1,18 @@
+<h2 class="font-bold text-xl mb-8">Edit talk 「<%= @talk.title %>」 (id:<%= @talk.id %>)</h2>
+<div>
+  <%= form_with model: @talk, url: admin_talk_path(@talk) do |f| %>
+    <%= f.label :title, "Title", class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :title, class: "block rounded mb-4 w-[40rem]" %>
+    <%= f.label :abstract, "Abstract", class: "block text-lg font-bold mb-2" %>
+    <%= f.text_area :abstract, size: "100x20", class: "block rounded mb-4" %>
+    <%= f.label :start_at_date, "Start at (date)", class: "block text-lg font-bold mb-2" %>
+    <%= f.date_field :start_at_date, value: @talk.start_at.to_date, class: "block rounded mb-4" %>
+    <%= f.label :start_at_time, "Start at (time, in JST)", class: "block text-lg font-bold mb-2" %>
+    <%= f.time_field :start_at_time, value: @talk.start_at.in_time_zone("Tokyo").strftime("%H:%M"), class: "block rounded mb-4" %>
+    <%= f.label :track, "Track", class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :track, class: "block rounded mb-4" %>
+    <%= f.label :duration_minutes, "Duration (minutes)", class: "block text-lg font-bold mb-2" %>
+    <%= f.number_field :duration_minutes, class: "block rounded mb-8" %>
+    <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+  <% end %>
+</div>

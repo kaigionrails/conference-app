@@ -1,0 +1,26 @@
+<h2 class="font-bold text-xl mb-8">Talk 「<%= @talk.title %>」 (id:<%= @talk.id %>)</h2>
+<div class="pr-8">
+  <h3 class="font-bold text-lg mb-2">Id</h3>
+  <p class="mb-4"><%= @talk.id %></p>
+  <h3 class="font-bold text-lg mb-2">Title</h3>
+  <p class="mb-4"><%= @talk.title %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Abstract</h3>
+  <p class="mb-4"><%= @talk.abstract %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Track</h3>
+  <p class="mb-4"><%= @talk.track %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Start at</h3>
+  <p class="mb-4"><%= @talk.start_at.in_time_zone("Tokyo") %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Duration</h3>
+  <p class="mb-4"><%= @talk.duration_minutes %> minutes</p>
+  <h3  class="font-bold text-lg mb-2">Speakers</h3>
+  <div class="pl-4 mb-8">
+    <% @talk.speakers.each do |speaker| %>
+      <div class="flex flex-row items-center mb-2">
+        <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded mr-4" %>
+        <p class="mb-4 w-40 mr-4"><%= speaker.name %></p>
+        <p class="mb-4 w-full"><%= speaker.bio %></p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "edit", edit_admin_talk_path(@talk), class: "underline" %>
+</div>
