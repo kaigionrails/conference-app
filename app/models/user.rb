@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :webpush_subscriptions, dependent: :destroy
   has_many :unread_announcements, dependent: :destroy
+  has_many :talk_bookmarks, dependent: :destroy
 
   enum :role, organizer: "organizer", participant: "participant"
 end
