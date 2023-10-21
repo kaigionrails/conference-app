@@ -1,2 +1,2 @@
-web: bin/rails server -p 3000
+web: bundle exec puma -C config/puma.rb
 worker: bundle exec sidekiq --queue default
