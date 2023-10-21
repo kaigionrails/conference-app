@@ -13,8 +13,9 @@
     <link rel="manifest" href="<%= pwa_manifest_path %>">
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-[#84240f] w-full">
+    <%= render partial: "layouts/header_nav" %>
+    <main class="mx-auto flex text-white">
       <%= yield %>
     </main>
   </body>

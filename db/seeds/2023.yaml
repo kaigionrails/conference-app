@@ -1,0 +1,685 @@
+talks:
+  - title: "準備中"
+    abstract: "準備中"
+    start_at: !!timestamp 2023-10-27T11:20:00+09:00
+    duration_minutes: 40
+    track: "Hall A"
+    speakers:
+      - name: "zzak"
+        slug: "zzak"
+        github_username: "zzak"
+        gravatar_hash: null
+        bio: "準備中"
+  - title: "Rails アプリの 5,000 件の N+1 問題と戦っている話"
+    abstract: |
+      話者の勤める会社のとある歴史あるリポジトリでは CI で約 5,000 件の N+1 問題が検知されていました。
+      N+1 問題はパフォーマンス劣化の代表的な要因のひとつです。
+      Railsにはこれを解決する includes というメソッドがあり、これを警告する Bullet という gem があります。
+      Bullet の警告箇所に includesを差し込めばよさそうですが、5,000 件の手修正は億劫なので実行時に N+1 クエリ発行箇所に includes を差し込む gem を作りました。
+
+      しかし現実のアプリケーションは複雑で、単純にincludes すればよいというものではありません。
+      例えば以下のコードは alias が重複しエラーになります。
+      ```ruby
+      Play.joins(:actors).includes(actors: :company).joins('INNER JOIN companies force index(primary) ON companies.id = actors.company_id').load
+      ```
+      エラーにならなくとも不要なincludes はパフォーマンス劣化を招きます。
+      こうした意図しない変更を避けて includes を差し込む必要があります。
+
+      本セッションでは作ったgem の解説と、この gem による修正をリリースする話をします。
+    start_at: !!timestamp 2023-10-27T13:30:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "makicamel"
+        slug: "makicamel"
+        github_username: "makicamel"
+        gravatar_hash: "cfbe23392787cb3ad4689c5f72463fcc"
+        bio: "Rubyist. Web application developer."
+  - title: "HTTPリクエストを手で書いて学ぶ ファイルアップロードの仕組み"
+    abstract: |
+      ファイルアップロードはWebアプリケーションにおいて基本的な機能です。Railsでプログラミングの学習を始めた場合、フォームヘルパーを設置してparamsからデータを取得する処理を書けば、あるいはActiveStorageを使えばファイルアップロード処理は簡単に作れるでしょう。
+
+      一方でその間を流れるHTTPリクエストを正しく理解できているでしょうか？
+
+      恥ずかしながらエンジニアになりたての頃、私はそれを理解せずに使っていました。既存のRailsアプリのためのデバッグで実際のリクエストを確認する際や、HTMLではなくJavaScriptでファイルアップロードを行う際に手間取ってしまうなど、「ファイルアップロード」という機能の単位でしか自分の書いた処理を理解できていませんでした。
+
+      ファイルアップロードの方法について、言語やフレームワーク、送り手側/受け手側の差異はあれど、基礎となる部分はいずれもHTTPリクエストです。とはいえファイルアップロードを行うためのリクエストにもいくつかの方法があります。
+
+      この発表ではファイルアップロード時に発行されるHTTPリクエストを、仕様を読み解きながら自分の手で組み立てていくことでその全体像を理解していきます。
+    start_at: !!timestamp 2023-10-27T13:30:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "ikuma-t"
+        slug: "ikuma-t"
+        github_username: "IkumaTadokoro"
+        gravatar_hash: "4a0e3afe85259f2973dbc9386b6a4bb3"
+        bio: "株式会社エンペイで働くプログラマ。1年前はパンを焼いていましたが、最近はパンケーキばかり焼いています。Web標準が好きです。"
+  - title: "生きた Rails アプリケーションへの delegated types の導入"
+    abstract: |
+      Rails では、あるモデルの属性を別のモデルに引き継ぐ、つまり継承を実現するための仕組みがいくつか用意されています。
+
+      そのひとつである STI は比較的古くから存在しているアプローチで、利便性と引き換えに課せられるデメリットも大きいとされています。いっぽう Rails 6.1 で実装された delegated types は、STI を利用した際に負うデメリットのいくつかを解消できるアプローチとなっています。
+
+      delegated types の基本的な利用方法やサンプルコードを使った例は API ドキュメントやその他記事で読めますが、生きている Rails アプリケーションにおいて、設計初期ではなく、ある程度開発が進んでから導入したという事例について気になる方も多いのではないでしょうか。初めて delegated types を知った方にとってもそのような情報は有用なはずです。
+
+      このセッションでは、[hako-console という社内向け Rails アプリケーション](https://techlife.cookpad.com/entry/2018/04/02/140846)で、デプロイ履歴のモデリングに delegated types を導入し、既存テーブルの移行方法や得られた知見、便利さはもちろん、メリットだけではなく落とし穴についても共有します。
+    start_at: !!timestamp 2023-10-27T14:10:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "mozamimy"
+        slug: "mozamimy"
+        github_username: "mozamimy"
+        gravatar_hash: "a73cbd4500c4dbc97ad2fba6ad41ae67"
+        bio: "クックパッド株式会社で SRE として活動しています。主に AWS コストを最適化する仕組みやワークフローの整備をしてきましたが、最近は AWS Lambda を中心としたサーバレスアーキテクチャの導入を進めています。"
+  - title: "Async Gem で始める ruby 非同期プログラミング"
+    abstract: |
+      ruby 1.9 から追加された Fiber ですが、ruby 3.0 で大きな機能追加がありました。
+      本セッションではFiberとは一体何であり、何を解決するための機能なのかについて言及します。
+      その後FiberSchedulerの実装であるAsync Gemを実際に見ていき、同Gemを用いた非同期プログラミングについてデモを行い、
+      パフォーマンス面やRuby On Railsにおける採用上の課題について言及します。
+    start_at: !!timestamp 2023-10-27T14:10:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "k0i"
+        slug: "k0i"
+        github_username: "k0i"
+        gravatar_hash: "48b5df76d105830d2a7f6503abea26ec"
+        bio: "Software Engineer at Money Forward, Inc, Pay Business Department."
+  - title: "Exceptional Rails"
+    abstract: |
+      堅牢なRailsアプリケーションを書くのは難しいことです。実装時に想定していなかった事象が起きてもそれをうまくハンドリングして不整合がないようにアプリケーションを動かし続けなければなりません。そして、想定していない事象があったときにはそれに素早く気づき、アプリケーションの実装を変更する必要があります。
+
+      想定していなかった事象が起きたときのユーザに対する表示の仕方も大事です。エラーページもアプリケーションを構成するひとつの要素でありユーザ体験に影響します。エラーページを表示するところでエラーが発生して用意しているエラーページが表示できなかった、というのはよくある事ですができるだけ避けたいところです。
+
+      この発表では、Railsにおける「想定していない事象」とどのように付き合っていくと良いのかの指針を示します。また、Railsがエラーページを表示する仕組みと、それを利用した安定したエラーページをどうやって作るのかについても紹介します。
+    start_at: !!timestamp 2023-10-27T14:35:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "Shinichi Maeshima"
+        slug: "willnet"
+        github_username: "willnet"
+        gravatar_hash: "6ac7c50770603b53964d44db373e8e48"
+        bio: "株式会社ウィルネット代表。複数の会社の技術顧問しています。ginza.rb主催。著書にパーフェクトRuby on Rails(共著)、Ruby on Rails6エンジニア養成読本(共著)、WEB+DB PRESS で Ruby 記事連載(Vol 93~95)"
+  - title: "やさしいActiveRecordのDB接続のしくみ"
+    abstract: |
+      私たちはdatabase.ymlに必要情報を記述し、適当なモデルのfind/whereメソッドを使うだけで、いつの間にかDB接続の確立がなされて、ほしいデータがいつでも簡単に取得できるようになっています。
+      さて、ActiveRecord内部ではどのような処理を以て、この簡単さを実現しているのでしょうか？普段あまり着目しない部分ですので、ブラックボックス化してる方も少なくないと思います。
+      そこで、本セッションではMySQLへの接続確立するまでのActiveRecord内部の動きについて紹介します。
+      具体的には、接続に関する各クラスの役割（active_record/connection_handler等）を適宜紹介しつつ、実際にfindメソッドをデバッグ実行した際のスタックトレースを通して、接続確立までのActiveRecordの内部処理の全容を持ち帰っていただきます。
+    start_at: !!timestamp 2023-10-27T14:35:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "kubo"
+        slug: "kubo"
+        github_username: "boro1234"
+        gravatar_hash: "750703459030ae520b26376f236f6cdd"
+        bio: "DBREのお仕事をしています。MySQLをよく触ります。最近Railsと仲良くなり始めました。"
+  - title: "Update Billion Records"
+    abstract: |
+      改善の繰り返しはデータモデルに多様な変化をもたらします。サービスの成長にあわせてユーザーアクセスやデータ量が増えていくと、当初は比較的行いやすかたったデータモデルの変更作業の難易度は徐々に上がっていきます。そして気付いた時には気軽に向き合えないほど大きな問題を抱える状況に陥ることもあります。
+
+      私たちが運営するTimeTreeというカレンダーアプリの開発でも、ニーズに合わせてデータモデルへの変更を頻繁に行っています。その一環として実施した数十億レコードを保有するテーブルに対するデータマイグレーションのアプローチを紹介します。
+    start_at: !!timestamp 2023-10-27T15:45:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "ta1kt0me"
+        slug: "ta1kt0me"
+        github_username: "ta1kt0me"
+        gravatar_hash: "9bd07df36e3b0ac50c126ad69ee0bffa"
+        bio: "Software engineer at TimeTree, Inc."
+  - title: "初めてのパフォーマンス改善〜君たちはどう計測す(はか)るか〜"
+    abstract: |
+      エンジニアになって数ヶ月のころ、アプリケーション全体のパフォーマンス改善を任されることになりました。エンジニアとしての経験が浅い私は「パフォーマンス改善といってもどこをどうやって改善していけばいいのだろうか」と途方に暮れました。
+      そんな私が半年以上を掛けてパフォーマンス問題の把握の仕方、ボトルネックの特定方法、クエリ改善を続けてきた結果わかるようになったこと、できるようになったことを実例を交えてお話しします。
+      「明日からクエリ改善やって！」と急に言われても臆することなく対応できるような話をしたいと思います。
+    start_at: !!timestamp 2023-10-27T15:45:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "Fu-ga"
+        slug: "fugakkbn"
+        github_username: "fugakkbn"
+        gravatar_hash: "dd280d6d98be3c13dfa14d63dde92299"
+        bio: |
+          埼玉生まれ埼玉育ちの Rubyist。
+          株式会社永和システムマネジメントで WEB アプリケーションエンジニアとして働いています。
+          ダーツとコーラと蒙古タンメン中本が大好きです。
+  - title: "Simplicity on Rails - REST, RDB and Ruby"
+    abstract: |
+      実世界のRailsアプリケーションをシンプルに保つための方法を、Railsが提供する機能群をもとに考察します。
+
+      実世界の、特に仕事で開発するRailsアプリへの要求は様々のものがあり、Railsの豊富な機能群をもっても日々苦労して開発しているかと思います。
+      そんな中でも、Railsが得意とするような設計に落とし込むことで、複雑な要求をシンプルな実装で実現できると感じています。
+
+      本講演では、Railsが提供する機能のうち、「REST」「RDB」「Ruby」という要素を軸に、実世界の要求をシンプルに実装するための考え方を紹介します。
+    start_at: !!timestamp 2023-10-27T16:10:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "MOROHASHI Kyosuke"
+        slug: "moro"
+        github_username: "moro"
+        gravatar_hash: "70e13d9877054026fda46d5a5b53a236"
+        bio: |
+          日々Railsアプリケーションを書いているプログラマ。Ruby と Rails、TDDが好き。
+          著書に「Rails 3レシピブック(共著)」「はじめる! Cucumber」など。
+
+          好きなメソッドの変遷は、Array#each から Object#extend を経て Hash#compact。
+  - title: "TracePointを活用してモデル名変更の負債解消をした話"
+    abstract: |
+      皆さんは、開発しているRailsアプリケーションに技術的負債が溜まっていても、影響範囲が分からなくて負債の解消に挫折した経験はありませんか。
+      メソッドがどこから呼ばれているか分からない、どんな引数が渡されているか分からない、そんな影響範囲の調査はRuby標準ライブラリのTracePointを活用すれば解決できるかもしれません。
+
+      TracePoint は Ruby 2.0 から使える、さまざまなイベント(メソッド呼び出しなど)をフックすることができるRuby標準ライブラリです。
+
+      このセッションでは、私が負債解消で「モデル名の置換」をした経験から得た、様々なプラクティスをご紹介します。
+
+      - 負債解消の進め方
+      - TracePointの利用方法
+      - TracePointを活用してメソッド呼び出し元のコード位置や引数を特定する方法
+    start_at: !!timestamp 2023-10-27T16:10:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "alpaca-tc"
+        slug: "alpaca-tc"
+        github_username: "alpaca-tc"
+        gravatar_hash: "50fc2c295f0049226979b19e76f7a58d"
+        bio: "株式会社SmartHRでDeveloper Productivity Engineerをしています。"
+  - title: "技術的負債の借り換え on Ruby and Rails update"
+    abstract: |
+      RubyやRailsのupdateにおけるノウハウは、信頼のおける記事がいくつか流通しており、日々助けられております。
+      その中の手順として「まず、gemを最新にする」と記載されていますが、そのgem updateに関する記事の分量はあまり多くありません。
+      それは各gemによって事情が異なったり、また日々gemのupdateを欠かさない体制である状況においては難易度が低かったりなど、様々な事情があると思われます。
+      では、普段gemのupdateが何らかの理由でできず、RubyやRailsのEOLに追い立てられ、慌ててgemのupdateを一気にしようとした場合、何が起こるのか。
+      その時に私が仲間とともに行った判断や対処の例を共有し、皆様の意見をお伺いしたいと思います。
+    start_at: !!timestamp 2023-10-27T16:50:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "ginkouno"
+        slug: "ginkouno"
+        github_username: "ginkouno"
+        gravatar_hash: "06e6dcde277cbe5c614baf5d25871025"
+        bio: "フリーランスのソフトウェアエンジニア。組み込み系プログラミングなどを10年経験した後、Railsを中心としたWebプログラミングに15年位従事。ごちゃっとしたところをコツコツと整えたりするのが得意で、最近は主に技術的負債と呼ばれるものの解消に携わることが多い。Tokyu.rb所属"
+  - title: "Turbolinksアレルギー患者に捧げるTurbo & Stimulusでの時短実装術"
+    abstract: |
+      皆様、Railsのフロントエンドツール「Hotwire」は使っていますか？
+      Rails 7からはデフォルトで採用されており、「Turbo」や「Stimulus」といったライブラリが利用できます。
+
+      ですが、利用者があまり多くなかった「Turbolinks」のイメージに影響されて、利用を避けている方は居ませんか？
+
+      このトークでは、実際のバックエンドリプレイス案件において、
+      Turbo & Stimulusを採用することで開発工数を大幅に削減できた事例、および実装方法についてご紹介します。
+    start_at: !!timestamp 2023-10-27T16:50:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "lni_T / ルニ"
+        slug: "lni_T"
+        github_username: "lnit"
+        gravatar_hash: "88493e31e8ac7540094d35f7cda46c8a"
+        bio: |
+          メドピア株式会社に所属するサーバーサイドエンジニアで、自社サービスのリードエンジニアを務めています。
+          チームメンバーの交通整理などをしつつ、日々RailsやTerraformと格闘しています。
+  - title: "seeds.rbを書かずに開発環境データを整備する"
+    abstract: |
+      開発環境の初期データは、チーム全体の開発効率に関わる重要なデータです。しかし、seedファイルの記述に手間がかかるためメンテナンスが適切に行われなかったり、各エンジニアがローカルに独自のデータを持っているようなことはないでしょうか。
+      弊社ではこの問題を解決するため「ローカルのデータからCSVを出力してseedとして利用する」手法を導入しました。これはseedファイルを直接編集するのではなく、実際にローカルでアプリを操作して必要なデータを整備した後、スクリプトを実行して全テーブルのCSVを出力する手法で、**「今この瞬間のローカルデータを、スナップショットのようにseed化したい！」という怠惰な願望を叶えるもの**です。
+      今回のトークでは、この手法の概要、導入にあたって直面した問題と解決アプローチ、及び導入前後のseedデータにおける質や量の比較についてお話しします。
+    start_at: !!timestamp 2023-10-27T17:45:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "gogutan"
+        slug: "gogutan"
+        github_username: "gogutan"
+        gravatar_hash: "dd22f5a9a3a0c5d89f24322be74640a1"
+        bio: "フィヨルドブートキャンプを卒業後、株式会社キャタルで子どもたちの英語学習を支援するアプリケーションを開発しています。英語、競プロ、料理などが好きです。"
+  - title: "定数参照のトラップとそれを回避するために行う2つのこと"
+    abstract: |
+      Rubyの定数を参照する際、それが本当に意図した定数を参照しているかはコードを動かしてみるまではわかりません。
+
+      先頭に::をつけてすべての定数参照をトップレベルから強制するのがよいでしょうか？
+      私はコードの書き方の強制よりも、コードを書いた時点でそれがどの定数を参照していて、トップレベルから検索したときに一致する定数の候補を出す機能が欲しくなり、エディタ上でそれらを表示してくれるgemを作ってみることにしました。
+      書き方の強制は影響範囲が広く、意図した定数参照をしていないことに気づくのが遅れた、という課題を解決するにはこの方法で十分と考えたからです。
+
+      この発表では、Railsのアプリケーションで定数が読み込まれる仕組みや定数探索の順番をお話しした上で、実装し(た|ている)gemの紹介をしたいと思います。
+    start_at: !!timestamp 2023-10-27T17:45:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "Haruka Oguchi"
+        slug: "hogucc"
+        github_username: "hogucc"
+        gravatar_hash: "0e14e2acbb9761445edc2dd0611f9637"
+        bio: "Ruby / JSプログラマ。 エンペイという会社で集金業務を効率化するサービスを開発しています。趣味はキーボード作りです。"
+  - title: "Active Record クエリクイズ"
+    abstract: |
+      Active Record は便利なライブラリです。一方で、時としてどのようなクエリが発行されるのか分からなくなることもあるでしょう。
+      そんなちょっとむずかしい、Active Record が発行するクエリをクイズ形式で学びます。
+
+      このトークを聞いて、コードを見たらなんとなく発行されるクエリが見えるようになる力を手に入れましょう！
+    start_at: !!timestamp 2023-10-27T18:10:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "Masataka Pocke Kuwabara"
+        slug: "pocke"
+        github_username: "pocke"
+        gravatar_hash: "7bc6612fa20296bf652f6b0357db81c1"
+        bio: "Pocke is a software engineer working for Money Forward, Inc. I develop Ruby on Rails applications. I also a maintainer of RBS."
+  - title: "Rails Executor: フレームワークとあなたのコードとの境"
+    abstract: |
+      Railsがリクエストとバックグラウンドジョブの間にキャッシュとリソースをどのようにクリーンアップするか？ そして、リロード対象のコードをどうやって決定するかをご存知でしょうか?
+
+      これはあまり知られていないRailsの内部詳細です。通常のアプリケーション開発者であれば、決して気づくことはなくて、知る必要もありません。しかし、アプリケーションのコードをコールバックなどで呼び出すジェムを作成する場合、その知識は不可欠なことになります。
+    start_at: !!timestamp 2023-10-27T18:10:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "Andrey NOVIKOV"
+        slug: "Envek"
+        github_username: "Envek"
+        gravatar_hash: "d0e95abdd0aed671ebd0920c16d393d4"
+        bio: |
+          Ruby on Railsを使って10年以上いろいろなアプリを開発しています。
+
+          いくつかのRubyジェムを開発して、サポートしていて、Railsを使っている開発者のためにいいDXをもつツールを提供したいとおもいます。
+
+          大阪に住んでいて、Evil Martiansに勤めています。
+  - title: "Railsの型ファイル自動生成における課題と解決"
+    abstract: |
+      「Railsアプリケーションで型をあつかいたい。」これはコミュニティーにおいて未だベストプラクティスが見つかっていない、模索中の課題です。
+
+      ある程度の主要な情報は生成方法が見つかっているでしょう。
+
+      しかしながらコーナーケースはどうでしょうか？
+      `ActiveSupport::Concern#included`を使っている場合は？
+      Railsのプラグインgemを使っている場合は？
+      個々のプロダクトの事情に合わせたカスタマイズ方法は？
+
+      本セッションでは、これらの問題を解決する方法として、[orthoses-rails](https://github.com/ksss/orthoses-rails)を提案します。
+      orthoses-railsを使うことで、最初の導入。いかに信用できる方法で`ActiveSupport::Concern#included`問題を解決されているか、実行時解析とは何か、カスタマイズ方法や、独自のRailsプラグイン拡張であっても型を自動生成する方法も解説します。
+    start_at: !!timestamp 2023-10-28T10:00:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "Yuki Kurihara"
+        slug: "ksss"
+        github_username: "ksss"
+        gravatar_hash: "77897395d9b84463bd474a69b922b2ec"
+        bio: |
+          Rubyプログラマー
+
+          Rubyに魅了されて10年。
+          その間Rubyアプリケーション開発に従事。
+          RBSに魅せられ、"RBSを普通にする"ため活動中。
+
+          - RubyKaja2014
+          - Tokyo RubyKaigi 11 talker
+          - RejectKaigi2018 MVP
+          - RubyKaigi2022 talker
+  - title: "事業の試行錯誤を支えるコードを捨てやすくして、シンプルなシステムの設計と工夫"
+    abstract: |
+      サービスを運用していく過程で、事業の状況や取り巻く社会環境に応じて提供する機能や課金体系などを変える（ピボットする）必要に迫られることが多いです。
+      特にBtoBのサービスでは、少ない顧客企業と長期的な取り組みになることが多く、1社ごとの取引金額の大きくなりがちです。
+      それゆえに、特殊なケースに対応するためにシステムを作り込むという選択を選ばざるを得ないケースもあります。
+      過度な作り込みによって、システムの柔軟性は損なわれ、事業はピボットしづらくなります。
+      本トークでは、書いたコードを捨てやすくしてシステムをシンプルに保つための設計と、捨てる意思決定を後押しするための工夫についてお話します。
+      システムをシンプルにすることにより、作り込みをしつつも試行錯誤のスピード感を維持します。そういった動きをするためのRailsアプリケーションの設計を具体例を交えて紹介します。
+      また、開発者がコードや機能を削除したいと主張しても、工数をかけて作ったものを削除する意思決定をするのは難しいものです。
+      コード、機能の削除を進めるためにプロダクトのステークホルダーをうまく巻き込んだ議論をするためのTipsを紹介します。
+      本トークを通じて、急激に変化する社会の中でも柔軟に対応するプロダクトを作るために、Webアプリケーション開発者が普段から準備できることについて知ることができます。
+    start_at: !!timestamp 2023-10-28T10:00:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "zuckey"
+        slug: "zuckey"
+        github_username: "zuckeyM-17"
+        gravatar_hash: "0892871036578feecfa18893d1062e6d"
+        bio: "株式会社スタディストで新規事業である「ハンクラ」のプロダクト開発責任者をしています。同社に入社後、テックリードとしてプロダクトの立ち上げに携わった後、現在はプロダクトマネージャー、エンジニアリングマネージャーをしつつ、隙を見てはRuby/RailsとTypeScript/Vueでコードを書いています。"
+  - title: "Fat Modelを解消するためのCQRSアーキテクチャ"
+    abstract: |
+      私が現在開発している比較的規模が大きなRailsアプリケーションでは、CQRS(Command and Query Responsibility Segregation)アーキテクチャを取り入れることによって、Fat ModelやFat Controller問題を解決し、ソースコードの見通しが良い状態を保つことができています。
+
+      本セッションでは、RailsアプリケーションでCQRSアーキテクチャを採用している事例として、私たちが導入しているUseCase・Query・Commandの役割と、Model・Controllerを含めた各層の関係を紹介します。
+    start_at: !!timestamp 2023-10-28T10:40:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "Shogo Terai"
+        slug: "krpk1900"
+        github_username: "krpk1900"
+        gravatar_hash: "e05c5bb6ec6456ba8d7c5b83e5dd5cb4"
+        bio: |
+          株式会社YOUTRUSTでWebエンジニアをしています。
+          趣味で個人開発をしています。
+  - title: "返金処理を通して学ぶ、カード決済電文の沼バトル"
+    abstract: |
+      ECサイトでクレジットカード決済を行い、注文をキャンセルした経験はありますか？しばらくすると返金処理が行われ、カード会社からの請求がキャンセルされます。しかし、カード会社がどのようにして返金処理を行っているのか、気になったことはありませんか？
+
+      カード会社は、決済時と返金手続き時にお店から発行される電文をもとに決済・返金処理を行いますが、実はかなり混沌とした世界であったりします。
+
+      登壇者は、プリペイドカード発行会社で新規機能開発時にこの返金処理の沼にハマり、そのケアに苦労しました。
+      このセッションでは、決済電文をプリペイドカード発行会社（イシュアー）がどのように処理し、ユーザーの残高を変動させているのかに触れた後、登壇者が苦労した返金処理に関するケアについてカジュアルにお話しします。普段カード事業に携わることがなければ知ることができない、そして気にも留めないお話をみなさまに提供する予定です。
+    start_at: !!timestamp 2023-10-28T10:40:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "hirotea"
+        slug: "hirotea"
+        github_username: "hiro-teaaa"
+        gravatar_hash: "158f82b6f264cafa484f08d05a782762"
+        bio: "株式会社SmartBankで、家計簿プリカ「B/43」の開発・運用をしています。Ruby on Railsで実装されたスマートフォンアプリ向けAPIの設計開発と運用を主に担当しています。"
+  - title: "E2E testing on Rails 2023"
+    abstract: |
+      Rails 5.2でシステムテストが導入されて以来、Capybaraを使用したE2Eテストを書くことはとても容易になりましたが、実際にシステムテストをCIで運用すると「時々なぜか落ちるテスト」との戦いです。いっぽう世の中を見渡すと、CypressやPlaywrightといったNode.jsベースのテストランナーが成熟してきており、Flakyなテストに打ち克つための工夫が多くされています。この発表ではRailsのアプリケーション資産はそのままに、Node.jsベースのテストランナーを導入する方法を紹介し、その中の仕組みを詳しく説明します。
+    start_at: !!timestamp 2023-10-28T11:05:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "Yusuke Iwaki"
+        slug: "YusukeIwaki"
+        github_username: "YusukeIwaki"
+        gravatar_hash: "6f411237444fb0f49c63baeb9c5f2a38"
+        bio: "福岡でMDMサービスの開発に携わっているエンジニアです。\"なんかよくわからんけど動いてる\"コードを読み解くのが得意です。PlaywrightをRailsシステムテストで利用するためのライブラリをOSS開発しています。"
+  - title: "32個のPRでリリースした依存度の高いコアなモデルの安全な弄り方"
+    abstract: |
+      新しく機能を設計する際、将来的な仕様変更の可能性を踏まえて拡張性を持たせたり、簡単に変更ができるように工夫することは、経験を積んできたエンジニアにとって常に意識しているポイントかと思います。
+      しかし、時として思わぬ方向に機能のニーズが変化したり、予想外の事業領域へのチャレンジによって当初には意図してない形に設計を大きく変更せざるを得ないケースも生じます。
+
+      - このテーブルを変更しないといけないけど参照箇所が多くて触りにくい...
+      - 新しくカラムを追加したいけどデータ量が多いからオンラインして良いのか不安...??
+      - この仕様ってこれから先どう変わっていくんだろ... 拡張性とか考えなくてもいいかな...??
+
+      サービスが大きくなるほど既に動いている機能を障害なく変更していくことは難しくなりますし、変化の多い事業環境でどこまで拡張性や柔軟性を持たせるかの見極めは困難です。
+
+      このセッションでは、実際の事例に基づいてサービスのコアとなるモデルの仕様を大きく変え、テーブルの定義変更やモデルの機能拡張をしたお話をします。多くのモデルに依存していたり、Read/Writeが多いモデルをダウンタイムなしで変更していくための手順の決め方や具体的なテクニック、便利なgemなどについて紹介します。また、私たちのチームが将来像を考慮しながら設計する時に意識しているポイントについても紹介します。
+    start_at: !!timestamp 2023-10-28T11:05:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "Shohei Mitani"
+        slug: "ShoheiMitani"
+        github_username: "ShoheiMitani"
+        gravatar_hash: "b5ea40fde5be980a112c4ea58ad3bd39"
+        bio: "株式会社スマートバンク エンジニア。B/43というプリペイドカードの家計簿アプリをRailsとGoで開発してます。"
+  - title: "gem deviseのusersテーブルの分割による拡張性、安全性の向上"
+    abstract: |
+      一般的に、deviseを使用してデフォルトの設定で認証機構を構築すると、ユーザーに関する多種多様な情報が一つのテーブルに集約されます。これは、拡張性の観点から望ましくない結果を生む可能性があります。加えて、usersテーブルからのデータ出力が不適切に行われると、必要以上の情報がフロントエンドに露出するリスクが生じ、セキュリティ面でも問題となります。
+
+      これらの問題をテーブルの分割により解決する方法について述べます。
+      同じ責任を持つ情報を個別のテーブルに分けることで拡張性を向上させ、セキュリティも保全する戦略について説明します。
+
+      また、ユーザーの削除方法として、論理削除を安易に使用するべきでないと考える理由と、論理削除を使用しない場合、どのようにテーブル分割によって対応していくかについて説明します。
+    start_at: !!timestamp 2023-10-28T13:05:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "Naoto"
+        slug: "naoto"
+        github_username: "NaotoCoding"
+        gravatar_hash: "5d42e44666aab4b2395446a6c39b6e9f"
+        bio: "株式会社Fusicでバックエンドエンジニアをしています。好きな gemはDoorkeeper。"
+  - title: "Multiple Databasesを用いて2つのRailsプロジェクトを統合する"
+    abstract: |
+      マンガサービスpixivコミックに姉妹サイトであるpixivノベルの機能の統合を進めている話をします。
+
+      pixivノベルは元々pixivコミックをクローンして作成されたという経緯もあり、この2つのサービスは非常によく似ています。また、一貫して同じチームが開発し、マンガ・小説それぞれの作品種別の違いを意識しつつ、同じ目的を持った機能を双方に実装してきました。
+      今後は読者がマンガ・小説に拘らず両方の作品を楽しめるよう、両サービスの良さを生かしながら、より多くのユーザーにコンテンツを提供し、作品を広めるため、この2つのサービスを統合していく予定です。
+
+      統合はpixivコミック側にpixivノベルの機能を移植していく形で実装されており、pixivコミックのAPIサーバーからRailsのMultiple Databases機能を用いてpixivノベルが使用するDBを直接参照することで実現する方針です。2つのRailsサービスを稼働しながら1つのRailsサービスに統合していくための開発の進め方や気にしたポイントについて話したいと思っています。
+    start_at: !!timestamp 2023-10-28T13:05:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "imadoki"
+        slug: "imadoki"
+        github_username: "imadoki"
+        gravatar_hash: "afa1cf3d782fbc4d827f286c28705142"
+        bio: "2016年にピクシブ株式会社に入社。pixivコミックのバックエンドエンジニアとして開発に参加しておりRailsやPHPでの開発を普段しています。"
+  - title: "Hotwire的な設計を追求して「Web紙芝居」に行き着いた話"
+    abstract: |
+      私は昨年3月以降、Rails7でHotwireを活用して複数のアプリケーションを開発してきました。Hotwireは、SPAのような動きをRailsだけで実現できる良い道具だと思っています。開発体制やコードをコンパクトに保てる利点があります。
+
+      ただ、SPAではなくHotwireでやろうと決めるためには、Hotwireでどこまでできるのか？Hotwireでできないことはあるのか？ が気になってくる点でしょう。この点について、今では私は以下のように感じています。
+
+      * やりたいことは大体なんでもHotwire で実現できる
+      * 最終的に実現できる機能の差よりも、どういう考え方で作るかにSPAとHotwireの大きな違いがある
+
+      SPAとHotwireでは、アプリを構成するための物の考え方が大きく異なります。Hotwireを縦横無尽に使い倒すためには、Hotwire的な考え方で作る必要があるのです。この、Hotwire的な考え方＝設計指針に私は「Web紙芝居」という名前をつけました。本トークでは、この「Web紙芝居」的な設計指針に行き着いた経緯や、指針の内容についてご紹介します。
+    start_at: !!timestamp 2023-10-28T13:30:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "Yasuko Ohba (nay3)"
+        slug: "nay3"
+        github_username: "nay"
+        gravatar_hash: "b5689026d84bb3a823c82590eefc3b8f"
+        bio: "株式会社万葉 代表取締役 & Railsエンジニア。\"構造厨\" を標榜する、設計・実装大好き人間です。"
+  - title: "管理機能アーキテクチャパターンの考察と実践"
+    abstract: |
+      Webサービスの開発・運用に携わる者なら、管理機能の重要性について深く認識していることでしょう。ユーザーアカウント管理、システム設定、トラブルシューティング、レポート機能など、管理機能はサービスを安全かつ効率的に運用するための不可欠なツールです。
+
+      しかし、新規事業やスタートアップではユーザーに迅速に価値を提供し、ビジネスを軌道に乗せることが最優先されます。その結果、管理機能の開発は後回しになり、対ユーザー向けの機能を先にリリースして運用を始めてから管理機能を追加する、という開発ロードマップが多く見られます。このようなケースはままあるものの、管理機能追加の際に選ばれるアーキテクチャパターンについては十分に語られていないと感じています。
+
+      このセッションでは、単なるgem選定を超えて、管理画面や管理機能を後から追加する際のアーキテクチャパターンを深堀りします。それぞれの選択肢のメリットとデメリットを比較し、選択の視点を提供します。また、私が運用しているRailsアプリケーションでの管理機能設計の選択とその理由に加え、運用から得られた知見―特に監視やプロセス管理などのトピック―にも焦点を当てます。このセッションを通じて、管理機能設計と運用に対する理解と視野が広がれば幸いです。
+    start_at: !!timestamp 2023-10-28T13:30:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "ohbarye"
+        slug: "ohbarye"
+        github_username: "ohbarye"
+        gravatar_hash: "0ed400174f90a4bcee05f3455597932f"
+        bio: "SmartBank社で家計簿プリカ「B/43」の開発・運用をしています。Ruby on Railsによるモバイルアプリケーション向けAPI開発、Single Page Application開発が主な業務内容です。"
+  - title: "APMをちゃんと使おうとしたら、いつのまにか独自gemを作っていた話"
+    abstract: |
+      Active Recordは必要な処理が簡単に書ける一方で、N+1クエリやスロークエリなどパフォーマンスの問題が発生しやすい一面も持っています。
+      特にデータ量に依存する問題では、本番環境でしか再現しない問題も珍しくありません。APMツールを使うことで、こうしたパフォーマンスの追跡や原因の調査を行いやすくなります。
+      しかし、APMツールの導入自体は比較的簡単なものの、うまく活用するのは意外と難しいものです。「APMを導入しただけで放置してしまっている」という方も多いのではないでしょうか？
+
+      弊社ではAPMとしてDatadogを導入し、定期的な状況の確認とパフォーマンスチューニングに役立てています。
+      本セッションでは弊社でAPMをどのように使っているかを紹介し、より使いやすくするために独自のgemを作った話をします。
+    start_at: !!timestamp 2023-10-28T14:10:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "kokuyouwind"
+        slug: "kokuyouwind"
+        github_username: "kokuyouwind"
+        gravatar_hash: "362b5844113addc866c920d8f6d5e6f1"
+        bio: "Leaner Technologies株式会社所属のWebエンジニア。Rails開発のほかAWSやDevOps関連の作業も行っている。"
+  - title: "自分の道具を自作してつくる喜びを体感しよう、Railsで。 〜4年続いたPodcastを実例に〜"
+    abstract: |
+      学生時代からの友人たちとPodcast配信をはじめて4年。様々なゲストをお迎えしたり、3年連続の毎週更新を達成したりしながら、先日は第200回の節目を迎えることが出来ました。
+
+      数年に一度流行し、始める人が増えては意外と継続が大変で更新が途絶えてしまいがちなPodcast。続けることが出来た理由のひとつに、Webサイトや配信システム・CMSなど「自分の道具を自分でつくり改善し続けていたこと」があると思っています。
+
+      このトークでは、「業務外でもコードを書きたいけどつくりたいものがない」という状態だった私が、サイドプロジェクトで使う道具を自分でつくり改善することを通じて、楽しみながら技術的な成長とつくる喜びを得られたという経験談をします。
+
+      使える時間が限られている趣味やサイドプロジェクトとかけ合わせてのものづくりにこそ、Ruby on Railsとそのエコシステムがもたらす高い生産性がピッタリです。
+
+      トークを聞いたみなさんが、「自分もRailsでなにか作ってみよう！」と思い、つくる喜びを体感する一歩を踏み出していただければ幸いです。
+    start_at: !!timestamp 2023-10-28T14:10:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "Takuya Mukohira / mktakuya"
+        slug: "mktakuya"
+        github_username: "mktakuya"
+        gravatar_hash: "d56efd2db811cb782f1458df3888c82a"
+        bio: "北海道千歳市出身のプログラマ✈️  / ゆるふわPodcast @yuru28club \U0001F399 / 苫小牧高専 情報工学科・専攻科出身"
+  - title: "3人で登壇!? 楽しくて速いペアプロ/モブプロ開発"
+    abstract: |
+      私たちが伝えたいのは、開発の速度を劇的に向上させ、開発に伴うストレスを激減させ、開発を楽しいものにする方法です。私たちのチームでは、昨年8月にペア/モブプロを本格的に導入し、ほぼ全ての開発をペア/モブプロで行うことで、平均リードタイムを24時間以内に保ち、継続的に速いリリースが行えるようになりました。ペア/モブプロの導入によって、どのような点がどれくらい向上したかを具体的なデータでお伝えするとともに、私たちが普段どのようにモブプロを行っているかを、実際のライブコーディングの様子からお伝えしたいと思います。
+    start_at: !!timestamp 2023-10-28T15:05:00+09:00
+    duration_minutes: 30
+    track: "Hall A"
+    speakers:
+      - name: "eatplaynap トミー"
+        slug: "eatplaynap"
+        github_username: "eatplaynap"
+        gravatar_hash: "eed3a8555222270f9eb76edc5799bd56"
+        bio: "2022年10月よりTebiki 社のプロダクトエンジニアとして働いてます。Tebikiに入社を決めた理由はノンソロ開発が楽しそうだったからです。"
+      - name: "masuyama13"
+        slug: "masuyama13"
+        github_username: "masuyama13"
+        gravatar_hash: "031a9b08d40f0ebb0bc04648c4bc7897"
+        bio: "Tebiki 株式会社で開発の仕事をしています。好きな Gem は Rubocop。興味があることはスクラム、ソフトウェアテスト。"
+      - name: "あんすと"
+        slug: "unstoppa61e"
+        github_username: "unstoppa61e"
+        gravatar_hash: "1a7c0b0e6d363a72ae680f943ceeec10"
+        bio: "火傷するほどフレンドリー。自作ブラウザゲーム：[ゴロゴロ円周率](https://gorogoropanda.com/)"
+  - title: "数十億のレコードを持つ5年目サービスの設計と障害解決"
+    abstract: |
+      アプリケーション運用において、時間が経つにつれて各種データも蓄積されていきパフォーマンスが劣化していくことがあります。
+
+      Palcyは今年で5周年を迎えたスマホアプリでそのバックエンドに蓄積されたデータもテーブルによっては数十億オーダーに乗っており安易な機能実装がはばかられます。この発表ではそうしたデータとどう向き合い、運用や機能の実装を続けてきたか発表します。
+    start_at: !!timestamp 2023-10-28T15:05:00+09:00
+    duration_minutes: 30
+    track: "Hall B"
+    speakers:
+      - name: "KNR"
+        slug: "knr"
+        github_username: "knr07"
+        gravatar_hash: "0aede00f727a86274060f41c391abfc6"
+        bio: "2019年12月にピクシブ株式会社に入社してからPalcyのサーバーサイド（Railsアプリケーションとインフラ）を専任で担当。以前はGPSによる勤怠管理アプリのAndroid・サーバーサイド、フリマアプリのiOSアプリ、メディアサイトの運営、サーバーレスアプリケーションの設計・開発など経験し今に至る。"
+  - title: "Railsアプリにパスワードレス認証を導入した知見"
+    abstract: |
+      ## 話すこと
+      Railsで作られたアプリにPasskey（パスワードレス認証）を導入した際の実装方法、注意点を共有します。
+
+      セキュリティ対策はアプリケーション開発を行う上で非常に重要な観点となっています。
+      特にログイン機構はあらゆるアプリケーションに実装され、UXを高めるとともにセキュアなサイトを作る上で非常に大切な要素です。
+      弊社が開発/運用している「[クリエイティア](https://creatia.cc)」でPasskeyによるログインを導入したため、その際に得た知見をお話します。
+
+      ## 想定する対象者
+      - Passkeyについて知りたい方
+      - RailsアプリでPasskeyを導入したい方
+      - ログインのUXを改善したい方
+
+      ### このセッションでわかるようになること（目次）
+      - Passkeyとはなにか
+      - Passkeyのメリット
+      - Passkeyの導入経緯
+      - 実装方法
+      - 実装上の注意点（ハマりポイント）
+
+      ## Passkeyとは
+      端末に保存された指紋や顔、あるいはPINコードを利用して認証するものです。
+      ユーザーのメリットとして、サイトごとにパスワード（パスフレーズ）を管理する必要がなく、
+      安全性と利便性を両立できる認証方式です。
+
+      ## クリエイティアとは
+      クリエイターとファンを結ぶ月額会員制ファンクラブプラットフォームです。
+    start_at: !!timestamp 2023-10-28T15:45:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "河野裕隆"
+        slug: "tora-kouno"
+        github_username: "tora-kouno"
+        gravatar_hash: "7f59dfae06863e61525f3fe0f12afbdf"
+        bio: |
+          虎の穴ラボに2019年に入社し、とらのあな通販サイトやFantiaの開発に携わり、
+          現在はクリエイティア等をメインに開発しています。
+
+          クリエイティアでは開発リーダーを担当しており、機能の提案、開発、リリース時のアナウンスの方針決定等、
+          実装に限らず広く作業しています。
+          Passkeyの機能についてはエンジニアからの提案で推進した機能で、虎の穴ラボではボトムアップでのタスク進行も実施しています。
+  - title: "ActiveSupport::CurrentAttributes: すっごく便利なのに嫌われ者？！"
+    abstract: |
+      ActiveSupport::CurrentAttributesを嫌う人がいますが、ものすごく便利、というのは言わざるを得ないです。
+      みんな大好きなグローバル変数を安全にリクエストの中で使える！本当に便利な優れものです。
+
+      なんで嫌われているのかについて話して、注意点など、これまでにあったセキュリティ欠陥（Pumaとrailsの組み合わせで、情報が漏洩されていたものがありまして。。。）の話などをして、みんなでActiveSupport::CurrentAttributesを使おう！とまではいかなくても、本当に使わないといけない時があれば一つの選択肢としてありますよ、ということを伝えたいです。
+    start_at: !!timestamp 2023-10-28T15:45:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "Sampo Kuokkanen"
+        slug: "sampokuokkanen"
+        github_username: "sampokuokkanen"
+        gravatar_hash: "69dc9a15bc0e91563e0927356e30f21c"
+        bio: "私の名前はクオッカネン・サンポです。Evil Martians Japanの代表を務めており、また日本に自社、Sampo Developmentも運営しています。開発者としては主にRailsプロジェクトに参加しており、Hotwire信者です。 特に日本でのRuby開発について話したい場合は、お気軽にご連絡ください。私のGithubアカウントは@sampokuokkanenです。"
+  - title: "コードカバレッジ計測ツールを導入したらテストを書くのが楽しくなった話"
+    abstract: |
+      レガシーなコードに対してテストを書くというのは挑戦であり、しばしば時間とリソース(それと精神力)を多く必要とします。
+      どうすればチーム全体で楽しく、効率的にこの問題に取り組むことができるのでしょうか？
+
+      本セッションでは、まずコードカバレッジの基本的な概念を説明します。
+      C0, C1, C2カバレッジの違いや、なぜ100％のカバレッジを追求するべきでないのか、その理由について簡単に説明します。
+
+      そして、コードカバレッジツール：SimpleCovの導入を通して、
+      実際のプロジェクトでテストを書く負荷を最小限にし、
+      チームメンバーがテストコーディングを楽しむことができる環境を整えた方法を紹介します。
+      また、新規開発の品質向上にもいい影響を与えた話も合わせて行います。
+    start_at: !!timestamp 2023-10-28T16:10:00+09:00
+    duration_minutes: 15
+    track: "Hall A"
+    speakers:
+      - name: "duck-falcon"
+        slug: "duck"
+        github_username: "duck-falcon"
+        gravatar_hash: "97917f9a14004d6e7c0eb008749a72d9"
+        bio: |
+          株式会社Techouse エンジニア。事業部のメンバーが楽しく、いい仕事をできるように
+          ツールの導入を行ったり、インフラの構築・運用を行ったりしています。
+  - title: "Hotwireを使って管理画面を簡単にプチSPA化する"
+    abstract: |
+      Rails7が公開されてから1年半近くが経ち、Hotwireの導入によって、フロント周りはそれまでのRails開発と大きく変わりました。しかしながら、まだHotwireの実績や情報量が少ないなどの理由で、積極的に使うことを見送る場合も多いのではないでしょうか。このままでは、Rails4のTurbolinksの扱いと同じように「まず無効化する」がデフォルトになりえないかと懸念しています。
+
+      私自身、当初はHotwireの勘所がわからず、作りづらさを感じてだいぶ辛かったのですが、慣れてきた昨今では、Rails6以前よりも使い勝手の良いシステムを素早く導入することができていると実感しています。
+
+      そこで今回は、Hotwireを使って管理画面や社内向けシステムを簡単にプチSPA化する実践的な手法を紹介いたします。なお、ここで言う「プチSPA化」とは、具体的には、CRUDにおける #new, #edit, #show をモーダル表示することを指します。
+
+      Hotwire入門というよりも、StimulusとTurboを組み合わせてHTML片に動きをつける具体的方法を共有することで、皆様のHotwire開発ライフを少しでも後押しできたら幸いです。
+    start_at: !!timestamp 2023-10-28T16:10:00+09:00
+    duration_minutes: 15
+    track: "Hall B"
+    speakers:
+      - name: "yamataka22"
+        slug: "yamataka"
+        github_username: "yamataka22"
+        gravatar_hash: "8ea0291ba3b1397f41a15f386341494a"
+        bio: "Railsメインで、お客様からシステムの受託開発をしている個人事業主です"
+  - title: "A Decade of Rails Bug Fixes"
+    abstract: |
+      In this talk we'll go over two Rails bugs I fixed 10 years appart.
+      For both I will detail how the bug was found, how I debugged it and how I finally fixed it. I will as well reflect back on what I learned in the process.
+      If you are a begginer you may learn some debugging techniques, if you are more confirmed you may enjoy the war stories and learn some gritty details about Ruby and Rails internals.
+    start_at: !!timestamp 2023-10-28T16:50:00+09:00
+    duration_minutes: 40
+    track: "Hall A"
+    speakers:
+      - name: "byroot"
+        slug: "byroot"
+        github_username: "byroot"
+        gravatar_hash: null
+        bio: |
+          byroot is a Ruby committer, Rails core member and Senior Staff Engineer on Shopify's Ruby and Rails Infrastructure team where he helps lead the effort to both improve and maintain the Rails framework, the Ruby language as well as the whole Ruby ecosystem.
+
+          His focus is on production performance and stability.
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<div data-controller="profiles" class="w-full pt-2 px-2">
+  <h2 class="text-lg font-bold mb-3">プロフィール作成</h2>
+  <%= form_with model: @profile, multipart: true do |f| %>
+    <div class="mb-4">
+      <button data-action="profiles#addProfileImageFieldForSp" class="mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm hover:bg-gray-50">
+        <span class="text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+          </svg>
+        </span>
+        <span>プロフィール画像を追加する</span>
+      </button>
+      <div id="profile-image-fields"></div>
+    </div>
+    <div class="mb-4">
+      <%= f.label :name, "表示名", class: "block mb-2 font-medium font-bold text-white" %>
+      <%= f.text_field :name, placeholder: "見せたい名前", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, "自己紹介", class: "block mb-2 font-medium font-bold text-white" %>
+      <%= f.text_area :description, size: "20x10", placeholder: "Markdown記法が使用できます", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+    </div>
+    <%= f.button type: "submit" do %>
+      <button class="mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm hover:bg-gray-50">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        作成する
+      </button>
+    <% end %>
+  <% end %>
+</div>

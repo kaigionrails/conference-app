@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_101630) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_085704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_101630) do
     t.index ["user_id"], name: "index_authentication_provider_githubs_on_user_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", default: "", null: false
@@ -58,6 +68,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_101630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.string "github_username", null: false
+    t.string "gravatar_hash"
+    t.text "bio", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_speakers_on_slug", unique: true
+  end
+
+  create_table "speakers_talks", id: false, force: :cascade do |t|
+    t.bigint "speaker_id", null: false
+    t.bigint "talk_id", null: false
+    t.index ["speaker_id"], name: "index_speakers_talks_on_speaker_id"
+    t.index ["talk_id"], name: "index_speakers_talks_on_talk_id"
+  end
+
+  create_table "talks", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "title", null: false
+    t.text "abstract", default: "", null: false
+    t.datetime "start_at", null: false
+    t.integer "duration_minutes", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "track", null: false
+    t.index ["event_id"], name: "index_talks_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|
