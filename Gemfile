@@ -51,6 +51,8 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-github"
 
+gem "faraday"
+gem "faraday-retry"
 gem "octokit"
 gem "open-uri"
 
@@ -61,6 +63,7 @@ gem "woothee"
 
 gem "sentry-rails"
 gem "scout_apm"
+gem "jwt"
 
 gem "aws-sdk-s3", require: false
 

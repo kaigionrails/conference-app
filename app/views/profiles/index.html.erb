@@ -1,15 +1,43 @@
-<div>
-  <h1 class="font-bold text-4xl">Profiles#index</h1>
-  <p>Find me in app/views/profiles/index.html.erb</p>
+<div class="w-4/5 max-w-5xl m-auto pt-2 px-2">
   <% if @profile %>
-  <p><%= @profile.name %></p>
-  <p><%= @profile.description %></p>
-  <% @profile.images.each do |profile_image| %>
-    <%= image_tag profile_image.representation(resize_to_limit: [200, 200]) %>
-  <% end %>
-  <%= link_to "編集する", edit_profile_path(@profile) %>
+    <div class="flex w-full">
+      <div class="w-3/5">
+        <div class="px-4">
+          <%= image_tag @profile.images.first.representation(resize_to_limit: [500, 500]), class: "w-full rounded-lg mb-4" %>
+          <div class="flex flex-row flex-wrap w-full mb-4">
+            <% @profile.images.each do |profile_image| %>
+              <div class="w-20 mr-4 mb-4">
+                <%= image_tag profile_image.representation(resize_to_limit: [150, 150]), class: "w-full rounded-lg" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="w-2/5">
+        <p class="text-3xl font-bold mb-4"><%= @profile.name %></p>
+        <p class="prose text-stone-50 mb-4 whitespace-pre-wrap"><%= @profile.description %></p>
+      </div>
+    </div>
+    <div class="px-4">
+      <%= link_to "編集する", edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
+    </div>
   <% else %>
-  <div>プロフィールがまだ登録されていません</div>
-  <%= link_to "作成する", new_profile_path %>
+    <div class="flex w-full">
+      <div class="w-3/5">
+        <div class="px-4">
+          <div class="border-2 border-dashed rounded-lg bg-opacity-30 bg-white h-64 flex justify-center flex-col items-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-14 h-14">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="w-2/5">
+        <p class="text-lg">プロフィールがまだ登録されていません</p>
+      </div>
+    </div>
+    <div class="px-4">
+      <%= link_to "登録する", new_profile_path, type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
+    </div>
   <% end %>
 </div>
