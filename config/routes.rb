@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   end
 
   get "/about", to: "about#index"
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :talks, only: [:index, :show, :edit, :update]
+  end
+  get "/admin", to: "admin#index"
 end

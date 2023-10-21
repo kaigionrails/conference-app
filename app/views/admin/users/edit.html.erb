@@ -1,0 +1,8 @@
+<h2 class="font-bold text-xl mb-8">Edit user <%= @user.name %> (id:<%= @user.id %>)</h2>
+<div>
+  <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+    <%= f.label :role, "Role", class: "block text-lg font-bold mb-2" %>
+    <%= f.select :role, User.roles, {}, class: "block rounded border-1 mb-20" %>
+    <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+  <% end %>
+</div>
