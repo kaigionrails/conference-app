@@ -64,6 +64,8 @@ gem "scout_apm"
 
 gem "aws-sdk-s3", require: false
 
+gem "commonmarker", "1.0.0.pre11"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
