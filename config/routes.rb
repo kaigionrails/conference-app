@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :profile_images, only: [:destroy]
   end
 
+  resources :talk_bookmarks, only: [:create, :destroy]
+
   get "/about", to: "about#index"
 
   namespace :admin do
