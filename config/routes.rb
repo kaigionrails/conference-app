@@ -21,6 +21,14 @@ Rails.application.routes.draw do
     resources :profile_images, only: [:destroy]
   end
 
+  get "/about", to: "about#index"
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :talks, only: [:index, :show, :edit, :update]
+  end
+  get "/admin", to: "admin#index"
+
   scope "/:event_slug", as: "event" do
     get "/", to: "events#show"
     resources :talks, only: [:index, :show]

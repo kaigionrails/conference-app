@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ConferenceApp</title>
+    <title>ConferenceApp Admin</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,11 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-[#84240f] w-full flex flex-col h-screen">
-    <%= render partial: "layouts/header_nav" %>
-    <main class="w-full mx-auto flex text-white flex-grow overflow-scroll">
+  <body class="flex w-full">
+    <%= render partial: "admin/side_nav" %>
+    <main class="container w-full flex flex-col pt-8 pl-8">
       <%= yield %>
     </main>
-    <%= render partial: "layouts/bottom_nav" %>
   </body>
 </html>
