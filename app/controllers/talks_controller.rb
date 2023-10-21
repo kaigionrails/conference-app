@@ -5,7 +5,7 @@ class TalksController < ApplicationController
   end
 
   def show
-    event = Event.find_by!(slug: params[:event_slug])
+    @event = Event.find_by!(slug: params[:event_slug])
     @talk = Talk.eager_load(:speakers).find_by!(id: params[:id])
   end
 end
