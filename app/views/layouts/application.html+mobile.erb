@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "service_worker_installer" %>
     <%= favicon_link_tag "icons/2023/512.png", rel: "apple-touch-icon", type: 'image/png' %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
     <script>
