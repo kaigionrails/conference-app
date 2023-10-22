@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
+  # For PWA
+  get "/sw.js", to: "pwa#service_worker", as: "service_worker"
+  get "/manifest.json", to: "pwa#manifest", as: "pwa_manifest"
+
   resources :profiles, only: [:index, :new, :create, :edit, :update] do
     resources :profile_images, only: [:destroy]
   end
