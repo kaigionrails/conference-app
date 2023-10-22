@@ -11,6 +11,7 @@ cloudflare:
   access_key_id: <%= ENV["CLOUDFLARE_ACCESS_KEY_ID"] %>
   secret_access_key: <%= ENV["CLOUDFLARE_SECRET_ACCESS_KEY"] %>
   region: auto
+  endpoint: <%= ENV["CLOUDFLARE_R2_ENDPOINT"] %>
   force_path_style: true
   bucket: <%= ENV["CLOUDFLARE_R2_BUCKET_NAME"] %>
 
