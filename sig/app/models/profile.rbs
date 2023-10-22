@@ -1,0 +1,5 @@
+class Profile < ::ApplicationRecord
+  def ensure_image_from_github: () -> void
+
+  private def fetch_profile_image_from_github: () -> untyped
+end
