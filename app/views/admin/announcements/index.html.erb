@@ -1,0 +1,31 @@
+<div class="mb-16">
+<h2 class="font-bold text-xl mb-8">Announcements</h2>
+<%= link_to "Create new announcement", new_admin_announcement_path(), class: "" %>
+<div class="rounded w-full pr-8 shadow-sm">
+  <table class="w-full divide-y border">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="py-2 px-3 text-left">Id</th>
+        <th class="py-2 px-3 text-left">Status</th>
+        <th class="py-2 px-3 text-left">Title</th>
+        <th class="py-2 px-3 text-left">Content</th>
+        <th class="py-2 px-3 text-left">Published at</th>
+        <th class="py-2 px-3 text-left sr-only">Show</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 bg-white">
+      <% @announcements.each do |announcement| %>
+        <tr>
+          <td class="p-3"><%= announcement.id %></td>
+          <td class="p-3"><%= announcement.status %></td>
+          <td class="p-3"><%= announcement.title %></td>
+          <td class="p-3"><%= announcement.content %></td>
+          <td class="p-3"><%= announcement.published_at || "-" %></td>
+          <td class="p-3"><%= link_to "Show", admin_announcement_path(announcement), class: "underline" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @announcements %>
+</div>
