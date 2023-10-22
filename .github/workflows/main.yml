@@ -16,6 +16,6 @@ jobs:
         with:
           ruby-version: "3.2.2"
           bundler-cache: true
-      - run: bundle exec rbs install
+      - run: bundle exec rbs collection install
       - run: bundle exec steep validate
       - run: bundle exec steep check
