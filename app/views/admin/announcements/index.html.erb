@@ -21,7 +21,7 @@
             <td class="p-3"><%= announcement.id %></td>
             <td class="p-3"><%= announcement.status %></td>
             <td class="p-3"><%= announcement.title %></td>
-            <td class="p-3"><%= announcement.content %></td>
+            <td class="p-3"><%= truncate(announcement.content.to_s, length: 100) %></td>
             <td class="p-3"><%= announcement.published_at || "-" %></td>
             <td class="p-3"><%= link_to "Show", admin_announcement_path(announcement), class: "underline" %></td>
           </tr>
