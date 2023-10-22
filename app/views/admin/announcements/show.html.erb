@@ -1,0 +1,14 @@
+<h2 class="font-bold text-xl mb-8">Announcement 「<%= @announcement.title %>」 (id:<%= @announcement.id %>)</h2>
+<div class="pr-8">
+  <h3 class="font-bold text-lg mb-2">Id</h3>
+  <p class="mb-4"><%= @announcement.id %></p>
+  <h3 class="font-bold text-lg mb-2">Title</h3>
+  <p class="mb-4"><%= @announcement.title %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Content</h3>
+  <p class="mb-4"><%= @announcement.content %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Status</h3>
+  <p class="mb-4"><%= @announcement.status %></p>
+  <h3  class="font-bold text-lg mb-2 break-words">Published at</h3>
+  <p class="mb-4"><%= @announcement.published_at&.in_time_zone("Tokyo") || "-" %></p>
+  <%= link_to "edit", edit_admin_announcement_path(@announcement), class: "underline" %>
+</div>
