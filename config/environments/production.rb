@@ -90,4 +90,8 @@ Rails.application.configure do
     servers: [ENV.fetch("REDIS_URL")],
     key: "_conference_app_session",
     expire_after: 5.days
+
+  config.x.webpush.vapid_public_key = ENV.fetch("VAPID_PUBLIC_KEY")
+  config.x.webpush.vapid_private_key = ENV.fetch("VAPID_PRIVATE_KEY")
+  config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO")
 end
