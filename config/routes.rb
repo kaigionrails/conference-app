@@ -28,4 +28,9 @@ Rails.application.routes.draw do
     resources :talks, only: [:index, :show, :edit, :update]
   end
   get "/admin", to: "admin#index"
+
+  scope "/:event_slug", as: "event" do
+    get "/", to: "events#show"
+    resources :talks, only: [:index, :show]
+  end
 end

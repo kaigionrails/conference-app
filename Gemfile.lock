@@ -90,6 +90,9 @@ GEM
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    commonmarker (1.0.0.pre11-arm64-darwin)
+    commonmarker (1.0.0.pre11-x86_64-darwin)
+    commonmarker (1.0.0.pre11-x86_64-linux)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -371,6 +374,7 @@ DEPENDENCIES
   amazing_print
   aws-sdk-s3
   bootsnap
+  commonmarker (= 1.0.0.pre11)
   debug
   factory_bot_rails (~> 6.2.0)
   faraday
