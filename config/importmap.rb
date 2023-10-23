@@ -12,3 +12,6 @@ pin "stimulus-use", to: "https://cdn.jsdelivr.net/npm/stimulus-use@0.51.3/dist/i
 pin "@rails/request.js", to: "https://cdn.jsdelivr.net/npm/@rails/request.js@0.0.9/dist/requestjs.min.js"
 pin "trix", to: "https://cdn.jsdelivr.net/npm/trix@2.0.7/dist/trix.esm.min.js"
 pin "@rails/actiontext", to: "actiontext.js"
+pin "qrcode", to: "https://ga.jspm.io/npm:qrcode@1.5.3/lib/browser.js"
+pin "dijkstrajs", to: "https://ga.jspm.io/npm:dijkstrajs@1.0.3/dijkstra.js"
+pin "encode-utf8", to: "https://ga.jspm.io/npm:encode-utf8@1.0.3/index.js"

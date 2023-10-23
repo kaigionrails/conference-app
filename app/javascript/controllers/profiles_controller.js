@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
+import QRCode from "qrcode";
 
 export default class extends Controller {
+  static targets = ["qrcodeImg", "profileImg", "showQrcode", "hideQrcode"];
   connect() {
     console.info("profiles controller");
   }
@@ -26,5 +28,21 @@ export default class extends Controller {
     const className =
       "block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-none mb-4";
     this.addProfileImageField(event, className);
+  }
+
+  async showQrcode() {
+    const dataUrl = await QRCode.toDataURL("https://example.com", {
+      width: 600,
+    });
+    this.qrcodeImgTarget.setAttribute("src", dataUrl);
+    this.qrcodeImgTarget.classList.remove("hidden");
+    this.qrcodeImgTarget.classList.add("absolute", "top-0");
+    this.showQrcodeTarget.classList.add("hidden");
+    this.hideQrcodeTarget.classList.remove("hidden");
+  }
+  async hideQrcode() {
+    this.hideQrcodeTarget.classList.add("hidden");
+    this.qrcodeImgTarget.classList.add("hidden");
+    this.showQrcodeTarget.classList.remove("hidden");
   }
 }
