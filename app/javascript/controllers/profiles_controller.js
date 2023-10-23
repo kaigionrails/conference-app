@@ -3,6 +3,11 @@ import QRCode from "qrcode";
 
 export default class extends Controller {
   static targets = ["qrcodeImg", "profileImg", "showQrcode", "hideQrcode"];
+  static values = {
+    baseUrl: String,
+    username: String,
+  };
+
   connect() {
     console.info("profiles controller");
   }
@@ -31,7 +36,11 @@ export default class extends Controller {
   }
 
   async showQrcode() {
-    const dataUrl = await QRCode.toDataURL("https://example.com", {
+    const profileUrl = new URL(
+      `@${this.usernameValue}`,
+      this.baseUrlValue
+    ).toString();
+    const dataUrl = await QRCode.toDataURL(profileUrl, {
       width: 600,
     });
     this.qrcodeImgTarget.setAttribute("src", dataUrl);

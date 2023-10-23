@@ -3,7 +3,7 @@
     <div class="flex w-full">
       <div class="w-3/5">
         <div class="px-4">
-          <div class="w-full relative" data-controller="profiles">
+          <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user.name %>">
             <%= image_tag @profile.images.first.representation(resize_to_limit: [500, 500]), class: "w-full rounded-lg mb-4", data: { "profiles-target": "profileImg" } %>
               <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
               <button
