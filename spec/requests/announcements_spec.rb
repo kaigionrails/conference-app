@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Announcements", type: :request do
+  before { prepare_current_event }
+
   let(:event) { FactoryBot.create(:event) }
 
   describe "GET /announcements" do
