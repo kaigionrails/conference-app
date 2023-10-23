@@ -36,7 +36,7 @@
               <span>Profile</span>
             <% end %>
           <% end %>
-          <%= link_to "#", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+          <%= link_to event_talks_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
             <span>Talks</span>
           <% end %>
           <%= link_to about_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
