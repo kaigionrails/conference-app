@@ -19,7 +19,6 @@ export default class extends Controller {
     if (response.ok) {
       this.buttonTarget.innerText = "既読済み";
       this.buttonTarget.classList.add("bg-gray-400");
-      this.buttonTarget.classList.add("bg-gray-400");
     } else {
       console.error(response);
       window.alert("エラーが発生しました。再度お試しください。");
