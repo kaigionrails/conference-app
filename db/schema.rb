@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_192153) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_192153) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "status", default: "draft", null: false
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.index ["event_id"], name: "index_announcements_on_event_id"
   end
 
   create_table "authentication_provider_githubs", force: :cascade do |t|
@@ -100,6 +120,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_192153) do
     t.index ["event_id"], name: "index_talks_on_event_id"
   end
 
+  create_table "unread_announcements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "announcement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_unread_announcements_on_announcement_id"
+    t.index ["user_id", "announcement_id"], name: "index_unread_announcements_on_user_id_and_announcement_id", unique: true
+    t.index ["user_id"], name: "index_unread_announcements_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "role", default: "participant", null: false
@@ -121,5 +151,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_192153) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_githubs", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "unread_announcements", "announcements"
+  add_foreign_key "unread_announcements", "users"
   add_foreign_key "webpush_subscriptions", "users"
 end

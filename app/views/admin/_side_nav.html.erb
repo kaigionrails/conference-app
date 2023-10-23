@@ -12,7 +12,9 @@
       <span class="text-lg">Talks</span>
     </div>
   <% end %>
-  <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
-    <span class="text-lg">Announcements</span>
-  </div>
+  <%= link_to admin_announcements_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">Announcements</span>
+    </div>
+  <% end %>
 </nav>
