@@ -5,8 +5,10 @@
   <div class="mb-6">
     <%= @announcement.content %>
   </div>
-  <div>
-    <button>既読にする</button>
-  </div>
+  <% if logged_in? && @unread_announcement %>
+    <div data-controller="announcements" data-announcements-unread-announcement-id-value="<%= @unread_announcement.id %>" class="mb-8">
+      <button data-action="click->announcements#read:once" data-announcements-target="button" class="px-4 py-2 bg-white text-gray-900 rounded-lg shadow border-black border flex flex-row items-center">既読にする</button>
+    </div>
+  <% end %>
   <%= link_to "<< アナウンス一覧に戻る", event_announcements_path(event_slug: @event.slug), class: "underline" %>
 </div>
