@@ -13,7 +13,7 @@
       <% if logged_in? && current_user.have_unread_announcements? %>
         <div class="w-2 h-2 rounded-[50%] bg-red-600 absolute right-0 top-0"></div>
       <% end %>
-      <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-52"
+      <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-52 z-10"
         data-transition-enter-from="opacity-0 scale-95"
         data-transition-enter-to="opacity-100 scale-100"
         data-transition-leave-from="opacity-100 scale-100"
