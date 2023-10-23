@@ -27,6 +27,7 @@ class Admin::AnnouncementsController < AdminController
       flash.now[:success] = "Update succeeded"
       if announcement.previous_changes.has_key?("status") && announcement.previous_changes["status"] == ["draft", "published"]
         BroadcastAnnouncementJob.perform_later(announcement.id)
+        SendAnnouncementPushNotificationJob.perform_later(announcement.id, push_notification_message(announcement))
       end
       redirect_to admin_announcement_path(announcement)
     else
@@ -37,5 +38,14 @@ class Admin::AnnouncementsController < AdminController
 
   private def announcement_params
     params.require(:announcement).permit(:event_id, :title, :content, :status)
+  end
+
+  private def push_notification_message(announcement)
+    # TODO: link to announcement
+    {
+      title: "運営からの新しいアナウンスがあります",
+      body: announcement.title,
+      icon: view_context.image_url("icons/2023/512.png"),
+    }
   end
 end
