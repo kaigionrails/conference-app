@@ -13,7 +13,7 @@
     </div>
 
     <p class="font-bold text-xl mb-2"><%= @profile.name %></p>
-    <p class="text-sm text-stone-50 prose mb-4"><%= @profile.description %></p>
+    <div class="text-sm text-stone-50 mb-4 markdown"><%= @profile.sanitized_description %></div>
     <div>
       <%= link_to edit_profile_path(@profile) do %>
         <button class="mb-4 inline-flex items-center gap-x-2 text-sm rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm hover:bg-gray-50">

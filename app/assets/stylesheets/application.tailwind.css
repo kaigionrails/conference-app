@@ -9,4 +9,7 @@
   .markdown pre {
     @apply whitespace-pre-wrap
   }
+  .markdown p {
+    @apply leading-relaxed
+  }
 }

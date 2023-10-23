@@ -70,6 +70,7 @@ gem "aws-sdk-s3", require: false
 gem "kaminari"
 
 gem "commonmarker", "1.0.0.pre11"
+gem "active_decorator"
 
 gem "web-push"
 

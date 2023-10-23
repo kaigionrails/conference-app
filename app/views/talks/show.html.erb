@@ -22,7 +22,7 @@
   </div>
   <div class="mb-4 md:mb-6">
     <h3 class="text-xl mb-2 font-bold">概要</h3>
-    <div class="break-words markdown"><%= raw Commonmarker.to_html(@talk.abstract) %></div>
+    <div class="break-words markdown"><%= @talk.sanitized_abstract %></div>
   </div>
   <div class="mb-4 md:mb-6">
     <h3 class="text-xl mb-2 font-bold">発表者</h3>
@@ -32,7 +32,7 @@
         <div class="flex flex-col">
           <div class="flex flex-row items-start mb-2">
             <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded-lg w-14 h-14 md:w-24 md:h-24 mr-5" %>
-            <div class="block markdown"><%= raw Commonmarker.to_html(speaker.bio) %></div>
+            <div class="block markdown"><%= speaker.sanitized_bio %></div>
           </div>
         </div>
       </div>
