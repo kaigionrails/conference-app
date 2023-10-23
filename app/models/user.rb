@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :talk_bookmarks, dependent: :destroy
 
   enum :role, organizer: "organizer", participant: "participant"
+
+  def have_unread_announcements?
+    unread_announcements.exists?
+  end
 end

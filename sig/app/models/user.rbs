@@ -1,2 +1,3 @@
 class User < ApplicationRecord
+  def have_unread_announcements?: () -> bool
 end

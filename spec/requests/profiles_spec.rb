@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Profiles", type: :request do
+  before { prepare_current_event }
   let(:user) { FactoryBot.create(:user) }
 
   describe "GET /index" do

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :talk_bookmarks, only: [:create, :destroy]
+  resources :unread_announcements, only: [:destroy]
 
   get "/about", to: "about#index"
 
@@ -42,5 +43,6 @@ Rails.application.routes.draw do
   scope "/:event_slug", as: "event" do
     get "/", to: "events#show"
     resources :talks, only: [:index, :show]
+    resources :announcements, only: [:index, :show]
   end
 end
