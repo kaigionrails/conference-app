@@ -1,0 +1,4 @@
+class Talk < ApplicationRecord
+  def bookmarked_by?: (::User) -> bool
+  def bookmark_by: (::User) -> ::TalkBookmark?
+end
