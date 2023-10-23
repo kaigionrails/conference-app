@@ -10,6 +10,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
+      <% if logged_in? && current_user.have_unread_announcements? %>
+        <div class="w-2 h-2 rounded-[50%] bg-red-600 absolute right-0 top-0"></div>
+      <% end %>
       <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-52"
         data-transition-enter-from="opacity-0 scale-95"
         data-transition-enter-to="opacity-100 scale-100"
@@ -41,6 +44,9 @@
           <% end %>
           <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
             <span>Announcements</span>
+            <% if logged_in? && current_user.have_unread_announcements? %>
+              <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user.unread_announcements.count %></span>
+            <% end %>
           <% end %>
           <% if logged_in? %>
             <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
