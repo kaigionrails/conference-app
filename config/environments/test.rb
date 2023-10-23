@@ -63,4 +63,6 @@ Rails.application.configure do
     config.x.webpush.vapid_private_key = key.private_key
   end
   config.x.webpush.vapid_subject_mailto = "mailto:mail@kaigionrails.test"
+
+  config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
 end
