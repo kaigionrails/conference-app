@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :webpush_subscriptions, dependent: :destroy
   has_many :unread_announcements, dependent: :destroy
   has_many :talk_bookmarks, dependent: :destroy
+  has_many :profile_exchanges, dependent: :destroy
+  has_many :friends, through: :profile_exchanges, class_name: "User"
 
   enum :role, organizer: "organizer", participant: "participant"
 
