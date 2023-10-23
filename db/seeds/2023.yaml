@@ -301,12 +301,12 @@ talks:
       ある程度の主要な情報は生成方法が見つかっているでしょう。
 
       しかしながらコーナーケースはどうでしょうか？
-      `ActiveSupport::Concern#included`を使っている場合は？
       Railsのプラグインgemを使っている場合は？
       個々のプロダクトの事情に合わせたカスタマイズ方法は？
+      既存の資産を活かす方法は？
 
       本セッションでは、これらの問題を解決する方法として、[orthoses-rails](https://github.com/ksss/orthoses-rails)を提案します。
-      orthoses-railsを使うことで、最初の導入。いかに信用できる方法で`ActiveSupport::Concern#included`問題を解決されているか、実行時解析とは何か、カスタマイズ方法や、独自のRailsプラグイン拡張であっても型を自動生成する方法も解説します。
+      orthoses-railsを使うことで、最初の導入、アプリケーションコードの解析、実行時解析とは何か、カスタマイズ方法や、独自のRailsプラグイン拡張であっても型を自動生成する方法など、実践的な課題に対する解決方法を提案します。
     start_at: !!timestamp 2023-10-28T10:00:00+09:00
     duration_minutes: 30
     track: "Hall A"
@@ -321,6 +321,7 @@ talks:
           Rubyに魅了されて10年。
           その間Rubyアプリケーション開発に従事。
           RBSに魅せられ、"RBSを普通にする"ため活動中。
+          株式会社MIXI所属。
 
           - RubyKaja2014
           - Tokyo RubyKaigi 11 talker
