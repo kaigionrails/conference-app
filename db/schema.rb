@@ -108,6 +108,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
     t.index ["talk_id"], name: "index_speakers_talks_on_talk_id"
   end
 
+  create_table "talk_bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "talk_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["talk_id"], name: "index_talk_bookmarks_on_talk_id"
+    t.index ["user_id", "talk_id"], name: "index_talk_bookmarks_on_user_id_and_talk_id", unique: true
+    t.index ["user_id"], name: "index_talk_bookmarks_on_user_id"
+  end
+
   create_table "talks", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.string "title", null: false
@@ -151,6 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_githubs", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "talk_bookmarks", "talks"
+  add_foreign_key "talk_bookmarks", "users"
   add_foreign_key "unread_announcements", "announcements"
   add_foreign_key "unread_announcements", "users"
   add_foreign_key "webpush_subscriptions", "users"
