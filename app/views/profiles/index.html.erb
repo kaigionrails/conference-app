@@ -15,7 +15,7 @@
       </div>
       <div class="w-2/5">
         <p class="text-3xl font-bold mb-4"><%= @profile.name %></p>
-        <p class="prose text-stone-50 mb-4 whitespace-pre-wrap"><%= @profile.sanitized_description %></p>
+        <div class="text-stone-50 mb-4 markdown"><%= @profile.sanitized_description %></div>
       </div>
     </div>
     <div class="px-4">
