@@ -2,7 +2,7 @@
 sources:
 - type: git
   name: ruby/gem_rbs_collection
-  revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
+  revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
   remote: https://github.com/ruby/gem_rbs_collection.git
   repo_dir: gems
 path: ".gem_rbs_collection"
@@ -71,6 +71,14 @@ gems:
     revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: ast
+  version: '2.4'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: cgi
   version: '0'
   source:
@@ -81,6 +89,14 @@ gems:
     type: git
     name: ruby/gem_rbs_collection
     revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: connection_pool
+  version: '2.4'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: date
@@ -135,6 +151,14 @@ gems:
     revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: kaminari-core
+  version: '1.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: logger
   version: '0'
   source:
@@ -167,6 +191,10 @@ gems:
     revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: openssl
+  version: '0'
+  source:
+    type: stdlib
 - name: rack
   version: '2.2'
   source:
@@ -199,7 +227,27 @@ gems:
     revision: 163126f59d1bb765a6234fc60d3edf21cdfce255
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: sentry-ruby
+  version: '5.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: sidekiq
+  version: '6.3'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: singleton
+  version: '0'
+  source:
+    type: stdlib
+- name: socket
   version: '0'
   source:
     type: stdlib
@@ -207,6 +255,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: thor
+  version: '1.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: time
   version: '0'
   source:
@@ -223,4 +279,12 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: woothee
+  version: '1.11'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 8149bc3fc0f720d935dc0592dc8886e03052f65f
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 gemfile_lock_path: Gemfile.lock
