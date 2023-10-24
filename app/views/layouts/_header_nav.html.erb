@@ -49,6 +49,9 @@
             <% end %>
           <% end %>
           <% if logged_in? %>
+            <%= link_to setting_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+              <span>Setting</span>
+            <% end %>
             <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
               <span>Logout</span>
             <% end %>
