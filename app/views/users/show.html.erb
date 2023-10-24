@@ -9,7 +9,10 @@
       </div>
     </div>
     <div class="w-2/3 pl-2">
-      <h2 class="font-bold text-3xl mb-4"><%= @profile.name %></h2>
+      <div class="flex flex-row justify-between items-baseline mb-4">
+        <h2 class="font-bold text-3xl"><%= @profile.name %></h2>
+        <span class="text-lg">GitHub <%= link_to "@#{@user.name}", "https://github.com/#{@user.name}", target: "_blank", class: "underline" %></span>
+      </div>
       <div class="markdown"><%= @profile.sanitized_description %></div>
     </div>
   </div>
