@@ -30,14 +30,22 @@ RSpec.describe "Sessions", type: :request do
       end
 
       context "create new user" do
+        let(:event) { FactoryBot.create(:event) }
+        let!(:announcement) { FactoryBot.create(:announcement, :published, event: event) }
+        let!(:draft_announcement) { FactoryBot.create(:announcement, event: event) }
         let(:auth_hash) { { "info" => { "nickname" => "octocat" }, "uid" => "583231"} } # https://github.com/octocat
-        before { OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash) }
 
-        it "should create user, authentication_provider_github, profile and enqueue job" do
+        before do
+          Event::ONGOING_EVENT_SLUG = event.slug # dirty hack
+          OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+        end
+
+        it "should create user, authentication_provider_github, profile, unread_announcement and enqueue job" do
           expect { get "/auth/github/callback" }.to change {
             AuthenticationProviderGithub.count }.by(1).and change {
               User.count
-            }.by(1).and change { Profile.count }.by(1).and have_enqueued_job(DetermineUserRoleJob)
+            }.by(1).and change { Profile.count }.by(1).and have_enqueued_job(DetermineUserRoleJob).and change {
+              UnreadAnnouncement.count }.by(1)
         end
       end
     end
