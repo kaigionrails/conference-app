@@ -1,5 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
+  has_and_belongs_to_many :profile_badges
+
   has_many_attached :images
 
   def ensure_image_from_github
