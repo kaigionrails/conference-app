@@ -38,3 +38,5 @@ module ConferenceApp
     config.active_job.queue_adapter = :sidekiq
   end
 end
+
+require_relative "../lib/digested_assets_path_resolver"

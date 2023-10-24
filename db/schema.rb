@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_153007) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_042153) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,6 +129,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_153007) do
     t.index ["user_id"], name: "index_talk_bookmarks_on_user_id"
   end
 
+  create_table "talk_reminders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "talk_id", null: false
+    t.datetime "scheduled_at", null: false
+    t.datetime "sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["talk_id"], name: "index_talk_reminders_on_talk_id"
+    t.index ["user_id"], name: "index_talk_reminders_on_user_id"
+  end
+
   create_table "talks", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.string "title", null: false
@@ -177,6 +188,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_153007) do
   add_foreign_key "profiles", "users"
   add_foreign_key "talk_bookmarks", "talks"
   add_foreign_key "talk_bookmarks", "users"
+  add_foreign_key "talk_reminders", "talks"
+  add_foreign_key "talk_reminders", "users"
   add_foreign_key "unread_announcements", "announcements"
   add_foreign_key "unread_announcements", "users"
   add_foreign_key "webpush_subscriptions", "users"
