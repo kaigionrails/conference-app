@@ -3,7 +3,7 @@ talks:
     abstract: "準備中"
     start_at: !!timestamp 2023-10-27T11:20:00+09:00
     duration_minutes: 40
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "zzak"
         slug: "zzak"
@@ -28,7 +28,7 @@ talks:
       本セッションでは作ったgem の解説と、この gem による修正をリリースする話をします。
     start_at: !!timestamp 2023-10-27T13:30:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "makicamel"
         slug: "makicamel"
@@ -48,7 +48,7 @@ talks:
       この発表ではファイルアップロード時に発行されるHTTPリクエストを、仕様を読み解きながら自分の手で組み立てていくことでその全体像を理解していきます。
     start_at: !!timestamp 2023-10-27T13:30:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "ikuma-t"
         slug: "ikuma-t"
@@ -66,7 +66,7 @@ talks:
       このセッションでは、[hako-console という社内向け Rails アプリケーション](https://techlife.cookpad.com/entry/2018/04/02/140846)で、デプロイ履歴のモデリングに delegated types を導入し、既存テーブルの移行方法や得られた知見、便利さはもちろん、メリットだけではなく落とし穴についても共有します。
     start_at: !!timestamp 2023-10-27T14:10:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "mozamimy"
         slug: "mozamimy"
@@ -81,7 +81,7 @@ talks:
       パフォーマンス面やRuby On Railsにおける採用上の課題について言及します。
     start_at: !!timestamp 2023-10-27T14:10:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "k0i"
         slug: "k0i"
@@ -97,7 +97,7 @@ talks:
       この発表では、Railsにおける「想定していない事象」とどのように付き合っていくと良いのかの指針を示します。また、Railsがエラーページを表示する仕組みと、それを利用した安定したエラーページをどうやって作るのかについても紹介します。
     start_at: !!timestamp 2023-10-27T14:35:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Shinichi Maeshima"
         slug: "willnet"
@@ -112,7 +112,7 @@ talks:
       具体的には、接続に関する各クラスの役割（active_record/connection_handler等）を適宜紹介しつつ、実際にfindメソッドをデバッグ実行した際のスタックトレースを通して、接続確立までのActiveRecordの内部処理の全容を持ち帰っていただきます。
     start_at: !!timestamp 2023-10-27T14:35:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "kubo"
         slug: "kubo"
@@ -126,7 +126,7 @@ talks:
       私たちが運営するTimeTreeというカレンダーアプリの開発でも、ニーズに合わせてデータモデルへの変更を頻繁に行っています。その一環として実施した数十億レコードを保有するテーブルに対するデータマイグレーションのアプローチを紹介します。
     start_at: !!timestamp 2023-10-27T15:45:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "ta1kt0me"
         slug: "ta1kt0me"
@@ -140,7 +140,7 @@ talks:
       「明日からクエリ改善やって！」と急に言われても臆することなく対応できるような話をしたいと思います。
     start_at: !!timestamp 2023-10-27T15:45:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Fu-ga"
         slug: "fugakkbn"
@@ -160,7 +160,7 @@ talks:
       本講演では、Railsが提供する機能のうち、「REST」「RDB」「Ruby」という要素を軸に、実世界の要求をシンプルに実装するための考え方を紹介します。
     start_at: !!timestamp 2023-10-27T16:10:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "MOROHASHI Kyosuke"
         slug: "moro"
@@ -185,7 +185,7 @@ talks:
       - TracePointを活用してメソッド呼び出し元のコード位置や引数を特定する方法
     start_at: !!timestamp 2023-10-27T16:10:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "alpaca-tc"
         slug: "alpaca-tc"
@@ -201,7 +201,7 @@ talks:
       その時に私が仲間とともに行った判断や対処の例を共有し、皆様の意見をお伺いしたいと思います。
     start_at: !!timestamp 2023-10-27T16:50:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "ginkouno"
         slug: "ginkouno"
@@ -219,7 +219,7 @@ talks:
       Turbo & Stimulusを採用することで開発工数を大幅に削減できた事例、および実装方法についてご紹介します。
     start_at: !!timestamp 2023-10-27T16:50:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "lni_T / ルニ"
         slug: "lni_T"
@@ -235,7 +235,7 @@ talks:
       今回のトークでは、この手法の概要、導入にあたって直面した問題と解決アプローチ、及び導入前後のseedデータにおける質や量の比較についてお話しします。
     start_at: !!timestamp 2023-10-27T17:45:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "gogutan"
         slug: "gogutan"
@@ -253,7 +253,7 @@ talks:
       この発表では、Railsのアプリケーションで定数が読み込まれる仕組みや定数探索の順番をお話しした上で、実装し(た|ている)gemの紹介をしたいと思います。
     start_at: !!timestamp 2023-10-27T17:45:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Haruka Oguchi"
         slug: "hogucc"
@@ -268,7 +268,7 @@ talks:
       このトークを聞いて、コードを見たらなんとなく発行されるクエリが見えるようになる力を手に入れましょう！
     start_at: !!timestamp 2023-10-27T18:10:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Masataka Pocke Kuwabara"
         slug: "pocke"
@@ -282,7 +282,7 @@ talks:
       これはあまり知られていないRailsの内部詳細です。通常のアプリケーション開発者であれば、決して気づくことはなくて、知る必要もありません。しかし、アプリケーションのコードをコールバックなどで呼び出すジェムを作成する場合、その知識は不可欠なことになります。
     start_at: !!timestamp 2023-10-27T18:10:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Andrey NOVIKOV"
         slug: "Envek"
@@ -309,7 +309,7 @@ talks:
       orthoses-railsを使うことで、最初の導入、アプリケーションコードの解析、実行時解析とは何か、カスタマイズ方法や、独自のRailsプラグイン拡張であっても型を自動生成する方法など、実践的な課題に対する解決方法を提案します。
     start_at: !!timestamp 2023-10-28T10:00:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Yuki Kurihara"
         slug: "ksss"
@@ -340,7 +340,7 @@ talks:
       本トークを通じて、急激に変化する社会の中でも柔軟に対応するプロダクトを作るために、Webアプリケーション開発者が普段から準備できることについて知ることができます。
     start_at: !!timestamp 2023-10-28T10:00:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "zuckey"
         slug: "zuckey"
@@ -354,7 +354,7 @@ talks:
       本セッションでは、RailsアプリケーションでCQRSアーキテクチャを採用している事例として、私たちが導入しているUseCase・Query・Commandの役割と、Model・Controllerを含めた各層の関係を紹介します。
     start_at: !!timestamp 2023-10-28T10:40:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Shogo Terai"
         slug: "krpk1900"
@@ -373,7 +373,7 @@ talks:
       このセッションでは、決済電文をプリペイドカード発行会社（イシュアー）がどのように処理し、ユーザーの残高を変動させているのかに触れた後、登壇者が苦労した返金処理に関するケアについてカジュアルにお話しします。普段カード事業に携わることがなければ知ることができない、そして気にも留めないお話をみなさまに提供する予定です。
     start_at: !!timestamp 2023-10-28T10:40:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "hirotea"
         slug: "hirotea"
@@ -385,7 +385,7 @@ talks:
       Rails 5.2でシステムテストが導入されて以来、Capybaraを使用したE2Eテストを書くことはとても容易になりましたが、実際にシステムテストをCIで運用すると「時々なぜか落ちるテスト」との戦いです。いっぽう世の中を見渡すと、CypressやPlaywrightといったNode.jsベースのテストランナーが成熟してきており、Flakyなテストに打ち克つための工夫が多くされています。この発表ではRailsのアプリケーション資産はそのままに、Node.jsベースのテストランナーを導入する方法を紹介し、その中の仕組みを詳しく説明します。
     start_at: !!timestamp 2023-10-28T11:05:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Yusuke Iwaki"
         slug: "YusukeIwaki"
@@ -406,7 +406,7 @@ talks:
       このセッションでは、実際の事例に基づいてサービスのコアとなるモデルの仕様を大きく変え、テーブルの定義変更やモデルの機能拡張をしたお話をします。多くのモデルに依存していたり、Read/Writeが多いモデルをダウンタイムなしで変更していくための手順の決め方や具体的なテクニック、便利なgemなどについて紹介します。また、私たちのチームが将来像を考慮しながら設計する時に意識しているポイントについても紹介します。
     start_at: !!timestamp 2023-10-28T11:05:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Shohei Mitani"
         slug: "ShoheiMitani"
@@ -423,7 +423,7 @@ talks:
       また、ユーザーの削除方法として、論理削除を安易に使用するべきでないと考える理由と、論理削除を使用しない場合、どのようにテーブル分割によって対応していくかについて説明します。
     start_at: !!timestamp 2023-10-28T13:05:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Naoto"
         slug: "naoto"
@@ -440,7 +440,7 @@ talks:
       統合はpixivコミック側にpixivノベルの機能を移植していく形で実装されており、pixivコミックのAPIサーバーからRailsのMultiple Databases機能を用いてpixivノベルが使用するDBを直接参照することで実現する方針です。2つのRailsサービスを稼働しながら1つのRailsサービスに統合していくための開発の進め方や気にしたポイントについて話したいと思っています。
     start_at: !!timestamp 2023-10-28T13:05:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "imadoki"
         slug: "imadoki"
@@ -459,7 +459,7 @@ talks:
       SPAとHotwireでは、アプリを構成するための物の考え方が大きく異なります。Hotwireを縦横無尽に使い倒すためには、Hotwire的な考え方で作る必要があるのです。この、Hotwire的な考え方＝設計指針に私は「Web紙芝居」という名前をつけました。本トークでは、この「Web紙芝居」的な設計指針に行き着いた経緯や、指針の内容についてご紹介します。
     start_at: !!timestamp 2023-10-28T13:30:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "Yasuko Ohba (nay3)"
         slug: "nay3"
@@ -475,7 +475,7 @@ talks:
       このセッションでは、単なるgem選定を超えて、管理画面や管理機能を後から追加する際のアーキテクチャパターンを深堀りします。それぞれの選択肢のメリットとデメリットを比較し、選択の視点を提供します。また、私が運用しているRailsアプリケーションでの管理機能設計の選択とその理由に加え、運用から得られた知見―特に監視やプロセス管理などのトピック―にも焦点を当てます。このセッションを通じて、管理機能設計と運用に対する理解と視野が広がれば幸いです。
     start_at: !!timestamp 2023-10-28T13:30:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "ohbarye"
         slug: "ohbarye"
@@ -492,7 +492,7 @@ talks:
       本セッションでは弊社でAPMをどのように使っているかを紹介し、より使いやすくするために独自のgemを作った話をします。
     start_at: !!timestamp 2023-10-28T14:10:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "kokuyouwind"
         slug: "kokuyouwind"
@@ -512,7 +512,7 @@ talks:
       トークを聞いたみなさんが、「自分もRailsでなにか作ってみよう！」と思い、つくる喜びを体感する一歩を踏み出していただければ幸いです。
     start_at: !!timestamp 2023-10-28T14:10:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Takuya Mukohira / mktakuya"
         slug: "mktakuya"
@@ -524,7 +524,7 @@ talks:
       私たちが伝えたいのは、開発の速度を劇的に向上させ、開発に伴うストレスを激減させ、開発を楽しいものにする方法です。私たちのチームでは、昨年8月にペア/モブプロを本格的に導入し、ほぼ全ての開発をペア/モブプロで行うことで、平均リードタイムを24時間以内に保ち、継続的に速いリリースが行えるようになりました。ペア/モブプロの導入によって、どのような点がどれくらい向上したかを具体的なデータでお伝えするとともに、私たちが普段どのようにモブプロを行っているかを、実際のライブコーディングの様子からお伝えしたいと思います。
     start_at: !!timestamp 2023-10-28T15:05:00+09:00
     duration_minutes: 30
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "eatplaynap トミー"
         slug: "eatplaynap"
@@ -548,7 +548,7 @@ talks:
       Palcyは今年で5周年を迎えたスマホアプリでそのバックエンドに蓄積されたデータもテーブルによっては数十億オーダーに乗っており安易な機能実装がはばかられます。この発表ではそうしたデータとどう向き合い、運用や機能の実装を続けてきたか発表します。
     start_at: !!timestamp 2023-10-28T15:05:00+09:00
     duration_minutes: 30
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "KNR"
         slug: "knr"
@@ -585,7 +585,7 @@ talks:
       クリエイターとファンを結ぶ月額会員制ファンクラブプラットフォームです。
     start_at: !!timestamp 2023-10-28T15:45:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "河野裕隆"
         slug: "tora-kouno"
@@ -606,7 +606,7 @@ talks:
       なんで嫌われているのかについて話して、注意点など、これまでにあったセキュリティ欠陥（Pumaとrailsの組み合わせで、情報が漏洩されていたものがありまして。。。）の話などをして、みんなでActiveSupport::CurrentAttributesを使おう！とまではいかなくても、本当に使わないといけない時があれば一つの選択肢としてありますよ、ということを伝えたいです。
     start_at: !!timestamp 2023-10-28T15:45:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "Sampo Kuokkanen"
         slug: "sampokuokkanen"
@@ -627,7 +627,7 @@ talks:
       また、新規開発の品質向上にもいい影響を与えた話も合わせて行います。
     start_at: !!timestamp 2023-10-28T16:10:00+09:00
     duration_minutes: 15
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "duck-falcon"
         slug: "duck"
@@ -647,7 +647,7 @@ talks:
       Hotwire入門というよりも、StimulusとTurboを組み合わせてHTML片に動きをつける具体的方法を共有することで、皆様のHotwire開発ライフを少しでも後押しできたら幸いです。
     start_at: !!timestamp 2023-10-28T16:10:00+09:00
     duration_minutes: 15
-    track: "Hall B"
+    track: "Room B"
     speakers:
       - name: "yamataka22"
         slug: "yamataka"
@@ -661,7 +661,7 @@ talks:
       If you are a begginer you may learn some debugging techniques, if you are more confirmed you may enjoy the war stories and learn some gritty details about Ruby and Rails internals.
     start_at: !!timestamp 2023-10-28T16:50:00+09:00
     duration_minutes: 40
-    track: "Hall A"
+    track: "Room A"
     speakers:
       - name: "byroot"
         slug: "byroot"
