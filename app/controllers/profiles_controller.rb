@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profile = current_user.profile
+    @friends = current_user.friends.preload(profile: { images_attachments: :blob })
   end
 
   def new
