@@ -59,6 +59,7 @@ gem "open-uri"
 gem "amazing_print"
 gem "rails_semantic_logger"
 gem "sidekiq"
+gem "sidekiq-cron"
 gem "woothee"
 
 gem "sentry-rails"
