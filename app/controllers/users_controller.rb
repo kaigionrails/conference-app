@@ -1,0 +1,29 @@
+class UsersController < ApplicationController
+  include ApplicationHelper
+
+  def show
+    @user = User.find_by!(name: params[:username])
+    @profile = @user.profile
+
+    if logged_in? && params[:token]
+      begin
+        token = JWT.decode(params[:token], nil, false)[0]
+        if Time.zone.at(token["exp"]) > Time.current # not expired
+          issuer_user = User.find_by!(name: token["iss"])
+          exchange_profile(issuer_user, current_user) if issuer_user == @user
+        end
+      rescue JWT::DecodeError
+        # Do nothing
+      end
+    end
+  end
+
+  private def exchange_profile(user1, user2)
+    unless user1 == user2
+      ApplicationRecord.transaction do
+        ProfileExchange.find_or_create_by!(event: current_event, user: user1, friend: user2)
+        ProfileExchange.find_or_create_by!(event: current_event, user: user2, friend: user1)
+      end
+    end
+  end
+end

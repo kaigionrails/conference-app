@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_153007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
+  create_table "profile_exchanges", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_profile_exchanges_on_event_id"
+    t.index ["friend_id"], name: "index_profile_exchanges_on_friend_id"
+    t.index ["user_id"], name: "index_profile_exchanges_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -160,6 +171,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_175913) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_githubs", "users"
+  add_foreign_key "profile_exchanges", "events"
+  add_foreign_key "profile_exchanges", "users"
+  add_foreign_key "profile_exchanges", "users", column: "friend_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "talk_bookmarks", "talks"
   add_foreign_key "talk_bookmarks", "users"

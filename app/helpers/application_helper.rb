@@ -6,4 +6,8 @@ module ApplicationHelper
   def current_event
     @current_event ||= Event.find_by(slug: Event::ONGOING_EVENT_SLUG)
   end
+
+  def application_url
+    Rails.configuration.application_url
+  end
 end

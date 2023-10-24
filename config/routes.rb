@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :profile_images, only: [:destroy]
   end
 
+  get "/@:username", to: "users#show"
+
   resources :talk_bookmarks, only: [:create, :destroy]
   resources :unread_announcements, only: [:destroy]
 
