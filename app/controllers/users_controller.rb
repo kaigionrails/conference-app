@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by!(name: params[:username])
     @profile = @user.profile
+    @token = params[:token]
 
-    if logged_in? && params[:token]
+    if logged_in? && @token
       begin
-        token = JWT.decode(params[:token], nil, false)[0]
+        token = JWT.decode(@token, nil, false)[0]
         if Time.zone.at(token["exp"]) > Time.current # not expired
           issuer_user = User.find_by!(name: token["iss"])
           exchange_profile(issuer_user, current_user) if issuer_user == @user
