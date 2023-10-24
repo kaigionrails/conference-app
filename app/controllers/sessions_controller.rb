@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if params[:provider] != "github"
       flash[:alert] = "Unknown provider"
       redirect_to login_path
+      return
     end
 
     user = AuthenticationProviderGithub.find_or_create_user_from_auth_hash(request.env["omniauth.auth"])
