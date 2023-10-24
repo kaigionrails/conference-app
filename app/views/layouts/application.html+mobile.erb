@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_import_module_tag "service_worker_installer" %>
+    <%= favicon_link_tag "icon.png" %>
     <%= favicon_link_tag "icons/2023/512.png", rel: "apple-touch-icon", type: 'image/png' %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
     <script>
@@ -19,9 +20,8 @@
 
   <body class="bg-[#84240f] w-full flex flex-col h-screen">
     <%= render partial: "layouts/header_nav" %>
-    <main class="w-full mx-auto flex text-white flex-grow overflow-scroll">
+    <main class="w-full mx-auto h-full flex text-white flex-grow overflow-scroll">
       <%= yield %>
     </main>
-    <%= render partial: "layouts/bottom_nav" %>
   </body>
 </html>
