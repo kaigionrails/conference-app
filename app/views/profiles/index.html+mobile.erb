@@ -34,7 +34,7 @@
     <p class="font-bold text-3xl mb-2"><%= @profile.name %></p>
     <div class="text-sm text-stone-50 mb-4 markdown"><%= @profile.sanitized_description %></div>
     <div>
-      <%= link_to edit_profile_path(@profile) do %>
+      <%= link_to edit_profile_path(@profile), class: "mb-4" do %>
         <button class="mb-4 inline-flex items-center gap-x-2 text-sm rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm hover:bg-gray-50">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -42,6 +42,21 @@
           <span>編集する</span>
         </button>
       <% end %>
+      <div>
+        <h3 class="text-2xl font-bold mb-2">知り合った人達</h3>
+        <ul class="mb-8">
+          <% @friends.each do |friend| %>
+            <li class="flex flex-row items-center">
+              <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg" do %>
+                <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
+                <p class="text-xl mr-4"><%= friend.profile.name %></p>
+                <p class="underline"><%= "@#{friend.name}" %></p>
+              <% end %>
+            </li>
+          <% end %>
+          <li>
+        </ul>
+      </div>
     </div>
   <% else %>
   <div class="border-2 border-dashed rounded-lg bg-opacity-30 bg-white h-32 flex justify-center flex-col items-center mb-3">
