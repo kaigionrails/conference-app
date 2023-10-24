@@ -5,6 +5,9 @@ class SampleWebpushNotificationsController < ApplicationController
       title: "プッシュ通知のサンプルです",
       body: "このようなプッシュ通知が届きます。",
       icon: view_context.image_url("icons/2023/512.png"),
+      data: {
+        url: URI.join(Rails.configuration.application_url, setting_path),
+      }
     }
     subscriptions.each do |subscription|
       begin

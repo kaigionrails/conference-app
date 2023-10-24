@@ -9,10 +9,19 @@ const pushHandler = async (event) => {
     {
       body: notificationData.body,
       icon: notificationData.icon,
+      data: notificationData.data,
     }
   );
   event.waitUntil(notificationPromise);
 };
 
+const notificationclickHandler = async (event) => {
+  event.notification.close();
+  if (event.notification.data.url !== undefined) {
+    event.waitUntil(self.clients.openWindow(event.notification.data.url));
+  }
+};
+
 self.addEventListener("install", installHandler);
 self.addEventListener("push", pushHandler);
+self.addEventListener("notificationclick", notificationclickHandler);
