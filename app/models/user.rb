@@ -13,4 +13,15 @@ class User < ApplicationRecord
   def have_unread_announcements?
     unread_announcements.exists?
   end
+
+  def send_push_notification(message)
+    webpush_subscriptions.each do |subscription|
+      begin
+        subscription.send_webpush!(message)
+      rescue WebPush::ExpiredSubscription
+        subscription.destroy
+        next
+      end
+    end
+  end
 end
