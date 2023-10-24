@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
 
     if request.env["omniauth.params"].key?("return_to")
       # Prevent open redirect
-      redirect_to  URI.parse(request.env["omniauth.params"]["return_to"]).path
+      uri = URI.parse(request.env["omniauth.params"]["return_to"])
+      redirect_to "#{uri.path}?#{uri.query}"
     else
       redirect_to root_path
     end
