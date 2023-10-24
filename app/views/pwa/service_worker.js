@@ -15,7 +15,7 @@ const pushHandler = async (event) => {
   event.waitUntil(notificationPromise);
 };
 
-const notificationclickHandler = async (event) => {
+const notificationClickHandler = async (event) => {
   event.notification.close();
   if (event.notification.data.url !== undefined) {
     event.waitUntil(self.clients.openWindow(event.notification.data.url));
@@ -24,4 +24,4 @@ const notificationclickHandler = async (event) => {
 
 self.addEventListener("install", installHandler);
 self.addEventListener("push", pushHandler);
-self.addEventListener("notificationclick", notificationclickHandler);
+self.addEventListener("notificationclick", notificationClickHandler);
