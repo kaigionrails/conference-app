@@ -1,7 +1,7 @@
-<div class="w-full">
-  <div class="container px-2 pt-4">
+<div class="w-full max-w-screen-xl pt-4 px-4 pb-6">
+  <div class="w-full flex flex-col">
   <% if @profile %>
-    <div class="px-2">
+    <div class="px-8">
       <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user.name %>">
         <%= image_tag @profile.images.first.representation(resize_to_limit: [200, 200]), class: "rounded-lg m-auto w-full mb-3" %>
         <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
@@ -25,15 +25,13 @@
         </button>
       </div>
     </div>
-    <div class="flex overflow-scroll mb-4">
+    <div class="grid grid-cols-6 gap-3 mb-4">
       <% @profile.images.each do |profile_image| %>
-        <div class="w-12 mr-2">
-          <%= image_tag profile_image.representation(resize_to_limit: [50, 50]), class: "rounded-md w-full" %>
-        </div>
+        <%= image_tag profile_image, class: "rounded-md w-full" %>
       <% end %>
     </div>
 
-    <p class="font-bold text-xl mb-2"><%= @profile.name %></p>
+    <p class="font-bold text-3xl mb-2"><%= @profile.name %></p>
     <div class="text-sm text-stone-50 mb-4 markdown"><%= @profile.sanitized_description %></div>
     <div>
       <%= link_to edit_profile_path(@profile) do %>
