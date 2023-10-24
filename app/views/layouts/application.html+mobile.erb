@@ -20,9 +20,8 @@
 
   <body class="bg-[#84240f] w-full flex flex-col h-screen">
     <%= render partial: "layouts/header_nav" %>
-    <main class="w-full mx-auto flex text-white flex-grow overflow-scroll">
+    <main class="w-full mx-auto h-full flex text-white flex-grow overflow-scroll">
       <%= yield %>
     </main>
-    <%= render partial: "layouts/bottom_nav" %>
   </body>
 </html>
