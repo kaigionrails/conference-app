@@ -1,19 +1,29 @@
-<div class="w-full max-w-screen-xl mx-auto pt-4 px-4 pb-6" data-controller="users">
-  <div class="w-full flex flex-row">
-    <div class="w-1/3 pr-2">
-      <%= image_tag @profile.images.first, class: "rounded-lg mb-3" %>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <% @profile.images.each do |image| %>
-          <%= image_tag image, class: "rounded-lg w-full" %>
-        <% end %>
-      </div>
+<div class="w-full">
+  <% if !logged_in? && @token %>
+    <div class="w-full py-4 bg-red-200 text-black text-center">
+      <p class="mb-1">ログインすると、QRコードで読みとった人の履歴を残すことができます。</p>
+      <%= form_tag "/auth/github?return_to=/@#{@user.name}?token=#{@token}", method: :post, data: { turbo: false } do %>
+        <%= submit_tag "GitHubアカウントでログインする", class: "underline text-lg cursor-pointer" %>
+      <% end %>
     </div>
-    <div class="w-2/3 pl-2">
-      <div class="flex flex-row justify-between items-baseline mb-4">
-        <h2 class="font-bold text-3xl"><%= @profile.name %></h2>
-        <span class="text-lg">GitHub <%= link_to "@#{@user.name}", "https://github.com/#{@user.name}", target: "_blank", class: "underline" %></span>
+  <% end %>
+  <div class="w-full max-w-screen-xl mx-auto pt-4 px-4 pb-6" data-controller="users">
+    <div class="w-full flex flex-row">
+      <div class="w-1/3 pr-2">
+        <%= image_tag @profile.images.first, class: "rounded-lg mb-3" %>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <% @profile.images.each do |image| %>
+            <%= image_tag image, class: "rounded-lg w-full" %>
+          <% end %>
+        </div>
       </div>
-      <div class="markdown"><%= @profile.sanitized_description %></div>
+      <div class="w-2/3 pl-2">
+        <div class="flex flex-row justify-between items-baseline mb-4">
+          <h2 class="font-bold text-3xl"><%= @profile.name %></h2>
+          <span class="text-lg">GitHub <%= link_to "@#{@user.name}", "https://github.com/#{@user.name}", target: "_blank", class: "underline" %></span>
+        </div>
+        <div class="markdown"><%= @profile.sanitized_description %></div>
+      </div>
     </div>
   </div>
 </div>
