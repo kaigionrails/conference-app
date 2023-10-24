@@ -52,6 +52,11 @@
             <%= link_to setting_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
               <span>Setting</span>
             <% end %>
+            <% if current_user.organizer? %>
+              <%= link_to admin_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+                <span>Admin console</span>
+              <% end %>
+            <% end %>
             <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
               <span>Logout</span>
             <% end %>

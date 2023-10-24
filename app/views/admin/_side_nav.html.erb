@@ -17,4 +17,14 @@
       <span class="text-lg">Announcements</span>
     </div>
   <% end %>
+  <%= link_to admin_sidekiq_web_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">Sidekiq</span>
+    </div>
+  <% end %>
+  <%= link_to root_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">&lt; Back to app</span>
+    </div>
+  <% end %>
 </nav>
