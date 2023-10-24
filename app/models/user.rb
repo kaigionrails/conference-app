@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :talk_bookmarks, dependent: :destroy
   has_many :profile_exchanges, dependent: :destroy
   has_many :friends, through: :profile_exchanges, class_name: "User"
+  has_many :talk_reminders, dependent: :destroy
 
   enum :role, organizer: "organizer", participant: "participant"
 
