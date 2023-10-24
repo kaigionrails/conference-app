@@ -15,11 +15,13 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
         icon: URI.join(
           Rails.configuration.application_url, assets_resolver.digested_asset_path("icons/2023/512.png")
         ).to_s,
-        url: event_talk_url(
-          event_slug: reminder.talk.event.slug,
-          id: reminder.talk,
-          host: Rails.configuration.application_url
-        ),
+        data: {
+          url: event_talk_url(
+            event_slug: reminder.talk.event.slug,
+            id: reminder.talk,
+            host: Rails.configuration.application_url
+          ),
+        }
       }
 
       ApplicationRecord.transaction do
