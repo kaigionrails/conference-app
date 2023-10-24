@@ -11,6 +11,6 @@ class DigestedAssetsPathResolver
   end
 
   def digested_asset_path(source)
-    @manifest.fetch(source, source)
+    File.join("assets", @manifest.fetch(source, source)).to_s
   end
 end
