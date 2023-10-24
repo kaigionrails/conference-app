@@ -66,3 +66,5 @@ RSpec.configure do |config|
   config.include LoginHelper, type: :request
   config.include EventHelper, type: :request
 end
+
+OmniAuth.config.test_mode = true

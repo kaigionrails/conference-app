@@ -19,6 +19,6 @@ class AuthenticationProviderGithub < ApplicationRecord
     end
     DetermineUserRoleJob.perform_later(user.id)
     profile.ensure_image_from_github
-    user
+    user.tap { user.mark_all_announcement_unread! }
   end
 end
