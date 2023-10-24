@@ -1,0 +1,19 @@
+<div class="w-full max-w-screen-xl mx-auto pt-4 px-4 pb-6">
+  <h2 class="font-bold text-3xl mb-4">設定</h2>
+  <h3 class="font-bold text-2xl mb-2">プッシュ通知設定</h3>
+  <p class="mb-2">プッシュ通知を有効にすると、以下の場合に通知されます。</p>
+  <ul class="list-disc pl-6 leading-loose mb-2">
+    <li>ブックマークした発表が開始する数分前(5分前～3分前程度)</li>
+    <li>運営からのアナウンスが公開された場合</li>
+  </ul>
+  <p class="mb-2">お使いのデバイスがiOSの場合は、Safariで「ホーム画面に追加」からPWAとしてインストールする必要があります。</p>
+  <p class="mb-4">参考: <a href="https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios" target="_blank" class="underline">iPhoneのSafariでWebサイトをブックマークに登録する - Apple サポート (日本)</a>
+  <div data-controller="push-notification">
+    <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none">プッシュ通知を有効にする</button>
+    <button data-action="click->push-notification#sendSamplePushNotification" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
+      テスト通知を送信する
+    </button>
+    <p class="mb-1">※テスト通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。</p>
+    <p>※プッシュ通知の到達の保障はいたしかねます。</p>
+  </div>
+</div>

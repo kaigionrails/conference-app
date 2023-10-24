@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # For PWA
   get "/sw.js", to: "pwa#service_worker", as: "service_worker"
   get "/manifest.json", to: "pwa#manifest", as: "pwa_manifest"
+  get "/setting", to: "setting#index"
 
   post "/webpush_subscription", to: "webpush_subscription#create"
   post "/sample_webpush_notifications", to: "sample_webpush_notifications#create"
