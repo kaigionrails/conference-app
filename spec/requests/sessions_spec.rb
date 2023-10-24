@@ -42,9 +42,10 @@ RSpec.describe "Sessions", type: :request do
 
         it "should create user, authentication_provider_github, profile, unread_announcement and enqueue job" do
           expect { get "/auth/github/callback" }.to change {
-            AuthenticationProviderGithub.count }.by(1).and change {
-              User.count
-            }.by(1).and change { Profile.count }.by(1).and have_enqueued_job(DetermineUserRoleJob).and change {
+              AuthenticationProviderGithub.count }.by(1).and change {
+              User.count }.by(1).and change {
+              Profile.count }.by(1).and have_enqueued_job(
+              DetermineUserRoleJob).and change {
               UnreadAnnouncement.count }.by(1)
         end
       end
