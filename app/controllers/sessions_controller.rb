@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       uri = URI.parse(request.env["omniauth.params"]["return_to"])
       redirect_to "#{uri.path}?#{uri.query}"
     else
-      redirect_to root_path
+      redirect_to setting_path
     end
   end
 

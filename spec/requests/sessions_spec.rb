@@ -24,7 +24,7 @@ RSpec.describe "Sessions", type: :request do
 
         it "should redirect to root_path" do
           get "/auth/github/callback"
-          expect(response).to redirect_to(root_path)
+          expect(response).to redirect_to(setting_path)
           expect(session[:user_id]).to eq user.id
         end
       end
