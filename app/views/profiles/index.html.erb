@@ -27,7 +27,7 @@
         </div>
         <div class="grid grid-cols-4 gap-3">
           <% @profile.images.each do |profile_image| %>
-            <%= image_tag profile_image, class: "w-full rounded-lg" %>
+            <%= image_tag profile_image, class: "w-full h-full object-cover rounded-lg" %>
           <% end %>
         </div>
       </div>
