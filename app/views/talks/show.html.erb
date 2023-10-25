@@ -14,7 +14,7 @@
     <% @talk.speakers.each do |speaker| %>
       <div class="flex flex-col">
         <div class="flex flex-row items-center mb-2">
-          <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded-lg w-12 h-12 md:w-14 md:h-14 mr-5" %>
+          <%= image_tag speaker.avatar_image_url, class: "rounded-lg w-12 h-12 md:w-14 md:h-14 mr-5" %>
           <p class="text-lg block"><%= speaker.name %></p>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <h4 class="text-xl mb-2"><%= "#{speaker.name} " %><%= link_to "@#{speaker.github_username}", "https://github.com/#{speaker.github_username}", class: "underline" %></h4>
         <div class="flex flex-col">
           <div class="flex flex-row items-start mb-2">
-            <%= image_tag "https://www.gravatar.com/avatar/#{speaker.gravatar_hash}?s=100", class: "rounded-lg w-14 h-14 md:w-24 md:h-24 mr-5" %>
+            <%= image_tag speaker.avatar_image_url, class: "rounded-lg w-14 h-14 md:w-24 md:h-24 mr-5" %>
             <div class="block markdown"><%= speaker.sanitized_bio %></div>
           </div>
         </div>
