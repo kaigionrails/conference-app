@@ -41,6 +41,7 @@
             <div class="mb-4 border-2 rounded-3xl py-1 px-3 inline-block text-black" style="background-color: <%= b.object.background_color_code %>; border-color: <%= b.object.border_color_code %>"><%= b.object.text %></div>
           </div>
         <% end %>
+        <%= link_to "バッヂを新しく作る", new_profile_badge_path, class: "underline text-lg" %>
       </details>
     </div>
     <%= f.button type: "submit" do %>

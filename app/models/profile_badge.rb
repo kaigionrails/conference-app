@@ -4,4 +4,5 @@ class ProfileBadge < ApplicationRecord
 
   validates :background_color_code, format: { with: COLOR_CODE_REGEXP }
   validates :border_color_code, format: { with: COLOR_CODE_REGEXP }
+  validates :text, uniqueness: true
 end
