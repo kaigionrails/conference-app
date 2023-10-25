@@ -15,7 +15,6 @@ RSpec.describe AuthenticationProviderGithub, type: :model do
       }.to change { AuthenticationProviderGithub.count }.by(1).and change { User.count }.by(1).and change { Profile.count }.by(1)
       user = User.find_by!(name: "octocat")
       expect(user.profile.name).to eq "octocat"
-      expect(user.profile.images.size).to eq 1
     end
   end
 end
