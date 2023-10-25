@@ -7,4 +7,7 @@
   <h3  class="font-bold text-lg mb-2">Role</h3>
   <p class="mb-4"><%= @user.role %></p>
   <%= link_to "edit", edit_admin_user_path(@user), class: "underline" %>
+  <div>
+    <%= link_to "edit profile badges", new_admin_profile_profile_badges_profile_path(profile_id: @user.profile.id), class: "underline" %>
+  </div>
 </div>

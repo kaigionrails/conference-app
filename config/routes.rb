@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    resources :profiles, only: [:show] do
+      resources :profile_badges_profiles, only: [:new, :create]
+    end
     resources :talks, only: [:index, :show, :edit, :update]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
