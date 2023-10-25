@@ -11,7 +11,7 @@
     <div class="w-full flex flex-row">
       <div class="w-1/3 pr-2">
         <%= image_tag @profile.images.first, class: "rounded-lg mb-3" %>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" data-controller="lightbox">
           <% @profile.images.each do |image| %>
             <%= image_tag image, class: "rounded-lg w-full" %>
           <% end %>

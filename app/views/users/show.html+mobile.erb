@@ -13,7 +13,7 @@
           <%= image_tag @profile.images.first, class: "rounded-lg mb-3" %>
         </div>
         <div class="px-2 mb-4">
-          <div class="grid grid-cols-6 gap-3">
+          <div class="grid grid-cols-6 gap-3" data-controller="lightbox">
             <% @profile.images.each do |image| %>
               <%= image_tag image, class: "rounded-lg w-full h-full object-cover" %>
             <% end %>
