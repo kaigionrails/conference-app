@@ -1,5 +1,9 @@
 # README
 
+## 日本語
+
+[こちら](README_ja.md)
+
 ## About
 
 Conference app is an app for (yes) conferences. The scope of this app is audiences and the interaction between them and organizers.
