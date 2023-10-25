@@ -2,16 +2,18 @@ class ProfilesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @profile = current_user.profile
+    @profile = Profile.preload(:profile_badges).find_by(user: current_user)
     @friends = current_user.friends.preload(profile: { images_attachments: :blob })
   end
 
   def new
     @profile = Profile.new(user: current_user)
+    @profile_badges = ProfileBadge.where(restricted: false)
   end
 
   def edit
     @profile = Profile.find_by(user: current_user)
+    @profile_badges = ProfileBadge.where(restricted: false)
   end
 
   def create
@@ -26,12 +28,20 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    profile = Profile.find_by(user: current_user)
+    profile = Profile.preload(:profile_badges).find_by!(user: current_user)
+
+    given_profile_badge_ids = profile_params[:profile_badge_ids].reject(&:empty?).map(&:to_i)
+    assigned_profile_badge_ids = profile.profile_badges.map(&:id)
+    will_assign_profile_badge_ids = given_profile_badge_ids - assigned_profile_badge_ids
+    will_remove_profile_badge_ids = assigned_profile_badge_ids - given_profile_badge_ids
+
     ApplicationRecord.transaction do
       profile.update!(**profile_non_image_params)
       profile_image_params[:images]&.each do |image|
         profile.images.attach(image)
       end
+      profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
+      profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
     end
     if profile
       flash[:success] = "プロフィールを更新しました。"
@@ -43,11 +53,11 @@ class ProfilesController < ApplicationController
   end
 
   private def profile_params
-    params.require(:profile).permit(:name, :description, images: [])
+    params.require(:profile).permit(:name, :description, images: [], profile_badge_ids: [])
   end
 
   private def profile_non_image_params
-    profile_params.except(:images)
+    profile_params.except(:images, :profile_badge_ids)
   end
 
   private def profile_image_params

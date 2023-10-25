@@ -1,0 +1,24 @@
+<h2 class="font-bold text-xl mb-6">Assign profile_badge to user's profile</h2>
+<div class="pr-8 mb-8">
+  <h3 class="font-bold text-lg mb-8">target profile</h3>
+  <div class="flex flex-row items-center">
+    <%= image_tag @profile.images.first, class: "w-24 h-24 rounded-lg mr-4" %>
+    <p class="text-lg"><%= @profile.name %></p>
+  </div>
+</div>
+<div class="pr-8">
+  <div class="mb-8">
+    <%= form_with url: admin_profile_profile_badges_profiles_path(profile_id: @profile.id), method: :post do |f| %>
+      <%= f.collection_check_boxes :profile_badge_ids, @profile_badges, :id, :text do |b| %>
+        <div class="flex flex-row mb-3">
+          <%= b.label(class: "inline-block mr-2") { b.check_box(checked: @profile.profile_badges.exists?(id: b.value)) } %>
+          <div class="mb-4 border-2 rounded-3xl py-1 px-3 inline-block" style="background-color: <%= b.object.background_color_code %>; border-color: <%= b.object.border_color_code %>"><%= b.object.text %></div>
+        </div>
+      <% end %>
+      <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "back to profile badges list", admin_profile_badges_path, class: "underline" %>
+  </div>
+</div>

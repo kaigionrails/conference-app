@@ -1,0 +1,26 @@
+<h2 class="font-bold text-xl mb-8">Edit profile_badge</h2>
+<div class="pr-8" data-controller="admin--profile-badge">
+  <h3 class="text-lg font-bold mb-2">preview</h3>
+  <div data-admin--profile-badge-target="preview" class="mb-4 border-2 rounded-3xl py-1 px-3 inline-block" style="background-color: <%= @profile_badge.background_color_code %>; border-color: <%= @profile_badge.border_color_code %>"><%= @profile_badge.text %></div>
+  <div class="mb-8">
+    <%= form_with model: @profile_badge, url: admin_profile_badge_path(@profile_badge), method: :patch do |f| %>
+      <%= f.label :text, "badge text", class: "block text-lg font-bold mb-2" %>
+      <%= f.text_field :text, class: "block rounded mb-4 w-[40rem]", data: { action: "admin--profile-badge#updatePreview" } %>
+      <%= f.label :border_color_code, "border color code", class: "block text-lg font-bold mb-2" %>
+      <%= f.color_field :border_color_code, class: "block mb-4", data: { action: "admin--profile-badge#updatePreview" } %>
+      <%= f.label :background_color_code, "background color code", class: "block text-lg font-bold mb-2" %>
+      <%= f.color_field :background_color_code, class: "block mb-4", data: { action: "admin--profile-badge#updatePreview" } %>
+      <%= f.label :restricted, "restricted (自由に設定できないようにするか？)", class: "block text-lg font-bold mb-2" %>
+      <%= f.check_box :restricted, class: "block mb-4", data: { action: "admin--profile-badge#updatePreview" } %>
+      <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <% end %>
+  </div>
+  <div class="mb-8">
+    <%= form_with model: @profile_badge, url: admin_profile_badge_path(@profile_badge), method: :delete, data: { "action": "admin--profile-badge#confirmDelete" } do |f| %>
+      <%= f.submit "Delete this badge", class: "block border shadow bg-red-300 border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "back to profile badges list", admin_profile_badges_path, class: "underline" %>
+  </div>
+</div>

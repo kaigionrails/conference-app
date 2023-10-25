@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_042153) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_165948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_042153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
+  create_table "profile_badges", force: :cascade do |t|
+    t.string "text", null: false
+    t.string "border_color_code", null: false
+    t.string "background_color_code", null: false
+    t.boolean "restricted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_badges_profiles", id: false, force: :cascade do |t|
+    t.bigint "profile_badge_id", null: false
+    t.bigint "profile_id", null: false
+    t.index ["profile_id"], name: "index_profile_badges_profiles_on_profile_id"
   end
 
   create_table "profile_exchanges", force: :cascade do |t|

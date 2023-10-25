@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :new, :create, :edit, :update] do
     resources :profile_images, only: [:destroy]
   end
+  resources :profile_badges, only: [:new, :create]
 
   get "/@:username", to: "users#show", as: :user
 
@@ -38,8 +39,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    resources :profiles, only: [:show] do
+      resources :profile_badges_profiles, only: [:new, :create]
+    end
     resources :talks, only: [:index, :show, :edit, :update]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
+    resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   get "/admin", to: "admin#index"
 
