@@ -54,8 +54,10 @@
             <li class="flex flex-row items-center">
               <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg" do %>
                 <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
-                <p class="text-xl mr-4"><%= friend.profile.name %></p>
-                <p class="underline"><%= "@#{friend.name}" %></p>
+                <div class="w-full flex flex-row flex-wrap">
+                  <p class="text-xl mr-4"><%= friend.profile.name %></p>
+                  <p class="underline"><%= "@#{friend.name}" %></p>
+                </div>
               <% end %>
             </li>
           <% end %>
