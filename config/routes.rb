@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :talks, only: [:index, :show, :edit, :update]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
+    resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   get "/admin", to: "admin#index"
 
