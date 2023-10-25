@@ -2,7 +2,7 @@
   <% if !logged_in? & @token %>
     <div class="w-full bg-red-200 text-black text-center py-2">
       <p class="text-sm mb-1">ログインすると、QRコードで読みとった人の履歴を残すことができます</p>
-      <%= form_tag "/auth/github?return_to=/@#{@user.name}?token=#{@token}", method: :post, data: { turbo: false } do %>
+      <%= form_tag "/auth/github?return_to=#{user_path(username: @user.name, token: @token)}", method: :post, data: { turbo: false } do %>
         <%= submit_tag "GitHubアカウントでログインする", class: "underline cursor-pointer" %>
       <% end %>
     </div>

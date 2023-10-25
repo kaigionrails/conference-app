@@ -41,11 +41,17 @@ class Admin::AnnouncementsController < AdminController
   end
 
   private def push_notification_message(announcement)
-    # TODO: link to announcement
     {
       title: "運営からの新しいアナウンスがあります",
       body: announcement.title,
       icon: view_context.image_url("icons/2023/512.png"),
+      data: {
+        url: event_announcement_url(
+              event_slug: announcement.event.slug,
+              id: announcement.id,
+              host: Rails.configuration.application_url
+             ),
+      }
     }
   end
 end

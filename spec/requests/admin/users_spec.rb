@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Admin::Users", type: :request do
   before do
-    FactoryBot.create(:user, name: "sample_user_1")
-    FactoryBot.create(:user, name: "sample_user_2")
-    FactoryBot.create(:user, name: "sample_user_3")
+    FactoryBot.create(:user, :with_profile_image, name: "sample_user_1")
+    FactoryBot.create(:user, :with_profile_image, name: "sample_user_2")
+    FactoryBot.create(:user, :with_profile_image, name: "sample_user_3")
   end
 
   describe "GET /index" do

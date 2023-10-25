@@ -12,9 +12,11 @@ class UsersController < ApplicationController
         if Time.zone.at(token["exp"]) > Time.current # not expired
           issuer_user = User.find_by!(name: token["iss"])
           exchange_profile(issuer_user, current_user) if issuer_user == @user
+        else
+          flash.now[:alert] = "QRコードの期限が切れています。もう一度生成したものを読み取ってください。"
         end
       rescue JWT::DecodeError
-        # Do nothing
+        flash.now[:alert] = "QRコードの読み取りに失敗しました。もう一度読み取ってください。"
       end
     end
   end

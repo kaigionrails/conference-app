@@ -1,10 +1,21 @@
 <h2 class="font-bold text-xl mb-8">User <%= @user.name %> (id:<%= @user.id %>)</h2>
-<div>
+<div class="mb-8">
   <h3 class="font-bold text-lg mb-2">Id</h3>
   <p class="mb-4"><%= @user.id %></p>
   <h3 class="font-bold text-lg mb-2">Name</h3>
   <p class="mb-4"><%= @user.name %></p>
   <h3  class="font-bold text-lg mb-2">Role</h3>
   <p class="mb-4"><%= @user.role %></p>
-  <%= link_to "edit", edit_admin_user_path(@user), class: "underline" %>
+  <h3 class="font-bold text-lg mb-2">Profile</h3>
+  <h4 class="font-bold text-lg mb-2">Display name</h4>
+  <p class="mb-4"><%= @user.profile.name %></p>
+  <h4 class="font-bold text-lg mb-2">Description</h4>
+  <p class="mb-4"><%= @user.profile.description %></p>
+  <h4 class="font-bold text-lg mb-2">Images</h4>
+  <div class="flex flex-row flex-wrap">
+    <% @user.profile.images.each do |profile_image| %>
+      <%= image_tag profile_image, class: "w-28 h-28 rounded-lg mr-4"%>
+    <% end %>
+  </div>
 </div>
+<%= link_to "edit", edit_admin_user_path(@user), class: "underline" %>
