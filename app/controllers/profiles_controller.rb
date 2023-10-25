@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @profile = Profile.preload(:profile_badges).find_by!(user: current_user)
+    @profile = Profile.preload(:profile_badges).find_by(user: current_user)
     @friends = current_user.friends.preload(profile: { images_attachments: :blob })
   end
 
