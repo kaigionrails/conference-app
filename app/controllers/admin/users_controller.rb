@@ -4,7 +4,7 @@ class Admin::UsersController < AdminController
   end
 
   def show
-    @user = User.eager_load(:profile).find(params[:id])
+    @user = User.eager_load(profile: { images_attachments: :blob }).find(params[:id])
   end
 
   def edit
