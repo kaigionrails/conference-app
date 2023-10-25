@@ -6,6 +6,10 @@ module SpeakerDecorator
     sanitizer.sanitize(markdown).html_safe
   end
 
+  def avatar_image_url
+    avatar.attached? ? avatar : "https://www.gravatar.com/avatar/#{gravatar_hash}?s=100"
+  end
+
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end
