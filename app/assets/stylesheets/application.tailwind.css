@@ -17,4 +17,23 @@
   .aspect-square {
     aspect-ratio: 1/1;
   }
+
+  .trix-content h1 {
+    @apply text-xl
+  }
+
+  .trix-content a {
+    @apply underline
+  }
+
+  .trix-content ul, ol {
+    @apply pl-4
+  }
+  .trix-content ul li {
+    @apply list-disc
+  }
+
+  .trix-content ol li  {
+    @apply list-decimal
+  }
 }
