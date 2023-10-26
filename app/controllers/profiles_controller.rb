@@ -37,9 +37,7 @@ class ProfilesController < ApplicationController
 
     ApplicationRecord.transaction do
       profile.update!(**profile_non_image_params)
-      profile_image_params[:images]&.each do |image|
-        profile.images.attach(image)
-      end
+      profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
       profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
       profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
     end
