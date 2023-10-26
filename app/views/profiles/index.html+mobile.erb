@@ -52,7 +52,7 @@
         <ul class="mb-8">
           <% @friends.each do |friend| %>
             <li class="flex flex-row items-center">
-              <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg" do %>
+              <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
                 <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
                 <div class="w-full flex flex-row flex-wrap">
                   <p class="text-xl mr-4"><%= friend.profile.name %></p>
