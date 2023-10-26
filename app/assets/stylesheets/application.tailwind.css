@@ -12,4 +12,9 @@
   .markdown p {
     @apply leading-relaxed
   }
+
+  /* https://tailwindcss.com/docs/aspect-ratio */
+  .aspect-square {
+    aspect-ratio: 1/1;
+  }
 }
