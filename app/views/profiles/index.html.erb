@@ -3,7 +3,7 @@
     <div class="w-full flex flex-row mb-4">
       <div class="w-1/3 pr-2">
         <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user.name %>">
-          <%= image_tag @profile.images.first, class: "w-full rounded-lg mb-4", data: { "profiles-target": "profileImg" } %>
+          <%= image_tag @profile.images.first, class: "w-full rounded-lg mb-4 object-cover aspect-square", data: { "profiles-target": "profileImg" } %>
           <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
           <button
             data-action="click->profiles#showQrcode"
@@ -27,7 +27,7 @@
         </div>
         <div class="grid grid-cols-4 gap-3" data-controller="lightbox">
           <% @profile.images.each do |profile_image| %>
-            <%= image_tag profile_image, class: "w-full h-full object-cover rounded-lg" %>
+            <%= image_tag profile_image, class: "w-full object-cover rounded-lg aspect-square" %>
           <% end %>
         </div>
       </div>

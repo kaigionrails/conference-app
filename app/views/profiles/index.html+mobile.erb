@@ -3,7 +3,7 @@
   <% if @profile %>
     <div class="px-8">
       <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user.name %>">
-        <%= image_tag @profile.images.first.representation(resize_to_limit: [200, 200]), class: "rounded-lg m-auto w-full mb-3" %>
+        <%= image_tag @profile.images.first, class: "rounded-lg m-auto w-full mb-3 object-cover aspect-square" %>
         <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
         <button
           data-action="click->profiles#showQrcode"
@@ -27,7 +27,7 @@
     </div>
     <div class="grid grid-cols-6 gap-3 mb-4" data-controller="lightbox">
       <% @profile.images.each do |profile_image| %>
-        <%= image_tag profile_image, class: "rounded-md w-full h-full object-cover" %>
+        <%= image_tag profile_image, class: "rounded-md w-full object-cover aspect-square" %>
       <% end %>
     </div>
 

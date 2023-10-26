@@ -3,7 +3,7 @@
   <div class="flex mb-6 overflow-x-auto">
     <% @profile.images.each do |profile_image| %>
       <div class="mr-4 text-center">
-        <%= image_tag profile_image.representation(resize_to_limit: [200, 200]), class: "mb-2" %>
+        <%= image_tag profile_image, class: "mb-2 rounded-lg" %>
         <%= form_with url: profile_profile_image_path(@profile.id, profile_image.id), method: :delete do |f| %>
           <%= f.submit "この写真を削除する", class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
         <% end %>

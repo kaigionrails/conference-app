@@ -10,12 +10,12 @@
   <div class="w-full max-w-screen-xl pt-4 px-4 pb-6">
     <div class="w-full flex flex-col">
         <div class="px-8">
-          <%= image_tag @profile.images.first, class: "rounded-lg mb-3" %>
+          <%= image_tag @profile.images.first, class: "rounded-lg mb-3 object-cover aspect-square" %>
         </div>
         <div class="px-2 mb-4">
           <div class="grid grid-cols-6 gap-3" data-controller="lightbox">
             <% @profile.images.each do |image| %>
-              <%= image_tag image, class: "rounded-lg w-full h-full object-cover" %>
+              <%= image_tag image, class: "rounded-lg w-full object-cover aspect-square" %>
             <% end %>
           </div>
         </div>
