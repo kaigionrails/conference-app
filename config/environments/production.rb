@@ -96,4 +96,5 @@ Rails.application.configure do
   config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO")
 
   config.application_url = ENV.fetch("APPLICATION_URL")
+  config.hosts << URI.parse(ENV.fetch("APPLICATION_URL")).host # e.g. "https://example.com" -> "example.com"
 end
