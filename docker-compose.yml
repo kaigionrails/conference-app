@@ -72,7 +72,7 @@ services:
       - 16379:6379
   conference-app-yaichi:
     container_name: conference-app-yaichi
-    image: mtsmfm/yaichi:1.5.0
+    image: mtsmfm/yaichi:1.8.1
     ports:
       - 80:3000
     volumes:
