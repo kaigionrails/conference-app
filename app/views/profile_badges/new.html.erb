@@ -11,7 +11,7 @@
       <%= f.label :border_color_code, "枠線の色", class: "block text-lg font-bold mb-2" %>
       <%= f.color_field :border_color_code, class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
       <%= f.label :background_color_code, "背景の色", class: "block text-lg font-bold mb-2" %>
-      <%= f.color_field :background_color_code, class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
+      <%= f.color_field :background_color_code, value: "#ffffff", class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
       <div class="mb-8">
         <%= check_box_tag "save_and_assign", "save_and_assign", true, class: "w-4 h-4 rounded" do %>
         <% end %>
