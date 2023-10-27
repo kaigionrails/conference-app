@@ -24,7 +24,7 @@ services:
     depends_on:
       - conference-app-yaichi
       - conference-app-db
-      - conference-app-redis
+      - conference-app-worker
   conference-app-css:
     extends:
       service: conference-app
@@ -36,9 +36,10 @@ services:
         bundle install
         bin/rails tailwindcss:watch
   conference-app-worker:
-    extends:
-      service: conference-app
     container_name: conference-app-worker
+    env_file:
+      - .env
+      - envs/conference-app.env
     command:
       - sh
       - -c
@@ -48,6 +49,11 @@ services:
         fi
         bundle install
         bundle exec sidekiq --queue default
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - conference-app-vendor:/vendor
     depends_on:
       - conference-app-yaichi
       - conference-app-db
