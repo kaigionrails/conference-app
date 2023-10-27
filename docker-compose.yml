@@ -1,0 +1,83 @@
+version: "3.4"
+services:
+  conference-app:
+    container_name: conference-app
+    env_file:
+      - .env
+    command:
+      - sh
+      - -c
+      - |
+        if [ -e tmp/pids/server.pid ]; then
+          rm tmp/pids/server.pid
+        fi
+        bundle install
+        bin/rails s -p 3000 -b 0.0.0.0
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - conference-app-vendor:/vendor
+    stdin_open: true
+    tty: true
+    depends_on:
+      - conference-app-yaichi
+      - conference-app-db
+      - conference-app-redis
+  conference-app-css:
+    extends:
+      service: conference-app
+    container_name: conference-app-css
+    command:
+      - sh
+      - -c
+      - |
+        bundle install
+        bin/rails tailwindcss:watch
+  conference-app-worker:
+    extends:
+      service: conference-app
+    container_name: conference-app-worker
+    command:
+      - sh
+      - -c
+      - |
+        if [ -e tmp/pids/server.pid ]; then
+          rm tmp/pids/server.pid
+        fi
+        bundle install
+        bundle exec sidekiq --queue default
+    depends_on:
+      - conference-app-yaichi
+      - conference-app-db
+      - conference-app-redis
+    stdin_open: true
+    tty: true
+  conference-app-db:
+    container_name: conference-app-db
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - conference-app-postgres-data:/var/lib/postgresql/data
+    ports:
+      - 15432:5432
+  conference-app-redis:
+    container_name: conference-app-redis
+    image: redis:7.2-bookworm
+    volumes:
+      - conference-app-redis-data:/data
+    ports:
+      - 16379:6379
+  conference-app-yaichi:
+    container_name: conference-app-yaichi
+    image: mtsmfm/yaichi:1.5.0
+    ports:
+      - 80:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  conference-app-vendor:
+  conference-app-redis-data:
+  conference-app-postgres-data:
