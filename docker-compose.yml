@@ -18,7 +18,7 @@ services:
       context: .
     volumes:
       - .:/app
-      - conference-app-vendor:/vendor
+      - conference-app-bundle:/usr/local/bundle
     ports:
       - 3000:3000
     stdin_open: true
@@ -54,7 +54,7 @@ services:
       context: .
     volumes:
       - .:/app
-      - conference-app-vendor:/vendor
+      - conference-app-bundle:/usr/local/bundle
     depends_on:
       - conference-app-db
       - conference-app-redis
@@ -78,6 +78,6 @@ services:
     ports:
       - 16379:6379
 volumes:
-  conference-app-vendor:
+  conference-app-bundle:
   conference-app-redis-data:
   conference-app-postgres-data:
