@@ -1,6 +1,6 @@
 class Admin::AnnouncementsController < AdminController
   def index
-    @announcements = Announcement.all.page(params[:page]).per(50)
+    @announcements = Announcement.all.order(id: :desc).page(params[:page]).per(50)
   end
 
   def show
