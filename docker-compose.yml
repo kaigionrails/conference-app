@@ -55,7 +55,7 @@ services:
     tty: true
   conference-app-db:
     container_name: conference-app-db
-    image: postgres:14.4-alpine
+    image: postgres:15.4-bookworm
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
