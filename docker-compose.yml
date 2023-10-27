@@ -19,10 +19,11 @@ services:
     volumes:
       - .:/app
       - conference-app-vendor:/vendor
+    ports:
+      - 3000:3000
     stdin_open: true
     tty: true
     depends_on:
-      - conference-app-yaichi
       - conference-app-db
       - conference-app-worker
   conference-app-css:
@@ -55,7 +56,6 @@ services:
       - .:/app
       - conference-app-vendor:/vendor
     depends_on:
-      - conference-app-yaichi
       - conference-app-db
       - conference-app-redis
     stdin_open: true
@@ -77,13 +77,6 @@ services:
       - conference-app-redis-data:/data
     ports:
       - 16379:6379
-  conference-app-yaichi:
-    container_name: conference-app-yaichi
-    image: mtsmfm/yaichi:1.8.1
-    ports:
-      - 80:3000
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   conference-app-vendor:
   conference-app-redis-data:
