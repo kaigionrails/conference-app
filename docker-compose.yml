@@ -4,6 +4,7 @@ services:
     container_name: conference-app
     env_file:
       - .env
+      - envs/conference-app.env
     command:
       - sh
       - -c
