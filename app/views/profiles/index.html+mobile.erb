@@ -56,7 +56,7 @@
                 <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
                 <div class="w-full flex flex-row flex-wrap">
                   <p class="text-xl mr-4"><%= friend.profile.name %></p>
-                  <p class="underline"><%= "@#{friend.name}" %></p>
+                  <p class="underline underline-offset-2"><%= "@#{friend.name}" %></p>
                 </div>
               <% end %>
             </li>
