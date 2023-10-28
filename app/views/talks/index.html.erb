@@ -1,4 +1,21 @@
 <div class="w-full max-w-screen-xl m-auto pt-4 px-4">
+  <section class="mb-6">
+    <h2 class="font-bold text-2xl mb-3">TOC</h2>
+    <% @talks.map(&:start_at).uniq.group_by(&:to_date).each do |date, slots| %>
+      <details class="mb-3">
+        <summary>
+          <span class="font-bold text-xl mb-3 cursor-pointer"><%= date.to_s %></span>
+        </summary>
+        <ol class="list-disc pl-8">
+          <% slots.each do |slot| %>
+            <li>
+              <%= link_to time_with_zone_to_header(slot), "#" + time_with_zone_to_anchor(slot), class: "underline cursor-pointer" %>
+            </li>
+          <% end %>
+        </ol>
+      </details>
+    <% end %>
+  </section>
   <% @talks.group_by(&:start_at).each do |slot, talks| %>
     <section class="mb-6">
       <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= time_with_zone_to_header(slot) %></h2>
