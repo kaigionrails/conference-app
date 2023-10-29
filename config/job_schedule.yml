@@ -1,4 +1,4 @@
-send_talk_reminder_pus_notification_job:
-  cron: "*/3 * * * *"
-  class: "SendTalkReminderPushNotificationJob"
-  queue: default
+# send_talk_reminder_pus_notification_job:
+#   cron: "*/3 * * * *"
+#   class: "SendTalkReminderPushNotificationJob"
+#   queue: default
