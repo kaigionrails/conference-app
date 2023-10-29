@@ -4,7 +4,7 @@
     <% @talks.map(&:start_at).uniq.group_by(&:to_date).each do |date, slots| %>
       <details class="mb-3">
         <summary>
-          <span class="font-bold text-xl mb-3 cursor-pointer"><%= date.to_s %></span>
+          <span class="font-bold text-xl mb-3 cursor-pointer"><%= date.in_time_zone("Tokyo").strftime("%d日") %></span>
         </summary>
         <ol class="list-disc pl-8">
           <% slots.each do |slot| %>
