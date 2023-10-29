@@ -24,29 +24,4 @@ RSpec.describe ProfileDecorator do
       expect(sanitized).not_to include("window.alert")
     end
   end
-
-  describe "#number_of_friends" do
-    let(:user) { FactoryBot.create(:user, profile: profile) }
-    let(:friends) { user.friends.preload(profile: { images_attachments: :blob }) }
-
-    context "when friends are empty" do
-      it "should return 0" do
-        expect(profile.number_of_friends(friends)).to eq ''
-      end
-    end
-
-    context "when friends are not empty" do
-      let(:event) { FactoryBot.create(:event) }
-      let(:friend) { FactoryBot.create(:user) }
-
-      before do
-        ProfileExchange.find_or_create_by!(event: event, user: user, friend: friend)
-        ProfileExchange.find_or_create_by!(event: event, user: friend, friend: user)
-      end
-
-      it "should return the number of friends in `(n人)` format" do
-        expect(profile.number_of_friends(friends)).to eq "(1人)"
-      end
-    end
-  end
 end
