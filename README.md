@@ -12,7 +12,13 @@ It's built with Ruby on Rails.
 
 ## Features
 
-No features implemented yet! Currently planned features are:
+* Talk list
+* Announcements
+* Profile
+* Push nortification
+
+
+## Planned features 
 
 * Anonymous Q&A for each talk
 * Forum for each talk and the whole event
