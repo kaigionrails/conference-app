@@ -41,6 +41,17 @@
       <p class="mb-2">Conference Appには、あなたのプロフィールを登録することができます。</p>
       <p class="mb-2">登録したプロフィールは、QRコードで他の参加者の方と交換することができます。SNSアカウントの共有などでご活用ください。</p>
     </section>
+    <section class="mb-6">
+      <h3 class="font-bold text-2xl mb-2">コントリビューター</h3>
+      <p class="mb-2">conference-appは以下のコントリビューターによって開発されています（コミット数順）。</p>
+      <ul>
+        <% JSON.load_file('contributors.json').each do |contributor| %>
+          <li>
+            <%= link_to contributor['login'], contributor['html_url'], class: 'underline' %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
   </section>
 </div>
 
