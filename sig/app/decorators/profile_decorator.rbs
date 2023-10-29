@@ -1,3 +1,0 @@
-module ProfileDecorator
-  def number_of_friends: (::User::ActiveRecord_AssociationRelation) -> ::String
-end
