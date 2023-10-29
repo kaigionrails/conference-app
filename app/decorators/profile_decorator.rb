@@ -6,6 +6,10 @@ module ProfileDecorator
     sanitizer.sanitize(markdown).html_safe
   end
 
+  def number_of_friends(friends)
+    friends.present? ? "(#{friends.size}人)" : ''
+  end
+
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end
