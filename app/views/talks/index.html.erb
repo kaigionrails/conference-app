@@ -9,7 +9,7 @@
         <ol class="list-disc pl-8">
           <% slots.each do |slot| %>
             <li>
-              <%= link_to time_with_zone_to_header(slot), "#" + time_with_zone_to_anchor(slot), class: "underline cursor-pointer" %>
+              <%= link_to slot.in_time_zone("Tokyo").strftime("%H:%M ～"), "#" + time_with_zone_to_anchor(slot), class: "underline cursor-pointer" %>
             </li>
           <% end %>
         </ol>
@@ -18,7 +18,7 @@
   </section>
   <% @talks.group_by(&:start_at).each do |slot, talks| %>
     <section class="mb-6">
-      <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= time_with_zone_to_header(slot) %></h2>
+      <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime("%d日 %H:%M ～") %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
         <% talks.each do |talk| %>
           <div class="w-full md:w-[48%] border border-white shadow-sm shadow-gray-400 rounded-lg mb-4 p-4">
