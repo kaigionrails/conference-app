@@ -183,7 +183,30 @@ class User < ::ApplicationRecord
     def clear_updated_at_change: () -> void
   end
   include GeneratedAttributeMethods
-
+  def webpush_subscriptions: () -> WebpushSubscription::ActiveRecord_Associations_CollectionProxy
+  def webpush_subscriptions=: (WebpushSubscription::ActiveRecord_Associations_CollectionProxy | Array[WebpushSubscription]) -> (WebpushSubscription::ActiveRecord_Associations_CollectionProxy | Array[WebpushSubscription])
+  def webpush_subscription_ids: () -> Array[Integer]
+  def webpush_subscription_ids=: (Array[Integer]) -> Array[Integer]
+  def unread_announcements: () -> UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy
+  def unread_announcements=: (UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy | Array[UnreadAnnouncement]) -> (UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy | Array[UnreadAnnouncement])
+  def unread_announcement_ids: () -> Array[Integer]
+  def unread_announcement_ids=: (Array[Integer]) -> Array[Integer]
+  def talk_bookmarks: () -> TalkBookmark::ActiveRecord_Associations_CollectionProxy
+  def talk_bookmarks=: (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark]) -> (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark])
+  def talk_bookmark_ids: () -> Array[Integer]
+  def talk_bookmark_ids=: (Array[Integer]) -> Array[Integer]
+  def profile_exchanges: () -> ProfileExchange::ActiveRecord_Associations_CollectionProxy
+  def profile_exchanges=: (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange]) -> (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange])
+  def profile_exchange_ids: () -> Array[Integer]
+  def profile_exchange_ids=: (Array[Integer]) -> Array[Integer]
+  def friends: () -> User::ActiveRecord_Associations_CollectionProxy
+  def friends=: (User::ActiveRecord_Associations_CollectionProxy | Array[User]) -> (User::ActiveRecord_Associations_CollectionProxy | Array[User])
+  def friend_ids: () -> Array[Integer]
+  def friend_ids=: (Array[Integer]) -> Array[Integer]
+  def talk_reminders: () -> TalkReminder::ActiveRecord_Associations_CollectionProxy
+  def talk_reminders=: (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder]) -> (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder])
+  def talk_reminder_ids: () -> Array[Integer]
+  def talk_reminder_ids=: (Array[Integer]) -> Array[Integer]
   def authentication_provider_github: () -> AuthenticationProviderGithub?
   def authentication_provider_github=: (AuthenticationProviderGithub?) -> AuthenticationProviderGithub?
   def build_authentication_provider_github: (untyped) -> AuthenticationProviderGithub

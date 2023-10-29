@@ -1,0 +1,276 @@
+class ProfileBadge < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ProfileBadge, ActiveRecord_Relation, Integer]
+
+  module GeneratedAttributeMethods
+    def id: () -> Integer
+
+    def id=: (Integer) -> Integer
+
+    def id?: () -> bool
+
+    def id_changed?: () -> bool
+
+    def id_change: () -> [ Integer?, Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> Integer?
+
+    def id_previously_changed?: () -> bool
+
+    def id_previous_change: () -> Array[Integer?]?
+
+    def id_previously_was: () -> Integer?
+
+    def id_before_last_save: () -> Integer?
+
+    def id_change_to_be_saved: () -> Array[Integer?]?
+
+    def id_in_database: () -> Integer?
+
+    def saved_change_to_id: () -> Array[Integer?]?
+
+    def saved_change_to_id?: () -> bool
+
+    def will_save_change_to_id?: () -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def text: () -> String
+
+    def text=: (String) -> String
+
+    def text?: () -> bool
+
+    def text_changed?: () -> bool
+
+    def text_change: () -> [ String?, String? ]
+
+    def text_will_change!: () -> void
+
+    def text_was: () -> String?
+
+    def text_previously_changed?: () -> bool
+
+    def text_previous_change: () -> Array[String?]?
+
+    def text_previously_was: () -> String?
+
+    def text_before_last_save: () -> String?
+
+    def text_change_to_be_saved: () -> Array[String?]?
+
+    def text_in_database: () -> String?
+
+    def saved_change_to_text: () -> Array[String?]?
+
+    def saved_change_to_text?: () -> bool
+
+    def will_save_change_to_text?: () -> bool
+
+    def restore_text!: () -> void
+
+    def clear_text_change: () -> void
+
+    def border_color_code: () -> String
+
+    def border_color_code=: (String) -> String
+
+    def border_color_code?: () -> bool
+
+    def border_color_code_changed?: () -> bool
+
+    def border_color_code_change: () -> [ String?, String? ]
+
+    def border_color_code_will_change!: () -> void
+
+    def border_color_code_was: () -> String?
+
+    def border_color_code_previously_changed?: () -> bool
+
+    def border_color_code_previous_change: () -> Array[String?]?
+
+    def border_color_code_previously_was: () -> String?
+
+    def border_color_code_before_last_save: () -> String?
+
+    def border_color_code_change_to_be_saved: () -> Array[String?]?
+
+    def border_color_code_in_database: () -> String?
+
+    def saved_change_to_border_color_code: () -> Array[String?]?
+
+    def saved_change_to_border_color_code?: () -> bool
+
+    def will_save_change_to_border_color_code?: () -> bool
+
+    def restore_border_color_code!: () -> void
+
+    def clear_border_color_code_change: () -> void
+
+    def background_color_code: () -> String
+
+    def background_color_code=: (String) -> String
+
+    def background_color_code?: () -> bool
+
+    def background_color_code_changed?: () -> bool
+
+    def background_color_code_change: () -> [ String?, String? ]
+
+    def background_color_code_will_change!: () -> void
+
+    def background_color_code_was: () -> String?
+
+    def background_color_code_previously_changed?: () -> bool
+
+    def background_color_code_previous_change: () -> Array[String?]?
+
+    def background_color_code_previously_was: () -> String?
+
+    def background_color_code_before_last_save: () -> String?
+
+    def background_color_code_change_to_be_saved: () -> Array[String?]?
+
+    def background_color_code_in_database: () -> String?
+
+    def saved_change_to_background_color_code: () -> Array[String?]?
+
+    def saved_change_to_background_color_code?: () -> bool
+
+    def will_save_change_to_background_color_code?: () -> bool
+
+    def restore_background_color_code!: () -> void
+
+    def clear_background_color_code_change: () -> void
+
+    def restricted: () -> bool
+
+    def restricted=: (bool) -> bool
+
+    def restricted?: () -> bool
+
+    def restricted_changed?: () -> bool
+
+    def restricted_change: () -> [ bool?, bool? ]
+
+    def restricted_will_change!: () -> void
+
+    def restricted_was: () -> bool?
+
+    def restricted_previously_changed?: () -> bool
+
+    def restricted_previous_change: () -> Array[bool?]?
+
+    def restricted_previously_was: () -> bool?
+
+    def restricted_before_last_save: () -> bool?
+
+    def restricted_change_to_be_saved: () -> Array[bool?]?
+
+    def restricted_in_database: () -> bool?
+
+    def saved_change_to_restricted: () -> Array[bool?]?
+
+    def saved_change_to_restricted?: () -> bool
+
+    def will_save_change_to_restricted?: () -> bool
+
+    def restore_restricted!: () -> void
+
+    def clear_restricted_change: () -> void
+
+    def created_at: () -> ActiveSupport::TimeWithZone
+
+    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: () -> bool
+
+    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: () -> bool
+
+    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: () -> bool
+
+    def will_save_change_to_created_at?: () -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def updated_at: () -> ActiveSupport::TimeWithZone
+
+    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: () -> bool
+
+    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: () -> bool
+
+    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: () -> bool
+
+    def will_save_change_to_updated_at?: () -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+  end
+  include GeneratedAttributeMethods
+
+  module GeneratedAssociationMethods
+  end
+  include GeneratedAssociationMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[ProfileBadge, Integer]
+    include Enumerable[ProfileBadge]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[ProfileBadge, Integer]
+  end
+end

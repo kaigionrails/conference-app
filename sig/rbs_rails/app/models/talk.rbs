@@ -327,6 +327,14 @@ class Talk < ::ApplicationRecord
     def clear_track_change: () -> void
   end
   include GeneratedAttributeMethods
+  def talk_bookmarks: () -> TalkBookmark::ActiveRecord_Associations_CollectionProxy
+  def talk_bookmarks=: (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark]) -> (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark])
+  def talk_bookmark_ids: () -> Array[Integer]
+  def talk_bookmark_ids=: (Array[Integer]) -> Array[Integer]
+  def talk_reminders: () -> TalkReminder::ActiveRecord_Associations_CollectionProxy
+  def talk_reminders=: (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder]) -> (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder])
+  def talk_reminder_ids: () -> Array[Integer]
+  def talk_reminder_ids=: (Array[Integer]) -> Array[Integer]
 
   def event: () -> Event
   def event=: (Event?) -> Event?

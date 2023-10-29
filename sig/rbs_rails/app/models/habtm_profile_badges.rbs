@@ -1,0 +1,110 @@
+class Profile < ::ApplicationRecord
+  class HABTM_ProfileBadges < ::ActiveRecord::Base
+    extend _ActiveRecord_Relation_ClassMethods[Profile::HABTM_ProfileBadges, ActiveRecord_Relation, top]
+
+    module GeneratedAttributeMethods
+      def profile_badge_id: () -> Integer
+
+      def profile_badge_id=: (Integer) -> Integer
+
+      def profile_badge_id?: () -> bool
+
+      def profile_badge_id_changed?: () -> bool
+
+      def profile_badge_id_change: () -> [ Integer?, Integer? ]
+
+      def profile_badge_id_will_change!: () -> void
+
+      def profile_badge_id_was: () -> Integer?
+
+      def profile_badge_id_previously_changed?: () -> bool
+
+      def profile_badge_id_previous_change: () -> Array[Integer?]?
+
+      def profile_badge_id_previously_was: () -> Integer?
+
+      def profile_badge_id_before_last_save: () -> Integer?
+
+      def profile_badge_id_change_to_be_saved: () -> Array[Integer?]?
+
+      def profile_badge_id_in_database: () -> Integer?
+
+      def saved_change_to_profile_badge_id: () -> Array[Integer?]?
+
+      def saved_change_to_profile_badge_id?: () -> bool
+
+      def will_save_change_to_profile_badge_id?: () -> bool
+
+      def restore_profile_badge_id!: () -> void
+
+      def clear_profile_badge_id_change: () -> void
+
+      def profile_id: () -> Integer
+
+      def profile_id=: (Integer) -> Integer
+
+      def profile_id?: () -> bool
+
+      def profile_id_changed?: () -> bool
+
+      def profile_id_change: () -> [ Integer?, Integer? ]
+
+      def profile_id_will_change!: () -> void
+
+      def profile_id_was: () -> Integer?
+
+      def profile_id_previously_changed?: () -> bool
+
+      def profile_id_previous_change: () -> Array[Integer?]?
+
+      def profile_id_previously_was: () -> Integer?
+
+      def profile_id_before_last_save: () -> Integer?
+
+      def profile_id_change_to_be_saved: () -> Array[Integer?]?
+
+      def profile_id_in_database: () -> Integer?
+
+      def saved_change_to_profile_id: () -> Array[Integer?]?
+
+      def saved_change_to_profile_id?: () -> bool
+
+      def will_save_change_to_profile_id?: () -> bool
+
+      def restore_profile_id!: () -> void
+
+      def clear_profile_id_change: () -> void
+    end
+    include GeneratedAttributeMethods
+
+    def left_side: () -> Profile?
+    def left_side=: (Profile?) -> Profile?
+    def reload_left_side: () -> Profile?
+    def build_left_side: (untyped) -> Profile
+    def create_left_side: (untyped) -> Profile
+    def create_left_side!: (untyped) -> Profile
+    def profile_badge: () -> ProfileBadge?
+    def profile_badge=: (ProfileBadge?) -> ProfileBadge?
+    def reload_profile_badge: () -> ProfileBadge?
+    def build_profile_badge: (untyped) -> ProfileBadge
+    def create_profile_badge: (untyped) -> ProfileBadge
+    def create_profile_badge!: (untyped) -> ProfileBadge
+    module GeneratedAssociationMethods
+    end
+    include GeneratedAssociationMethods
+
+    module GeneratedRelationMethods
+    end
+
+    class ActiveRecord_Relation < ::ActiveRecord::Relation
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[Profile::HABTM_ProfileBadges, top]
+      include Enumerable[Profile::HABTM_ProfileBadges]
+    end
+
+    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[Profile::HABTM_ProfileBadges, top]
+    end
+  end
+end
