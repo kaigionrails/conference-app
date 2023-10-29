@@ -20,6 +20,11 @@
 
   <body class="bg-[#84240f] w-full flex flex-col h-[100dvh]">
     <%= render partial: "layouts/header_nav" %>
+    <% flash.each do |message_type, message| %>
+      <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
+        <%= message %>
+      </div>
+    <% end %>
     <main class="w-full mx-auto pb-2 flex text-white flex-grow overflow-scroll">
       <%= yield %>
     </main>
