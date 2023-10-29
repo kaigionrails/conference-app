@@ -16,7 +16,6 @@ No features implemented yet! Currently planned features are:
 
 * Anonymous Q&A for each talk
 * Forum for each talk and the whole event
-* Announcement from organizers with push notification
 
 ## Stack
 
