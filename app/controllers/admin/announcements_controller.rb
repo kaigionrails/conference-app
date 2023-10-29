@@ -24,14 +24,14 @@ class Admin::AnnouncementsController < AdminController
   def update
     announcement = Announcement.find(params[:id])
     if announcement.update(**announcement_params)
-      flash.now[:success] = "Update succeeded"
+      flash[:success] = "Update succeeded"
       if announcement.previous_changes.has_key?("status") && announcement.previous_changes["status"] == ["draft", "published"]
         BroadcastAnnouncementJob.perform_later(announcement.id)
         SendAnnouncementPushNotificationJob.perform_later(announcement.id, push_notification_message(announcement))
       end
       redirect_to admin_announcement_path(announcement)
     else
-      flash.now[:alert] = "Update failed"
+      flash[:alert] = "Update failed"
       redirect_to edit_admin_announcement_path(announcement)
     end
   end
