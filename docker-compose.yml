@@ -26,16 +26,25 @@ services:
     depends_on:
       - conference-app-db
       - conference-app-worker
+      - conference-app-css
   conference-app-css:
-    extends:
-      service: conference-app
     container_name: conference-app-css
+    env_file:
+      - .env
+      - envs/conference-app.env
     command:
       - sh
       - -c
       - |
         bundle install
         bin/rails tailwindcss:watch
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - conference-app-bundle:/usr/local/bundle
+    stdin_open: true
+    tty: true
   conference-app-worker:
     container_name: conference-app-worker
     env_file:
