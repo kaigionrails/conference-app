@@ -259,6 +259,14 @@ class Event < ::ApplicationRecord
   def talks=: (Talk::ActiveRecord_Associations_CollectionProxy | Array[Talk]) -> (Talk::ActiveRecord_Associations_CollectionProxy | Array[Talk])
   def talk_ids: () -> Array[Integer]
   def talk_ids=: (Array[Integer]) -> Array[Integer]
+  def announcements: () -> Announcement::ActiveRecord_Associations_CollectionProxy
+  def announcements=: (Announcement::ActiveRecord_Associations_CollectionProxy | Array[Announcement]) -> (Announcement::ActiveRecord_Associations_CollectionProxy | Array[Announcement])
+  def announcement_ids: () -> Array[Integer]
+  def announcement_ids=: (Array[Integer]) -> Array[Integer]
+  def profile_exchanges: () -> ProfileExchange::ActiveRecord_Associations_CollectionProxy
+  def profile_exchanges=: (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange]) -> (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange])
+  def profile_exchange_ids: () -> Array[Integer]
+  def profile_exchange_ids=: (Array[Integer]) -> Array[Integer]
 
   module GeneratedAssociationMethods
   end

@@ -292,11 +292,35 @@ class Speaker < ::ApplicationRecord
   end
   include GeneratedAttributeMethods
 
+  def avatar_attachment: () -> ActiveStorage::Attachment?
+  def avatar_attachment=: (ActiveStorage::Attachment?) -> ActiveStorage::Attachment?
+  def build_avatar_attachment: (untyped) -> ActiveStorage::Attachment
+  def create_avatar_attachment: (untyped) -> ActiveStorage::Attachment
+  def create_avatar_attachment!: (untyped) -> ActiveStorage::Attachment
+  def reload_avatar_attachment: () -> ActiveStorage::Attachment?
+  def avatar_blob: () -> ActiveStorage::Blob?
+  def avatar_blob=: (ActiveStorage::Blob?) -> ActiveStorage::Blob?
+  def build_avatar_blob: (untyped) -> ActiveStorage::Blob
+  def create_avatar_blob: (untyped) -> ActiveStorage::Blob
+  def create_avatar_blob!: (untyped) -> ActiveStorage::Blob
+  def reload_avatar_blob: () -> ActiveStorage::Blob?
+
   module GeneratedAssociationMethods
+    def avatar: () -> ActiveStorage::Attached::One
+
+    def avatar=: (ActionDispatch::Http::UploadedFile) -> ActionDispatch::Http::UploadedFile
+               | (Rack::Test::UploadedFile) -> Rack::Test::UploadedFile
+               | (ActiveStorage::Blob) -> ActiveStorage::Blob
+               | (String) -> String
+               | ({ io: IO, filename: String, content_type: String? }) -> { io: IO, filename: String, content_type: String? }
+               | (nil) -> nil
   end
   include GeneratedAssociationMethods
 
+  def self.with_attached_avatar: () -> ActiveRecord_Relation
+
   module GeneratedRelationMethods
+    def with_attached_avatar: () -> ActiveRecord_Relation
   end
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation

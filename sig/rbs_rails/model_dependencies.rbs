@@ -1,16 +1,34 @@
 class ApplicationRecord < ActiveRecord::Base
 end
+module ActionText
+end
+class ActionText::Record < ActiveRecord::Base
+end
+class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
 module ActiveStorage
 end
 class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class TalkBookmark::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ProfileExchange::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class TalkReminder::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class Talk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class Announcement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class ActiveRecord::Associations::CollectionProxy < ActiveRecord::Relation
 end
