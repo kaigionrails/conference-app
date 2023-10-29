@@ -10,4 +10,15 @@ module ApplicationHelper
   def application_url
     Rails.configuration.application_url
   end
+
+  def message_type_style(message_type)
+    case message_type
+    when 'success'
+      'bg-[#d4edda]'
+    when 'alert'
+      'bg-[#f8d7da]'
+    else
+      ''
+    end
+  end
 end
