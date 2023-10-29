@@ -19,9 +19,9 @@ class ProfileBadgesController < ApplicationController
       if params[:save_and_assign]
         current_user.profile.profile_badges << profile_badge
       end
-      flash.now[:success] = "保存に成功しました"
+      flash[:success] = "保存に成功しました"
     else
-      flash.now[:alert] = "保存に失敗しました"
+      flash[:alert] = "保存に失敗しました"
     end
     redirect_to new_profile_badge_path
   end

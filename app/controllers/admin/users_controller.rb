@@ -14,10 +14,10 @@ class Admin::UsersController < AdminController
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      flash.now[:success] = "Update succeeded"
+      flash[:success] = "Update succeeded"
       redirect_to admin_user_path(user)
     else
-      flash.now[:alert] = "Update failed"
+      flash[:alert] = "Update failed"
       redirect_to edit_admin_user_path(user)
     end
   end

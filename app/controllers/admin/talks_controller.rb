@@ -18,10 +18,10 @@ class Admin::TalksController < AdminController
     start_at_time = update_params.delete(:start_at_time)
     start_at_with_zone = Time.zone.parse("#{start_at_date} #{start_at_time} +0900")
     if talk.update(**update_params, start_at: start_at_with_zone)
-      flash.now[:success] = "Update succeeded"
+      flash[:success] = "Update succeeded"
       redirect_to admin_talk_path(talk)
     else
-      flash.now[:alert] = "Update failed"
+      flash[:alert] = "Update failed"
       redirect_to edit_admin_talk_path(talk)
     end
   end
