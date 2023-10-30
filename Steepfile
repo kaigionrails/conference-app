@@ -3,5 +3,7 @@
 target :lib do
   signature "sig"
 
-  check "app/models/**/*.rb"
+  check "app/models/"
+
+  library "json"
 end
