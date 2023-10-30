@@ -1,6 +1,4 @@
 class Talk < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Talk, ActiveRecord_Relation, Integer]
-
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -326,6 +324,25 @@ class Talk < ::ApplicationRecord
 
     def clear_track_change: () -> void
   end
+
+  module GeneratedAssociationMethods
+  end
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Talk, Integer]
+    include Enumerable[Talk]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Talk, Integer]
+  end
+  extend _ActiveRecord_Relation_ClassMethods[Talk, ActiveRecord_Relation, Integer]
+
   include GeneratedAttributeMethods
   def talk_bookmarks: () -> TalkBookmark::ActiveRecord_Associations_CollectionProxy
   def talk_bookmarks=: (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark]) -> (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark])
@@ -342,21 +359,6 @@ class Talk < ::ApplicationRecord
   def build_event: (untyped) -> Event
   def create_event: (untyped) -> Event
   def create_event!: (untyped) -> Event
-  module GeneratedAssociationMethods
-  end
+
   include GeneratedAssociationMethods
-
-  module GeneratedRelationMethods
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Talk, Integer]
-    include Enumerable[Talk]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Talk, Integer]
-  end
 end

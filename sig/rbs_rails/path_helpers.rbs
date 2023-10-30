@@ -1,0 +1,305 @@
+interface _RbsRailsPathHelpers
+  def rails_mailers_path: (*untyped) -> String
+
+  def rails_info_properties_path: (*untyped) -> String
+
+  def rails_info_routes_path: (*untyped) -> String
+
+  def rails_info_path: (*untyped) -> String
+
+  def admin_sidekiq_web_path: (*untyped) -> String
+
+  def root_path: (*untyped) -> String
+
+  def login_path: (*untyped) -> String
+
+  def logout_path: (*untyped) -> String
+
+  def service_worker_path: (*untyped) -> String
+
+  def pwa_manifest_path: (*untyped) -> String
+
+  def setting_path: (*untyped) -> String
+
+  def webpush_subscription_path: (*untyped) -> String
+
+  def sample_webpush_notifications_path: (*untyped) -> String
+
+  def profile_profile_image_path: (*untyped) -> String
+
+  def profiles_path: (*untyped) -> String
+
+  def new_profile_path: (*untyped) -> String
+
+  def edit_profile_path: (*untyped) -> String
+
+  def profile_path: (*untyped) -> String
+
+  def profile_badges_path: (*untyped) -> String
+
+  def new_profile_badge_path: (*untyped) -> String
+
+  def user_path: (*untyped) -> String
+
+  def talk_bookmarks_path: (*untyped) -> String
+
+  def talk_bookmark_path: (*untyped) -> String
+
+  def unread_announcement_path: (*untyped) -> String
+
+  def about_path: (*untyped) -> String
+
+  def admin_users_path: (*untyped) -> String
+
+  def edit_admin_user_path: (*untyped) -> String
+
+  def admin_user_path: (*untyped) -> String
+
+  def admin_profile_profile_badges_profiles_path: (*untyped) -> String
+
+  def new_admin_profile_profile_badges_profile_path: (*untyped) -> String
+
+  def admin_profile_path: (*untyped) -> String
+
+  def admin_talks_path: (*untyped) -> String
+
+  def edit_admin_talk_path: (*untyped) -> String
+
+  def admin_talk_path: (*untyped) -> String
+
+  def admin_announcements_path: (*untyped) -> String
+
+  def new_admin_announcement_path: (*untyped) -> String
+
+  def edit_admin_announcement_path: (*untyped) -> String
+
+  def admin_announcement_path: (*untyped) -> String
+
+  def admin_profile_badges_path: (*untyped) -> String
+
+  def new_admin_profile_badge_path: (*untyped) -> String
+
+  def edit_admin_profile_badge_path: (*untyped) -> String
+
+  def admin_profile_badge_path: (*untyped) -> String
+
+  def admin_path: (*untyped) -> String
+
+  def event_path: (*untyped) -> String
+
+  def event_talks_path: (*untyped) -> String
+
+  def event_talk_path: (*untyped) -> String
+
+  def event_announcements_path: (*untyped) -> String
+
+  def event_announcement_path: (*untyped) -> String
+
+  def turbo_recede_historical_location_path: (*untyped) -> String
+
+  def turbo_resume_historical_location_path: (*untyped) -> String
+
+  def turbo_refresh_historical_location_path: (*untyped) -> String
+
+  def rails_postmark_inbound_emails_path: (*untyped) -> String
+
+  def rails_relay_inbound_emails_path: (*untyped) -> String
+
+  def rails_sendgrid_inbound_emails_path: (*untyped) -> String
+
+  def rails_mandrill_inbound_health_check_path: (*untyped) -> String
+
+  def rails_mandrill_inbound_emails_path: (*untyped) -> String
+
+  def rails_mailgun_inbound_emails_path: (*untyped) -> String
+
+  def rails_conductor_inbound_emails_path: (*untyped) -> String
+
+  def new_rails_conductor_inbound_email_path: (*untyped) -> String
+
+  def edit_rails_conductor_inbound_email_path: (*untyped) -> String
+
+  def rails_conductor_inbound_email_path: (*untyped) -> String
+
+  def new_rails_conductor_inbound_email_source_path: (*untyped) -> String
+
+  def rails_conductor_inbound_email_sources_path: (*untyped) -> String
+
+  def rails_conductor_inbound_email_reroute_path: (*untyped) -> String
+
+  def rails_conductor_inbound_email_incinerate_path: (*untyped) -> String
+
+  def rails_service_blob_path: (*untyped) -> String
+
+  def rails_service_blob_proxy_path: (*untyped) -> String
+
+  def rails_blob_representation_path: (*untyped) -> String
+
+  def rails_blob_representation_proxy_path: (*untyped) -> String
+
+  def rails_disk_service_path: (*untyped) -> String
+
+  def update_rails_disk_service_path: (*untyped) -> String
+
+  def rails_direct_uploads_path: (*untyped) -> String
+
+  def rails_representation_path: (*untyped) -> String
+
+  def rails_blob_path: (*untyped) -> String
+
+  def rails_storage_proxy_path: (*untyped) -> String
+
+  def rails_storage_redirect_path: (*untyped) -> String
+
+  def rails_mailers_url: (*untyped) -> String
+
+  def rails_info_properties_url: (*untyped) -> String
+
+  def rails_info_routes_url: (*untyped) -> String
+
+  def rails_info_url: (*untyped) -> String
+
+  def admin_sidekiq_web_url: (*untyped) -> String
+
+  def root_url: (*untyped) -> String
+
+  def login_url: (*untyped) -> String
+
+  def logout_url: (*untyped) -> String
+
+  def service_worker_url: (*untyped) -> String
+
+  def pwa_manifest_url: (*untyped) -> String
+
+  def setting_url: (*untyped) -> String
+
+  def webpush_subscription_url: (*untyped) -> String
+
+  def sample_webpush_notifications_url: (*untyped) -> String
+
+  def profile_profile_image_url: (*untyped) -> String
+
+  def profiles_url: (*untyped) -> String
+
+  def new_profile_url: (*untyped) -> String
+
+  def edit_profile_url: (*untyped) -> String
+
+  def profile_url: (*untyped) -> String
+
+  def profile_badges_url: (*untyped) -> String
+
+  def new_profile_badge_url: (*untyped) -> String
+
+  def user_url: (*untyped) -> String
+
+  def talk_bookmarks_url: (*untyped) -> String
+
+  def talk_bookmark_url: (*untyped) -> String
+
+  def unread_announcement_url: (*untyped) -> String
+
+  def about_url: (*untyped) -> String
+
+  def admin_users_url: (*untyped) -> String
+
+  def edit_admin_user_url: (*untyped) -> String
+
+  def admin_user_url: (*untyped) -> String
+
+  def admin_profile_profile_badges_profiles_url: (*untyped) -> String
+
+  def new_admin_profile_profile_badges_profile_url: (*untyped) -> String
+
+  def admin_profile_url: (*untyped) -> String
+
+  def admin_talks_url: (*untyped) -> String
+
+  def edit_admin_talk_url: (*untyped) -> String
+
+  def admin_talk_url: (*untyped) -> String
+
+  def admin_announcements_url: (*untyped) -> String
+
+  def new_admin_announcement_url: (*untyped) -> String
+
+  def edit_admin_announcement_url: (*untyped) -> String
+
+  def admin_announcement_url: (*untyped) -> String
+
+  def admin_profile_badges_url: (*untyped) -> String
+
+  def new_admin_profile_badge_url: (*untyped) -> String
+
+  def edit_admin_profile_badge_url: (*untyped) -> String
+
+  def admin_profile_badge_url: (*untyped) -> String
+
+  def admin_url: (*untyped) -> String
+
+  def event_url: (*untyped) -> String
+
+  def event_talks_url: (*untyped) -> String
+
+  def event_talk_url: (*untyped) -> String
+
+  def event_announcements_url: (*untyped) -> String
+
+  def event_announcement_url: (*untyped) -> String
+
+  def turbo_recede_historical_location_url: (*untyped) -> String
+
+  def turbo_resume_historical_location_url: (*untyped) -> String
+
+  def turbo_refresh_historical_location_url: (*untyped) -> String
+
+  def rails_postmark_inbound_emails_url: (*untyped) -> String
+
+  def rails_relay_inbound_emails_url: (*untyped) -> String
+
+  def rails_sendgrid_inbound_emails_url: (*untyped) -> String
+
+  def rails_mandrill_inbound_health_check_url: (*untyped) -> String
+
+  def rails_mandrill_inbound_emails_url: (*untyped) -> String
+
+  def rails_mailgun_inbound_emails_url: (*untyped) -> String
+
+  def rails_conductor_inbound_emails_url: (*untyped) -> String
+
+  def new_rails_conductor_inbound_email_url: (*untyped) -> String
+
+  def edit_rails_conductor_inbound_email_url: (*untyped) -> String
+
+  def rails_conductor_inbound_email_url: (*untyped) -> String
+
+  def new_rails_conductor_inbound_email_source_url: (*untyped) -> String
+
+  def rails_conductor_inbound_email_sources_url: (*untyped) -> String
+
+  def rails_conductor_inbound_email_reroute_url: (*untyped) -> String
+
+  def rails_conductor_inbound_email_incinerate_url: (*untyped) -> String
+
+  def rails_service_blob_url: (*untyped) -> String
+
+  def rails_service_blob_proxy_url: (*untyped) -> String
+
+  def rails_blob_representation_url: (*untyped) -> String
+
+  def rails_blob_representation_proxy_url: (*untyped) -> String
+
+  def rails_disk_service_url: (*untyped) -> String
+
+  def update_rails_disk_service_url: (*untyped) -> String
+
+  def rails_direct_uploads_url: (*untyped) -> String
+
+  def rails_representation_url: (*untyped) -> String
+
+  def rails_blob_url: (*untyped) -> String
+
+  def rails_storage_proxy_url: (*untyped) -> String
+
+  def rails_storage_redirect_url: (*untyped) -> String
+end

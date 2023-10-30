@@ -1,6 +1,4 @@
 class Profile < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Profile, ActiveRecord_Relation, Integer]
-
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -218,6 +216,29 @@ class Profile < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
   end
+
+  module GeneratedAssociationMethods
+    def images: () -> ActiveStorage::Attached::Many
+
+    def images=: (untyped) -> untyped
+  end
+
+  module GeneratedRelationMethods
+    def with_attached_images: () -> ActiveRecord_Relation
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Profile, Integer]
+    include Enumerable[Profile]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Profile, Integer]
+  end
+  extend _ActiveRecord_Relation_ClassMethods[Profile, ActiveRecord_Relation, Integer]
+
   include GeneratedAttributeMethods
   def images_attachments: () -> ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy
   def images_attachments=: (ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::Attachment]) -> (ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::Attachment])
@@ -234,27 +255,8 @@ class Profile < ::ApplicationRecord
   def build_user: (untyped) -> User
   def create_user: (untyped) -> User
   def create_user!: (untyped) -> User
-  module GeneratedAssociationMethods
-    def images: () -> ActiveStorage::Attached::Many
 
-    def images=: (untyped) -> untyped
-  end
   include GeneratedAssociationMethods
 
   def self.with_attached_images: () -> ActiveRecord_Relation
-
-  module GeneratedRelationMethods
-    def with_attached_images: () -> ActiveRecord_Relation
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Profile, Integer]
-    include Enumerable[Profile]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Profile, Integer]
-  end
 end

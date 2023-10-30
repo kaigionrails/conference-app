@@ -1,6 +1,4 @@
 class User < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[User, ActiveRecord_Relation, Integer]
-
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -182,6 +180,25 @@ class User < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
   end
+
+  module GeneratedAssociationMethods
+  end
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[User, Integer]
+    include Enumerable[User]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[User, Integer]
+  end
+  extend _ActiveRecord_Relation_ClassMethods[User, ActiveRecord_Relation, Integer]
+
   include GeneratedAttributeMethods
   def webpush_subscriptions: () -> WebpushSubscription::ActiveRecord_Associations_CollectionProxy
   def webpush_subscriptions=: (WebpushSubscription::ActiveRecord_Associations_CollectionProxy | Array[WebpushSubscription]) -> (WebpushSubscription::ActiveRecord_Associations_CollectionProxy | Array[WebpushSubscription])
@@ -220,21 +237,5 @@ class User < ::ApplicationRecord
   def create_profile!: (untyped) -> Profile
   def reload_profile: () -> Profile?
 
-  module GeneratedAssociationMethods
-  end
   include GeneratedAssociationMethods
-
-  module GeneratedRelationMethods
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[User, Integer]
-    include Enumerable[User]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[User, Integer]
-  end
 end
