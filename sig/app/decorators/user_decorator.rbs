@@ -1,3 +1,3 @@
 module UserDecorator
-  def number_of_friends: (User::ActiveRecord_Associations_CollectionProxy) -> ::String
+  def number_of_friends: () -> ::String
 end

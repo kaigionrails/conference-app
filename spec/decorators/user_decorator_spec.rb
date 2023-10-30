@@ -8,7 +8,7 @@ RSpec.describe UserDecorator do
   describe "#number_of_friends" do
     context "when friends are empty" do
       it "should return 0" do
-        expect(user.number_of_friends(user.friends)).to eq ''
+        expect(user.number_of_friends).to eq ''
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe UserDecorator do
       end
 
       it "should return the number of friends in `(n人)` format" do
-        expect(user.number_of_friends(user.friends)).to eq "(1人)"
+        expect(user.number_of_friends).to eq "(1人)"
       end
     end
   end
