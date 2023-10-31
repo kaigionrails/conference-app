@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   def index
     @profile = Profile.preload(:profile_badges).find_by(user: current_user)
     @friends = current_user.friends.preload(profile: { images_attachments: :blob })
+    @user = User.preload(:friends).find(current_user.id)
   end
 
   def new

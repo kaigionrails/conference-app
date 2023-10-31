@@ -45,7 +45,7 @@
       <%= link_to "編集する", edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
     </div>
     <div>
-      <h3 class="text-2xl font-bold mb-2">知り合った人達<%= @friends.present? ? " (#{@friends.size}人)" : '' %></h3>
+      <h3 class="text-2xl font-bold mb-2">知り合った人達<%= @user.number_of_friends %></h3>
       <ul>
         <% @friends.each do |friend| %>
           <li class="flex flex-row items-center">
