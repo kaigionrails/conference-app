@@ -1,0 +1,6 @@
+class Announcement < ApplicationRecord
+  # NOTE: This method has been declared manually because current rbs_rails does not support enum definitions.
+  #       It should be removed if rbs_rails will support it.
+  #       refs: https://github.com/pocke/rbs_rails/pull/268
+  def self.published: () -> Announcement::ActiveRecord_Relation
+end
