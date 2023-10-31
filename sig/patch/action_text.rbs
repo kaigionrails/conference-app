@@ -1,0 +1,5 @@
+module ActionText
+  module Attribute
+    def has_rich_text: (Symbol) -> void
+  end
+end
