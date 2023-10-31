@@ -1,0 +1,3 @@
+class ProfileBadge < ::ApplicationRecord
+  COLOR_CODE_REGEXP: ::Regexp
+end
