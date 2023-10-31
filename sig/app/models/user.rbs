@@ -1,3 +1,5 @@
 class User < ApplicationRecord
   def have_unread_announcements?: () -> bool
+
+  def mark_all_announcement_unread!: (?Event?) -> void
 end
