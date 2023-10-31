@@ -1,0 +1,12 @@
+module WebPush
+  def self.payload_send: (?message: String, endpoint: String, ?p256dh: String, ?auth: String, ?vapid: Hash[Symbol, String], ?options: untyped) -> void
+
+  class Error < RuntimeError
+  end
+
+  class ResponseError < Error
+  end
+
+  class ExpiredSubscription < ResponseError
+  end
+end
