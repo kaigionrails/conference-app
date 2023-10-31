@@ -1,0 +1,9 @@
+module Octokit
+  class Client
+    module Users
+      def user: (Integer | String | nil user, ?Hash[untyped, untyped] options) -> untyped
+    end
+
+    include Users
+  end
+end
