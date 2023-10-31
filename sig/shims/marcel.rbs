@@ -1,0 +1,9 @@
+module Marcel
+  class Magic
+    attr_reader type: String
+    attr_reader mediatype: String
+    attr_reader subtype: String
+
+    def self.by_magic: (IO) -> instance
+  end
+end
