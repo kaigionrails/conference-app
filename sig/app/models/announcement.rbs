@@ -1,0 +1,6 @@
+class Announcement < ::ApplicationRecord
+  extend ActionText::Attribute
+
+  # enum
+  def self.published: () -> ActiveRecord_Relation
+end
