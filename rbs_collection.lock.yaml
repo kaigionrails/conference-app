@@ -167,6 +167,10 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: json
+  version: '0'
+  source:
+    type: stdlib
 - name: jwt
   version: '2.5'
   source:

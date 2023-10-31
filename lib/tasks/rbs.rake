@@ -15,7 +15,8 @@ if Rails.env.development? || Rails.env.test?
     end
 
     task :prototype do
-      sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype/app', '--base-dir=.', 'app/models'
+      sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/models'
+      sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/jobs'
     end
 
     task :subtract do

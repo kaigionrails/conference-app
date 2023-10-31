@@ -1,0 +1,3 @@
+class BroadcastAnnouncementJob < ApplicationJob
+  def perform: (untyped announcement_id) -> untyped
+end
