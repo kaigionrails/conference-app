@@ -1,0 +1,3 @@
+class Event < ::ApplicationRecord
+  ONGOING_EVENT_SLUG: ::String
+end
