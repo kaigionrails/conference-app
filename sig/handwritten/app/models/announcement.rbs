@@ -12,5 +12,9 @@ class Announcement < ApplicationRecord
 
     # NOTE: Added by ActionText
     def with_rich_text_content_and_embeds: () -> self
+
+    # NOTE: Added by kaminari
+    def page: (untyped) -> self
+    def per: (Integer) -> self
   end
 end

@@ -3,4 +3,10 @@ class User < ApplicationRecord
   #       `#authentication_provider_github` is not optional association.
   def authentication_provider_github: () -> AuthenticationProviderGithub
   def have_unread_announcements?: () -> bool
+
+  class ActiveRecord_Relation
+    # NOTE: Added by kaminari
+    def page: (untyped) -> self
+    def per: (Integer) -> self
+  end
 end
