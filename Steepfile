@@ -4,6 +4,7 @@ target :lib do
   signature "sig"
 
   check "app/models"
+  check "app/jobs"
   # ignore "lib/templates/*.rb"
 
   # library "pathname", "set"       # Standard libraries
