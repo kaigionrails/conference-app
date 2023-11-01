@@ -1,0 +1,11 @@
+module TalkDecorator
+  @sanitizer: untyped
+
+  def sanitized_abstract: () -> untyped
+
+  def hashtagged_twitter_intent_url: () -> ::String
+
+  private
+
+  def sanitizer: () -> untyped
+end
