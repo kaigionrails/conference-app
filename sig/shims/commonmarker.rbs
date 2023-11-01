@@ -1,0 +1,3 @@
+module Commonmarker
+  def self.to_html: (String text, ?Hash[untyped, untyped] options, ?Hash[untyped, untyped] plugins) -> String
+end
