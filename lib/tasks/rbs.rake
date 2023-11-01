@@ -18,6 +18,7 @@ if Rails.env.development? || Rails.env.test?
       sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/models'
       sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/jobs'
       sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/decorators'
+      sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'app/helpers'
       sh 'rbs', 'prototype', 'rb', '--out-dir=sig/prototype', '--base-dir=.', 'lib'
     end
 
