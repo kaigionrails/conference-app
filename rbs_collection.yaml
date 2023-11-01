@@ -19,4 +19,5 @@ gems:
   - name: rbs
     ignore: true
 
+  - name: base64
   - name: json
