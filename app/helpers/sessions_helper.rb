@@ -1,11 +1,16 @@
 module SessionsHelper
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    end
+  class UnauthorizedError < StandardError
+  end
+
+  def current_user!
+    raise UnauthorizedError unless session[:user_id]
+
+    @current_user ||= User.find(session[:user_id])
   end
 
   def logged_in?
-    !!current_user
+    current_user!.present?
+  rescue UnauthorizedError
+    false
   end
 end

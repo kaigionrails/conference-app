@@ -1,6 +1,6 @@
 class SampleWebpushNotificationsController < ApplicationController
   def create
-    subscriptions = current_user.webpush_subscriptions
+    subscriptions = current_user!.webpush_subscriptions
     message = {
       title: "プッシュ通知のサンプルです",
       body: "このようなプッシュ通知が届きます。",

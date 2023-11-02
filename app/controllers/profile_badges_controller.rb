@@ -17,7 +17,7 @@ class ProfileBadgesController < ApplicationController
     profile_badge = ProfileBadge.new(**profile_badge_params, restricted: false)
     if profile_badge.save
       if params[:save_and_assign]
-        current_user.profile.profile_badges << profile_badge
+        current_user!.profile.profile_badges << profile_badge
       end
       flash[:success] = "保存に成功しました"
     else

@@ -5,7 +5,7 @@ class UnreadAnnouncementsController < ApplicationController
       return
     end
 
-    UnreadAnnouncement.find_by!(user: current_user, id: params[:id]).destroy!
+    UnreadAnnouncement.find_by!(user: current_user!, id: params[:id]).destroy!
     head :ok
   end
 end

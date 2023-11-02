@@ -2,7 +2,7 @@
   <% if @profile %>
     <div class="w-full flex flex-row mb-4">
       <div class="w-1/3 pr-2">
-        <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user.name %>">
+        <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user!.name %>">
           <%= image_tag @profile.images.first, class: "w-full rounded-lg mb-4 object-cover aspect-square", data: { "profiles-target": "profileImg" } %>
           <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
           <button

@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   end
 
   private def require_organizer
-    if logged_in? && current_user.organizer?
+    if logged_in? && current_user!.organizer?
       # pass
     else
       flash[:alert] = "Require organizer role"
