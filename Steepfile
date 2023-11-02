@@ -8,6 +8,7 @@ target :lib do
   check "app/decorators"
   check "app/helpers"
   check "app/channels"
+  check "app/mailers"
   # ignore "lib/templates/*.rb"
 
   # library "pathname", "set"       # Standard libraries
