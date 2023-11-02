@@ -1,0 +1,13 @@
+class TalksController < ApplicationController
+  @event: untyped
+
+  @talks: untyped
+
+  @current_user_bookmarks: untyped
+
+  @talk: untyped
+
+  def index: () -> untyped
+
+  def show: () -> untyped
+end

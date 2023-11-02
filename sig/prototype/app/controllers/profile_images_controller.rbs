@@ -1,0 +1,3 @@
+class ProfileImagesController < ApplicationController
+  def destroy: () -> untyped
+end

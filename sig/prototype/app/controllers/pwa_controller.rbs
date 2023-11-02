@@ -1,0 +1,5 @@
+class PwaController < ApplicationController
+  def service_worker: () -> untyped
+
+  def manifest: () -> untyped
+end

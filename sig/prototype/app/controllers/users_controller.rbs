@@ -1,0 +1,15 @@
+class UsersController < ApplicationController
+  @user: untyped
+
+  @profile: untyped
+
+  @token: untyped
+
+  include ApplicationHelper
+
+  def show: () -> untyped
+
+  private
+
+  def exchange_profile: (untyped user1, untyped user2) -> (untyped | nil)
+end

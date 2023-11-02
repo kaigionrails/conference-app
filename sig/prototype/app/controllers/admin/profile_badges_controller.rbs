@@ -1,0 +1,21 @@
+class Admin::ProfileBadgesController < AdminController
+  @profile_badges: untyped
+
+  @profile_badge: untyped
+
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def edit: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> untyped
+
+  def destroy: () -> untyped
+
+  private
+
+  def profile_badge_params: () -> untyped
+end

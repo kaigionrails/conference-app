@@ -1,0 +1,9 @@
+class TalkBookmarksController < ApplicationController
+  def create: () -> (nil | untyped)
+
+  def destroy: () -> (nil | untyped)
+
+  private
+
+  def talk_bookmark_params: () -> untyped
+end

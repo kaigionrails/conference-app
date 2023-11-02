@@ -1,0 +1,17 @@
+class Admin::TalksController < AdminController
+  @talks: untyped
+
+  @talk: untyped
+
+  def index: () -> untyped
+
+  def show: () -> untyped
+
+  def edit: () -> untyped
+
+  def update: () -> untyped
+
+  private
+
+  def talk_params: () -> untyped
+end

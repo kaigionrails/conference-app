@@ -1,0 +1,25 @@
+class ProfilesController < ApplicationController
+  @profile: untyped
+
+  @friends: untyped
+
+  @profile_badges: untyped
+
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def edit: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> untyped
+
+  private
+
+  def profile_params: () -> untyped
+
+  def profile_non_image_params: () -> untyped
+
+  def profile_image_params: () -> untyped
+end
