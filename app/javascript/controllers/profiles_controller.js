@@ -38,13 +38,17 @@ export default class extends Controller {
 
   async showQrcode() {
     // Sure, unsecure! but enough ;)
-    const unsecuredJwt = new jose.UnsecuredJWT({})
-      .setIssuedAt()
-      .setIssuer(this.usernameValue)
-      .setExpirationTime("3mins")
-      .encode();
+    // const unsecuredJwt = new jose.UnsecuredJWT({})
+    //   .setIssuedAt()
+    //   .setIssuer(this.usernameValue)
+    //   .setExpirationTime("3mins")
+    //   .encode();
+    // const profileUrl = new URL(
+    //   `@${this.usernameValue}?token=${unsecuredJwt}`,
+    //   this.baseUrlValue
+    // ).toString();
     const profileUrl = new URL(
-      `@${this.usernameValue}?token=${unsecuredJwt}`,
+      `@${this.usernameValue}`,
       this.baseUrlValue
     ).toString();
     const dataUrl = await QRCode.toDataURL(profileUrl, {
