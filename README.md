@@ -37,7 +37,7 @@ $ cp .env.sample .env
 
 Generate required environment variables
 ```bash
-$ docker exec -it conference-app rails c
+$ docker compose exec -it conference-app rails c
 
 $ vapid_key = WebPush.generate_key
 $ vapid_key.public_key
