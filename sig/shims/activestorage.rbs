@@ -1,0 +1,7 @@
+module ActiveStorage
+  class Attached
+    class Many
+      include _ActiveRecord_Relation[ActiveStorage::Attachment, Integer]
+    end
+  end
+end

@@ -4,8 +4,7 @@ class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < Act
 end
 class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-module ActiveStorage
-end
+
 class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
