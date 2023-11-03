@@ -1,8 +1,4 @@
 class Admin::AnnouncementsController < AdminController
-  @announcements: untyped
-
-  @announcement: untyped
-
   def index: () -> untyped
 
   def show: () -> untyped

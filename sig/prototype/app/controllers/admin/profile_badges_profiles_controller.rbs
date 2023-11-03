@@ -1,8 +1,4 @@
 class Admin::ProfileBadgesProfilesController < AdminController
-  @profile: untyped
-
-  @profile_badges: untyped
-
   def new: () -> untyped
 
   def create: () -> untyped

@@ -1,0 +1,9 @@
+class TalksController < ApplicationController
+  @event: Event
+
+  @talks: Talk::ActiveRecord_Relation
+
+  @current_user_bookmarks: Array[TalkBookmark]
+
+  @talk: Talk
+end
