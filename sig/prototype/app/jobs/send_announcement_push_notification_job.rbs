@@ -1,0 +1,3 @@
+class SendAnnouncementPushNotificationJob < ApplicationJob
+  def perform: (untyped announcement_id, untyped message) -> untyped
+end

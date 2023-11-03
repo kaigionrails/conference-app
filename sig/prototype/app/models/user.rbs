@@ -1,0 +1,5 @@
+class User < ApplicationRecord
+  def mark_all_announcement_unread!: (?untyped? event) -> untyped
+
+  def send_push_notification: (untyped message) -> untyped
+end

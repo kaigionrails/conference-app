@@ -1,0 +1,3 @@
+class SendTalkReminderPushNotificationJob < ApplicationJob
+  def perform: (*untyped args) -> untyped
+end

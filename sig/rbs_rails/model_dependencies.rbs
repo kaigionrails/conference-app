@@ -1,7 +1,3 @@
-class ApplicationRecord < ActiveRecord::Base
-end
-module ActionText
-end
 class ActionText::Record < ActiveRecord::Base
 end
 class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy

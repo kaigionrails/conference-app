@@ -1,0 +1,5 @@
+class DetermineUserRoleJob < ApplicationJob
+  def perform: (untyped user_id) -> untyped
+
+  def github_jwt: () -> untyped
+end
