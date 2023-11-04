@@ -54,6 +54,6 @@ VAPID_PRIVATE_KEY=YOUR_PRIVATE_KEY
 
 And then execute below
 ```bash
-$ docker-compose up
-$ docker exec conference-app rails db:prepare
+$ docker compose up
+$ docker compose exec conference-app rails db:prepare
 ```
