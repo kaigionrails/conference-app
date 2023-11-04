@@ -1,0 +1,7 @@
+class DigestedAssetsPathResolver
+  @manifest: untyped
+
+  def initialize: () -> void
+
+  def digested_asset_path: (untyped source) -> untyped
+end

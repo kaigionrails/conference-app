@@ -26,6 +26,7 @@ class DetermineUserRoleJob < ApplicationJob
       exp: Time.now.to_i + (10 * 60),
       iss: ENV["GITHUB_APP_ID"],
     }
-    JWT.encode(payload, OpenSSL::PKey::RSA.new(ENV["GITHUB_PRIVATE_KEY"].unpack1("m*"), ''), "RS256")
+    pem = ENV.fetch("GITHUB_PRIVATE_KEY").unpack1("m*") #: String
+    JWT.encode(payload, OpenSSL::PKey::RSA.new(pem, ''), "RS256")
   end
 end
