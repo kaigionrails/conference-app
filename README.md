@@ -28,7 +28,32 @@ It's built with Ruby on Rails.
 The app is built with Ruby on Rails 7. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
 
 ## Setup dev environment
+### Environment variables
 See [`.env.sample`](.env.sample) for required/optional environment variables.
+
+### Create GitHub App
+Current implementation requires GitHub App when you create a user.
+
+<https://github.com/settings/apps/new>
+
+* Callback URL: `http://localhost:3000/auth/github/callback`
+* Webhook: inactive
+* Permissions: Allow read-only access for "Organization permissions" -> "Members"
+
+Then, fill these environment variables.
+
+* App ID -> `GITHUB_APP_ID`
+* Client ID -> `GITHUB_KEY`
+* Client secret -> `GITHUB_SECRET`
+* Private key (encoded) -> `GITHUB_PRIVATE_KEY` (See [`.env.sample`](.env.sample))
+
+### Load seed data
+
+```shell
+$ bin/rails db:seed
+```
+
+After that, you can see 2023's event talks and speakers.
 
 ## Setup dev environment with docker
 ```bash
