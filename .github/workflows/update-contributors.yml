@@ -13,14 +13,14 @@ jobs:
       - name: Update JSON
         run: |
           gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" \
-                                                                                               /repos/kaigionrails/conference-app/contributors > contributors.json
+            /repos/kaigionrails/conference-app/contributors > contributors.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create PR if list is updated
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Update contributors.json ${{$(date +'%Y-%m-%d)}}
+          commit-message: Update contributors.json ${{$(date +'%Y-%m-%d')}}
           delete-branch: true
-          title: Update contributors.json ${{$(date +'%Y-%m-%d)}}
+          title: Update contributors.json ${{$(date +'%Y-%m-%d')}}
         env:
           TZ: 'Asia/Tokyo'
