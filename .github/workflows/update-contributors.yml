@@ -16,11 +16,18 @@ jobs:
             /repos/kaigionrails/conference-app/contributors > contributors.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set Current Date Variable
+        run: |
+          # Capture the current date and time in ISO 8601 format
+          CURRENT_DATE=$(date +'%Y-%m-%d')
+
+          # Set the CURRENT_DATE as an environment variable
+          echo "CURRENT_DATE=$CURRENT_DATE" >> $GITHUB_ENV
       - name: Create PR if list is updated
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Update contributors.json ${{$(date +'%Y-%m-%d')}}
+          commit-message: "Update contributors.json ${{$CURRENT_DATE}}"
           delete-branch: true
-          title: Update contributors.json ${{$(date +'%Y-%m-%d')}}
+          title: "Update contributors.json ${{$CURRENT_DATE}}"
         env:
           TZ: 'Asia/Tokyo'
