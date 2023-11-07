@@ -5,6 +5,10 @@ target :lib do
 
   check "app/models"
   check "app/jobs"
+  check "app/decorators"
+  check "app/helpers"
+  check "app/channels"
+  check "app/mailers"
   # ignore "lib/templates/*.rb"
 
   # library "pathname", "set"       # Standard libraries

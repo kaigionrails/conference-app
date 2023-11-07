@@ -1,0 +1,3 @@
+module TalksHelper
+  def time_with_zone_to_anchor: (untyped time_with_zone) -> untyped
+end

@@ -1,0 +1,11 @@
+module SpeakerDecorator
+  @sanitizer: untyped
+
+  def sanitized_bio: () -> untyped
+
+  def avatar_image_url: () -> (untyped | ::String)
+
+  private
+
+  def sanitizer: () -> untyped
+end
