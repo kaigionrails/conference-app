@@ -6,6 +6,7 @@ target :lib do
   check "app/models"
   check "app/jobs"
   check "app/decorators"
+  check "app/helpers"
   # ignore "lib/templates/*.rb"
 
   # library "pathname", "set"       # Standard libraries
