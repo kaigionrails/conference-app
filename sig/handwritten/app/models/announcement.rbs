@@ -9,5 +9,12 @@ class Announcement < ApplicationRecord
     #       It should be removed if rbs_rails will support it.
     #       refs: https://github.com/pocke/rbs_rails/pull/268
     def published: () -> self
+
+    # NOTE: Added by ActionText
+    def with_rich_text_content_and_embeds: () -> self
+
+    # NOTE: Added by kaminari
+    def page: (untyped) -> self
+    def per: (Integer) -> self
   end
 end
