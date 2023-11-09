@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
 
   @friends: untyped
 
+  @user: untyped
+
   @profile_badges: untyped
 
   def index: () -> untyped
