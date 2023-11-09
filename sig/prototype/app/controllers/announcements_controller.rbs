@@ -1,0 +1,15 @@
+class AnnouncementsController < ApplicationController
+  @event: untyped
+
+  @announcements: untyped
+
+  @unread_announcements: untyped
+
+  @announcement: untyped
+
+  @unread_announcement: untyped
+
+  def index: () -> untyped
+
+  def show: () -> untyped
+end

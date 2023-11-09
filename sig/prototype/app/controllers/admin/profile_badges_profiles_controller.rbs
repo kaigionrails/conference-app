@@ -1,0 +1,13 @@
+class Admin::ProfileBadgesProfilesController < AdminController
+  @profile: untyped
+
+  @profile_badges: untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  private
+
+  def profile_badges_profiles_params: () -> untyped
+end

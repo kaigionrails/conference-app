@@ -1,0 +1,5 @@
+class EventsController < ApplicationController
+  @event: untyped
+
+  def show: () -> untyped
+end

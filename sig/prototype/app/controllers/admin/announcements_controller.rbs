@@ -1,0 +1,23 @@
+class Admin::AnnouncementsController < AdminController
+  @announcements: untyped
+
+  @announcement: untyped
+
+  def index: () -> untyped
+
+  def show: () -> untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def edit: () -> untyped
+
+  def update: () -> untyped
+
+  private
+
+  def announcement_params: () -> untyped
+
+  def push_notification_message: (untyped announcement) -> { title: ::String, body: untyped, icon: untyped, data: { url: untyped } }
+end

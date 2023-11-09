@@ -3,12 +3,7 @@
 target :lib do
   signature "sig"
 
-  check "app/models"
-  check "app/jobs"
-  check "app/decorators"
-  check "app/helpers"
-  check "app/channels"
-  check "app/mailers"
+  check "app"
   # ignore "lib/templates/*.rb"
 
   # library "pathname", "set"       # Standard libraries
