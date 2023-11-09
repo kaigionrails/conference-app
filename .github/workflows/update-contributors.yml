@@ -26,6 +26,8 @@ jobs:
       - name: Create PR if list is updated
         uses: peter-evans/create-pull-request@v5
         with:
+          author: "Kaigi on Rails <git@kaigionrails.org>"
+          committer: "Kaigi on Rails <git@kaigionrails.org>"
           commit-message: "Update contributors.json $CURRENT_DATE"
           delete-branch: true
           title: "Update contributors.json $CURRENT_DATE"
