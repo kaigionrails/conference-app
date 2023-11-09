@@ -230,7 +230,7 @@ class User < ::ApplicationRecord
   def create_authentication_provider_github: (untyped) -> AuthenticationProviderGithub
   def create_authentication_provider_github!: (untyped) -> AuthenticationProviderGithub
   def reload_authentication_provider_github: () -> AuthenticationProviderGithub?
-  def profile: () -> Profile?
+
   def profile=: (Profile?) -> Profile?
   def build_profile: (untyped) -> Profile
   def create_profile: (untyped) -> Profile
