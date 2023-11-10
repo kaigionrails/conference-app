@@ -7,7 +7,7 @@
       <span><%= "#{@talk.duration_minutes} 分間" %></span>
     </div>
     <div class="w-8 h-8">
-      <%= render partial: "bookmark_button", locals: { talk: @talk, user: current_user, user_bookmarks: @current_user_bookmarks } %>
+      <%= render partial: "bookmark_button", locals: { talk: @talk, user: current_user!, user_bookmarks: @current_user_bookmarks } %>
     </div>
   </div>
   <div class="mb-4 md:mb-6">

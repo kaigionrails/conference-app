@@ -2,23 +2,23 @@ class ProfilesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @profile = Profile.preload(:profile_badges).find_by(user: current_user)
-    @friends = current_user.friends.preload(profile: { images_attachments: :blob })
-    @user = User.preload(:friends).find(current_user.id)
+    @profile = Profile.preload(:profile_badges).find_by(user: current_user!)
+    @friends = current_user!.friends.preload(profile: { images_attachments: :blob })
+    @user = User.preload(:friends).find(current_user!.id)
   end
 
   def new
-    @profile = Profile.new(user: current_user)
+    @profile = Profile.new(user: current_user!)
     @profile_badges = ProfileBadge.where(restricted: false)
   end
 
   def edit
-    @profile = Profile.find_by(user: current_user)
+    @profile = Profile.find_by(user: current_user!)
     @profile_badges = ProfileBadge.where(restricted: false)
   end
 
   def create
-    profile = Profile.new(user: current_user, **profile_params)
+    profile = Profile.new(user: current_user!, **profile_params)
     if profile.save
       flash[:success] = "プロフィールを保存しました。"
       redirect_to profiles_path
@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    profile = Profile.preload(:profile_badges).find_by!(user: current_user)
+    profile = Profile.preload(:profile_badges).find_by!(user: current_user!)
 
     given_profile_badge_ids = profile_params[:profile_badge_ids].reject(&:empty?).map(&:to_i)
     assigned_profile_badge_ids = profile.profile_badges.map(&:id)

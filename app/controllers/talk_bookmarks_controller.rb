@@ -5,9 +5,9 @@ class TalkBookmarksController < ApplicationController
       return
     end
 
-    talk_bookmark = TalkBookmark.create!(user: current_user, **talk_bookmark_params)
+    talk_bookmark = TalkBookmark.create!(user: current_user!, **talk_bookmark_params)
     talk = talk_bookmark.talk
-    TalkReminder.create_or_find_by!(user: current_user, talk: talk, scheduled_at: (talk.start_at - 3.minutes))
+    TalkReminder.create_or_find_by!(user: current_user!, talk: talk, scheduled_at: (talk.start_at - 3.minutes))
     render json: talk_bookmark, status: :ok
   end
 
@@ -17,10 +17,10 @@ class TalkBookmarksController < ApplicationController
       return
     end
 
-    talk_bookmark = current_user.talk_bookmarks.find_by(id: params[:id])
+    talk_bookmark = current_user!.talk_bookmarks.find_by(id: params[:id])
     talk = talk_bookmark&.talk
     if talk_bookmark&.destroy
-      current_user.talk_reminders.find_by(talk: talk)&.destroy
+      current_user!.talk_reminders.find_by(talk: talk)&.destroy
       head :ok
     else
       head :internal_server_error

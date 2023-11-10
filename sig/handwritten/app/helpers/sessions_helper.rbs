@@ -1,2 +1,10 @@
 module SessionsHelper : ActionController::Base
+  class UnauthorizedError < StandardError
+  end
+
+  @current_user: User
+
+  def current_user!: () -> User
+
+  def logged_in?: () -> bool
 end
