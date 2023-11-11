@@ -66,8 +66,8 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.x.webpush.vapid_public_key = ENV.fetch("VAPID_PUBLIC_KEY")
-  config.x.webpush.vapid_private_key = ENV.fetch("VAPID_PRIVATE_KEY")
+  config.x.webpush.vapid_public_key = ENV["VAPID_PUBLIC_KEY"]
+  config.x.webpush.vapid_private_key = ENV["VAPID_PRIVATE_KEY"]
   config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO", "mailto:mail@kaigionrails.example")
 
   config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
