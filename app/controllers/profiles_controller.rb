@@ -2,30 +2,14 @@ class ProfilesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @profile = Profile.preload(:profile_badges).find_by(user: current_user!)
+    @profile = Profile.preload(:profile_badges).find_by!(user: current_user!)
     @friends = current_user!.friends.preload(profile: {images_attachments: :blob})
     @user = User.preload(:friends).find(current_user!.id)
   end
 
-  def new
-    @profile = Profile.new(user: current_user!)
-    @profile_badges = ProfileBadge.where(restricted: false)
-  end
-
   def edit
-    @profile = Profile.find_by(user: current_user!)
+    @profile = Profile.find_by!(user: current_user!)
     @profile_badges = ProfileBadge.where(restricted: false)
-  end
-
-  def create
-    profile = Profile.new(user: current_user!, **profile_params)
-    if profile.save
-      flash[:success] = "プロフィールを保存しました。"
-      redirect_to profiles_path
-    else
-      flash[:alert] = "保存に失敗しました。再度やりなおしてください。"
-      redirect_to new_profile_path
-    end
   end
 
   def update

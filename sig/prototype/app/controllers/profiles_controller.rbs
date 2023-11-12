@@ -1,12 +1,4 @@
 class ProfilesController < ApplicationController
-  @profile: untyped
-
-  @friends: untyped
-
-  @user: untyped
-
-  @profile_badges: untyped
-
   def index: () -> untyped
 
   def new: () -> untyped
