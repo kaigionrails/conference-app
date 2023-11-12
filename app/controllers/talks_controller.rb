@@ -1,4 +1,6 @@
 class TalksController < ApplicationController
+  before_action :require_logged_in
+
   def index
     @event = Event.find_by!(slug: params[:event_slug])
     @talks = Talk.eager_load(speakers: { avatar_attachment: :blob }).where(event: @event).order(:start_at, :track)
