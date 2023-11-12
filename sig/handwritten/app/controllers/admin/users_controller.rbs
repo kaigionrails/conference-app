@@ -1,0 +1,5 @@
+class Admin::UsersController < AdminController
+  @users: User::ActiveRecord_Relation
+
+  @user: User
+end

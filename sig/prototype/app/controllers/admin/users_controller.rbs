@@ -1,8 +1,4 @@
 class Admin::UsersController < AdminController
-  @users: untyped
-
-  @user: untyped
-
   def index: () -> untyped
 
   def show: () -> untyped

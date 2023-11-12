@@ -1,0 +1,5 @@
+class Admin::AnnouncementsController < AdminController
+  @announcements: Announcement::ActiveRecord_Relation
+
+  @announcement: Announcement
+end

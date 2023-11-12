@@ -1,8 +1,4 @@
 class Admin::TalksController < AdminController
-  @talks: untyped
-
-  @talk: untyped
-
   def index: () -> untyped
 
   def show: () -> untyped

@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  @user: untyped
-
-  @profile: untyped
-
   @token: untyped
 
   include ApplicationHelper

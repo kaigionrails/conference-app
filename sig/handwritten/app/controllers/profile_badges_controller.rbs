@@ -1,0 +1,3 @@
+class ProfileBadgesController < ApplicationController
+  @profile_badge: ProfileBadge
+end
