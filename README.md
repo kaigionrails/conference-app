@@ -15,8 +15,7 @@ It's built with Ruby on Rails.
 * Talk list
 * Announcements
 * Profile
-* Push nortification
-
+* Push notification
 
 ## Planned features
 
