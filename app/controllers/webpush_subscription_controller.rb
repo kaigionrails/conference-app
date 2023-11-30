@@ -1,4 +1,6 @@
 class WebpushSubscriptionController < ApplicationController
+  before_action :require_logged_in
+
   def create
     WebpushSubscription.create!(
       user: current_user!,
