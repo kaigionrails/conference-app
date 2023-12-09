@@ -36,16 +36,16 @@ class ProfilesController < ApplicationController
     will_assign_profile_badge_ids = given_profile_badge_ids - assigned_profile_badge_ids
     will_remove_profile_badge_ids = assigned_profile_badge_ids - given_profile_badge_ids
 
-    ApplicationRecord.transaction do
-      profile.update!(**profile_non_image_params)
-      profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
-      profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
-      profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
-    end
-    if profile
+    begin
+      ApplicationRecord.transaction do
+        profile.update!(**profile_non_image_params)
+        profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
+        profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
+        profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
+      end
       flash[:success] = "プロフィールを更新しました。"
       redirect_to profiles_path
-    else
+    rescue
       flash[:alert] = "更新に失敗しました。再度やりなおしてください。"
       redirect_to edit_profile_path
     end
