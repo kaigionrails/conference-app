@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "TalkBookmarks", type: :request do
   let!(:user) { FactoryBot.create(:user) }
@@ -7,7 +7,7 @@ RSpec.describe "TalkBookmarks", type: :request do
   describe "POST /talk_bookmarks" do
     context "not logged in" do
       it "should fail" do
-        post talk_bookmarks_path, params: { talk_bookmark: { talk_id: talk.id } }
+        post talk_bookmarks_path, params: {talk_bookmark: {talk_id: talk.id}}
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -16,7 +16,7 @@ RSpec.describe "TalkBookmarks", type: :request do
       before { sign_in(user) }
 
       it "should success (and create reminder)" do
-        post talk_bookmarks_path, params: { talk_bookmark: { talk_id: talk.id } }
+        post talk_bookmarks_path, params: {talk_bookmark: {talk_id: talk.id}}
         expect(response).to have_http_status(:ok)
         expect(TalkBookmark.where(user: user, talk: talk).count).to eq 1
         expect(TalkReminder.where(user: user, talk: talk).count).to eq 1

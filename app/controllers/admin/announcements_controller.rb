@@ -47,10 +47,10 @@ class Admin::AnnouncementsController < AdminController
       icon: view_context.image_url("icons/2023/512.png"),
       data: {
         url: event_announcement_url(
-              event_slug: announcement.event.slug,
-              id: announcement.id,
-              host: Rails.configuration.application_url
-             ),
+          event_slug: announcement.event.slug,
+          id: announcement.id,
+          host: Rails.configuration.application_url
+        )
       }
     }
   end

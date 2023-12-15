@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Admin::Users", type: :request do
   before do
@@ -55,7 +55,7 @@ RSpec.describe "Admin::Users", type: :request do
     let(:target_user) { User.find_by!(name: "sample_user_1") }
 
     it "should update success" do
-      update_param = { user: { role: "organizer" } }
+      update_param = {user: {role: "organizer"}}
       patch admin_user_path(target_user), params: update_param
       expect(response).to have_http_status(:redirect)
       expect(target_user.reload.role).to eq("organizer")

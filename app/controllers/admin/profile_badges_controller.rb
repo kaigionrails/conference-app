@@ -18,7 +18,6 @@ class Admin::ProfileBadgesController < AdminController
     else
       redirect_to new_admin_profile_badge_path
     end
-
   end
 
   def update

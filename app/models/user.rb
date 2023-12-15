@@ -17,19 +17,17 @@ class User < ApplicationRecord
   def mark_all_announcement_unread!(event = nil)
     event ||= Event.find_by!(slug: Event::ONGOING_EVENT_SLUG)
     insert_ary = Announcement.published.where(event: event).pluck(:id).map do |ann_id|
-      { announcement_id: ann_id, user_id: id }
+      {announcement_id: ann_id, user_id: id}
     end
     UnreadAnnouncement.insert_all!(insert_ary) unless insert_ary.empty?
   end
 
   def send_push_notification(message)
     webpush_subscriptions.each do |subscription|
-      begin
-        subscription.send_webpush!(message)
-      rescue WebPush::ExpiredSubscription
-        subscription.destroy
-        next
-      end
+      subscription.send_webpush!(message)
+    rescue WebPush::ExpiredSubscription
+      subscription.destroy
+      next
     end
   end
 end

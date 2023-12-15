@@ -3,8 +3,8 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    will_send_reminders = TalkReminder.
-      eager_load(talk: :event, user: :webpush_subscriptions).where(sent_at: nil, scheduled_at: 5.minutes.ago..Time.current)
+    will_send_reminders = TalkReminder
+      .eager_load(talk: :event, user: :webpush_subscriptions).where(sent_at: nil, scheduled_at: 5.minutes.ago..Time.current)
 
     assets_resolver = DigestedAssetsPathResolver.new
 
@@ -20,7 +20,7 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
             event_slug: reminder.talk.event.slug,
             id: reminder.talk,
             host: Rails.configuration.application_url
-          ),
+          )
         }
       }
 

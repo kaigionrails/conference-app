@@ -6,7 +6,7 @@ class WebpushSubscriptionController < ApplicationController
       user: current_user!,
       endpoint: subscription_params[:endpoint],
       auth_key: subscription_params[:keys][:auth],
-      p256dh_key: subscription_params[:keys][:p256dh],
+      p256dh_key: subscription_params[:keys][:p256dh]
     )
   end
 
