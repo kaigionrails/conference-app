@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Sessions", type: :request do
   describe "GET /auth/:provider/callback" do
@@ -33,7 +33,7 @@ RSpec.describe "Sessions", type: :request do
         let(:event) { FactoryBot.create(:event) }
         let!(:announcement) { FactoryBot.create(:announcement, :published, event: event) }
         let!(:draft_announcement) { FactoryBot.create(:announcement, event: event) }
-        let(:auth_hash) { { "info" => { "nickname" => "octocat" }, "uid" => "583231"} } # https://github.com/octocat
+        let(:auth_hash) { {"info" => {"nickname" => "octocat"}, "uid" => "583231"} } # https://github.com/octocat
 
         before do
           allow_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil) # hmm....
@@ -43,11 +43,16 @@ RSpec.describe "Sessions", type: :request do
 
         it "should create user, authentication_provider_github, profile, unread_announcement and enqueue job" do
           expect { get "/auth/github/callback" }.to change {
-              AuthenticationProviderGithub.count }.by(1).and change {
-              User.count }.by(1).and change {
-              Profile.count }.by(1).and have_enqueued_job(
-              DetermineUserRoleJob).and change {
-              UnreadAnnouncement.count }.by(1)
+                                                      AuthenticationProviderGithub.count
+                                                    }.by(1).and change {
+                                                                  User.count
+                                                                }.by(1).and change {
+                                                                              Profile.count
+                                                                            }.by(1).and have_enqueued_job(
+                                                                              DetermineUserRoleJob
+                                                                            ).and change {
+                                                                                    UnreadAnnouncement.count
+                                                                                  }.by(1)
         end
       end
     end

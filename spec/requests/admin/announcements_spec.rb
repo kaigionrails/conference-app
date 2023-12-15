@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Admin::Announcements", type: :request do
   let(:admin) { FactoryBot.create(:user, role: "organizer") }
@@ -11,7 +11,7 @@ RSpec.describe "Admin::Announcements", type: :request do
       it "should enqueue broadcast job" do
         expect {
           patch admin_announcement_path(announcement), params: {
-            announcement: { status: "published" }
+            announcement: {status: "published"}
           }
         }.to have_enqueued_job(BroadcastAnnouncementJob)
       end
@@ -22,7 +22,7 @@ RSpec.describe "Admin::Announcements", type: :request do
       it "should enqueue broadcast job" do
         expect {
           patch admin_announcement_path(announcement), params: {
-            announcement: { title: "Test2" }
+            announcement: {title: "Test2"}
           }
         }.not_to have_enqueued_job(BroadcastAnnouncementJob)
       end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Talk, type: :model do
   let(:talk) { FactoryBot.create(:talk) }
