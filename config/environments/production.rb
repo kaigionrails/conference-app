@@ -79,9 +79,9 @@ Rails.application.configure do
 
   # https://logger.rocketjob.io/rails
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    STDOUT.sync = true
+    $stdout.sync = true
     config.rails_semantic_logger.add_file_appender = false
-    config.semantic_logger.add_appender(io: STDOUT, formatter: config.rails_semantic_logger.format)
+    config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
   end
 
   # Do not dump schema after migrations.
@@ -95,6 +95,9 @@ Rails.application.configure do
   config.x.webpush.vapid_public_key = ENV.fetch("VAPID_PUBLIC_KEY")
   config.x.webpush.vapid_private_key = ENV.fetch("VAPID_PRIVATE_KEY")
   config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO")
+
+  config.x.github.app_id = ENV["GITHUB_APP_ID"]
+  config.x.github.private_key = ENV.fetch("GITHUB_PRIVATE_KEY")
 
   config.application_url = ENV.fetch("APPLICATION_URL")
   config.hosts << URI.parse(ENV.fetch("APPLICATION_URL")).host # e.g. "https://example.com" -> "example.com"

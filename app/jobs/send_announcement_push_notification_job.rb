@@ -2,8 +2,6 @@ class SendAnnouncementPushNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(announcement_id, message)
-    announcement = Announcement.find_by!(id: announcement_id)
-
     # TODO: DRY
     WebpushSubscription.all.each do |subscription|
       WebPush.payload_send(
