@@ -12,7 +12,7 @@ class SampleWebpushNotificationsController < ApplicationController
       }
     }
     subscriptions.each do |subscription|
-      resp = WebPush.payload_send(
+      WebPush.payload_send(
         endpoint: subscription.endpoint,
         message: JSON.generate(message),
         p256dh: subscription.p256dh_key,
