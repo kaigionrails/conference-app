@@ -125,6 +125,9 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-protobuf (3.25.1-arm64-darwin)
+    google-protobuf (3.25.1-x86_64-darwin)
+    google-protobuf (3.25.1-x86_64-linux)
     hashie (5.0.0)
     hkdf (1.0.0)
     i18n (1.14.1)
@@ -217,11 +220,14 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.4.5)
+    pg_query (4.2.3)
+      google-protobuf (>= 3.22.3)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
+    prosopite (1.4.2)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -448,7 +454,9 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   open-uri
   pg (~> 1.1)
+  pg_query
   propshaft
+  prosopite
   puma (~> 5.0)
   rails (~> 7.0)
   rails_semantic_logger
