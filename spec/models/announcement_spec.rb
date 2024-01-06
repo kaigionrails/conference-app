@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Announcement, type: :model do
   describe "status" do
@@ -7,7 +7,7 @@ RSpec.describe Announcement, type: :model do
       it "shouldn't change status to draft" do
         announcement.status = "draft"
         expect(announcement).to be_invalid
-     end
+      end
     end
 
     context "when publish" do

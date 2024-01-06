@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Profiles", type: :request do
   before { prepare_current_event }
@@ -33,7 +33,7 @@ RSpec.describe "Profiles", type: :request do
 
     context "valid profile" do
       it "should create profile" do
-        post "/profiles", params: { profile: { name: "foobar", description: "I'm foobar!" } }
+        post "/profiles", params: {profile: {name: "foobar", description: "I'm foobar!"}}
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(profiles_path)
         expect(Profile.where(user: user).count).to eq 1
@@ -43,7 +43,7 @@ RSpec.describe "Profiles", type: :request do
     context "valid profile with image" do
       it "should create profile and image" do
         image = fixture_file_upload(Rails.root.join("spec", "assets", "sample.png"), "image/png")
-        post "/profiles", params: { profile: { name: "foobar", description: "I'm foobar!", images: [image] } }
+        post "/profiles", params: {profile: {name: "foobar", description: "I'm foobar!", images: [image]}}
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(profiles_path)
         expect(Profile.where(user: user).count).to eq 1

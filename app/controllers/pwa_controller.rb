@@ -3,11 +3,11 @@ class PwaController < ApplicationController
   layout false
 
   def service_worker
-    response.headers['Cache-Control'] = "no-cache"
+    response.headers["Cache-Control"] = "no-cache"
   end
 
   def manifest
-    response.headers['Cache-Control'] = "no-cache"
+    response.headers["Cache-Control"] = "no-cache"
 
     render json: {
       name: "Kaigi on Rails 2023 conference-app",
@@ -23,20 +23,20 @@ class PwaController < ApplicationController
         {
           src: view_context.image_path("icons/2023/512.png"),
           type: "image/png",
-          sizes: "512x512",
+          sizes: "512x512"
         },
         {
           src: view_context.image_path("icons/2023/1024.png"),
           type: "image/png",
-          sizes: "1024x1024",
+          sizes: "1024x1024"
         },
         {
           src: view_context.image_path("icons/2023/1024_maskable.png"),
           type: "image/png",
           sizes: "1024x1024",
-          purpose: "maskable",
-        },
-      ],
+          purpose: "maskable"
+        }
+      ]
     }
   end
 end

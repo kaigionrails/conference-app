@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe UserDecorator do
   let(:user) { FactoryBot.create(:user).extend UserDecorator }
@@ -8,7 +8,7 @@ RSpec.describe UserDecorator do
   describe "#number_of_friends" do
     context "when friends are empty" do
       it "should return 0" do
-        expect(user.number_of_friends).to eq ''
+        expect(user.number_of_friends).to eq ""
       end
     end
 
