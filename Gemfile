@@ -84,6 +84,9 @@ group :development, :test do
 
   gem "standard"
   gem "standard-rails"
+
+  gem "prosopite"
+  gem "pg_query"
 end
 
 group :development do
