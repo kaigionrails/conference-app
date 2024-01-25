@@ -1,4 +1,0 @@
-module URI
-  def self.open: (untyped name, ?String mode, ?Integer perm, ?untyped options) -> IO
-               | [T] (untyped name, ?String mode, ?Integer perm, ?untyped options) { (IO) -> T } -> T
-end

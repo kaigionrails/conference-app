@@ -31,7 +31,7 @@ if Rails.env.development? || Rails.env.test?
     end
 
     task :validate do
-      sh "rbs", "-Isig", "validate", "--silent"
+      sh "rbs", "-Isig", "validate"
     end
   end
 
