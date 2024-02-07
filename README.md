@@ -81,3 +81,10 @@ And then execute below
 $ docker compose up
 $ docker compose exec conference-app rails db:prepare
 ```
+
+## Acknowledgment
+### Scout APM
+
+![Scout APM logo](https://github.com/kaigionrails/conference-app/assets/4487291/7c300827-25ad-4fde-9f04-54a6419a3b61)
+
+This app uses <https://scoutapm.com/> for performance monitoring.
