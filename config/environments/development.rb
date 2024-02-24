@@ -6,7 +6,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.enable_reloading = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -56,6 +56,11 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  # Highlight code that enqueued background job in logs.
+  config.active_job.verbose_enqueue_logs = true
+
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -70,5 +75,11 @@ Rails.application.configure do
   config.x.webpush.vapid_private_key = ENV["VAPID_PRIVATE_KEY"]
   config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO", "mailto:mail@kaigionrails.example")
 
+  config.x.github.app_id = ENV["GITHUB_APP_ID"]
+  config.x.github.private_key = ENV.fetch("GITHUB_PRIVATE_KEY")
+
   config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
+
+  # Raise error when a before_action's only/except options reference missing actions
+  config.action_controller.raise_on_missing_callback_actions = true
 end
