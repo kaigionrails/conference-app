@@ -232,7 +232,7 @@ GEM
       railties (>= 7.0.0)
     prosopite (1.4.2)
     public_suffix (5.0.1)
-    puma (5.6.8)
+    puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
@@ -463,7 +463,7 @@ DEPENDENCIES
   pg_query
   propshaft
   prosopite
-  puma (~> 5.6)
+  puma (~> 6.4)
   rails (~> 7.0)
   rails_semantic_logger
   rbs
