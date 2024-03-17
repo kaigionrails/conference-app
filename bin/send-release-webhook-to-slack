@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+#
+# Usage
+# bin/send-relase-webhook-to-slack
+#
+# Required environment variables
+#   NOTIFY_SLACK_CHANNEL_NAME
+#     Channel name of notification target (with hash), e.g. `#conference-app`
+#   NOTIFY_SLACK_WEBHOOK_ENDPOINT
+#     URL of the webhook endpoint e.g. `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
+#   NOTIFY_SLACK_APPLICATION_ENV
+#     Environment name of deployed application. e.g. "production"
+
+require 'net/http'
+require 'uri'
+require 'json'
+
+head_ref = `git rev-parse --short=7 HEAD`.chomp # https://git-scm.com/docs/git-rev-parse
+
+# https://api.slack.com/messaging/webhooks
+# https://api.slack.com/reference/messaging/payload
+message = {
+  text: "Deployed `#{head_ref}` to #{ENV.fetch('NOTIFY_SLACK_APPLICATION_ENV')}",
+  mrkdwn: true
+}
+
+slack_webhook_endpoint = URI.parse(ENV.fetch("NOTIFY_SLACK_WEBHOOK_ENDPOINT"))
+
+http = Net::HTTP.new(slack_webhook_endpoint.host, slack_webhook_endpoint.port)
+http.use_ssl = true
+http.start do |request|
+  request.post(slack_webhook_endpoint.path, JSON.dump(message), { "Content-Type" => "application/json" })
+end
