@@ -203,7 +203,7 @@ GEM
       base64
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
-    omniauth (2.1.1)
+    omniauth (2.1.2)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
@@ -239,9 +239,10 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
-    rack (2.2.8.1)
-    rack-protection (3.0.6)
-      rack
+    rack (2.2.9)
+    rack-protection (3.2.0)
+      base64 (>= 0.1.0)
+      rack (~> 2.2, >= 2.2.4)
     rack-session (1.0.2)
       rack (< 3)
     rack-test (2.1.0)
