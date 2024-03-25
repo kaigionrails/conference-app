@@ -80,7 +80,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   gem "factory_bot_rails", "~> 6.2.0"
-  gem "rspec-rails", "~> 6.0"
+  gem "rspec-rails", "~> 6.1"
 
   gem "standard"
   gem "standard-rails"
