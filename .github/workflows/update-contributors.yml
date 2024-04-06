@@ -14,7 +14,7 @@ jobs:
         run: |
           gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" \
           /repos/kaigionrails/conference-app/contributors \
-          | jq 'map({login, html_url})' > contributors.json
+          | jq 'map(select(.login != "dependabot[bot]")) | map({login, html_url})' > contributors.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Set Current Date Variable
