@@ -1,11 +1,11 @@
 class Admin::ProfileBadgesProfilesController < AdminController
   def new
-    @profile = Profile.preload(:profile_badges).find_by!(id: params[:profile_id])
+    @profile = Profile.preload(:profile_badges).find(params[:profile_id])
     @profile_badges = ProfileBadge.all
   end
 
   def create
-    @profile = Profile.preload(:profile_badges).find_by!(id: params[:profile_id])
+    @profile = Profile.preload(:profile_badges).find(params[:profile_id])
 
     given_profile_badge_ids = profile_badges_profiles_params[:profile_badge_ids].reject(&:empty?).map(&:to_i)
     assigned_profile_badge_ids = @profile.profile_badges.map(&:id)

@@ -3,7 +3,7 @@ class SendAnnouncementPushNotificationJob < ApplicationJob
 
   def perform(announcement_id, message)
     # TODO: DRY
-    WebpushSubscription.all.each do |subscription|
+    WebpushSubscription.all.find_each do |subscription|
       WebPush.payload_send(
         endpoint: subscription.endpoint,
         message: JSON.generate(message),

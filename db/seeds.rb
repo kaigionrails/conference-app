@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-event_2023 = Event.find_or_create_by(
+event_2023 = Event.find_or_create_by!(
   name: "Kaigi on Rails 2023",
   slug: "2023",
   start_date: Time.zone.parse("2023-10-27 00:00:00 +0900"),
@@ -14,7 +14,7 @@ event_2023 = Event.find_or_create_by(
 )
 
 if event_2023.talks.empty?
-  talks_2023 = YAML.unsafe_load_file(Rails.root.join("db", "seeds", "2023.yaml"), symbolize_names: true)
+  talks_2023 = YAML.unsafe_load_file(Rails.root.join("db/seeds/2023.yaml"), symbolize_names: true)
 
   ApplicationRecord.transaction do
     talks_2023[:talks].each do |talk_data|

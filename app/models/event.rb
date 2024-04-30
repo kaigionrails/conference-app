@@ -3,5 +3,5 @@ class Event < ApplicationRecord
 
   has_many :talks, dependent: :destroy
   has_many :announcements, dependent: :destroy
-  has_many :profile_exchanges
+  has_many :profile_exchanges, dependent: :destroy
 end
