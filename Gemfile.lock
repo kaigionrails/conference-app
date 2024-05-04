@@ -232,7 +232,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pg (1.4.5)
+    pg (1.5.6)
     pg_query (5.1.0)
       google-protobuf (>= 3.22.3)
     propshaft (0.6.4)
@@ -476,7 +476,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-rails_csrf_protection
   open-uri
-  pg (~> 1.1)
+  pg (~> 1.5)
   pg_query
   propshaft
   prosopite
