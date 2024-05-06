@@ -305,7 +305,7 @@ GEM
       actionpack (>= 5, < 8)
       redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
-    redis-client (0.17.0)
+    redis-client (0.22.1)
       connection_pool
     redis-rack (3.0.0)
       rack-session (>= 0.2.0)
@@ -371,7 +371,7 @@ GEM
     sentry-ruby (5.17.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sidekiq (7.1.4)
+    sidekiq (7.1.6)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
