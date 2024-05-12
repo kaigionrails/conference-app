@@ -1,6 +1,6 @@
 module EventHelper
-  def prepare_current_event
-    allow_any_instance_of(ApplicationHelper).to receive(:current_event).and_return(prepare_event)
+  def prepare_current_event(event = nil)
+    allow_any_instance_of(ApplicationHelper).to receive(:current_event).and_return(event || prepare_event)
   end
 
   private def prepare_event
