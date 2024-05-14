@@ -11,6 +11,7 @@ class User < ApplicationRecord
   def participant?: () -> bool
 
   def have_unread_announcements?: () -> bool
+  def destroy_talk_bookmark_with_reminder!: (Integer id) -> bool
 
   class ActiveRecord_Relation
     # NOTE: Added by kaminari

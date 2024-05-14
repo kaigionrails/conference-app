@@ -39,5 +39,6 @@ class User < ApplicationRecord
       talk_bookmark.destroy!
       talk_reminders.find_by(talk: talk)&.destroy!
     end
+    true
   end
 end
