@@ -30,4 +30,35 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "destroy_talk_bookmark_with_reminder" do
+    context "when there is no bookmark with given ID" do
+      let(:id) { 42 }
+      it "raises an error" do
+        expect { user.destroy_talk_bookmark_with_reminder!(id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "when there is a bookmark but no reminder" do
+      let(:talk) { FactoryBot.create(:talk) }
+      let!(:bookmark) { FactoryBot.create(:talk_bookmark, user: user, talk: talk) }
+      let(:id) { bookmark.id }
+
+      it "destroys the bookmark" do
+        expect { user.destroy_talk_bookmark_with_reminder!(id) }.to change(TalkBookmark, :count).from(1).to(0)
+      end
+    end
+
+    context "when there is a bookmark and a reminder" do
+      let(:talk) { FactoryBot.create(:talk) }
+      let!(:bookmark) { FactoryBot.create(:talk_bookmark, user: user, talk: talk) }
+      let!(:reminder) { FactoryBot.create(:talk_reminder, user: user, talk: talk) }
+      let(:id) { bookmark.id }
+
+      it "destroys the bookmark and the reminder" do
+        expect { user.destroy_talk_bookmark_with_reminder!(id) }.to change(TalkBookmark, :count).from(1).to(0)
+          .and change(TalkReminder, :count).from(1).to(0)
+      end
+    end
+  end
 end

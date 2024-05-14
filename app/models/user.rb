@@ -30,4 +30,14 @@ class User < ApplicationRecord
       next
     end
   end
+
+  def destroy_talk_bookmark_with_reminder!(id)
+    talk_bookmark = talk_bookmarks.find(id)
+
+    talk = talk_bookmark.talk
+    transaction do
+      talk_bookmark.destroy!
+      talk_reminders.find_by(talk: talk)&.destroy!
+    end
+  end
 end
