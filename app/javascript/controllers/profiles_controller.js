@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 import QRCode from "qrcode";
 import * as jose from "jose";
+import PhotoSwipe from "photoswipe";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
 
 export default class extends Controller {
   static targets = ["qrcodeImg", "profileImg", "showQrcode", "hideQrcode"];
@@ -11,6 +13,7 @@ export default class extends Controller {
 
   connect() {
     console.info("profiles controller");
+    this.setupLightbox();
   }
 
   addProfileImageField(event, className) {
@@ -64,5 +67,15 @@ export default class extends Controller {
     this.hideQrcodeTarget.classList.add("hidden");
     this.qrcodeImgTarget.classList.add("hidden");
     this.showQrcodeTarget.classList.remove("hidden");
+  }
+
+  setupLightbox() {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#lightbox",
+      children: "a",
+      initialZoomLevel: "fit",
+      pswpModule: PhotoSwipe,
+    });
+    lightbox.init();
   }
 }
