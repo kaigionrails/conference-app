@@ -9,7 +9,7 @@ RSpec.describe AuthenticationProviderGithub, type: :model do
 
     it "should success user and profile image from GitHub" do
       allow_any_instance_of(Profile).to receive(:fetch_profile_image_from_github).and_return(
-        StringIO.new(File.read(Rails.root.join("spec", "assets", "sample.png")))
+        StringIO.new(Rails.root.join("spec/assets/sample.png").read)
       )
       expect {
         AuthenticationProviderGithub.create_user_from_auth_hash(auth_hash)

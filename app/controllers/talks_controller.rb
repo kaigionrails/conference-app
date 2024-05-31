@@ -7,7 +7,7 @@ class TalksController < ApplicationController
 
   def show
     @event = Event.find_by!(slug: params[:event_slug])
-    @talk = Talk.eager_load(speakers: {avatar_attachment: :blob}).find_by!(id: params[:id])
+    @talk = Talk.eager_load(speakers: {avatar_attachment: :blob}).find(params[:id])
     @current_user_bookmarks = logged_in? ? TalkBookmark.where(user: current_user!, talk: @talk).to_ary : []
   end
 end
