@@ -305,12 +305,13 @@ GEM
       rbs (>= 1)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    redis (4.8.0)
+    redis (5.2.0)
+      redis-client (>= 0.22.0)
     redis-actionpack (5.4.0)
       actionpack (>= 5, < 8)
       redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
-    redis-client (0.17.0)
+    redis-client (0.22.2)
       connection_pool
     redis-rack (3.0.0)
       rack-session (>= 0.2.0)
@@ -495,7 +496,7 @@ DEPENDENCIES
   rails_semantic_logger
   rbs
   rbs_rails
-  redis (~> 4.0)
+  redis (~> 5.2)
   redis-actionpack
   rspec-rails (~> 6.1)
   scout_apm
