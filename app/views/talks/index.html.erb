@@ -30,7 +30,9 @@
                 <% end %>
                 <p class="text-sm block mb-3"><%= talk.track %></p>
                 <div class="w-6 h-6 -ml-1">
-                  <%= render partial: "bookmark_button", locals: { talk: talk, user: current_user!, user_bookmarks: @current_user_bookmarks } %>
+                  <% if logged_in? %>
+                    <%= render partial: "bookmark_button", locals: { talk: talk, user: current_user!, user_bookmarks: @current_user_bookmarks } %>
+                  <% end %>
                 </div>
               </div>
               <div class="w-full pl-2">
