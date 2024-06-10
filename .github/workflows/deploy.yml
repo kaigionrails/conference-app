@@ -2,13 +2,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - "*" # for test
 jobs:
   build:
     runs-on: ubuntu-latest
-    # if: "${{ github.repository == 'kaigionrails/conference-app' }}"
+    if: "${{ github.repository == 'kaigionrails/conference-app' }}"
     permissions:
       id-token: write
       contents: read
