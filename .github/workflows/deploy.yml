@@ -31,6 +31,8 @@ jobs:
           context: "."
           platforms: linux/amd64
           push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: ${{ steps.meta.outputs.tags }}
 
   deploy:
