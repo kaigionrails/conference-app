@@ -13,7 +13,7 @@ RUN apt-get update -qq && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock /app/
+RUN bundle install -j2
 
-RUN bundle install
-
+COPY . /app
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
