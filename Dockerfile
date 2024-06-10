@@ -15,3 +15,5 @@ RUN apt-get update -qq && apt-get install -y \
 COPY Gemfile Gemfile.lock /app/
 
 RUN bundle install
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
