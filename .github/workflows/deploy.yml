@@ -53,4 +53,5 @@ jobs:
       - uses: kayac/ecspresso@v2
         with:
           version: latest
+      - run: ecspresso run --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/runtask-db-migrate.jsonnet
       - run: ecspresso deploy --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
