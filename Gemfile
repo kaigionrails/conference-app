@@ -31,7 +31,7 @@ gem "tailwindcss-rails"
 gem "redis", "~> 5.2"
 
 gem "redis-actionpack"
-gem "redis-store", github: "unasuke/redis-store", branch: "tls"
+gem "redis-store", github: "unasuke/redis-store", branch: "tls" # https://github.com/redis-store/redis-store/pull/371
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
