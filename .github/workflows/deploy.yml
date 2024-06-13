@@ -38,5 +38,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: ["build"]
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_REGION: us-west-2
     steps:
-      - run: echo "deploy job"
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-west-2
+          role-skip-session-tagging: false
+          role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
+      - uses: kayac/ecspresso@v2
+        with:
+          version: latest
+      - run: ecspresso deploy --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
