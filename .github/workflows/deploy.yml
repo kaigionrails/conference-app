@@ -44,6 +44,7 @@ jobs:
     env:
       AWS_REGION: us-west-2
     steps:
+      - run: sudo apt-get update && sudo apt-get install jsonnet
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -55,3 +56,5 @@ jobs:
           version: latest
       - run: ecspresso run --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/runtask-db-migrate.jsonnet
       - run: ecspresso deploy --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
+      - run: jsonnet deploy/apprunner.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} > deploy/apprunner.json
+      - run: aws apprunner update-service --cli-input-json file://deploy/apprunner.json
