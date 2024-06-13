@@ -5,7 +5,6 @@
   platformFamily: 'LINUX',
   platformVersion: 'LATEST',
   serviceName: 'conference-app-worker',
-  desiredCount: 0,
   deploymentConfiguration: {
     maximumPercent: 100,
     minimumHealthyPercent: 0,
