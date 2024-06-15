@@ -36,3 +36,6 @@
 
 # Ignore environment files
 .env
+
+# auto generate file
+deploy/apprunner.json
