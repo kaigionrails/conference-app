@@ -37,6 +37,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: "deploy"
+      cancel-in-progress: false
     needs: ["build"]
     permissions:
       id-token: write
