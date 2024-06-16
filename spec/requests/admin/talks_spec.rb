@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Admin::Talks", type: :request do
   before do
@@ -53,7 +53,7 @@ RSpec.describe "Admin::Talks", type: :request do
           start_at_date: updated_start_at.strftime("%Y/%m/%d"), # 2023/10/20
           start_at_time: updated_start_at.strftime("%H:%M"), # 11:00
           duration_minutes: "10",
-          track: "room 100",
+          track: "room 100"
         }
       }
       patch admin_talk_path(target_talk), params: update_params

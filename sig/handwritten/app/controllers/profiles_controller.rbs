@@ -1,0 +1,9 @@
+class ProfilesController < ApplicationController
+  @profile: Profile
+
+  @friends: User::ActiveRecord_Associations_CollectionProxy
+
+  @user: User
+
+  @profile_badges: ProfileBadge::ActiveRecord_Relation
+end

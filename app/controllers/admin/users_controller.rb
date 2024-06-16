@@ -1,10 +1,10 @@
 class Admin::UsersController < AdminController
   def index
-    @users = User.eager_load(:profile).order(:id).page(params[:page])
+    @users = User.eager_load(:profile).order(created_at: :asc).page(params[:page])
   end
 
   def show
-    @user = User.eager_load(profile: { images_attachments: :blob }).find(params[:id])
+    @user = User.eager_load(profile: {images_attachments: :blob}).find(params[:id])
   end
 
   def edit

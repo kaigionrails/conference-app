@@ -1,4 +1,4 @@
-FROM ruby:3.2.2
+FROM public.ecr.aws/docker/library/ruby:3.3.1-bookworm
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
@@ -13,5 +13,9 @@ RUN apt-get update -qq && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock /app/
+RUN bundle install -j2
 
-RUN bundle install
+COPY . /app
+RUN GITHUB_PRIVATE_KEY=sample REDIS_URL=sample VAPID_PUBLIC_KEY=sample VAPID_PRIVATE_KEY=sample VAPID_SUBJECT_MAILTO=sample APPLICATION_URL=sample \
+    SECRET_KEY_BASE=sample RAILS_ENV=production bundle exec rails assets:precompile
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

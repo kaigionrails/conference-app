@@ -10,7 +10,7 @@ class WebpushSubscription < ApplicationRecord
       vapid: {
         subject: Rails.configuration.x.webpush.vapid_subject_mailto,
         public_key: Rails.configuration.x.webpush.vapid_public_key,
-        private_key: Rails.configuration.x.webpush.vapid_private_key,
+        private_key: Rails.configuration.x.webpush.vapid_private_key
       }
     )
   end

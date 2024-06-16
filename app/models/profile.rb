@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :profile_badges
+  has_many :profile_badges_profiles, dependent: :destroy
+  has_many :profile_badges, through: :profile_badges_profiles
 
   has_many_attached :images
 
@@ -13,6 +14,6 @@ class Profile < ApplicationRecord
   private def fetch_profile_image_from_github
     client = Octokit::Client.new
     url = client.user(user.authentication_provider_github.uid.to_i).avatar_url
-    URI.open(url)
+    URI.open(url) # standard:disable Security/Open
   end
 end

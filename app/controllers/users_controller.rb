@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   def show
-    @user = User.preload(profile: [:profile_badges, images_attachments: :blob]).find_by!(name: params[:username])
+    @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by!(name: params[:username])
     @profile = @user.profile
     @token = params[:token]
 

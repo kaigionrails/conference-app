@@ -1,0 +1,11 @@
+class AnnouncementsController < ApplicationController
+  @event: Event
+
+  @announcements: Announcement::ActiveRecord_Relation
+
+  @unread_announcements: UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy | UnreadAnnouncement::ActiveRecord_Relation
+
+  @announcement: Announcement
+
+  @unread_announcement: UnreadAnnouncement?
+end

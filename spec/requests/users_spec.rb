@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Users", type: :request do
   before { prepare_current_event }
@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :request do
         end
 
         context "when valid token" do
-          let(:token) { JWT.encode({ iss: user.name, iat: 1.second.ago.to_i, exp: 5.minutes.since.to_i }, nil, 'none') }
+          let(:token) { JWT.encode({iss: user.name, iat: 1.second.ago.to_i, exp: 5.minutes.since.to_i}, nil, "none") }
           it "should success, no effects" do
             get "/@foo?token=#{token}"
             expect(response).to have_http_status(:success)
@@ -53,7 +53,7 @@ RSpec.describe "Users", type: :request do
 
       context "show other's profile" do
         let(:other_user) { FactoryBot.create(:user, :with_profile_image, name: "bar") }
-        let(:token) { JWT.encode({ iss: other_user.name, iat: 1.second.ago.to_i, exp: 5.minutes.since.to_i }, nil, 'none') }
+        let(:token) { JWT.encode({iss: other_user.name, iat: 1.second.ago.to_i, exp: 5.minutes.since.to_i}, nil, "none") }
         it "should success, create profile_exchanges" do
           get "/@bar?token=#{token}"
           expect(response).to have_http_status(:success)

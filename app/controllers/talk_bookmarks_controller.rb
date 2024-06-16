@@ -17,14 +17,8 @@ class TalkBookmarksController < ApplicationController
       return
     end
 
-    talk_bookmark = current_user!.talk_bookmarks.find_by(id: params[:id])
-    talk = talk_bookmark&.talk
-    if talk_bookmark&.destroy
-      current_user!.talk_reminders.find_by(talk: talk)&.destroy
-      head :ok
-    else
-      head :internal_server_error
-    end
+    current_user!.destroy_talk_bookmark_with_reminder!(params[:id])
+    head :ok
   end
 
   private def talk_bookmark_params

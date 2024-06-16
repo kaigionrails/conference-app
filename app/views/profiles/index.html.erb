@@ -1,81 +1,61 @@
 <div class="w-full max-w-screen-xl mx-auto pt-4 px-4 pb-6">
-  <% if @profile %>
-    <div class="w-full flex flex-row mb-4">
-      <div class="w-1/3 pr-2">
-        <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user!.name %>">
-          <%= image_tag @profile.images.first, class: "w-full rounded-lg mb-4 object-cover aspect-square", data: { "profiles-target": "profileImg" } %>
-          <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
-          <button
-            data-action="click->profiles#showQrcode"
-            data-profiles-target="showQrcode"
-            class="absolute bottom-2 right-2 text-gray-900 bg-white bg-opacity-95 w-20 h-20 rounded-lg border-gray-800 border-4 shadow-xl"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 m-auto">
-              <path fill-rule="evenodd" d="M3 4.875C3 3.839 3.84 3 4.875 3h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 9.375v-4.5zM4.875 4.5a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875.375c0-1.036.84-1.875 1.875-1.875h4.5C20.16 3 21 3.84 21 4.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5a1.875 1.875 0 01-1.875-1.875v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zM6 6.75A.75.75 0 016.75 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75A.75.75 0 016 7.5v-.75zm9.75 0A.75.75 0 0116.5 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM3 14.625c0-1.036.84-1.875 1.875-1.875h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.035-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 19.125v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875-.75a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM6 16.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm9.75 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm-3 3a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75z" clip-rule="evenodd" />
+  <div class="w-full flex flex-row mb-4">
+    <div class="w-1/3 pr-2">
+      <div class="w-full relative" data-controller="profiles" data-profiles-base-url-value="<%= application_url %>" data-profiles-username-value="<%= current_user!.name %>">
+        <%= image_tag @profile.images.first, class: "w-full rounded-lg mb-4 object-cover aspect-square", data: { "profiles-target": "profileImg" } %>
+        <img src="" class="w-full rounded-lg opacity-90 hidden" data-profiles-target="qrcodeImg"/>
+        <button
+          data-action="click->profiles#showQrcode"
+          data-profiles-target="showQrcode"
+          class="absolute bottom-2 right-2 text-gray-900 bg-white bg-opacity-95 w-20 h-20 rounded-lg border-gray-800 border-4 shadow-xl"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 m-auto">
+            <path fill-rule="evenodd" d="M3 4.875C3 3.839 3.84 3 4.875 3h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 9.375v-4.5zM4.875 4.5a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875.375c0-1.036.84-1.875 1.875-1.875h4.5C20.16 3 21 3.84 21 4.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5a1.875 1.875 0 01-1.875-1.875v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zM6 6.75A.75.75 0 016.75 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75A.75.75 0 016 7.5v-.75zm9.75 0A.75.75 0 0116.5 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM3 14.625c0-1.036.84-1.875 1.875-1.875h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.035-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 19.125v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875-.75a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM6 16.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm9.75 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm-3 3a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75z" clip-rule="evenodd" />
 
-            </svg>
-          </button>
-          <button
-            data-profiles-target="hideQrcode"
-            data-action="click->profiles#hideQrcode"
-            class="absolute text-white w-12 h-12 hidden -bottom-10 -right-10"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full f-hull">
+          </svg>
+        </button>
+        <button
+          data-profiles-target="hideQrcode"
+          data-action="click->profiles#hideQrcode"
+          class="absolute text-white w-12 h-12 hidden -bottom-10 -right-10"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full f-hull">
 <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
 </svg>
-          </button>
-        </div>
-        <div class="grid grid-cols-4 gap-3" data-controller="lightbox">
-          <% @profile.images.each do |profile_image| %>
-            <%= image_tag profile_image, class: "w-full object-cover rounded-lg aspect-square" %>
-          <% end %>
-        </div>
+        </button>
       </div>
-      <div class="w-2/3 pl-2">
-        <p class="text-3xl font-bold mb-4"><%= @profile.name %></p>
-        <div class="text-stone-50 mb-14 markdown"><%= @profile.sanitized_description %></div>
-        <div class="flex flex-row flex-wrap">
-          <% @profile.profile_badges.each do |profile_badge| %>
-            <div class="inline-block py-1 px-3 border-2 rounded-3xl text-black mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="mb-8">
-      <%= link_to "編集する", edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
-    </div>
-    <div>
-      <h3 class="text-2xl font-bold mb-2">知り合った人達<%= @user.number_of_friends %></h3>
-      <ul>
-        <% @friends.each do |friend| %>
-          <li class="flex flex-row items-center">
-            <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
-              <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
-              <p class="text-2xl mr-4"><%= friend.profile.name %></p>
-              <p class="underline underline-offset-2"><%= "@#{friend.name}" %></p>
-            <% end %>
-          </li>
+      <div class="grid grid-cols-4 gap-3" data-controller="lightbox">
+        <% @profile.images.each do |profile_image| %>
+          <%= image_tag profile_image, class: "w-full object-cover rounded-lg aspect-square" %>
         <% end %>
-        <li>
-      </ul>
-    </div>
-  <% else %>
-    <div class="w-full flex flex-row mb-4">
-      <div class="w-1/3 pr-2">
-        <div class="">
-          <div class="border-2 border-dashed rounded-lg bg-opacity-30 bg-white h-72 flex justify-center flex-col items-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-14 h-14">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="w-2/3 pl-2">
-        <p class="text-xl font-bold">プロフィールがまだ登録されていません</p>
       </div>
     </div>
-    <div class="">
-      <%= link_to "登録する", new_profile_path, type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
+    <div class="w-2/3 pl-2">
+      <p class="text-3xl font-bold mb-4"><%= @profile.name %></p>
+      <div class="text-stone-50 mb-14 markdown"><%= @profile.sanitized_description %></div>
+      <div class="flex flex-row flex-wrap">
+        <% @profile.profile_badges.each do |profile_badge| %>
+          <div class="inline-block py-1 px-3 border-2 rounded-3xl text-black mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
+  <div class="mb-8">
+    <%= link_to "編集する", edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50" %>
+  </div>
+  <div>
+    <h3 class="text-2xl font-bold mb-2">知り合った人達<%= @user.number_of_friends %></h3>
+    <ul>
+      <% @friends.each do |friend| %>
+        <li class="flex flex-row items-center">
+          <%= link_to user_path(username: friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
+            <%= image_tag friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
+            <p class="text-2xl mr-4"><%= friend.profile.name %></p>
+            <p class="underline underline-offset-2"><%= "@#{friend.name}" %></p>
+          <% end %>
+        </li>
+      <% end %>
+      <li>
+    </ul>
+  </div>
 </div>
