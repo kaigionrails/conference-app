@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/unasuke/redis-store.git
-  revision: a3243a83d99ecc7608cc0a0ba83689656f21b8f7
-  branch: tls
+  revision: 11f7f8e9d15045fe84e1d5ef90fa81984df18300
+  ref: 11f7f8e
   specs:
     redis-store (1.10.0)
       redis (>= 4, < 6)
