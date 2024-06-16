@@ -1,4 +1,4 @@
-if Rails.env.development? || Rails.env.test?
+if Rails.env.local?
   require "rbs_rails/rake_task"
 
   namespace :rbs do
