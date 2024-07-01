@@ -189,7 +189,7 @@ GEM
     method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    minitest (5.24.0)
+    minitest (5.24.1)
     msgpack (1.7.2)
     multi_xml (0.6.0)
     net-http (0.4.1)
@@ -289,7 +289,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_semantic_logger (4.14.0)
+    rails_semantic_logger (4.15.0)
       rack
       railties (>= 5.1)
       semantic_logger (~> 4.13)
