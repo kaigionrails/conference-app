@@ -18,14 +18,14 @@
     </script>
   </head>
 
-  <body class="bg-[#84240f] w-full">
+  <body class="bg-[#d7d2d0] w-full">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
       <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
         <%= message %>
       </div>
     <% end %>
-    <main class="mx-auto flex text-white">
+    <main class="mx-auto flex text-black">
       <%= yield %>
     </main>
   </body>
