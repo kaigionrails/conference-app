@@ -13,27 +13,22 @@ class PwaController < ApplicationController
       name: "Kaigi on Rails 2023 conference-app",
       short_name: "Kaigi on Rails",
       description: "Web application for Kaigi on Rails attendees.",
-      theme_color: "#fff",
-      background_color: "#84240f",
+      theme_color: "#d7d2d0",
+      background_color: "#d7d2d0",
       display: "standalone",
       orientation: "portrait",
       scope: "/",
       start_url: "/",
       icons: [
         {
-          src: view_context.image_path("icons/2023/512.png"),
+          src: view_context.image_path("icons/2024/512.png"),
           type: "image/png",
           sizes: "512x512"
         },
         {
-          src: view_context.image_path("icons/2023/1024.png"),
+          src: view_context.image_path("icons/2024/512_maskable.png"),
           type: "image/png",
-          sizes: "1024x1024"
-        },
-        {
-          src: view_context.image_path("icons/2023/1024_maskable.png"),
-          type: "image/png",
-          sizes: "1024x1024",
+          sizes: "512x512",
           purpose: "maskable"
         }
       ]

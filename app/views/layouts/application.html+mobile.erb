@@ -11,21 +11,21 @@
     <%= javascript_importmap_tags %>
     <%= javascript_import_module_tag "service_worker_installer" %>
     <%= favicon_link_tag "icon.png" %>
-    <%= favicon_link_tag "icons/2023/512.png", rel: "apple-touch-icon", type: 'image/png' %>
+    <%= favicon_link_tag "icons/2024/512.png", rel: "apple-touch-icon", type: 'image/png' %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
     <script>
       window.vapidPublicKey = new Uint8Array(<%= vapid_public_key_bytes %>)
     </script>
   </head>
 
-  <body class="bg-[#84240f] w-full flex flex-col h-[100dvh]">
+  <body class="bg-[#d7d2d0] w-full flex flex-col h-[100dvh]">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
       <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
         <%= message %>
       </div>
     <% end %>
-    <main class="w-full mx-auto pb-2 flex text-white flex-grow overflow-scroll">
+    <main class="w-full mx-auto pb-2 flex text-black flex-grow overflow-scroll">
       <%= yield %>
     </main>
   </body>

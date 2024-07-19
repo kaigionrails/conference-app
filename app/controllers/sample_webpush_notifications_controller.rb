@@ -6,7 +6,7 @@ class SampleWebpushNotificationsController < ApplicationController
     message = {
       title: "プッシュ通知のサンプルです",
       body: "このようなプッシュ通知が届きます。",
-      icon: view_context.image_url("icons/2023/512.png"),
+      icon: view_context.image_url("icons/2024/512.png"),
       data: {
         url: URI.join(Rails.configuration.application_url, setting_path)
       }
