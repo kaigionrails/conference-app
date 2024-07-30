@@ -21,3 +21,5 @@ gems:
 
   - name: base64
   - name: json
+  - name: ffi
+    ignore: true # See https://github.com/ffi/ffi/issues/1107
