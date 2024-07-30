@@ -76,7 +76,15 @@ Rails.application.configure do
   config.x.webpush.vapid_subject_mailto = ENV.fetch("VAPID_SUBJECT_MAILTO", "mailto:mail@kaigionrails.example")
 
   config.x.github.app_id = ENV["GITHUB_APP_ID"]
-  config.x.github.private_key = ENV.fetch("GITHUB_PRIVATE_KEY")
+  config.x.github.private_key = ENV["GITHUB_PRIVATE_KEY"]
+  config.x.github.client_id = ENV["GITHUB_KEY"]
+  config.x.github.client_secret = ENV["GITHUB_SECRET"]
+  config.x.github.oauth_redirect_url = ENV["GITHUB_OAUTH_REDIRECT_URI"]
+
+  config.x.sentry.dsn = ENV["SENTRY_DSN"]
+  config.x.sentry.env = ENV.fetch("SENTRY_ENV", "development")
+
+  config.redis_url = ENV["REDIS_URL"]
 
   config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
 

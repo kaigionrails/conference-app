@@ -13,7 +13,7 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
         title: "もうすぐブックマークしたトークが始まります",
         body: reminder.talk.title,
         icon: URI.join(
-          Rails.configuration.application_url, assets_resolver.digested_asset_path("icons/2023/512.png")
+          Rails.configuration.application_url, assets_resolver.digested_asset_path("icons/2024/512.png")
         ).to_s,
         data: {
           url: event_talk_url(

@@ -65,6 +65,8 @@ Rails.application.configure do
   end
   config.x.webpush.vapid_subject_mailto = "mailto:mail@kaigionrails.test"
 
+  config.redis_url = ENV["REDIS_URL"]
+
   config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
 
   # Raise error when a before_action's only/except options reference missing actions
