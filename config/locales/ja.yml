@@ -1,0 +1,22 @@
+ja:
+  about:
+    index:
+      title: "Conference Appについて"
+  announcements:
+    index:
+      title: "アナウンス一覧"
+  config:
+    index:
+      title: "設定"
+  profiles:
+    index:
+      title: "プロフィール"
+  profile_badges:
+    new:
+      title: "バッヂを作る"
+  setting:
+    index:
+      title: "設定"
+  talks:
+    index:
+      title: "トーク一覧"
