@@ -11,9 +11,9 @@ module ApplicationHelper
     Rails.configuration.application_url
   end
 
-  def page_title(page_title = '')
+  def page_title(title = '')
     base_title = 'ConferenceApp'
-    page_title.empty? ? base_title : "#{base_title} - #{page_title}"
+    title.empty? ? base_title : "#{base_title} - #{title}"
   end
 
   def message_type_style(message_type)
