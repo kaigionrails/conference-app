@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def application_url: () -> untyped
 
-  def page_title: (?::String page_title) -> untyped
+  def page_title: (?::String title) -> string 
 
   def message_type_style: (untyped message_type) -> untyped
 end
