@@ -23,13 +23,13 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#page_title" do
     context "when page title is empty string" do
       it "returns only the base title" do
-        expect(helper.page_title('')).to eq("ConferenceApp")
+        expect(helper.page_title("")).to eq("ConferenceApp")
       end
     end
 
     context "when page title is empty string" do
       it "returns the title with base and page title" do
-        expect(helper.page_title('Test')).to eq("ConferenceApp - Test")
+        expect(helper.page_title("Test")).to eq("ConferenceApp - Test")
       end
     end
   end

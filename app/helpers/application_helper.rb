@@ -11,8 +11,8 @@ module ApplicationHelper
     Rails.configuration.application_url
   end
 
-  def page_title(title = '')
-    base_title = 'ConferenceApp'
+  def page_title(title = "")
+    base_title = "ConferenceApp"
     title.empty? ? base_title : "#{base_title} - #{title}"
   end
 
