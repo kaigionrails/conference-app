@@ -44,5 +44,6 @@ module ConferenceApp
     config.generators.system_tests = nil
     config.rails_semantic_logger.format = :json
     config.mission_control.jobs.http_basic_auth_enabled = false
+    config.i18n.default_locale = :ja
   end
 end
