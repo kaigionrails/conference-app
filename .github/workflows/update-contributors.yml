@@ -25,7 +25,7 @@ jobs:
           # Set the CURRENT_DATE as an environment variable
           echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
       - name: Create PR if list is updated
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           author: "Kaigi on Rails <git@kaigionrails.org>"
           committer: "Kaigi on Rails <git@kaigionrails.org>"
