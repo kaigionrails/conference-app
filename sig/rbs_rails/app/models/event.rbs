@@ -267,6 +267,12 @@ class Event < ::ApplicationRecord
   def profile_exchanges=: (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange]) -> (ProfileExchange::ActiveRecord_Associations_CollectionProxy | Array[ProfileExchange])
   def profile_exchange_ids: () -> Array[Integer]
   def profile_exchange_ids=: (Array[Integer]) -> Array[Integer]
+  def ongoing_event: () -> OngoingEvent?
+  def ongoing_event=: (OngoingEvent?) -> OngoingEvent?
+  def build_ongoing_event: (untyped) -> OngoingEvent
+  def create_ongoing_event: (untyped) -> OngoingEvent
+  def create_ongoing_event!: (untyped) -> OngoingEvent
+  def reload_ongoing_event: () -> OngoingEvent?
 
   module GeneratedAssociationMethods
   end

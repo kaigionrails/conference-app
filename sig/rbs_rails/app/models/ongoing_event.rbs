@@ -1,5 +1,5 @@
-class Announcement < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Announcement, ActiveRecord_Relation, Integer]
+class OngoingEvent < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[OngoingEvent, ActiveRecord_Relation, Integer]
 
   module GeneratedAttributeMethods
     def id: () -> Integer
@@ -74,78 +74,6 @@ class Announcement < ::ApplicationRecord
 
     def clear_event_id_change: () -> void
 
-    def status: () -> String
-
-    def status=: (String) -> String
-
-    def status?: () -> bool
-
-    def status_changed?: () -> bool
-
-    def status_change: () -> [ String?, String? ]
-
-    def status_will_change!: () -> void
-
-    def status_was: () -> String?
-
-    def status_previously_changed?: () -> bool
-
-    def status_previous_change: () -> Array[String?]?
-
-    def status_previously_was: () -> String?
-
-    def status_before_last_save: () -> String?
-
-    def status_change_to_be_saved: () -> Array[String?]?
-
-    def status_in_database: () -> String?
-
-    def saved_change_to_status: () -> Array[String?]?
-
-    def saved_change_to_status?: () -> bool
-
-    def will_save_change_to_status?: () -> bool
-
-    def restore_status!: () -> void
-
-    def clear_status_change: () -> void
-
-    def published_at: () -> ActiveSupport::TimeWithZone?
-
-    def published_at=: (ActiveSupport::TimeWithZone?) -> ActiveSupport::TimeWithZone?
-
-    def published_at?: () -> bool
-
-    def published_at_changed?: () -> bool
-
-    def published_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
-
-    def published_at_will_change!: () -> void
-
-    def published_at_was: () -> ActiveSupport::TimeWithZone?
-
-    def published_at_previously_changed?: () -> bool
-
-    def published_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
-
-    def published_at_previously_was: () -> ActiveSupport::TimeWithZone?
-
-    def published_at_before_last_save: () -> ActiveSupport::TimeWithZone?
-
-    def published_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
-
-    def published_at_in_database: () -> ActiveSupport::TimeWithZone?
-
-    def saved_change_to_published_at: () -> Array[ActiveSupport::TimeWithZone?]?
-
-    def saved_change_to_published_at?: () -> bool
-
-    def will_save_change_to_published_at?: () -> bool
-
-    def restore_published_at!: () -> void
-
-    def clear_published_at_change: () -> void
-
     def created_at: () -> ActiveSupport::TimeWithZone
 
     def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
@@ -217,51 +145,9 @@ class Announcement < ::ApplicationRecord
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
-
-    def title: () -> String
-
-    def title=: (String) -> String
-
-    def title?: () -> bool
-
-    def title_changed?: () -> bool
-
-    def title_change: () -> [ String?, String? ]
-
-    def title_will_change!: () -> void
-
-    def title_was: () -> String?
-
-    def title_previously_changed?: () -> bool
-
-    def title_previous_change: () -> Array[String?]?
-
-    def title_previously_was: () -> String?
-
-    def title_before_last_save: () -> String?
-
-    def title_change_to_be_saved: () -> Array[String?]?
-
-    def title_in_database: () -> String?
-
-    def saved_change_to_title: () -> Array[String?]?
-
-    def saved_change_to_title?: () -> bool
-
-    def will_save_change_to_title?: () -> bool
-
-    def restore_title!: () -> void
-
-    def clear_title_change: () -> void
   end
   include GeneratedAttributeMethods
 
-  def rich_text_content: () -> ActionText::RichText?
-  def rich_text_content=: (ActionText::RichText?) -> ActionText::RichText?
-  def build_rich_text_content: (untyped) -> ActionText::RichText
-  def create_rich_text_content: (untyped) -> ActionText::RichText
-  def create_rich_text_content!: (untyped) -> ActionText::RichText
-  def reload_rich_text_content: () -> ActionText::RichText?
   def event: () -> Event
   def event=: (Event?) -> Event?
   def reload_event: () -> Event?
@@ -277,12 +163,12 @@ class Announcement < ::ApplicationRecord
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Announcement, Integer]
-    include Enumerable[Announcement]
+    include _ActiveRecord_Relation[OngoingEvent, Integer]
+    include Enumerable[OngoingEvent]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Announcement, Integer]
+    include _ActiveRecord_Relation[OngoingEvent, Integer]
   end
 end
