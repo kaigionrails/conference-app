@@ -33,11 +33,11 @@ RSpec.describe "Sessions", type: :request do
         let(:event) { FactoryBot.create(:event) }
         let!(:announcement) { FactoryBot.create(:announcement, :published, event: event) }
         let!(:draft_announcement) { FactoryBot.create(:announcement, event: event) }
+        let!(:ongoing_event) { FactoryBot.create(:ongoing_event, event: event) }
         let(:auth_hash) { {"info" => {"nickname" => "octocat"}, "uid" => "583231"} } # https://github.com/octocat
 
         before do
           allow_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil) # hmm....
-          Event::ONGOING_EVENT_SLUG = event.slug # dirty hack
           OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
         end
 

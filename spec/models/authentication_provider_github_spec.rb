@@ -4,8 +4,7 @@ RSpec.describe AuthenticationProviderGithub, type: :model do
   describe "self.create_user_from_auth_hash" do
     let(:event) { FactoryBot.create(:event) }
     let(:auth_hash) { {"info" => {"nickname" => "octocat"}, "uid" => "583231"} } # https://github.com/octocat
-
-    before { Event::ONGOING_EVENT_SLUG = event.slug } # TODO: Fix this hack
+    let!(:ongoing_event) { FactoryBot.create(:ongoing_event, event: event) }
 
     it "should success user and profile image from GitHub" do
       allow_any_instance_of(Profile).to receive(:fetch_profile_image_from_github).and_return(
