@@ -11,6 +11,11 @@ module ApplicationHelper
     Rails.configuration.application_url
   end
 
+  def page_title(title = "")
+    base_title = "ConferenceApp"
+    title.empty? ? base_title : "#{base_title} - #{title}"
+  end
+
   def message_type_style(message_type)
     case message_type
     when "success"
