@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def current_event
-    @current_event ||= Event.find_by(slug: Event::ONGOING_EVENT_SLUG)
+    @current_event ||= (OngoingEvent.exists? ? OngoingEvent.first.event : Event.find_by(slug: Event::ONGOING_EVENT_SLUG))
   end
 
   def application_url
