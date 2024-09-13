@@ -11,11 +11,11 @@ class User < ApplicationRecord
   enum :role, organizer: "organizer", participant: "participant"
 
   def have_unread_announcements?
-    unread_announcements.exists?
+    unread_announcements.joins(:announcement).where(announcement: { event: current_event }).exists?
   end
 
   def mark_all_announcement_unread!(event = nil)
-    event ||= Event.find_by!(slug: Event::ONGOING_EVENT_SLUG)
+    event ||= current_event
     insert_ary = Announcement.published.where(event: event).ids.map do |ann_id|
       {announcement_id: ann_id, user_id: id}
     end
