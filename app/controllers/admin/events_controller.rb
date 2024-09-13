@@ -14,6 +14,7 @@ class Admin::EventsController < AdminController
 
   def edit
     @event = Event.find(params[:id])
+    @ongoing_event = OngoingEvent.first
   end
 
   def create
