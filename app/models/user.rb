@@ -11,7 +11,7 @@ class User < ApplicationRecord
   enum :role, organizer: "organizer", participant: "participant"
 
   def have_unread_announcements?
-    unread_announcements.joins(:announcement).where(announcement: { event: current_event }).exists?
+    unread_announcements.joins(:announcement).where(announcement: {event: current_event}).exists?
   end
 
   def mark_all_announcement_unread!(event = nil)
