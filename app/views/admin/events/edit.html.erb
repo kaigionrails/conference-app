@@ -1,0 +1,9 @@
+<h2 class="font-bold text-xl mb-8">Edit event "<%= @event.name %>" (id:<%= @event.id %>)</h2>
+<div class="pr-8">
+  <div class="mb-8">
+    <%= form_with model: @event, url: admin_event_path(@event) do |f| %>
+      <%= render partial: "admin/events/form", locals: { form: f, event: @event } %>
+    <% end %>
+  </div>
+  <%= link_to "back to show", admin_event_path(@event), class: "underline" %>
+</div>

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get "/about", to: "about#index"
 
   namespace :admin do
+    resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
     resources :profiles, only: [:show] do
       resources :profile_badges_profiles, only: [:new, :create]
