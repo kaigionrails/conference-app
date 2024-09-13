@@ -1,10 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Talks", type: :request do
-  let(:event) { FactoryBot.create(:event) }
+  let(:event) { FactoryBot.create(:event, :make_ongoing) }
   let(:talk) { FactoryBot.create(:talk, event: event) }
-
-  before { prepare_current_event(event) }
 
   describe "GET /:event_slug/talks" do
     context "not logged in" do
