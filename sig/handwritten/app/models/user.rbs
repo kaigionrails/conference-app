@@ -8,6 +8,12 @@ class User < ApplicationRecord
   def have_unread_announcements?: () -> bool
   def destroy_talk_bookmark_with_reminder!: (Integer id) -> bool
 
+  # User has profile and authentication_provider_github at least one
+  def profile: () -> Profile
+             | ...
+  def authentication_provider_github: () -> AuthenticationProviderGithub
+                                    | ...
+
   class ActiveRecord_Relation
     # NOTE: Added by kaminari
     def page: (untyped) -> self

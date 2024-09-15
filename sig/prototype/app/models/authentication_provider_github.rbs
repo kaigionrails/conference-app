@@ -1,0 +1,2 @@
+class AuthenticationProviderGithub < ApplicationRecord
+end
