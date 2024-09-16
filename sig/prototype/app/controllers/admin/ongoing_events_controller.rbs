@@ -1,0 +1,11 @@
+class Admin::OngoingEventsController < ApplicationController
+  @ongoing_event: untyped
+
+  def update: () -> untyped
+
+  def create: () -> untyped
+
+  private
+
+  def ongoing_event_params: () -> untyped
+end

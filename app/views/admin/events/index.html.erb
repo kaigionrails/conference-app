@@ -1,0 +1,30 @@
+<h2 class="font-bold text-xl mb-8">Events</h2>
+<div class="rounded w-full pr-8 shadow-sm">
+  <div>
+    <%= link_to "Create new event", new_admin_event_path, class: "border shadow border-gray-500 rounded px-4 py-2 cursor-pointer inline-block mb-4" %>
+  </div>
+  <table class="w-full divide-y border">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="py-2 px-3 text-left">Name</th>
+        <th class="py-2 px-3 text-left">Slug</th>
+        <th class="py-2 px-3 text-left">Start date</th>
+        <th class="py-2 px-3 text-left">End date</th>
+        <th class="py-2 px-3 text-left">Ongoing?</th>
+        <th class="py-2 px-3 text-left sr-only">Show</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 bg-white">
+      <% @events.each do |event| %>
+        <tr>
+          <td class="p-3"><%= event.name %></td>
+          <td class="p-3"><%= event.slug %></td>
+          <td class="p-3"><%= event.start_date.in_time_zone("Tokyo").to_date %></td>
+          <td class="p-3"><%= event.end_date.in_time_zone("Tokyo").to_date %></td>
+          <td class="p-3"><%= event.ongoing? ? "true" : "" %></td>
+          <td class="p-3"><%= link_to "Show", admin_event_path(event), class: "underline" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

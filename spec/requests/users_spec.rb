@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Users", type: :request do
-  before { prepare_current_event }
+  let!(:event) { FactoryBot.create(:event, :make_ongoing) }
+
   describe "GET /@:username" do
     let!(:user) { FactoryBot.create(:user, :with_profile_image, name: "foo") }
     context "not logged in" do

@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Homes", type: :request do
-  before { prepare_current_event }
+  let!(:event) { FactoryBot.create(:event, :make_ongoing) }
+
   describe "GET /" do
     context "not logged-in" do
       it "redirect to about page" do

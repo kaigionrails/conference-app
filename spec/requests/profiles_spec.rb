@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Profiles", type: :request do
-  before { prepare_current_event }
+  let!(:event) { FactoryBot.create(:event, :make_ongoing) }
   let(:user) { FactoryBot.create(:user) }
   let!(:profile) { FactoryBot.create(:profile, :with_image, user: user) }
 

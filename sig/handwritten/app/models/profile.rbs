@@ -1,9 +1,4 @@
 class Profile < ::ApplicationRecord
-  # NOTE: This method has been declared manually because current rbs_rails does not support HABTM.
-  #       It should be removed if rbs_rails will support it.
-  #       refs: https://github.com/pocke/rbs_rails/pull/272
-  def profile_badges: () -> ProfileBadge::ActiveRecord_Associations_CollectionProxy
-
   def ensure_image_from_github: () -> void
 
   private def fetch_profile_image_from_github: () -> untyped

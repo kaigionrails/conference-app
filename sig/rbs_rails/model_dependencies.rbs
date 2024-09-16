@@ -1,13 +1,18 @@
+module ActionText
+end
 class ActionText::Record < ActiveRecord::Base
 end
 class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-
+module ActiveStorage
+end
 class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ApplicationRecord < ActiveRecord::Base
 end
 class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
@@ -21,7 +26,17 @@ class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associatio
 end
 class TalkReminder::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
+class SpeakersTalk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class Speaker::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
 class Talk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class Profile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ProfileBadge::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class Announcement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end

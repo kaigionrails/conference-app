@@ -1,0 +1,21 @@
+<h2 class="font-bold text-xl mb-8">Event "<%= @event.name %>" (id:<%= @event.id %>)</h2>
+<div class="pr-8">
+  <h3 class="font-bold text-lg mb-2">Id</h3>
+  <p class="mb-4"><%= @event.id %></p>
+  <h3 class="font-bold text-lg mb-2">Name</h3>
+  <p class="mb-4"><%= @event.name %></p>
+  <h3 class="font-bold text-lg mb-2">Slug</h3>
+  <p class="mb-4"><%= @event.slug %></p>
+  <h3 class="font-bold text-lg mb-2">Start date</h3>
+  <p class="mb-4"><%= @event.start_date.in_time_zone("Tokyo").to_date %></p>
+  <h3 class="font-bold text-lg mb-2">End date</h3>
+  <p class="mb-4"><%= @event.end_date.in_time_zone("Tokyo").to_date %></p>
+  <h3 class="font-bold text-lg mb-2">Ongoing?</h3>
+  <p class="mb-4"><%= @event.ongoing? %></p>
+  <div>
+    <%= link_to "edit", edit_admin_event_path(@event), class: "underline" %>
+  </div>
+  <div>
+    <%= link_to "back to index", admin_events_path, class: "underline" %>
+  </div>
+</div>

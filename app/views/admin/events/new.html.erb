@@ -1,0 +1,9 @@
+<h2 class="font-bold text-xl mb-8">Create new event</h2>
+<div class="pr-8">
+  <div class="mb-8">
+    <%= form_with model: @event, url: admin_events_path do |f| %>
+      <%= render partial: "admin/events/form", locals: { form: f, event: @event } %>
+    <% end %>
+  </div>
+  <%= link_to "back to index", admin_events_path, class: "underline" %>
+</div>

@@ -291,7 +291,14 @@ class Speaker < ::ApplicationRecord
     def clear_updated_at_change: () -> void
   end
   include GeneratedAttributeMethods
-
+  def speakers_talks: () -> SpeakersTalk::ActiveRecord_Associations_CollectionProxy
+  def speakers_talks=: (SpeakersTalk::ActiveRecord_Associations_CollectionProxy | Array[SpeakersTalk]) -> (SpeakersTalk::ActiveRecord_Associations_CollectionProxy | Array[SpeakersTalk])
+  def speakers_talk_ids: () -> Array[Integer]
+  def speakers_talk_ids=: (Array[Integer]) -> Array[Integer]
+  def talks: () -> Talk::ActiveRecord_Associations_CollectionProxy
+  def talks=: (Talk::ActiveRecord_Associations_CollectionProxy | Array[Talk]) -> (Talk::ActiveRecord_Associations_CollectionProxy | Array[Talk])
+  def talk_ids: () -> Array[Integer]
+  def talk_ids=: (Array[Integer]) -> Array[Integer]
   def avatar_attachment: () -> ActiveStorage::Attachment?
   def avatar_attachment=: (ActiveStorage::Attachment?) -> ActiveStorage::Attachment?
   def build_avatar_attachment: (untyped) -> ActiveStorage::Attachment
