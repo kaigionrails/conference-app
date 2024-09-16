@@ -10,7 +10,7 @@ class PwaController < ApplicationController
     response.headers["Cache-Control"] = "no-cache"
 
     render json: {
-      name: "Kaigi on Rails 2023 conference-app",
+      name: "Kaigi on Rails 2024 conference-app",
       short_name: "Kaigi on Rails",
       description: "Web application for Kaigi on Rails attendees.",
       theme_color: "#d7d2d0",
