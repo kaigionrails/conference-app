@@ -1,3 +1,4 @@
+<% content_for(:page_title, t(".title")) %>
 <div class="w-full max-w-screen-xl m-auto pt-4 px-4">
   <section class="mb-6">
     <h2 class="font-bold text-2xl mb-3">TOC</h2>
@@ -21,7 +22,7 @@
       <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime("%d日 %H:%M ～") %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
         <% talks.each do |talk| %>
-          <div class="w-full md:w-[48%] border border-white shadow-sm shadow-gray-400 rounded-lg mb-4 p-4">
+          <div class="w-full md:w-[48%] border border-black shadow-sm shadow-gray-400 rounded-lg mb-4 p-4">
             <div class="w-full flex">
               <div class="w-20">
                 <% talk.speakers.each do |speaker| %>
@@ -37,7 +38,7 @@
               </div>
               <div class="w-full pl-2">
                 <h3 class="text-xl mb-3 break-all"><%= talk.title %></h3>
-                <p class="text-white break-words mb-2 min-h-[5rem]"><%= truncate(talk.abstract, length: talk.speakers.size > 1 ? 250 : 150) %></p>
+                <p class="text-gray-900 break-words mb-2 min-h-[5rem]"><%= truncate(talk.abstract, length: talk.speakers.size > 1 ? 250 : 150) %></p>
               </div>
             </div>
             <div class="text-right">

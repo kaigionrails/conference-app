@@ -1,3 +1,4 @@
+<% content_for(:page_title, @announcement.title) %>
 <div class="w-full max-w-screen-xl mx-auto md:my-auto pt-4 px-4">
   <h2 class="font-bold text-2xl mb-2"><%= @announcement.title %></h2>
   <span class="block mb-4"><%= @announcement.published_at.in_time_zone("Tokyo").strftime("%m/%d %H:%M") %> 公開</span>

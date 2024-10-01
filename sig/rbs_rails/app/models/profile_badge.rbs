@@ -255,6 +255,14 @@ class ProfileBadge < ::ApplicationRecord
     def clear_updated_at_change: () -> void
   end
   include GeneratedAttributeMethods
+  def profile_badges_profiles: () -> ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy
+  def profile_badges_profiles=: (ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy | Array[ProfileBadgesProfile]) -> (ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy | Array[ProfileBadgesProfile])
+  def profile_badges_profile_ids: () -> Array[Integer]
+  def profile_badges_profile_ids=: (Array[Integer]) -> Array[Integer]
+  def profiles: () -> Profile::ActiveRecord_Associations_CollectionProxy
+  def profiles=: (Profile::ActiveRecord_Associations_CollectionProxy | Array[Profile]) -> (Profile::ActiveRecord_Associations_CollectionProxy | Array[Profile])
+  def profile_ids: () -> Array[Integer]
+  def profile_ids=: (Array[Integer]) -> Array[Integer]
 
   module GeneratedAssociationMethods
   end

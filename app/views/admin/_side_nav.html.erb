@@ -2,6 +2,11 @@
   <section class="p-4">
     <h1 class="font-bold text-xl">ConferenceApp Admin</h1>
   </section>
+  <%= link_to admin_events_path do %>
+    <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
+      <span class="text-lg">Events</span>
+    </div>
+  <% end %>
   <%= link_to admin_users_path do %>
     <div class="p-4 hover:bg-gray-100 hover:cursor-pointer">
       <span class="text-lg">Users</span>

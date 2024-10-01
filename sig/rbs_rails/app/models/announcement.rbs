@@ -1,4 +1,6 @@
 class Announcement < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Announcement, ActiveRecord_Relation, Integer]
+
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -252,25 +254,6 @@ class Announcement < ::ApplicationRecord
 
     def clear_title_change: () -> void
   end
-
-  module GeneratedAssociationMethods
-  end
-
-  module GeneratedRelationMethods
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Announcement, Integer]
-    include Enumerable[Announcement]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Announcement, Integer]
-  end
-  extend _ActiveRecord_Relation_ClassMethods[Announcement, ActiveRecord_Relation, Integer]
-
   include GeneratedAttributeMethods
 
   def rich_text_content: () -> ActionText::RichText?
@@ -285,6 +268,21 @@ class Announcement < ::ApplicationRecord
   def build_event: (untyped) -> Event
   def create_event: (untyped) -> Event
   def create_event!: (untyped) -> Event
-
+  module GeneratedAssociationMethods
+  end
   include GeneratedAssociationMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Announcement, Integer]
+    include Enumerable[Announcement]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Announcement, Integer]
+  end
 end

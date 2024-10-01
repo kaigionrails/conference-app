@@ -39,3 +39,7 @@ if event_2023.talks.empty?
     end
   end
 end
+
+if OngoingEvent.count.zero?
+  OngoingEvent.create!(event: event_2023)
+end

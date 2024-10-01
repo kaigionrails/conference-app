@@ -4,11 +4,16 @@ module ApplicationHelper
   end
 
   def current_event
-    @current_event ||= Event.find_by(slug: Event::ONGOING_EVENT_SLUG)
+    @current_event ||= (OngoingEvent.exists? ? OngoingEvent.first.event : Event.find_by(slug: Event::ONGOING_EVENT_SLUG))
   end
 
   def application_url
     Rails.configuration.application_url
+  end
+
+  def page_title(title = "")
+    base_title = "ConferenceApp"
+    title.empty? ? base_title : "#{base_title} - #{title}"
   end
 
   def message_type_style(message_type)
