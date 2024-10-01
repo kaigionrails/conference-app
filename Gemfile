@@ -30,7 +30,7 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.2"
+gem "redis", "~> 5.3"
 
 gem "redis-actionpack"
 gem "redis-store", github: "unasuke/redis-store", ref: "11f7f8e" # FIXME: Until next release
