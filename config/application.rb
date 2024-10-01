@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 module ConferenceApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
     config.middleware.use Rack::Locale
 
     config.i18n.available_locales = %i[en ja ja-jp]
@@ -46,5 +46,3 @@ module ConferenceApp
     config.active_job.queue_adapter = :sidekiq
   end
 end
-
-require_relative "../lib/digested_assets_path_resolver"
