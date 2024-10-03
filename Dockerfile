@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/ruby:3.3.4-bookworm
+FROM public.ecr.aws/docker/library/ruby:3.3.5-bookworm
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
