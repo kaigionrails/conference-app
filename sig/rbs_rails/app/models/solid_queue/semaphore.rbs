@@ -1,0 +1,242 @@
+module SolidQueue
+  class Semaphore < ::SolidQueue::Record
+    extend _ActiveRecord_Relation_ClassMethods[SolidQueue::Semaphore, ActiveRecord_Relation, Integer]
+
+    module GeneratedAttributeMethods
+      def id: () -> Integer
+
+      def id=: (Integer) -> Integer
+
+      def id?: () -> bool
+
+      def id_changed?: () -> bool
+
+      def id_change: () -> [ Integer?, Integer? ]
+
+      def id_will_change!: () -> void
+
+      def id_was: () -> Integer?
+
+      def id_previously_changed?: () -> bool
+
+      def id_previous_change: () -> Array[Integer?]?
+
+      def id_previously_was: () -> Integer?
+
+      def id_before_last_save: () -> Integer?
+
+      def id_change_to_be_saved: () -> Array[Integer?]?
+
+      def id_in_database: () -> Integer?
+
+      def saved_change_to_id: () -> Array[Integer?]?
+
+      def saved_change_to_id?: () -> bool
+
+      def will_save_change_to_id?: () -> bool
+
+      def restore_id!: () -> void
+
+      def clear_id_change: () -> void
+
+      def key: () -> String
+
+      def key=: (String) -> String
+
+      def key?: () -> bool
+
+      def key_changed?: () -> bool
+
+      def key_change: () -> [ String?, String? ]
+
+      def key_will_change!: () -> void
+
+      def key_was: () -> String?
+
+      def key_previously_changed?: () -> bool
+
+      def key_previous_change: () -> Array[String?]?
+
+      def key_previously_was: () -> String?
+
+      def key_before_last_save: () -> String?
+
+      def key_change_to_be_saved: () -> Array[String?]?
+
+      def key_in_database: () -> String?
+
+      def saved_change_to_key: () -> Array[String?]?
+
+      def saved_change_to_key?: () -> bool
+
+      def will_save_change_to_key?: () -> bool
+
+      def restore_key!: () -> void
+
+      def clear_key_change: () -> void
+
+      def value: () -> Integer
+
+      def value=: (Integer) -> Integer
+
+      def value?: () -> bool
+
+      def value_changed?: () -> bool
+
+      def value_change: () -> [ Integer?, Integer? ]
+
+      def value_will_change!: () -> void
+
+      def value_was: () -> Integer?
+
+      def value_previously_changed?: () -> bool
+
+      def value_previous_change: () -> Array[Integer?]?
+
+      def value_previously_was: () -> Integer?
+
+      def value_before_last_save: () -> Integer?
+
+      def value_change_to_be_saved: () -> Array[Integer?]?
+
+      def value_in_database: () -> Integer?
+
+      def saved_change_to_value: () -> Array[Integer?]?
+
+      def saved_change_to_value?: () -> bool
+
+      def will_save_change_to_value?: () -> bool
+
+      def restore_value!: () -> void
+
+      def clear_value_change: () -> void
+
+      def expires_at: () -> ActiveSupport::TimeWithZone
+
+      def expires_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def expires_at?: () -> bool
+
+      def expires_at_changed?: () -> bool
+
+      def expires_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def expires_at_will_change!: () -> void
+
+      def expires_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def expires_at_previously_changed?: () -> bool
+
+      def expires_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def expires_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def expires_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def expires_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def expires_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_expires_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_expires_at?: () -> bool
+
+      def will_save_change_to_expires_at?: () -> bool
+
+      def restore_expires_at!: () -> void
+
+      def clear_expires_at_change: () -> void
+
+      def created_at: () -> ActiveSupport::TimeWithZone
+
+      def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def created_at?: () -> bool
+
+      def created_at_changed?: () -> bool
+
+      def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def created_at_will_change!: () -> void
+
+      def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_previously_changed?: () -> bool
+
+      def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_created_at?: () -> bool
+
+      def will_save_change_to_created_at?: () -> bool
+
+      def restore_created_at!: () -> void
+
+      def clear_created_at_change: () -> void
+
+      def updated_at: () -> ActiveSupport::TimeWithZone
+
+      def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def updated_at?: () -> bool
+
+      def updated_at_changed?: () -> bool
+
+      def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def updated_at_will_change!: () -> void
+
+      def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_previously_changed?: () -> bool
+
+      def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_updated_at?: () -> bool
+
+      def will_save_change_to_updated_at?: () -> bool
+
+      def restore_updated_at!: () -> void
+
+      def clear_updated_at_change: () -> void
+    end
+    include GeneratedAttributeMethods
+
+    module GeneratedAssociationMethods
+    end
+    include GeneratedAssociationMethods
+
+    module GeneratedRelationMethods
+    end
+
+    class ActiveRecord_Relation < ::ActiveRecord::Relation
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::Semaphore, Integer]
+      include Enumerable[SolidQueue::Semaphore]
+    end
+
+    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::Semaphore, Integer]
+    end
+  end
+end

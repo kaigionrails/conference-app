@@ -1,0 +1,248 @@
+module SolidQueue
+  class ScheduledExecution < ::SolidQueue::Execution
+    extend _ActiveRecord_Relation_ClassMethods[SolidQueue::ScheduledExecution, ActiveRecord_Relation, Integer]
+
+    module GeneratedAttributeMethods
+      def id: () -> Integer
+
+      def id=: (Integer) -> Integer
+
+      def id?: () -> bool
+
+      def id_changed?: () -> bool
+
+      def id_change: () -> [ Integer?, Integer? ]
+
+      def id_will_change!: () -> void
+
+      def id_was: () -> Integer?
+
+      def id_previously_changed?: () -> bool
+
+      def id_previous_change: () -> Array[Integer?]?
+
+      def id_previously_was: () -> Integer?
+
+      def id_before_last_save: () -> Integer?
+
+      def id_change_to_be_saved: () -> Array[Integer?]?
+
+      def id_in_database: () -> Integer?
+
+      def saved_change_to_id: () -> Array[Integer?]?
+
+      def saved_change_to_id?: () -> bool
+
+      def will_save_change_to_id?: () -> bool
+
+      def restore_id!: () -> void
+
+      def clear_id_change: () -> void
+
+      def job_id: () -> Integer
+
+      def job_id=: (Integer) -> Integer
+
+      def job_id?: () -> bool
+
+      def job_id_changed?: () -> bool
+
+      def job_id_change: () -> [ Integer?, Integer? ]
+
+      def job_id_will_change!: () -> void
+
+      def job_id_was: () -> Integer?
+
+      def job_id_previously_changed?: () -> bool
+
+      def job_id_previous_change: () -> Array[Integer?]?
+
+      def job_id_previously_was: () -> Integer?
+
+      def job_id_before_last_save: () -> Integer?
+
+      def job_id_change_to_be_saved: () -> Array[Integer?]?
+
+      def job_id_in_database: () -> Integer?
+
+      def saved_change_to_job_id: () -> Array[Integer?]?
+
+      def saved_change_to_job_id?: () -> bool
+
+      def will_save_change_to_job_id?: () -> bool
+
+      def restore_job_id!: () -> void
+
+      def clear_job_id_change: () -> void
+
+      def queue_name: () -> String
+
+      def queue_name=: (String) -> String
+
+      def queue_name?: () -> bool
+
+      def queue_name_changed?: () -> bool
+
+      def queue_name_change: () -> [ String?, String? ]
+
+      def queue_name_will_change!: () -> void
+
+      def queue_name_was: () -> String?
+
+      def queue_name_previously_changed?: () -> bool
+
+      def queue_name_previous_change: () -> Array[String?]?
+
+      def queue_name_previously_was: () -> String?
+
+      def queue_name_before_last_save: () -> String?
+
+      def queue_name_change_to_be_saved: () -> Array[String?]?
+
+      def queue_name_in_database: () -> String?
+
+      def saved_change_to_queue_name: () -> Array[String?]?
+
+      def saved_change_to_queue_name?: () -> bool
+
+      def will_save_change_to_queue_name?: () -> bool
+
+      def restore_queue_name!: () -> void
+
+      def clear_queue_name_change: () -> void
+
+      def priority: () -> Integer
+
+      def priority=: (Integer) -> Integer
+
+      def priority?: () -> bool
+
+      def priority_changed?: () -> bool
+
+      def priority_change: () -> [ Integer?, Integer? ]
+
+      def priority_will_change!: () -> void
+
+      def priority_was: () -> Integer?
+
+      def priority_previously_changed?: () -> bool
+
+      def priority_previous_change: () -> Array[Integer?]?
+
+      def priority_previously_was: () -> Integer?
+
+      def priority_before_last_save: () -> Integer?
+
+      def priority_change_to_be_saved: () -> Array[Integer?]?
+
+      def priority_in_database: () -> Integer?
+
+      def saved_change_to_priority: () -> Array[Integer?]?
+
+      def saved_change_to_priority?: () -> bool
+
+      def will_save_change_to_priority?: () -> bool
+
+      def restore_priority!: () -> void
+
+      def clear_priority_change: () -> void
+
+      def scheduled_at: () -> ActiveSupport::TimeWithZone
+
+      def scheduled_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def scheduled_at?: () -> bool
+
+      def scheduled_at_changed?: () -> bool
+
+      def scheduled_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def scheduled_at_will_change!: () -> void
+
+      def scheduled_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def scheduled_at_previously_changed?: () -> bool
+
+      def scheduled_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def scheduled_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def scheduled_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def scheduled_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def scheduled_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_scheduled_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_scheduled_at?: () -> bool
+
+      def will_save_change_to_scheduled_at?: () -> bool
+
+      def restore_scheduled_at!: () -> void
+
+      def clear_scheduled_at_change: () -> void
+
+      def created_at: () -> ActiveSupport::TimeWithZone
+
+      def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def created_at?: () -> bool
+
+      def created_at_changed?: () -> bool
+
+      def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def created_at_will_change!: () -> void
+
+      def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_previously_changed?: () -> bool
+
+      def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_created_at?: () -> bool
+
+      def will_save_change_to_created_at?: () -> bool
+
+      def restore_created_at!: () -> void
+
+      def clear_created_at_change: () -> void
+    end
+    include GeneratedAttributeMethods
+
+    def job: () -> SolidQueue::Job
+    def job=: (SolidQueue::Job?) -> SolidQueue::Job?
+    def reload_job: () -> SolidQueue::Job?
+    def build_job: (untyped) -> SolidQueue::Job
+    def create_job: (untyped) -> SolidQueue::Job
+    def create_job!: (untyped) -> SolidQueue::Job
+    module GeneratedAssociationMethods
+    end
+    include GeneratedAssociationMethods
+
+    module GeneratedRelationMethods
+    end
+
+    class ActiveRecord_Relation < ::ActiveRecord::Relation
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::ScheduledExecution, Integer]
+      include Enumerable[SolidQueue::ScheduledExecution]
+    end
+
+    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::ScheduledExecution, Integer]
+    end
+  end
+end
