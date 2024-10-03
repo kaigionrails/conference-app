@@ -37,7 +37,6 @@ RSpec.describe "Sessions", type: :request do
         let(:auth_hash) { {"info" => {"nickname" => "octocat"}, "uid" => "583231"} } # https://github.com/octocat
 
         before do
-          allow_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil) # hmm....
           OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
         end
 
