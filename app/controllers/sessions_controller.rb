@@ -9,7 +9,12 @@ class SessionsController < ApplicationController
       return
     end
 
-    user = AuthenticationProviderGithub.find_or_create_user_from_auth_hash(request.env["omniauth.auth"])
+    user = AuthenticationProviderGithub.find_or_create_user_from_auth_hash(request.env["omniauth.auth"]) do |user|
+      DetermineUserRoleJob.perform_later(user.id)
+      user.profile.ensure_image_from_github
+      user.mark_all_announcement_unread!
+    end
+
     session[:user_id] = user.id
 
     if request.env["omniauth.params"].key?("return_to")
