@@ -1,10 +1,8 @@
-# production:
-#   periodic_cleanup:
-#     class: CleanSoftDeletedRecordsJob
-#     queue: background
-#     args: [ 1000, { batch_size: 500 } ]
-#     schedule: every hour
-#   periodic_command:
-#     command: "SoftDeletedRecord.due.delete_all"
-#     priority: 2
-#     schedule: at 5am every day
+production:
+  send_talk_reminder_pus_notification:
+    class: "SendTalkReminderPushNotificationJob"
+    schedule: "*/3 * * * *"
+development:
+  send_talk_reminder_pus_notification:
+    class: "SendTalkReminderPushNotificationJob"
+    schedule: "*/3 * * * *"
