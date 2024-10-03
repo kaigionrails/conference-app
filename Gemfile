@@ -79,6 +79,7 @@ gem "active_decorator"
 gem "web-push"
 
 gem "solid_queue"
+gem "mission_control-jobs"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
