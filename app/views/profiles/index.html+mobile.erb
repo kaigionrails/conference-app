@@ -25,9 +25,11 @@
         </button>
       </div>
     </div>
-    <div class="grid grid-cols-6 gap-3 mb-4" data-controller="lightbox">
+    <div class="grid grid-cols-6 gap-3 mb-4" data-controller="lightbox" id="lightbox">
       <% @profile.images.each do |profile_image| %>
-        <%= image_tag profile_image, class: "rounded-md w-full object-cover aspect-square" %>
+        <%= link_to profile_image, data: {"pswp-width": "600", "pswp-height": "600"} do %>
+          <%= image_tag profile_image, class: "rounded-md w-full object-cover aspect-square" %>
+        <% end %>
       <% end %>
     </div>
 
