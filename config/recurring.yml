@@ -1,8 +1,8 @@
 production:
-  send_talk_reminder_pus_notification:
+  send_talk_reminder_push_notification:
     class: "SendTalkReminderPushNotificationJob"
     schedule: "*/3 * * * *"
 development:
-  send_talk_reminder_pus_notification:
+  send_talk_reminder_push_notification:
     class: "SendTalkReminderPushNotificationJob"
     schedule: "*/3 * * * *"
