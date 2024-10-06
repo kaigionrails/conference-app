@@ -56,6 +56,7 @@ gem "omniauth-github"
 
 gem "faraday"
 gem "faraday-retry"
+gem "faraday-multipart"
 gem "octokit"
 gem "open-uri"
 
