@@ -1,0 +1,364 @@
+module SolidQueue
+  class Process < ::SolidQueue::Record
+    extend _ActiveRecord_Relation_ClassMethods[SolidQueue::Process, ActiveRecord_Relation, Integer]
+
+    module GeneratedAttributeMethods
+      def id: () -> Integer
+
+      def id=: (Integer) -> Integer
+
+      def id?: () -> bool
+
+      def id_changed?: () -> bool
+
+      def id_change: () -> [ Integer?, Integer? ]
+
+      def id_will_change!: () -> void
+
+      def id_was: () -> Integer?
+
+      def id_previously_changed?: () -> bool
+
+      def id_previous_change: () -> Array[Integer?]?
+
+      def id_previously_was: () -> Integer?
+
+      def id_before_last_save: () -> Integer?
+
+      def id_change_to_be_saved: () -> Array[Integer?]?
+
+      def id_in_database: () -> Integer?
+
+      def saved_change_to_id: () -> Array[Integer?]?
+
+      def saved_change_to_id?: () -> bool
+
+      def will_save_change_to_id?: () -> bool
+
+      def restore_id!: () -> void
+
+      def clear_id_change: () -> void
+
+      def kind: () -> String
+
+      def kind=: (String) -> String
+
+      def kind?: () -> bool
+
+      def kind_changed?: () -> bool
+
+      def kind_change: () -> [ String?, String? ]
+
+      def kind_will_change!: () -> void
+
+      def kind_was: () -> String?
+
+      def kind_previously_changed?: () -> bool
+
+      def kind_previous_change: () -> Array[String?]?
+
+      def kind_previously_was: () -> String?
+
+      def kind_before_last_save: () -> String?
+
+      def kind_change_to_be_saved: () -> Array[String?]?
+
+      def kind_in_database: () -> String?
+
+      def saved_change_to_kind: () -> Array[String?]?
+
+      def saved_change_to_kind?: () -> bool
+
+      def will_save_change_to_kind?: () -> bool
+
+      def restore_kind!: () -> void
+
+      def clear_kind_change: () -> void
+
+      def last_heartbeat_at: () -> ActiveSupport::TimeWithZone
+
+      def last_heartbeat_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def last_heartbeat_at?: () -> bool
+
+      def last_heartbeat_at_changed?: () -> bool
+
+      def last_heartbeat_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def last_heartbeat_at_will_change!: () -> void
+
+      def last_heartbeat_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def last_heartbeat_at_previously_changed?: () -> bool
+
+      def last_heartbeat_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def last_heartbeat_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def last_heartbeat_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def last_heartbeat_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def last_heartbeat_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_last_heartbeat_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_last_heartbeat_at?: () -> bool
+
+      def will_save_change_to_last_heartbeat_at?: () -> bool
+
+      def restore_last_heartbeat_at!: () -> void
+
+      def clear_last_heartbeat_at_change: () -> void
+
+      def supervisor_id: () -> Integer?
+
+      def supervisor_id=: (Integer?) -> Integer?
+
+      def supervisor_id?: () -> bool
+
+      def supervisor_id_changed?: () -> bool
+
+      def supervisor_id_change: () -> [ Integer?, Integer? ]
+
+      def supervisor_id_will_change!: () -> void
+
+      def supervisor_id_was: () -> Integer?
+
+      def supervisor_id_previously_changed?: () -> bool
+
+      def supervisor_id_previous_change: () -> Array[Integer?]?
+
+      def supervisor_id_previously_was: () -> Integer?
+
+      def supervisor_id_before_last_save: () -> Integer?
+
+      def supervisor_id_change_to_be_saved: () -> Array[Integer?]?
+
+      def supervisor_id_in_database: () -> Integer?
+
+      def saved_change_to_supervisor_id: () -> Array[Integer?]?
+
+      def saved_change_to_supervisor_id?: () -> bool
+
+      def will_save_change_to_supervisor_id?: () -> bool
+
+      def restore_supervisor_id!: () -> void
+
+      def clear_supervisor_id_change: () -> void
+
+      def pid: () -> Integer
+
+      def pid=: (Integer) -> Integer
+
+      def pid?: () -> bool
+
+      def pid_changed?: () -> bool
+
+      def pid_change: () -> [ Integer?, Integer? ]
+
+      def pid_will_change!: () -> void
+
+      def pid_was: () -> Integer?
+
+      def pid_previously_changed?: () -> bool
+
+      def pid_previous_change: () -> Array[Integer?]?
+
+      def pid_previously_was: () -> Integer?
+
+      def pid_before_last_save: () -> Integer?
+
+      def pid_change_to_be_saved: () -> Array[Integer?]?
+
+      def pid_in_database: () -> Integer?
+
+      def saved_change_to_pid: () -> Array[Integer?]?
+
+      def saved_change_to_pid?: () -> bool
+
+      def will_save_change_to_pid?: () -> bool
+
+      def restore_pid!: () -> void
+
+      def clear_pid_change: () -> void
+
+      def hostname: () -> String?
+
+      def hostname=: (String?) -> String?
+
+      def hostname?: () -> bool
+
+      def hostname_changed?: () -> bool
+
+      def hostname_change: () -> [ String?, String? ]
+
+      def hostname_will_change!: () -> void
+
+      def hostname_was: () -> String?
+
+      def hostname_previously_changed?: () -> bool
+
+      def hostname_previous_change: () -> Array[String?]?
+
+      def hostname_previously_was: () -> String?
+
+      def hostname_before_last_save: () -> String?
+
+      def hostname_change_to_be_saved: () -> Array[String?]?
+
+      def hostname_in_database: () -> String?
+
+      def saved_change_to_hostname: () -> Array[String?]?
+
+      def saved_change_to_hostname?: () -> bool
+
+      def will_save_change_to_hostname?: () -> bool
+
+      def restore_hostname!: () -> void
+
+      def clear_hostname_change: () -> void
+
+      def metadata: () -> String?
+
+      def metadata=: (String?) -> String?
+
+      def metadata?: () -> bool
+
+      def metadata_changed?: () -> bool
+
+      def metadata_change: () -> [ String?, String? ]
+
+      def metadata_will_change!: () -> void
+
+      def metadata_was: () -> String?
+
+      def metadata_previously_changed?: () -> bool
+
+      def metadata_previous_change: () -> Array[String?]?
+
+      def metadata_previously_was: () -> String?
+
+      def metadata_before_last_save: () -> String?
+
+      def metadata_change_to_be_saved: () -> Array[String?]?
+
+      def metadata_in_database: () -> String?
+
+      def saved_change_to_metadata: () -> Array[String?]?
+
+      def saved_change_to_metadata?: () -> bool
+
+      def will_save_change_to_metadata?: () -> bool
+
+      def restore_metadata!: () -> void
+
+      def clear_metadata_change: () -> void
+
+      def created_at: () -> ActiveSupport::TimeWithZone
+
+      def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def created_at?: () -> bool
+
+      def created_at_changed?: () -> bool
+
+      def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def created_at_will_change!: () -> void
+
+      def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_previously_changed?: () -> bool
+
+      def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_created_at?: () -> bool
+
+      def will_save_change_to_created_at?: () -> bool
+
+      def restore_created_at!: () -> void
+
+      def clear_created_at_change: () -> void
+
+      def name: () -> String
+
+      def name=: (String) -> String
+
+      def name?: () -> bool
+
+      def name_changed?: () -> bool
+
+      def name_change: () -> [ String?, String? ]
+
+      def name_will_change!: () -> void
+
+      def name_was: () -> String?
+
+      def name_previously_changed?: () -> bool
+
+      def name_previous_change: () -> Array[String?]?
+
+      def name_previously_was: () -> String?
+
+      def name_before_last_save: () -> String?
+
+      def name_change_to_be_saved: () -> Array[String?]?
+
+      def name_in_database: () -> String?
+
+      def saved_change_to_name: () -> Array[String?]?
+
+      def saved_change_to_name?: () -> bool
+
+      def will_save_change_to_name?: () -> bool
+
+      def restore_name!: () -> void
+
+      def clear_name_change: () -> void
+    end
+    include GeneratedAttributeMethods
+    def claimed_executions: () -> SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy
+    def claimed_executions=: (SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy | Array[SolidQueue::ClaimedExecution]) -> (SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy | Array[SolidQueue::ClaimedExecution])
+    def claimed_execution_ids: () -> Array[Integer]
+    def claimed_execution_ids=: (Array[Integer]) -> Array[Integer]
+    def supervisees: () -> SolidQueue::Process::ActiveRecord_Associations_CollectionProxy
+    def supervisees=: (SolidQueue::Process::ActiveRecord_Associations_CollectionProxy | Array[SolidQueue::Process]) -> (SolidQueue::Process::ActiveRecord_Associations_CollectionProxy | Array[SolidQueue::Process])
+    def supervisee_ids: () -> Array[Integer]
+    def supervisee_ids=: (Array[Integer]) -> Array[Integer]
+
+    def supervisor: () -> SolidQueue::Process?
+    def supervisor=: (SolidQueue::Process?) -> SolidQueue::Process?
+    def reload_supervisor: () -> SolidQueue::Process?
+    def build_supervisor: (untyped) -> SolidQueue::Process
+    def create_supervisor: (untyped) -> SolidQueue::Process
+    def create_supervisor!: (untyped) -> SolidQueue::Process
+    module GeneratedAssociationMethods
+    end
+    include GeneratedAssociationMethods
+
+    module GeneratedRelationMethods
+    end
+
+    class ActiveRecord_Relation < ::ActiveRecord::Relation
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::Process, Integer]
+      include Enumerable[SolidQueue::Process]
+    end
+
+    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::Process, Integer]
+    end
+  end
+end

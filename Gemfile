@@ -61,8 +61,6 @@ gem "open-uri"
 
 gem "amazing_print"
 gem "rails_semantic_logger"
-gem "sidekiq"
-gem "sidekiq-cron"
 gem "woothee"
 
 gem "sentry-rails"
@@ -77,6 +75,9 @@ gem "commonmarker", ">= 1.0.4"
 gem "active_decorator"
 
 gem "web-push"
+
+gem "solid_queue"
+gem "mission_control-jobs"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

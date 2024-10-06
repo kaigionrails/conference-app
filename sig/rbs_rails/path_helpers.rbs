@@ -3,7 +3,7 @@ interface _RbsRailsPathHelpers
   def rails_info_properties_path: (*untyped) -> String
   def rails_info_routes_path: (*untyped) -> String
   def rails_info_path: (*untyped) -> String
-  def admin_sidekiq_web_path: (*untyped) -> String
+  def admin_mission_control_jobs_path: (*untyped) -> String
   def root_path: (*untyped) -> String
   def login_path: (*untyped) -> String
   def logout_path: (*untyped) -> String
@@ -84,7 +84,7 @@ interface _RbsRailsPathHelpers
   def rails_info_properties_url: (*untyped) -> String
   def rails_info_routes_url: (*untyped) -> String
   def rails_info_url: (*untyped) -> String
-  def admin_sidekiq_web_url: (*untyped) -> String
+  def admin_mission_control_jobs_url: (*untyped) -> String
   def root_url: (*untyped) -> String
   def login_url: (*untyped) -> String
   def logout_url: (*untyped) -> String

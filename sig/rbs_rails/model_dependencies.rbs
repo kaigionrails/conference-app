@@ -12,6 +12,16 @@ class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
+module SolidQueue
+end
+class SolidQueue::Record < ActiveRecord::Base
+end
+class SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SolidQueue::Execution < SolidQueue::Record
+end
 class ApplicationRecord < ActiveRecord::Base
 end
 class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy

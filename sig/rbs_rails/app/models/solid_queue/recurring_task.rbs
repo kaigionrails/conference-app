@@ -1,0 +1,458 @@
+module SolidQueue
+  class RecurringTask < ::SolidQueue::Record
+    extend _ActiveRecord_Relation_ClassMethods[SolidQueue::RecurringTask, ActiveRecord_Relation, Integer]
+
+    module GeneratedAttributeMethods
+      def id: () -> Integer
+
+      def id=: (Integer) -> Integer
+
+      def id?: () -> bool
+
+      def id_changed?: () -> bool
+
+      def id_change: () -> [ Integer?, Integer? ]
+
+      def id_will_change!: () -> void
+
+      def id_was: () -> Integer?
+
+      def id_previously_changed?: () -> bool
+
+      def id_previous_change: () -> Array[Integer?]?
+
+      def id_previously_was: () -> Integer?
+
+      def id_before_last_save: () -> Integer?
+
+      def id_change_to_be_saved: () -> Array[Integer?]?
+
+      def id_in_database: () -> Integer?
+
+      def saved_change_to_id: () -> Array[Integer?]?
+
+      def saved_change_to_id?: () -> bool
+
+      def will_save_change_to_id?: () -> bool
+
+      def restore_id!: () -> void
+
+      def clear_id_change: () -> void
+
+      def key: () -> String
+
+      def key=: (String) -> String
+
+      def key?: () -> bool
+
+      def key_changed?: () -> bool
+
+      def key_change: () -> [ String?, String? ]
+
+      def key_will_change!: () -> void
+
+      def key_was: () -> String?
+
+      def key_previously_changed?: () -> bool
+
+      def key_previous_change: () -> Array[String?]?
+
+      def key_previously_was: () -> String?
+
+      def key_before_last_save: () -> String?
+
+      def key_change_to_be_saved: () -> Array[String?]?
+
+      def key_in_database: () -> String?
+
+      def saved_change_to_key: () -> Array[String?]?
+
+      def saved_change_to_key?: () -> bool
+
+      def will_save_change_to_key?: () -> bool
+
+      def restore_key!: () -> void
+
+      def clear_key_change: () -> void
+
+      def schedule: () -> String
+
+      def schedule=: (String) -> String
+
+      def schedule?: () -> bool
+
+      def schedule_changed?: () -> bool
+
+      def schedule_change: () -> [ String?, String? ]
+
+      def schedule_will_change!: () -> void
+
+      def schedule_was: () -> String?
+
+      def schedule_previously_changed?: () -> bool
+
+      def schedule_previous_change: () -> Array[String?]?
+
+      def schedule_previously_was: () -> String?
+
+      def schedule_before_last_save: () -> String?
+
+      def schedule_change_to_be_saved: () -> Array[String?]?
+
+      def schedule_in_database: () -> String?
+
+      def saved_change_to_schedule: () -> Array[String?]?
+
+      def saved_change_to_schedule?: () -> bool
+
+      def will_save_change_to_schedule?: () -> bool
+
+      def restore_schedule!: () -> void
+
+      def clear_schedule_change: () -> void
+
+      def command: () -> String?
+
+      def command=: (String?) -> String?
+
+      def command?: () -> bool
+
+      def command_changed?: () -> bool
+
+      def command_change: () -> [ String?, String? ]
+
+      def command_will_change!: () -> void
+
+      def command_was: () -> String?
+
+      def command_previously_changed?: () -> bool
+
+      def command_previous_change: () -> Array[String?]?
+
+      def command_previously_was: () -> String?
+
+      def command_before_last_save: () -> String?
+
+      def command_change_to_be_saved: () -> Array[String?]?
+
+      def command_in_database: () -> String?
+
+      def saved_change_to_command: () -> Array[String?]?
+
+      def saved_change_to_command?: () -> bool
+
+      def will_save_change_to_command?: () -> bool
+
+      def restore_command!: () -> void
+
+      def clear_command_change: () -> void
+
+      def class_name: () -> String?
+
+      def class_name=: (String?) -> String?
+
+      def class_name?: () -> bool
+
+      def class_name_changed?: () -> bool
+
+      def class_name_change: () -> [ String?, String? ]
+
+      def class_name_will_change!: () -> void
+
+      def class_name_was: () -> String?
+
+      def class_name_previously_changed?: () -> bool
+
+      def class_name_previous_change: () -> Array[String?]?
+
+      def class_name_previously_was: () -> String?
+
+      def class_name_before_last_save: () -> String?
+
+      def class_name_change_to_be_saved: () -> Array[String?]?
+
+      def class_name_in_database: () -> String?
+
+      def saved_change_to_class_name: () -> Array[String?]?
+
+      def saved_change_to_class_name?: () -> bool
+
+      def will_save_change_to_class_name?: () -> bool
+
+      def restore_class_name!: () -> void
+
+      def clear_class_name_change: () -> void
+
+      def arguments: () -> String?
+
+      def arguments=: (String?) -> String?
+
+      def arguments?: () -> bool
+
+      def arguments_changed?: () -> bool
+
+      def arguments_change: () -> [ String?, String? ]
+
+      def arguments_will_change!: () -> void
+
+      def arguments_was: () -> String?
+
+      def arguments_previously_changed?: () -> bool
+
+      def arguments_previous_change: () -> Array[String?]?
+
+      def arguments_previously_was: () -> String?
+
+      def arguments_before_last_save: () -> String?
+
+      def arguments_change_to_be_saved: () -> Array[String?]?
+
+      def arguments_in_database: () -> String?
+
+      def saved_change_to_arguments: () -> Array[String?]?
+
+      def saved_change_to_arguments?: () -> bool
+
+      def will_save_change_to_arguments?: () -> bool
+
+      def restore_arguments!: () -> void
+
+      def clear_arguments_change: () -> void
+
+      def queue_name: () -> String?
+
+      def queue_name=: (String?) -> String?
+
+      def queue_name?: () -> bool
+
+      def queue_name_changed?: () -> bool
+
+      def queue_name_change: () -> [ String?, String? ]
+
+      def queue_name_will_change!: () -> void
+
+      def queue_name_was: () -> String?
+
+      def queue_name_previously_changed?: () -> bool
+
+      def queue_name_previous_change: () -> Array[String?]?
+
+      def queue_name_previously_was: () -> String?
+
+      def queue_name_before_last_save: () -> String?
+
+      def queue_name_change_to_be_saved: () -> Array[String?]?
+
+      def queue_name_in_database: () -> String?
+
+      def saved_change_to_queue_name: () -> Array[String?]?
+
+      def saved_change_to_queue_name?: () -> bool
+
+      def will_save_change_to_queue_name?: () -> bool
+
+      def restore_queue_name!: () -> void
+
+      def clear_queue_name_change: () -> void
+
+      def priority: () -> Integer?
+
+      def priority=: (Integer?) -> Integer?
+
+      def priority?: () -> bool
+
+      def priority_changed?: () -> bool
+
+      def priority_change: () -> [ Integer?, Integer? ]
+
+      def priority_will_change!: () -> void
+
+      def priority_was: () -> Integer?
+
+      def priority_previously_changed?: () -> bool
+
+      def priority_previous_change: () -> Array[Integer?]?
+
+      def priority_previously_was: () -> Integer?
+
+      def priority_before_last_save: () -> Integer?
+
+      def priority_change_to_be_saved: () -> Array[Integer?]?
+
+      def priority_in_database: () -> Integer?
+
+      def saved_change_to_priority: () -> Array[Integer?]?
+
+      def saved_change_to_priority?: () -> bool
+
+      def will_save_change_to_priority?: () -> bool
+
+      def restore_priority!: () -> void
+
+      def clear_priority_change: () -> void
+
+      def static: () -> bool
+
+      def static=: (bool) -> bool
+
+      def static?: () -> bool
+
+      def static_changed?: () -> bool
+
+      def static_change: () -> [ bool?, bool? ]
+
+      def static_will_change!: () -> void
+
+      def static_was: () -> bool?
+
+      def static_previously_changed?: () -> bool
+
+      def static_previous_change: () -> Array[bool?]?
+
+      def static_previously_was: () -> bool?
+
+      def static_before_last_save: () -> bool?
+
+      def static_change_to_be_saved: () -> Array[bool?]?
+
+      def static_in_database: () -> bool?
+
+      def saved_change_to_static: () -> Array[bool?]?
+
+      def saved_change_to_static?: () -> bool
+
+      def will_save_change_to_static?: () -> bool
+
+      def restore_static!: () -> void
+
+      def clear_static_change: () -> void
+
+      def description: () -> String?
+
+      def description=: (String?) -> String?
+
+      def description?: () -> bool
+
+      def description_changed?: () -> bool
+
+      def description_change: () -> [ String?, String? ]
+
+      def description_will_change!: () -> void
+
+      def description_was: () -> String?
+
+      def description_previously_changed?: () -> bool
+
+      def description_previous_change: () -> Array[String?]?
+
+      def description_previously_was: () -> String?
+
+      def description_before_last_save: () -> String?
+
+      def description_change_to_be_saved: () -> Array[String?]?
+
+      def description_in_database: () -> String?
+
+      def saved_change_to_description: () -> Array[String?]?
+
+      def saved_change_to_description?: () -> bool
+
+      def will_save_change_to_description?: () -> bool
+
+      def restore_description!: () -> void
+
+      def clear_description_change: () -> void
+
+      def created_at: () -> ActiveSupport::TimeWithZone
+
+      def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def created_at?: () -> bool
+
+      def created_at_changed?: () -> bool
+
+      def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def created_at_will_change!: () -> void
+
+      def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_previously_changed?: () -> bool
+
+      def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_created_at?: () -> bool
+
+      def will_save_change_to_created_at?: () -> bool
+
+      def restore_created_at!: () -> void
+
+      def clear_created_at_change: () -> void
+
+      def updated_at: () -> ActiveSupport::TimeWithZone
+
+      def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+      def updated_at?: () -> bool
+
+      def updated_at_changed?: () -> bool
+
+      def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+      def updated_at_will_change!: () -> void
+
+      def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_previously_changed?: () -> bool
+
+      def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+      def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+      def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+      def saved_change_to_updated_at?: () -> bool
+
+      def will_save_change_to_updated_at?: () -> bool
+
+      def restore_updated_at!: () -> void
+
+      def clear_updated_at_change: () -> void
+    end
+    include GeneratedAttributeMethods
+
+    module GeneratedAssociationMethods
+    end
+    include GeneratedAssociationMethods
+
+    module GeneratedRelationMethods
+    end
+
+    class ActiveRecord_Relation < ::ActiveRecord::Relation
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::RecurringTask, Integer]
+      include Enumerable[SolidQueue::RecurringTask]
+    end
+
+    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include GeneratedRelationMethods
+      include _ActiveRecord_Relation[SolidQueue::RecurringTask, Integer]
+    end
+  end
+end

@@ -14,7 +14,7 @@
       image: '861452569180.dkr.ecr.us-west-2.amazonaws.com/conference-app:' + std.extVar('IMAGE_SHA'),
       cpu: 0,
       essential: true,
-      command: ['bundle', 'exec', 'sidekiq', '--queue', 'default'],
+      command: ['bin/jobs', '--recurring_schedule_file=config/recurring.yml'],
       environment: [
         {
           name: 'APPLICATION_URL',
