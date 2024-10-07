@@ -108,7 +108,7 @@ GEM
     base64 (0.2.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    bootsnap (1.18.3)
+    bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
     commonmarker (1.1.4-aarch64-linux)
@@ -221,7 +221,7 @@ GEM
       rails (>= 7.1)
       stimulus-rails
       turbo-rails
-    msgpack (1.7.2)
+    msgpack (1.7.3)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     multipart-post (2.4.1)
