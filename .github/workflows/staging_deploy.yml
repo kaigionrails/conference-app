@@ -60,12 +60,12 @@ jobs:
           version: latest
       - run: ecspresso run --config deploy/staging/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/staging/runtask-db-migrate.jsonnet
       - run: ecspresso deploy --config deploy/staging/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
-      # - run: |
-      #     SERVICE_ARN=arn:aws:apprunner:us-west-2:861452569180:service/conference-app/37cc4e1e45894229965d668879123b40
-      #     until [ $(aws apprunner describe-service --service-arn ${SERVICE_ARN} --output json | jq -r '.Service.Status') = RUNNING ]
-      #     do
-      #     echo waiting
-      #     sleep 5
-      #     done
-      # - run: jsonnet deploy/staging/apprunner.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} > deploy/staging/apprunner.json
-      # - run: aws apprunner update-service --cli-input-json file://deploy/staging/apprunner.json
+      - run: |
+          SERVICE_ARN=arn:aws:apprunner:us-west-2:861452569180:service/conference-app-staging/acfd5f3cb79044cf96a2d70c481da77a
+          until [ $(aws apprunner describe-service --service-arn ${SERVICE_ARN} --output json | jq -r '.Service.Status') = RUNNING ]
+          do
+          echo waiting
+          sleep 5
+          done
+      - run: jsonnet deploy/staging/apprunner.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} > deploy/staging/apprunner.json
+      - run: aws apprunner update-service --cli-input-json file://deploy/staging/apprunner.json
