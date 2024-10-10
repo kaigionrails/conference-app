@@ -13,6 +13,7 @@
     { key: 'Project', value: 'kaigionrails' },
   ],
   enableECSManagedTags: true,
+  enableExecuteCommand: true,
   networkConfiguration: {
     awsvpcConfiguration: {
       subnets: $.publicSubnets,
