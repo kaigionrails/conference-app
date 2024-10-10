@@ -39,7 +39,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     concurrency:
-      group: "deploy"
+      group: "staging-deploy"
       cancel-in-progress: false
     needs: ["build"]
     permissions:
