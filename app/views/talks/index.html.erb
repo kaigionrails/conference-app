@@ -21,7 +21,7 @@
     <section class="mb-6">
       <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime("%d日 %H:%M ～") %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
-        <% talks.each do |talk| %>
+        <% talks.reverse.each do |talk| # want to place Room Red -> Room Blue, so reverse %>
           <div class="w-full md:w-[48%] border border-black shadow-sm shadow-gray-400 rounded-lg mb-4 p-4">
             <div class="w-full flex">
               <div class="w-20">
