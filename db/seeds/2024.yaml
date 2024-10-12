@@ -23,7 +23,7 @@
     このワークショップでは一からRackを理解し、RackアプリケーションやRackミドルウェア、Rackサーバを自分で書いてみることでRackとはなんなのかしっかり理解しましょう。
   :start_at: !!timestamp 2024-10-25T12:00:00+09:00
   :duration_minutes: 90
-  :track: Room Red
+  :track: ""
   :speakers:
   - :name: hogelog
     :slug: hogelog
@@ -458,7 +458,7 @@
     このワークショップでは一からRackを理解し、RackアプリケーションやRackミドルウェア、Rackサーバを自分で書いてみることでRackとはなんなのかしっかり理解しましょう。
   :start_at: !!timestamp 2024-10-26T11:35:00+09:00
   :duration_minutes: 90
-  :track: Room Red
+  :track: ""
   :speakers:
   - :name: hogelog
     :slug: hogelog
