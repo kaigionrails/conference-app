@@ -70,6 +70,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.logger = Logger.new($stdout)
 
   # config.active_job.queue_name_prefix = "conference_app_production"
 
