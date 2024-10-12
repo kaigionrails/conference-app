@@ -37,12 +37,18 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
+  # Disable caching for Action Mailer templates even if Action Controller
+  # caching is enabled.
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+
+  # Unlike controllers, the mailer instance doesn't have any context about the
+  # incoming request so you'll need to provide the :host parameter yourself.
+  config.action_mailer.default_url_options = { host: "www.example.com" }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -69,6 +75,6 @@ Rails.application.configure do
 
   config.application_url = ENV.fetch("APPLICATION_URL", "http://localhost:3000")
 
-  # Raise error when a before_action's only/except options reference missing actions
+  # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 end
