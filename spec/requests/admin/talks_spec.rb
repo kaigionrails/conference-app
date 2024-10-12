@@ -27,6 +27,39 @@ RSpec.describe "Admin::Talks", type: :request do
         expect(response.body).to include("sample talk")
       end
     end
+
+    context "event param" do
+      let(:user) { FactoryBot.create(:user, role: :organizer) }
+      let(:event_2023) { FactoryBot.create(:event, slug: "2023") }
+      let!(:talk_2023) { FactoryBot.create(:talk, title: "2023_talk", event: event_2023) }
+      let(:event_2024) { FactoryBot.create(:event, slug: "2024") }
+      let!(:talk_2024) { FactoryBot.create(:talk, title: "2024_talk", event: event_2024) }
+
+      before { sign_in(user) }
+
+      context "without event params" do
+        it "shows all talks" do
+          get admin_talks_path
+          expect(response.body).to include("2023_talk")
+          expect(response.body).to include("2024_talk")
+        end
+      end
+      context "event param presented" do
+        it "shows event talks" do
+          get admin_talks_path(event: "2024")
+          expect(response.body).not_to include("2023_talk")
+          expect(response.body).to include("2024_talk")
+        end
+      end
+
+      context "event not found" do
+        it "shows all talks" do
+          get admin_talks_path(event: "undef")
+          expect(response.body).to include("2023_talk")
+          expect(response.body).to include("2024_talk")
+        end
+      end
+    end
   end
 
   describe "GET /talks/:id" do
