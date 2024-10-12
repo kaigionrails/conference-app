@@ -8,7 +8,7 @@ module TalkDecorator
   end
 
   def hashtagged_twitter_intent_url
-    # https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent
+    # https://developer.x.com/en/docs/x-for-websites/tweet-button/guides/web-intent
     tags = ["kaigionrails"]
     tags << "kaigionrails_red" if track && track == "Room Red"
     tags << "kaigionrails_blue" if track && track == "Room Blue"
