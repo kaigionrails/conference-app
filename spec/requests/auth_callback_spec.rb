@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe "AuthCallback", type: :request do
   describe "GET /auth/:provider/callback" do
     context "unknown provider" do
       it "should redirect to /login" do
