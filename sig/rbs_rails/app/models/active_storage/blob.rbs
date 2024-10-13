@@ -328,14 +328,14 @@ module ActiveStorage
       def clear_created_at_change: () -> void
     end
     include GeneratedAttributeMethods
-    def variant_records: () -> ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy
-    def variant_records=: (ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::VariantRecord]) -> (ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::VariantRecord])
-    def variant_record_ids: () -> Array[Integer]
-    def variant_record_ids=: (Array[Integer]) -> Array[Integer]
     def attachments: () -> ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy
     def attachments=: (ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::Attachment]) -> (ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::Attachment])
     def attachment_ids: () -> Array[Integer]
     def attachment_ids=: (Array[Integer]) -> Array[Integer]
+    def variant_records: () -> ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy
+    def variant_records=: (ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::VariantRecord]) -> (ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | Array[ActiveStorage::VariantRecord])
+    def variant_record_ids: () -> Array[Integer]
+    def variant_record_ids=: (Array[Integer]) -> Array[Integer]
     def preview_image_attachment: () -> ActiveStorage::Attachment?
     def preview_image_attachment=: (ActiveStorage::Attachment?) -> ActiveStorage::Attachment?
     def build_preview_image_attachment: (untyped) -> ActiveStorage::Attachment
