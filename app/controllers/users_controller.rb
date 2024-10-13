@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by!(name: params[:username])
+    @events = Event.all.order(start_date: :desc)
+    @event_friends = @user.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
     @profile = @user.profile
     @token = params[:token]
 
