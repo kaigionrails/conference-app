@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
       uri = URI.parse(params["return_to"])
       redirect_to "#{uri.path}?#{uri.query}"
     else
-      redirect_to setting_path
+      redirect_to operators_path
     end
   end
 

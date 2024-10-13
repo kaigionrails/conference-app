@@ -10,9 +10,9 @@ RSpec.describe "Sessions", type: :request do
     }
 
     context "given valid email and password" do
-      it "should not success to login" do
+      it "should success to login" do
         post "/auth/email", params: {email: "sample@email.invalid", password: "password"}
-        expect(response).to redirect_to(setting_path)
+        expect(response).to redirect_to(operators_path)
         expect(session[:user_id]).to eq operator.id
       end
     end
