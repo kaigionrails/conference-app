@@ -3,23 +3,32 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:provider] != "github"
+    case params[:provider]
+    when "email"
+      if (auth = AuthenticationProviderEmailAndPassword.find_by(email: params[:email]))
+        if auth.authenticate(params[:password])
+          user = auth.user
+        else
+          flash[:alert] = "Invalid email or password"
+          redirect_to login_path
+          return
+        end
+      else
+        flash[:alert] = "Invalid email or password"
+        redirect_to login_path
+        return
+      end
+    else
       flash[:alert] = "Unknown provider"
       redirect_to login_path
       return
     end
 
-    user = AuthenticationProviderGithub.find_or_create_user_from_auth_hash(request.env["omniauth.auth"]) do |user|
-      DetermineUserRoleJob.perform_later(user.id)
-      user.profile.ensure_image_from_github
-      user.mark_all_announcement_unread!
-    end
-
     session[:user_id] = user.id
 
-    if request.env["omniauth.params"].key?("return_to")
+    if params.key?("return_to")
       # Prevent open redirect
-      uri = URI.parse(request.env["omniauth.params"]["return_to"])
+      uri = URI.parse(params["return_to"])
       redirect_to "#{uri.path}?#{uri.query}"
     else
       redirect_to setting_path
