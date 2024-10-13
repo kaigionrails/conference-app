@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
     @events = Event.all.order(start_date: :desc)
     @event_friends = current_user!.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
 
-    @friends = current_user!.friends.preload(profile: {images_attachments: :blob})
     @user = User.preload(:friends).find(current_user!.id)
   end
 
