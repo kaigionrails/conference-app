@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "/login", to: "sessions#new"
-  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "auth_callback#create"
   get "/logout", to: "sessions#destroy"
 
   # For PWA
