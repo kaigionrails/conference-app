@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   get "/admin", to: "admin#index"
+  resources :operators, only: [:index]
 
   scope "/:event_slug", as: "event" do
     get "/", to: "events#show"
