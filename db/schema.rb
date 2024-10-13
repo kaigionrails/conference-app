@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_03_140448) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_13_114258) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_140448) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.index ["event_id"], name: "index_announcements_on_event_id"
+  end
+
+  create_table "authentication_provider_email_and_passwords", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_authentication_provider_email_and_passwords_on_email", unique: true
+    t.index ["user_id"], name: "index_authentication_provider_email_and_passwords_on_user_id"
   end
 
   create_table "authentication_provider_githubs", force: :cascade do |t|
@@ -325,6 +335,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_03_140448) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "authentication_provider_email_and_passwords", "users"
   add_foreign_key "authentication_provider_githubs", "users"
   add_foreign_key "ongoing_events", "events"
   add_foreign_key "profile_exchanges", "events"
