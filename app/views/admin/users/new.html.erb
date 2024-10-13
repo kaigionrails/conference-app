@@ -1,0 +1,21 @@
+<h2 class="font-bold text-xl mb-8">Create new user (operator role)</h2>
+<div class="pr-8">
+  <div class="mb-8">
+    <%= form_with model: @user, url: admin_users_path do |f| %>
+      <%= f.label :name, "Name (recommend: use email for ensure uniqueness)", requierd: true, class: "block text-lg font-bold mb-2" %>
+      <%= f.text_field :name, class: "block rounded mb-4 w-[20rem]" %>
+      <%= f.label :role, "Role (operator)", class: "block text-lg font-bold mb-2" %>
+      <%= f.text_field :role, value: "operator", readonly: true, class: "block rounded mb-4 w-[20rem]" %>
+      <%= fields_for :auth, @user.authentication_provider_email_and_password do |auth_field| %>
+        <%= auth_field.label :email, "email address uses for login (recommend: same as name)", class: "block text-lg font-bold mb-2" %>
+        <%= auth_field.email_field :email, class: "block rounded mb-4 w-[20rem]", requierd: true %>
+        <%= auth_field.label :password, "password", class: "block text-lg font-bold mb-2" %>
+        <%= auth_field.password_field :password, class: "block rounded mb-4 w-[20rem]" %>
+        <%= auth_field.label :password_confirmation, "password (confirmation)", class: "block text-lg font-bold mb-2" %>
+        <%= auth_field.password_field :password_confirmation, class: "block rounded mb-4 w-[20rem]" %>
+      <% end %>
+      <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <% end %>
+  </div>
+  <%= link_to "back to index", admin_users_path, class: "underline" %>
+</div>

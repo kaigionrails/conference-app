@@ -61,4 +61,76 @@ RSpec.describe "Admin::Users", type: :request do
       expect(target_user.reload.role).to eq("organizer")
     end
   end
+
+  describe "POST /users" do
+    let(:user) { FactoryBot.create(:user, role: :organizer) }
+
+    before do
+      sign_in(user)
+    end
+
+    context "with valid params" do
+      create_param = {
+        user: {name: "new_user", role: "operator"},
+        auth: {email: "test@example.invalid", password: "password", password_confirmation: "password"} # weakness!
+      }
+      it "should create new operator role user" do
+        expect {
+          post admin_users_path, params: create_param
+        }.to change { User.operator.count }.by(1).and change { AuthenticationProviderEmailAndPassword.count }.by(1)
+      end
+    end
+
+    context "with organizer role params" do
+      create_param = {
+        user: {name: "new_user", role: "organizer"},
+        auth: {email: "test@example.invalid", password: "password", password_confirmation: "password"}
+      }
+      it "should create new operator role user, not organizer role" do
+        expect {
+          post admin_users_path, params: create_param
+        }.to change {
+          User.operator.count
+        }.by(1).and change {
+          AuthenticationProviderEmailAndPassword.count
+        }.by(1).and change {
+          User.organizer.count
+        }.by(0)
+      end
+    end
+
+    context "with invalid params" do
+      create_param = {
+        user: {name: "new_user", role: "organizer"},
+        auth: {email: "test@example.invalid", password: "password", password_confirmation: "wrong_password"}
+      }
+      it "should not create new operator" do
+        expect {
+          post admin_users_path, params: create_param
+        }.to change {
+          User.operator.count
+        }.by(0).and change {
+          AuthenticationProviderEmailAndPassword.count
+        }.by(0)
+      end
+    end
+
+    context "already registered email" do
+      let(:user) { FactoryBot.create(:user) }
+      let!(:authentication_provider_email_and_password) { FactoryBot.create(:authentication_provider_email_and_password, user: user, email: "test@example.invalid") }
+      create_param = {
+        user: {name: "new_user", role: "organizer"},
+        auth: {email: "test@example.invalid", password: "password", password_confirmation: "password"}
+      }
+      it "should not create new operator" do
+        expect {
+          post admin_users_path, params: create_param
+        }.to change {
+          User.operator.count
+        }.by(0).and change {
+          AuthenticationProviderEmailAndPassword.count
+        }.by(0)
+      end
+    end
+  end
 end

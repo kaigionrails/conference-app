@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :friends, through: :profile_exchanges, class_name: "User"
   has_many :talk_reminders, dependent: :destroy
 
-  enum :role, organizer: "organizer", participant: "participant"
+  enum :role, organizer: "organizer", participant: "participant", operator: "operator"
 
   def have_unread_announcements?
     unread_announcements.joins(:announcement).where(announcement: {event: current_event}).exists?
