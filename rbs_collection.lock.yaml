@@ -101,6 +101,18 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: bcrypt
+  version: '3.1'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 704f7e6b395fca717cc25c562598ca86015ed545
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: benchmark
+  version: '0'
+  source:
+    type: stdlib
 - name: bigdecimal
   version: '0'
   source:
