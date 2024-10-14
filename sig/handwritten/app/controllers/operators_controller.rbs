@@ -1,0 +1,7 @@
+class OperatorsController < ApplicationController
+  def index: () -> nil
+
+  private
+
+  def require_operator: () -> (untyped | nil)
+end

@@ -2,4 +2,6 @@ class Admin::UsersController < AdminController
   @users: User::ActiveRecord_Relation
 
   @user: User
+
+  private def user_auth_params: () -> { email: (String|nil), password: (String|nil), password_confirmation: (String|nil) }
 end

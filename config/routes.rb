@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "/login", to: "sessions#new"
-  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "auth_callback#create"
+  post "/auth/:provider", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
   # For PWA
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :ongoing_events, only: [:create, :update]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :new, :create, :edit, :update]
     resources :profiles, only: [:show] do
       resources :profile_badges_profiles, only: [:new, :create]
     end
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   get "/admin", to: "admin#index"
+  resources :operators, only: [:index]
 
   scope "/:event_slug", as: "event" do
     get "/", to: "events#show"

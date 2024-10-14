@@ -6,12 +6,6 @@ class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < Act
 end
 class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-module ActiveStorage
-end
-class ActiveStorage::Record < ActiveRecord::Base
-end
-class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
-end
 module SolidQueue
 end
 class SolidQueue::Record < ActiveRecord::Base
@@ -21,6 +15,12 @@ end
 class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class SolidQueue::Execution < SolidQueue::Record
+end
+module ActiveStorage
+end
+class ActiveStorage::Record < ActiveRecord::Base
+end
+class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class ApplicationRecord < ActiveRecord::Base
 end

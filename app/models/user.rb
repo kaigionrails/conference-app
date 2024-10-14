@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :authentication_provider_github, dependent: :destroy
+  has_one :authentication_provider_email_and_password, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :webpush_subscriptions, dependent: :destroy
   has_many :unread_announcements, dependent: :destroy
@@ -8,7 +9,7 @@ class User < ApplicationRecord
   has_many :friends, through: :profile_exchanges, class_name: "User"
   has_many :talk_reminders, dependent: :destroy
 
-  enum :role, organizer: "organizer", participant: "participant"
+  enum :role, organizer: "organizer", participant: "participant", operator: "operator"
 
   def have_unread_announcements?
     unread_announcements.joins(:announcement).where(announcement: {event: current_event}).exists?

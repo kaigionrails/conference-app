@@ -213,6 +213,12 @@ class User < ::ApplicationRecord
   def create_authentication_provider_github: (untyped) -> AuthenticationProviderGithub
   def create_authentication_provider_github!: (untyped) -> AuthenticationProviderGithub
   def reload_authentication_provider_github: () -> AuthenticationProviderGithub?
+  def authentication_provider_email_and_password: () -> AuthenticationProviderEmailAndPassword?
+  def authentication_provider_email_and_password=: (AuthenticationProviderEmailAndPassword?) -> AuthenticationProviderEmailAndPassword?
+  def build_authentication_provider_email_and_password: (untyped) -> AuthenticationProviderEmailAndPassword
+  def create_authentication_provider_email_and_password: (untyped) -> AuthenticationProviderEmailAndPassword
+  def create_authentication_provider_email_and_password!: (untyped) -> AuthenticationProviderEmailAndPassword
+  def reload_authentication_provider_email_and_password: () -> AuthenticationProviderEmailAndPassword?
   def profile: () -> Profile?
   def profile=: (Profile?) -> Profile?
   def build_profile: (untyped) -> Profile

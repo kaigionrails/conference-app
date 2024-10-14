@@ -4,6 +4,7 @@ class User < ApplicationRecord
   #       refs: https://github.com/pocke/rbs_rails/pull/268
   def organizer?: () -> bool
   def participant?: () -> bool
+  def operator?: () -> bool
 
   def have_unread_announcements?: () -> bool
   def destroy_talk_bookmark_with_reminder!: (Integer id) -> bool
