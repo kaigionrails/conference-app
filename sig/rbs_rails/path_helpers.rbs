@@ -161,4 +161,8 @@ interface _RbsRailsPathHelpers
   def rails_blob_url: (*untyped) -> String
   def rails_storage_proxy_url: (*untyped) -> String
   def rails_storage_redirect_url: (*untyped) -> String
+
+  # handwriten!!!
+  def new_admin_user_path: (*untyped) -> String
+  def operators_path: (*untyped) -> String
 end
