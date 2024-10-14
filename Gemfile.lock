@@ -292,7 +292,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-protection (4.0.0)
@@ -366,18 +366,18 @@ GEM
       io-console (~> 0.5)
     rexml (3.3.6)
       strscan
-    rspec-core (3.13.0)
+    rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.1)
+    rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.1)
+    rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (6.1.4)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
+    rspec-rails (7.0.1)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
       rspec-core (~> 3.13)
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
@@ -503,7 +503,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     woothee (1.13.0)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   aarch64-linux
@@ -549,7 +549,7 @@ DEPENDENCIES
   redis (~> 5.3)
   redis-actionpack
   redis-store!
-  rspec-rails (~> 6.1)
+  rspec-rails (~> 7.0)
   scout_apm
   sentry-rails
   solid_queue
