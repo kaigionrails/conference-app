@@ -23,8 +23,8 @@ class SampleWebpushNotificationsController < ApplicationController
           private_key: Rails.configuration.x.webpush.vapid_private_key
         }
       )
-    rescue WebPush::ExpiredSubscription
-      # endpoint was expired
+    rescue WebPush::ExpiredSubscription, WebPush::InvalidSubscription
+      # endpoint was expired or invalid
       subscription.destroy!
     end
   end
