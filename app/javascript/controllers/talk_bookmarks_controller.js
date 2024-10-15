@@ -6,6 +6,7 @@ export default class extends Controller {
     bookmarked: Boolean,
     talkId: Number,
     talkBookmarkId: Number,
+    clicked: { type: Boolean, default: false },
   };
   static targets = ["createTalkBookmarkIcon", "removeTalkBookmarkIcon"];
 
@@ -20,6 +21,12 @@ export default class extends Controller {
   }
 
   async bookmark() {
+    if (this.clickedValue) {
+      return;
+    } else {
+      this.clickedValue = true;
+    }
+    this.disableBookmarkIcons();
     const request = new FetchRequest("post", "/talk_bookmarks", {
       body: JSON.stringify({
         talk_bookmark: {
@@ -40,9 +47,17 @@ export default class extends Controller {
       console.error(response);
       window.alert("エラーが発生しました。再度お試しください。");
     }
+    this.enableBookmarkIcons();
+    this.clickedValue = false;
   }
 
   async removeBookmark() {
+    if (this.clickedValue) {
+      return;
+    } else {
+      this.clickedValue = true;
+    }
+    this.disableBookmarkIcons();
     const request = new FetchRequest(
       "delete",
       `/talk_bookmarks/${this.talkBookmarkIdValue}`,
@@ -56,10 +71,22 @@ export default class extends Controller {
     } else {
       console.error(response);
     }
+    this.enableBookmarkIcons();
+    this.clickedValue = false;
   }
 
   toggleTalkBookmarkIcons() {
     this.removeTalkBookmarkIconTarget.classList.toggle("hidden");
     this.createTalkBookmarkIconTarget.classList.toggle("hidden");
+  }
+
+  disableBookmarkIcons() {
+    this.removeTalkBookmarkIconTarget.classList.add("opacity-50");
+    this.createTalkBookmarkIconTarget.classList.add("opacity-50");
+  }
+
+  enableBookmarkIcons() {
+    this.removeTalkBookmarkIconTarget.classList.remove("opacity-50");
+    this.createTalkBookmarkIconTarget.classList.remove("opacity-50");
   }
 }

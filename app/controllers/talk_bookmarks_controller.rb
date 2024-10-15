@@ -5,7 +5,7 @@ class TalkBookmarksController < ApplicationController
       return
     end
 
-    talk_bookmark = TalkBookmark.create!(user: current_user!, **talk_bookmark_params)
+    talk_bookmark = TalkBookmark.find_or_create_by!(user: current_user!, **talk_bookmark_params)
     talk = talk_bookmark.talk
     TalkReminder.create_or_find_by!(user: current_user!, talk: talk, scheduled_at: (talk.start_at - 3.minutes))
     render json: talk_bookmark, status: :ok
