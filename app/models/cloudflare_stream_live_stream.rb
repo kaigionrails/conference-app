@@ -22,7 +22,7 @@ class CloudflareStreamLiveStream < ApplicationRecord
       return false
     end
 
-    live_videos_response = client.retrieve_live_input_vidos(uid)
+    live_videos_response = client.retrieve_live_input_videos(uid)
     return false unless live_videos_response["success"]
 
     self.name = live_response["result"]["meta"]["name"]
@@ -32,7 +32,7 @@ class CloudflareStreamLiveStream < ApplicationRecord
   end
 
   def retrieve_videos
-    response = CloudflareApiClient.new.retrieve_live_input_vidos(uid)
+    response = CloudflareApiClient.new.retrieve_live_input_videos(uid)
     return unless response["errors"].empty?
 
     self.stream_videos_raw_response = response

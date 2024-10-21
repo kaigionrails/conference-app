@@ -29,7 +29,7 @@ class CloudflareApiClient
     client.get("/client/v4/accounts/#{@account_id}/stream/live_inputs/#{uid}").body
   end
 
-  def retrieve_live_input_vidos(uid)
+  def retrieve_live_input_videos(uid)
     client.get("/client/v4/accounts/#{@account_id}/stream/live_inputs/#{uid}/videos").body
   end
 
