@@ -92,6 +92,7 @@ group :development, :test do
 
   gem "prosopite"
   gem "pg_query"
+  gem "webmock"
 end
 
 group :development do
