@@ -60,7 +60,6 @@ RSpec.describe CloudflareStreamLiveStream, type: :model do
   describe "#update_stream" do
     let(:live_stream) { FactoryBot.create(:cloudflare_stream_live_stream, uid: "uidfortest") }
 
-
     context "api call succeeded" do
       before do
         stub_request(:get, "https://api.cloudflare.com/client/v4/accounts/testtesttesttest/stream/live_inputs/uidfortest")
