@@ -64,4 +64,7 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.active_job.queue_adapter = :test
+
+  config.x.cloudflare.api_token = "testtesttesttest"
+  config.x.cloudflare.account_id = "testtesttesttest"
 end
