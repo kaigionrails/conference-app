@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_13_114258) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -79,6 +79,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_114258) do
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_authentication_provider_githubs_on_uid", unique: true
     t.index ["user_id"], name: "index_authentication_provider_githubs_on_user_id"
+  end
+
+  create_table "cloudflare_stream_live_streams", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "uid", null: false
+    t.string "name", null: false
+    t.jsonb "stream_raw_response"
+    t.jsonb "stream_videos_raw_response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_cloudflare_stream_live_streams_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -337,6 +348,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_13_114258) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_email_and_passwords", "users"
   add_foreign_key "authentication_provider_githubs", "users"
+  add_foreign_key "cloudflare_stream_live_streams", "events"
   add_foreign_key "ongoing_events", "events"
   add_foreign_key "profile_exchanges", "events"
   add_foreign_key "profile_exchanges", "users"
