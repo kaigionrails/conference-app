@@ -165,4 +165,5 @@ interface _RbsRailsPathHelpers
   # handwriten!!!
   def new_admin_user_path: (*untyped) -> String
   def operators_path: (*untyped) -> String
+  def admin_live_streams_path: (*untyped) -> String
 end

@@ -1,0 +1,5 @@
+class Admin::LiveStreamsController < AdminController
+  def index: -> untyped
+  def update: -> untyped
+  private def cloudflare_stream_live_stream_params: -> untyped
+end
