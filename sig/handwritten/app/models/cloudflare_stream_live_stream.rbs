@@ -1,0 +1,3 @@
+class CloudflareStreamLiveStream < ::ApplicationRecord
+  def self.create_by_stream_uid: (String uid) -> boolish
+end
