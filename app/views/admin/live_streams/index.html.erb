@@ -1,0 +1,26 @@
+<h2 h2 class="font-bold text-xl mb-8">Live</h2>
+
+<div class="pr-8">
+  <div class="mb-8">
+  <%= link_to "Create new live stream", new_admin_live_stream_path, class: "border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+  </div>
+  <div class="mb-8">
+    <h3 class="font-bold text-lg">live streams</h3>
+    <% @cloudflare_stream_live_streams.each do |live_stream| %>
+      <div class="mb-4">
+        <h4 class="font-bold text-lg mb-2"><%= "#{live_stream.name} (id:#{live_stream.id})" %></h4>
+        <details class="mb-2">
+          <summary>stream api response</summary>
+          <pre><%= JSON.pretty_generate(live_stream.stream_raw_response) %></pre>
+        </details>
+        <details class="mb-2">
+          <summary>live input api response</summary>
+          <pre><%= JSON.pretty_generate(live_stream.stream_videos_raw_response) %></pre>
+        </details>
+        <%= form_with model: live_stream, url: admin_live_stream_path(id: live_stream) do |f|  %>
+          <%= f.submit "Update live stream from API", class: "border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

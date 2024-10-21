@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources :talks, only: [:index, :show, :edit, :update]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :live_streams, only: [:index, :new, :create, :update]
   end
   get "/admin", to: "admin#index"
   resources :operators, only: [:index]
