@@ -38,6 +38,7 @@ RSpec.describe "AuthCallback", type: :request do
 
         before do
           OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+          expect_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil)
         end
 
         it "should create user, authentication_provider_github, profile, unread_announcement and enqueue job" do
