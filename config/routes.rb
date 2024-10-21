@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   get "/about", to: "about#index"
 
+  get "/live/:id", to: "live_streams#show", as: "live_stream"
+
   namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :ongoing_events, only: [:create, :update]
