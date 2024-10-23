@@ -145,7 +145,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "signage_device_assigns", id: false, force: :cascade do |t|
+  create_table "signage_device_assigns", force: :cascade do |t|
     t.bigint "signage_panel_id", null: false
     t.bigint "signage_device_id", null: false
     t.index ["signage_device_id"], name: "index_signage_device_assigns_on_signage_device_id"
@@ -174,7 +174,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "signage_schedule_assigns", id: false, force: :cascade do |t|
+  create_table "signage_schedule_assigns", force: :cascade do |t|
     t.bigint "signage_schedule_id", null: false
     t.bigint "signage_panel_id", null: false
     t.index ["signage_panel_id"], name: "index_signage_schedule_assigns_on_signage_panel_id"

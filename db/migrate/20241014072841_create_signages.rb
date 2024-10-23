@@ -20,7 +20,7 @@ class CreateSignages < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    create_table :signage_schedule_assigns, id: false do |t|
+    create_table :signage_schedule_assigns do |t| # standard:disable Rails/CreateTableWithTimestamps
       t.references :signage_schedule, null: false, index: true
       t.references :signage_panel, null: false, index: true
     end
@@ -39,7 +39,7 @@ class CreateSignages < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    create_table :signage_device_assigns, id: false do |t|
+    create_table :signage_device_assigns do |t| # standard:disable Rails/CreateTableWithTimestamps
       t.references :signage_panel, null: false, index: true
       t.references :signage_device, null: false, index: true
     end
