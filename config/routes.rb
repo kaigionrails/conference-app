@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
   get "/live/:id", to: "live_streams#show", as: "live_stream"
 
+  resources :signages, only: [:index]
+  resources :signage_devices, only: [:index]
+
   namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :ongoing_events, only: [:create, :update]

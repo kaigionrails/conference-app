@@ -1,2 +1,0 @@
-class SignageController < ApplicationController
-end
