@@ -1,0 +1,62 @@
+<div class="mb-16">
+  <h2 class="font-bold text-xl mb-6">Signages</h2>
+  <div class="mb-6">
+    <h3 class="font-bold text-lg mb-2">Panels (面)</h3>
+    <ul class="list-disc pl-4 mb-4">
+      <% @signage_panels.each do |panel| %>
+        <li><%= panel.name %></li>
+      <% end %>
+    </ul>
+    <%= link_to "Add panel", new_admin_signage_panel_path, class: "border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+  </div>
+  <div class="mb-6">
+    <h3 class="font-bold text-lg mb-2">Schedules</h3>
+    <% @signages.first.signage_schedules.each do |schedule| %>
+      <h4 class="font-bold text-lg mb-2"><%= "#{schedule.start_at.in_time_zone("Tokyo")} ～ #{schedule.end_at.in_time_zone("Tokyo")}" %></h4>
+      <div class="pl-3">
+        <div class="mb-2">
+          <%= link_to "edit", edit_admin_signage_schedule_path(schedule), class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+          <%= form_with model: schedule, url: admin_signage_schedule_path(schedule), method: :delete, class: "inline-block" do |f| %>
+            <%= f.submit "delete", class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer"%>
+          <% end %>
+        </div>
+        <h5 class="font-bold text-lg mb-2">pages</h5>
+        <div class="flex overflow-x-scroll mb-6">
+          <% schedule.signage_pages.each do |page| %>
+            <div class="w-96 mr-2">
+              <%= image_tag page.page_image, class: "w-full" %>
+              <div class="text-lg">表示順: <%= page.order %></div>
+              <div class="text-lg">表示秒数: <%= page.duration_second %></div>
+            </div>
+          <% end %>
+          <div>
+            <%= link_to "pageを追加", new_admin_signage_page_path, class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+          </div>
+        </div>
+        <div>
+          <h5 class="font-bold text-lg mb-2">assigns</h5>
+          <ul class="list-disc pl-4 mb-4">
+            <% schedule.signage_schedule_assigns.each do |assign| %>
+              <li><%= assign.signage_panel.name %></li>
+            <% end %>
+          </ul>
+          <div>
+            <%= link_to "assignを追加", new_admin_signage_schedule_assign_path, class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mb-6">
+    <h3 class="font-bold text-lg mb-2">Devices</h3>
+    <ul class="list-disc pl-4 mb-4">
+      <% @signage_devices.each do |device| %>
+        <li><%= device.device_name %><%= device.signage_device_assigns.to_json %></li>
+      <% end %>
+    </ul>
+    <div>
+      <%= link_to "Deviceを追加", new_admin_signage_device_path, class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+      <%= link_to "Deviceと面の割り当てを追加", new_admin_signage_device_assign_path, class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    </div>
+  </div>
+</div>

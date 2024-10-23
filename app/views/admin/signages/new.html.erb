@@ -1,0 +1,10 @@
+<h2 class="font-bold text-xl mb-8">New Signage</h2>
+<%= form_with model: @signage, url: admin_signages_path, method: :post do |f| %>
+  <%= f.fields_for :signage_schedule do |schedule_form|%>
+    <%= schedule_form.label :start_at, "開始時刻", class: "block text-lg font-bold mb-2" %>
+    <%= schedule_form.datetime_field :start_at, class: "block rounded mb-4 w-[20rem]" %>
+    <%= schedule_form.label :end_at, "終了時刻", class: "block text-lg font-bold mb-2" %>
+    <%= schedule_form.datetime_field :end_at, class: "block rounded mb-4 w-[20rem]" %>
+  <% end %>
+  <%= f.submit "Create", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+<% end %>
