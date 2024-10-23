@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :live_streams, only: [:index, :new, :create, :update]
     resources :signages, only: [:index, :new, :create, :update]
-    resources :signage_schedules, only: [:edit, :update]
+    resources :signage_schedules, only: [:new, :create, :edit, :update, :destroy]
     resources :signage_schedule_assigns, only: [:new, :create, :destroy]
     resources :signage_panels, only: [:new, :create, :edit, :update]
     resources :signage_devices, only: [:new, :create, :edit, :update]

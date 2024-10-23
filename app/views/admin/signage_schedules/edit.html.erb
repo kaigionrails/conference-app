@@ -1,0 +1,9 @@
+<h2 class="font-bold text-xl mb-8">Edit Signage schedule (id:<%= @signage_schedule.id %>)</h2>
+<%= form_with model: @signage_schedule, url: admin_signage_schedule_path(@signage_schedule) do |f| %>
+  <%= f.hidden_field :signage_id, value: @signage_schedule.signage_id %>
+  <%= f.label :start_at, "開始時刻", class: "block text-lg font-bold mb-2" %>
+  <%= f.datetime_field :start_at, class: "block rounded mb-4 w-[20rem]" %>
+  <%= f.label :end_at, "終了時刻", class: "block text-lg font-bold mb-2" %>
+  <%= f.datetime_field :end_at, class: "block rounded mb-4 w-[20rem]" %>
+  <%= f.submit "Update", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+<% end %>

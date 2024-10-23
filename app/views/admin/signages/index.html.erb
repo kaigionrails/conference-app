@@ -11,8 +11,9 @@
   </div>
   <div class="mb-6">
     <h3 class="font-bold text-lg mb-2">Schedules</h3>
+    <%= link_to "scheduleを追加", new_admin_signage_schedule_path, class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer mb-2" %>
     <% @signages.first.signage_schedules.each do |schedule| %>
-      <h4 class="font-bold text-lg mb-2"><%= "#{schedule.start_at.in_time_zone("Tokyo")} ～ #{schedule.end_at.in_time_zone("Tokyo")}" %></h4>
+      <h4 class="font-bold text-lg mb-2"><%= "id:#{schedule.id} #{schedule.start_at.in_time_zone("Tokyo")} ～ #{schedule.end_at.in_time_zone("Tokyo")}" %></h4>
       <div class="pl-3">
         <div class="mb-2">
           <%= link_to "edit", edit_admin_signage_schedule_path(schedule), class: "inline-block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
