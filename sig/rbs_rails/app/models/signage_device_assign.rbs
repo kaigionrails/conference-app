@@ -1,0 +1,108 @@
+class SignageDeviceAssign < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[SignageDeviceAssign, ActiveRecord_Relation, top]
+
+  module GeneratedAttributeMethods
+    def signage_panel_id: () -> Integer
+
+    def signage_panel_id=: (Integer) -> Integer
+
+    def signage_panel_id?: () -> bool
+
+    def signage_panel_id_changed?: () -> bool
+
+    def signage_panel_id_change: () -> [ Integer?, Integer? ]
+
+    def signage_panel_id_will_change!: () -> void
+
+    def signage_panel_id_was: () -> Integer?
+
+    def signage_panel_id_previously_changed?: () -> bool
+
+    def signage_panel_id_previous_change: () -> Array[Integer?]?
+
+    def signage_panel_id_previously_was: () -> Integer?
+
+    def signage_panel_id_before_last_save: () -> Integer?
+
+    def signage_panel_id_change_to_be_saved: () -> Array[Integer?]?
+
+    def signage_panel_id_in_database: () -> Integer?
+
+    def saved_change_to_signage_panel_id: () -> Array[Integer?]?
+
+    def saved_change_to_signage_panel_id?: () -> bool
+
+    def will_save_change_to_signage_panel_id?: () -> bool
+
+    def restore_signage_panel_id!: () -> void
+
+    def clear_signage_panel_id_change: () -> void
+
+    def signage_device_id: () -> Integer
+
+    def signage_device_id=: (Integer) -> Integer
+
+    def signage_device_id?: () -> bool
+
+    def signage_device_id_changed?: () -> bool
+
+    def signage_device_id_change: () -> [ Integer?, Integer? ]
+
+    def signage_device_id_will_change!: () -> void
+
+    def signage_device_id_was: () -> Integer?
+
+    def signage_device_id_previously_changed?: () -> bool
+
+    def signage_device_id_previous_change: () -> Array[Integer?]?
+
+    def signage_device_id_previously_was: () -> Integer?
+
+    def signage_device_id_before_last_save: () -> Integer?
+
+    def signage_device_id_change_to_be_saved: () -> Array[Integer?]?
+
+    def signage_device_id_in_database: () -> Integer?
+
+    def saved_change_to_signage_device_id: () -> Array[Integer?]?
+
+    def saved_change_to_signage_device_id?: () -> bool
+
+    def will_save_change_to_signage_device_id?: () -> bool
+
+    def restore_signage_device_id!: () -> void
+
+    def clear_signage_device_id_change: () -> void
+  end
+  include GeneratedAttributeMethods
+
+  def signage_panel: () -> SignagePanel
+  def signage_panel=: (SignagePanel?) -> SignagePanel?
+  def reload_signage_panel: () -> SignagePanel?
+  def build_signage_panel: (untyped) -> SignagePanel
+  def create_signage_panel: (untyped) -> SignagePanel
+  def create_signage_panel!: (untyped) -> SignagePanel
+  def signage_device: () -> SignageDevice
+  def signage_device=: (SignageDevice?) -> SignageDevice?
+  def reload_signage_device: () -> SignageDevice?
+  def build_signage_device: (untyped) -> SignageDevice
+  def create_signage_device: (untyped) -> SignageDevice
+  def create_signage_device!: (untyped) -> SignageDevice
+  module GeneratedAssociationMethods
+  end
+  include GeneratedAssociationMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[SignageDeviceAssign, top]
+    include Enumerable[SignageDeviceAssign]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[SignageDeviceAssign, top]
+  end
+end
