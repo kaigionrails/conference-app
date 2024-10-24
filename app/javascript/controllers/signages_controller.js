@@ -14,6 +14,10 @@ export default class extends Controller {
     }
 
     this.fetchSignage().then(() => this.startSignage());
+
+    setTimeout(() => {
+      location.reload() // FIXME: 一旦……
+    }, 10 * 60 * 1000) // 10分
   }
 
   determineDevice() {
@@ -67,6 +71,9 @@ export default class extends Controller {
       this.updateSignagePage();
     }, page.duration_second * 1000);
   }
+
+  // refetchSignage() {}
+
   toggleFullscreen() {
     if (!document.fullscreenElement) {
       this.pageTarget.requestFullscreen();
