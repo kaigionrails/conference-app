@@ -68,6 +68,10 @@ export default class extends Controller {
     }, page.duration_second * 1000);
   }
   toggleFullscreen() {
-    console.log("togge!!");
+    if (!document.fullscreenElement) {
+      this.pageTarget.requestFullscreen();
+    } else if (this.pageTarget.exitFullscreen) {
+      this.pageTarget.exitFullscreen();
+    }
   }
 }
