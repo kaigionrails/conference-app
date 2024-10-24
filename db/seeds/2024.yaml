@@ -3,7 +3,7 @@
   :abstract: ''
   :start_at: !!timestamp 2024-10-25T11:20:00+09:00
   :duration_minutes: 40
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Palkan
     :slug: palkan
@@ -36,7 +36,7 @@
     Railsのpull Requestやissuesをレビューする際に、発表者がどのような考えを持っているか、またcontributorに何を期待しているかを、発表者が過去にレビューしたpull requestやissueを例に挙げて説明します。これにより、Railsへのcontributionの障壁を減らすとともに、Railsがより多くのユーザーからのフィードバックを受けるきっかけになることを期待しています。
   :start_at: !!timestamp 2024-10-25T13:30:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Yasuo Honda
     :slug: yahonda
@@ -55,7 +55,7 @@
     対象者として、Railsアプリでの機能実装に慣れてきたあと、メンテナンスしやすいコードを書くレベルへステップアップしたい人へ向けて、長期にわたり役立つ技術を持ち帰ってもらえるようお話しします。
   :start_at: !!timestamp 2024-10-25T13:30:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: 五十嵐邦明
     :slug: igaiga
@@ -74,7 +74,7 @@
     平日夜、仕事でもないのに `bundle exec rails new . ` をしてから今日にいたるまで。実際に何を作ったのか、Railsアプリしかわからない人間が選んだインフラ、Discord開発鯖の運用、『職業プログラマ』だからこそ手の届かない悔しさについてお話します。「キリ番」に覚えのある方、新たなファンアートの形に興味のある方、「土日にコードを書いていない人間」に興味がある方を、お待ちしています。
   :start_at: !!timestamp 2024-10-25T14:10:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: sakahukamaki
     :slug: sakahukamaki
@@ -97,7 +97,7 @@
     ひとつ下を歩けるRailsエンジニアになるための入口となるセッションを目指します。
   :start_at: !!timestamp 2024-10-25T14:10:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Asayama Kodai
     :slug: asayamakk
@@ -117,7 +117,7 @@
     今回お話する内容を用いれば、皆さんはすぐにOpenTelemetryや各ベンダーが提供するライブラリを用いたパフォーマンス分析の検証を開始することができます。これにより、みなさんご自身が開発するRailsアプリケーションの運用が楽になれば嬉しいです。
   :start_at: !!timestamp 2024-10-25T14:35:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: ymtdzzz
     :slug: ymtdzzz
@@ -138,7 +138,7 @@
     本セッションでは、デプロイの過程でSidekiqにおける長時間ジョブを安全に中断・再開する仕組みについて、実践的なアプローチを紹介し、実際の運用にどのように役立つかについて詳しく解説します。
   :start_at: !!timestamp 2024-10-25T14:35:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: hypermkt
     :slug: hypermkt
@@ -156,7 +156,7 @@
     このセッションでは、実装するにあたってGraphQLの基本概念を説明した後、minneで検索エンジンのREST APIをバックエンドとしてGraphQLによるページネーションを実現した経験から、graphql-rubyを用いてこれを実装する方法を説明します。
   :start_at: !!timestamp 2024-10-25T15:45:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: yana-gi
     :slug: yana-gi
@@ -174,7 +174,7 @@
     それらの課題とどう向きあって乗り越えてきたかお話しします。
   :start_at: !!timestamp 2024-10-25T15:45:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: phigasui
     :slug: phigasui
@@ -188,7 +188,7 @@
     パフォーマンスの最適化、Javaライブラリの活用、またはJRubyの可能性に興味がある方に、JRubyをRailsプロジェクトに組み込むための情報に基づいた決定を行うための知識を提供します。
   :start_at: !!timestamp 2024-10-25T16:10:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Owaru Ryudo
     :slug: ryudoawaru
@@ -210,7 +210,7 @@
     最後に、ViweComponentの導入によって得られた効果や、レンダリング時間の計測結果について紹介します。
   :start_at: !!timestamp 2024-10-25T16:10:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Naoyuki Kataoka
     :slug: katty0324
@@ -231,7 +231,7 @@
     本トークでは、LLM と ActionCable を用いた実装、テスト、インフラ構成のポイントと、各フェーズでの課題解決方法について紹介します。
   :start_at: !!timestamp 2024-10-25T16:50:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: kaiba
     :slug: kaibadash
@@ -246,7 +246,7 @@
     特に、ブラウザのヘッダ情報（Origin, SameSite, Fetch Metadata など）を活用したシンプルなCSRF対策に焦点を当て、その実装方法について具体例を交えて紹介します。新しい対策の利点や、Railsでの実装手法を学ぶことで、アプリケーションのセキュリティを向上させるための知識をアップデートする機会となるでしょう。
   :start_at: !!timestamp 2024-10-25T16:50:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: corocn
     :slug: corocn
@@ -271,7 +271,7 @@
     Railsは今後も素晴らしいフレームワークとして進化を続けていきますが、その恩恵を受け続けるにはアップグレードから逃れることはできません。この発表が皆さんのプロジェクトの一助となれば幸いです。
   :start_at: !!timestamp 2024-10-25T17:15:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Yuichi Takeuchi
     :slug: takeyuweb
@@ -299,7 +299,7 @@
     俺のやらかしを越えてゆけ。
   :start_at: !!timestamp 2024-10-25T17:15:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: izumitomo
     :slug: izumitomo
@@ -315,7 +315,7 @@
     本トークでは、Railsアプリケーション内のviewの一部にReactで実装された録画機能をHotwire（Turbo + Stimulus）へ置き換えを試みた事例をもとに、特にStimulusを使った開発体験に着目しながら、HotwireとReactなどのフロントエンドフレームワークをどのように使い分けると幸せに開発できるのかを考察します。
   :start_at: !!timestamp 2024-10-25T17:55:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Haruna Tsujita
     :slug: haruna-tsujita
@@ -330,7 +330,7 @@
     まだまだ精度は出ないなど運用上の課題はありますが、Railsサーバーを起動してAIにWebサイトを読み取らせて自然言語でテスト内容を入力して結果を得る、というニッチな方法を、Capybaraドライバを拡張して実装する方法について解説します。
   :start_at: !!timestamp 2024-10-25T17:55:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Yusuke Iwaki
     :slug: YusukeIwaki
@@ -352,7 +352,7 @@
     普段使っている道具がどのようなしくみや構造になっているか興味はありませんか？
   :start_at: !!timestamp 2024-10-26T10:00:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Yudai Takada
     :slug: ydah
@@ -374,7 +374,7 @@
 
   :start_at: !!timestamp 2024-10-26T10:00:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Daisuke Aritomo (osyoyu)
     :slug: osyoyu
@@ -389,7 +389,7 @@
     次に、私が開発した「レンダリングキャッシュ」gemを紹介し、フラグメントキャッシュとアクションキャッシュの利点を統合した新しいアプローチを提案します。さらに、Turbo Framesを活用して動的コンテンツを分離する方法を説明し、動的部分と静的部分を分離することで全体のキャッシュ効率を向上させる設計方法を提案します。このセッションを通じて、フラグメントキャッシュのしくみを理解し、Railsアプリケーションのパフォーマンスを向上させるための実践的な手法をお伝えします。自信を持ってキャッシュを使えるようになりましょう。"
   :start_at: !!timestamp 2024-10-26T10:40:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Toru Kawamura
     :slug: tkawa
@@ -408,7 +408,7 @@
 
   :start_at: !!timestamp 2024-10-26T10:40:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Koji NAKAMURA
     :slug: kozy4324
@@ -428,7 +428,7 @@
     このようなハイトラフィックでクリティカルな状況に、PostgreSQL、Redis、CDNを活用して、どのようにしてRuby on Railsで立ち向かっているのかについてお話しします。
   :start_at: !!timestamp 2024-10-26T11:05:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Hayato OKUMOTO
     :slug: falcon8823
@@ -441,7 +441,7 @@
     では、この裏側では実際には何が行われているのでしょうか。ここでは実際の開発において頻繁に利用されるストラテジであるOAuth2 StrategyおよびOpenID Connect Strategyについて掘り下げ、OmniAuthが隠蔽してくれている実装とは何か、またOAuth2やOpenID Connectの規格についてもお話します。
   :start_at: !!timestamp 2024-10-26T11:05:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: ykpythemind
     :slug: ykpythemind
@@ -475,7 +475,7 @@
     明日からすぐに実践できる、「状態」の適切な取り扱い方法をお伝えできればと思います。
   :start_at: !!timestamp 2024-10-26T13:05:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: しんくう
     :slug: shinkufencer
@@ -494,7 +494,7 @@
     - 全員が機能開発を続けながら、サイドプロジェクトとして改善を達成するための工夫
   :start_at: !!timestamp 2024-10-26T13:05:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: hatsu
     :slug: hatsu38
@@ -510,7 +510,7 @@
     Stimulusを用いると、クライアント側で動くJavaScriptを、手軽に、ある程度管理しやすい形で書くことができます。しかし、だからこそ、クライアント側にいろいろな処理を書いてしまいがちです。私自身も、開発のなかでうっかり「光の道」から外れて、クライアント側での実装をしてしまっていたことが何回もあります。そういう場合は、後になって道から外れていたことに気づき、リファクタリングをしています。今回のトークでは、そういった具体例を出しながら、Stimulusをどう使うと（または、どう使わないと）Hotwireの良さを活かしたアプリケーションを作れるのかについて、私の考えをご紹介したいと思います。
   :start_at: !!timestamp 2024-10-26T13:30:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Yasuko Ohba (nay3)
     :slug: nay
@@ -527,7 +527,7 @@
     この発表では、Rails用のメジャーなバックグラウンドワーカーの変遷を紹介することでSolid Queueが生まれるまでの経緯を説明します。また、現在広く使われているSidekiqの機能や特性をSolid Queueと比較することで、今後どちらを選択したらよいかの指針を示します。
   :start_at: !!timestamp 2024-10-26T13:30:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Shinichi Maeshima
     :slug: willnet
@@ -545,7 +545,7 @@
     書き直しをする上で、いくつかの点においてRuby on Railsの良さを改めて発見することができたのでお話します。
   :start_at: !!timestamp 2024-10-26T14:10:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: asonas
     :slug: asonas
@@ -563,7 +563,7 @@
     importmapを使用したアプリ開発の利点と落とし穴、その回避方法についてお話します。
   :start_at: !!timestamp 2024-10-26T14:10:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: shu_numata
     :slug: swamp09
@@ -581,7 +581,7 @@
     本セッションを通じて、参加者がプロジェクトに応じた最適なアプローチを選択できるようになることはもちろん、既存の運用方法を見直す機会にもなるでしょう。data migrationに対する理解と視野を広げ、さらなる議論の発展につながることを期待しています。
   :start_at: !!timestamp 2024-10-26T15:05:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: ohbarye
     :slug: ohbarye
@@ -596,7 +596,7 @@
 
   :start_at: !!timestamp 2024-10-26T15:05:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Kazuhiko Yamashita
     :slug: pyama86
@@ -612,7 +612,7 @@
     リアルタイムチャットアプリケーションを実装する上での知見を共有できると幸いです。
   :start_at: !!timestamp 2024-10-26T15:45:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Ryosuke Uchida
     :slug: ryosk7
@@ -637,7 +637,7 @@
     本発表を通じて各暗号化手法のメリット・デメリットや使い所を理解して頂くことを目的とします。
   :start_at: !!timestamp 2024-10-26T15:45:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: 小林悟史（小林ノエル）
     :slug: f-world21
@@ -658,7 +658,7 @@
     本セッションではサイロ化した金融システムをリファクタリングした事例を基に、**安全な手段としてpackwerkを採用した経緯、packwerkだけでは防ぎきれない観点とその対策、現在検討している今後の展望**についてお話ししたいと思います。
   :start_at: !!timestamp 2024-10-26T16:10:00+09:00
   :duration_minutes: 15
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: Kota Kusama
     :slug: cc-kusama
@@ -674,7 +674,7 @@
     本発表では、9ヶ月にわたってチームで少しずつ議論を進め、ToDo を解消しながらrubocop.ymlを作り上げていった過程をお話しします。
   :start_at: !!timestamp 2024-10-26T16:10:00+09:00
   :duration_minutes: 15
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: Shu Oogawara
     :slug: expajp
@@ -691,7 +691,7 @@
     これから rails new する人はもちろん、既存サービスでユーザー周りの機能と向き合っている方々(たいへんですよね...)にとっても概念を整理する助けになれればと思います。
   :start_at: !!timestamp 2024-10-26T16:35:00+09:00
   :duration_minutes: 30
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: MOROHASHI Kyosuke
     :slug: moro
@@ -709,7 +709,7 @@
     実際にSorbetをRailsアプリケーションに導入するためのツールや具体的な手順、それにあたっての注意点などを紹介し、参加者が実際のアプリケーションに型システムを導入することができる状態を目指します。また、型システムをより活かしたRailsアプリケーションの設計・実装について、代数的データ型やその一種であるResult型などとともにRailsでの実例を交え紹介します。
   :start_at: !!timestamp 2024-10-26T16:35:00+09:00
   :duration_minutes: 30
-  :track: Room Blue
+  :track: Hall Blue
   :speakers:
   - :name: kazzix
     :slug: kazzix14
@@ -722,7 +722,7 @@
   :abstract: ''
   :start_at: 2024-10-26 17:30:00.000000000 +09:00
   :duration_minutes: 40
-  :track: Room Red
+  :track: Hall Red
   :speakers:
   - :name: 島田浩二
     :slug: snoozer05

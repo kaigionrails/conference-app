@@ -26,16 +26,23 @@ RSpec.describe TalkDecorator do
   end
 
   describe "#hashtagged_twitter_intent_url" do
-    context "Room Red" do
-      before { talk.track = "Room Red" }
+    context "Hall Red" do
+      before { talk.track = "Hall Red" }
       it "should return hashtagged intent url for room red (#kaigionrails_red)" do
         expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
       end
     end
-    context "Room Blue" do
-      before { talk.track = "Room Blue" }
+    context "Hall Blue" do
+      before { talk.track = "Hall Blue" }
       it "should return hashtagged intent url for room blue (#kaigionrails_blue)" do
         expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_blue"
+      end
+    end
+
+    context "Room Red (wrong name)" do
+      before { talk.track = "Room Red" }
+      it "should return hashtagged intent url for room blue (#kaigionrails_blue)" do
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
       end
     end
 
