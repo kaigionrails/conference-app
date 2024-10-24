@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   get "/admin", to: "admin#index"
   resources :operators, only: [:index]
 
+  get "/up" => "rails/health#show", :as => :rails_health_check
+
   scope "/:event_slug", as: "event" do
     get "/", to: "events#show"
     resources :talks, only: [:index, :show]

@@ -127,7 +127,7 @@ Rails.application.configure do
   # ]
   #
   # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.host_authorization = {exclude: ->(request) { request.path == "/up" }}
 
   config.x.cloudflare.api_token = ENV["CLOUDFLARE_API_TOKEN"]
   config.x.cloudflare.account_id = ENV["CLOUDFLARE_ACCOUNT_ID"]
