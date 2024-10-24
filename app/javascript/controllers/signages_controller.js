@@ -55,7 +55,7 @@ export default class extends Controller {
   }
 
   updateSignagePage() {
-    if (this.currentPageIndex === this.currentSchedule.pages.length) {
+    if (this.currentPageIndex >= this.currentSchedule.pages.length) {
       this.currentPageIndex = 0;
     }
 
