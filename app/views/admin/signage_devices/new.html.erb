@@ -1,0 +1,8 @@
+<h2 class="font-bold text-xl mb-4">Create new signage device</h2>
+<div>
+  <%= form_with model: @signage_device, url: admin_signage_devices_path do |f| %>
+    <%= f.label :device_name, "名前", class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :device_name, class: "block rounded mb-4 w-52" %>
+    <%= f.submit "Create device", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+  <% end %>
+</div>

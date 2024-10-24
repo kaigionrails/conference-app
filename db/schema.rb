@@ -145,6 +145,58 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "signage_device_assigns", force: :cascade do |t|
+    t.bigint "signage_panel_id", null: false
+    t.bigint "signage_device_id", null: false
+    t.index ["signage_device_id"], name: "index_signage_device_assigns_on_signage_device_id"
+    t.index ["signage_panel_id"], name: "index_signage_device_assigns_on_signage_panel_id"
+  end
+
+  create_table "signage_devices", force: :cascade do |t|
+    t.string "device_name", null: false
+    t.datetime "last_heaetbeated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "signage_pages", force: :cascade do |t|
+    t.bigint "signage_schedule_id", null: false
+    t.integer "order", null: false
+    t.integer "duration_second", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["signage_schedule_id"], name: "index_signage_pages_on_signage_schedule_id"
+  end
+
+  create_table "signage_panels", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "signage_schedule_assigns", force: :cascade do |t|
+    t.bigint "signage_schedule_id", null: false
+    t.bigint "signage_panel_id", null: false
+    t.index ["signage_panel_id"], name: "index_signage_schedule_assigns_on_signage_panel_id"
+    t.index ["signage_schedule_id"], name: "index_signage_schedule_assigns_on_signage_schedule_id"
+  end
+
+  create_table "signage_schedules", force: :cascade do |t|
+    t.bigint "signage_id", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["signage_id"], name: "index_signage_schedules_on_signage_id"
+  end
+
+  create_table "signages", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_signages_on_event_id"
+  end
+
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
@@ -354,6 +406,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
   add_foreign_key "profile_exchanges", "users"
   add_foreign_key "profile_exchanges", "users", column: "friend_id"
   add_foreign_key "profiles", "users"
+  add_foreign_key "signage_pages", "signage_schedules"
+  add_foreign_key "signage_schedules", "signages"
+  add_foreign_key "signages", "events"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

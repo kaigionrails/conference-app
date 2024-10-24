@@ -42,6 +42,14 @@ class Speaker::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associa
 end
 class Talk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
+class SignagePage::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SignageSchedule::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
 class ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class Profile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
