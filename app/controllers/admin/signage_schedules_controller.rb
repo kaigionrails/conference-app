@@ -21,7 +21,6 @@ class Admin::SignageSchedulesController < AdminController
 
   def update
     schedule = SignageSchedule.find(params[:id])
-    binding.irb
     if schedule.update(**zoned_signage_schedule_params)
       flash.now[:success] = "Signage schedule updated"
     else
