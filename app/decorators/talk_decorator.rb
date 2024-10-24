@@ -10,8 +10,8 @@ module TalkDecorator
   def hashtagged_twitter_intent_url
     # https://developer.x.com/en/docs/x-for-websites/tweet-button/guides/web-intent
     tags = ["kaigionrails"]
-    tags << "kaigionrails_red" if track && track == "Room Red"
-    tags << "kaigionrails_blue" if track && track == "Room Blue"
+    tags << "kaigionrails_red" if track&.include?("Red")
+    tags << "kaigionrails_blue" if track&.include?("Blue")
     "https://twitter.com/intent/tweet?hashtags=#{tags.join(",")}"
   end
 
