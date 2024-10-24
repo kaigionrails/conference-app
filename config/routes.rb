@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     resources :signage_schedule_assigns, only: [:new, :create, :destroy]
     resources :signage_panels, only: [:new, :create, :edit, :update]
     resources :signage_devices, only: [:new, :create, :edit, :update]
-    resources :signage_device_assigns, only: [:new, :create, :update]
+    resources :signage_device_assigns, only: [:new, :create, :update, :destroy]
     resources :signage_pages, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 

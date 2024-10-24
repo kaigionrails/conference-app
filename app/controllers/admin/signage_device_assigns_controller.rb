@@ -17,6 +17,9 @@ class Admin::SignageDeviceAssignsController < AdminController
   end
 
   def destroy
+    signage_devive_assign = SignageDeviceAssign.find(params[:id])
+    signage_devive_assign.destroy
+    redirect_to admin_signages_path
   end
 
   private def signage_device_assign_params
