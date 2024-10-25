@@ -28,6 +28,9 @@
               <%= image_tag page.page_image, class: "w-full" %>
               <div class="text-lg">表示順: <%= page.order %></div>
               <div class="text-lg">表示秒数: <%= page.duration_second %></div>
+              <%= form_with model: page, url: admin_signage_page_path(page.id), method: :delete, class: "inline-block" do |f| %>
+                <%= f.submit "pageを削除", class: "underline cursor-pointer" %>
+              <% end %>
             </div>
           <% end %>
           <div>

@@ -19,6 +19,10 @@ class Admin::SignagePagesController < AdminController
   end
 
   def destroy
+    signage_page = SignagePage.find(params[:id])
+    if signage_page.destroy
+      redirect_to admin_signages_path
+    end
   end
 
   private def signage_page_params
