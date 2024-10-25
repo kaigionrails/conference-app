@@ -1,6 +1,0 @@
-module SessionsHelper
-  @current_user: untyped
-
-  class UnauthorizedError < StandardError
-  end
-end

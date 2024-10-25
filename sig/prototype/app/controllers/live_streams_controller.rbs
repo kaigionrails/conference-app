@@ -1,0 +1,5 @@
+class LiveStreamsController < ApplicationController
+  @live_stream: untyped
+
+  def show: () -> untyped
+end

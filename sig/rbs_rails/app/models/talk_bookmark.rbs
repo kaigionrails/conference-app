@@ -1,6 +1,4 @@
 class TalkBookmark < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[TalkBookmark, ActiveRecord_Relation, Integer]
-
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -182,23 +180,9 @@ class TalkBookmark < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
   end
-  include GeneratedAttributeMethods
 
-  def user: () -> User
-  def user=: (User?) -> User?
-  def reload_user: () -> User?
-  def build_user: (untyped) -> User
-  def create_user: (untyped) -> User
-  def create_user!: (untyped) -> User
-  def talk: () -> Talk
-  def talk=: (Talk?) -> Talk?
-  def reload_talk: () -> Talk?
-  def build_talk: (untyped) -> Talk
-  def create_talk: (untyped) -> Talk
-  def create_talk!: (untyped) -> Talk
   module GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -213,4 +197,22 @@ class TalkBookmark < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[TalkBookmark, Integer]
   end
+  extend _ActiveRecord_Relation_ClassMethods[TalkBookmark, ActiveRecord_Relation, Integer]
+
+  include GeneratedAttributeMethods
+
+  def user: () -> User
+  def user=: (User?) -> User?
+  def reload_user: () -> User?
+  def build_user: (untyped) -> User
+  def create_user: (untyped) -> User
+  def create_user!: (untyped) -> User
+  def talk: () -> Talk
+  def talk=: (Talk?) -> Talk?
+  def reload_talk: () -> Talk?
+  def build_talk: (untyped) -> Talk
+  def create_talk: (untyped) -> Talk
+  def create_talk!: (untyped) -> Talk
+
+  include GeneratedAssociationMethods
 end

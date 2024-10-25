@@ -1,6 +1,4 @@
 class Announcement < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Announcement, ActiveRecord_Relation, Integer]
-
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -254,23 +252,9 @@ class Announcement < ::ApplicationRecord
 
     def clear_title_change: () -> void
   end
-  include GeneratedAttributeMethods
 
-  def rich_text_content: () -> ActionText::RichText?
-  def rich_text_content=: (ActionText::RichText?) -> ActionText::RichText?
-  def build_rich_text_content: (untyped) -> ActionText::RichText
-  def create_rich_text_content: (untyped) -> ActionText::RichText
-  def create_rich_text_content!: (untyped) -> ActionText::RichText
-  def reload_rich_text_content: () -> ActionText::RichText?
-  def event: () -> Event
-  def event=: (Event?) -> Event?
-  def reload_event: () -> Event?
-  def build_event: (untyped) -> Event
-  def create_event: (untyped) -> Event
-  def create_event!: (untyped) -> Event
   module GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -285,4 +269,22 @@ class Announcement < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[Announcement, Integer]
   end
+  extend _ActiveRecord_Relation_ClassMethods[Announcement, ActiveRecord_Relation, Integer]
+
+  include GeneratedAttributeMethods
+
+  def rich_text_content: () -> ActionText::RichText?
+  def rich_text_content=: (ActionText::RichText?) -> ActionText::RichText?
+  def build_rich_text_content: (untyped) -> ActionText::RichText
+  def create_rich_text_content: (untyped) -> ActionText::RichText
+  def create_rich_text_content!: (untyped) -> ActionText::RichText
+  def reload_rich_text_content: () -> ActionText::RichText?
+  def event: () -> Event
+  def event=: (Event?) -> Event?
+  def reload_event: () -> Event?
+  def build_event: (untyped) -> Event
+  def create_event: (untyped) -> Event
+  def create_event!: (untyped) -> Event
+
+  include GeneratedAssociationMethods
 end

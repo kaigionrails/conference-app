@@ -1,6 +1,4 @@
 class SpeakersTalk < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[SpeakersTalk, ActiveRecord_Relation, top]
-
   module GeneratedAttributeMethods
     def speaker_id: () -> Integer
 
@@ -74,23 +72,9 @@ class SpeakersTalk < ::ApplicationRecord
 
     def clear_talk_id_change: () -> void
   end
-  include GeneratedAttributeMethods
 
-  def speaker: () -> Speaker
-  def speaker=: (Speaker?) -> Speaker?
-  def reload_speaker: () -> Speaker?
-  def build_speaker: (untyped) -> Speaker
-  def create_speaker: (untyped) -> Speaker
-  def create_speaker!: (untyped) -> Speaker
-  def talk: () -> Talk
-  def talk=: (Talk?) -> Talk?
-  def reload_talk: () -> Talk?
-  def build_talk: (untyped) -> Talk
-  def create_talk: (untyped) -> Talk
-  def create_talk!: (untyped) -> Talk
   module GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -105,4 +89,22 @@ class SpeakersTalk < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[SpeakersTalk, top]
   end
+  extend _ActiveRecord_Relation_ClassMethods[SpeakersTalk, ActiveRecord_Relation, top]
+
+  include GeneratedAttributeMethods
+
+  def speaker: () -> Speaker
+  def speaker=: (Speaker?) -> Speaker?
+  def reload_speaker: () -> Speaker?
+  def build_speaker: (untyped) -> Speaker
+  def create_speaker: (untyped) -> Speaker
+  def create_speaker!: (untyped) -> Speaker
+  def talk: () -> Talk
+  def talk=: (Talk?) -> Talk?
+  def reload_talk: () -> Talk?
+  def build_talk: (untyped) -> Talk
+  def create_talk: (untyped) -> Talk
+  def create_talk!: (untyped) -> Talk
+
+  include GeneratedAssociationMethods
 end

@@ -1,5 +1,3 @@
-module ActionText
-end
 class ActionText::Record < ActiveRecord::Base
 end
 class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
@@ -22,8 +20,7 @@ class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
-class ApplicationRecord < ActiveRecord::Base
-end
+
 class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
 end
 class UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy

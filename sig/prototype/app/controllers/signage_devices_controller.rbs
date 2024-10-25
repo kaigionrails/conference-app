@@ -1,0 +1,5 @@
+class SignageDevicesController < ApplicationController
+  @signage_devices: untyped
+
+  def index: () -> untyped
+end
