@@ -45,7 +45,7 @@
           <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
             <span>Announcements</span>
             <% if logged_in? && current_user!.have_unread_announcements? %>
-              <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user!.unread_announcements.count %></span>
+              <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
           <% if logged_in? %>
