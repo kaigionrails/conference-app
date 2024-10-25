@@ -1,0 +1,3 @@
+class SampleWebpushNotificationsController < ApplicationController
+  def create: () -> void
+end

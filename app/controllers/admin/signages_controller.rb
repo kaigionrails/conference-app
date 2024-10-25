@@ -4,7 +4,7 @@ class Admin::SignagesController < AdminController
       signage_schedules: [
         {signage_pages: {page_image_attachment: :blob}},
         {signage_schedule_assigns: :signage_panel}
-      ]
+      ] # steep:ignore
     ).all
     @signage_panels = SignagePanel.all
     @signage_devices = SignageDevice.all

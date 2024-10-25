@@ -2,4 +2,20 @@ class Admin::AnnouncementsController < AdminController
   @announcements: Announcement::ActiveRecord_Relation
 
   @announcement: Announcement
+
+  def index: () -> void
+
+  def show: () -> void
+
+  def new: () -> void
+
+  def create: () -> void
+
+  def edit: () -> void
+
+  def update: () -> void
+
+  private def announcement_params: () -> untyped
+
+  private def push_notification_message: (Announcement announcement) -> Hash[untyped, untyped]
 end

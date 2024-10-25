@@ -1,9 +1,17 @@
 class ProfilesController < ApplicationController
   @profile: Profile
 
-  @friends: User::ActiveRecord_Associations_CollectionProxy
+  @events: Event::ActiveRecord_Relation
+
+  @event_friends: untyped
 
   @user: User
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
+
+  private def profile_params: () -> untyped
+
+  private def profile_non_image_params: () -> untyped
+
+  private def profile_image_params: () -> untyped
 end
