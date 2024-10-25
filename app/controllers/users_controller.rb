@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if logged_in? && @token
       begin
-        token = JWT.decode(@token, nil, false)[0]
+        token = JWT.decode(@token, nil, false)[0] # steep:ignore
         if Time.zone.at(token["exp"]) > Time.current # not expired
           issuer_user = User.find_by!(name: token["iss"])
           exchange_profile(issuer_user, current_user!) if issuer_user == @user

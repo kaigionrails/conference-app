@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   @user: User
+
+  @events: Event::ActiveRecord_Relation
+
+  @event_friends: untyped
 
   @profile: Profile
 
-  # TODO: In implementation, `@token` is surely an optional string. But steep does not support type-narrowing for
-  #       instance variables.  Therefore it will cause type errors to give a type to this variable.
-  # @token: String?
+  @token: String?
+
+  private def exchange_profile: (User user1, User user2) -> void
 end

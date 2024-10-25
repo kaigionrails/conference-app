@@ -1,0 +1,6 @@
+module ActiveStorage
+  class Current < ActiveSupport::CurrentAttributes
+    def self.url_options: () -> untyped
+    def self.url_options=: (untyped) -> untyped
+  end
+end
