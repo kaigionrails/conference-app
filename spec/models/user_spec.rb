@@ -73,4 +73,16 @@ RSpec.describe User, type: :model do
     end
     it { expect(user.have_unread_announcements?).to be_falsey }
   end
+
+  describe "#unread_announcement_count" do
+    let(:event) { FactoryBot.create(:event) }
+    let(:past_event) { FactoryBot.create(:event) }
+    let!(:ongoing_event) { FactoryBot.create(:ongoing_event, event: event) }
+    let!(:past_announcement) { FactoryBot.create(:announcement, :published, event: past_event) }
+    let!(:ongoing_announcement) { FactoryBot.create(:announcement, :published, event: event) }
+    before do
+      UnreadAnnouncement.insert_all!(Announcement.published.where(event: past_event).all.pluck(:id).map { |ann_id| {user_id: user.id, announcement_id: ann_id} })
+    end
+    it { expect(user.unread_announcement_count).to eq 0 }
+  end
 end
