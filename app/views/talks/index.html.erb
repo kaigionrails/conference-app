@@ -29,7 +29,7 @@
                   <%= image_tag speaker.avatar_image_url, class: "rounded-lg w-20 mb-1" %>
                   <p class="text-sm block mb-2"><%= speaker.name %></p>
                 <% end %>
-                <p class="text-sm block mb-3"><%= talk.track %></p>
+                <p class="text-sm block mb-3 pill pill__<%= talk.track.downcase.gsub(' ', '-') %>"><%= talk.track %></p>
                 <div class="w-6 h-6 -ml-1">
                   <% if logged_in? %>
                     <%= render partial: "bookmark_button", locals: { talk: talk, user: current_user!, user_bookmarks: @current_user_bookmarks } %>

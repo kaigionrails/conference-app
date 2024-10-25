@@ -3,3 +3,20 @@
 /* https://fonts.google.com/specimen/Barlow+Semi+Condensed?query=bar */
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe.min.css');
+
+.pill {
+  display:inline-flex;
+  align-items:center;
+  padding:4px 16px;
+  vertical-align:middle;
+  color:rgb(0,5,5);
+  white-space:nowrap;
+  border-radius:100px
+}
+.pill__hall-red {
+  color:rgb(255, 255, 255);
+  background:rgb(254, 64, 83)
+}
+.pill__hall-blue {
+  background:rgb(0, 197, 218)
+}

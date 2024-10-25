@@ -4,7 +4,7 @@
   <div class="mb-3 text-sm flex flex-row justify-between items-center">
     <div>
       <span class="mr-2"><%= @talk.start_at.in_time_zone("Tokyo").strftime("%d日 %H:%M~") %></span>
-      <span class="mr-2"><%= @talk.track %></span>
+      <span class="mr-2 pill pill__<%= @talk.track.downcase.gsub(' ', '-')%>"><%= @talk.track %></span>
       <span><%= "#{@talk.duration_minutes} 分間" %></span>
     </div>
     <div class="w-8 h-8">
