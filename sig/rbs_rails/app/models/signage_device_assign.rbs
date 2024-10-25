@@ -1,7 +1,43 @@
 class SignageDeviceAssign < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[SignageDeviceAssign, ActiveRecord_Relation, top]
+  extend _ActiveRecord_Relation_ClassMethods[SignageDeviceAssign, ActiveRecord_Relation, Integer]
 
   module GeneratedAttributeMethods
+    def id: () -> Integer
+
+    def id=: (Integer) -> Integer
+
+    def id?: () -> bool
+
+    def id_changed?: () -> bool
+
+    def id_change: () -> [ Integer?, Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> Integer?
+
+    def id_previously_changed?: () -> bool
+
+    def id_previous_change: () -> Array[Integer?]?
+
+    def id_previously_was: () -> Integer?
+
+    def id_before_last_save: () -> Integer?
+
+    def id_change_to_be_saved: () -> Array[Integer?]?
+
+    def id_in_database: () -> Integer?
+
+    def saved_change_to_id: () -> Array[Integer?]?
+
+    def saved_change_to_id?: () -> bool
+
+    def will_save_change_to_id?: () -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
     def signage_panel_id: () -> Integer
 
     def signage_panel_id=: (Integer) -> Integer
@@ -97,12 +133,12 @@ class SignageDeviceAssign < ::ApplicationRecord
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SignageDeviceAssign, top]
+    include _ActiveRecord_Relation[SignageDeviceAssign, Integer]
     include Enumerable[SignageDeviceAssign]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SignageDeviceAssign, top]
+    include _ActiveRecord_Relation[SignageDeviceAssign, Integer]
   end
 end

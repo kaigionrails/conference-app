@@ -1,0 +1,21 @@
+class Admin::SignagePagesController < AdminController
+  @signage_pages: untyped
+
+  @signage_schedules: untyped
+
+  @signage_page: untyped
+
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> nil
+
+  def destroy: () -> untyped
+
+  private
+
+  def signage_page_params: () -> untyped
+end

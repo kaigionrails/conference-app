@@ -1,6 +1,4 @@
 class ProfileBadgesProfile < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[ProfileBadgesProfile, ActiveRecord_Relation, top]
-
   module GeneratedAttributeMethods
     def profile_badge_id: () -> Integer
 
@@ -74,23 +72,9 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def clear_profile_id_change: () -> void
   end
-  include GeneratedAttributeMethods
 
-  def profile_badge: () -> ProfileBadge
-  def profile_badge=: (ProfileBadge?) -> ProfileBadge?
-  def reload_profile_badge: () -> ProfileBadge?
-  def build_profile_badge: (untyped) -> ProfileBadge
-  def create_profile_badge: (untyped) -> ProfileBadge
-  def create_profile_badge!: (untyped) -> ProfileBadge
-  def profile: () -> Profile
-  def profile=: (Profile?) -> Profile?
-  def reload_profile: () -> Profile?
-  def build_profile: (untyped) -> Profile
-  def create_profile: (untyped) -> Profile
-  def create_profile!: (untyped) -> Profile
   module GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -105,4 +89,22 @@ class ProfileBadgesProfile < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[ProfileBadgesProfile, top]
   end
+  extend _ActiveRecord_Relation_ClassMethods[ProfileBadgesProfile, ActiveRecord_Relation, top]
+
+  include GeneratedAttributeMethods
+
+  def profile_badge: () -> ProfileBadge
+  def profile_badge=: (ProfileBadge?) -> ProfileBadge?
+  def reload_profile_badge: () -> ProfileBadge?
+  def build_profile_badge: (untyped) -> ProfileBadge
+  def create_profile_badge: (untyped) -> ProfileBadge
+  def create_profile_badge!: (untyped) -> ProfileBadge
+  def profile: () -> Profile
+  def profile=: (Profile?) -> Profile?
+  def reload_profile: () -> Profile?
+  def build_profile: (untyped) -> Profile
+  def create_profile: (untyped) -> Profile
+  def create_profile!: (untyped) -> Profile
+
+  include GeneratedAssociationMethods
 end

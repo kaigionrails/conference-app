@@ -1,3 +1,5 @@
 class Event < ApplicationRecord
   ONGOING_EVENT_SLUG: "2024"
+
+  def ongoing?: () -> untyped
 end

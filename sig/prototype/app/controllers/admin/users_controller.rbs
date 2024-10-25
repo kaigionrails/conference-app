@@ -5,6 +5,10 @@ class Admin::UsersController < AdminController
 
   def edit: () -> untyped
 
+  def new: () -> untyped
+
+  def create: () -> untyped
+
   def update: () -> untyped
 
   private

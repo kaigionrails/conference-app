@@ -1,0 +1,21 @@
+class Admin::SignagesController < AdminController
+  @signages: untyped
+
+  @signage_panels: untyped
+
+  @signage_devices: untyped
+
+  @signage: untyped
+
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> nil
+
+  private
+
+  def signage_params: () -> untyped
+end

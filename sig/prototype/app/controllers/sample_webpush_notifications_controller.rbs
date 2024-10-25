@@ -1,3 +1,0 @@
-class SampleWebpushNotificationsController < ApplicationController
-  def create: () -> untyped
-end

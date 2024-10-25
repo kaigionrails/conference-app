@@ -1,0 +1,3 @@
+class SignageDevice < ApplicationRecord
+  def signage_panel: () -> untyped
+end
