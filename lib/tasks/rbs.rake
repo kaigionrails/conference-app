@@ -2,7 +2,7 @@ if Rails.env.local?
   require "rbs_rails/rake_task"
 
   namespace :rbs do
-    task setup: %i[clean collection prototype rbs_rails:all subtract]
+    task setup: %i[clean collection prototype load_routes rbs_rails:all subtract]
 
     task :clean do
       sh "rm", "-rf", "sig/rbs_rails/"
@@ -17,6 +17,12 @@ if Rails.env.local?
     task :prototype do
       sh "rbs", "prototype", "rb", "--out-dir=sig/prototype", "--base-dir=.", "app"
       sh "rbs", "prototype", "rb", "--out-dir=sig/prototype", "--base-dir=.", "lib"
+    end
+
+    task load_routes: :environment do
+      # Since Rails 8.0, route drawing has been defered to the first request.
+      # This forcedly do route drawing to generate path_helpers via rbs_rails.
+      Rails.application.reload_routes_unless_loaded
     end
 
     task :subtract do
