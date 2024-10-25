@@ -24,7 +24,7 @@ It's built with Ruby on Rails.
 
 ## Stack
 
-The app is built with Ruby on Rails 7. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
+The app is built with Ruby on Rails 8. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
 
 ## Setup dev environment
 ### Environment variables
