@@ -1,4 +1,6 @@
 class SpeakersTalk < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[SpeakersTalk, ActiveRecord_Relation, top]
+
   module GeneratedAttributeMethods
     def speaker_id: () -> Integer
 
@@ -72,25 +74,6 @@ class SpeakersTalk < ::ApplicationRecord
 
     def clear_talk_id_change: () -> void
   end
-
-  module GeneratedAssociationMethods
-  end
-
-  module GeneratedRelationMethods
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SpeakersTalk, top]
-    include Enumerable[SpeakersTalk]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SpeakersTalk, top]
-  end
-  extend _ActiveRecord_Relation_ClassMethods[SpeakersTalk, ActiveRecord_Relation, top]
-
   include GeneratedAttributeMethods
 
   def speaker: () -> Speaker
@@ -105,6 +88,21 @@ class SpeakersTalk < ::ApplicationRecord
   def build_talk: (untyped) -> Talk
   def create_talk: (untyped) -> Talk
   def create_talk!: (untyped) -> Talk
-
+  module GeneratedAssociationMethods
+  end
   include GeneratedAssociationMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[SpeakersTalk, top]
+    include Enumerable[SpeakersTalk]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[SpeakersTalk, top]
+  end
 end

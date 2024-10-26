@@ -1,5 +1,0 @@
-class AuthenticationProviderGithub < ApplicationRecord
-  def self.find_or_create_user_from_auth_hash: (untyped auth) ?{ (::User) -> untyped } -> ::User
-
-  def self.create_user_from_auth_hash: (untyped auth) ?{ (::User) -> untyped } -> ::User
-end

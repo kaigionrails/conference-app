@@ -1,7 +1,4 @@
 class Talk < ApplicationRecord
-  def bookmarked_by?: (::User) -> bool
-  def bookmark_by: (::User) -> ::TalkBookmark?
-
   class ActiveRecord_Relation
     # NOTE: Added by kaminari
     def page: (untyped) -> self

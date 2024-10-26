@@ -1,4 +1,8 @@
 class CloudflareStreamLiveStream < ApplicationRecord
+  # @rbs uid: String
+  # @rbs return: boolish
+  def self.create_by_stream_uid: (String uid) -> boolish
+
   def update_stream: () -> untyped
 
   def retrieve_videos: () -> untyped

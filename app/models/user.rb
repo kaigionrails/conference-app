@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   enum :role, {organizer: "organizer", participant: "participant", operator: "operator"}
 
+  # @rbs return: bool
   def have_unread_announcements?
     unread_announcement_count > 0
   end
@@ -36,6 +37,8 @@ class User < ApplicationRecord
     end
   end
 
+  # @rbs id: Integer
+  # @rbs return: bool
   def destroy_talk_bookmark_with_reminder!(id)
     talk_bookmark = talk_bookmarks.find(id)
 

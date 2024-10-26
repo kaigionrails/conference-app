@@ -1,4 +1,6 @@
 class ProfileBadgesProfile < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ProfileBadgesProfile, ActiveRecord_Relation, top]
+
   module GeneratedAttributeMethods
     def profile_badge_id: () -> Integer
 
@@ -72,25 +74,6 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def clear_profile_id_change: () -> void
   end
-
-  module GeneratedAssociationMethods
-  end
-
-  module GeneratedRelationMethods
-  end
-
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[ProfileBadgesProfile, top]
-    include Enumerable[ProfileBadgesProfile]
-  end
-
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[ProfileBadgesProfile, top]
-  end
-  extend _ActiveRecord_Relation_ClassMethods[ProfileBadgesProfile, ActiveRecord_Relation, top]
-
   include GeneratedAttributeMethods
 
   def profile_badge: () -> ProfileBadge
@@ -105,6 +88,21 @@ class ProfileBadgesProfile < ::ApplicationRecord
   def build_profile: (untyped) -> Profile
   def create_profile: (untyped) -> Profile
   def create_profile!: (untyped) -> Profile
-
+  module GeneratedAssociationMethods
+  end
   include GeneratedAssociationMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[ProfileBadgesProfile, top]
+    include Enumerable[ProfileBadgesProfile]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[ProfileBadgesProfile, top]
+  end
 end

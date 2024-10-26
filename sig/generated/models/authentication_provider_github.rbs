@@ -1,0 +1,11 @@
+class AuthenticationProviderGithub < ApplicationRecord
+  # @rbs auth: untyped
+  # @rbs &block: ?(User) -> untyped
+  # @rbs return: User
+  def self.find_or_create_user_from_auth_hash: (untyped auth) ?{ (User) -> untyped } -> User
+
+  # @rbs auth: untyped
+  # @rbs &block: ?(User) -> untyped
+  # @rbs return: User
+  def self.create_user_from_auth_hash: (untyped auth) ?{ (User) -> untyped } -> User
+end

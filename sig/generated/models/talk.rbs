@@ -1,0 +1,9 @@
+class Talk < ApplicationRecord
+  # @rbs user: User
+  # @rbs return: bool
+  def bookmarked_by?: (User user) -> bool
+
+  # @rbs user: User
+  # @rbs return: TalkBookmark?
+  def bookmark_by: (User user) -> TalkBookmark?
+end
