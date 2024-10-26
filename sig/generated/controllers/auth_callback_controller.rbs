@@ -1,3 +1,5 @@
+# Generated from app/controllers/auth_callback_controller.rb with RBS::Inline
+
 class AuthCallbackController < ApplicationController
   def create: () -> untyped
 end

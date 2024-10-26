@@ -1,3 +1,5 @@
+# Generated from app/jobs/determine_user_role_job.rb with RBS::Inline
+
 class DetermineUserRoleJob < ApplicationJob
   def perform: (untyped user_id) -> untyped
 

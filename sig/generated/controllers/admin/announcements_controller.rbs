@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/announcements_controller.rb with RBS::Inline
+
 class Admin::AnnouncementsController < AdminController
   @announcements: Announcement::ActiveRecord_Relation
 

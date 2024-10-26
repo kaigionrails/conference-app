@@ -1,3 +1,5 @@
+# Generated from app/controllers/webpush_subscription_controller.rb with RBS::Inline
+
 class WebpushSubscriptionController < ApplicationController
   def create: () -> untyped
 

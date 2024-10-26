@@ -1,3 +1,5 @@
+# Generated from app/controllers/unread_announcements_controller.rb with RBS::Inline
+
 class UnreadAnnouncementsController < ApplicationController
   def destroy: () -> untyped
 end

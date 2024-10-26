@@ -1,3 +1,5 @@
+# Generated from app/jobs/broadcast_announcement_job.rb with RBS::Inline
+
 class BroadcastAnnouncementJob < ApplicationJob
   def perform: (untyped announcement_id) -> untyped
 end

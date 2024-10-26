@@ -1,0 +1,4 @@
+# Generated from app/models/profile_exchange.rb with RBS::Inline
+
+class ProfileExchange < ApplicationRecord
+end

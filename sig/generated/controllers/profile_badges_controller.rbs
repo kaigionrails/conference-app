@@ -1,3 +1,5 @@
+# Generated from app/controllers/profile_badges_controller.rb with RBS::Inline
+
 class ProfileBadgesController < ApplicationController
   @profile_badge: ProfileBadge
 

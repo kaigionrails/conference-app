@@ -1,0 +1,4 @@
+# Generated from app/models/profile_badges_profile.rb with RBS::Inline
+
+class ProfileBadgesProfile < ApplicationRecord
+end

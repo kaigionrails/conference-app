@@ -1,3 +1,5 @@
+# Generated from app/controllers/talk_bookmarks_controller.rb with RBS::Inline
+
 class TalkBookmarksController < ApplicationController
   def create: () -> untyped
 

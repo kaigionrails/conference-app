@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/profile_badges_controller.rb with RBS::Inline
+
 class Admin::ProfileBadgesController < AdminController
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 

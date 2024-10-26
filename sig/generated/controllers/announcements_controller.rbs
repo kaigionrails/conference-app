@@ -1,3 +1,5 @@
+# Generated from app/controllers/announcements_controller.rb with RBS::Inline
+
 class AnnouncementsController < ApplicationController
   @event: Event
 

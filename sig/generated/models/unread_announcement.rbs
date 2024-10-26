@@ -1,0 +1,4 @@
+# Generated from app/models/unread_announcement.rb with RBS::Inline
+
+class UnreadAnnouncement < ApplicationRecord
+end

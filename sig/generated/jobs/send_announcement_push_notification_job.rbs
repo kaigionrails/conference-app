@@ -1,3 +1,5 @@
+# Generated from app/jobs/send_announcement_push_notification_job.rb with RBS::Inline
+
 class SendAnnouncementPushNotificationJob < ApplicationJob
   def perform: (untyped announcement_id, untyped message) -> untyped
 end

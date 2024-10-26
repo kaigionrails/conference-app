@@ -1,3 +1,5 @@
+# Generated from app/helpers/talks_helper.rb with RBS::Inline
+
 module TalksHelper
   def time_with_zone_to_anchor: (untyped time_with_zone) -> untyped
 end

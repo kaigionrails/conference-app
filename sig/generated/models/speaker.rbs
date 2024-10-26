@@ -1,0 +1,4 @@
+# Generated from app/models/speaker.rb with RBS::Inline
+
+class Speaker < ApplicationRecord
+end

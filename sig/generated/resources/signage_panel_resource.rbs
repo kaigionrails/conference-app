@@ -1,3 +1,5 @@
+# Generated from app/resources/signage_panel_resource.rb with RBS::Inline
+
 class SignagePanelResource
   include Alba::Resource
 

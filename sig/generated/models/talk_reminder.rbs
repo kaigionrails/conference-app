@@ -1,0 +1,4 @@
+# Generated from app/models/talk_reminder.rb with RBS::Inline
+
+class TalkReminder < ApplicationRecord
+end

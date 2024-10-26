@@ -2,7 +2,7 @@ if Rails.env.local?
   require "rbs_rails/rake_task"
 
   namespace :rbs do
-    task setup: %i[clean collection generate load_routes rbs_rails:all subtract]
+    task setup: %i[clean collection generate load_routes rbs_rails:all validate]
 
     task :clean do
       sh "rm", "-rf", "sig/rbs_rails/"
@@ -22,17 +22,6 @@ if Rails.env.local?
       # Since Rails 8.0, route drawing has been defered to the first request.
       # This forcedly do route drawing to generate path_helpers via rbs_rails.
       Rails.application.reload_routes_unless_loaded
-    end
-
-    task :subtract do
-      sh "rbs", "subtract", "--write", "sig/generated", "sig/rbs_rails"
-
-      generated_path = Rails.root.join("sig/generated")
-      rbs_rails_path = Rails.root.join("sig/rbs_rails")
-      subtrahends = Rails.root.glob("sig/*")
-        .reject { |path| path == generated_path || path == rbs_rails_path }
-        .map { |path| "--subtrahend=#{path}" }
-      sh "rbs", "subtract", "--write", "sig/generated", "sig/rbs_rails", *subtrahends
     end
 
     task :validate do

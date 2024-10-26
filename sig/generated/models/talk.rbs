@@ -1,3 +1,5 @@
+# Generated from app/models/talk.rb with RBS::Inline
+
 class Talk < ApplicationRecord
   # @rbs user: User
   # @rbs return: bool

@@ -1,2 +1,4 @@
+# Generated from app/helpers/home_helper.rb with RBS::Inline
+
 module HomeHelper
 end

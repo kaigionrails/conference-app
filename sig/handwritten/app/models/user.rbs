@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   # User has profile and authentication_provider_github at least one
   def profile: () -> Profile
+             | ...
   def authentication_provider_github: () -> AuthenticationProviderGithub
+                                    | ...
 
   class ActiveRecord_Relation
     # NOTE: Added by kaminari

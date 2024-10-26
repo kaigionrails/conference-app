@@ -1,2 +1,4 @@
+# Generated from app/helpers/signage_helper.rb with RBS::Inline
+
 module SignageHelper
 end

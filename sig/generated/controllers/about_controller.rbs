@@ -1,3 +1,5 @@
+# Generated from app/controllers/about_controller.rb with RBS::Inline
+
 class AboutController < ApplicationController
   def index: () -> untyped
 end

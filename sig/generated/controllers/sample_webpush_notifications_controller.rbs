@@ -1,3 +1,5 @@
+# Generated from app/controllers/sample_webpush_notifications_controller.rb with RBS::Inline
+
 class SampleWebpushNotificationsController < ApplicationController
   def create: () -> untyped
 end

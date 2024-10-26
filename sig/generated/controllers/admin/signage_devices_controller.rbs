@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/signage_devices_controller.rb with RBS::Inline
+
 class Admin::SignageDevicesController < AdminController
   def new: () -> untyped
 

@@ -1,3 +1,5 @@
+# Generated from app/controllers/talks_controller.rb with RBS::Inline
+
 class TalksController < ApplicationController
   @event: Event
 

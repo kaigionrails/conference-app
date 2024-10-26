@@ -1,0 +1,4 @@
+# Generated from app/models/signage_schedule.rb with RBS::Inline
+
+class SignageSchedule < ApplicationRecord
+end

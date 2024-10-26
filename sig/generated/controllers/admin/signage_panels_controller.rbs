@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/signage_panels_controller.rb with RBS::Inline
+
 class Admin::SignagePanelsController < AdminController
   def new: () -> untyped
 

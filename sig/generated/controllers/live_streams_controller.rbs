@@ -1,3 +1,5 @@
+# Generated from app/controllers/live_streams_controller.rb with RBS::Inline
+
 class LiveStreamsController < ApplicationController
   def show: () -> untyped
 end

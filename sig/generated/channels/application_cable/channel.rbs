@@ -1,3 +1,5 @@
+# Generated from app/channels/application_cable/channel.rb with RBS::Inline
+
 module ApplicationCable
   class Channel < ActionCable::Channel::Base
   end
