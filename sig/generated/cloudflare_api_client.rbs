@@ -1,3 +1,31 @@
 class CloudflareApiClient
+  @account_id: String
+
+  @api_token: String
+
+  # @rbs return: void
+  def initialize: () -> void
+
+  # @rbs return: Hash[untyped, untyped]
+  def list_live_inputs: () -> Hash[untyped, untyped]
+
+  # @see https://developers.cloudflare.com/api/operations/stream-live-inputs-create-a-live-input
+  # @rbs name: String
+  # @rbs return: Hash[untyped, untyped]
+  def create_live_input: (name: String) -> Hash[untyped, untyped]
+
+  # @param [String] uid
+  # @see https://developers.cloudflare.com/api/operations/stream-live-inputs-retrieve-a-live-input
+  # @rbs uid: String
+  # @rbs return: Hash[untyped, untyped]
+  def retrieve_live_input: (String uid) -> Hash[untyped, untyped]
+
+  # @rbs uid: String
+  # @rbs return: Hash[untyped, untyped]
+  def retrieve_live_input_videos: (String uid) -> Hash[untyped, untyped]
+
+  # @rbs return: Hash[untyped, untyped]
+  def list_streams: () -> Hash[untyped, untyped]
+
   private def client: () -> untyped
 end
