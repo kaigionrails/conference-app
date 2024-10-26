@@ -1,4 +1,7 @@
 class Admin::AnnouncementsController < AdminController
+  # @rbs @announcements: Announcement::ActiveRecord_Relation
+  # @rbs @announcement: Announcement
+
   def index
     @announcements = Announcement.all.order(created_at: :desc).page(params[:page]).per(50)
   end
@@ -40,6 +43,8 @@ class Admin::AnnouncementsController < AdminController
     params.require(:announcement).permit(:event_id, :title, :content, :status)
   end
 
+  # @rbs announcement: Announcement
+  # @rbs return: Hash[untyped, untyped]
   private def push_notification_message(announcement)
     {
       title: "運営からの新しいアナウンスがあります",

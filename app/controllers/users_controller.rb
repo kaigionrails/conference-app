@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   include ApplicationHelper
 
+  # @rbs @user: User
+  # @rbs @events: Event::ActiveRecord_Relation
+  # @rbs @event_friends: untyped
+  # @rbs @profile: Profile
+  # @rbs @token: String?
+
   def show
     @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by!(name: params[:username])
     @events = Event.all.order(start_date: :desc)
@@ -23,6 +29,9 @@ class UsersController < ApplicationController
     end
   end
 
+  # @rbs user1: User
+  # @rbs user2: User
+  # @rbs return: void
   private def exchange_profile(user1, user2)
     unless user1 == user2
       ApplicationRecord.transaction do

@@ -1,4 +1,6 @@
 class ProfileBadgesController < ApplicationController
+  # @rbs @profile_badge: ProfileBadge
+
   def new
     unless logged_in?
       redirect_to about_path

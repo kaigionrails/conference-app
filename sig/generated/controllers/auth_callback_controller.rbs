@@ -1,3 +1,3 @@
 class AuthCallbackController < ApplicationController
-  def create: () -> (nil | untyped)
+  def create: () -> untyped
 end

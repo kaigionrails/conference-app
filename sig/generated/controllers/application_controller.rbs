@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include _RbsRailsPathHelpers
+
   include SessionsHelper
 
   def require_logged_in: () -> untyped

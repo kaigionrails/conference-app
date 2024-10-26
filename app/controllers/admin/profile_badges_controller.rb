@@ -1,4 +1,7 @@
 class Admin::ProfileBadgesController < AdminController
+  # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
+  # @rbs @profile_badge: ProfileBadge
+
   def index
     @profile_badges = ProfileBadge.all
   end

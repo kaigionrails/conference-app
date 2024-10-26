@@ -1,6 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :require_logged_in
 
+  # @rbs @profile: Profile
+  # @rbs @events: Event::ActiveRecord_Relation
+  # @rbs @event_friends: untyped
+  # @rbs @user: User
+  # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
+
   def index
     @profile = Profile.preload(:profile_badges).find_by!(user: current_user!)
     @events = Event.all.order(start_date: :desc)

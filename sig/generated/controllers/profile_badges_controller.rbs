@@ -1,5 +1,9 @@
 class ProfileBadgesController < ApplicationController
+  @profile_badge: ProfileBadge
+
   def new: () -> untyped
 
   def create: () -> untyped
+
+  private def profile_badge_params: () -> untyped
 end

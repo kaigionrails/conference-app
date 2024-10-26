@@ -1,4 +1,8 @@
 class Admin::ProfileBadgesProfilesController < AdminController
+  @profile: Profile
+
+  @profile_badges: ProfileBadge::ActiveRecord_Relation
+
   def new: () -> untyped
 
   def create: () -> untyped
