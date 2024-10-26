@@ -286,6 +286,7 @@ GEM
     pg (1.5.6)
     pg_query (5.1.0)
       google-protobuf (>= 3.22.3)
+    prism (1.0.0)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -352,6 +353,9 @@ GEM
       ffi (~> 1.0)
     rbs (3.6.1)
       logger
+    rbs-inline (0.9.0)
+      prism (>= 0.29, < 1.1)
+      rbs (>= 3.5.0)
     rbs_rails (0.12.0)
       parser
       rbs (>= 1)
@@ -557,6 +561,7 @@ DEPENDENCIES
   rails (= 8.0.0.rc1)
   rails_semantic_logger
   rbs
+  rbs-inline
   rbs_rails
   redis (~> 5.3)
   redis-actionpack

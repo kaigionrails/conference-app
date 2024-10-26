@@ -107,6 +107,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "rbs", require: false
+  gem "rbs-inline", require: false
   gem "rbs_rails", require: false
   gem "steep", require: false
 end
