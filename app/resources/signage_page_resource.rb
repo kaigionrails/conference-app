@@ -1,6 +1,8 @@
 class SignagePageResource
   include Alba::Resource
 
+  # @rbs! extend Alba::Resource::ClassMethods
+
   attributes :order, :duration_second
 
   attribute :page_image_url do |resource|

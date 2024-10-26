@@ -1,4 +1,5 @@
-class SignageDeviceResource
+class SignagePanelResource
   include Alba::Resource
+
   extend Alba::Resource::ClassMethods
 end

@@ -1,6 +1,8 @@
 class SignageScheduleResource
   include Alba::Resource
 
+  # @rbs! extend Alba::Resource::ClassMethods
+
   attributes :id
 
   attribute :start_at do |resource|
