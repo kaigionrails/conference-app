@@ -1,0 +1,5 @@
+# @rbs module-self User
+module UserDecorator : User
+  # @rbs return: String
+  def number_of_friends: (?untyped event) -> String
+end

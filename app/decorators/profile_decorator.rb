@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# @rbs module-self Profile
 module ProfileDecorator
   def sanitized_description
     markdown = Commonmarker.to_html(description)
