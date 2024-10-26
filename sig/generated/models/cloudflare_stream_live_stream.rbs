@@ -1,0 +1,7 @@
+class CloudflareStreamLiveStream < ApplicationRecord
+  def update_stream: () -> untyped
+
+  def retrieve_videos: () -> untyped
+
+  def url: () -> untyped
+end

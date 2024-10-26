@@ -1,0 +1,15 @@
+class Admin::SignageSchedulesController < AdminController
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def edit: () -> untyped
+
+  def update: () -> untyped
+
+  def destroy: () -> untyped
+
+  private def signage_schedule_params: () -> untyped
+
+  private def zoned_signage_schedule_params: () -> untyped
+end

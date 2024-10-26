@@ -1,0 +1,11 @@
+class Admin::SignagesController < AdminController
+  def index: () -> untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> untyped
+
+  private def signage_params: () -> untyped
+end

@@ -1,0 +1,7 @@
+class SessionsController < ApplicationController
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def destroy: () -> untyped
+end

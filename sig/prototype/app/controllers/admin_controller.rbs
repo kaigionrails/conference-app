@@ -1,7 +1,0 @@
-class AdminController < ApplicationController
-  def index: () -> nil
-
-  private
-
-  def require_organizer: () -> (nil | untyped)
-end

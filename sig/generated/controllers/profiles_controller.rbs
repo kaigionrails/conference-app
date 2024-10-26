@@ -1,0 +1,7 @@
+class ProfilesController < ApplicationController
+  def index: () -> untyped
+
+  def edit: () -> untyped
+
+  def update: () -> untyped
+end

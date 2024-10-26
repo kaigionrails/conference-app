@@ -1,3 +1,0 @@
-class UnreadAnnouncementsController < ApplicationController
-  def destroy: () -> (nil | untyped)
-end

@@ -1,0 +1,5 @@
+class WebpushSubscriptionController < ApplicationController
+  def create: () -> untyped
+
+  private def subscription_params: () -> untyped
+end

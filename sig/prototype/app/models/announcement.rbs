@@ -1,3 +1,0 @@
-class Announcement < ApplicationRecord
-  def cannot_change_to_draft_if_published: () -> (untyped | nil)
-end

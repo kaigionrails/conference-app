@@ -1,9 +1,0 @@
-class Admin::LiveStreamsController < AdminController
-  @cloudflare_stream_live_streams: untyped
-
-  @cloudflare_stream_live_stream: untyped
-
-  def new: () -> untyped
-
-  def create: () -> untyped
-end

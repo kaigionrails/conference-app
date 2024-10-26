@@ -1,0 +1,11 @@
+class Admin::SignagePanelsController < AdminController
+  def new: () -> untyped
+
+  def edit: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> untyped
+
+  private def signage_panel_params: () -> untyped
+end

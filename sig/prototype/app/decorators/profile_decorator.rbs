@@ -1,9 +1,0 @@
-module ProfileDecorator
-  @sanitizer: untyped
-
-  def sanitized_description: () -> untyped
-
-  private
-
-  def sanitizer: () -> untyped
-end

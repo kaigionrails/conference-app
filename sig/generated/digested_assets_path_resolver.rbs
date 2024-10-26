@@ -1,0 +1,5 @@
+class DigestedAssetsPathResolver
+  def initialize: () -> untyped
+
+  def digested_asset_path: (untyped source) -> untyped
+end

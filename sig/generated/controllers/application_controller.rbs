@@ -1,0 +1,7 @@
+class ApplicationController < ActionController::Base
+  include SessionsHelper
+
+  def require_logged_in: () -> untyped
+
+  private def set_variant!: () -> untyped
+end

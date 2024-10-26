@@ -1,0 +1,3 @@
+class LiveStreamsController < ApplicationController
+  def show: () -> untyped
+end

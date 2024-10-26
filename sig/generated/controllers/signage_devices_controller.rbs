@@ -1,0 +1,3 @@
+class SignageDevicesController < ApplicationController
+  def index: () -> untyped
+end

@@ -1,0 +1,3 @@
+class CloudflareApiClient
+  private def client: () -> untyped
+end
