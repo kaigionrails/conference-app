@@ -17,7 +17,7 @@ class Admin::SignageScheduleAssignsController < AdminController
   end
 
   def destroy
-    schedule = SignageScheduleAssign.find_by!(params[:id])
+    schedule = SignageScheduleAssign.find(params[:id])
     schedule.destroy
     redirect_to admin_signages_path
   end
