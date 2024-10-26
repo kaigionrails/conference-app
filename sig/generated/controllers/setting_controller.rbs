@@ -1,0 +1,3 @@
+class SettingController < ApplicationController
+  def index: () -> untyped
+end

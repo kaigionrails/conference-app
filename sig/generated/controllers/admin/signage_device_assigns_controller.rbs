@@ -1,0 +1,9 @@
+class Admin::SignageDeviceAssignsController < AdminController
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def destroy: () -> untyped
+
+  private def signage_device_assign_params: () -> untyped
+end

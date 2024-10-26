@@ -1,0 +1,15 @@
+class Admin::UsersController < AdminController
+  def index: () -> untyped
+
+  def show: () -> untyped
+
+  def edit: () -> untyped
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def update: () -> untyped
+
+  private def user_params: () -> untyped
+end

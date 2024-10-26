@@ -1,0 +1,3 @@
+class ApplicationRecord < ActiveRecord::Base
+  def current_event: () -> untyped
+end

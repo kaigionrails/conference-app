@@ -1,0 +1,5 @@
+class Admin::LiveStreamsController < AdminController
+  def new: () -> untyped
+
+  def create: () -> untyped
+end

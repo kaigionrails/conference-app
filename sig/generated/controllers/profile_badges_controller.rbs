@@ -1,0 +1,5 @@
+class ProfileBadgesController < ApplicationController
+  def new: () -> untyped
+
+  def create: () -> untyped
+end

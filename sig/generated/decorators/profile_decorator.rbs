@@ -1,0 +1,5 @@
+module ProfileDecorator
+  def sanitized_description: () -> untyped
+
+  private def sanitizer: () -> untyped
+end
