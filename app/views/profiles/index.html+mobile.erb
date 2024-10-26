@@ -28,7 +28,7 @@
     <div class="grid grid-cols-6 gap-3 mb-4" data-controller="lightbox" id="lightbox">
       <% @profile.images.each do |profile_image| %>
         <%= link_to profile_image, data: {"pswp-width": "600", "pswp-height": "600"} do %>
-          <%= image_tag profile_image, class: "rounded-md w-full object-cover aspect-square" %>
+          <%= image_tag profile_image, class: "rounded-md w-full object-cover aspect-square object-cover aspect-square" %>
         <% end %>
       <% end %>
     </div>
@@ -59,7 +59,7 @@
                   <% @event_friends[event].each do |profile_exchange| %>
                     <li class="flex flex-row items-center">
                       <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
-                        <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
+                        <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square" %>
                         <div class="w-full flex flex-row flex-wrap">
                           <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                           <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
@@ -76,7 +76,7 @@
                     <% @event_friends[event].each do |profile_exchange| %>
                       <li class="flex flex-row items-center">
                         <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
-                          <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg", loading: "lazy" %>
+                          <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square", loading: "lazy" %>
                           <div class="w-full flex flex-row flex-wrap">
                             <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                             <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
