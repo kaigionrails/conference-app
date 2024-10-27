@@ -52,7 +52,10 @@ Then, fill these environment variables.
 $ bin/rails db:seed
 ```
 
-After that, you can see 2023's event talks and speakers.
+After that, you can see event talks and speakers for 2023 and beyond.
+
+- 2023: http://localhost:3000/2023/talks
+- 2024: http://localhost:3000/2024/talks
 
 ## Setup dev environment with docker
 ```bash
