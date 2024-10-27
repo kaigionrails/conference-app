@@ -1,3 +1,10 @@
 {
-    "rbs-helper.rbs-inline-on-save": true
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+    },
+    "rbs-helper.rbs-inline-on-save": true,
+    "rubyLsp.formatter": "standard",
+    "rubyLsp.linters": [
+        "standard"
+    ]
 }
