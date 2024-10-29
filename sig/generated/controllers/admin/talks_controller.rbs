@@ -1,6 +1,10 @@
 # Generated from app/controllers/admin/talks_controller.rb with RBS::Inline
 
 class Admin::TalksController < AdminController
+  @events: Event::ActiveRecord_Relation
+
+  @event: Event?
+
   @talks: Talk::ActiveRecord_Relation
 
   @talk: Talk

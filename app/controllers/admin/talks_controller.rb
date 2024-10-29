@@ -1,4 +1,6 @@
 class Admin::TalksController < AdminController
+  # @rbs @events: Event::ActiveRecord_Relation
+  # @rbs @event: Event?
   # @rbs @talks: Talk::ActiveRecord_Relation
   # @rbs @talk: Talk
 

@@ -1,7 +1,9 @@
 class Admin::OngoingEventsController < ApplicationController
+  # @rbs @ongoing_event: OngoingEvent
+
   # @rbs return: void
   def update
-    @ongoing_event = OngoingEvent.first
+    @ongoing_event = OngoingEvent.first!
     if @ongoing_event.update(ongoing_event_params)
       flash[:success] = "Update succeeded"
     else

@@ -7,6 +7,8 @@ module ProfileDecorator
     sanitizer.sanitize(markdown).html_safe
   end
 
+  # @rbs @sanitizer: Rails::Html::SafeListSanitizer
+
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end

@@ -1,6 +1,12 @@
 # Generated from app/controllers/admin/signage_schedule_assigns_controller.rb with RBS::Inline
 
 class Admin::SignageScheduleAssignsController < AdminController
+  @signage_schedule_assign: SignageScheduleAssign
+
+  @signage_schedules: SignageSchedule::ActiveRecord_Relation
+
+  @signage_panels: SignagePanel::ActiveRecord_Relation
+
   # @rbs return: void
   def new: () -> void
 

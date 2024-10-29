@@ -1,4 +1,7 @@
 class Admin::LiveStreamsController < AdminController
+  # @rbs @cloudflare_stream_live_streams: CloudflareStreamLiveStream::ActiveRecord_Relation
+  # @rbs @cloudflare_stream_live_stream: CloudflareStreamLiveStream
+
   # @rbs return: void
   def index
     @cloudflare_stream_live_streams = CloudflareStreamLiveStream.all

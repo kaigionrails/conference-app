@@ -1,6 +1,10 @@
 # Generated from app/helpers/application_helper.rb with RBS::Inline
 
 module ApplicationHelper
+  @vapid_public_key_bytes: Array[Integer]
+
+  @current_event: Event?
+
   def vapid_public_key_bytes: () -> untyped
 
   def current_event: () -> untyped

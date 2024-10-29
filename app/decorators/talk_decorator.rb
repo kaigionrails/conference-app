@@ -16,6 +16,8 @@ module TalkDecorator
     "https://twitter.com/intent/tweet?hashtags=#{tags.join(",")}"
   end
 
+  # @rbs @sanitizer: Rails::Html::SafeListSanitizer
+
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end

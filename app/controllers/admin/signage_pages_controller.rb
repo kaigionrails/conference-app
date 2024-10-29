@@ -1,4 +1,8 @@
 class Admin::SignagePagesController < AdminController
+  # @rbs @signage_pages: SignagePage::ActiveRecord_Relation
+  # @rbs @signage_page: SignagePage
+  # @rbs @signage_schedules: SignageSchedule::ActiveRecord_Relation
+
   # @rbs return: void
   def index
     @signage_pages = SignagePage.all

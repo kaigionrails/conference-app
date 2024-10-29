@@ -1,4 +1,8 @@
 class Admin::SignageScheduleAssignsController < AdminController
+  # @rbs @signage_schedule_assign: SignageScheduleAssign
+  # @rbs @signage_schedules: SignageSchedule::ActiveRecord_Relation
+  # @rbs @signage_panels: SignagePanel::ActiveRecord_Relation
+
   # @rbs return: void
   def new
     @signage_schedule_assign = SignageScheduleAssign.new

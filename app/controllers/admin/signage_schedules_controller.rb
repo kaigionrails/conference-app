@@ -1,4 +1,7 @@
 class Admin::SignageSchedulesController < AdminController
+  # @rbs @signage: Signage
+  # @rbs @signage_schedule: SignageSchedule
+
   # @rbs return: void
   def new
     @signage = Signage.find_or_initialize_by(event: OngoingEvent.first.event)

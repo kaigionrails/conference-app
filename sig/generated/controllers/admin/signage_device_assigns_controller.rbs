@@ -1,6 +1,12 @@
 # Generated from app/controllers/admin/signage_device_assigns_controller.rb with RBS::Inline
 
 class Admin::SignageDeviceAssignsController < AdminController
+  @signage_device_assign: SignageDeviceAssign
+
+  @signage_devices: SignageDevice::ActiveRecord_Relation
+
+  @signage_panels: SignagePanel::ActiveRecord_Relation
+
   # @rbs return: void
   def new: () -> void
 

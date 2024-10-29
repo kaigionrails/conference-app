@@ -1,6 +1,14 @@
 # Generated from app/controllers/admin/signages_controller.rb with RBS::Inline
 
 class Admin::SignagesController < AdminController
+  @signages: Signage::ActiveRecord_Relation
+
+  @signage_panels: SignagePanel::ActiveRecord_Relation
+
+  @signage_devices: SignageDevice::ActiveRecord_Relation
+
+  @signage: Signage
+
   # @rbs return: void
   def index: () -> void
 

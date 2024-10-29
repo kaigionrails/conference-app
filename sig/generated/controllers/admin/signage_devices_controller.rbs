@@ -1,6 +1,8 @@
 # Generated from app/controllers/admin/signage_devices_controller.rb with RBS::Inline
 
 class Admin::SignageDevicesController < AdminController
+  @signage_device: SignageDevice
+
   # @rbs return: void
   def new: () -> void
 

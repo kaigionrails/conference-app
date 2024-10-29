@@ -1,6 +1,8 @@
 # Generated from app/controllers/admin/signage_panels_controller.rb with RBS::Inline
 
 class Admin::SignagePanelsController < AdminController
+  @signage_panel: SignagePanel
+
   # @rbs return: void
   def new: () -> void
 

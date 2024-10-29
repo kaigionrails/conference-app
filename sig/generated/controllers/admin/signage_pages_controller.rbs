@@ -1,6 +1,12 @@
 # Generated from app/controllers/admin/signage_pages_controller.rb with RBS::Inline
 
 class Admin::SignagePagesController < AdminController
+  @signage_pages: SignagePage::ActiveRecord_Relation
+
+  @signage_page: SignagePage
+
+  @signage_schedules: SignageSchedule::ActiveRecord_Relation
+
   # @rbs return: void
   def index: () -> void
 

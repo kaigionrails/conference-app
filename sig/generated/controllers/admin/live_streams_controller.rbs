@@ -1,6 +1,10 @@
 # Generated from app/controllers/admin/live_streams_controller.rb with RBS::Inline
 
 class Admin::LiveStreamsController < AdminController
+  @cloudflare_stream_live_streams: CloudflareStreamLiveStream::ActiveRecord_Relation
+
+  @cloudflare_stream_live_stream: CloudflareStreamLiveStream
+
   # @rbs return: void
   def index: () -> void
 
