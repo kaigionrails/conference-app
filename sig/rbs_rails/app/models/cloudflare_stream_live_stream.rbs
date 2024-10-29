@@ -1,4 +1,6 @@
 class CloudflareStreamLiveStream < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[CloudflareStreamLiveStream, ActiveRecord_Relation, Integer]
+
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -288,9 +290,17 @@ class CloudflareStreamLiveStream < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
   end
+  include GeneratedAttributeMethods
 
+  def event: () -> Event
+  def event=: (Event?) -> Event?
+  def reload_event: () -> Event?
+  def build_event: (untyped) -> Event
+  def create_event: (untyped) -> Event
+  def create_event!: (untyped) -> Event
   module GeneratedAssociationMethods
   end
+  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -305,16 +315,4 @@ class CloudflareStreamLiveStream < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[CloudflareStreamLiveStream, Integer]
   end
-  extend _ActiveRecord_Relation_ClassMethods[CloudflareStreamLiveStream, ActiveRecord_Relation, Integer]
-
-  include GeneratedAttributeMethods
-
-  def event: () -> Event
-  def event=: (Event?) -> Event?
-  def reload_event: () -> Event?
-  def build_event: (untyped) -> Event
-  def create_event: (untyped) -> Event
-  def create_event!: (untyped) -> Event
-
-  include GeneratedAssociationMethods
 end

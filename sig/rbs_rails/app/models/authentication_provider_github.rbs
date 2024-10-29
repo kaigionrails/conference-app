@@ -1,4 +1,6 @@
 class AuthenticationProviderGithub < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AuthenticationProviderGithub, ActiveRecord_Relation, Integer]
+
   module GeneratedAttributeMethods
     def id: () -> Integer
 
@@ -180,9 +182,17 @@ class AuthenticationProviderGithub < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
   end
+  include GeneratedAttributeMethods
 
+  def user: () -> User
+  def user=: (User?) -> User?
+  def reload_user: () -> User?
+  def build_user: (untyped) -> User
+  def create_user: (untyped) -> User
+  def create_user!: (untyped) -> User
   module GeneratedAssociationMethods
   end
+  include GeneratedAssociationMethods
 
   module GeneratedRelationMethods
   end
@@ -197,16 +207,4 @@ class AuthenticationProviderGithub < ::ApplicationRecord
     include GeneratedRelationMethods
     include _ActiveRecord_Relation[AuthenticationProviderGithub, Integer]
   end
-  extend _ActiveRecord_Relation_ClassMethods[AuthenticationProviderGithub, ActiveRecord_Relation, Integer]
-
-  include GeneratedAttributeMethods
-
-  def user: () -> User
-  def user=: (User?) -> User?
-  def reload_user: () -> User?
-  def build_user: (untyped) -> User
-  def create_user: (untyped) -> User
-  def create_user!: (untyped) -> User
-
-  include GeneratedAssociationMethods
 end

@@ -1,0 +1,6 @@
+class OngoingEvent < ApplicationRecord
+  def self.count: () -> Integer
+
+  def self.first: () -> OngoingEvent
+                | ...
+end

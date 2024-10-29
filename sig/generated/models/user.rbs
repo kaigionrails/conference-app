@@ -1,7 +1,14 @@
 class User < ApplicationRecord
+  # @rbs return: bool
+  def have_unread_announcements?: () -> bool
+
   def unread_announcement_count: () -> untyped
 
   def mark_all_announcement_unread!: (?untyped event) -> untyped
 
   def send_push_notification: (untyped message) -> untyped
+
+  # @rbs id: Integer
+  # @rbs return: bool
+  def destroy_talk_bookmark_with_reminder!: (Integer id) -> bool
 end

@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
 
   has_many_attached :images
 
+  # @rbs return: void
   def ensure_image_from_github
     profile_image = fetch_profile_image_from_github
     m = Marcel::Magic.by_magic profile_image

@@ -1,4 +1,5 @@
-class Profile < ::ApplicationRecord
+class Profile < ApplicationRecord
+  # @rbs return: void
   def ensure_image_from_github: () -> void
 
   private def fetch_profile_image_from_github: () -> untyped

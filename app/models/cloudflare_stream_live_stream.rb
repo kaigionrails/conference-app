@@ -1,6 +1,8 @@
 class CloudflareStreamLiveStream < ApplicationRecord
   belongs_to :event
 
+  # @rbs uid: String
+  # @rbs return: boolish
   def self.create_by_stream_uid(uid)
     response = CloudflareApiClient.new.retrieve_live_input(uid)
     return unless response["errors"].empty?
