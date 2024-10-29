@@ -1,7 +1,8 @@
 # Generated from app/controllers/admin_controller.rb with RBS::Inline
 
 class AdminController < ApplicationController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
   private def require_organizer: () -> untyped
 end

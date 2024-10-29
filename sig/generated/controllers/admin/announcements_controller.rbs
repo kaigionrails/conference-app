@@ -5,17 +5,23 @@ class Admin::AnnouncementsController < AdminController
 
   @announcement: Announcement
 
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def show: () -> untyped
+  # @rbs return: void
+  def show: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def edit: () -> untyped
+  # @rbs return: void
+  def edit: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
   private def announcement_params: () -> untyped
 

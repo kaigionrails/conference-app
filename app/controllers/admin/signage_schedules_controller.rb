@@ -1,9 +1,11 @@
 class Admin::SignageSchedulesController < AdminController
+  # @rbs return: void
   def new
     @signage = Signage.find_or_initialize_by(event: OngoingEvent.first.event)
     @signage_schedule = SignageSchedule.new(signage: @signage)
   end
 
+  # @rbs return: void
   def create
     signage = Signage.find_or_create_by(event: OngoingEvent.first.event)
     signage_schedule = SignageSchedule.new(signage: signage, **zoned_signage_schedule_params)
@@ -15,10 +17,12 @@ class Admin::SignageSchedulesController < AdminController
     redirect_to admin_signages_path
   end
 
+  # @rbs return: void
   def edit
     @signage_schedule = SignageSchedule.find(params[:id])
   end
 
+  # @rbs return: void
   def update
     schedule = SignageSchedule.find(params[:id])
     if schedule.update(**zoned_signage_schedule_params)
@@ -29,6 +33,7 @@ class Admin::SignageSchedulesController < AdminController
     redirect_to admin_signages_path
   end
 
+  # @rbs return: void
   def destroy
     schedule = SignageSchedule.find(params[:id])
     schedule.destroy

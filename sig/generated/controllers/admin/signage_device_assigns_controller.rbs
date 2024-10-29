@@ -1,11 +1,14 @@
 # Generated from app/controllers/admin/signage_device_assigns_controller.rb with RBS::Inline
 
 class Admin::SignageDeviceAssignsController < AdminController
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 
   private def signage_device_assign_params: () -> untyped
 end

@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+  # @rbs return: void
   def new
   end
 
+  # @rbs return: void
   def create
     case params[:provider]
     when "email"
@@ -35,6 +37,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # @rbs return: void
   def destroy
     session[:user_id] = nil
     redirect_to about_path

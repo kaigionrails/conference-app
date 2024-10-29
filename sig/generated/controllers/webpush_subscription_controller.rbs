@@ -1,7 +1,8 @@
 # Generated from app/controllers/webpush_subscription_controller.rb with RBS::Inline
 
 class WebpushSubscriptionController < ApplicationController
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
   private def subscription_params: () -> untyped
 end

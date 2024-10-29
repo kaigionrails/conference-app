@@ -1,6 +1,7 @@
 class SignagesController < ApplicationController
   layout "signage"
 
+  # @rbs return: void
   def index
     redirect_to login_path unless logged_in?
     redirect_to about_path if current_user!.participant?

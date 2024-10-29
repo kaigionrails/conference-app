@@ -9,7 +9,9 @@ class TalksController < ApplicationController
 
   @talk: Talk
 
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def show: () -> untyped
+  # @rbs return: void
+  def show: () -> void
 end

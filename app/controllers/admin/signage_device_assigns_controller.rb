@@ -1,10 +1,12 @@
 class Admin::SignageDeviceAssignsController < AdminController
+  # @rbs return: void
   def new
     @signage_device_assign = SignageDeviceAssign.new
     @signage_devices = SignageDevice.all
     @signage_panels = SignagePanel.all
   end
 
+  # @rbs return: void
   def create
     signage_device_assign = SignageDeviceAssign.new(**signage_device_assign_params)
     if signage_device_assign.save
@@ -16,6 +18,7 @@ class Admin::SignageDeviceAssignsController < AdminController
     end
   end
 
+  # @rbs return: void
   def destroy
     signage_devive_assign = SignageDeviceAssign.find(params[:id])
     signage_devive_assign.destroy

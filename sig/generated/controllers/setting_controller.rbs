@@ -1,5 +1,6 @@
 # Generated from app/controllers/setting_controller.rb with RBS::Inline
 
 class SettingController < ApplicationController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 end

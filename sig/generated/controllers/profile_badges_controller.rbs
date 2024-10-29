@@ -3,9 +3,11 @@
 class ProfileBadgesController < ApplicationController
   @profile_badge: ProfileBadge
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
   private def profile_badge_params: () -> untyped
 end

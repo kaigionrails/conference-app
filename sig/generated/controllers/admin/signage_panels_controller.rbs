@@ -1,13 +1,17 @@
 # Generated from app/controllers/admin/signage_panels_controller.rb with RBS::Inline
 
 class Admin::SignagePanelsController < AdminController
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def edit: () -> untyped
+  # @rbs return: void
+  def edit: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
   private def signage_panel_params: () -> untyped
 end

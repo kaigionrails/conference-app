@@ -2,11 +2,13 @@ class Admin::ProfileBadgesProfilesController < AdminController
   # @rbs @profile: Profile
   # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
 
+  # @rbs return: void
   def new
     @profile = Profile.preload(:profile_badges).find(params[:profile_id])
     @profile_badges = ProfileBadge.all
   end
 
+  # @rbs return: void
   def create
     @profile = Profile.preload(:profile_badges).find(params[:profile_id])
 

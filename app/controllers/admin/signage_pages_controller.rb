@@ -1,13 +1,16 @@
 class Admin::SignagePagesController < AdminController
+  # @rbs return: void
   def index
     @signage_pages = SignagePage.all
   end
 
+  # @rbs return: void
   def new
     @signage_schedules = SignageSchedule.all
     @signage_page = SignagePage.new
   end
 
+  # @rbs return: void
   def create
     signage_page = SignagePage.new(signage_page_params)
     if signage_page.save
@@ -15,9 +18,11 @@ class Admin::SignagePagesController < AdminController
     end
   end
 
+  # @rbs return: void
   def update
   end
 
+  # @rbs return: void
   def destroy
     signage_page = SignagePage.find(params[:id])
     if signage_page.destroy

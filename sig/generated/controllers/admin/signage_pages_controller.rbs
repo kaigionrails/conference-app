@@ -1,15 +1,20 @@
 # Generated from app/controllers/admin/signage_pages_controller.rb with RBS::Inline
 
 class Admin::SignagePagesController < AdminController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 
   private def signage_page_params: () -> untyped
 end

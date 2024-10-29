@@ -1,6 +1,7 @@
 class SampleWebpushNotificationsController < ApplicationController
   before_action :require_logged_in
 
+  # @rbs return: void
   def create
     subscriptions = current_user!.webpush_subscriptions
     message = {

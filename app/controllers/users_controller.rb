@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # @rbs @profile: Profile
   # @rbs @token: String?
 
+  # @rbs return: void
   def show
     @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by!(name: params[:username])
     @events = Event.all.order(start_date: :desc)

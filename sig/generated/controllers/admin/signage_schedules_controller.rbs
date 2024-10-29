@@ -1,15 +1,20 @@
 # Generated from app/controllers/admin/signage_schedules_controller.rb with RBS::Inline
 
 class Admin::SignageSchedulesController < AdminController
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def edit: () -> untyped
+  # @rbs return: void
+  def edit: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 
   private def signage_schedule_params: () -> untyped
 

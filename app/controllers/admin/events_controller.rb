@@ -1,22 +1,27 @@
 class Admin::EventsController < AdminController
+  # @rbs return: void
   def index
     @events = Event.all
     @ongoing_event = OngoingEvent.first
   end
 
+  # @rbs return: void
   def show
     @event = Event.find(params[:id])
   end
 
+  # @rbs return: void
   def new
     @event = Event.new
   end
 
+  # @rbs return: void
   def edit
     @event = Event.find(params[:id])
     @ongoing_event = OngoingEvent.first
   end
 
+  # @rbs return: void
   def create
     param = event_params.to_h.dup
     start_date = param.delete(:start_date_jst)
@@ -33,6 +38,7 @@ class Admin::EventsController < AdminController
     end
   end
 
+  # @rbs return: void
   def update
     @event = Event.find(params[:id])
     param = event_params.to_h.dup
