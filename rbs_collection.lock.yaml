@@ -121,6 +121,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: commonmarker
+  version: '1.1'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 0ca3010179414639bcb0b18ae1627aef70f26128
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: concurrent-ruby
   version: '1.1'
   source:
@@ -365,6 +373,14 @@ gems:
     revision: 704f7e6b395fca717cc25c562598ca86015ed545
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: rails-html-sanitizer
+  version: '1.6'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 0ca3010179414639bcb0b18ae1627aef70f26128
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: railties
   version: '6.0'
   source:
@@ -442,10 +458,6 @@ gems:
   source:
     type: stdlib
 - name: socket
-  version: '0'
-  source:
-    type: stdlib
-- name: strscan
   version: '0'
   source:
     type: stdlib

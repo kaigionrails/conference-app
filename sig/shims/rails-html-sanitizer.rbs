@@ -1,9 +1,0 @@
-module Rails
-  module HTML
-    class SafeListSanitizer
-      def sanitize: (String html, untyped options) -> String
-    end
-  end
-
-  module Html = HTML
-end
