@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# @rbs module-self Speaker
 module SpeakerDecorator
   def sanitized_bio
     markdown = Commonmarker.to_html(bio)

@@ -1,4 +1,5 @@
-module TalkDecorator
+# @rbs module-self Talk
+module TalkDecorator : Talk
   def sanitized_abstract: () -> untyped
 
   def hashtagged_twitter_intent_url: () -> untyped

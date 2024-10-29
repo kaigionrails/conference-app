@@ -1,4 +1,5 @@
-module SpeakerDecorator
+# @rbs module-self Speaker
+module SpeakerDecorator : Speaker
   def sanitized_bio: () -> untyped
 
   def avatar_image_url: () -> untyped

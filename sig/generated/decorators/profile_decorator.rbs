@@ -1,4 +1,5 @@
-module ProfileDecorator
+# @rbs module-self Profile
+module ProfileDecorator : Profile
   def sanitized_description: () -> untyped
 
   private def sanitizer: () -> untyped

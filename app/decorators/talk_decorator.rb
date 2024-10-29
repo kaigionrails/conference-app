@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# @rbs module-self Talk
 module TalkDecorator
   def sanitized_abstract
     markdown = Commonmarker.to_html(abstract)
