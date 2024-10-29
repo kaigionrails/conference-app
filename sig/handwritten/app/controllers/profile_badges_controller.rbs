@@ -1,5 +1,0 @@
-class ProfileBadgesController < ApplicationController
-  @profile_badge: ProfileBadge
-
-  private def profile_badge_params: () -> untyped
-end

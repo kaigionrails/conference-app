@@ -1,4 +1,7 @@
 class Admin::UsersController < AdminController
+  # @rbs @users: User::ActiveRecord_Relation
+  # @rbs @user: User
+
   def index
     @users = User.eager_load(:profile).order(created_at: :asc).page(params[:page])
   end
@@ -45,6 +48,7 @@ class Admin::UsersController < AdminController
     params.require(:user).permit(:name, :role)
   end
 
+  # @rbs return: { email: (String|nil), password: (String|nil), password_confirmation: (String|nil) }
   private def user_auth_params
     params.require(:auth).permit(:email, :password, :password_confirmation)
   end

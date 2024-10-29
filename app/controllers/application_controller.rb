@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  # @rbs! include _RbsRailsPathHelpers
+
   include SessionsHelper
 
   before_action :set_variant!

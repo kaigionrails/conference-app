@@ -1,3 +1,20 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
+  @user: User
+
+  @events: Event::ActiveRecord_Relation
+
+  @event_friends: untyped
+
+  @profile: Profile
+
+  @token: String?
+
   def show: () -> untyped
+
+  # @rbs user1: User
+  # @rbs user2: User
+  # @rbs return: void
+  private def exchange_profile: (User user1, User user2) -> void
 end

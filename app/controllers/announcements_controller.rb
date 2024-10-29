@@ -1,4 +1,10 @@
 class AnnouncementsController < ApplicationController
+  # @rbs @event: Event
+  # @rbs @announcements: Announcement::ActiveRecord_Relation
+  # @rbs @unread_announcements: UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy | UnreadAnnouncement::ActiveRecord_Relation
+  # @rbs @announcement: Announcement
+  # @rbs @unread_announcement: UnreadAnnouncement?
+
   def index
     @event = Event.find_by!(slug: params[:event_slug])
     @announcements = Announcement.where(event: @event).published.order(id: :desc, published_at: :desc)

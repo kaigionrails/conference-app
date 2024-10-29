@@ -1,3 +1,5 @@
 class EventsController < ApplicationController
+  @event: Event
+
   def show: () -> untyped
 end

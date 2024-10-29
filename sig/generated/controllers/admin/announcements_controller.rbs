@@ -3,19 +3,21 @@ class Admin::AnnouncementsController < AdminController
 
   @announcement: Announcement
 
-  def index: () -> void
+  def index: () -> untyped
 
-  def show: () -> void
+  def show: () -> untyped
 
-  def new: () -> void
+  def new: () -> untyped
 
-  def create: () -> void
+  def create: () -> untyped
 
-  def edit: () -> void
+  def edit: () -> untyped
 
-  def update: () -> void
+  def update: () -> untyped
 
   private def announcement_params: () -> untyped
 
+  # @rbs announcement: Announcement
+  # @rbs return: Hash[untyped, untyped]
   private def push_notification_message: (Announcement announcement) -> Hash[untyped, untyped]
 end

@@ -1,3 +1,0 @@
-class EventsController < ApplicationController
-  @event: Event
-end

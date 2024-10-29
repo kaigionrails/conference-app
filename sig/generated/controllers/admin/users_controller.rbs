@@ -1,4 +1,8 @@
 class Admin::UsersController < AdminController
+  @users: User::ActiveRecord_Relation
+
+  @user: User
+
   def index: () -> untyped
 
   def show: () -> untyped
@@ -12,4 +16,7 @@ class Admin::UsersController < AdminController
   def update: () -> untyped
 
   private def user_params: () -> untyped
+
+  # @rbs return: { email: (String|nil), password: (String|nil), password_confirmation: (String|nil) }
+  private def user_auth_params: () -> { email: String | nil, password: String | nil, password_confirmation: String | nil }
 end

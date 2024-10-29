@@ -1,4 +1,7 @@
 class Admin::TalksController < AdminController
+  # @rbs @talks: Talk::ActiveRecord_Relation
+  # @rbs @talk: Talk
+
   def index
     @events = Event.all
     @event = @events.find_by(slug: params[:event])

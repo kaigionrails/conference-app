@@ -1,5 +1,0 @@
-class Admin::ProfileBadgesProfilesController < AdminController
-  @profile: Profile
-
-  @profile_badges: ProfileBadge::ActiveRecord_Relation
-end
