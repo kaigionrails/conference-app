@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "tk0miya.rbs-helper"
+        "tk0miya.rbs-helper",
+        "shopify.ruby-lsp"
     ]
 }
