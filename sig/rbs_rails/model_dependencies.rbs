@@ -14,7 +14,8 @@ class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ActiveRec
 end
 class SolidQueue::Execution < SolidQueue::Record
 end
-
+module ActiveStorage
+end
 class ActiveStorage::Record < ActiveRecord::Base
 end
 class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
