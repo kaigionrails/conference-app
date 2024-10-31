@@ -1,2 +1,4 @@
+# Generated from app/helpers/profiles_helper.rb with RBS::Inline
+
 module ProfilesHelper
 end

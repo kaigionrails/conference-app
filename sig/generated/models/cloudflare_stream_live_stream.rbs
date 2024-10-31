@@ -1,3 +1,5 @@
+# Generated from app/models/cloudflare_stream_live_stream.rb with RBS::Inline
+
 class CloudflareStreamLiveStream < ApplicationRecord
   # @rbs uid: String
   # @rbs return: boolish

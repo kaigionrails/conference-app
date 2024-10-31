@@ -1,3 +1,5 @@
+# Generated from app/decorators/talk_decorator.rb with RBS::Inline
+
 # @rbs module-self Talk
 module TalkDecorator : Talk
   def sanitized_abstract: () -> untyped

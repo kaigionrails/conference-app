@@ -1,2 +1,4 @@
+# Generated from app/controllers/admin.rb with RBS::Inline
+
 module Admin
 end

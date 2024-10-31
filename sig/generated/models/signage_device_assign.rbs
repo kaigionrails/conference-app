@@ -1,0 +1,4 @@
+# Generated from app/models/signage_device_assign.rb with RBS::Inline
+
+class SignageDeviceAssign < ApplicationRecord
+end

@@ -1,3 +1,5 @@
+# Generated from app/decorators/speaker_decorator.rb with RBS::Inline
+
 # @rbs module-self Speaker
 module SpeakerDecorator : Speaker
   def sanitized_bio: () -> untyped

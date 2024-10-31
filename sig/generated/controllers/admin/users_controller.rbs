@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/users_controller.rb with RBS::Inline
+
 class Admin::UsersController < AdminController
   @users: User::ActiveRecord_Relation
 

@@ -1,3 +1,5 @@
+# Generated from lib/digested_assets_path_resolver.rb with RBS::Inline
+
 class DigestedAssetsPathResolver
   def initialize: () -> untyped
 

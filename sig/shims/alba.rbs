@@ -2,19 +2,27 @@ module Alba
   module Resource
     module InstanceMethods
       def initialize: (untyped object, ?params: Hash[untyped, untyped], ?within: untyped) -> void
+
       def serialize: (?root_key: untyped, ?meta: Hash[untyped, untyped]) -> String
+
       def serializable_hash: () -> Hash[untyped, untyped]
+
       alias to_h serializable_hash
     end
 
     module ClassMethods
       def attributes: (*untyped attrs, ?if: untyped, **untyped attrs_with_types) -> untyped
+
       def attribute: (untyped name, **untyped options) { (?) -> untyped } -> untyped
 
       def association: (untyped name, ?untyped condition, ?resource: untyped, ?key: untyped, ?params: Hash[untyped, untyped], **untyped options) ?{ (?) -> untyped } -> untyped
+
       alias one association
+
       alias many association
+
       alias has_one association
+
       alias has_many association
     end
 

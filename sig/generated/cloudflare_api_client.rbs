@@ -1,3 +1,5 @@
+# Generated from lib/cloudflare_api_client.rb with RBS::Inline
+
 class CloudflareApiClient
   @account_id: String
 

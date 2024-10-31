@@ -1,3 +1,5 @@
+# Generated from app/models/event.rb with RBS::Inline
+
 class Event < ApplicationRecord
   ONGOING_EVENT_SLUG: ::String
 

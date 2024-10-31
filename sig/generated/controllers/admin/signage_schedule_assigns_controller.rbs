@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/signage_schedule_assigns_controller.rb with RBS::Inline
+
 class Admin::SignageScheduleAssignsController < AdminController
   def new: () -> untyped
 

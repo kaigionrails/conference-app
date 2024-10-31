@@ -1,0 +1,4 @@
+# Generated from app/models/signage_panel.rb with RBS::Inline
+
+class SignagePanel < ApplicationRecord
+end

@@ -1,3 +1,5 @@
+# Generated from app/controllers/events_controller.rb with RBS::Inline
+
 class EventsController < ApplicationController
   @event: Event
 

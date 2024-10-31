@@ -1,3 +1,5 @@
+# Generated from app/models/user.rb with RBS::Inline
+
 class User < ApplicationRecord
   # @rbs return: bool
   def have_unread_announcements?: () -> bool

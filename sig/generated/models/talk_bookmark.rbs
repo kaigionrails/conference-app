@@ -1,0 +1,4 @@
+# Generated from app/models/talk_bookmark.rb with RBS::Inline
+
+class TalkBookmark < ApplicationRecord
+end

@@ -1,3 +1,5 @@
+# Generated from app/resources/signage_schedule_assign_resource.rb with RBS::Inline
+
 class SignageScheduleAssignResource
   include Alba::Resource
 

@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/signages_controller.rb with RBS::Inline
+
 class Admin::SignagesController < AdminController
   def index: () -> untyped
 

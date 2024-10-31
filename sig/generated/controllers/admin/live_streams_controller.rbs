@@ -1,3 +1,5 @@
+# Generated from app/controllers/admin/live_streams_controller.rb with RBS::Inline
+
 class Admin::LiveStreamsController < AdminController
   def index: () -> untyped
 

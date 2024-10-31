@@ -1,3 +1,5 @@
+# Generated from app/models/webpush_subscription.rb with RBS::Inline
+
 class WebpushSubscription < ApplicationRecord
   def send_webpush!: (untyped message) -> untyped
 end

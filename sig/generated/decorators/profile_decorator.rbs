@@ -1,3 +1,5 @@
+# Generated from app/decorators/profile_decorator.rb with RBS::Inline
+
 # @rbs module-self Profile
 module ProfileDecorator : Profile
   def sanitized_description: () -> untyped

@@ -1,3 +1,5 @@
+# Generated from app/models/profile.rb with RBS::Inline
+
 class Profile < ApplicationRecord
   # @rbs return: void
   def ensure_image_from_github: () -> void
