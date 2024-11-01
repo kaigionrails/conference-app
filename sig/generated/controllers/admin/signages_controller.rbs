@@ -1,13 +1,17 @@
 # Generated from app/controllers/admin/signages_controller.rb with RBS::Inline
 
 class Admin::SignagesController < AdminController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
   private def signage_params: () -> untyped
 end

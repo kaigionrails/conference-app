@@ -5,9 +5,11 @@ class Admin::ProfileBadgesProfilesController < AdminController
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
   private def profile_badges_profiles_params: () -> untyped
 end

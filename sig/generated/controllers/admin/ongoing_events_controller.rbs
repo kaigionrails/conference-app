@@ -1,9 +1,11 @@
 # Generated from app/controllers/admin/ongoing_events_controller.rb with RBS::Inline
 
 class Admin::OngoingEventsController < ApplicationController
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
   private def ongoing_event_params: () -> untyped
 end

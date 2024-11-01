@@ -1,4 +1,5 @@
 class Admin::SignagesController < AdminController
+  # @rbs return: void
   def index
     @signages = Signage.preload(
       signage_schedules: [
@@ -10,15 +11,18 @@ class Admin::SignagesController < AdminController
     @signage_devices = SignageDevice.all
   end
 
+  # @rbs return: void
   def new
     @signage = Signage.find_or_initialize_by(event: OngoingEvent.first.event)
   end
 
+  # @rbs return: void
   def create
     _signage = Signage.find_or_create_by(event: OngoingEvent.first.event)
     redirect_to admin_signages_path
   end
 
+  # @rbs return: void
   def update
   end
 

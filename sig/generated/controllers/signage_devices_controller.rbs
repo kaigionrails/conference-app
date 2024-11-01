@@ -1,5 +1,6 @@
 # Generated from app/controllers/signage_devices_controller.rb with RBS::Inline
 
 class SignageDevicesController < ApplicationController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 end

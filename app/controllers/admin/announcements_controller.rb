@@ -2,28 +2,34 @@ class Admin::AnnouncementsController < AdminController
   # @rbs @announcements: Announcement::ActiveRecord_Relation
   # @rbs @announcement: Announcement
 
+  # @rbs return: void
   def index
     @announcements = Announcement.all.order(created_at: :desc).page(params[:page]).per(50)
   end
 
+  # @rbs return: void
   def show
     @announcement = Announcement.find(params[:id])
   end
 
+  # @rbs return: void
   def new
     event = Event.find_by!(slug: Event::ONGOING_EVENT_SLUG)
     @announcement = Announcement.new(event: event)
   end
 
+  # @rbs return: void
   def create
     Announcement.create!(**announcement_params)
     redirect_to admin_announcements_path
   end
 
+  # @rbs return: void
   def edit
     @announcement = Announcement.find(params[:id])
   end
 
+  # @rbs return: void
   def update
     announcement = Announcement.find(params[:id])
     if announcement.update(**announcement_params)

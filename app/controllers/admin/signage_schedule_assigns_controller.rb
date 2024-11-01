@@ -1,10 +1,12 @@
 class Admin::SignageScheduleAssignsController < AdminController
+  # @rbs return: void
   def new
     @signage_schedule_assign = SignageScheduleAssign.new
     @signage_schedules = SignageSchedule.all
     @signage_panels = SignagePanel.all
   end
 
+  # @rbs return: void
   def create
     signage_schedule_assign = SignageScheduleAssign.new(**signage_schedule_assign_params)
     if signage_schedule_assign.save
@@ -16,6 +18,7 @@ class Admin::SignageScheduleAssignsController < AdminController
     end
   end
 
+  # @rbs return: void
   def destroy
     schedule = SignageScheduleAssign.find(params[:id])
     schedule.destroy

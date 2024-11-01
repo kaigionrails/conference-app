@@ -5,17 +5,23 @@ class Admin::ProfileBadgesController < AdminController
 
   @profile_badge: ProfileBadge
 
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def edit: () -> untyped
+  # @rbs return: void
+  def edit: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 
   private def profile_badge_params: () -> untyped
 end

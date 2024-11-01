@@ -1,12 +1,15 @@
 class Admin::LiveStreamsController < AdminController
+  # @rbs return: void
   def index
     @cloudflare_stream_live_streams = CloudflareStreamLiveStream.all
   end
 
+  # @rbs return: void
   def new
     @cloudflare_stream_live_stream = CloudflareStreamLiveStream.new
   end
 
+  # @rbs return: void
   def create
     if CloudflareStreamLiveStream.create_by_stream_uid(cloudflare_stream_live_stream_params[:uid])
       flash[:success] = "Live stream created successfully"
@@ -16,6 +19,7 @@ class Admin::LiveStreamsController < AdminController
     redirect_to admin_live_streams_path
   end
 
+  # @rbs return: void
   def update
     @cloudflare_stream_live_stream = CloudflareStreamLiveStream.find(params[:id])
     if @cloudflare_stream_live_stream.update_stream

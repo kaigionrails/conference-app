@@ -1,5 +1,6 @@
 # Generated from app/controllers/signages_controller.rb with RBS::Inline
 
 class SignagesController < ApplicationController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 end

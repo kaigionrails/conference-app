@@ -1,9 +1,11 @@
 # Generated from app/controllers/talk_bookmarks_controller.rb with RBS::Inline
 
 class TalkBookmarksController < ApplicationController
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 
   private def talk_bookmark_params: () -> untyped
 end

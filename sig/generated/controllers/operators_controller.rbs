@@ -1,7 +1,8 @@
 # Generated from app/controllers/operators_controller.rb with RBS::Inline
 
 class OperatorsController < ApplicationController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
   private def require_operator: () -> untyped
 end

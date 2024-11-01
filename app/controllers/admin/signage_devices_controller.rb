@@ -1,12 +1,15 @@
 class Admin::SignageDevicesController < AdminController
+  # @rbs return: void
   def new
     @signage_device = SignageDevice.new
   end
 
+  # @rbs return: void
   def edit
     @signage_device = SignageDevice.find(params[:id])
   end
 
+  # @rbs return: void
   def create
     signage_device = SignageDevice.new(**signage_device_params)
     if signage_device.save
@@ -18,6 +21,7 @@ class Admin::SignageDevicesController < AdminController
     end
   end
 
+  # @rbs return: void
   def update
     signage_device = SignageDevice.find(params[:id])
     if signage_device.update(**signage_device_params)

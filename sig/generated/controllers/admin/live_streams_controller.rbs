@@ -1,13 +1,17 @@
 # Generated from app/controllers/admin/live_streams_controller.rb with RBS::Inline
 
 class Admin::LiveStreamsController < AdminController
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
   private def cloudflare_stream_live_stream_params: () -> untyped
 end

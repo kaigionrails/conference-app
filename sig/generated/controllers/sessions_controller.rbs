@@ -1,9 +1,12 @@
 # Generated from app/controllers/sessions_controller.rb with RBS::Inline
 
 class SessionsController < ApplicationController
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 end

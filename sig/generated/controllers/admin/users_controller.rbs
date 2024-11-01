@@ -5,17 +5,23 @@ class Admin::UsersController < AdminController
 
   @user: User
 
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
-  def show: () -> untyped
+  # @rbs return: void
+  def show: () -> void
 
-  def edit: () -> untyped
+  # @rbs return: void
+  def edit: () -> void
 
-  def new: () -> untyped
+  # @rbs return: void
+  def new: () -> void
 
-  def create: () -> untyped
+  # @rbs return: void
+  def create: () -> void
 
-  def update: () -> untyped
+  # @rbs return: void
+  def update: () -> void
 
   private def user_params: () -> untyped
 

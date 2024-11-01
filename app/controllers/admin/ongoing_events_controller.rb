@@ -1,4 +1,5 @@
 class Admin::OngoingEventsController < ApplicationController
+  # @rbs return: void
   def update
     @ongoing_event = OngoingEvent.first
     if @ongoing_event.update(ongoing_event_params)
@@ -9,6 +10,7 @@ class Admin::OngoingEventsController < ApplicationController
     redirect_to admin_event_path(@ongoing_event.event_id)
   end
 
+  # @rbs return: void
   def create
     @ongoing_event = OngoingEvent.new(ongoing_event_params)
     if @ongoing_event.save

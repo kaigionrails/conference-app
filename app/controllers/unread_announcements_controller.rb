@@ -1,4 +1,5 @@
 class UnreadAnnouncementsController < ApplicationController
+  # @rbs return: void
   def destroy
     unless logged_in?
       head :unauthorized

@@ -3,5 +3,6 @@
 class EventsController < ApplicationController
   @event: Event
 
-  def show: () -> untyped
+  # @rbs return: void
+  def show: () -> void
 end

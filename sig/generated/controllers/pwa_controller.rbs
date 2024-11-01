@@ -1,7 +1,9 @@
 # Generated from app/controllers/pwa_controller.rb with RBS::Inline
 
 class PwaController < ApplicationController
-  def service_worker: () -> untyped
+  # @rbs return: void
+  def service_worker: () -> void
 
-  def manifest: () -> untyped
+  # @rbs return: void
+  def manifest: () -> void
 end

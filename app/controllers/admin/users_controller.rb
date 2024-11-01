@@ -2,22 +2,27 @@ class Admin::UsersController < AdminController
   # @rbs @users: User::ActiveRecord_Relation
   # @rbs @user: User
 
+  # @rbs return: void
   def index
     @users = User.eager_load(:profile).order(created_at: :asc).page(params[:page])
   end
 
+  # @rbs return: void
   def show
     @user = User.eager_load(profile: {images_attachments: :blob}).find(params[:id])
   end
 
+  # @rbs return: void
   def edit
     @user = User.find(params[:id])
   end
 
+  # @rbs return: void
   def new
     @user = User.new(role: :operator)
   end
 
+  # @rbs return: void
   def create
     user = User.new(role: :operator, name: user_params[:name])
     auth = AuthenticationProviderEmailAndPassword.new(user: user, **user_auth_params)
@@ -33,6 +38,7 @@ class Admin::UsersController < AdminController
     end
   end
 
+  # @rbs return: void
   def update
     user = User.find(params[:id])
     if user.update(user_params)

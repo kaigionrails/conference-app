@@ -1,4 +1,5 @@
 class TalkBookmarksController < ApplicationController
+  # @rbs return: void
   def create
     unless logged_in?
       head :unauthorized
@@ -11,6 +12,7 @@ class TalkBookmarksController < ApplicationController
     render json: talk_bookmark, status: :ok
   end
 
+  # @rbs return: void
   def destroy
     unless logged_in?
       render status: :unauthorized

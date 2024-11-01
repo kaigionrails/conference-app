@@ -1,4 +1,5 @@
 class AuthCallbackController < ApplicationController
+  # @rbs return: void
   def create
     if params[:provider] != "github"
       flash[:alert] = "Unknown provider"

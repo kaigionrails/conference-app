@@ -1,12 +1,15 @@
 class Admin::SignagePanelsController < AdminController
+  # @rbs return: void
   def new
     @signage_panel = SignagePanel.new
   end
 
+  # @rbs return: void
   def edit
     @signage_panel = SignagePanel.find(params[:id])
   end
 
+  # @rbs return: void
   def create
     signage_panel = SignagePanel.new(**signage_panel_params)
     if signage_panel.save
@@ -18,6 +21,7 @@ class Admin::SignagePanelsController < AdminController
     end
   end
 
+  # @rbs return: void
   def update
     signage_panel = SignagePanel.find(params[:id])
     if signage_panel.update(**signage_panel_params)

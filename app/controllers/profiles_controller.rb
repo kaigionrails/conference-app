@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   # @rbs @user: User
   # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
 
+  # @rbs return: void
   def index
     @profile = Profile.preload(:profile_badges).find_by!(user: current_user!)
     @events = Event.all.order(start_date: :desc)

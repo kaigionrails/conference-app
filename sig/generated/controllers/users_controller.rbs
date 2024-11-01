@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   @token: String?
 
-  def show: () -> untyped
+  # @rbs return: void
+  def show: () -> void
 
   # @rbs user1: User
   # @rbs user2: User

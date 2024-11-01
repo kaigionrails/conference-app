@@ -2,6 +2,7 @@ class AdminController < ApplicationController
   before_action :require_organizer
   layout "admin"
 
+  # @rbs return: void
   def index
   end
 

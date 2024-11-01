@@ -11,7 +11,8 @@ class ProfilesController < ApplicationController
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 
-  def index: () -> untyped
+  # @rbs return: void
+  def index: () -> void
 
   def edit: () -> untyped
 

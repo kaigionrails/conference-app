@@ -1,5 +1,6 @@
 # Generated from app/controllers/profile_images_controller.rb with RBS::Inline
 
 class ProfileImagesController < ApplicationController
-  def destroy: () -> untyped
+  # @rbs return: void
+  def destroy: () -> void
 end

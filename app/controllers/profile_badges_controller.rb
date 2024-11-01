@@ -1,6 +1,7 @@
 class ProfileBadgesController < ApplicationController
   # @rbs @profile_badge: ProfileBadge
 
+  # @rbs return: void
   def new
     unless logged_in?
       redirect_to about_path
@@ -10,6 +11,7 @@ class ProfileBadgesController < ApplicationController
     @profile_badge = ProfileBadge.new(restricted: false, text: "サンプル")
   end
 
+  # @rbs return: void
   def create
     unless logged_in?
       redirect_to about_path
