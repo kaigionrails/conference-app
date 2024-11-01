@@ -6,5 +6,7 @@ module SpeakerDecorator : Speaker
 
   def avatar_image_url: () -> untyped
 
+  @sanitizer: Rails::Html::SafeListSanitizer
+
   private def sanitizer: () -> untyped
 end

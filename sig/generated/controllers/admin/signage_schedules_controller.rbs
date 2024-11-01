@@ -1,6 +1,10 @@
 # Generated from app/controllers/admin/signage_schedules_controller.rb with RBS::Inline
 
 class Admin::SignageSchedulesController < AdminController
+  @signage: Signage
+
+  @signage_schedule: SignageSchedule
+
   # @rbs return: void
   def new: () -> void
 

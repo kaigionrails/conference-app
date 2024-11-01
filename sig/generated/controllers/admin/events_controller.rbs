@@ -1,6 +1,12 @@
 # Generated from app/controllers/admin/events_controller.rb with RBS::Inline
 
 class Admin::EventsController < AdminController
+  @events: Event::ActiveRecord_Relation
+
+  @ongoing_event: OngoingEvent?
+
+  @event: Event
+
   # @rbs return: void
   def index: () -> void
 

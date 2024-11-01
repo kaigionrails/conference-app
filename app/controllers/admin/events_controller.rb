@@ -1,4 +1,8 @@
 class Admin::EventsController < AdminController
+  # @rbs @events: Event::ActiveRecord_Relation
+  # @rbs @ongoing_event: OngoingEvent?
+  # @rbs @event: Event
+
   # @rbs return: void
   def index
     @events = Event.all

@@ -11,6 +11,8 @@ module SpeakerDecorator
     avatar.attached? ? avatar : "https://www.gravatar.com/avatar/#{gravatar_hash}?s=100"
   end
 
+  # @rbs @sanitizer: Rails::Html::SafeListSanitizer
+
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end

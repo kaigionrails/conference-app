@@ -1,6 +1,8 @@
 # Generated from app/controllers/admin/ongoing_events_controller.rb with RBS::Inline
 
 class Admin::OngoingEventsController < ApplicationController
+  @ongoing_event: OngoingEvent
+
   # @rbs return: void
   def update: () -> void
 

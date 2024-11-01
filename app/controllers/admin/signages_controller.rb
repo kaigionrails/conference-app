@@ -1,4 +1,9 @@
 class Admin::SignagesController < AdminController
+  # @rbs @signages: Signage::ActiveRecord_Relation
+  # @rbs @signage_panels: SignagePanel::ActiveRecord_Relation
+  # @rbs @signage_devices: SignageDevice::ActiveRecord_Relation
+  # @rbs @signage: Signage
+
   # @rbs return: void
   def index
     @signages = Signage.preload(

@@ -1,4 +1,6 @@
 class Admin::SignagePanelsController < AdminController
+  # @rbs @signage_panel: SignagePanel
+
   # @rbs return: void
   def new
     @signage_panel = SignagePanel.new

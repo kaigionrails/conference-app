@@ -1,4 +1,8 @@
 class Admin::SignageDeviceAssignsController < AdminController
+  # @rbs @signage_device_assign: SignageDeviceAssign
+  # @rbs @signage_devices: SignageDevice::ActiveRecord_Relation
+  # @rbs @signage_panels: SignagePanel::ActiveRecord_Relation
+
   # @rbs return: void
   def new
     @signage_device_assign = SignageDeviceAssign.new

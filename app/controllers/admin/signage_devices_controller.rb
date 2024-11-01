@@ -1,4 +1,6 @@
 class Admin::SignageDevicesController < AdminController
+  # @rbs @signage_device: SignageDevice
+
   # @rbs return: void
   def new
     @signage_device = SignageDevice.new

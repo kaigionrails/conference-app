@@ -4,5 +4,7 @@
 module ProfileDecorator : Profile
   def sanitized_description: () -> untyped
 
+  @sanitizer: Rails::Html::SafeListSanitizer
+
   private def sanitizer: () -> untyped
 end
