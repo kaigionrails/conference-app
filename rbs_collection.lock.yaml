@@ -25,6 +25,14 @@ gems:
     revision: df0b86dbc3a9f2bd6eecce3bec95b48b0246ab8e
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: actiontext
+  version: '7.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 408834635f112abe5ea66cf3846f5c81ce2c94b4
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: actionview
   version: '6.0'
   source:
