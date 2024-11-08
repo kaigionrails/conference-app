@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/unasuke/redis-actionpack.git
+  revision: f94d676dd89ee63b2defd219334c585cbbe897a8
+  branch: rails-8
+  specs:
+    redis-actionpack (5.4.0)
+      actionpack (>= 5)
+      redis-rack (>= 2.1.0, < 4)
+      redis-store (>= 1.1.0, < 2)
+
+GIT
   remote: https://github.com/unasuke/redis-store.git
   revision: 11f7f8e9d15045fe84e1d5ef90fa81984df18300
   ref: 11f7f8e
@@ -362,9 +372,11 @@ GEM
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
-    redis-actionpack (0.0.0)
     redis-client (0.22.2)
       connection_pool
+    redis-rack (3.0.0)
+      rack-session (>= 0.2.0)
+      redis-store (>= 1.2, < 2)
     regexp_parser (2.9.2)
     reline (0.5.10)
       io-console (~> 0.5)
@@ -552,7 +564,7 @@ DEPENDENCIES
   rbs-inline
   rbs_rails
   redis (~> 5.3)
-  redis-actionpack
+  redis-actionpack!
   redis-store!
   rspec-rails (~> 7.0)
   scout_apm
