@@ -32,7 +32,7 @@ gem "tailwindcss-rails"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.3"
 
-gem "redis-actionpack", github: "unasuke/redis-actionpack", branch: "rails-8"
+gem "redis-actionpack"
 gem "redis-store", github: "unasuke/redis-store", ref: "11f7f8e" # FIXME: Until next release
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
@@ -87,7 +87,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   gem "factory_bot_rails", "~> 6.4.4"
-  gem "rspec-rails", "~> 7.0"
+  gem "rspec-rails", "~> 7.1"
 
   gem "standard"
   gem "standard-rails"
