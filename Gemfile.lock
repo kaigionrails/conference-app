@@ -123,7 +123,7 @@ GEM
       rexml
     crass (1.0.6)
     csv (3.3.0)
-    date (3.4.0)
+    date (3.4.1)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -220,7 +220,7 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.4)
-    mission_control-jobs (0.6.0)
+    mission_control-jobs (1.0.1)
       actioncable (>= 7.1)
       actionpack (>= 7.1)
       activejob (>= 7.1)
