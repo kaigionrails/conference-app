@@ -1,8 +1,6 @@
 # Generated from app/models/ongoing_event.rb with RBS::Inline
 
 class OngoingEvent < ApplicationRecord
-  def self.count: () -> Integer
-
   def self.first: () -> OngoingEvent
                 | ...
 end
