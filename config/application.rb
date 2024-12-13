@@ -43,5 +43,6 @@ module ConferenceApp
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.rails_semantic_logger.format = :json
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end
