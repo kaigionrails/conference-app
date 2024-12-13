@@ -35,12 +35,50 @@ jobs:
           cache-to: type=gha,mode=max
           tags: ${{ steps.meta.outputs.tags }}
 
-  deploy:
+  deploy_migration:
     runs-on: ubuntu-latest
     concurrency:
       group: "deploy"
       cancel-in-progress: false
     needs: ["build"]
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_REGION: us-west-2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-west-2
+          role-skip-session-tagging: false
+          role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
+      - uses: kayac/ecspresso@v2
+        with:
+          version: latest
+      - run: ecspresso run --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/runtask-db-migrate.jsonnet
+  deploy_worker:
+    runs-on: ubuntu-latest
+    needs: ["deploy_migration"]
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      AWS_REGION: us-west-2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-west-2
+          role-skip-session-tagging: false
+          role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
+      - uses: kayac/ecspresso@v2
+        with:
+          version: latest
+      - run: ecspresso deploy --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
+  deploy_app:
+    runs-on: ubuntu-latest
+    needs: ["deploy_migration"]
     permissions:
       id-token: write
       contents: read
@@ -54,11 +92,6 @@ jobs:
           aws-region: us-west-2
           role-skip-session-tagging: false
           role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
-      - uses: kayac/ecspresso@v2
-        with:
-          version: latest
-      - run: ecspresso run --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/runtask-db-migrate.jsonnet
-      - run: ecspresso deploy --config deploy/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
       - run: |
           SERVICE_ARN=arn:aws:apprunner:us-west-2:861452569180:service/conference-app/37cc4e1e45894229965d668879123b40
           until [ $(aws apprunner describe-service --service-arn ${SERVICE_ARN} --output json | jq -r '.Service.Status') = RUNNING ]
