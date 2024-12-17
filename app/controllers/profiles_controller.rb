@@ -48,8 +48,8 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(
       :name,
       :description,
-      images: [], #: Array[untyped]
-      profile_badge_ids: [] #: Array[untyped]
+      images: [], # : Array[untyped]
+      profile_badge_ids: [] # : Array[untyped]
     )
   end
 
