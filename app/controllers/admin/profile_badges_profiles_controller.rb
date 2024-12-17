@@ -26,6 +26,8 @@ class Admin::ProfileBadgesProfilesController < AdminController
   end
 
   private def profile_badges_profiles_params
-    params.permit(profile_badge_ids: [])
+    params.permit(
+      profile_badge_ids: [] #: Array[untyped]
+    )
   end
 end

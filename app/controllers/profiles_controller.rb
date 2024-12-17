@@ -45,7 +45,12 @@ class ProfilesController < ApplicationController
   end
 
   private def profile_params
-    params.require(:profile).permit(:name, :description, images: [], profile_badge_ids: [])
+    params.require(:profile).permit(
+      :name,
+      :description,
+      images: [], #: Array[untyped]
+      profile_badge_ids: [] #: Array[untyped]
+    )
   end
 
   private def profile_non_image_params
