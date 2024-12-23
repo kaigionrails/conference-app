@@ -33,7 +33,7 @@ gem "tailwindcss-rails"
 gem "redis", "~> 5.3"
 
 gem "redis-actionpack"
-gem "redis-store", github: "unasuke/redis-store", ref: "11f7f8e" # FIXME: Until next release
+gem "redis-store"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

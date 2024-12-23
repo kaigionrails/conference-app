@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/unasuke/redis-store.git
-  revision: 11f7f8e9d15045fe84e1d5ef90fa81984df18300
-  ref: 11f7f8e
-  specs:
-    redis-store (1.10.0)
-      redis (>= 4, < 6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -376,6 +368,8 @@ GEM
     redis-rack (3.0.0)
       rack-session (>= 0.2.0)
       redis-store (>= 1.2, < 2)
+    redis-store (1.11.0)
+      redis (>= 4, < 6)
     regexp_parser (2.9.3)
     reline (0.5.12)
       io-console (~> 0.5)
@@ -565,7 +559,7 @@ DEPENDENCIES
   rbs_rails
   redis (~> 5.3)
   redis-actionpack
-  redis-store!
+  redis-store
   rspec-rails (~> 7.1)
   scout_apm
   sentry-rails
