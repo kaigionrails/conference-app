@@ -1,0 +1,36 @@
+name: CI on Rails edge
+
+on:
+  schedule:
+    - cron: "0 0 * * SUN"
+  workflow_dispatch:
+env:
+  BUNDLE_GEMFILE: gemfiles/rails_edge.gemfile
+  RAILS_ENV: test
+  TZ: "Asia/Tokyo"
+  DATABASE_URL: postgres://postgres:postgres@localhost:5432/conference_app_test
+jobs:
+  build:
+    name: CI on Rails edge
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15.4-bookworm
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: conference_app_test
+      redis:
+        image: redis:7.2-bookworm
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rails db:schema:load
+      - run: bundle exec rails tailwindcss:build
+      - run: bundle exec rspec
