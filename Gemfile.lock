@@ -151,16 +151,16 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.27.5-aarch64-linux)
+    google-protobuf (4.29.2-aarch64-linux)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.27.5-arm64-darwin)
+    google-protobuf (4.29.2-arm64-darwin)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.27.5-x86_64-darwin)
+    google-protobuf (4.29.2-x86_64-darwin)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.27.5-x86_64-linux)
+    google-protobuf (4.29.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
     hashdiff (1.1.1)
@@ -284,8 +284,8 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
-    pg_query (5.1.0)
-      google-protobuf (>= 3.22.3)
+    pg_query (6.0.0)
+      google-protobuf (>= 3.25.3)
     prism (1.2.0)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
