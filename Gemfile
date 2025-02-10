@@ -13,7 +13,7 @@ gem "propshaft"
 gem "pg", "~> 1.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.5"
+gem "puma", "~> 6.6"
 
 gem "rack-contrib", "~> 2.5.0"
 
