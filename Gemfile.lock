@@ -114,7 +114,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.3.1)
+    csv (3.3.2)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
@@ -180,7 +180,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.9.1)
+    json (2.10.1)
     jwt (2.10.1)
       base64
     kaminari (1.2.2)
@@ -195,7 +195,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    language_server-protocol (3.17.0.3)
+    language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -283,7 +283,7 @@ GEM
     openssl (3.2.0)
     ostruct (0.6.1)
     parallel (1.26.3)
-    parser (3.3.7.0)
+    parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
@@ -465,7 +465,7 @@ GEM
     standard-rails (1.2.0)
       lint_roller (~> 1.0)
       rubocop-rails (~> 2.26.0)
-    steep (1.9.3)
+    steep (1.9.4)
       activesupport (>= 5.1)
       concurrent-ruby (>= 1.1.10)
       csv (>= 3.0.9)
