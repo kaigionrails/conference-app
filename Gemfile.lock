@@ -368,13 +368,13 @@ GEM
       rbs (>= 1)
     rdoc (6.12.0)
       psych (>= 4.0.0)
-    redis (5.3.0)
+    redis (5.4.0)
       redis-client (>= 0.22.0)
     redis-actionpack (5.5.0)
       actionpack (>= 5)
       redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
-    redis-client (0.22.2)
+    redis-client (0.23.2)
       connection_pool
     redis-rack (3.0.0)
       rack-session (>= 0.2.0)
@@ -568,7 +568,7 @@ DEPENDENCIES
   rbs
   rbs-inline
   rbs_rails
-  redis (~> 5.3)
+  redis (~> 5.4)
   redis-actionpack
   redis-store
   rspec-rails (~> 7.1)
