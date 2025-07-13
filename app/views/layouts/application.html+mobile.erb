@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -25,7 +25,7 @@
         <%= message %>
       </div>
     <% end %>
-    <main class="w-full mx-auto pb-2 flex text-black flex-grow overflow-scroll">
+    <main class="w-full mx-auto pb-2 flex text-black grow overflow-scroll">
       <%= yield %>
     </main>
   </body>

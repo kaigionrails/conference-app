@@ -1,5 +1,5 @@
 <% content_for(:page_title, t(".title")) %>
-<div class="w-full max-w-screen-xl m-auto pt-4 px-4">
+<div class="w-full max-w-(--breakpoint-xl) m-auto pt-4 px-4">
   <section class="mb-6">
     <h2 class="font-bold text-2xl mb-3">TOC</h2>
     <% @talks.map(&:start_at).uniq.group_by(&:to_date).each do |date, slots| %>
@@ -22,7 +22,7 @@
       <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime("%d日 %H:%M ～") %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
         <% talks.reverse.each do |talk| # want to place Room Red -> Room Blue, so reverse %>
-          <div class="w-full md:w-[48%] border border-black shadow-sm shadow-gray-400 rounded-lg mb-4 p-4">
+          <div class="w-full md:w-[48%] border border-black shadow-xs shadow-gray-400 rounded-lg mb-4 p-4">
             <div class="w-full flex">
               <div class="w-24">
                 <% talk.speakers.each do |speaker| %>

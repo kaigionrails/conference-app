@@ -2,7 +2,7 @@
 <div>
   <%= form_with model: @signage_panel, url: admin_signage_panel_path(@signage_panel.id) do |f| %>
     <%= f.label :name, "名前", class: "block text-lg font-bold mb-2" %>
-    <%= f.text_field :name, class: "block rounded mb-4 w-52" %>
-    <%= f.submit "Update panel", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <%= f.text_field :name, class: "block rounded-sm mb-4 w-52" %>
+    <%= f.submit "Update panel", class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
   <% end %>
 </div>

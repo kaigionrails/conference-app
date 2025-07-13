@@ -9,14 +9,14 @@
     <div class="mb-8">
       <%= form_with model: @ongoing_event, url: admin_ongoing_event_path(@ongoing_event) do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>
-        <%= f.submit "Make this event ongoing", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+        <%= f.submit "Make this event ongoing", class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
       <% end %>
     </div>
   <% else %>
     <div class="mb-8">
       <%= form_with scope: :ongoing_event, url: admin_ongoing_events_path do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>
-        <%= f.submit "Make this event ongoing", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+        <%= f.submit "Make this event ongoing", class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
       <% end %>
     </div>
   <% end %>

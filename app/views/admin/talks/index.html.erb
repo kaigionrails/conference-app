@@ -2,14 +2,14 @@
 <h2 class="font-bold text-xl mb-8">Talks</h2>
 <div class="mb-8">
   <% all_event = @event.nil? %>
-  <%= link_to "All events talks", admin_talks_path(), class: "rounded-md px-2.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{all_event ? "bg-gray-50" : "bg-white"}" %>
+  <%= link_to "All events talks", admin_talks_path(), class: "rounded-md px-2.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{all_event ? "bg-gray-50" : "bg-white"}" %>
   <% @events.each do |event| %>
     <% this_event = @event == event %>
-    <%= link_to event.slug, admin_talks_path(event: event.slug), class: "rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{this_event ? "bg-gray-50" : "bg-white"}" %>
+    <%= link_to event.slug, admin_talks_path(event: event.slug), class: "rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{this_event ? "bg-gray-50" : "bg-white"}" %>
   <% end %>
   </ol>
 </div>
-<div class="rounded w-full pr-8 shadow-sm">
+<div class="rounded-sm w-full pr-8 shadow-xs">
   <table class="w-full divide-y border">
     <thead class="bg-gray-50">
       <tr>
@@ -27,7 +27,7 @@
           <td class="p-3">
             <div class="flex flow-row flex-wrap">
               <% talk.speakers.each do |speaker| %>
-                <%= image_tag speaker.avatar_image_url, class: "rounded mb-1 w-24 h-24" %>
+                <%= image_tag speaker.avatar_image_url, class: "rounded-sm mb-1 w-24 h-24" %>
               <% end %>
             </div>
           </td>

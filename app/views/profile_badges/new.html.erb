@@ -1,5 +1,5 @@
 <% content_for(:page_title, t(".title")) %>
-<div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-screen-xl m-x-auto" data-controller="profile-badge">
+<div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-(--breakpoint-xl) m-x-auto" data-controller="profile-badge">
   <h2 class="font-bold text-3xl mb-2">バッヂを作る</h2>
   <h3 class="font-bolda text-2xl mb-2">プレビュー</h3>
   <div class="mb-4 pt-2">
@@ -8,17 +8,17 @@
   <div class="mb-8">
     <%= form_for @profile_badge do |f| %>
       <%= f.label :text, "テキスト", class: "block text-lg font-bold mb-2" %>
-      <%= f.text_field :text, class: "block text-black rounded mb-4 w-[40rem] max-w-full", data: { action: "profile-badge#updatePreview" } %>
+      <%= f.text_field :text, class: "block text-black rounded-sm mb-4 w-[40rem] max-w-full", data: { action: "profile-badge#updatePreview" } %>
       <%= f.label :border_color_code, "枠線の色", class: "block text-lg font-bold mb-2" %>
       <%= f.color_field :border_color_code, class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
       <%= f.label :background_color_code, "背景の色", class: "block text-lg font-bold mb-2" %>
       <%= f.color_field :background_color_code, value: "#ffffff", class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
       <div class="mb-8">
-        <%= check_box_tag "save_and_assign", "save_and_assign", true, class: "w-4 h-4 rounded" do %>
+        <%= check_box_tag "save_and_assign", "save_and_assign", true, class: "w-4 h-4 rounded-sm" do %>
         <% end %>
         <%= label_tag "save_and_asdign", "保存後、自分にバッヂをつける" %>
       </div>
-      <%= f.submit "バッヂを作成する", class: "block border shadow border-gray-500 bg-white text-gray-900 rounded-lg px-4 py-2 cursor-pointer" %>
+      <%= f.submit "バッヂを作成する", class: "block border shadow-sm border-gray-500 bg-white text-gray-900 rounded-lg px-4 py-2 cursor-pointer" %>
     <% end %>
   </div>
   <%= link_to "プロフィールに戻る", profiles_path, class: "underline" %>

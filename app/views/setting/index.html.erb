@@ -1,5 +1,5 @@
 <% content_for(:page_title, t(".title")) %>
-<div class="w-full max-w-screen-xl mx-auto pt-4 px-4 pb-6">
+<div class="w-full max-w-(--breakpoint-xl) mx-auto pt-4 px-4 pb-6">
   <h2 class="font-bold text-3xl mb-4">設定</h2>
   <h3 class="font-bold text-2xl mb-2">プッシュ通知設定</h3>
   <p class="mb-2">ログインをするとプッシュ通知を有効にすることができます。プッシュ通知を有効にすると、以下の場合に通知されます。</p>
@@ -11,8 +11,8 @@
   <p class="mb-4">参考: <a href="https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios" target="_blank" class="underline">iPhoneのSafariでWebサイトをブックマークに登録する - Apple サポート (日本)</a>
   <% if logged_in? %>
     <div data-controller="push-notification">
-      <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4">プッシュ通知を有効にする</button>
-      <button data-action="click->push-notification#sendSamplePushNotification" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
+      <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4">プッシュ通知を有効にする</button>
+      <button data-action="click->push-notification#sendSamplePushNotification" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
         テスト通知を送信する
       </button>
       <p class="mb-1">※プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。</p>
@@ -21,7 +21,7 @@
   <% else %>
     <p class="mb-3">下のボタンからログインをすることで通知の設定が行えます。</p>
     <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
-      <%= button_tag type: "submit", class: "bg-white px-4 py-2 text-gray-900 rounded-lg shadow border-black border flex flex-row items-center" do %>
+      <%= button_tag type: "submit", class: "bg-white px-4 py-2 text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center" do %>
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
         <span class="font-semibold text-lg pl-3">Login with GitHub</span>
       <% end %>

@@ -2,9 +2,9 @@
 <div>
   <%= form_with model: @signage_device_assign, url: admin_signage_device_assigns_path do |f| %>
     <%= f.label :signage_device_id, "device", class: "block text-lg font-bold mb-2" %>
-    <%= f.select :signage_device_id, @signage_devices.map {|device| [device.device_name, device.id]}, {}, class: "block rounded mb-4" %>
+    <%= f.select :signage_device_id, @signage_devices.map {|device| [device.device_name, device.id]}, {}, class: "block rounded-sm mb-4" %>
     <%= f.label :signage_panel_id, "表示する面", class: "block text-lg font-bold mb-2" %>
-    <%= f.select :signage_panel_id, @signage_panels.map {|panel| [panel.name, panel.id]}, {}, class: "block rounded mb-4" %>
-    <%= f.submit "Create", class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <%= f.select :signage_panel_id, @signage_panels.map {|panel| [panel.name, panel.id]}, {}, class: "block rounded-sm mb-4" %>
+    <%= f.submit "Create", class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
   <% end %>
 </div>
