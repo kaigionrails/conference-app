@@ -1,5 +1,5 @@
 <h2 class="font-bold text-xl mb-8">Users</h2>
-<div class="rounded w-full pr-8 shadow-sm">
+<div class="rounded-sm w-full pr-8 shadow-xs">
   <table class="w-full divide-y border">
     <thead class="bg-gray-50">
       <tr>
@@ -14,7 +14,7 @@
         <tr>
           <td class="p-3">
             <% if user.profile&.images&.first %>
-              <%= image_tag user.profile.images.first.representation(resize_to_limit: [50, 50]), class: "rounded" %>
+              <%= image_tag user.profile.images.first.representation(resize_to_limit: [50, 50]), class: "rounded-sm" %>
             <% end %>
           </td>
           <td class="p-3"><%= user.name %></td>

@@ -2,7 +2,7 @@
 <div>
   <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
     <%= f.label :role, "Role", class: "block text-lg font-bold mb-2" %>
-    <%= f.select :role, User.roles, {}, class: "block rounded border-1 mb-20" %>
-    <%= f.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+    <%= f.select :role, User.roles, {}, class: "block rounded-sm border-1 mb-20" %>
+    <%= f.submit class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
   <% end %>
 </div>

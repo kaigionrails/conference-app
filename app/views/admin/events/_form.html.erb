@@ -1,9 +1,9 @@
 <%= form.label :name, "Name", class: "block text-lg font-bold mb-2" %>
-<%= form.text_field :name, class: "block rounded mb-4 w-[40rem]" %>
+<%= form.text_field :name, class: "block rounded-sm mb-4 w-[40rem]" %>
 <%= form.label :slug, "Slug", class: "block text-lg font-bold mb-2" %>
-<%= form.text_field :slug, class: "block rounded mb-4 w-[40rem]" %>
+<%= form.text_field :slug, class: "block rounded-sm mb-4 w-[40rem]" %>
 <%= form.label :start_date_jst, "Start date (JST)", class: "block text-lg font-bold mb-2" %>
-<%= form.date_field :start_date_jst, value: event.start_date&.in_time_zone("Tokyo"), class: "block rounded mb-4 w-[40rem]" %>
+<%= form.date_field :start_date_jst, value: event.start_date&.in_time_zone("Tokyo"), class: "block rounded-sm mb-4 w-[40rem]" %>
 <%= form.label :end_date_jst, "End date (JST)", class: "block text-lg font-bold mb-2" %>
-<%= form.date_field :end_date_jst, value: event.end_date&.in_time_zone("Tokyo"), class: "block rounded mb-4 w-[40rem]" %>
-<%= form.submit class: "block border shadow border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+<%= form.date_field :end_date_jst, value: event.end_date&.in_time_zone("Tokyo"), class: "block rounded-sm mb-4 w-[40rem]" %>
+<%= form.submit class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>

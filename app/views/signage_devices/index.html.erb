@@ -1,16 +1,16 @@
 <div class="w-full" data-controller="signage-devices">
   <div class="flex flex-col mx-auto w-1/3 pt-6">
     <h2 class="font-bold text-xl mb-4">Determine signage device</h2>
-    <select id="deviece-select" data-signage-devices-target="select" class="rounded mb-4">
+    <select id="deviece-select" data-signage-devices-target="select" class="rounded-sm mb-4">
       <% @signage_devices.each do |device| %>
         <option value=<%= device.id %>><%= device.device_name %></option>
       <% end %>
     </select>
     <div class="mb-4 text-center">
-      <button data-action="click->signage-devices#submitDevice" class="inline-block border shadow bg-white border-gray-500 rounded px-4 py-2 cursor-pointer">Set device</button>
+      <button data-action="click->signage-devices#submitDevice" class="inline-block border shadow-sm bg-white border-gray-500 rounded-sm px-4 py-2 cursor-pointer">Set device</button>
     </div>
     <div class="text-center">
-      <%= link_to "back to signage", signages_path, class: "border shadow bg-white border-gray-500 rounded px-4 py-2 cursor-pointer" %>
+      <%= link_to "back to signage", signages_path, class: "border shadow-sm bg-white border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
     </div>
   </div>
 </div>

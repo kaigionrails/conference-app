@@ -29,13 +29,13 @@ export default class extends Controller {
 
   addProfileImageFieldForPc(event) {
     const className =
-      "block w-96 text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-none mb-4";
+      "block w-96 text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-hidden mb-4";
     this.addProfileImageField(event, className);
   }
 
   addProfileImageFieldForSp(event) {
     const className =
-      "block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-none mb-4";
+      "block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-hidden mb-4";
     this.addProfileImageField(event, className);
   }
 
