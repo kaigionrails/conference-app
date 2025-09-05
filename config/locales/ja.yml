@@ -2,7 +2,7 @@ ja:
   about:
     index:
       title: "Conference Appについて"
-      about_this_app: このアプリは、Kaigi on Rails 2023に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。
+      about_this_app: このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。
       feature_sessions: セッションの一覧機能
       feature_sessions_description1: 右上のアイコンを押すとメニューが開き、そこから「Talks」をクリックすることでセッションの一覧を見ることができます。
       feature_sessions_description2: セッションはブックマークすることができます。通知を有効にしている場合、ブックマークしたトークの開始前にプッシュ通知が行われます。
@@ -33,9 +33,9 @@ ja:
       back_to_list: "<< アナウンス一覧に戻る"
   home:
     index:
-      title: "Kaigi on Rails 2023 Conference App"
+      title: "Kaigi on Rails 2024 Conference App"
       subtitle: "このアプリについて"
-      about_this_app: "このアプリは、Kaigi on Rails 2023に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。"
+      about_this_app: "このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。"
       you_can_use_menu: "右上のメニューからも遷移することができます。"
       about_this_app_more: "詳しくは%{link}"
       read_about_page: "「About」ページをごらんください。"
@@ -89,12 +89,14 @@ ja:
       push_notification_timing_bookmarked_talks: "ブックマークした発表が開始する数分前(5分前〜3分前程度)"
       push_notification_timing_announcements_by_orgs: "運営からのアナウンスが公開された場合"
       ios_device_note: "お使いのデバイスがiOSの場合は、Safariで「ホーム画面に追加」からPWAとしてインストール必要があります。"
-      ios_pwa_support_page: "iPhoneのSafariでWebサイトをブックマークに登録する - Apple サポート (日本)"
+      ios_pwa_support_page_url: "https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios"
+      ios_pwa_support_page_title: "iPhoneのSafariでWebサイトをブックマークに登録する - Apple サポート (日本)"
       enable_push_notification: "プッシュ通知を有効にする"
       send_test_push_notification: "テスト通知を送信する"
       test_push_notification_will_send_all_devices: "※プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。"
       push_notification_disclaimer: "※プッシュ通知の到達の保障はいたしかねます。"
       need_login: "下のボタンからログインをすることで通知の設定が行えます。"
+      reference: "参考"
   config:
     index:
       title: "設定"
@@ -114,9 +116,24 @@ ja:
       abstract: "概要"
       speakers: "スピーカー"
       back_to_index: "発表一覧に戻る"
+      post_to_twitter_with_hashtag: "ハッシュタグを付けて𝕏に投稿する"
+  users:
+    show:
+      login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"
+      login_with_github: "GitHubアカウントでログインする"
+      friends_met_at_event: "%{event_name}で知り合った人達%{number_of_friends}"
+      show_friends: "一覧を見る"
   layouts:
     header_nav:
       not_logged_in: "ログインしていません"
+      profile: "Profile"
+      talks: "Talks"
+      about: "About"
+      announcements: "Announcements"
+      setting: "Setting"
+      admin_console: "Admin console"
+      logout: "Logout"
+      login_with_github: "Login with GitHub"
   activerecord:
     models:
       announcement: "アナウンス"
