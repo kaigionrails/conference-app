@@ -1,34 +1,34 @@
 class SignageSchedule < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[SignageSchedule, ActiveRecord_Relation, Integer]
+  extend ::_ActiveRecord_Relation_ClassMethods[::SignageSchedule, ::SignageSchedule::ActiveRecord_Relation, ::Integer]
 
   module GeneratedAttributeMethods
-    def id: () -> Integer
+    def id: () -> ::Integer
 
-    def id=: (Integer) -> Integer
+    def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
     def id_changed?: () -> bool
 
-    def id_change: () -> [ Integer?, Integer? ]
+    def id_change: () -> [ ::Integer?, ::Integer? ]
 
     def id_will_change!: () -> void
 
-    def id_was: () -> Integer?
+    def id_was: () -> ::Integer?
 
     def id_previously_changed?: () -> bool
 
-    def id_previous_change: () -> Array[Integer?]?
+    def id_previous_change: () -> ::Array[::Integer?]?
 
-    def id_previously_was: () -> Integer?
+    def id_previously_was: () -> ::Integer?
 
-    def id_before_last_save: () -> Integer?
+    def id_before_last_save: () -> ::Integer?
 
-    def id_change_to_be_saved: () -> Array[Integer?]?
+    def id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def id_in_database: () -> Integer?
+    def id_in_database: () -> ::Integer?
 
-    def saved_change_to_id: () -> Array[Integer?]?
+    def saved_change_to_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_id?: () -> bool
 
@@ -38,33 +38,33 @@ class SignageSchedule < ::ApplicationRecord
 
     def clear_id_change: () -> void
 
-    def signage_id: () -> Integer
+    def signage_id: () -> ::Integer
 
-    def signage_id=: (Integer) -> Integer
+    def signage_id=: (::Integer) -> ::Integer
 
     def signage_id?: () -> bool
 
     def signage_id_changed?: () -> bool
 
-    def signage_id_change: () -> [ Integer?, Integer? ]
+    def signage_id_change: () -> [ ::Integer?, ::Integer? ]
 
     def signage_id_will_change!: () -> void
 
-    def signage_id_was: () -> Integer?
+    def signage_id_was: () -> ::Integer?
 
     def signage_id_previously_changed?: () -> bool
 
-    def signage_id_previous_change: () -> Array[Integer?]?
+    def signage_id_previous_change: () -> ::Array[::Integer?]?
 
-    def signage_id_previously_was: () -> Integer?
+    def signage_id_previously_was: () -> ::Integer?
 
-    def signage_id_before_last_save: () -> Integer?
+    def signage_id_before_last_save: () -> ::Integer?
 
-    def signage_id_change_to_be_saved: () -> Array[Integer?]?
+    def signage_id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def signage_id_in_database: () -> Integer?
+    def signage_id_in_database: () -> ::Integer?
 
-    def saved_change_to_signage_id: () -> Array[Integer?]?
+    def saved_change_to_signage_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_signage_id?: () -> bool
 
@@ -74,33 +74,33 @@ class SignageSchedule < ::ApplicationRecord
 
     def clear_signage_id_change: () -> void
 
-    def start_at: () -> ActiveSupport::TimeWithZone
+    def start_at: () -> ::ActiveSupport::TimeWithZone
 
-    def start_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def start_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def start_at?: () -> bool
 
     def start_at_changed?: () -> bool
 
-    def start_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def start_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def start_at_will_change!: () -> void
 
-    def start_at_was: () -> ActiveSupport::TimeWithZone?
+    def start_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def start_at_previously_changed?: () -> bool
 
-    def start_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def start_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def start_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def start_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def start_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def start_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def start_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def start_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def start_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def start_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_start_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_start_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_start_at?: () -> bool
 
@@ -110,33 +110,33 @@ class SignageSchedule < ::ApplicationRecord
 
     def clear_start_at_change: () -> void
 
-    def end_at: () -> ActiveSupport::TimeWithZone
+    def end_at: () -> ::ActiveSupport::TimeWithZone
 
-    def end_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def end_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def end_at?: () -> bool
 
     def end_at_changed?: () -> bool
 
-    def end_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def end_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def end_at_will_change!: () -> void
 
-    def end_at_was: () -> ActiveSupport::TimeWithZone?
+    def end_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def end_at_previously_changed?: () -> bool
 
-    def end_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def end_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def end_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def end_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def end_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def end_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def end_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def end_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def end_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def end_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_end_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_end_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_end_at?: () -> bool
 
@@ -146,33 +146,33 @@ class SignageSchedule < ::ApplicationRecord
 
     def clear_end_at_change: () -> void
 
-    def created_at: () -> ActiveSupport::TimeWithZone
+    def created_at: () -> ::ActiveSupport::TimeWithZone
 
-    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def created_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def created_at?: () -> bool
 
     def created_at_changed?: () -> bool
 
-    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def created_at_will_change!: () -> void
 
-    def created_at_was: () -> ActiveSupport::TimeWithZone?
+    def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def created_at_previously_changed?: () -> bool
 
-    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def created_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def created_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def created_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def created_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_created_at?: () -> bool
 
@@ -182,33 +182,33 @@ class SignageSchedule < ::ApplicationRecord
 
     def clear_created_at_change: () -> void
 
-    def updated_at: () -> ActiveSupport::TimeWithZone
+    def updated_at: () -> ::ActiveSupport::TimeWithZone
 
-    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def updated_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def updated_at?: () -> bool
 
     def updated_at_changed?: () -> bool
 
-    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def updated_at_will_change!: () -> void
 
-    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+    def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def updated_at_previously_changed?: () -> bool
 
-    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def updated_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def updated_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def updated_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def updated_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_updated_at?: () -> bool
 
@@ -219,21 +219,21 @@ class SignageSchedule < ::ApplicationRecord
     def clear_updated_at_change: () -> void
   end
   include GeneratedAttributeMethods
-  def signage_pages: () -> SignagePage::ActiveRecord_Associations_CollectionProxy
-  def signage_pages=: (SignagePage::ActiveRecord_Associations_CollectionProxy | Array[SignagePage]) -> (SignagePage::ActiveRecord_Associations_CollectionProxy | Array[SignagePage])
-  def signage_page_ids: () -> Array[Integer]
-  def signage_page_ids=: (Array[Integer]) -> Array[Integer]
-  def signage_schedule_assigns: () -> SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy
-  def signage_schedule_assigns=: (SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy | Array[SignageScheduleAssign]) -> (SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy | Array[SignageScheduleAssign])
-  def signage_schedule_assign_ids: () -> Array[Integer]
-  def signage_schedule_assign_ids=: (Array[Integer]) -> Array[Integer]
+  def signage_pages: () -> ::SignagePage::ActiveRecord_Associations_CollectionProxy
+  def signage_pages=: (::SignagePage::ActiveRecord_Associations_CollectionProxy | ::Array[::SignagePage]) -> (::SignagePage::ActiveRecord_Associations_CollectionProxy | ::Array[::SignagePage])
+  def signage_page_ids: () -> ::Array[::Integer]
+  def signage_page_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def signage_schedule_assigns: () -> ::SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy
+  def signage_schedule_assigns=: (::SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy | ::Array[::SignageScheduleAssign]) -> (::SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy | ::Array[::SignageScheduleAssign])
+  def signage_schedule_assign_ids: () -> ::Array[::Integer]
+  def signage_schedule_assign_ids=: (::Array[::Integer]) -> ::Array[::Integer]
 
-  def signage: () -> Signage
-  def signage=: (Signage?) -> Signage?
-  def reload_signage: () -> Signage?
-  def build_signage: (untyped) -> Signage
-  def create_signage: (untyped) -> Signage
-  def create_signage!: (untyped) -> Signage
+  def signage: () -> ::Signage
+  def signage=: (::Signage?) -> ::Signage?
+  def reload_signage: () -> ::Signage?
+  def build_signage: (untyped) -> ::Signage
+  def create_signage: (untyped) -> ::Signage
+  def create_signage!: (untyped) -> ::Signage
   module GeneratedAssociationMethods
   end
   include GeneratedAssociationMethods
@@ -242,13 +242,13 @@ class SignageSchedule < ::ApplicationRecord
   end
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SignageSchedule, Integer]
-    include Enumerable[SignageSchedule]
+    include ::SignageSchedule::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::SignageSchedule, ::Integer]
+    include ::Enumerable[::SignageSchedule]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SignageSchedule, Integer]
+    include ::SignageSchedule::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::SignageSchedule, ::Integer]
   end
 end
