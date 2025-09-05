@@ -2,17 +2,17 @@
 <div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-(--breakpoint-xl) mx-auto">
   <section class="mb-4">
     <section class="mb-6">
-      <h2 class="font-bold text-3xl mb-2">Conference Appについて</h2>
+      <h2 class="font-bold text-3xl mb-2"><%= t('.title') %></h2>
       <hr class="mb-3">
-      <p class="mb-2">このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。</p>
+      <p class="mb-2"><%= t('.about_this_app') %></p>
       <ul class="list-disc pl-6 mb-2">
-        <li class="mb-1">セッションの一覧機能</li>
-        <li class="mb-1">運営からのアナウンス</li>
-        <li class="mb-1">プロフィール登録・交換</li>
+        <li class="mb-1"><%= t('.feature_sessions') %></li>
+        <li class="mb-1"><%= t('.feature_announcements') %></li>
+        <li class="mb-1"><%= t('.feature_profile') %></li>
       </ul>
       <% unless logged_in? %>
-        <p class="mb-2">このアプリの機能を活用していただくためには、GitHubアカウントでログインしていただく必要があります。</p>
-        <p class="mb-2">以下のボタンから、GitHubアカウントでのログインをお願いします。</p>
+        <p class="mb-2"><%= t('.need_github_login') %></p>
+        <p class="mb-2"><%= t('.github_login_flow') %></p>
         <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
           <%= button_tag type: "submit", class: "bg-white px-4 py-2 text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center" do %>
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
@@ -22,29 +22,29 @@
       <% end %>
     </section>
     <section class="mb-6">
-      <h3 class="font-bold text-2xl mb-2">セッションの一覧機能</h3>
-      <p class="mb-2">右上のアイコンを押すとメニューが開き、そこから「Talks」をクリックすることでセッションの一覧を見ることができます。</p>
-      <p class="mb-2">セッションはブックマークすることができます。通知を有効にしている場合、ブックマークしたトークの開始前にプッシュ通知が行われます。</p>
+      <h3 class="font-bold text-2xl mb-2"><%= t('.feature_sessions') %></h3>
+      <p class="mb-2"><%= t('.feature_sessions_description1') %></p>
+      <p class="mb-2"><%= t('.feature_sessions_description2') %></p>
     </section>
     <section class="mb-6">
-      <h3 class="font-bold text-2xl mb-2">運営からのアナウンス</h3>
-      <p class="mb-2">カンファレンスの進行について、運営側から参加者の皆さまに向けてアナウンスを行うことがあります。それらのアナウンスを確認することができます。</p>
-      <p class="mb-2">アナウンスについてはログインせずに見ていただくことができます。ログインし、通知を有効にしている場合は新規のアナウンス時に通知されます。</p>
+      <h3 class="font-bold text-2xl mb-2"><%= t('.feature_announcements') %></h3>
+      <p class="mb-2"><%= t('.feature_announcements_description1') %></p>
+      <p class="mb-2"><%= t('.feature_announcements_description2') %></p>
     </section>
     <section class="mb-6">
-      <h3 class="font-bold text-2xl mb-2">プッシュ通知</h3>
-      <p class="mb-2">ブックマークしたセッションの発表時刻および運営からのアナウンス作成時に、プッシュ通知を有効にすることができます。</p>
-      <p class="mb-2">詳細については、右上のアイコンからの「Setting」にてご確認ください。</p>
-      <p class="mb-2"><%= link_to "こちらからも開くことができます", setting_path, class: "underline"%></p>
+      <h3 class="font-bold text-2xl mb-2"><%= t('.feature_push_notification') %></h3>
+      <p class="mb-2"><%= t('.feature_push_notification_description1') %></p>
+      <p class="mb-2"><%= t('.feature_push_notification_description2') %></p>
+      <p class="mb-2"><%= link_to t('.feature_push_notification_setting_link'), setting_path, class: "underline"%></p>
     </section>
     <section class="mb-6">
-      <h3 class="font-bold text-2xl mb-2">プロフィール登録・交換</h3>
-      <p class="mb-2">Conference Appには、あなたのプロフィールを登録することができます。</p>
-      <p class="mb-2">登録したプロフィールは、QRコードで他の参加者の方と交換することができます。SNSアカウントの共有などでご活用ください。</p>
+      <h3 class="font-bold text-2xl mb-2"><%= t('.feature_profile') %></h3>
+      <p class="mb-2"><%= t('.feature_profile_description1') %></p>
+      <p class="mb-2"><%= t('.feature_profile_description2') %></p>
     </section>
     <section class="mb-6">
-      <h3 class="font-bold text-2xl mb-2">コントリビューター</h3>
-      <p class="mb-2">conference-appは以下のコントリビューターによって開発されています（コミット数順）。</p>
+      <h3 class="font-bold text-2xl mb-2"><%= t('.contributors') %></h3>
+      <p class="mb-2"><%= t('.app_contributors') %></p>
       <ul>
         <% JSON.load_file('contributors.json').each do |contributor| %>
           <li>

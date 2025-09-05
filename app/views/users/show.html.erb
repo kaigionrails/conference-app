@@ -2,9 +2,9 @@
 <div class="w-full">
   <% if !logged_in? && @token %>
     <div class="w-full py-4 bg-red-200 text-black text-center">
-      <p class="mb-1">ログインすると、QRコードで読みとった人の履歴を残すことができます。</p>
+      <p class="mb-1"><%= t('users.show.login_prompt') %></p>
       <%= form_tag "/auth/github?return_to=#{user_path(username: @user.name, token: @token)}", method: :post, data: { turbo: false } do %>
-        <%= submit_tag "GitHubアカウントでログインする", class: "underline text-lg cursor-pointer" %>
+        <%= submit_tag t('users.show.login_with_github'), class: "underline text-lg cursor-pointer" %>
       <% end %>
     </div>
   <% end %>
@@ -35,7 +35,7 @@
       <% @events.each do |event| %>
         <% unless @event_friends[event].nil? %>
           <div class="mb-8">
-            <h3 class="text-2xl font-bold mb-6"><%= "#{event.name}で知り合った人達#{@user.number_of_friends(event)}" %></h3>
+            <h3 class="text-2xl font-bold mb-6"><%= t('users.show.friends_met_at_event', event_name: event.name, number_of_friends: @user.number_of_friends(event)) %></h3>
             <% if event == current_event %>
               <ul>
                 <% @event_friends[event]&.each do |profile_exchange| %>
@@ -51,7 +51,7 @@
               </ul>
             <% else %>
               <details>
-                <summary class="text-xl mb-4 cursor-pointer">一覧を見る</summary>
+                <summary class="text-xl mb-4 cursor-pointer"><%= t('users.show.show_friends') %></summary>
                 <ul>
                   <% @event_friends[event]&.each do |profile_exchange| %>
                     <li class="flex flex-row items-center">

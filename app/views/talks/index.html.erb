@@ -5,7 +5,7 @@
     <% @talks.map(&:start_at).uniq.group_by(&:to_date).each do |date, slots| %>
       <details class="mb-3">
         <summary>
-          <span class="font-bold text-xl mb-3 cursor-pointer"><%= date.in_time_zone("Tokyo").strftime("%d日") %></span>
+          <span class="font-bold text-xl mb-3 cursor-pointer"><%= date.in_time_zone("Tokyo").strftime(t('.day_format')) %></span>
         </summary>
         <ol class="list-disc pl-8">
           <% slots.each do |slot| %>
@@ -19,7 +19,7 @@
   </section>
   <% @talks.group_by(&:start_at).each do |slot, talks| %>
     <section class="mb-6">
-      <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime("%d日 %H:%M ～") %></h2>
+      <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= slot.in_time_zone("Tokyo").strftime(t('.time_slot_format')) %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
         <% talks.reverse.each do |talk| # want to place Room Red -> Room Blue, so reverse %>
           <div class="w-full md:w-[48%] border border-black shadow-xs shadow-gray-400 rounded-lg mb-4 p-4">
@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="text-right">
-              <%= link_to "詳細を見る >>", event_talk_path(event_slug: @event.slug, id: talk.id), class: "underline text-right cursor-pointer w-full" %>
+              <%= link_to t('.view_details'), event_talk_path(event_slug: @event.slug, id: talk.id), class: "underline text-right cursor-pointer w-full" %>
             </div>
         </div>
           <% end %>

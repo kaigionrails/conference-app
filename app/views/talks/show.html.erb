@@ -5,7 +5,7 @@
     <div>
       <span class="mr-2"><%= @talk.start_at.in_time_zone("Tokyo").strftime("%d日 %H:%M~") %></span>
       <span class="mr-2 pill pill__<%= @talk.track.downcase.gsub(' ', '-')%>"><%= @talk.track %></span>
-      <span><%= "#{@talk.duration_minutes} 分間" %></span>
+      <span><%= t('.duration_format', duration: @talk.duration_minutes) %></span>
     </div>
     <div class="w-8 h-8">
       <% if logged_in? %>
@@ -24,14 +24,14 @@
     <% end %>
   </div>
   <div class="mb-4 md:mb-6">
-    <h3 class="text-xl mb-2 font-bold">概要</h3>
+    <h3 class="text-xl mb-2 font-bold"><%= t('.abstract') %></h3>
     <div class="break-words markdown"><%= @talk.sanitized_abstract %></div>
   </div>
   <div class="mb-4 md:mb-6">
-    <%= link_to "ハッシュタグを付けて\u{1D54F}に投稿する", @talk.hashtagged_twitter_intent_url, target: "_blank", class: "px-4 py-2 bg-white text-gray-900 rounded-lg shadow-sm border-black border" %>
+    <%= link_to t('.post_to_twitter_with_hashtag'), @talk.hashtagged_twitter_intent_url, target: "_blank", class: "px-4 py-2 bg-white text-gray-900 rounded-lg shadow-sm border-black border" %>
   </div>
   <div class="mb-4 md:mb-6">
-    <h3 class="text-xl mb-2 font-bold">発表者</h3>
+    <h3 class="text-xl mb-2 font-bold"><%= t('.speakers') %></h3>
     <% @talk.speakers.each do |speaker| %>
       <div class="mb-4">
         <h4 class="text-xl mb-2"><%= "#{speaker.name} " %><%= link_to "@#{speaker.github_username}", "https://github.com/#{speaker.github_username}", class: "underline" %></h4>
@@ -44,5 +44,5 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "発表一覧に戻る", event_talks_path(event_slug: @event.slug, anchor: time_with_zone_to_anchor(@talk.start_at)), class: "underline inline-block mb-8", data: {"turbo" => false} %>
+  <%= link_to t('.back_to_index'), event_talks_path(event_slug: @event.slug, anchor: time_with_zone_to_anchor(@talk.start_at)), class: "underline inline-block mb-8", data: {"turbo" => false} %>
 </div>
