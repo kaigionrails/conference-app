@@ -1,66 +1,68 @@
 module ActionText
 end
-class ActionText::Record < ActiveRecord::Base
+class ActionText::Record < ::ActiveRecord::Base
 end
-class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
 module SolidQueue
 end
-class SolidQueue::Record < ActiveRecord::Base
+class SolidQueue::Record < ::ActiveRecord::Base
 end
-class SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SolidQueue::RecurringExecution::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SolidQueue::Execution < SolidQueue::Record
+class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class SolidQueue::Execution < ::SolidQueue::Record
 end
 module ActiveStorage
 end
-class ActiveStorage::Record < ActiveRecord::Base
+class ActiveStorage::Record < ::ActiveRecord::Base
 end
-class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ApplicationRecord < ActiveRecord::Base
+class ApplicationRecord < ::ActiveRecord::Base
 end
-class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class WebpushSubscription::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class UnreadAnnouncement::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class TalkBookmark::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class TalkBookmark::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ProfileExchange::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ProfileExchange::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class User::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class User::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class TalkReminder::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class TalkReminder::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SpeakersTalk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SpeakersTalk::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class Speaker::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class Speaker::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class Talk::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class Talk::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SignagePage::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SignagePage::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class SignageSchedule::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class SignageSchedule::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class Profile::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class Profile::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ProfileBadge::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class ProfileBadge::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class Announcement::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+class Announcement::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
-class ActiveRecord::Associations::CollectionProxy < ActiveRecord::Relation
+class ActiveRecord::Associations::CollectionProxy < ::ActiveRecord::Relation
 end
-class ActiveRecord::Relation < Object
+class ActiveRecord::Relation < ::Object
 end
 module ActiveRecord::Associations
 end
