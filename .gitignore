@@ -39,3 +39,4 @@
 
 # auto generate file
 deploy/apprunner.json
+app/javascript/locales.json

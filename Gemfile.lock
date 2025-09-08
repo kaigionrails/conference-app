@@ -151,6 +151,7 @@ GEM
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
+    glob (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (4.30.2-aarch64-linux)
@@ -169,6 +170,9 @@ GEM
     hashie (5.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    i18n-js (4.2.3)
+      glob (>= 0.4.0)
+      i18n
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
@@ -564,6 +568,7 @@ DEPENDENCIES
   faraday
   faraday-multipart
   faraday-retry
+  i18n-js
   image_processing (~> 1.14)
   importmap-rails
   jwt
