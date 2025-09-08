@@ -1,15 +1,15 @@
 <% content_for(:page_title, @announcement.title) %>
 <div class="w-full max-w-(--breakpoint-xl) mx-auto md:my-auto pt-4 px-4">
   <h2 class="font-bold text-2xl mb-2"><%= @announcement.title %></h2>
-  <span class="block mb-4"><%= @announcement.published_at.in_time_zone("Tokyo").strftime("%m/%d %H:%M") %> 公開</span>
-  <h3 class="text-lg font-bold mb-2">本文</h3>
+  <span class="block mb-4"><%= t(".published_at", published_at: @announcement.published_at.in_time_zone("Tokyo").strftime("%m/%d %H:%M")) %></span>
+  <h3 class="text-lg font-bold mb-2"><%= t(".body") %></h3>
   <div class="mb-6">
     <%= @announcement.content %>
   </div>
   <% if logged_in? && @unread_announcement %>
     <div data-controller="announcements" data-announcements-unread-announcement-id-value="<%= @unread_announcement.id %>" class="mb-8">
-      <button data-action="click->announcements#read:once" data-announcements-target="button" class="px-4 py-2 bg-white text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center">既読にする</button>
+      <button data-action="click->announcements#read:once" data-announcements-target="button" class="px-4 py-2 bg-white text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center"><%= t(".make_as_read") %></button>
     </div>
   <% end %>
-  <%= link_to "<< アナウンス一覧に戻る", event_announcements_path(event_slug: @event.slug), class: "underline" %>
+  <%= link_to t(".back_to_list"), event_announcements_path(event_slug: @event.slug), class: "underline" %>
 </div>
