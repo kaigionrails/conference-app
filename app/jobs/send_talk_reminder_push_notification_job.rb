@@ -10,7 +10,7 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
 
     will_send_reminders.each do |reminder|
       message = {
-        title: "もうすぐブックマークしたトークが始まります",
+        title: I18n.t("talk_reminder.bookmarked_talk_will_start_soon"),
         body: reminder.talk.title,
         icon: URI.join(
           Rails.configuration.application_url, assets_resolver.digested_asset_path("icons/2024/512.png")

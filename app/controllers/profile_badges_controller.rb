@@ -8,7 +8,7 @@ class ProfileBadgesController < ApplicationController
       return
     end
 
-    @profile_badge = ProfileBadge.new(restricted: false, text: "サンプル")
+    @profile_badge = ProfileBadge.new(restricted: false, text: t(".sample"))
   end
 
   # @rbs return: void
@@ -23,9 +23,9 @@ class ProfileBadgesController < ApplicationController
       if params[:save_and_assign]
         current_user!.profile.profile_badges << profile_badge
       end
-      flash[:success] = "保存に成功しました"
+      flash[:success] = t(".succeeded")
     else
-      flash[:alert] = "保存に失敗しました"
+      flash[:alert] = t(".failed")
     end
     redirect_to new_profile_badge_path
   end

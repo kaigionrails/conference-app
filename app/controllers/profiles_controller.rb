@@ -36,10 +36,10 @@ class ProfilesController < ApplicationController
         profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
         profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
       end
-      flash[:success] = "プロフィールを更新しました。"
+      flash[:success] = t(".succeeded")
       redirect_to profiles_path
     rescue
-      flash[:alert] = "更新に失敗しました。再度やりなおしてください。"
+      flash[:alert] = t(".failed")
       redirect_to edit_profile_path
     end
   end
