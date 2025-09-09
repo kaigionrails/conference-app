@@ -82,7 +82,10 @@ ja:
     index:
       title: "プロフィール"
       edit: "編集する"
-      frieds_who_met_a_event: "%{event_name}で知り合った人達%{number_of_friends}"
+      friends_who_met_at_event:
+        zero: "%{event_name}で知り合った人達"
+        one: "%{event_name}で知り合った人達(%{count}人)"
+        other: "%{event_name}で知り合った人達(%{count}人)"
       show_friends: "一覧を見る"
   sessions:
     new:
@@ -130,7 +133,10 @@ ja:
     show:
       login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"
       login_with_github: "GitHubアカウントでログインする"
-      friends_met_at_event: "%{event_name}で知り合った人達%{number_of_friends}"
+      friends_who_met_at_event:
+        zero: "%{event_name}で知り合った人達"
+        one: "%{event_name}で知り合った人達(%{count}人)"
+        other: "%{event_name}で知り合った人達(%{count}人)"
       show_friends: "一覧を見る"
       qr_code_expired: "QRコードの期限が切れています。もう一度生成したものを読み取ってください。"
       qr_code_read_failed: "QRコードの読み取りに失敗しました。もう一度読み取ってください。"

@@ -37,7 +37,7 @@
         <% @events.each do |event| %>
           <% unless @event_friends[event].nil? %>
             <div class="mb-8">
-              <h3 class="text-2xl font-bold mb-2"><%= t('users.show.friends_met_at_event', event_name: event.name, number_of_friends: @user.number_of_friends(event)) %></h3>
+              <h3 class="text-2xl font-bold mb-2"><%= t('users.show.friends_who_met_at_event', event_name: event.name, count: @user.number_of_friends(event)) %></h3>
               <% if event == current_event %>
                 <ul class="mb-8">
                   <% @event_friends[event].each do |profile_exchange| %>
