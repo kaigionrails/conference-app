@@ -9,7 +9,7 @@ RSpec.describe UserDecorator do
     context "when event is not given" do
       context "when friends are empty" do
         it "should return 0" do
-          expect(user.number_of_friends).to eq ""
+          expect(user.number_of_friends).to eq 0
         end
       end
 
@@ -22,8 +22,8 @@ RSpec.describe UserDecorator do
           ProfileExchange.find_or_create_by!(event: event, user: friend, friend: user)
         end
 
-        it "should return the number of friends in `(n人)` format" do
-          expect(user.number_of_friends).to eq "(1人)"
+        it "should return the number of friends" do
+          expect(user.number_of_friends).to eq 1
         end
       end
     end
@@ -52,14 +52,14 @@ RSpec.describe UserDecorator do
 
       context "when friends are empty" do
         it "should return 0" do
-          expect(user.number_of_friends(event3)).to eq ""
+          expect(user.number_of_friends(event3)).to eq 0
         end
       end
 
       context "when friends are not empty" do
-        it "should return the number of friends in `(n人)` format" do
-          expect(user.number_of_friends(event1)).to eq "(2人)"
-          expect(user.number_of_friends(event2)).to eq "(3人)"
+        it "should return the number of friends" do
+          expect(user.number_of_friends(event1)).to eq 2
+          expect(user.number_of_friends(event2)).to eq 3
         end
       end
     end
