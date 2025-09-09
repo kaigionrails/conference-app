@@ -3,7 +3,7 @@
   <h2 class="text-2xl mb-2"><%= @talk.title %></h2>
   <div class="mb-3 text-sm flex flex-row justify-between items-center">
     <div>
-      <span class="mr-2"><%= @talk.start_at.in_time_zone("Tokyo").strftime("%d日 %H:%M~") %></span>
+      <span class="mr-2"><%= l(@talk.start_at.in_time_zone("Tokyo"), format: :talk_time_slot_with_date) %></span>
       <span class="mr-2 pill pill__<%= @talk.track.downcase.gsub(' ', '-')%>"><%= @talk.track %></span>
       <span><%= t('.duration_format', duration: @talk.duration_minutes) %></span>
     </div>

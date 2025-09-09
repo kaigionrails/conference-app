@@ -27,7 +27,6 @@ ja:
       read: "既読"
       published: "公開"
     show:
-      published_at: "%{published_at} 公開"
       body: "本文"
       make_as_read: "既読にする"
       back_to_list: "<< アナウンス一覧に戻る"
@@ -120,8 +119,6 @@ ja:
   talks:
     index:
       title: "トーク一覧"
-      day_format: "%d日"
-      time_slot_format: "%d日 %H:%M 〜"
       view_details: "詳細を見る >>"
     show:
       duration_format: "%{duration} 分間"
@@ -233,3 +230,9 @@ ja:
       event:
         name: "イベント名"
         slug: "slug"
+  time:
+    formats:
+      announcement_published_at: "%m/%d %H:%M 公開"
+      event_date: "%d日"
+      talk_time_slot: "%H:%M 〜"
+      talk_time_slot_with_date: "%d日 %H:%M 〜"

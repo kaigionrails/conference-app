@@ -1,7 +1,7 @@
 <% content_for(:page_title, @announcement.title) %>
 <div class="w-full max-w-(--breakpoint-xl) mx-auto md:my-auto pt-4 px-4">
   <h2 class="font-bold text-2xl mb-2"><%= @announcement.title %></h2>
-  <span class="block mb-4"><%= t(".published_at", published_at: @announcement.published_at.in_time_zone("Tokyo").strftime("%m/%d %H:%M")) %></span>
+  <span class="block mb-4"><%= l(@announcement.published_at.in_time_zone("Tokyo"), format: :announcement_published_at) %></span>
   <h3 class="text-lg font-bold mb-2"><%= t(".body") %></h3>
   <div class="mb-6">
     <%= @announcement.content %>

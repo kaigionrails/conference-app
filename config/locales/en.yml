@@ -114,14 +114,11 @@ en:
       title: "Config"
       unread: "Unread"
       read: "Read"
-      published_at: "Published"
       make_read: "Mark as read"
       back_to_index: "<< Back to announcements"
   talks:
     index:
       title: "Talks"
-      day_format: "Day %d"
-      time_slot_format: "Day %d %H:%M ~"
       view_details: "View details >>"
     show:
       duration_format: "%{duration} minutes"
@@ -233,3 +230,9 @@ en:
       event:
         name: "Event name"
         slug: "Slug"
+  time:
+    formats:
+      announcement_published_at: "Published at %m/%d %H:%M"
+      event_date: "%b %eth"
+      talk_time_slot: "%H:%M ~"
+      talk_time_slot_with_date: "%b %eth %H:%M ~"
