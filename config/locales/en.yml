@@ -26,6 +26,7 @@ en:
       unread: "Unread"
       read: "Read"
       published: "Published"
+      something_went_wrong: "Something went wrong. Please try again."
     show:
       published_at: "Published %{published_at}"
       body: "Body"
@@ -109,6 +110,8 @@ en:
       push_notification_disclaimer: "* We cannot guarantee the delivery of push notifications."
       need_login: "Please log in using the button below to configure notification settings."
       reference: "Reference"
+      your_browser_does_not_support_webpush: "Your browser does not support push notifications"
+      already_subscribed: "subscribed"
   config:
     index:
       title: "Config"
@@ -126,6 +129,9 @@ en:
       speakers: "Speakers"
       back_to_index: "Back to talk list"
       post_to_twitter_with_hashtag: "Post to 𝕏 with hashtag"
+  talk_bookmarks:
+    need_login: "Please log in to bookmark talks."
+    something_went_wrong: "Something went wrong. Please try again."
   users:
     show:
       login_prompt: "Log in to save a history of people you've met via QR codes."

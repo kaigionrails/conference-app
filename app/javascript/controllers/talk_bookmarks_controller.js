@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import { FetchRequest } from "@rails/request.js";
+import { locales } from "locales";
 
 export default class extends Controller {
   static values = {
@@ -7,10 +8,14 @@ export default class extends Controller {
     talkId: Number,
     talkBookmarkId: Number,
     clicked: { type: Boolean, default: false },
+    currentLocale: { type: String, default: "ja" },
   };
   static targets = ["createTalkBookmarkIcon", "removeTalkBookmarkIcon"];
 
-  async connect() {}
+  async connect() {
+    this.currentLocaleValue = document.documentElement.lang
+    locales.locale = this.currentLocaleValue
+  }
 
   async toggle() {
     if (this.bookmarkedValue) {
@@ -42,10 +47,11 @@ export default class extends Controller {
       this.talkBookmarkIdValue = body.id;
       this.toggleTalkBookmarkIcons();
     } else if (response.unauthenticated) {
-      window.alert("ブックマークするにはログインしてください");
+      //TODO: i18n
+      window.alert(locales.t("talk_bookmarks.need_login"));
     } else {
       console.error(response);
-      window.alert("エラーが発生しました。再度お試しください。");
+      window.alert(locales.t("talk_bookmarks.something_went_wrong"));
     }
     this.enableBookmarkIcons();
     this.clickedValue = false;

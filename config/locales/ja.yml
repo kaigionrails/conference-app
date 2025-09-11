@@ -26,6 +26,7 @@ ja:
       unread: "未読"
       read: "既読"
       published: "公開"
+      something_went_wrong: "エラーが発生しました。再度お試しください。"
     show:
       body: "本文"
       make_as_read: "既読にする"
@@ -108,6 +109,8 @@ ja:
       push_notification_disclaimer: "※プッシュ通知の到達の保障はいたしかねます。"
       need_login: "下のボタンからログインをすることで通知の設定が行えます。"
       reference: "参考"
+      your_browser_does_not_support_webpush: "お使いのブラウザはプッシュ通知に対応していません"
+      already_subscribed: "購読済み"
   config:
     index:
       title: "設定"
@@ -126,6 +129,9 @@ ja:
       speakers: "スピーカー"
       back_to_index: "発表一覧に戻る"
       post_to_twitter_with_hashtag: "ハッシュタグを付けて𝕏に投稿する"
+  talk_bookmarks:
+    need_login: "ブックマークするにはログインしてください。"
+    something_went_wrong: "エラーが発生しました。再度お試しください。"
   users:
     show:
       login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"

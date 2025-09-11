@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= current_locale %>">
   <head>
     <title><%= page_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +18,7 @@
     </script>
   </head>
 
-  <body class="bg-[#d7d2d0] w-full pb-safe" lang="<%= current_locale %>">
+  <body class="bg-[#d7d2d0] w-full pb-safe">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
       <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
