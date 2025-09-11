@@ -48,6 +48,15 @@
               <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
+          <%= form_with url: locale_setting_path(return_to: request.path), method: :post, data: { turbo: false } do |f| %>
+            <% if current_locale == :en %>
+              <%= f.hidden_field :locale, value: "ja" %>
+              <%= f.submit t('layouts.header_nav.switch_to_ja'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+            <% else %>
+              <%= f.hidden_field :locale, value: "en" %>
+              <%= f.submit t('layouts.header_nav.switch_to_en'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+            <% end %>
+          <% end %>
           <% if logged_in? %>
             <%= link_to setting_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
               <span><%= t('layouts.header_nav.setting') %></span>

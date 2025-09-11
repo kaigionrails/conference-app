@@ -148,6 +148,8 @@ ja:
       admin_console: "Admin console"
       logout: "Logout"
       login_with_github: "Login with GitHub"
+      switch_to_ja: "Switch to ja locale"
+      switch_to_en: "Switch to en locale"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"

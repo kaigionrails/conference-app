@@ -7,5 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in: () -> untyped
 
+  def switch_locale: () ?{ (?) -> untyped } -> untyped
+
   private def set_variant!: () -> untyped
 end
