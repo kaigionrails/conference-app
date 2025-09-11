@@ -1,0 +1,5 @@
+# Generated from app/controllers/locale_settings_controller.rb with RBS::Inline
+
+class LocaleSettingsController < ApplicationController
+  def update: () -> untyped
+end
