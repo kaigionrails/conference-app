@@ -1,34 +1,34 @@
 class Talk < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Talk, ActiveRecord_Relation, Integer]
+  extend ::_ActiveRecord_Relation_ClassMethods[::Talk, ::Talk::ActiveRecord_Relation, ::Integer]
 
   module GeneratedAttributeMethods
-    def id: () -> Integer
+    def id: () -> ::Integer
 
-    def id=: (Integer) -> Integer
+    def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
     def id_changed?: () -> bool
 
-    def id_change: () -> [ Integer?, Integer? ]
+    def id_change: () -> [ ::Integer?, ::Integer? ]
 
     def id_will_change!: () -> void
 
-    def id_was: () -> Integer?
+    def id_was: () -> ::Integer?
 
     def id_previously_changed?: () -> bool
 
-    def id_previous_change: () -> Array[Integer?]?
+    def id_previous_change: () -> ::Array[::Integer?]?
 
-    def id_previously_was: () -> Integer?
+    def id_previously_was: () -> ::Integer?
 
-    def id_before_last_save: () -> Integer?
+    def id_before_last_save: () -> ::Integer?
 
-    def id_change_to_be_saved: () -> Array[Integer?]?
+    def id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def id_in_database: () -> Integer?
+    def id_in_database: () -> ::Integer?
 
-    def saved_change_to_id: () -> Array[Integer?]?
+    def saved_change_to_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_id?: () -> bool
 
@@ -38,33 +38,33 @@ class Talk < ::ApplicationRecord
 
     def clear_id_change: () -> void
 
-    def event_id: () -> Integer
+    def event_id: () -> ::Integer
 
-    def event_id=: (Integer) -> Integer
+    def event_id=: (::Integer) -> ::Integer
 
     def event_id?: () -> bool
 
     def event_id_changed?: () -> bool
 
-    def event_id_change: () -> [ Integer?, Integer? ]
+    def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
     def event_id_will_change!: () -> void
 
-    def event_id_was: () -> Integer?
+    def event_id_was: () -> ::Integer?
 
     def event_id_previously_changed?: () -> bool
 
-    def event_id_previous_change: () -> Array[Integer?]?
+    def event_id_previous_change: () -> ::Array[::Integer?]?
 
-    def event_id_previously_was: () -> Integer?
+    def event_id_previously_was: () -> ::Integer?
 
-    def event_id_before_last_save: () -> Integer?
+    def event_id_before_last_save: () -> ::Integer?
 
-    def event_id_change_to_be_saved: () -> Array[Integer?]?
+    def event_id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def event_id_in_database: () -> Integer?
+    def event_id_in_database: () -> ::Integer?
 
-    def saved_change_to_event_id: () -> Array[Integer?]?
+    def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_event_id?: () -> bool
 
@@ -74,33 +74,33 @@ class Talk < ::ApplicationRecord
 
     def clear_event_id_change: () -> void
 
-    def title: () -> String
+    def title: () -> ::String
 
-    def title=: (String) -> String
+    def title=: (::String) -> ::String
 
     def title?: () -> bool
 
     def title_changed?: () -> bool
 
-    def title_change: () -> [ String?, String? ]
+    def title_change: () -> [ ::String?, ::String? ]
 
     def title_will_change!: () -> void
 
-    def title_was: () -> String?
+    def title_was: () -> ::String?
 
     def title_previously_changed?: () -> bool
 
-    def title_previous_change: () -> Array[String?]?
+    def title_previous_change: () -> ::Array[::String?]?
 
-    def title_previously_was: () -> String?
+    def title_previously_was: () -> ::String?
 
-    def title_before_last_save: () -> String?
+    def title_before_last_save: () -> ::String?
 
-    def title_change_to_be_saved: () -> Array[String?]?
+    def title_change_to_be_saved: () -> ::Array[::String?]?
 
-    def title_in_database: () -> String?
+    def title_in_database: () -> ::String?
 
-    def saved_change_to_title: () -> Array[String?]?
+    def saved_change_to_title: () -> ::Array[::String?]?
 
     def saved_change_to_title?: () -> bool
 
@@ -110,33 +110,33 @@ class Talk < ::ApplicationRecord
 
     def clear_title_change: () -> void
 
-    def abstract: () -> String
+    def abstract: () -> ::String
 
-    def abstract=: (String) -> String
+    def abstract=: (::String) -> ::String
 
     def abstract?: () -> bool
 
     def abstract_changed?: () -> bool
 
-    def abstract_change: () -> [ String?, String? ]
+    def abstract_change: () -> [ ::String?, ::String? ]
 
     def abstract_will_change!: () -> void
 
-    def abstract_was: () -> String?
+    def abstract_was: () -> ::String?
 
     def abstract_previously_changed?: () -> bool
 
-    def abstract_previous_change: () -> Array[String?]?
+    def abstract_previous_change: () -> ::Array[::String?]?
 
-    def abstract_previously_was: () -> String?
+    def abstract_previously_was: () -> ::String?
 
-    def abstract_before_last_save: () -> String?
+    def abstract_before_last_save: () -> ::String?
 
-    def abstract_change_to_be_saved: () -> Array[String?]?
+    def abstract_change_to_be_saved: () -> ::Array[::String?]?
 
-    def abstract_in_database: () -> String?
+    def abstract_in_database: () -> ::String?
 
-    def saved_change_to_abstract: () -> Array[String?]?
+    def saved_change_to_abstract: () -> ::Array[::String?]?
 
     def saved_change_to_abstract?: () -> bool
 
@@ -146,33 +146,33 @@ class Talk < ::ApplicationRecord
 
     def clear_abstract_change: () -> void
 
-    def start_at: () -> ActiveSupport::TimeWithZone
+    def start_at: () -> ::ActiveSupport::TimeWithZone
 
-    def start_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def start_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def start_at?: () -> bool
 
     def start_at_changed?: () -> bool
 
-    def start_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def start_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def start_at_will_change!: () -> void
 
-    def start_at_was: () -> ActiveSupport::TimeWithZone?
+    def start_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def start_at_previously_changed?: () -> bool
 
-    def start_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def start_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def start_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def start_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def start_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def start_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def start_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def start_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def start_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def start_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_start_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_start_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_start_at?: () -> bool
 
@@ -182,33 +182,33 @@ class Talk < ::ApplicationRecord
 
     def clear_start_at_change: () -> void
 
-    def duration_minutes: () -> Integer
+    def duration_minutes: () -> ::Integer
 
-    def duration_minutes=: (Integer) -> Integer
+    def duration_minutes=: (::Integer) -> ::Integer
 
     def duration_minutes?: () -> bool
 
     def duration_minutes_changed?: () -> bool
 
-    def duration_minutes_change: () -> [ Integer?, Integer? ]
+    def duration_minutes_change: () -> [ ::Integer?, ::Integer? ]
 
     def duration_minutes_will_change!: () -> void
 
-    def duration_minutes_was: () -> Integer?
+    def duration_minutes_was: () -> ::Integer?
 
     def duration_minutes_previously_changed?: () -> bool
 
-    def duration_minutes_previous_change: () -> Array[Integer?]?
+    def duration_minutes_previous_change: () -> ::Array[::Integer?]?
 
-    def duration_minutes_previously_was: () -> Integer?
+    def duration_minutes_previously_was: () -> ::Integer?
 
-    def duration_minutes_before_last_save: () -> Integer?
+    def duration_minutes_before_last_save: () -> ::Integer?
 
-    def duration_minutes_change_to_be_saved: () -> Array[Integer?]?
+    def duration_minutes_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def duration_minutes_in_database: () -> Integer?
+    def duration_minutes_in_database: () -> ::Integer?
 
-    def saved_change_to_duration_minutes: () -> Array[Integer?]?
+    def saved_change_to_duration_minutes: () -> ::Array[::Integer?]?
 
     def saved_change_to_duration_minutes?: () -> bool
 
@@ -218,33 +218,33 @@ class Talk < ::ApplicationRecord
 
     def clear_duration_minutes_change: () -> void
 
-    def created_at: () -> ActiveSupport::TimeWithZone
+    def created_at: () -> ::ActiveSupport::TimeWithZone
 
-    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def created_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def created_at?: () -> bool
 
     def created_at_changed?: () -> bool
 
-    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def created_at_will_change!: () -> void
 
-    def created_at_was: () -> ActiveSupport::TimeWithZone?
+    def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def created_at_previously_changed?: () -> bool
 
-    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def created_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def created_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def created_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def created_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_created_at?: () -> bool
 
@@ -254,33 +254,33 @@ class Talk < ::ApplicationRecord
 
     def clear_created_at_change: () -> void
 
-    def updated_at: () -> ActiveSupport::TimeWithZone
+    def updated_at: () -> ::ActiveSupport::TimeWithZone
 
-    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+    def updated_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
 
     def updated_at?: () -> bool
 
     def updated_at_changed?: () -> bool
 
-    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+    def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
     def updated_at_will_change!: () -> void
 
-    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+    def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
     def updated_at_previously_changed?: () -> bool
 
-    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+    def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+    def updated_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+    def updated_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+    def updated_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+    def updated_at_in_database: () -> ::ActiveSupport::TimeWithZone?
 
-    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+    def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
     def saved_change_to_updated_at?: () -> bool
 
@@ -290,33 +290,33 @@ class Talk < ::ApplicationRecord
 
     def clear_updated_at_change: () -> void
 
-    def track: () -> String
+    def track: () -> ::String
 
-    def track=: (String) -> String
+    def track=: (::String) -> ::String
 
     def track?: () -> bool
 
     def track_changed?: () -> bool
 
-    def track_change: () -> [ String?, String? ]
+    def track_change: () -> [ ::String?, ::String? ]
 
     def track_will_change!: () -> void
 
-    def track_was: () -> String?
+    def track_was: () -> ::String?
 
     def track_previously_changed?: () -> bool
 
-    def track_previous_change: () -> Array[String?]?
+    def track_previous_change: () -> ::Array[::String?]?
 
-    def track_previously_was: () -> String?
+    def track_previously_was: () -> ::String?
 
-    def track_before_last_save: () -> String?
+    def track_before_last_save: () -> ::String?
 
-    def track_change_to_be_saved: () -> Array[String?]?
+    def track_change_to_be_saved: () -> ::Array[::String?]?
 
-    def track_in_database: () -> String?
+    def track_in_database: () -> ::String?
 
-    def saved_change_to_track: () -> Array[String?]?
+    def saved_change_to_track: () -> ::Array[::String?]?
 
     def saved_change_to_track?: () -> bool
 
@@ -327,29 +327,29 @@ class Talk < ::ApplicationRecord
     def clear_track_change: () -> void
   end
   include GeneratedAttributeMethods
-  def speakers_talks: () -> SpeakersTalk::ActiveRecord_Associations_CollectionProxy
-  def speakers_talks=: (SpeakersTalk::ActiveRecord_Associations_CollectionProxy | Array[SpeakersTalk]) -> (SpeakersTalk::ActiveRecord_Associations_CollectionProxy | Array[SpeakersTalk])
-  def speakers_talk_ids: () -> Array[Integer]
-  def speakers_talk_ids=: (Array[Integer]) -> Array[Integer]
-  def speakers: () -> Speaker::ActiveRecord_Associations_CollectionProxy
-  def speakers=: (Speaker::ActiveRecord_Associations_CollectionProxy | Array[Speaker]) -> (Speaker::ActiveRecord_Associations_CollectionProxy | Array[Speaker])
-  def speaker_ids: () -> Array[Integer]
-  def speaker_ids=: (Array[Integer]) -> Array[Integer]
-  def talk_bookmarks: () -> TalkBookmark::ActiveRecord_Associations_CollectionProxy
-  def talk_bookmarks=: (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark]) -> (TalkBookmark::ActiveRecord_Associations_CollectionProxy | Array[TalkBookmark])
-  def talk_bookmark_ids: () -> Array[Integer]
-  def talk_bookmark_ids=: (Array[Integer]) -> Array[Integer]
-  def talk_reminders: () -> TalkReminder::ActiveRecord_Associations_CollectionProxy
-  def talk_reminders=: (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder]) -> (TalkReminder::ActiveRecord_Associations_CollectionProxy | Array[TalkReminder])
-  def talk_reminder_ids: () -> Array[Integer]
-  def talk_reminder_ids=: (Array[Integer]) -> Array[Integer]
+  def speakers_talks: () -> ::SpeakersTalk::ActiveRecord_Associations_CollectionProxy
+  def speakers_talks=: (::SpeakersTalk::ActiveRecord_Associations_CollectionProxy | ::Array[::SpeakersTalk]) -> (::SpeakersTalk::ActiveRecord_Associations_CollectionProxy | ::Array[::SpeakersTalk])
+  def speakers_talk_ids: () -> ::Array[::Integer]
+  def speakers_talk_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def speakers: () -> ::Speaker::ActiveRecord_Associations_CollectionProxy
+  def speakers=: (::Speaker::ActiveRecord_Associations_CollectionProxy | ::Array[::Speaker]) -> (::Speaker::ActiveRecord_Associations_CollectionProxy | ::Array[::Speaker])
+  def speaker_ids: () -> ::Array[::Integer]
+  def speaker_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def talk_bookmarks: () -> ::TalkBookmark::ActiveRecord_Associations_CollectionProxy
+  def talk_bookmarks=: (::TalkBookmark::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkBookmark]) -> (::TalkBookmark::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkBookmark])
+  def talk_bookmark_ids: () -> ::Array[::Integer]
+  def talk_bookmark_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def talk_reminders: () -> ::TalkReminder::ActiveRecord_Associations_CollectionProxy
+  def talk_reminders=: (::TalkReminder::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkReminder]) -> (::TalkReminder::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkReminder])
+  def talk_reminder_ids: () -> ::Array[::Integer]
+  def talk_reminder_ids=: (::Array[::Integer]) -> ::Array[::Integer]
 
-  def event: () -> Event
-  def event=: (Event?) -> Event?
-  def reload_event: () -> Event?
-  def build_event: (untyped) -> Event
-  def create_event: (untyped) -> Event
-  def create_event!: (untyped) -> Event
+  def event: () -> ::Event
+  def event=: (::Event?) -> ::Event?
+  def reload_event: () -> ::Event?
+  def build_event: (untyped) -> ::Event
+  def create_event: (untyped) -> ::Event
+  def create_event!: (untyped) -> ::Event
   module GeneratedAssociationMethods
   end
   include GeneratedAssociationMethods
@@ -358,13 +358,13 @@ class Talk < ::ApplicationRecord
   end
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Talk, Integer]
-    include Enumerable[Talk]
+    include ::Talk::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::Talk, ::Integer]
+    include ::Enumerable[::Talk]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Talk, Integer]
+    include ::Talk::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::Talk, ::Integer]
   end
 end

@@ -8,7 +8,7 @@ gem "rails", "8.0.0.1"
 gem "propshaft"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.5"
+gem "pg", "~> 1.6"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.6"
@@ -87,7 +87,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
-  gem "factory_bot_rails", "~> 6.5.0"
+  gem "factory_bot_rails", "~> 6.5.1"
   gem "rspec-rails", "~> 8.0"
 
   gem "standard"

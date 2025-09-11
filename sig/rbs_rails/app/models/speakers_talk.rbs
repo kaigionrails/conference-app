@@ -1,34 +1,34 @@
 class SpeakersTalk < ::ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[SpeakersTalk, ActiveRecord_Relation, top]
+  extend ::_ActiveRecord_Relation_ClassMethods[::SpeakersTalk, ::SpeakersTalk::ActiveRecord_Relation, top]
 
   module GeneratedAttributeMethods
-    def speaker_id: () -> Integer
+    def speaker_id: () -> ::Integer
 
-    def speaker_id=: (Integer) -> Integer
+    def speaker_id=: (::Integer) -> ::Integer
 
     def speaker_id?: () -> bool
 
     def speaker_id_changed?: () -> bool
 
-    def speaker_id_change: () -> [ Integer?, Integer? ]
+    def speaker_id_change: () -> [ ::Integer?, ::Integer? ]
 
     def speaker_id_will_change!: () -> void
 
-    def speaker_id_was: () -> Integer?
+    def speaker_id_was: () -> ::Integer?
 
     def speaker_id_previously_changed?: () -> bool
 
-    def speaker_id_previous_change: () -> Array[Integer?]?
+    def speaker_id_previous_change: () -> ::Array[::Integer?]?
 
-    def speaker_id_previously_was: () -> Integer?
+    def speaker_id_previously_was: () -> ::Integer?
 
-    def speaker_id_before_last_save: () -> Integer?
+    def speaker_id_before_last_save: () -> ::Integer?
 
-    def speaker_id_change_to_be_saved: () -> Array[Integer?]?
+    def speaker_id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def speaker_id_in_database: () -> Integer?
+    def speaker_id_in_database: () -> ::Integer?
 
-    def saved_change_to_speaker_id: () -> Array[Integer?]?
+    def saved_change_to_speaker_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_speaker_id?: () -> bool
 
@@ -38,33 +38,33 @@ class SpeakersTalk < ::ApplicationRecord
 
     def clear_speaker_id_change: () -> void
 
-    def talk_id: () -> Integer
+    def talk_id: () -> ::Integer
 
-    def talk_id=: (Integer) -> Integer
+    def talk_id=: (::Integer) -> ::Integer
 
     def talk_id?: () -> bool
 
     def talk_id_changed?: () -> bool
 
-    def talk_id_change: () -> [ Integer?, Integer? ]
+    def talk_id_change: () -> [ ::Integer?, ::Integer? ]
 
     def talk_id_will_change!: () -> void
 
-    def talk_id_was: () -> Integer?
+    def talk_id_was: () -> ::Integer?
 
     def talk_id_previously_changed?: () -> bool
 
-    def talk_id_previous_change: () -> Array[Integer?]?
+    def talk_id_previous_change: () -> ::Array[::Integer?]?
 
-    def talk_id_previously_was: () -> Integer?
+    def talk_id_previously_was: () -> ::Integer?
 
-    def talk_id_before_last_save: () -> Integer?
+    def talk_id_before_last_save: () -> ::Integer?
 
-    def talk_id_change_to_be_saved: () -> Array[Integer?]?
+    def talk_id_change_to_be_saved: () -> ::Array[::Integer?]?
 
-    def talk_id_in_database: () -> Integer?
+    def talk_id_in_database: () -> ::Integer?
 
-    def saved_change_to_talk_id: () -> Array[Integer?]?
+    def saved_change_to_talk_id: () -> ::Array[::Integer?]?
 
     def saved_change_to_talk_id?: () -> bool
 
@@ -76,18 +76,18 @@ class SpeakersTalk < ::ApplicationRecord
   end
   include GeneratedAttributeMethods
 
-  def speaker: () -> Speaker
-  def speaker=: (Speaker?) -> Speaker?
-  def reload_speaker: () -> Speaker?
-  def build_speaker: (untyped) -> Speaker
-  def create_speaker: (untyped) -> Speaker
-  def create_speaker!: (untyped) -> Speaker
-  def talk: () -> Talk
-  def talk=: (Talk?) -> Talk?
-  def reload_talk: () -> Talk?
-  def build_talk: (untyped) -> Talk
-  def create_talk: (untyped) -> Talk
-  def create_talk!: (untyped) -> Talk
+  def speaker: () -> ::Speaker
+  def speaker=: (::Speaker?) -> ::Speaker?
+  def reload_speaker: () -> ::Speaker?
+  def build_speaker: (untyped) -> ::Speaker
+  def create_speaker: (untyped) -> ::Speaker
+  def create_speaker!: (untyped) -> ::Speaker
+  def talk: () -> ::Talk
+  def talk=: (::Talk?) -> ::Talk?
+  def reload_talk: () -> ::Talk?
+  def build_talk: (untyped) -> ::Talk
+  def create_talk: (untyped) -> ::Talk
+  def create_talk!: (untyped) -> ::Talk
   module GeneratedAssociationMethods
   end
   include GeneratedAssociationMethods
@@ -96,13 +96,13 @@ class SpeakersTalk < ::ApplicationRecord
   end
 
   class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SpeakersTalk, top]
-    include Enumerable[SpeakersTalk]
+    include ::SpeakersTalk::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::SpeakersTalk, top]
+    include ::Enumerable[::SpeakersTalk]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
-    include GeneratedRelationMethods
-    include _ActiveRecord_Relation[SpeakersTalk, top]
+    include ::SpeakersTalk::GeneratedRelationMethods
+    include ::_ActiveRecord_Relation[::SpeakersTalk, top]
   end
 end
