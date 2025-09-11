@@ -1,0 +1,4 @@
+# Generated from app/models/locale_setting.rb with RBS::Inline
+
+class LocaleSetting < ApplicationRecord
+end

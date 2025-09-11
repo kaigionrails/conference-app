@@ -1,0 +1,5 @@
+# Generated from db/migrate/20250909172430_create_locale_settings.rb with RBS::Inline
+
+class CreateLocaleSettings
+  def change: () -> untyped
+end
