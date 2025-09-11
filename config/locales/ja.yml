@@ -2,7 +2,7 @@ ja:
   about:
     index:
       title: "Conference Appについて"
-      about_this_app: このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。
+      about_this_app: このアプリは、%{event_name}に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。
       feature_sessions: セッションの一覧機能
       feature_sessions_description1: 右上のアイコンを押すとメニューが開き、そこから「Talks」をクリックすることでセッションの一覧を見ることができます。
       feature_sessions_description2: セッションはブックマークすることができます。通知を有効にしている場合、ブックマークしたトークの開始前にプッシュ通知が行われます。
@@ -33,9 +33,9 @@ ja:
       back_to_list: "<< アナウンス一覧に戻る"
   home:
     index:
-      title: "Kaigi on Rails 2024 Conference App"
+      title: "%{event_name} Conference App"
       subtitle: "このアプリについて"
-      about_this_app: "このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。"
+      about_this_app: "このアプリは、%{event_name}に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。"
       you_can_use_menu: "右上のメニューからも遷移することができます。"
       about_this_app_more: "詳しくは%{link}"
       read_about_page: "「About」ページをごらんください。"

@@ -1,9 +1,9 @@
 <div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-(--breakpoint-xl) mx-auto">
-  <h1 class="font-bold text-2xl mb-4"><%= t('.title') %></h1>
+  <h1 class="font-bold text-2xl mb-4"><%= t('.title', event_name: current_event.name) %></h1>
   <hr class="mb-3">
   <section class="mb-4">
     <h2 class="font-bold text-2xl mb-3"><%= t('.subtitle') %></h2>
-    <p class="mb-2"><%= t('.about_this_app') %></p>
+    <p class="mb-2"><%= t('.about_this_app', event_name: current_event.name) %></p>
     <p class="mb-2"><%= t('.about_this_app_more', link: link_to(t('.read_about_page'), about_path, class: "underline")).html_safe %><%= t('.you_can_use_menu') %></p>
   </section>
   <section class="mb-4">

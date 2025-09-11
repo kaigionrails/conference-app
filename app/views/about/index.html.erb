@@ -4,7 +4,7 @@
     <section class="mb-6">
       <h2 class="font-bold text-3xl mb-2"><%= t('.title') %></h2>
       <hr class="mb-3">
-      <p class="mb-2"><%= t('.about_this_app') %></p>
+      <p class="mb-2"><%= t('.about_this_app', event_name: current_event.name) %></p>
       <ul class="list-disc pl-6 mb-2">
         <li class="mb-1"><%= t('.feature_sessions') %></li>
         <li class="mb-1"><%= t('.feature_announcements') %></li>
