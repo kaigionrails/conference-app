@@ -5,8 +5,8 @@ class SampleWebpushNotificationsController < ApplicationController
   def create
     subscriptions = current_user!.webpush_subscriptions
     message = {
-      title: I18n.t(".title"),
-      body: I18n.t(".body"),
+      title: I18n.t(".sample_webpush_notifications.create.title"),
+      body: I18n.t(".sample_webpush_notifications.create.body"),
       icon: view_context.image_url("icons/2024/512.png"),
       data: {
         url: URI.join(Rails.configuration.application_url, setting_path)
