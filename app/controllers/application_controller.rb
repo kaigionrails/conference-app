@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless logged_in?
   end
 
+  # @rbs { () -> untyped } -> untyped
   def switch_locale(&action)
     locale = params[:locale] || current_user&.locale_setting&.preferred_locale || I18n.default_locale
     I18n.with_locale(locale, &action)

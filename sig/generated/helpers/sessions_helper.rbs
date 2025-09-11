@@ -13,8 +13,8 @@ module SessionsHelper : ActionController::Base
   # @rbs return: User?
   def current_user: () -> User?
 
-  # @rbs return: String
-  def current_locale: () -> String
+  # @rbs return: Symbol
+  def current_locale: () -> Symbol
 
   # @rbs return: bool
   def logged_in?: () -> bool

@@ -19,7 +19,7 @@ module SessionsHelper
     nil
   end
 
-  # @rbs return: String
+  # @rbs return: Symbol
   def current_locale
     I18n.locale
   end
