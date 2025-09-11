@@ -225,6 +225,12 @@ class User < ::ApplicationRecord
   def create_profile: (untyped) -> ::Profile
   def create_profile!: (untyped) -> ::Profile
   def reload_profile: () -> ::Profile?
+  def locale_setting: () -> ::LocaleSetting?
+  def locale_setting=: (::LocaleSetting?) -> ::LocaleSetting?
+  def build_locale_setting: (?untyped) -> ::LocaleSetting
+  def create_locale_setting: (untyped) -> ::LocaleSetting
+  def create_locale_setting!: (untyped) -> ::LocaleSetting
+  def reload_locale_setting: () -> ::LocaleSetting?
 
   module GeneratedAssociationMethods
   end
