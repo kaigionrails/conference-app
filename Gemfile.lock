@@ -573,6 +573,7 @@ DEPENDENCIES
   importmap-rails
   jwt
   kaminari
+  listen
   mission_control-jobs
   octokit
   omniauth

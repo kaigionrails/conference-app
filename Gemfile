@@ -80,7 +80,7 @@ gem "mission_control-jobs"
 
 gem "alba"
 
-gem 'rails-i18n', '~> 8.0.0'
+gem "rails-i18n", "~> 8.0.0"
 gem "i18n-js"
 
 group :development, :test do
@@ -96,6 +96,8 @@ group :development, :test do
   gem "prosopite"
   gem "pg_query"
   gem "webmock"
+
+  gem "listen" # For generate app/javascript/locales.js, see also https://github.com/fnando/i18n-js
 end
 
 group :development do
