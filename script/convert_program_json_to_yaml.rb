@@ -37,12 +37,12 @@
 # 2. 各トークについて以下を処理：
 #    - タイトル、概要、トラック情報を設定
 #    - 発表時間を抽出（15分または30分）
-#    - プレースホルダーのタイムスタンプを生成
+#    - 固定のプレースホルダータイムスタンプを生成
 #    - スピーカー情報をprogram.jsonから取得
 # 3. YAML形式で出力（特殊なタイムスタンプ形式を保持）
 #
 # 【注意事項】
-# - タイムスタンプは指定年の1月1日10:00から40分間隔で自動生成されます
+# - タイムスタンプは全て指定年の1月1日10:00の固定値として生成されます
 # - 実際のカンファレンススケジュールに合わせて手動調整してください
 # ========================================================================
 
@@ -99,29 +99,27 @@ def extract_duration(format_str)
   end
 end
 
-# Function to create a placeholder timestamp
-def create_timestamp(index, year)
-  # Create timestamps starting from Jan 1 of the specified year, 10:00 AM JST
-  # Increment by 40 minutes for each talk (30 min talk + 10 min break)
+# Function to create a fixed placeholder timestamp
+def create_timestamp(year)
+  # Create a fixed timestamp for all talks: Jan 1 of the specified year, 10:00 AM JST
   base_time = Time.parse("#{year}-01-01 10:00:00 +0900")
-  talk_time = base_time + (index * 40 * 60)
 
   # Format as YAML timestamp
   # Using the special YAML timestamp format
-  "!!timestamp #{talk_time.strftime('%Y-%m-%dT%H:%M:%S%:z')}"
+  "!!timestamp #{base_time.strftime('%Y-%m-%dT%H:%M:%S%:z')}"
 end
 
 # Convert program data to the seed data format
 converted_talks = []
 
-program_data.each_with_index do |talk, index|
+program_data.each do |talk|
   converted_talk = {
     title: talk['title'],
     abstract: talk['abstract']
   }
 
-  # Add start_at as a string that will be converted to timestamp format
-  converted_talk[:start_at] = create_timestamp(index, year)
+  # Add fixed placeholder timestamp (same for all talks)
+  converted_talk[:start_at] = create_timestamp(year)
 
   # Extract duration from format
   converted_talk[:duration_minutes] = extract_duration(talk['format'])
@@ -177,4 +175,4 @@ File.write(output_path, yaml_content)
 
 puts "Successfully converted program.json to #{output_path}"
 puts "Total talks converted: #{converted_talks.length}"
-puts "\nNote: The start_at timestamps are placeholders (starting from #{year}-03-14) and should be manually adjusted to match the actual conference schedule."
+puts "\nNote: All start_at timestamps are set to the same placeholder value (#{year}-01-01 10:00 JST) and must be manually adjusted to match the actual conference schedule."
