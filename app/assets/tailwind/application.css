@@ -9,6 +9,28 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  :root {
+    /* 2024年のテーマカラー */
+    /* メインの背景色 */
+    --color-background: #d7d2d0;
+
+    /* プライマリカラー（赤系） */
+    --color-primary-200: rgb(254 202 202);  /* red-200 */
+    --color-primary-300: rgb(252 165 165);  /* red-300 */
+    --color-primary-500: rgb(239 68 68);   /* red-500 */
+    --color-primary-600: rgb(220 38 38);   /* red-600 */
+    --color-primary-700: rgb(185 28 28);   /* red-700 */
+    --color-primary-900: rgb(127 29 29);   /* red-900 */
+
+    /* アクセントカラー */
+    --color-accent: rgb(252 165 165);      /* 通知バッジ等 */
+    --color-warning: rgb(234 179 8);       /* yellow-500 */
+
+    /* メッセージ背景色 */
+    --color-success-bg: #d4edda;
+    --color-alert-bg: #f8d7da;
+  }
+
   *,
   ::after,
   ::before,
@@ -58,4 +80,53 @@
 
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+@layer utilities {
+  /* 背景色 */
+  .bg-theme-background {
+    background-color: var(--color-background);
+  }
+  .bg-theme-primary-200 {
+    background-color: var(--color-primary-200);
+  }
+  .bg-theme-primary-300 {
+    background-color: var(--color-primary-300);
+  }
+  .bg-theme-primary-600 {
+    background-color: var(--color-primary-600);
+  }
+  .bg-theme-primary-700 {
+    background-color: var(--color-primary-700);
+  }
+  .bg-theme-success {
+    background-color: var(--color-success-bg);
+  }
+  .bg-theme-alert {
+    background-color: var(--color-alert-bg);
+  }
+
+  /* テキスト色 */
+  .text-theme-primary-500 {
+    color: var(--color-primary-500);
+  }
+  .text-theme-primary-900 {
+    color: var(--color-primary-900);
+  }
+
+  /* ボーダー色 */
+  .border-theme-background {
+    border-color: var(--color-background);
+  }
+
+  /* ホバー効果 */
+  .hover\:bg-theme-primary-50:hover {
+    background-color: rgb(254 242 242);
+  }
+  .hover\:text-theme-primary-900:hover {
+    color: var(--color-primary-900);
+  }
+  .hover\:text-theme-primary-500:hover {
+    color: var(--color-primary-500);
+  }
 }
