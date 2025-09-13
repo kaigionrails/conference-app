@@ -1,7 +1,7 @@
 <% content_for(:page_title, @user.name) %>
 <div class="w-full">
   <% if !logged_in? && @token %>
-    <div class="w-full py-4 bg-red-200 text-black text-center">
+    <div class="w-full py-4 bg-theme-primary-200 text-black text-center">
       <p class="mb-1"><%= t('users.show.login_prompt') %></p>
       <%= form_tag "/auth/github?return_to=#{user_path(username: @user.name, token: @token)}", method: :post, data: { turbo: false } do %>
         <%= submit_tag t('users.show.login_with_github'), class: "underline text-lg cursor-pointer" %>

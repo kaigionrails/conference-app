@@ -1,6 +1,6 @@
 <div class="w-full" data-controller="users">
   <% if !logged_in? & @token %>
-    <div class="w-full bg-red-200 text-black text-center py-2">
+    <div class="w-full bg-theme-primary-200 text-black text-center py-2">
       <p class="text-sm mb-1"><%= t('users.show.login_prompt') %></p>
       <%= form_tag "/auth/github?return_to=#{user_path(username: @user.name, token: @token)}", method: :post, data: { turbo: false } do %>
         <%= submit_tag t('users.show.login_with_github'), class: "underline cursor-pointer" %>

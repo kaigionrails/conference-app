@@ -17,7 +17,7 @@
   </div>
   <div class="mb-8">
     <%= form_with model: @profile_badge, url: admin_profile_badge_path(@profile_badge), method: :delete, data: { "action": "admin--profile-badge#confirmDelete" } do |f| %>
-      <%= f.submit "Delete this badge", class: "block border shadow-sm bg-red-300 border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <%= f.submit "Delete this badge", class: "block border shadow-sm bg-theme-primary-300 border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
     <% end %>
   </div>
   <div>

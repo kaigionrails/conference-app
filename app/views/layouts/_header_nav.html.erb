@@ -1,4 +1,4 @@
-<nav class="bg-[#d7d2d0] border-b border-[#d7d2d0]">
+<nav class="bg-theme-background border-b border-theme-background">
   <div class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto px-3 py-2">
     <%= link_to root_path, class: "flex items-center" do %>
       <%= image_tag "icon.png", class: "h-8 mr-3" %>
@@ -11,7 +11,7 @@
         </svg>
       </button>
       <% if logged_in? && current_user!.have_unread_announcements? %>
-        <div class="w-2 h-2 rounded-[50%] bg-red-600 absolute right-0 top-0"></div>
+        <div class="w-2 h-2 rounded-[50%] bg-theme-primary-600 absolute right-0 top-0"></div>
       <% end %>
       <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-56 z-10"
         data-transition-enter-from="opacity-0 scale-95"
@@ -45,7 +45,7 @@
           <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.announcements') %></span>
             <% if logged_in? && current_user!.have_unread_announcements? %>
-              <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
+              <span class="rounded-xl bg-theme-primary-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
           <%= form_with url: locale_setting_path(return_to: request.path), method: :post, data: { turbo: false } do |f| %>
