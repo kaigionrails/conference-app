@@ -43,8 +43,8 @@ if OngoingEvent.count.zero?
 end
 
 event_2024 = Event.find_or_create_by!(name: "Kaigi on Rails 2024", slug: "2024") do |event|
-  event.start_date = Time.zone.parse("2023-10-25 00:00:00 +0900")
-  event.end_date = Time.zone.parse("2023-10-26 23:59:59 +0900")
+  event.start_date = Time.zone.parse("2024-10-25 00:00:00 +0900")
+  event.end_date = Time.zone.parse("2024-10-26 23:59:59 +0900")
 end
 
 if event_2024.talks.empty?
