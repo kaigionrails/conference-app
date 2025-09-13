@@ -15,7 +15,7 @@
   :abstract: ""
   :start_at: !!timestamp 2025-09-27T17:25:00+09:00
   :duration_minutes: 40
-    :track: "Hall Red"
+  :track: "Hall Red"
   :speakers:
   - :name: "Samuel Williams"
     :slug: ioquatix
@@ -25,9 +25,9 @@
 - :title: RailsのPostgreSQL 18対応
   :abstract: "RailsはWebアプリケーションフレームワークとして、Active Recordやpg gemを通じてリレーショナルデータベースと密接に連携しています。\r\nRubyが年に1回リリースされるのと同様に、代表的なリレーショナルデータベースのひとつであるPostgreSQLも年に1回リリースされるため、\r\nRailsではPostgreSQLの新機能や互換性の変更への対応が継続的に行われています。\r\n\r\n本セッションでは、2025年にリリース予定のPostgreSQL
     18対応に関するActive Recordとpg gemの変更について解説します。"
-  :start_at: !!timestamp 2025-09-26T10:00:00+09:00
+  :start_at: !!timestamp 2025-09-26T13:30:00+09:00
   :duration_minutes: 30
-  :track: ''
+  :track: 'Hall Red'
   :speakers:
   - :name: Yasuo Honda
     :slug: yahonda
@@ -81,7 +81,7 @@
   :abstract: "Rails8.0から`rails g authentication`(以降認証ジェネレータと呼びます)でユーザ認証用のコードを生成できるようになりました。昔からRailsが提供するヘルパメソッドを組み合わせることで簡単に認証機能を構築できましたが、認証ジェネレータの登場によってそれがさらに容易になります。一方現場ではdeviseをはじめとした各種gemを活用して認証機能を実装するのが長らく一般的なやり方でした。Rails8.0以降、この状況は変わっていくのでしょうか？\r\n\r\nこの発表では最初に2025年時点での認証機能を取り巻く状況について解説します。その後Rails8の認証ジェネレータが生成するコードをベースにして、Railsが提供しているヘルパメソッドとジェネレータの設計思想についてひとつずつ説明していきます。この発表を聞いたあと、みなさんは認証について一段理解度が増した状態になることでしょう。"
   :start_at: !!timestamp 2025-09-27T16:30:00+09:00
   :duration_minutes: 30
-  :track: ''
+  :track: 'Hall Red'
   :speakers:
   - :name: Shinichi Maeshima
     :slug: willnet
