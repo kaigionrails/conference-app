@@ -46,11 +46,11 @@
 # - 実際のカンファレンススケジュールに合わせて手動調整してください
 # ========================================================================
 
-require 'json'
-require 'yaml'
-require 'time'
-require 'fileutils'
-require 'date'
+require "json"
+require "yaml"
+require "time"
+require "fileutils"
+require "date"
 require_relative "../config/environment"
 
 # Parse command line arguments
@@ -58,13 +58,13 @@ year =
   if ARGV[0]
     ARGV[0].to_i
   else
-    Date.today.year
+    Time.zone.today.year
   end
 
 puts "Processing for year: #{year}"
 
 # Load program.json
-program_json_path = File.join(__dir__, '..', 'program.json')
+program_json_path = File.join(__dir__, "..", "program.json")
 unless File.exist?(program_json_path)
   puts "Error: program.json not found at #{program_json_path}"
   exit 1
@@ -78,8 +78,8 @@ def extract_github_username(github_field)
   return nil if github_field.nil?
 
   # If it's a URL, extract the username
-  if github_field.start_with?('http')
-    github_field.split('/').last
+  if github_field.start_with?("http")
+    github_field.split("/").last
   else
     github_field
   end
@@ -106,7 +106,7 @@ def create_timestamp(year)
 
   # Format as YAML timestamp
   # Using the special YAML timestamp format
-  "!!timestamp #{base_time.strftime('%Y-%m-%dT%H:%M:%S%:z')}"
+  "!!timestamp #{base_time.strftime("%Y-%m-%dT%H:%M:%S%:z")}"
 end
 
 # Convert program data to the seed data format
@@ -114,33 +114,33 @@ converted_talks = []
 
 program_data.each do |talk|
   converted_talk = {
-    title: talk['title'],
-    abstract: talk['abstract']
+    title: talk["title"],
+    abstract: talk["abstract"]
   }
 
   # Add fixed placeholder timestamp (same for all talks)
   converted_talk[:start_at] = create_timestamp(year)
 
   # Extract duration from format
-  converted_talk[:duration_minutes] = extract_duration(talk['format'])
+  converted_talk[:duration_minutes] = extract_duration(talk["format"])
 
   # Handle track (convert null to empty string)
-  converted_talk[:track] = talk['track'] || ''
+  converted_talk[:track] = talk["track"] || ""
 
   # Process speakers
-  if talk['speakers'] && !talk['speakers'].empty?
+  if talk["speakers"] && !talk["speakers"].empty?
     speakers_array = []
 
-    talk['speakers'].each do |speaker|
-      speaker_name = speaker['name']
+    talk["speakers"].each do |speaker|
+      speaker_name = speaker["name"]
 
       # Use data from program.json
       speaker_entry = {
         name: speaker_name,
-        slug: extract_github_username(speaker['github_account']),
-        github_username: extract_github_username(speaker['github_account']),
-        gravatar_hash: speaker['gravatar_hash'],
-        bio: speaker['bio'] || ''
+        slug: extract_github_username(speaker["github_account"]),
+        github_username: extract_github_username(speaker["github_account"]),
+        gravatar_hash: speaker["gravatar_hash"],
+        bio: speaker["bio"] || ""
       }
 
       speakers_array << speaker_entry
@@ -165,7 +165,7 @@ yaml_content.gsub!(/'!!timestamp ([\d\-T:+]+)'/, '!!timestamp \1')
 yaml_content.gsub!(/"!!timestamp ([\d\-T:+]+)"/, '!!timestamp \1')
 
 # Output file path
-output_path = File.join(__dir__, '..', 'db', 'seeds', "#{year}.yaml")
+output_path = File.join(__dir__, "..", "db", "seeds", "#{year}.yaml")
 
 # Ensure the directory exists
 FileUtils.mkdir_p(File.dirname(output_path))
