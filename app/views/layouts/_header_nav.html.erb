@@ -28,42 +28,51 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-gray-500 mr-3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="text-gray-700 text-sm">ログインしていません</span>
+              <span class="text-gray-700 text-sm"><%= t('layouts.header_nav.not_logged_in') %></span>
             <% end %>
           </div>
           <% if logged_in? %>
             <%= link_to profiles_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-              <span>Profile</span>
+              <span><%= t('layouts.header_nav.profile') %></span>
             <% end %>
           <% end %>
           <%= link_to event_talks_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-            <span>Talks</span>
+            <span><%= t('layouts.header_nav.talks') %></span>
           <% end %>
           <%= link_to about_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-            <span>About</span>
+            <span><%= t('layouts.header_nav.about') %></span>
           <% end %>
           <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-            <span>Announcements</span>
+            <span><%= t('layouts.header_nav.announcements') %></span>
             <% if logged_in? && current_user!.have_unread_announcements? %>
               <span class="rounded-xl bg-red-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
+          <%= form_with url: locale_setting_path(return_to: request.path), method: :post, data: { turbo: false } do |f| %>
+            <% if current_locale == :en %>
+              <%= f.hidden_field :locale, value: "ja" %>
+              <%= f.submit t('layouts.header_nav.switch_to_ja'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+            <% else %>
+              <%= f.hidden_field :locale, value: "en" %>
+              <%= f.submit t('layouts.header_nav.switch_to_en'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+            <% end %>
+          <% end %>
           <% if logged_in? %>
             <%= link_to setting_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-              <span>Setting</span>
+              <span><%= t('layouts.header_nav.setting') %></span>
             <% end %>
             <% if current_user!.organizer? %>
               <%= link_to admin_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-                <span>Admin console</span>
+                <span><%= t('layouts.header_nav.admin_console') %></span>
               <% end %>
             <% end %>
             <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-              <span>Logout</span>
+              <span><%= t('layouts.header_nav.logout') %></span>
             <% end %>
           <% else %>
             <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
               <%= button_tag type: "submit", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" do %>
-                <span>Login with GitHub</span>
+                <span><%= t('layouts.header_nav.login_with_github') %></span>
               <% end %>
             <% end %>
           <% end %>

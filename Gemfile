@@ -80,6 +80,9 @@ gem "mission_control-jobs"
 
 gem "alba"
 
+gem "rails-i18n", "~> 8.0.0"
+gem "i18n-js"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -93,6 +96,8 @@ group :development, :test do
   gem "prosopite"
   gem "pg_query"
   gem "webmock"
+
+  gem "listen" # For generate app/javascript/locales.js, see also https://github.com/fnando/i18n-js
 end
 
 group :development do

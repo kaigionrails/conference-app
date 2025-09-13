@@ -44,13 +44,13 @@
     </div>
   </div>
   <div class="mb-8">
-    <%= link_to "編集する", edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50" %>
+    <%= link_to t('.edit'), edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50" %>
   </div>
   <div>
     <% @events.each do |event| %>
       <% unless @event_friends[event].nil? %>
         <div class="mb-8">
-          <h3 class="text-2xl font-bold mb-6"><%= "#{event.name}で知り合った人達#{@user.number_of_friends(event)}" %></h3>
+          <h3 class="text-2xl font-bold mb-6"><%= t('.friends_who_met_at_event', event_name: event.name, count: @user.number_of_friends(event)) %></h3>
           <% if event == current_event %>
             <ul>
               <% @event_friends[event].each do |profile_exchange| %>
@@ -66,7 +66,7 @@
             </ul>
           <% else %>
             <details>
-              <summary class="text-xl mb-4 cursor-pointer">一覧を見る</summary>
+              <summary class="text-xl mb-4 cursor-pointer"><%= t('.show_friends') %></summary>
               <ul>
                 <% @event_friends[event].each do |profile_exchange| %>
                   <li class="flex flex-row items-center">

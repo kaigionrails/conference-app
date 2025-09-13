@@ -2,21 +2,245 @@ ja:
   about:
     index:
       title: "Conference Appについて"
+      about_this_app: このアプリは、%{event_name}に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。以下の機能を提供します。
+      feature_sessions: セッションの一覧機能
+      feature_sessions_description1: 右上のアイコンを押すとメニューが開き、そこから「Talks」をクリックすることでセッションの一覧を見ることができます。
+      feature_sessions_description2: セッションはブックマークすることができます。通知を有効にしている場合、ブックマークしたトークの開始前にプッシュ通知が行われます。
+      feature_announcements: 運営からのアナウンス
+      feature_announcements_description1: カンファレンスの進行について、運営側から参加者の皆さまに向けてアナウンスを行うことがあります。それらのアナウンスを確認することができます。
+      feature_announcements_description2: アナウンスについてはログインせずに見ていただくことができます。ログインし、通知を有効にしている場合は新規のアナウンス時に通知されます。
+      feature_profile: プロフィール登録・交換
+      feature_profile_description1: Conference Appには、あなたのプロフィールを登録することができます。
+      feature_profile_description2: 登録したプロフィールは、QRコードで他の参加者の方と交換することができます。SNSアカウントの共有などでご活用ください。
+      feature_push_notification: プッシュ通知
+      feature_push_notification_description1: ブックマークしたセッションの発表時刻および運営からのアナウンス作成時に、プッシュ通知を有効にすることができます。
+      feature_push_notification_description2: 詳細については、右上のアイコンからの「Setting」にてご確認ください。
+      feature_push_notification_setting_link: こちらからも開くことができます。
+      need_github_login: このアプリの機能を活用していただくためには、GitHubアカウントでログインしていただく必要があります。
+      github_login_flow: 以下のボタンから、GitHubアカウントでのログインをお願いします。
+      contributors: コントリビューター
+      app_contributors: conference-appは以下のコントリビューターによって開発されています(コミット数順）。
   announcements:
     index:
       title: "アナウンス一覧"
-  config:
+      unread: "未読"
+      read: "既読"
+      published: "公開"
+      something_went_wrong: "エラーが発生しました。再度お試しください。"
+    show:
+      body: "本文"
+      make_as_read: "既読にする"
+      back_to_list: "<< アナウンス一覧に戻る"
+  home:
     index:
-      title: "設定"
-  profiles:
-    index:
-      title: "プロフィール"
+      title: "%{event_name} Conference App"
+      subtitle: "このアプリについて"
+      about_this_app: "このアプリは、%{event_name}に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。"
+      you_can_use_menu: "右上のメニューからも遷移することができます。"
+      about_this_app_more: "詳しくは%{link}"
+      read_about_page: "「About」ページをごらんください。"
+      talks: "発表一覧"
+      read_talks_page: "「Talk」ページをごらんください。"
+      announcements: "アナウンス一覧"
+      read_announcements_page: "「Announcements」ページをごらんください。"
+      profile: "プロフィール登録・交換"
+      register_your_profile: "「Profile」ページからご自身のプロフィールをご登録ください。"
+      exchange_your_profile: "登録したプロフィールは、QRコードで他の参加者の方と交換することができます。SNSアカウントの共有などでご活用ください。"
   profile_badges:
     new:
       title: "バッヂを作る"
+      preview: "プレビュー"
+      sample: "サンプル"
+      back_to_profile: "プロフィールに戻る"
+      text_label: "テキスト"
+      border_color_code: "枠線の色"
+      background_color_code: "背景の色"
+      save_and_assign: "保存後、自分にバッヂをつける"
+      create_badge: "バッヂを作成する"
+    create:
+      succeeded: "保存に成功しました"
+      failed: "保存に失敗しました"
+  profile_images:
+    destroy:
+      succeeded: "プロフィール画像を削除しました"
+  profiles:
+    edit:
+      title: "プロフィール編集"
+      remove_this_image: "この写真を削除する"
+      add_profile_image: "プロフィール画像を追加する"
+      add_badge: "バッヂをつける"
+      badges: "バッヂ一覧"
+      create_a_new_badge: "バッヂを新しく作る"
+      update: "更新する"
+      name: "表示名"
+      name_placeholder: "見せたい名前"
+      description: "自己紹介"
+      description_placeholder: "Markdown記法が使用できます"
+    update:
+      succeeded: "プロフィールを更新しました。"
+      failed: "更新に失敗しました。再度やりなおしてください。"
+    index:
+      title: "プロフィール"
+      edit: "編集する"
+      friends_who_met_at_event:
+        zero: "%{event_name}で知り合った人達"
+        one: "%{event_name}で知り合った人達(%{count}人)"
+        other: "%{event_name}で知り合った人達(%{count}人)"
+      show_friends: "一覧を見る"
+  sessions:
+    new:
+      loging_with_github: "Loing with GitHub"
+      for_operators: "For operators"
+      you_are_logged_in: "You are logged in."
+      logout: "If you want to log out, click here."
   setting:
     index:
       title: "設定"
+      push_notification_setting: "プッシュ通知設定"
+      push_notification_description: "ログインをするとプッシュ通知を有効にすることができます。プッシュ通知を有効にすると、以下の場合に通知されます。"
+      push_notification_timing_bookmarked_talks: "ブックマークした発表が開始する数分前(5分前〜3分前程度)"
+      push_notification_timing_announcements_by_orgs: "運営からのアナウンスが公開された場合"
+      ios_device_note: "お使いのデバイスがiOSの場合は、Safariで「ホーム画面に追加」からPWAとしてインストール必要があります。"
+      ios_pwa_support_page_url: "https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios"
+      ios_pwa_support_page_title: "iPhoneのSafariでWebサイトをブックマークに登録する - Apple サポート (日本)"
+      enable_push_notification: "プッシュ通知を有効にする"
+      send_test_push_notification: "テスト通知を送信する"
+      test_push_notification_will_send_all_devices: "※プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。"
+      push_notification_disclaimer: "※プッシュ通知の到達の保障はいたしかねます。"
+      need_login: "下のボタンからログインをすることで通知の設定が行えます。"
+      reference: "参考"
+      your_browser_does_not_support_webpush: "お使いのブラウザはプッシュ通知に対応していません"
+      already_subscribed: "購読済み"
+  config:
+    index:
+      title: "設定"
+      unread: 未読
+      read: 既読
+      published_at: 公開
+      make_read: 既読にする
+      back_to_index: "<< アナウンス一覧に戻る"
   talks:
     index:
       title: "トーク一覧"
+      view_details: "詳細を見る >>"
+    show:
+      duration_format: "%{duration} 分間"
+      abstract: "概要"
+      speakers: "スピーカー"
+      back_to_index: "発表一覧に戻る"
+      post_to_twitter_with_hashtag: "ハッシュタグを付けて𝕏に投稿する"
+  talk_bookmarks:
+    need_login: "ブックマークするにはログインしてください。"
+    something_went_wrong: "エラーが発生しました。再度お試しください。"
+  users:
+    show:
+      login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"
+      login_with_github: "GitHubアカウントでログインする"
+      friends_who_met_at_event:
+        zero: "%{event_name}で知り合った人達"
+        one: "%{event_name}で知り合った人達(%{count}人)"
+        other: "%{event_name}で知り合った人達(%{count}人)"
+      show_friends: "一覧を見る"
+      qr_code_expired: "QRコードの期限が切れています。もう一度生成したものを読み取ってください。"
+      qr_code_read_failed: "QRコードの読み取りに失敗しました。もう一度読み取ってください。"
+  layouts:
+    header_nav:
+      not_logged_in: "ログインしていません"
+      profile: "Profile"
+      talks: "Talks"
+      about: "About"
+      announcements: "Announcements"
+      setting: "Setting"
+      admin_console: "Admin console"
+      logout: "Logout"
+      login_with_github: "Login with GitHub"
+      switch_to_ja: "Switch to ja locale"
+      switch_to_en: "Switch to en locale"
+  sample_webpush_notifications:
+    create:
+      title: "プッシュ通知のサンプルです"
+      body:  "このようなプッシュ通知が届きます。"
+  admin:
+    announcements:
+      update:
+        new_announcement_created: "運営からの新しいアナウンスがあります"
+  talk_reminder:
+    bookmarked_talk_will_start_soon: "もうすぐブックマークしたトークが始まります"
+  activerecord:
+    models:
+      announcement: "アナウンス"
+      event: "イベント"
+      cloudflare_stream_live_stream: "ライブ配信"
+      ongoing_event: "開催中のイベント"
+      profile: "プロフィール"
+      profile_badge: "バッヂ"
+      profile_badges_profile: "バッヂプロフィール"
+      signage: "サイネージ"
+      signage_device: "サイネージデバイス"
+      signage_device_assign: "サイネージデバイス割り当て"
+      signage_page: "サイネージページ"
+      signage_panel: "サイネージパネル"
+      signage_schedule: "サイネージスケジュール"
+      signage_schedule_assign: "サイネージスケジュール割り当て"
+      speaker: "スピーカー"
+      talk: "トーク"
+      user: "ユーザー"
+      webpush_subscription: "プッシュ通知設定"
+      talk_bookmark: "ブックマーク"
+      unread_announcement: "未読アナウンス"
+    attributes:
+      profile:
+        name: "表示名"
+        description: "自己紹介"
+        images: "プロフィール画像"
+      profile_badge:
+        text: "テキスト"
+        border_color_code: "枠線の色"
+        background_color_code: "背景の色"
+        restricted: "制限付き"
+      signage_panel:
+        name: "名前"
+      signage_schedule:
+        start_at: "開始時刻"
+        end_at: "終了時刻"
+      signage_device:
+        device_name: "名前"
+        signage_panel_id: "表示する面"
+      signage_page:
+        signage_schedule_id: "表示する時間帯"
+        page_image: "表示する画像"
+        duration_seconds: "表示する秒数"
+        order: "表示順"
+      signage_device_assign:
+        signage_device_id: "デバイス"
+        signage_panel_id: "表示する面"
+      signage_schedule_assign:
+        signage_schedule_id: "表示する時間帯"
+        signage_panel_id: "表示する面"
+      announcement:
+        title: "タイトル"
+        content: "内容"
+        status: "ステータス"
+        published_at: "公開日時"
+      talk:
+        title: "タイトル"
+        abstract: "概要"
+        start_at: "開始時刻"
+        start_at_date: "開始日"
+        start_at_time: "開始時刻"
+        track: "トラック"
+        duration_minutes: "時間（分）"
+      user:
+        name: "名前"
+        role: "ロール"
+      cloudflare_stream_live_stream:
+        uid: "UID"
+      event:
+        name: "イベント名"
+        slug: "slug"
+  time:
+    formats:
+      announcement_published_at: "%m/%d %H:%M 公開"
+      event_date: "%d日"
+      talk_time_slot: "%H:%M 〜"
+      talk_time_slot_with_date: "%d日 %H:%M 〜"

@@ -53,7 +53,7 @@ class Admin::AnnouncementsController < AdminController
   # @rbs return: Hash[untyped, untyped]
   private def push_notification_message(announcement)
     {
-      title: "運営からの新しいアナウンスがあります",
+      title: t(".new_announcement_created"),
       body: announcement.title,
       icon: view_context.image_url("icons/2024/512.png"),
       data: {

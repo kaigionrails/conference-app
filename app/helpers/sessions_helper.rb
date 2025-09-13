@@ -12,6 +12,18 @@ module SessionsHelper
     @current_user ||= User.find(session[:user_id])
   end
 
+  # @rbs return: User?
+  def current_user
+    current_user!
+  rescue UnauthorizedError
+    nil
+  end
+
+  # @rbs return: Symbol
+  def current_locale
+    I18n.locale
+  end
+
   # @rbs return: bool
   def logged_in?
     current_user!.present?

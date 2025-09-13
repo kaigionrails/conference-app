@@ -1,22 +1,22 @@
 <div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-(--breakpoint-xl) mx-auto">
-  <h1 class="font-bold text-2xl mb-4">Kaigi on Rails 2024 Conference App</h1>
+  <h1 class="font-bold text-2xl mb-4"><%= t('.title', event_name: current_event.name) %></h1>
   <hr class="mb-3">
   <section class="mb-4">
-    <h2 class="font-bold text-2xl mb-3">このアプリについて</h2>
-    <p class="mb-2">このアプリは、Kaigi on Rails 2024に参加する皆様がイベントをより楽しく過ごせるように作成されたRailsアプリケーションです。</p>
-    <p class="mb-2">詳しくは<%= link_to "「About」ページをごらんください。", about_path, class: "underline" %>右上のメニューからも遷移することができます。</p>
+    <h2 class="font-bold text-2xl mb-3"><%= t('.subtitle') %></h2>
+    <p class="mb-2"><%= t('.about_this_app', event_name: current_event.name) %></p>
+    <p class="mb-2"><%= t('.about_this_app_more', link: link_to(t('.read_about_page'), about_path, class: "underline")).html_safe %><%= t('.you_can_use_menu') %></p>
   </section>
   <section class="mb-4">
-    <h2 class="font-bold text-2xl mb-3">発表一覧</h2>
-    <p class="mb-2"><%= link_to "「Talk」ページをごらんください。", event_talks_path(event_slug: current_event.slug), class: "underline" %>右上のメニューからも遷移することができます。</p>
+    <h2 class="font-bold text-2xl mb-3"><%= t('.talks') %></h2>
+    <p class="mb-2"><%= link_to t('.read_talks_page'), event_talks_path(event_slug: current_event.slug), class: "underline" %><%= t('.you_can_use_menu') %></p>
   </section>
   <section class="mb-4">
-    <h2 class="font-bold text-2xl mb-3">アナウンス一覧</h2>
-    <p class="mb-2"><%= link_to "「Announcements」ページをごらんください。", event_announcements_path(event_slug: current_event.slug), class: "underline" %>右上のメニューからも遷移することができます。</p>
+    <h2 class="font-bold text-2xl mb-3"><%= t('.announcements') %></h2>
+    <p class="mb-2"><%= link_to t('.read_announcements_page'), event_announcements_path(event_slug: current_event.slug), class: "underline" %><%= t('.you_can_use_menu') %></p>
   </section>
   <section class="mb-4">
-    <h3 class="font-bold text-2xl mb-2">プロフィール登録・交換</h3>
-    <p class="mb-2"><%= link_to "「Profile」ページからご自身のプロフィールをご登録ください。", profiles_path, class: "underline" %>右上のメニューからも遷移することができます。</p>
-    <p class="mb-2">登録したプロフィールは、QRコードで他の参加者の方と交換することができます。SNSアカウントの共有などでご活用ください。</p>
+    <h3 class="font-bold text-2xl mb-2"><%= t('.profile') %></h3>
+    <p class="mb-2"><%= link_to t('.register_your_profile'), profiles_path, class: "underline" %><%= t('.you_can_use_menu') %></p>
+    <p class="mb-2"><%= t('.exchange_your_profile') %></p>
   </section>
 </div>

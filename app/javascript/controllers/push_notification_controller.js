@@ -1,14 +1,18 @@
 import { Controller } from "@hotwired/stimulus";
 import { FetchRequest } from "@rails/request.js";
+import { locales } from "locales";
 
 export default class extends Controller {
   static values = {
     alreadySubscribed: { type: Boolean, default: false },
+    currentLocale: { type: String, default: "ja" },
   };
   static targets = ["status"];
 
   async connect() {
     await this.getSubscriptionStatus();
+    this.currentLocaleValue = document.documentElement.lang
+    locales.locale = this.currentLocaleValue
   }
 
   async subscribe() {
@@ -43,7 +47,7 @@ export default class extends Controller {
         this.updateSubscriptionButton();
       });
     } else {
-      window.alert("お使いのブラウザはプッシュ通知に対応していません");
+      window.alert(locales.t("setting.index.your_browser_does_not_support_webpush"));
     }
   }
 
@@ -73,9 +77,7 @@ export default class extends Controller {
   }
 
   updateSubscriptionButton() {
-    if (this.alreadySubscribedValue) {
-      this.statusTarget.innerText = "講読済み";
-      this.statusTarget.disabled = true;
-    }
+    this.statusTarget.innerText = locales.t("setting.index.already_subscribed");
+    this.statusTarget.disabled = true;
   }
 }

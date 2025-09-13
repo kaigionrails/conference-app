@@ -1,0 +1,13 @@
+---
+translations:
+  - file: app/javascript/locales.json
+    patterns:
+      - "*"
+      - "!*.activerecord"
+      - "!*.errors"
+      - "!*.number.nth"
+export_files:
+  enabled: true
+  files:
+    - template: "config/locale.js.erb"
+      output: "app/javascript/locales.js"

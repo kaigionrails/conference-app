@@ -16,6 +16,7 @@ COPY Gemfile Gemfile.lock /app/
 RUN bundle install -j2
 
 COPY . /app
+RUN bundle exec i18n export
 RUN GITHUB_PRIVATE_KEY=sample REDIS_URL=sample VAPID_PUBLIC_KEY=sample VAPID_PRIVATE_KEY=sample VAPID_SUBJECT_MAILTO=sample APPLICATION_URL=sample \
     SECRET_KEY_BASE=sample RAILS_ENV=production bundle exec rails assets:precompile
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

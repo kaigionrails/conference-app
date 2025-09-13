@@ -1,11 +1,11 @@
 <div data-controller="profiles" class="w-4/5 max-w-5xl m-auto pt-2 px-2">
-  <h2 class="text-xl font-bold mb-3">プロフィール編集</h2>
+  <h2 class="text-xl font-bold mb-3"><%= t('profiles.edit.title') %></h2>
   <div class="flex mb-6 overflow-x-auto">
     <% @profile.images.each do |profile_image| %>
       <div class="mr-4 text-center">
         <%= image_tag profile_image, class: "mb-2 rounded-lg" %>
         <%= form_with url: profile_profile_image_path(@profile.id, profile_image.id), method: :delete do |f| %>
-          <%= f.submit "この写真を削除する", class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+          <%= f.submit t('profiles.edit.remove_this_image'), class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
         <% end %>
       </div>
     <% end %>
@@ -19,29 +19,29 @@
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
           </svg>
         </span>
-        <span>プロフィール画像を追加する</span>
+        <span><%= t('profiles.edit.add_profile_image') %></span>
       </button>
       <div id="profile-image-fields"></div>
     </div>
     <div class="mb-4">
-      <%= f.label :name, "表示名", class: "block mb-2 font-medium font-bold text-gray-900" %>
-      <%= f.text_field :name, placeholder: "見せたい名前", class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+      <%= f.label :name, t('profiles.edit.name'), class: "block mb-2 font-medium font-bold text-gray-900" %>
+      <%= f.text_field :name, placeholder: t('profiles.edit.name_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
     </div>
     <div class="mb-4">
-      <%= f.label :description, "自己紹介", class: "block mb-2 font-medium font-bold text-gray-900" %>
-      <%= f.text_area :description, size: "20x10", placeholder: "Markdown記法が使用できます", class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+      <%= f.label :description, t('profiles.edit.description'), class: "block mb-2 font-medium font-bold text-gray-900" %>
+      <%= f.text_area :description, size: "20x10", placeholder: t('profiles.edit.description_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
     </div>
     <div class="mb-8">
-      <p class="font-bold text-gray-900 text-lg mb-4">バッヂをつける</p>
+      <p class="font-bold text-gray-900 text-lg mb-4"><%= t('profiles.edit.add_badge') %></p>
       <details>
-        <summary class="mb-4">バッヂ一覧</summary>
+        <summary class="mb-4"><%= t('profiles.edit.badges') %></summary>
         <%= f.collection_check_boxes :profile_badge_ids, @profile_badges, :id, :text do |b| %>
           <div class="flex flex-row mb-3">
             <%= b.label(class: "inline-block mr-2") { b.check_box(checked: @profile.profile_badges.exists?(id: b.value)) } %>
             <div class="mb-4 border-2 rounded-3xl py-1 px-3 inline-block text-black" style="background-color: <%= b.object.background_color_code %>; border-color: <%= b.object.border_color_code %>"><%= b.object.text %></div>
           </div>
         <% end %>
-        <%= link_to "バッヂを新しく作る", new_profile_badge_path, class: "underline text-lg" %>
+        <%= link_to t('profiles.edit.create_a_new_badge'), new_profile_badge_path, class: "underline text-lg" %>
       </details>
     </div>
     <%= f.button type: "submit" do %>
@@ -49,7 +49,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </svg>
-        更新する
+        <%= t('profiles.edit.update') %>
       </button>
     <% end %>
   <% end %>

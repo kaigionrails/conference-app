@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_172430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -100,6 +100,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
+  create_table "locale_settings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "preferred_locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locale_settings_on_user_id"
   end
 
   create_table "ongoing_events", force: :cascade do |t|
@@ -401,6 +409,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_155515) do
   add_foreign_key "authentication_provider_email_and_passwords", "users"
   add_foreign_key "authentication_provider_githubs", "users"
   add_foreign_key "cloudflare_stream_live_streams", "events"
+  add_foreign_key "locale_settings", "users"
   add_foreign_key "ongoing_events", "events"
   add_foreign_key "profile_exchanges", "events"
   add_foreign_key "profile_exchanges", "users"

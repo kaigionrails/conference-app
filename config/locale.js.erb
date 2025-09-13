@@ -1,0 +1,9 @@
+/* eslint-disable */
+<%= banner %>
+
+import { I18n } from "i18n-js";
+const locales = new I18n();
+
+locales.store(<%= JSON.pretty_generate(translations) %>);
+
+export { locales };

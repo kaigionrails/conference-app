@@ -2,21 +2,245 @@ en:
   about:
     index:
       title: "About the Conference App"
+      about_this_app: "This app is a Rails application created to help participants of %{event_name} enjoy the event more. It provides the following features:"
+      feature_sessions: "List sessions"
+      feature_sessions_description1: "Click the icon at the top right to open the menu, then click 'Talks' to view the list of sessions."
+      feature_sessions_description2: "You can bookmark sessions. If notifications are enabled, you will receive push notifications before bookmarked talks begin."
+      feature_announcements: "Announcements from Organizers"
+      feature_announcements_description1: "The organizers may make announcements to participants about conference proceedings. You can check those announcements here."
+      feature_announcements_description2: "You can view announcements without logging in. If you are logged in with notifications enabled, you will be notified of new announcements."
+      feature_profile: "Profile Registration & Exchange"
+      feature_profile_description1: "You can register your profile in the Conference App."
+      feature_profile_description2: "You can exchange your registered profile with other participants via QR code. Please use this to share social media accounts."
+      feature_push_notification: "Push Notifications"
+      feature_push_notification_description1: "You can enable push notifications for bookmarked session times and announcements from organizers."
+      feature_push_notification_description2: "For details, please check 'Settings' from the icon at the top right."
+      feature_push_notification_setting_link: "You can also open it from here."
+      need_github_login: "To use the features of this app, you need to log in with your GitHub account."
+      github_login_flow: "Please log in with your GitHub account using the button below."
+      contributors: "Contributors"
+      app_contributors: "conference-app is developed by the following contributors (ordered by number of commits)."
   announcements:
     index:
       title: "Announcements"
-  config:
+      unread: "Unread"
+      read: "Read"
+      published: "Published"
+      something_went_wrong: "Something went wrong. Please try again."
+    show:
+      published_at: "Published %{published_at}"
+      body: "Body"
+      make_as_read: "Mark as read"
+      back_to_list: "<< Back to announcements"
+  home:
     index:
-      title: "Config"
-  profiles:
-    index:
-      title: "Profile"
+      title: "%{event_name} Conference App"
+      subtitle: "About this app"
+      about_this_app: "This app is a Rails application created to help participants of %{event_name} enjoy the event more."
+      you_can_use_menu: "You can also navigate from the menu at the top right."
+      about_this_app_more: "For more details %{link}"
+      read_about_page: "Please see the 'About' page."
+      talks: "Talk List"
+      read_talks_page: "Please see the 'Talks' page."
+      announcements: "Announcements"
+      read_announcements_page: "Please see the 'Announcements' page."
+      profile: "Profile Registration & Exchange"
+      register_your_profile: "Please register your profile from the 'Profile' page."
+      exchange_your_profile: "You can exchange your registered profile with other participants via QR code. Please use this to share social media accounts."
   profile_badges:
     new:
-      title: "New Badge"
+      title: "Create Badge"
+      preview: "Preview"
+      sample: "Sample"
+      back_to_profile: "Back to profile"
+      text_label: "Text"
+      border_color_code: "Border color"
+      background_color_code: "Background color"
+      save_and_assign: "Save and assign badge to myself"
+      create_badge: "Create badge"
+    create:
+      succeeded: "Successfully saved"
+      failed: "Failed to save"
+  profile_images:
+    destroy:
+      succeeded: "Profile image deleted"
+  profiles:
+    edit:
+      title: "Edit Profile"
+      remove_this_image: "Remove this image"
+      add_profile_image: "Add profile image"
+      add_badge: "Add badge"
+      badges: "Badge list"
+      create_a_new_badge: "Create a new badge"
+      update: "Update"
+      name: "Display name"
+      name_placeholder: "Name to display"
+      description: "Self introduction"
+      description_placeholder: "Markdown is supported"
+    update:
+      succeeded: "Profile updated successfully."
+      failed: "Update failed. Please try again."
+    index:
+      title: "Profile"
+      edit: "Edit"
+      friends_who_met_at_event:
+        zero: "People met at %{event_name}"
+        one: "People met at %{event_name} (%{count} person)"
+        other: "People met at %{event_name} (%{count} people)"
+      show_friends: "View list"
+  sessions:
+    new:
+      loging_with_github: "Login with GitHub"
+      for_operators: "For operators"
+      you_are_logged_in: "You are logged in."
+      logout: "If you want to log out, click here."
   setting:
     index:
       title: "Settings"
+      push_notification_setting: "Push Notification Settings"
+      push_notification_description: "You can enable push notifications after logging in. When enabled, you will be notified in the following cases:"
+      push_notification_timing_bookmarked_talks: "A few minutes before bookmarked talks begin (around 5-3 minutes before)"
+      push_notification_timing_announcements_by_orgs: "When announcements from organizers are published"
+      ios_device_note: "If your device is iOS, you need to install it as a PWA from 'Add to Home Screen' in Safari."
+      ios_pwa_support_page_url: "https://support.apple.com/guide/iphone/bookmark-a-website-iph43ab2f3a7/ios"
+      ios_pwa_support_page_title: "Bookmark a website in Safari on iPhone - Apple Support"
+      enable_push_notification: "Enable push notifications"
+      send_test_push_notification: "Send test notification"
+      test_push_notification_will_send_all_devices: "* Push notifications will be sent to all devices where push notifications are enabled."
+      push_notification_disclaimer: "* We cannot guarantee the delivery of push notifications."
+      need_login: "Please log in using the button below to configure notification settings."
+      reference: "Reference"
+      your_browser_does_not_support_webpush: "Your browser does not support push notifications"
+      already_subscribed: "subscribed"
+  config:
+    index:
+      title: "Config"
+      unread: "Unread"
+      read: "Read"
+      make_read: "Mark as read"
+      back_to_index: "<< Back to announcements"
   talks:
     index:
       title: "Talks"
+      view_details: "View details >>"
+    show:
+      duration_format: "%{duration} minutes"
+      abstract: "Abstract"
+      speakers: "Speakers"
+      back_to_index: "Back to talk list"
+      post_to_twitter_with_hashtag: "Post to 𝕏 with hashtag"
+  talk_bookmarks:
+    need_login: "Please log in to bookmark talks."
+    something_went_wrong: "Something went wrong. Please try again."
+  users:
+    show:
+      login_prompt: "Log in to save a history of people you've met via QR codes."
+      login_with_github: "Login with GitHub"
+      friends_who_met_at_event:
+        zero: "People met at %{event_name}"
+        one: "People met at %{event_name} (%{count} person)"
+        other: "People met at %{event_name} (%{count} people)"
+      show_friends: "View list"
+      qr_code_expired: "QR code has expired. Please scan a newly generated one."
+      qr_code_read_failed: "Failed to read QR code. Please try scanning again."
+  layouts:
+    header_nav:
+      not_logged_in: "Not logged in"
+      profile: "Profile"
+      talks: "Talks"
+      about: "About"
+      announcements: "Announcements"
+      setting: "Setting"
+      admin_console: "Admin console"
+      logout: "Logout"
+      login_with_github: "Login with GitHub"
+      switch_to_ja: "Switch to ja locale"
+      switch_to_en: "Switch to en locale"
+  sample_webpush_notifications:
+    create:
+      title: "Sample push notification"
+      body: "This is how push notifications will appear."
+  admin:
+    announcements:
+      update:
+        new_announcement_created: "New announcement from organizers"
+  talk_reminder:
+    bookmarked_talk_will_start_soon: "Your bookmarked talk will start soon"
+  activerecord:
+    models:
+      announcement: "Announcement"
+      event: "Event"
+      cloudflare_stream_live_stream: "Live Stream"
+      ongoing_event: "Ongoing Event"
+      profile: "Profile"
+      profile_badge: "Badge"
+      profile_badges_profile: "Badge Profile"
+      signage: "Signage"
+      signage_device: "Signage Device"
+      signage_device_assign: "Signage Device Assignment"
+      signage_page: "Signage Page"
+      signage_panel: "Signage Panel"
+      signage_schedule: "Signage Schedule"
+      signage_schedule_assign: "Signage Schedule Assignment"
+      speaker: "Speaker"
+      talk: "Talk"
+      user: "User"
+      webpush_subscription: "Push Notification Settings"
+      talk_bookmark: "Bookmark"
+      unread_announcement: "Unread Announcement"
+    attributes:
+      profile:
+        name: "Display name"
+        description: "Self introduction"
+        images: "Profile images"
+      profile_badge:
+        text: "Text"
+        border_color_code: "Border color"
+        background_color_code: "Background color"
+        restricted: "Restricted"
+      signage_panel:
+        name: "Name"
+      signage_schedule:
+        start_at: "Start time"
+        end_at: "End time"
+      signage_device:
+        device_name: "Name"
+        signage_panel_id: "Panel to display"
+      signage_page:
+        signage_schedule_id: "Time period to display"
+        page_image: "Image to display"
+        duration_seconds: "Duration in seconds"
+        order: "Display order"
+      signage_device_assign:
+        signage_device_id: "Device"
+        signage_panel_id: "Panel to display"
+      signage_schedule_assign:
+        signage_schedule_id: "Time period to display"
+        signage_panel_id: "Panel to display"
+      announcement:
+        title: "Title"
+        content: "Content"
+        status: "Status"
+        published_at: "Published at"
+      talk:
+        title: "Title"
+        abstract: "Abstract"
+        start_at: "Start time"
+        start_at_date: "Start date"
+        start_at_time: "Start time"
+        track: "Track"
+        duration_minutes: "Duration (minutes)"
+      user:
+        name: "Name"
+        role: "Role"
+      cloudflare_stream_live_stream:
+        uid: "UID"
+      event:
+        name: "Event name"
+        slug: "Slug"
+  time:
+    formats:
+      announcement_published_at: "Published at %m/%d %H:%M"
+      event_date: "%b %eth"
+      talk_time_slot: "%H:%M ~"
+      talk_time_slot_with_date: "%b %eth %H:%M ~"

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :profile_images, only: [:destroy]
   end
   resources :profile_badges, only: [:new, :create]
+  post "/locale_settings", to: "locale_settings#update", as: :locale_setting
 
   get "/@:username", to: "users#show", as: :user
 

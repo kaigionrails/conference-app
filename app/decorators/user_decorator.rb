@@ -2,13 +2,12 @@
 
 # @rbs module-self User
 module UserDecorator
-  # @rbs return: String
+  # @rbs return: Integer
   def number_of_friends(event = nil)
     if event
-      c = profile_exchanges.where(event_id: event.id).count
-      c.zero? ? "" : "(#{c}人)"
+      profile_exchanges.where(event_id: event.id).count
     else
-      friends.present? ? "(#{friends.size}人)" : ""
+      friends.present? ? friends.size : 0
     end
   end
 end
