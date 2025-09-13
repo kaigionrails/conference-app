@@ -75,7 +75,42 @@ if event_2024.talks.empty?
   end
 end
 
+event_2025 = Event.find_or_create_by!(name: "Kaigi on Rails 2025", slug: "2025") do |event|
+  event.start_date = Time.zone.parse("2025-09-26 00:00:00 +0900")
+  event.end_date = Time.zone.parse("2025-09-27 23:59:59 +0900")
+end
+
+if event_2025.talks.empty?
+  talks_2025 = YAML.unsafe_load_file(Rails.root.join("db/seeds/2025.yaml"), symbolize_names: true)
+
+  ApplicationRecord.transaction do
+    talks_2025[:talks].each do |talk_data|
+      talk = Talk.create!(
+        event: event_2025,
+        title: talk_data[:title],
+        abstract: talk_data[:abstract],
+        start_at: talk_data[:start_at],
+        duration_minutes: talk_data[:duration_minutes],
+        track: talk_data[:track]
+      )
+
+      talk.speakers << talk_data[:speakers].map do |speaker_data|
+        speaker = Speaker.find_or_initialize_by(slug: speaker_data[:slug])
+        speaker.name = speaker_data[:name]
+        speaker.github_username = speaker_data[:github_username]
+        speaker.gravatar_hash = speaker_data[:gravatar_hash]
+        speaker.bio = speaker_data[:bio]
+        speaker.save! if speaker.new_record? || speaker.changed?
+        speaker
+      end
+
+      Rails.logger.info "Created talk: #{talk.title}"
+    end
+  end
+end
+
 ongoing_event = OngoingEvent.first
-if ongoing_event != event_2024
-  ongoing_event.update!(event: event_2024)
+
+if ongoing_event != event_2025
+  ongoing_event.update!(event: event_2025)
 end
