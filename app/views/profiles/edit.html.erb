@@ -24,17 +24,17 @@
       <div id="profile-image-fields"></div>
     </div>
     <div class="mb-4">
-      <%= f.label :name, t('profiles.edit.name'), class: "block mb-2 font-medium font-bold text-gray-900" %>
-      <%= f.text_field :name, placeholder: t('profiles.edit.name_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+      <%= f.label :name, t('profiles.edit.name'), class: "block mb-2 font-medium font-bold text-theme-primary" %>
+      <%= f.text_field :name, placeholder: t('profiles.edit.name_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-theme-primary shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
     </div>
     <div class="mb-4">
-      <%= f.label :description, t('profiles.edit.description'), class: "block mb-2 font-medium font-bold text-gray-900" %>
-      <%= f.text_area :description, size: "20x10", placeholder: t('profiles.edit.description_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+      <%= f.label :description, t('profiles.edit.description'), class: "block mb-2 font-medium font-bold text-theme-primary" %>
+      <%= f.text_area :description, size: "20x10", placeholder: t('profiles.edit.description_placeholder'), class: "block w-3/5 rounded-md border-0 py-1.5 text-primary shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
     </div>
     <div class="mb-8">
-      <p class="font-bold text-gray-900 text-lg mb-4"><%= t('profiles.edit.add_badge') %></p>
+      <p class="font-bold text-theme-primary text-lg mb-4"><%= t('profiles.edit.add_badge') %></p>
       <details>
-        <summary class="mb-4"><%= t('profiles.edit.badges') %></summary>
+        <summary class="mb-4 text-theme-primary"><%= t('profiles.edit.badges') %></summary>
         <%= f.collection_check_boxes :profile_badge_ids, @profile_badges, :id, :text do |b| %>
           <div class="flex flex-row mb-3">
             <%= b.label(class: "inline-block mr-2") { b.check_box(checked: @profile.profile_badges.exists?(id: b.value)) } %>

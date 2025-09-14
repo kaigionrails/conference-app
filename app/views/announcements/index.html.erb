@@ -4,7 +4,7 @@
   <ol class="border rounded-lg pl-0">
     <% @announcements.each do |announcement| %>
       <li class="block">
-        <%= link_to event_announcement_path(event_slug: @event.slug, id: announcement.id), class: "block py-4 px-2 md:px-4 flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20" do %>
+        <%= link_to event_announcement_path(event_slug: @event.slug, id: announcement.id), class: "block py-4 px-2 md:px-4 flex flex-row items-center bg-opacity-0 hover:bg-opacity-20" do %>
         <% if logged_in? %>
           <% if @unread_announcements&.exists?(announcement: announcement) %>
             <span class="text-sm border rounded-full py-1 px-2 mr-3 bg-white text-gray-800 font-bold w-12 text-center"><%= t(".unread") %></span>

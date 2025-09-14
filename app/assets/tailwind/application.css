@@ -29,6 +29,11 @@
     /* メッセージ背景色 */
     --color-success-bg: #d4edda;
     --color-alert-bg: #f8d7da;
+
+    /* 文字色 */
+    --color-text-primary: #f2e9e7;    /* black - メインテキスト */
+    --color-text-secondary: #61534f;  /* white - 反転テキスト */
+
   }
 
   *,
@@ -107,6 +112,12 @@
   }
 
   /* テキスト色 */
+  .text-theme-primary {
+    color: var(--color-text-primary);
+  }
+  .text-theme-secondary {
+    color: var(--color-text-secondary);
+  }
   .text-theme-primary-500 {
     color: var(--color-primary-500);
   }
