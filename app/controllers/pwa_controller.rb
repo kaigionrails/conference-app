@@ -23,12 +23,12 @@ class PwaController < ApplicationController
       start_url: "/",
       icons: [
         {
-          src: view_context.image_path("icons/2024/512.png"),
+          src: view_context.image_path("icons/2025/512.png"), # MEMO: change every year
           type: "image/png",
           sizes: "512x512"
         },
         {
-          src: view_context.image_path("icons/2024/512_maskable.png"),
+          src: view_context.image_path("icons/2025/512_maskable.png"), # MEMO: change every year
           type: "image/png",
           sizes: "512x512",
           purpose: "maskable"
