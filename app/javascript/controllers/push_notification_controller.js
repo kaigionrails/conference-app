@@ -11,44 +11,55 @@ export default class extends Controller {
 
   async connect() {
     await this.getSubscriptionStatus();
-    this.currentLocaleValue = document.documentElement.lang
-    locales.locale = this.currentLocaleValue
+    this.currentLocaleValue = document.documentElement.lang;
+    locales.locale = this.currentLocaleValue;
   }
 
-  async subscribe() {
+  async toggleSubscriptionStatus() {
+    this.statusTarget.disabled = true;
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
-        if (!this.alreadySubscribedValue) {
-          serviceWorkerRegistration.pushManager
-            .subscribe({
+      const serviceWorkerRegistration = await navigator.serviceWorker.ready;
+      if (this.alreadySubscribedValue) {
+        // unsubscribe
+        const subscription =
+          await serviceWorkerRegistration.pushManager.getSubscription();
+        try {
+          await subscription?.unsubscribe();
+          this.alreadySubscribedValue = false;
+        } catch (error) {
+          console.error(error);
+          window.alert(locales.t("setting.index.something_went_wrong"));
+        }
+      } else {
+        // subscribe
+        try {
+          const subscribe =
+            await serviceWorkerRegistration.pushManager.subscribe({
               userVisibleOnly: true,
               applicationServerKey: window.vapidPublicKey,
-            })
-            .then(
-              (pushSubscription) => {
-                const request = new FetchRequest(
-                  "post",
-                  "/webpush_subscription",
-                  { body: { subscription: pushSubscription.toJSON() } }
-                );
-                request.perform().then((response) => {
-                  if (response.ok) {
-                    this.alreadySubscribedValue = true;
-                  } else {
-                    console.error(response);
-                  }
-                });
-              },
-              (error) => {
-                console.error(error);
-              }
-            );
+            });
+          const request = new FetchRequest("post", "/webpush_subscription", {
+            body: { subscription: subscribe.toJSON() },
+          });
+          const response = await request.perform();
+          if (response.ok) {
+            this.alreadySubscribedValue = true;
+          } else {
+            console.error(response);
+            window.alert(locales.t("setting.index.something_went_wrong"));
+          }
+        } catch (error) {
+          console.error(error);
+          window.alert(locales.t("setting.index.something_went_wrong"));
         }
-        this.updateSubscriptionButton();
-      });
+      }
     } else {
-      window.alert(locales.t("setting.index.your_browser_does_not_support_webpush"));
+      window.alert(
+        locales.t("setting.index.your_browser_does_not_support_webpush")
+      );
     }
+    this.statusTarget.disabled = false;
+    this.updateSubscriptionButton();
   }
 
   async getSubscriptionStatus() {
@@ -77,7 +88,14 @@ export default class extends Controller {
   }
 
   updateSubscriptionButton() {
-    this.statusTarget.innerText = locales.t("setting.index.already_subscribed");
-    this.statusTarget.disabled = true;
+    if (this.alreadySubscribedValue) {
+      this.statusTarget.innerText = locales.t(
+        "setting.index.already_subscribed"
+      );
+    } else {
+      this.statusTarget.innerText = locales.t(
+        "setting.index.enable_push_notification"
+      );
+    }
   }
 }

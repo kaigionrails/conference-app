@@ -111,7 +111,8 @@ en:
       need_login: "Please log in using the button below to configure notification settings."
       reference: "Reference"
       your_browser_does_not_support_webpush: "Your browser does not support push notifications"
-      already_subscribed: "subscribed"
+      already_subscribed: "subscribed (tap to unsubscribe)"
+      something_went_wrong: "Something went wrong. Please reload the page and try again."
   config:
     index:
       title: "Config"
