@@ -66,8 +66,8 @@
       APIモード+Next.js SPAという構成で新規プロダクトの立ち上げに参画している。
 - :title: Web Componentsで実現する Hotwire とフロントエンドフレームワークの橋渡し
   :abstract: "Hotwire を使って開発したい。しかし現実には、フロントエンドフレームワークで構築された社内デザインシステムが既に存在しており、それらを使わずにゼロから作り直すには大きなコストがかかる。だから踏み切れない──そんな悩みを抱えるチームも多いのではないでしょうか。\r\n\r\n本トークでは、Web
-    標準である Web Components を活用し、Angular 製のデザインコンポーネントを Rails + Hotwire のサービスに段階的に組み込む事例を紹介します。既存の資産を活かしつつ、Hotwire
-    の開発体験も享受する、いわば“いいとこ取り”の構成をどう実現したのか。Web Components をどのように活用すれば、Rails アプリケーションでも有効に運用できるのかを共有します。"
+    標準である Web Components を使い、Angular 製の UI コンポーネントを Rails + Hotwire のサービスに段階的に組み込む事例を紹介します。既存の資産を活かしつつ、Hotwire
+    の開発もできる、いわば\"いいとこ取り\"の構成をどう実現したのか。Rails アプリケーションにおける Web Components の活用方法を共有します。"
   :start_at: !!timestamp 2025-09-26T15:45:00+09:00
   :duration_minutes: 15
   :track: 'Hall Blue'
