@@ -27,10 +27,21 @@ It's built with Ruby on Rails.
 The app is built with Ruby on Rails 8. It uses `importmap-rails`, `turbo-rails`, `stimulus-rails` and `tailwindcss-rails` for front end development.
 
 ## Setup dev environment
-### Environment variables
+
+### Setup user
+
+#### Operator login
+
+This is a hidden way to create user, the page is not linked from the top page.
+
+Visit http://localhost:3000/login
+
+#### GitHub login
+
+##### Environment variables
 See [`.env.sample`](.env.sample) for required/optional environment variables.
 
-### Create GitHub App
+##### Create GitHub App
 Current implementation requires GitHub App when you create a user.
 
 <https://github.com/settings/apps/new>
