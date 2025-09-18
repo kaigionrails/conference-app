@@ -22,7 +22,7 @@
       <h2 class="font-bold text-2xl mb-3" id=<%= time_with_zone_to_anchor(slot) %>><%= l(slot.in_time_zone("Tokyo"), format: :talk_time_slot_with_date) %></h2>
       <section class="flex flex-row justify-between flex-wrap items-start">
         <% talks.reverse.each do |talk| # want to place Room Red -> Room Blue, so reverse %>
-          <div class="w-full md:w-[48%] border border-black shadow-xs shadow-gray-400 rounded-lg mb-4 p-4">
+          <div class="w-full md:w-[48%] border border-(--color-text-secondary) shadow-xs shadow-gray-400 rounded-lg mb-4 p-4">
             <div class="w-full flex">
               <div class="w-24">
                 <% talk.speakers.each do |speaker| %>
