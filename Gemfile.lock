@@ -317,7 +317,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.6.1)
+    puma (7.0.3)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
@@ -593,7 +593,7 @@ DEPENDENCIES
   pg_query
   propshaft
   prosopite
-  puma (~> 6.6)
+  puma (~> 7.0)
   rack-contrib (~> 2.5.0)
   rails (= 8.1.0.beta1)
   rails-i18n (~> 8.0.0)
