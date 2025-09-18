@@ -34,6 +34,14 @@
     --color-text-primary: #f2e9e7;    /* black - メインテキスト */
     --color-text-secondary: #61534f;  /* white - 反転テキスト */
 
+    --background-image-2025-1: url('2025/backgrounds/background_1.svg');
+    --background-image-2025-2: url('2025/backgrounds/background_2.svg');
+    --background-image-2025-3: url('2025/backgrounds/background_3.svg');
+    --background-image-2025-4: url('2025/backgrounds/background_4.svg');
+    --background-image-2025-5: url('2025/backgrounds/background_5.svg');
+    --background-image-2025-6: url('2025/backgrounds/background_6.svg');
+    --background-image-2025-7: url('2025/backgrounds/background_7.svg');
+    --background-image-2025-8: url('2025/backgrounds/background_8.svg');
   }
 
   *,
@@ -109,6 +117,72 @@
   }
   .bg-theme-alert {
     background-color: var(--color-alert-bg);
+  }
+
+  .background-2025-items {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .background-2025-item {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat;
+  }
+
+  .background-2025-item img {
+    display: none;
+  }
+
+  .background-2025-item-1 {
+    opacity: 0;
+    background-image: var(--background-image-2025-1);
+    animation: fade-in-out 3s ease-in-out infinite;
+  }
+  .background-2025-item-2 {
+    opacity: 0.2;
+    background-image: var(--background-image-2025-2);
+    animation: fade-in-out 4s ease-in-out infinite;
+  }
+  .background-2025-item-3 {
+    opacity: 0.4;
+    background-image: var(--background-image-2025-3);
+    animation: fade-in-out 5s ease-in-out infinite;
+  }
+  .background-2025-item-4 {
+    opacity: 0.6;
+    background-image: var(--background-image-2025-4);
+    animation: fade-in-out 6s ease-in-out infinite;
+  }
+  .background-2025-item-5 {
+    opacity: 0.8;
+    background-image: var(--background-image-2025-5);
+    animation: fade-in-out 7s ease-in-out infinite;
+  }
+  .background-2025-item-6 {
+    opacity: 0;
+    background-image: var(--background-image-2025-6);
+    animation: fade-in-out 8s ease-in-out infinite;
+  }
+  .background-2025-item-7 {
+    opacity: 0.2;
+    background-image: var(--background-image-2025-7);
+    animation: fade-in-out 2s ease-in-out infinite;
+  }
+  .background-2025-item-8 {
+    opacity: 0.6;
+    background-image: var(--background-image-2025-8);
+    animation: fade-in-out 1s ease-in-out infinite;
+  }
+
+  @keyframes fade-in-out {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
   }
 
   /* テキスト色 */

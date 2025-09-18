@@ -21,12 +21,22 @@
   <body class="bg-theme-background w-full pb-safe">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
-      <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
+      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>"><%# MEMO: relative and z-10 is for 2025's background image %>
         <%= message %>
       </div>
     <% end %>
-    <main class="mx-auto flex text-theme-primary">
+    <main class="mx-auto flex text-theme-primary relative z-10"><%# MEMO: relative and z-10 is for 2025's background image %>
       <%= yield %>
     </main>
+    <div class="background-2025-items">
+      <div class="background-2025-item background-2025-item-1"></div>
+      <div class="background-2025-item background-2025-item-2"></div>
+      <div class="background-2025-item background-2025-item-3"></div>
+      <div class="background-2025-item background-2025-item-4"></div>
+      <div class="background-2025-item background-2025-item-5"></div>
+      <div class="background-2025-item background-2025-item-6"></div>
+      <div class="background-2025-item background-2025-item-7"></div>
+      <div class="background-2025-item background-2025-item-8"></div>
+    </div>
   </body>
 </html>
