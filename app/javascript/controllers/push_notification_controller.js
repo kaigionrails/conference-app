@@ -7,7 +7,7 @@ export default class extends Controller {
     alreadySubscribed: { type: Boolean, default: false },
     currentLocale: { type: String, default: "ja" },
   };
-  static targets = ["status"];
+  static targets = ["status", "sendSample"];
 
   async connect() {
     await this.getSubscriptionStatus();
@@ -70,8 +70,10 @@ export default class extends Controller {
           .then((subscription) => {
             if (subscription == null) {
               this.alreadySubscribedValue = false;
+              this.sendSampleTarget.disabled = true;
             } else {
               this.alreadySubscribedValue = true;
+              this.sendSampleTarget.disabled = false;
             }
             this.updateSubscriptionButton();
           });
@@ -89,10 +91,12 @@ export default class extends Controller {
 
   updateSubscriptionButton() {
     if (this.alreadySubscribedValue) {
+      this.sendSampleTarget.disabled = false;
       this.statusTarget.innerText = locales.t(
         "setting.index.already_subscribed"
       );
     } else {
+      this.sendSampleTarget.disabled = true;
       this.statusTarget.innerText = locales.t(
         "setting.index.enable_push_notification"
       );

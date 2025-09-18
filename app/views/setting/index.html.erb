@@ -12,7 +12,7 @@
   <% if logged_in? %>
     <div data-controller="push-notification">
       <button data-action="click->push-notification#toggleSubscriptionStatus" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4"><%= t('.enable_push_notification') %></button>
-      <button data-action="click->push-notification#sendSamplePushNotification" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
+      <button data-action="click->push-notification#sendSamplePushNotification" data-push-notification-target="sendSample" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none disabled:shadow-none disabled:ring-0">
         <%= t('.send_test_push_notification') %>
       </button>
       <p class="mb-1"><%= t('.test_push_notification_will_send_all_devices') %></p>
