@@ -86,6 +86,7 @@ export default class extends Controller {
     const response = await request.perform();
     if (!response.ok) {
       console.error(response);
+      window.alert(locales.t("setting.index.something_went_wrong"));
     }
   }
 
