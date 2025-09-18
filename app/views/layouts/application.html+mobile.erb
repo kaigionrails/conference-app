@@ -18,15 +18,25 @@
     </script>
   </head>
 
-  <body class="bg-[#d7d2d0] w-full flex flex-col h-[100dvh] pb-safe">
+  <body class="bg-theme-background w-full flex flex-col h-[100dvh] pb-safe">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
-      <div class="py-3 px-5 mb-4 <%= message_type_style(message_type) %>">
+      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>"><%# MEMO: relative z-10 is for 2025's background image %>
         <%= message %>
       </div>
     <% end %>
-    <main class="w-full mx-auto pb-2 flex text-black grow overflow-scroll">
+    <main class="w-full mx-auto pb-2 flex text-theme-primary grow overflow-scroll relative z-10"><%# MEMO: relative z-10 is for 2025's background image %>
       <%= yield %>
     </main>
+    <div class="background-2025-items">
+      <div class="background-2025-item background-2025-item-1"></div>
+      <div class="background-2025-item background-2025-item-2"></div>
+      <div class="background-2025-item background-2025-item-3"></div>
+      <div class="background-2025-item background-2025-item-4"></div>
+      <div class="background-2025-item background-2025-item-5"></div>
+      <div class="background-2025-item background-2025-item-6"></div>
+      <div class="background-2025-item background-2025-item-7"></div>
+      <div class="background-2025-item background-2025-item-8"></div>
+    </div>
   </body>
 </html>

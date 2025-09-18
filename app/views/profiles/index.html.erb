@@ -18,7 +18,7 @@
         <button
           data-profiles-target="hideQrcode"
           data-action="click->profiles#hideQrcode"
-          class="absolute text-white w-12 h-12 hidden -bottom-10 -right-10"
+          class="absolute text-theme-secondary w-12 h-12 hidden -bottom-10 -right-10"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full f-hull">
 <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
@@ -35,7 +35,7 @@
     </div>
     <div class="w-2/3 pl-2">
       <p class="text-3xl font-bold mb-4"><%= @profile.name %></p>
-      <div class="text-gray-900 mb-14 markdown"><%= @profile.sanitized_description %></div>
+      <div class="text-theme-primary mb-14 markdown"><%= @profile.sanitized_description %></div>
       <div class="flex flex-row flex-wrap">
         <% @profile.profile_badges.each do |profile_badge| %>
           <div class="inline-block py-1 px-3 border-2 rounded-3xl text-black mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>

@@ -22,9 +22,9 @@ module ApplicationHelper
   def message_type_style(message_type)
     case message_type
     when "success"
-      "bg-[#d4edda]"
+      "bg-theme-success"
     when "alert"
-      "bg-[#f8d7da]"
+      "bg-theme-alert"
     else
       ""
     end

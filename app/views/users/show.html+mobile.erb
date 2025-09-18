@@ -1,6 +1,6 @@
 <div class="w-full" data-controller="users">
   <% if !logged_in? & @token %>
-    <div class="w-full bg-red-200 text-black text-center py-2">
+    <div class="w-full bg-theme-primary-200 text-theme-primary text-center py-2">
       <p class="text-sm mb-1"><%= t('users.show.login_prompt') %></p>
       <%= form_tag "/auth/github?return_to=#{user_path(username: @user.name, token: @token)}", method: :post, data: { turbo: false } do %>
         <%= submit_tag t('users.show.login_with_github'), class: "underline cursor-pointer" %>
@@ -28,7 +28,7 @@
         <div class="markdown mb-4"><%= @profile.sanitized_description %></div>
         <div class="flex flex-row flex-wrap pt-4 mb-4">
           <% @profile.profile_badges.each do |profile_badge| %>
-            <div class="inline-block py-1 px-3 border-2 rounded-3xl text-black mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
+            <div class="inline-block py-1 px-3 border-2 rounded-3xl text-theme-primary mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
           <% end %>
         </div>
       </div>

@@ -4,7 +4,7 @@
   <ol class="border rounded-lg pl-0">
     <% @announcements.each do |announcement| %>
       <li class="block">
-        <%= link_to event_announcement_path(event_slug: @event.slug, id: announcement.id), class: "block py-4 px-2 md:px-4 flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20" do %>
+        <%= link_to event_announcement_path(event_slug: @event.slug, id: announcement.id), class: "block py-4 px-2 md:px-4 flex flex-row items-center bg-opacity-0 hover:bg-opacity-20" do %>
         <% if logged_in? %>
           <% if @unread_announcements&.exists?(announcement: announcement) %>
             <span class="text-sm border rounded-full py-1 px-2 mr-3 bg-white text-gray-800 font-bold w-12 text-center"><%= t(".unread") %></span>
@@ -13,7 +13,7 @@
           <% end %>
         <% end %>
         <span class="text-xl hover:underline mr-4 w-2/5 md:w-auto"><%= truncate(announcement.title, length: 50) %></span>
-        <span><%= announcement.published_at.in_time_zone("Tokyo").strftime("%m/%d %H:%M") %><%= t(".published") %></span>
+        <span><%= l(announcement.published_at.in_time_zone("Tokyo"), format: :announcement_published_at) %></span>
         <span class="ml-auto">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />

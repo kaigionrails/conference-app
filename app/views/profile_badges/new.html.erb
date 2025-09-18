@@ -8,7 +8,7 @@
   <div class="mb-8">
     <%= form_for @profile_badge do |f| %>
       <%= f.label :text, t('.text_label'), class: "block text-lg font-bold mb-2" %>
-      <%= f.text_field :text, class: "block text-black rounded-sm mb-4 w-[40rem] max-w-full", data: { action: "profile-badge#updatePreview" } %>
+      <%= f.text_field :text, class: "block text-theme-primary rounded-sm mb-4 w-[40rem] max-w-full shadow-xs ring-1 ring-inset ring-gray-300", data: { action: "profile-badge#updatePreview" } %>
       <%= f.label :border_color_code, t('.border_color_code'), class: "block text-lg font-bold mb-2" %>
       <%= f.color_field :border_color_code, class: "block mb-4", data: { action: "profile-badge#updatePreview" } %>
       <%= f.label :background_color_code, t('.background_color_code'), class: "block text-lg font-bold mb-2" %>
