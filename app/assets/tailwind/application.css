@@ -13,6 +13,7 @@
     /* 2025年のテーマカラー */
     /* メインの背景色 */
     --color-background: #292220; /* MEMO: change evey year */
+    --color-2025-primary: #227fbb; /* MEMO: change evey year */
 
     /* プライマリカラー（赤系） */
     --color-primary-200: rgb(254 202 202);  /* red-200 */
@@ -197,6 +198,10 @@
   }
   .text-theme-primary-900 {
     color: var(--color-primary-900);
+  }
+
+  .color-2025-primary {
+    color: var(--color-2025-primary);
   }
 
   /* ボーダー色 */
