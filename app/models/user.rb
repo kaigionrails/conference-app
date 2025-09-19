@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :profile_exchanges, dependent: :destroy
   has_many :friends, through: :profile_exchanges, class_name: "User"
   has_many :talk_reminders, dependent: :destroy
+  has_many :tito_tickets, dependent: :nullify
 
   enum :role, {organizer: "organizer", participant: "participant", operator: "operator"}
 

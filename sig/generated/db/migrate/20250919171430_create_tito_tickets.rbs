@@ -1,0 +1,5 @@
+# Generated from db/migrate/20250919171430_create_tito_tickets.rb with RBS::Inline
+
+class CreateTitoTickets
+  def change: () -> untyped
+end
