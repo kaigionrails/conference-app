@@ -1,0 +1,22 @@
+<h2 class="font-bold text-xl mb-8">Tito ticket 「<%= @tito_ticket.reference %>」 (id:<%= @tito_ticket.id %>)</h2>
+<div class="pr-8">
+  <h3 class="font-bold text-lg mb-2">record id</h3>
+  <p class="mb-4"><%= @tito_ticket.id %></p>
+  <h3 class="font-bold text-lg mb-2">Tito id</h3>
+  <p class="mb-4"><%= @tito_ticket.tito_id %></p>
+  <h3 class="font-bold text-lg mb-2">Tito slug</h3>
+  <p class="mb-4"><%= @tito_ticket.slug %></p>
+  <h3 class="font-bold text-lg mb-2">Tito reference</h3>
+  <p class="mb-4"><%= @tito_ticket.reference %></p>
+  <h3 class="font-bold text-lg mb-2">Tito url</h3>
+  <p class="mb-4"><%= link_to @tito_ticket.unique_url, @tito_ticket.unique_url, class: "underline", target: "_blank" %></p>
+  <h3 class="font-bold text-lg mb-2">Assigned user</h3>
+  <% if @tito_ticket.user.present? %>
+    <p class="mb-4"><%= link_to @tito_ticket.user.name, admin_user_path(@tito_ticket.user)%></p>
+  <% else %>
+    <p class="mb-4">not assigned to user</p>
+  <% end %>
+  <div>
+    <%= link_to "back to index", admin_tito_tickets_path, class: "underline" %>
+  </div>
+</div>
