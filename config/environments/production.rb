@@ -131,4 +131,8 @@ Rails.application.configure do
 
   config.x.cloudflare.api_token = ENV["CLOUDFLARE_API_TOKEN"]
   config.x.cloudflare.account_id = ENV["CLOUDFLARE_ACCOUNT_ID"]
+
+  # @see https://id.tito.io/api-access-tokens
+  config.x.tito.api_token = ENV["TITO_API_TOKEN"]
+  config.x.tito.account_slug = ENV["TITO_ACCOUNT_SLUG"]
 end
