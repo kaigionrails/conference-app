@@ -1,0 +1,17 @@
+# Generated from lib/tito_api_client.rb with RBS::Inline
+
+class TitoApiClient
+  # @rbs return: void
+  def initialize: (event_slug: untyped, ?account_slug: untyped) -> void
+
+  # @rbs return: Hash["tickets", [Hash[String, untyped]]]
+  # @see https://ti.to/docs/api/admin/3.1#tickets-get-all-tickets
+  def tickets: () -> Hash["tickets", [ Hash[String, untyped] ]]
+
+  # @rbs ticket_slug: String
+  # @rbs return: Hash["ticket", Hash[String, untyped]]
+  # @see https://ti.to/docs/api/admin/3.1#tickets-get-a-ticket
+  def ticket: (String ticket_slug) -> Hash["ticket", Hash[String, untyped]]
+
+  private def client: () -> untyped
+end
