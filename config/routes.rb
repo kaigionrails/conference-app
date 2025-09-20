@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   get "/live/:id", to: "live_streams#show", as: "live_stream"
 
+  post "/tito_webhook/:event_slug", to: "tito_webhook#create"
+
   resources :signages, only: [:index]
   resources :signage_devices, only: [:index]
 

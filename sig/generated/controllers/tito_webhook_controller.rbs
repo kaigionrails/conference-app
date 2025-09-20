@@ -1,0 +1,7 @@
+# Generated from app/controllers/tito_webhook_controller.rb with RBS::Inline
+
+class TitoWebhookController < ApplicationController
+  def create: () -> untyped
+
+  private def verify_payload: () -> untyped
+end

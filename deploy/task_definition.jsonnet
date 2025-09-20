@@ -123,6 +123,10 @@
           valueFrom: $.parameterStoreArn('TITO_API_TOKEN'),
         },
         {
+          name: 'TITO_WEBHOOK_SECRET',
+          valueFrom: $.parameterStoreArn('TITO_WEBHOOK_SECRET'),
+        },
+        {
           name: 'VAPID_PRIVATE_KEY',
           valueFrom: $.parameterStoreArn('VAPID_PRIVATE_KEY'),
         },

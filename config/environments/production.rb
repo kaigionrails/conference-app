@@ -135,4 +135,5 @@ Rails.application.configure do
   # @see https://id.tito.io/api-access-tokens
   config.x.tito.api_token = ENV["TITO_API_TOKEN"]
   config.x.tito.account_slug = ENV["TITO_ACCOUNT_SLUG"]
+  config.x.tito.webhook_secret = ENV["TITO_WEBHOOK_SECRET"]
 end
