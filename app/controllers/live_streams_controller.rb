@@ -14,6 +14,15 @@ class LiveStreamsController < ApplicationController
   end
 
   private def require_ticket
-    true
+    # logged_in, has current event ticket or organizer
+    if current_user &&
+        (
+          current_user!.tito_tickets.where(event: Event.find_by(slug: params[:event_slug]), state: "complete").exists? \
+          || current_user!.organizer?
+        )
+      true
+    else
+      redirect_to root_path
+    end
   end
 end
