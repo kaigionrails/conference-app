@@ -4,9 +4,9 @@ class TitoApiClient
   # @rbs return: void
   def initialize: (event_slug: untyped, ?account_slug: untyped) -> void
 
-  # @rbs return: Hash["tickets", [Hash[String, untyped]]]
+  # @rbs (?page: Integer) -> Hash["tickets", [Hash[String, untyped]]]
   # @see https://ti.to/docs/api/admin/3.1#tickets-get-all-tickets
-  def tickets: () -> Hash["tickets", [ Hash[String, untyped] ]]
+  def tickets: (?page: Integer) -> Hash["tickets", [ Hash[String, untyped] ]]
 
   # @rbs ticket_slug: String
   # @rbs return: Hash["ticket", Hash[String, untyped]]
