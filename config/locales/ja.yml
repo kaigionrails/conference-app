@@ -110,7 +110,8 @@ ja:
       need_login: "下のボタンからログインをすることで通知の設定が行えます。"
       reference: "参考"
       your_browser_does_not_support_webpush: "お使いのブラウザはプッシュ通知に対応していません"
-      already_subscribed: "購読済み"
+      already_subscribed: "購読済み (タップで購読解除)"
+      something_went_wrong: "エラーが発生しました。リロードして再度お試しください。"
   config:
     index:
       title: "設定"

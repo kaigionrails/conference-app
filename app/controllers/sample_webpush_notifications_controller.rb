@@ -7,7 +7,7 @@ class SampleWebpushNotificationsController < ApplicationController
     message = {
       title: I18n.t(".sample_webpush_notifications.create.title"),
       body: I18n.t(".sample_webpush_notifications.create.body"),
-      icon: view_context.image_url("icons/2024/512.png"),
+      icon: view_context.image_url("icons/2025/512.png"), # MEMO: change every year
       data: {
         url: URI.join(Rails.configuration.application_url, setting_path)
       }
