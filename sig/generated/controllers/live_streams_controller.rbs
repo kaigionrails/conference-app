@@ -4,5 +4,10 @@ class LiveStreamsController < ApplicationController
   @live_stream: CloudflareStreamLiveStream
 
   # @rbs return: void
+  def index: () -> void
+
+  # @rbs return: void
   def show: () -> void
+
+  private def require_ticket: () -> untyped
 end
