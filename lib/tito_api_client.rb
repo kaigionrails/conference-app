@@ -8,10 +8,10 @@ class TitoApiClient
     @event_slug = event_slug
   end
 
-  # @rbs return: Hash["tickets", [Hash[String, untyped]]]
+  # @rbs (?page: Integer) -> Hash["tickets", [Hash[String, untyped]]]
   # @see https://ti.to/docs/api/admin/3.1#tickets-get-all-tickets
-  def tickets
-    client.get("/v3/#{@account_slug}/#{@event_slug}/tickets").body
+  def tickets(page: 1)
+    client.get("/v3/#{@account_slug}/#{@event_slug}/tickets?page[number]=#{page}").body
   end
 
   # @rbs ticket_slug: String
