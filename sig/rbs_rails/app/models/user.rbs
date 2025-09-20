@@ -207,6 +207,10 @@ class User < ::ApplicationRecord
   def talk_reminders=: (::TalkReminder::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkReminder]) -> (::TalkReminder::ActiveRecord_Associations_CollectionProxy | ::Array[::TalkReminder])
   def talk_reminder_ids: () -> ::Array[::Integer]
   def talk_reminder_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def tito_tickets: () -> ::TitoTicket::ActiveRecord_Associations_CollectionProxy
+  def tito_tickets=: (::TitoTicket::ActiveRecord_Associations_CollectionProxy | ::Array[::TitoTicket]) -> (::TitoTicket::ActiveRecord_Associations_CollectionProxy | ::Array[::TitoTicket])
+  def tito_ticket_ids: () -> ::Array[::Integer]
+  def tito_ticket_ids=: (::Array[::Integer]) -> ::Array[::Integer]
   def authentication_provider_github: () -> ::AuthenticationProviderGithub?
   def authentication_provider_github=: (::AuthenticationProviderGithub?) -> ::AuthenticationProviderGithub?
   def build_authentication_provider_github: (?untyped) -> ::AuthenticationProviderGithub

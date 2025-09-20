@@ -67,4 +67,8 @@ Rails.application.configure do
 
   config.x.cloudflare.api_token = "testtesttesttest"
   config.x.cloudflare.account_id = "testtesttesttest"
+
+  config.x.tito.api_token = "secret_test_xxxxxxxxx"
+  config.x.tito.account_slug = "kaigionrails-test"
+  config.x.tito.webhook_secret = "tito-webhook-secret-xxxxxx"
 end

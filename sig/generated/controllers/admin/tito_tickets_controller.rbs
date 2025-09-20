@@ -1,0 +1,7 @@
+# Generated from app/controllers/admin/tito_tickets_controller.rb with RBS::Inline
+
+class Admin::TitoTicketsController < AdminController
+  def index: () -> untyped
+
+  def show: () -> untyped
+end

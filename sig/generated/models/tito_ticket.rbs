@@ -1,0 +1,4 @@
+# Generated from app/models/tito_ticket.rb with RBS::Inline
+
+class TitoTicket < ApplicationRecord
+end

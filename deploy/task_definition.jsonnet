@@ -115,6 +115,18 @@
           valueFrom: $.parameterStoreArn('SENTRY_DSN'),
         },
         {
+          name: 'TITO_ACCOUNT_SLUG',
+          valueFrom: $.parameterStoreArn('TITO_ACCOUNT_SLUG'),
+        },
+        {
+          name: 'TITO_API_TOKEN',
+          valueFrom: $.parameterStoreArn('TITO_API_TOKEN'),
+        },
+        {
+          name: 'TITO_WEBHOOK_SECRET',
+          valueFrom: $.parameterStoreArn('TITO_WEBHOOK_SECRET'),
+        },
+        {
           name: 'VAPID_PRIVATE_KEY',
           valueFrom: $.parameterStoreArn('VAPID_PRIVATE_KEY'),
         },

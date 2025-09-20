@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   get "/live/:id", to: "live_streams#show", as: "live_stream"
 
+  post "/tito_webhook/:event_slug", to: "tito_webhook#create"
+
   resources :signages, only: [:index]
   resources :signage_devices, only: [:index]
 
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
       resources :profile_badges_profiles, only: [:new, :create]
     end
     resources :talks, only: [:index, :show, :edit, :update]
+    resources :tito_tickets, only: [:index, :show]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :live_streams, only: [:index, :new, :create, :update]

@@ -1,0 +1,33 @@
+<div class="mb-16">
+<h2 class="font-bold text-xl mb-8">Tito tickets</h2>
+<div class="mb-8">
+  <% all_event = @event.nil? %>
+  <%= link_to "All events tito tickes", admin_tito_tickets_path(), class: "rounded-md px-2.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{all_event ? "bg-gray-50" : "bg-white"}" %>
+  <% @events.each do |event| %>
+    <% this_event = @event == event %>
+    <%= link_to event.slug, admin_tito_tickets_path(event: event.slug), class: "rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{this_event ? "bg-gray-50" : "bg-white"}" %>
+  <% end %>
+  </ol>
+</div>
+<div class="rounded-sm w-full pr-8 shadow-xs">
+  <table class="w-full divide-y border">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="py-2 px-3 text-left">tito reference</th>
+        <th class="py-2 px-3 text-left">user</th>
+        <th class="py-2 px-3 text-left sr-only">Show</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 bg-white">
+      <% @tito_tickets.each do |ticket| %>
+        <tr>
+          <td class="p-3"><pre><%= ticket.reference %></pre></td>
+          <td class="p-3"><%= ticket.user&.name || "not assigned to user" %></td>
+          <td class="p-3"><%= link_to "Show", admin_tito_ticket_path(ticket), class: "underline" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @tito_tickets %>
+</div>
