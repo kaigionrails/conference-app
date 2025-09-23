@@ -6,6 +6,7 @@ class LiveStreamsController < ApplicationController
   # @rbs return: void
   def index
     @event = Event.find_by!(slug: params[:event_slug])
+    @live_streams = CloudflareStreamLiveStream.where(event: @event)
   end
 
   # @rbs return: void
