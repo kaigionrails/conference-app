@@ -37,8 +37,6 @@ Rails.application.routes.draw do
 
   get "/about", to: "about#index"
 
-  get "/live/:id", to: "live_streams#show", as: "live_stream"
-
   post "/tito_webhook/:event_slug", to: "tito_webhook#create"
 
   resources :signages, only: [:index]
@@ -74,5 +72,7 @@ Rails.application.routes.draw do
     get "/", to: "events#show"
     resources :talks, only: [:index, :show]
     resources :announcements, only: [:index, :show]
+
+    get "/live", to: "live_streams#index", as: "live_streams"
   end
 end

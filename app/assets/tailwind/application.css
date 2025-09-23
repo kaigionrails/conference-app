@@ -143,46 +143,46 @@
   .background-2025-item-1 {
     opacity: 0;
     background-image: var(--background-image-2025-1);
-    animation: fade-in-out 3s ease-in-out infinite;
+    animation: fade-in-out 12s ease-in-out infinite;
   }
   .background-2025-item-2 {
     opacity: 0.2;
     background-image: var(--background-image-2025-2);
-    animation: fade-in-out 4s ease-in-out infinite;
+    animation: fade-in-out 16s ease-in-out infinite;
   }
   .background-2025-item-3 {
     opacity: 0.4;
     background-image: var(--background-image-2025-3);
-    animation: fade-in-out 5s ease-in-out infinite;
+    animation: fade-in-out 20s ease-in-out infinite;
   }
   .background-2025-item-4 {
     opacity: 0.6;
     background-image: var(--background-image-2025-4);
-    animation: fade-in-out 6s ease-in-out infinite;
+    animation: fade-in-out 24s ease-in-out infinite;
   }
   .background-2025-item-5 {
     opacity: 0.8;
     background-image: var(--background-image-2025-5);
-    animation: fade-in-out 7s ease-in-out infinite;
+    animation: fade-in-out 28s ease-in-out infinite;
   }
   .background-2025-item-6 {
     opacity: 0;
     background-image: var(--background-image-2025-6);
-    animation: fade-in-out 8s ease-in-out infinite;
+    animation: fade-in-out 32s ease-in-out infinite;
   }
   .background-2025-item-7 {
     opacity: 0.2;
     background-image: var(--background-image-2025-7);
-    animation: fade-in-out 2s ease-in-out infinite;
+    animation: fade-in-out 8s ease-in-out infinite;
   }
   .background-2025-item-8 {
     opacity: 0.6;
     background-image: var(--background-image-2025-8);
-    animation: fade-in-out 1s ease-in-out infinite;
+    animation: fade-in-out 4s ease-in-out infinite;
   }
 
   @keyframes fade-in-out {
-    0%, 100% { opacity: 0; }
+    0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
   }
 
