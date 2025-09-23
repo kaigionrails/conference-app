@@ -127,7 +127,9 @@ en:
     show:
       duration_format: "%{duration} minutes"
       abstract: "Abstract"
-      speakers: "Speakers"
+      speakers:
+        one: "Speaker"
+        other: "Speakers"
       back_to_index: "Back to talk list"
       post_to_twitter_with_hashtag: "Post to 𝕏 with hashtag"
   talk_bookmarks:
