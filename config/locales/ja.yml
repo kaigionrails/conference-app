@@ -127,7 +127,9 @@ ja:
     show:
       duration_format: "%{duration} 分間"
       abstract: "概要"
-      speakers: "スピーカー"
+      speakers:
+        one: "スピーカー"
+        other: "スピーカー"
       back_to_index: "発表一覧に戻る"
       post_to_twitter_with_hashtag: "ハッシュタグを付けて𝕏に投稿する"
   talk_bookmarks:
