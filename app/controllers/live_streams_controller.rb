@@ -1,12 +1,12 @@
 class LiveStreamsController < ApplicationController
-  before_action :require_ticket
+  # before_action :require_ticket
 
   # @rbs @live_stream: CloudflareStreamLiveStream
 
   # @rbs return: void
   def index
     @event = Event.find_by!(slug: params[:event_slug])
-    @live_streams = CloudflareStreamLiveStream.where(event: @event)
+    # @live_streams = CloudflareStreamLiveStream.where(event: @event)
   end
 
   # @rbs return: void
