@@ -40,7 +40,7 @@
               <ul>
                 <% @event_friends[event]&.each do |profile_exchange| %>
                   <li class="flex flex-row items-center">
-                    <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
+                    <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row border border-slate-900 items-center rounded-lg mb-1" do %>
                       <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
                       <p class="text-2xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                       <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
@@ -55,7 +55,7 @@
                 <ul>
                   <% @event_friends[event]&.each do |profile_exchange| %>
                     <li class="flex flex-row items-center">
-                      <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center bg-white bg-opacity-0 hover:bg-opacity-20 rounded-lg mb-1" do %>
+                      <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row border border-slate-900 items-center rounded-lg mb-1" do %>
                         <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg", loading: "lazy" %>
                         <p class="text-2xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                         <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
