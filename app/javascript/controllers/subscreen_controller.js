@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static values = {
-    shiratakiUrl: String
+    shiratakiUrl: String,
+    room: String
   }
 
   static targets = ["jaTranscribe", "enTranscribe"]
@@ -16,7 +17,7 @@ export default class extends Controller {
 
   listernShiratakiEvent() {
     // Japanese EventSource
-    const jaEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=red&language=ja`)
+    const jaEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=ja`)
     jaEventSource.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data)
@@ -31,7 +32,7 @@ export default class extends Controller {
     }
 
     // English EventSource
-    const enEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=red&language=en`)
+    const enEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=en`)
     enEventSource.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data)
