@@ -1,0 +1,5 @@
+# Generated from app/controllers/subscreen_controller.rb with RBS::Inline
+
+class SubscreenController < ApplicationController
+  def index: () -> untyped
+end
