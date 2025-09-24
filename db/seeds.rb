@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+%w[organizer participant operator].each do |role|
+  User.find_or_create_by!(role: role) do |user|
+    user.name = role.capitalize
+    user.build_profile(name: user.name)
+    user.build_authentication_provider_email_and_password(email: "#{role}@example.invalid", password: "password", password_confirmation: "password")
+  end
+end
+
 event_2023 = Event.find_or_create_by!(name: "Kaigi on Rails 2023", slug: "2023") do |event|
   event.start_date = Time.zone.parse("2023-10-27 00:00:00 +0900")
   event.end_date = Time.zone.parse("2023-10-28 23:59:59 +0900")
