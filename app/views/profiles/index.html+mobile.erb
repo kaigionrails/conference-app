@@ -58,7 +58,7 @@
                 <ul class="mb-8">
                   <% @event_friends[event].each do |profile_exchange| %>
                     <li class="flex flex-row items-center">
-                      <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-4" do %>
+                      <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
                         <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square" %>
                         <div class="w-full flex flex-row flex-wrap">
                           <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
@@ -75,7 +75,7 @@
                   <ul class="mb-8">
                     <% @event_friends[event].each do |profile_exchange| %>
                       <li class="flex flex-row items-center">
-                        <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-4" do %>
+                        <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
                           <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square", loading: "lazy" %>
                           <div class="w-full flex flex-row flex-wrap">
                             <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
