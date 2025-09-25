@@ -19,7 +19,7 @@ RSpec.describe "LiveStreams", type: :request do
         it "redirect to root path" do
           get "/2025/live"
           expect(response).to have_http_status(302)
-          expect(response).to redirect_to "/"
+          expect(response).to redirect_to "/2025/live/checkin"
         end
       end
 
@@ -31,7 +31,7 @@ RSpec.describe "LiveStreams", type: :request do
         it "redirect to root path" do
           get "/2025/live"
           expect(response).to have_http_status(302)
-          expect(response).to redirect_to "/"
+          expect(response).to redirect_to "/2025/live/checkin"
         end
       end
 
