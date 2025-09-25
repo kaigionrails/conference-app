@@ -12,6 +12,8 @@ export default class extends Controller {
     test: { type: String, default: "" },
   };
 
+  static targets = ["cannotViewStreamInVenue"];
+
   connect() {
     const video = document.getElementById("video");
     const currentHash = new URL(location.href).hash.replace("#", "");
@@ -62,9 +64,28 @@ export default class extends Controller {
       video.classList.remove("border-[var(--color-2025-danger)]");
       video.classList.add("border-[var(--color-2025-primary)]");
     }
+    this.whereAmI().then((location) => {
+      if (location === "at-venue") {
+        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
+        this.hls?.destroy();
+        video.classList.add("hidden");
+      } else {
+        // do nothing
+      }
+    })
   }
 
-  whereAmI() {}
+  async whereAmI() {
+    const response = await fetch(
+      "https://am-i-not-at-rubykaigi.s3.dualstack.ap-northeast-1.amazonaws.com/check",
+      { method: "GET" }
+    );
+    if (response.ok) {
+      return "not-at-venue";
+    } else {
+      return "at-venue";
+    }
+  }
 
   switchToRed() {
     const today = new Date();
@@ -83,6 +104,16 @@ export default class extends Controller {
     video.classList.add("border-[var(--color-2025-danger)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
+
+    this.whereAmI().then((location) => {
+      if (location === "at-venue") {
+        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
+        this.hls?.destroy();
+        video.classList.add("hidden");
+      } else {
+        // do nothing
+      }
+    })
   }
 
   switchToBlue() {
@@ -104,5 +135,15 @@ export default class extends Controller {
     video.classList.add("border-[var(--color-2025-primary)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
+
+    this.whereAmI().then((location) => {
+      if (location === "at-venue") {
+        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
+        this.hls?.destroy();
+        video.classList.add("hidden");
+      } else {
+        // do nothing
+      }
+    })
   }
 }

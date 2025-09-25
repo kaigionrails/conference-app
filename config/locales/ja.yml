@@ -168,6 +168,9 @@ ja:
       login_with_github: "Login with GitHub"
       switch_to_ja: "Switch to ja locale"
       switch_to_en: "Switch to en locale"
+  live_streams:
+    index:
+      cannot_view_stream_in_venue: "会場内ではライブ配信を視聴できません。会場外のネットワークに接続してご覧ください。"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"
