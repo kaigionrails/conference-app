@@ -35,8 +35,11 @@ class LiveStreamsController < ApplicationController
           || current_user!.operator?
         )
       true
+    elsif session[:ticketholder] && TitoTicket.where(id: session[:ticketholder].to_i).exists?
+      # user has ticket. do nothing
+      true
     else
-      redirect_to root_path
+      redirect_to event_live_checkin_path(params[:event_slug])
     end
   end
 end

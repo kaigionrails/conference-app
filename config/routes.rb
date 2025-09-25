@@ -74,5 +74,7 @@ Rails.application.routes.draw do
     resources :announcements, only: [:index, :show]
 
     get "/live", to: "live_streams#index", as: "live_streams"
+    get "/live/checkin", to: "assign_tito_tickets#index"
+    post "/live/checkin", to: "assign_tito_tickets#create", as: "assign_tito_tickets"
   end
 end
