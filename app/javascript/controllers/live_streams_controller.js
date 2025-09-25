@@ -14,8 +14,6 @@ export default class extends Controller {
 
   connect() {
     const video = document.getElementById("video");
-    // const hallRedLink = document.getElementById("hall-red-link");
-    // const hallBlueLink = document.getElementById("hall-blue-link");
     const currentHash = new URL(location.href).hash.replace("#", "");
     console.log("Current hash:", currentHash);
 
@@ -27,13 +25,9 @@ export default class extends Controller {
       if (currentHash === "red") {
         this.videoSrc = this.day1RedJaValue;
         this.selectedTabValue = "red";
-        // hallBlueLink.classList.remove("pill__hall-blue");
-        // hallBlueLink.classList.add("bg-gray-300");
       } else if (currentHash === "blue") {
         this.videoSrc = this.day1BlueJaValue;
         this.selectedTabValue = "blue";
-        // hallRedLink.classList.remove("pill__hall-red");
-        // hallRedLink.classList.add("bg-gray-300");
       } else {
         console.warn("unknown day or tab value");
       }
@@ -48,13 +42,12 @@ export default class extends Controller {
     // this.videoSrc = this.testValue;
 
     // Apply video source if set
+    const videoSrc = this.videoSrc;
     if (this.videoSrc) {
-      const videoElement = document.getElementById("video");
-      const videoSrc = this.videoSrc;
       if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(videoElement);
+        this.hls = new Hls();
+        this.hls.loadSource(videoSrc);
+        this.hls.attachMedia(video);
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = videoSrc;
       } else {
@@ -62,11 +55,54 @@ export default class extends Controller {
       }
       // videoElement.play(); // Uncomment if you want autoplay
     }
+    if (this.selectedTabValue === "red") {
+      video.classList.remove("border-[var(--color-2025-primary)]");
+      video.classList.add("border-[var(--color-2025-danger)]");
+    } else if (this.selectedTabValue === "blue") {
+      video.classList.remove("border-[var(--color-2025-danger)]");
+      video.classList.add("border-[var(--color-2025-primary)]");
+    }
   }
 
-  // updateCurrentTab({ params: { tab } }) {
-  //   if (tab) {
-  //     this.selectedTabValue = tab;
-  //   }
-  // }
+  whereAmI() {}
+
+  switchToRed() {
+    const today = new Date();
+    const day = today.getDate();
+    if (this.hls == null) {
+      this.hls = new Hls();
+    }
+    if (day === 26 || day === 25) {
+      this.videoSrc = this.day1RedJaValue;
+      this.selectedTabValue = "red";
+    } else {
+      console.warn("unknown day or tab value");
+    }
+    const video = document.getElementById("video");
+    video.classList.remove("border-[var(--color-2025-primary)]");
+    video.classList.add("border-[var(--color-2025-danger)]");
+    this.hls.loadSource(this.videoSrc);
+    this.hls.attachMedia(video);
+  }
+
+  switchToBlue() {
+    const today = new Date();
+    const day = today.getDate();
+    if (this.hls == null) {
+      this.hls = new Hls();
+    }
+    if (day === 26 || day === 25) {
+      this.videoSrc = this.day1BlueJaValue;
+      this.selectedTabValue = "blue";
+    } else if (day === 27) {
+      console.log("It's day 2!");
+    } else {
+      console.warn("unknown day or tab value");
+    }
+    const video = document.getElementById("video");
+    video.classList.remove("border-[var(--color-2025-danger)]");
+    video.classList.add("border-[var(--color-2025-primary)]");
+    this.hls.loadSource(this.videoSrc);
+    this.hls.attachMedia(video);
+  }
 }

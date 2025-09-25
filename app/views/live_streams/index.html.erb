@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center">
+<div class="w-full flex justify-center grow">
   <div data-controller="live-streams"
     data-live-streams-day1-red-ja-value="<%=  @live_streams[:day1][:red_ja] %>"
     data-live-streams-day1-blue-ja-value="<%= @live_streams[:day1][:blue_ja] %>"
@@ -9,12 +9,12 @@
   >
     <div>
       <div class="flex space-x-10 justify-center pt-6">
-        <%= link_to "Hall Red", event_live_streams_path(event_slug: @event.slug, anchor: "red"), class: "p-2 border rounded-full pill__hall-red cursor-pointer font-bold", id: "hall-red-link", data: { turbo: false } %>
-        <%= link_to "Hall Blue", event_live_streams_path(event_slug: @event.slug, anchor: "blue"), class: "p-2 border rounded-full pill__hall-blue cursor-pointer font-bold", id: "hall-blue-link", data: { turbo: false } %>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold" data-action="live-streams#switchToRed" id="hall-red-button">Hall Red</button>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
       </div>
     </div>
     <div class="w-full max-w-4xl mt-6">
-      <video id="video" src="" autoplay muted controls></video>
+      <video id="video" src="" autoplay muted controls class="aspect-video max-w-[1920px] min-w-[640px] border-2 rounded-sm"></video>
     </div>
   </div>
 </div>
