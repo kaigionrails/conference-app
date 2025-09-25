@@ -14,6 +14,8 @@ export default class extends Controller {
 
   connect() {
     const video = document.getElementById("video");
+    // const hallRedLink = document.getElementById("hall-red-link");
+    // const hallBlueLink = document.getElementById("hall-blue-link");
     const currentHash = new URL(location.href).hash.replace("#", "");
     console.log("Current hash:", currentHash);
 
@@ -21,13 +23,17 @@ export default class extends Controller {
     const today = new Date();
     const day = today.getDate();
 
-    if (day === 26) {
+    if (day === 26 || day === 25) {
       if (currentHash === "red") {
         this.videoSrc = this.day1RedJaValue;
         this.selectedTabValue = "red";
+        // hallBlueLink.classList.remove("pill__hall-blue");
+        // hallBlueLink.classList.add("bg-gray-300");
       } else if (currentHash === "blue") {
         this.videoSrc = this.day1BlueJaValue;
         this.selectedTabValue = "blue";
+        // hallRedLink.classList.remove("pill__hall-red");
+        // hallRedLink.classList.add("bg-gray-300");
       } else {
         console.warn("unknown day or tab value");
       }
@@ -38,6 +44,8 @@ export default class extends Controller {
     if (currentHash === "test") {
       this.videoSrc = this.testValue;
     }
+    // temp
+    // this.videoSrc = this.testValue;
 
     // Apply video source if set
     if (this.videoSrc) {
