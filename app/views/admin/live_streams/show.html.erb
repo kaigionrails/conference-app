@@ -1,0 +1,30 @@
+<h2 class="font-bold text-xl mb-8">Live Stream Details: id <%= @cloudflare_stream_live_stream.id %></h2>
+<div class="pr-8">
+  <div class="mb-8">
+    <p class="mb-4">
+      <span class="font-bold">UID:</span> <%= @cloudflare_stream_live_stream.uid %>
+    </p>
+    <p class="mb-4">
+      <span class="font-bold">Name:</span> <%= @cloudflare_stream_live_stream.name %></span>
+    </p>
+    <p class="mb-4">
+      <h4 class="font-bold text-lg mb-2">Stream API Response</h4>
+      <pre><%= JSON.pretty_generate(@cloudflare_stream_live_stream.stream_raw_response) %></pre>
+    </p>
+    <p class="mb-4">
+      <h4 class="font-bold text-lg mb-2">Live input API Response</h4>
+      <pre><%= JSON.pretty_generate(@cloudflare_stream_live_stream.stream_videos_raw_response) %></pre>
+    </p>
+    <p class="mb-4">
+      <span class="font-bold">Created At:</span> <%= @cloudflare_stream_live_stream.created_at %>
+    </p>
+    <p class="mb-4">
+      <span class="font-bold">Updated At:</span> <%= @cloudflare_stream_live_stream.updated_at %>
+    </p>
+    <%= form_with model: @cloudflare_stream_live_stream, url: admin_live_stream_path(@cloudflare_stream_live_stream), method: :patch do |f| %>
+      <%= f.submit "Update Live Stream from API", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mb-4" %>
+    <% end %>
+    <%= form_with model: @cloudflare_stream_live_stream, url: admin_live_stream_path(@cloudflare_stream_live_stream), method: :delete, data: { turbo_confirm: "Are you sure?" } do |f| %>
+      <%= f.submit "Delete Live Stream", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mb-4 bg-red-500 text-white" %>
+    <% end %>
+  </div>

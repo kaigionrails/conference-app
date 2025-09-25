@@ -11,11 +11,15 @@ class Admin::LiveStreamsController < AdminController
   # @rbs return: void
   def new: () -> void
 
+  def show: () -> untyped
+
   # @rbs return: void
   def create: () -> void
 
   # @rbs return: void
   def update: () -> void
+
+  def destroy: () -> untyped
 
   private def cloudflare_stream_live_stream_params: () -> untyped
 end

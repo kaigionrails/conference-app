@@ -12,6 +12,10 @@ class Admin::LiveStreamsController < AdminController
     @cloudflare_stream_live_stream = CloudflareStreamLiveStream.new
   end
 
+  def show
+    @cloudflare_stream_live_stream = CloudflareStreamLiveStream.find(params[:id])
+  end
+
   # @rbs return: void
   def create
     if CloudflareStreamLiveStream.create_by_stream_uid(cloudflare_stream_live_stream_params[:uid])
@@ -30,6 +34,13 @@ class Admin::LiveStreamsController < AdminController
     else
       flash[:alert] = "Live stream update failed"
     end
+    redirect_to admin_live_stream_path(@cloudflare_stream_live_stream)
+  end
+
+  def destroy
+    @cloudflare_stream_live_stream = CloudflareStreamLiveStream.find(params[:id])
+    @cloudflare_stream_live_stream.destroy
+    flash[:success] = "Live stream deleted successfully"
     redirect_to admin_live_streams_path
   end
 
