@@ -1,5 +1,5 @@
 class LiveStreamsController < ApplicationController
-  # before_action :require_ticket
+  before_action :require_ticket
 
   # @rbs @live_stream: CloudflareStreamLiveStream
 
@@ -19,7 +19,8 @@ class LiveStreamsController < ApplicationController
     if current_user &&
         (
           current_user!.tito_tickets.where(event: Event.find_by(slug: params[:event_slug]), state: "complete").exists? \
-          || current_user!.organizer?
+          || current_user!.organizer? \
+          || current_user!.operator?
         )
       true
     else

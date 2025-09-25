@@ -17,7 +17,6 @@ RSpec.describe "LiveStreams", type: :request do
 
       context "when not logged in" do
         it "redirect to root path" do
-          skip "temporarily"
           get "/2025/live"
           expect(response).to have_http_status(302)
           expect(response).to redirect_to "/"
@@ -30,7 +29,6 @@ RSpec.describe "LiveStreams", type: :request do
         end
 
         it "redirect to root path" do
-          skip "temporarily"
           get "/2025/live"
           expect(response).to have_http_status(302)
           expect(response).to redirect_to "/"
@@ -52,6 +50,18 @@ RSpec.describe "LiveStreams", type: :request do
       context "when logged in and organizer" do
         before do
           user.update(role: "organizer")
+          sign_in user
+        end
+
+        it "should be viewable" do
+          get "/2025/live"
+          expect(response).to have_http_status(200)
+        end
+      end
+
+      context "when logged in an operator" do
+        before do
+          user.update(role: "operator")
           sign_in user
         end
 
