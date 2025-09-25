@@ -1,6 +1,12 @@
-<%#
 <div class="w-full flex justify-center">
-  <div data-controller="live-streams">
+  <div data-controller="live-streams"
+    data-live-streams-day1-red-ja-value="<%=  @live_streams[:day1][:red_ja] %>"
+    data-live-streams-day1-blue-ja-value="<%= @live_streams[:day1][:blue_ja] %>"
+    data-live-streams-day2-red-ja-value="<%=  @live_streams[:day2][:red_ja] %>"
+    data-live-streams-day2-red-raw-value="<%= @live_streams[:day2][:red_raw] %>"
+    data-live-streams-day2-blue-ja-value="<%= @live_streams[:day2][:blue_ja] %>"
+    data-live-streams-test-value="<%= @live_streams[:test] %>"
+  >
     <div class="grid grid-cols-1 sm:hidden">
       <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
       <select aria-label="Select a stream" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
@@ -19,9 +25,16 @@
       </nav>
     </div>
   </div>
+  <div class="w-full max-w-4xl mt-6">
+    <video id="video" src="" autoplay muted controls></video>
+  </div>
 </div>
-%>
 
+<!--
 <div class="w-full flex justify-center pt-6">
   <p class="text-4xl">🚧under construction🚧</p>
+
+    <pre><%= JSON.pretty_generate(@live_streams) %></pre>
 </div>
+
+-->
