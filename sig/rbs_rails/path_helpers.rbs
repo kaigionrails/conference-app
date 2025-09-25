@@ -231,4 +231,6 @@ interface _RbsRailsPathHelpers
   def rails_blob_url: (*untyped) -> String
   def rails_storage_proxy_url: (*untyped) -> String
   def rails_storage_redirect_url: (*untyped) -> String
+  def event_live_streams_path: (*untyped) -> String
+  def event_live_checkin_path: (*untyped) -> String
 end
