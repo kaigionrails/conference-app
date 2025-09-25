@@ -63,7 +63,7 @@ export default class extends Controller {
     if (isFinal) {
       // Create new element for finalized text
       const messageElement = document.createElement("span")
-      messageElement.className = "mb-2 text-theme-primary text-xl leading-relaxed"
+      messageElement.className = "mb-2 text-theme-primary text-7xl leading-relaxed"
       messageElement.textContent = messageData.text
 
       // Remove current temporary element if exists
@@ -78,7 +78,7 @@ export default class extends Controller {
       // Update or create element for unfinalized text
       if (!this.currentJaElement) {
         this.currentJaElement = document.createElement("span")
-        this.currentJaElement.className = "mb-2 text-gray-400 text-xl leading-relaxed italic"
+        this.currentJaElement.className = "mb-2 text-gray-400 text-7xl leading-relaxed italic"
         this.jaTranscribeTarget.appendChild(this.currentJaElement)
       }
 
@@ -106,7 +106,7 @@ export default class extends Controller {
     if (isFinal) {
       // Create new element for finalized text
       const messageElement = document.createElement("span")
-      messageElement.className = "mb-2 text-theme-primary text-xl leading-relaxed"
+      messageElement.className = "mb-2 text-theme-primary text-7xl leading-relaxed"
       messageElement.textContent = messageData.text
 
       // Remove current temporary element if exists
@@ -121,7 +121,7 @@ export default class extends Controller {
       // Update or create element for unfinalized text
       if (!this.currentEnElement) {
         this.currentEnElement = document.createElement("span")
-        this.currentEnElement.className = "mb-2 text-gray-400 text-xl leading-relaxed italic"
+        this.currentEnElement.className = "mb-2 text-gray-400 text-7xl leading-relaxed italic"
         this.enTranscribeTarget.appendChild(this.currentEnElement)
       }
 
