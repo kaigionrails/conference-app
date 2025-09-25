@@ -32,6 +32,15 @@ en:
       body: "Body"
       make_as_read: "Mark as read"
       back_to_list: "<< Back to announcements"
+  assign_tito_tickets:
+    index:
+      title: "Check-in"
+      description: "This page allows you to check in to the event."
+      tito_ticket_reference: "Tito ticket reference (e.g. ABCD-1)"
+      submit: "Check-in"
+    create:
+      success: "Check-in successful."
+      failure: "Check-in failed. We couldn't find a valid ticket. Please try again or contact the event organizers."
   home:
     index:
       title: "%{event_name} Conference App"

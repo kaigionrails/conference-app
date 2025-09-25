@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def message_type_style(message_type)
     case message_type
-    when "success"
+    when "success", "notice"
       "bg-theme-success"
     when "alert"
       "bg-theme-alert"

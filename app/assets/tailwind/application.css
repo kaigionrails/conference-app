@@ -14,6 +14,7 @@
     /* メインの背景色 */
     --color-background: #292220; /* MEMO: change evey year */
     --color-2025-primary: #227fbb; /* MEMO: change evey year */
+    --color-2025-danger: #de3263; /* MEMO: change evey year */
 
     /* プライマリカラー（赤系） */
     --color-primary-200: rgb(254 202 202);  /* red-200 */

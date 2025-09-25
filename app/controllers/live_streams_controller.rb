@@ -7,6 +7,7 @@ class LiveStreamsController < ApplicationController
   def index
     @event = Event.find_by!(slug: params[:event_slug])
     live_streams = CloudflareStreamLiveStream.where(event: @event)
+    # FIXME: too hardcoded...
     @live_streams = {
       day1: {
         red_ja: live_streams.detect { |s| s.name.include?("day1-red-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
@@ -35,8 +36,11 @@ class LiveStreamsController < ApplicationController
           || current_user!.operator?
         )
       true
+    elsif session[:ticketholder] && TitoTicket.where(id: session[:ticketholder].to_i).exists?
+      # user has ticket. do nothing
+      true
     else
-      redirect_to root_path
+      redirect_to event_live_checkin_path(params[:event_slug])
     end
   end
 end

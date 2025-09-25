@@ -1,0 +1,7 @@
+# Generated from app/controllers/assign_tito_tickets_controller.rb with RBS::Inline
+
+class AssignTitoTicketsController < ApplicationController
+  def index: () -> untyped
+
+  def create: () -> untyped
+end

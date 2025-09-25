@@ -31,6 +31,15 @@ ja:
       body: "本文"
       make_as_read: "既読にする"
       back_to_list: "<< アナウンス一覧に戻る"
+  assign_tito_tickets:
+    index:
+      title: "Check-in"
+      description: "チケット情報を入力してください。"
+      tito_ticket_reference: "Titoのチケット識別子 (例: ABCD-1)"
+      submit: "Check-in"
+    create:
+      success: "チェックインに成功しました。"
+      failure: "チェックインに失敗しました。有効なチケットが見つかりませんでした。再度お試しいただくか、運営にお問い合わせください。"
   home:
     index:
       title: "%{event_name} Conference App"

@@ -13,6 +13,7 @@ class AuthCallbackController < ApplicationController
       user.mark_all_announcement_unread!
     end
 
+    reset_session
     session[:user_id] = user.id
 
     if request.env["omniauth.params"].key?("return_to")
