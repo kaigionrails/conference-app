@@ -135,6 +135,37 @@ export default class extends Controller {
     })
   }
 
+  switchToRedRaw() {
+    const today = new Date();
+    const day = today.getDate();
+    if (this.hls == null) {
+      this.hls = new Hls();
+    }
+    if (day === 26 || day === 25) {
+      this.videoSrc = this.day1RedJaValue;
+      this.selectedTabValue = "red";
+    } else if (day === 27) {
+      this.videoSrc = this.day2RedRawJaValue;
+      this.selectedTabValue = "red";
+    }
+    const video = document.getElementById("video");
+    video.classList.remove("border-[var(--color-2025-primary)]");
+    video.classList.add("border-[var(--color-2025-danger)]");
+    this.hls.loadSource(this.videoSrc);
+    this.hls.attachMedia(video);
+    this.updateShareTarget();
+
+    this.whereAmI().then((location) => {
+      if (location === "at-venue") {
+        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
+        this.hls?.destroy();
+        video.classList.add("hidden");
+      } else {
+        // do nothing
+      }
+    })
+  }
+
   switchToBlue() {
     const today = new Date();
     const day = today.getDate();

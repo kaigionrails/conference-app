@@ -9,9 +9,10 @@
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
   >
     <div>
-      <div class="flex space-x-10 justify-center pt-6">
-        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold" data-action="live-streams#switchToRed" id="hall-red-button">Hall Red</button>
-        <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
+      <div class="flex space-x-6 justify-center pt-6">
+        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToRedRaw" id="hall-red-raw-button">Hall Red (Venue sound)</button>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToRed" id="hall-red-ja-button">Hall Red (JA)</button>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
       </div>
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
