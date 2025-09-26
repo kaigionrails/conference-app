@@ -13,7 +13,7 @@ export default class extends Controller {
     backstage: { type: Boolean, default: false },
   };
 
-  static targets = ["cannotViewStreamInVenue"];
+  static targets = ["cannotViewStreamInVenue", "shareToX"];
 
   connect() {
     const video = document.getElementById("video");
@@ -67,6 +67,7 @@ export default class extends Controller {
       video.classList.remove("border-[var(--color-2025-danger)]");
       video.classList.add("border-[var(--color-2025-primary)]");
     }
+    this.updateShareTarget();
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
         this.cannotViewStreamInVenueTarget.classList.remove("hidden");
@@ -110,6 +111,7 @@ export default class extends Controller {
     video.classList.add("border-[var(--color-2025-danger)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
+    this.updateShareTarget();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -141,6 +143,7 @@ export default class extends Controller {
     video.classList.add("border-[var(--color-2025-primary)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
+    this.updateShareTarget();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -151,5 +154,26 @@ export default class extends Controller {
         // do nothing
       }
     })
+  }
+
+  updateShareTarget() {
+    let hashtags = "kaigionrails"
+    if(this.selectedTabValue === "red") {
+      hashtags += ",kaigionrails_red"
+    } else if(this.selectedTabValue === "blue") {
+      hashtags += ",kaigionrails_blue"
+    }
+    this.shareToXTarget.href = `https://x.com/intent/tweet?hashtags=${encodeURIComponent(hashtags)}`;
+  }
+
+  webShare() {
+    console.log("webShare");
+    let hashtags = "#kaigionrails"
+    if(this.selectedTabValue === "red") {
+      hashtags += " #kaigionrails_red"
+    } else if(this.selectedTabValue === "blue") {
+      hashtags += " #kaigionrails_blue"
+    }
+    navigator.share({text: hashtags}).then();
   }
 }

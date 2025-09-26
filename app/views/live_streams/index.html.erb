@@ -14,10 +14,21 @@
         <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
       </div>
     </div>
-    <div class="w-full lg:max-w-4xl md:max-w-full mt-6">
+    <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
       <video id="video" src="" autoplay muted controls class="aspect-video lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm"></video>
       <div id="cannot-view-stream-in-venue" data-live-streams-target="cannotViewStreamInVenue" class="hidden">
         <p><%= t(".cannot_view_stream_in_venue") %></p>
+      </div>
+    </div>
+    <div class="w-full lg:max-w-4xl md:max-w-full mb-3">
+      <div class="flex flex-row space-x-2 justify-end text-2xl items-center">
+        <p class="text-sm block">Post with hashtags or copy hashtags</p>
+        <%= link_to "\u{1D54F}", "", class: "block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded text-center", data: { "live-streams-target" => "shareToX" }, target: "_blank", rel: "noopener" %>
+        <button class="block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded pl-1 cursor-pointer" data-action="live-streams#webShare">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mt-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
