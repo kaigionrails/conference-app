@@ -17,7 +17,9 @@ export default class extends Controller {
 
   connect() {
     const video = document.getElementById("video");
-    const currentHash = new URL(location.href).hash.replace("#", "");
+    let currentHash = new URL(location.href).hash.replace("#", "");
+    if (currentHash == "") {currentHash = "red"}
+
     console.log("Current hash:", currentHash);
 
     // Get today's date

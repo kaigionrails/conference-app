@@ -48,6 +48,9 @@
               <span class="rounded-xl bg-theme-primary-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
+          <%= link_to event_live_streams_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+            <span><%= t('layouts.header_nav.live_streams') %></span>
+          <% end %>
           <%= form_with url: locale_setting_path(return_to: request.path), method: :post, data: { turbo: false } do |f| %>
             <% if current_locale == :en %>
               <%= f.hidden_field :locale, value: "ja" %>
