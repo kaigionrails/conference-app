@@ -10,6 +10,7 @@ export default class extends Controller {
     day2RedRaw: { type: String, default: "" },
     day2BlueJa: { type: String, default: "" },
     test: { type: String, default: "" },
+    backstage: { type: Boolean, default: false },
   };
 
   static targets = ["cannotViewStreamInVenue"];
@@ -76,6 +77,9 @@ export default class extends Controller {
   }
 
   async whereAmI() {
+    if (this.backstageValue) {
+      return "not-at-venue";
+    }
     const response = await fetch(
       "https://am-i-not-at-rubykaigi.s3.dualstack.ap-northeast-1.amazonaws.com/check",
       { method: "GET" }
