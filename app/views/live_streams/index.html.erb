@@ -6,6 +6,7 @@
     data-live-streams-day2-red-raw-value="<%= @live_streams[:day2][:red_raw] %>"
     data-live-streams-day2-blue-ja-value="<%= @live_streams[:day2][:blue_ja] %>"
     data-live-streams-test-value="<%= @live_streams[:test] %>"
+    data-live-streams-backstage-value="<%= @backstage.to_s %>"
   >
     <div>
       <div class="flex space-x-10 justify-center pt-6">
@@ -15,6 +16,9 @@
     </div>
     <div class="w-full max-w-4xl mt-6">
       <video id="video" src="" autoplay muted controls class="aspect-video max-w-[1920px] min-w-[640px] border-2 rounded-sm"></video>
+      <div id="cannot-view-stream-in-venue" data-live-streams-target="cannotViewStreamInVenue" class="hidden">
+        <p><%= t(".cannot_view_stream_in_venue") %></p>
+      </div>
     </div>
   </div>
 </div>

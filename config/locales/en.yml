@@ -168,6 +168,9 @@ en:
       login_with_github: "Login with GitHub"
       switch_to_ja: "Switch to ja locale"
       switch_to_en: "Switch to en locale"
+  live_streams:
+    index:
+      cannot_view_stream_in_venue: "You cannot view the live stream inside the venue. Please connect to a network outside the venue to watch."
   sample_webpush_notifications:
     create:
       title: "Sample push notification"
