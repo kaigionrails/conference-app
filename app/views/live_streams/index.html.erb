@@ -22,7 +22,7 @@
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mb-3">
       <div class="flex flex-row space-x-2 justify-end text-2xl items-center">
-        <p class="text-sm block">Post with hashtags or copy hashtags</p>
+        <p class="text-sm block"><%= t(".share_with_hashtags") %></p>
         <%= link_to "\u{1D54F}", "", class: "block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded text-center", data: { "live-streams-target" => "shareToX" }, target: "_blank", rel: "noopener" %>
         <button class="block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded pl-1 cursor-pointer" data-action="live-streams#webShare">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mt-1">

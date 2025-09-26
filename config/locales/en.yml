@@ -172,6 +172,7 @@ en:
   live_streams:
     index:
       cannot_view_stream_in_venue: "You cannot view the live stream inside the venue. Please connect to a network outside the venue to watch."
+      share_with_hashtags: "Post with hashtags or copy hashtags."
   sample_webpush_notifications:
     create:
       title: "Sample push notification"
