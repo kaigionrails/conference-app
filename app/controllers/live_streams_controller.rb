@@ -8,6 +8,7 @@ class LiveStreamsController < ApplicationController
     @event = Event.find_by!(slug: params[:event_slug])
     live_streams = CloudflareStreamLiveStream.where(event: @event)
     @backstage = current_user&.organizer? || current_user&.operator?
+    @shirataki_url = Rails.configuration.x.shirataki.url
     # FIXME: too hardcoded...
     @live_streams = {
       day1: {

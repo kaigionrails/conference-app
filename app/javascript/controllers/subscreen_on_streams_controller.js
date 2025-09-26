@@ -18,8 +18,8 @@ export default class extends Controller {
 
   listernShiratakiEvent() {
     // Japanese EventSource
-    const jaEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=ja`)
-    jaEventSource.onmessage = (event) => {
+    this.jaEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=ja`)
+    this.jaEventSource.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data)
         this.displayJaMessage(data)
@@ -27,14 +27,14 @@ export default class extends Controller {
         console.error("Failed to parse Japanese message:", error)
       }
     }
-    jaEventSource.onerror = (event) => {
+    this.jaEventSource.onerror = (event) => {
       console.error("Japanese EventSource failed:", event)
-      jaEventSource.close()
+      this.jaEventSource.close()
     }
 
     // English EventSource
-    const enEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=en`)
-    enEventSource.onmessage = (event) => {
+    this.enEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=en`)
+    this.enEventSource.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data)
         this.displayEnMessage(data)
@@ -42,9 +42,9 @@ export default class extends Controller {
         console.error("Failed to parse English message:", error)
       }
     }
-    enEventSource.onerror = (event) => {
+    this.enEventSource.onerror = (event) => {
       console.error("English EventSource failed:", event)
-      enEventSource.close()
+      this.enEventSource.close()
     }
   }
 
@@ -132,5 +132,16 @@ export default class extends Controller {
 
     // Auto scroll to show latest message
     this.enTranscribeTarget.scrollTop = this.enTranscribeTarget.scrollHeight
+  }
+
+  closeShiratakiEvent() {
+    this.jaEventSource?.close()
+    this.enEventSource?.close()
+  }
+  clearSubtitles() {
+    this.jaTranscribeTarget.innerHTML = ""
+    this.enTranscribeTarget.innerHTML = ""
+    this.currentJaElement = null
+    this.currentEnElement = null
   }
 }

@@ -7,6 +7,8 @@
     data-live-streams-day2-blue-ja-value="<%= @live_streams[:day2][:blue_ja] %>"
     data-live-streams-test-value="<%= @live_streams[:test] %>"
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
+    data-live-streams-selected-tab-value="red"
+    data-live-streams-subscreen-on-streams-outlet=".subscreen-on-streams"
   >
     <div>
       <div class="flex space-x-6 justify-center pt-6">
@@ -33,13 +35,14 @@
       </div>
     </div>
   </div>
-  <div data-controller="subscreen_on_streams"
+  <div data-controller="subscreen-on-streams"
     data-subscreen-on-streams-shirataki-url-value="<%= @shirataki_url %>"
-    data-subscreen-on-streams-room-value="<%= @room %>"
-    data-subscreen-on-streams-font-size-value="text-base"
-    class="w-full md:w-2/3 grid grid-rows-1 gap-4 p-4"
+    data-subscreen-on-streams-room-value="red"
+    data-subscreen-on-streams-font-size-value="text-xs md:text-sm"
+    <%# data-subscreen-on-streams-live-streams-outlet=".live-streams" %>
+    class="w-full md:w-2/3 grid grid-rows-1 gap-4 p-4 subscreen-on-streams"
   >
-    <div data-subscreen-target="jaTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
-    <div data-subscreen-target="enTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
+    <div data-subscreen-on-streams-target="jaTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
+    <div data-subscreen-on-streams-target="enTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
   </div>
 </div>

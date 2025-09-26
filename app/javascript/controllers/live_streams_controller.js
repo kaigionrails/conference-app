@@ -13,6 +13,8 @@ export default class extends Controller {
     backstage: { type: Boolean, default: false },
   };
 
+  static outlets = ["subscreen-on-streams"];
+
   static targets = ["cannotViewStreamInVenue", "shareToX"];
 
   connect() {
@@ -117,12 +119,16 @@ export default class extends Controller {
       this.videoSrc = this.day2RedJaValue;
       this.selectedTabValue = "red";
     }
+    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
+    this.subscreenOnStreamsOutlet?.clearSubtitles();
+    this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-2025-primary)]");
     video.classList.add("border-[var(--color-2025-danger)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -145,15 +151,19 @@ export default class extends Controller {
       this.videoSrc = this.day1RedJaValue;
       this.selectedTabValue = "red";
     } else if (day === 27) {
-      this.videoSrc = this.day2RedRawJaValue;
+      this.videoSrc = this.day2RedRawValue;
       this.selectedTabValue = "red";
     }
+    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
+    this.subscreenOnStreamsOutlet?.clearSubtitles();
+    this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-2025-primary)]");
     video.classList.add("border-[var(--color-2025-danger)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -181,12 +191,16 @@ export default class extends Controller {
     } else {
       console.warn("unknown day or tab value");
     }
+    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
+    this.subscreenOnStreamsOutlet?.clearSubtitles();
+    this.subscreenOnStreamsOutlet.roomValue = "blue"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-2025-danger)]");
     video.classList.add("border-[var(--color-2025-primary)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
