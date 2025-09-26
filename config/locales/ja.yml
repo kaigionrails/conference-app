@@ -172,6 +172,7 @@ ja:
   live_streams:
     index:
       cannot_view_stream_in_venue: "会場内ではライブ配信を視聴できません。会場外のネットワークに接続してご覧ください。"
+      share_with_hashtags: "ハッシュタグを付けて投稿、またはハッシュタグを共有"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"
