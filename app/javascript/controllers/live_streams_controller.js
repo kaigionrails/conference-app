@@ -37,7 +37,17 @@ export default class extends Controller {
         console.warn("unknown day or tab value");
       }
     } else if (day === 27) {
-      console.log("It's day 2!");
+      if (currentHash === "red") {
+        this.videoSrc = this.day2RedJaValue;
+        this.selectedTabValue = "red";
+      } else if (currentHash === "blue") {
+        this.videoSrc = this.day2BlueJaValue;
+        this.selectedTabValue = "blue";
+      } else {
+        console.warn("unknown day or tab value");
+      }
+    } else {
+      console.warn("unknown day or tab value");
     }
 
     if (currentHash === "test") {
@@ -103,8 +113,9 @@ export default class extends Controller {
     if (day === 26 || day === 25) {
       this.videoSrc = this.day1RedJaValue;
       this.selectedTabValue = "red";
-    } else {
-      console.warn("unknown day or tab value");
+    } else if (day === 27) {
+      this.videoSrc = this.day2RedJaValue;
+      this.selectedTabValue = "red";
     }
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-2025-primary)]");
@@ -134,7 +145,8 @@ export default class extends Controller {
       this.videoSrc = this.day1BlueJaValue;
       this.selectedTabValue = "blue";
     } else if (day === 27) {
-      console.log("It's day 2!");
+      this.videoSrc = this.day2BlueJaValue;
+      this.selectedTabValue = "blue";
     } else {
       console.warn("unknown day or tab value");
     }
