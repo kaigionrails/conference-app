@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center grow">
+<div class="w-full flex flex-col items-center grow">
   <div data-controller="live-streams"
     data-live-streams-day1-red-ja-value="<%=  @live_streams[:day1][:red_ja] %>"
     data-live-streams-day1-blue-ja-value="<%= @live_streams[:day1][:blue_ja] %>"
@@ -7,11 +7,14 @@
     data-live-streams-day2-blue-ja-value="<%= @live_streams[:day2][:blue_ja] %>"
     data-live-streams-test-value="<%= @live_streams[:test] %>"
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
+    data-live-streams-selected-tab-value="red"
+    data-live-streams-subscreen-on-streams-outlet=".subscreen-on-streams"
   >
     <div>
-      <div class="flex space-x-10 justify-center pt-6">
-        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold" data-action="live-streams#switchToRed" id="hall-red-button">Hall Red</button>
-        <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
+      <div class="flex space-x-6 justify-center pt-6">
+        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToRedRaw" id="hall-red-raw-button">Hall Red (Venue sound)</button>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-danger)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToRed" id="hall-red-ja-button">Hall Red (JA)</button>
+        <button class="p-2 border rounded-full bg-[var(--color-2025-primary)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToBlue" id="hall-blue-button">Hall Blue</button>
       </div>
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
@@ -31,5 +34,15 @@
         </button>
       </div>
     </div>
+  </div>
+  <div data-controller="subscreen-on-streams"
+    data-subscreen-on-streams-shirataki-url-value="<%= @shirataki_url %>"
+    data-subscreen-on-streams-room-value="red"
+    data-subscreen-on-streams-font-size-value="text-xs md:text-sm"
+    <%# data-subscreen-on-streams-live-streams-outlet=".live-streams" %>
+    class="w-full md:w-2/3 grid grid-rows-1 gap-4 p-4 subscreen-on-streams"
+  >
+    <div data-subscreen-on-streams-target="jaTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
+    <div data-subscreen-on-streams-target="enTranscribe" class="bg-[var(--color-background)] h-15 p-4 overflow-y-auto border border-gray-600 rounded"></div>
   </div>
 </div>
