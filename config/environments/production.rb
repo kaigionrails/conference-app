@@ -146,4 +146,6 @@ Rails.application.configure do
   config.x.tito.api_token = ENV["TITO_API_TOKEN"]
   config.x.tito.account_slug = ENV["TITO_ACCOUNT_SLUG"]
   config.x.tito.webhook_secret = ENV["TITO_WEBHOOK_SECRET"]
+
+  config.x.shirataki.url = ENV["SHIRATAKI_URL"]
 end

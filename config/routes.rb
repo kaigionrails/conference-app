@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   resources :signages, only: [:index]
   resources :signage_devices, only: [:index]
 
+  resources :subscreen, only: [:index]
+
   namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :ongoing_events, only: [:create, :update]
