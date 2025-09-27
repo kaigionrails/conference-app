@@ -8,7 +8,7 @@
     <li><%= t('.push_notification_timing_announcements_by_orgs') %></li>
   </ul>
   <p class="mb-2"><%= t('.ios_device_note') %></p>
-  <p class="mb-4"><%= t('.reference') %>: <%= link_to t('.ios_pwa_support_page_title'), t('.ios_pwa_support_page_url'), target: "_blank", class: "underline" %>
+  <p class="mb-4"><%= t('.reference') %>: <%= link_to t('.ios_pwa_support_page_title'), t('.ios_pwa_support_page_url'), target: "_blank", class: "underline" %></p>
   <% if logged_in? %>
     <div data-controller="push-notification">
       <button data-action="click->push-notification#toggleSubscriptionStatus" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4"><%= t('.enable_push_notification') %></button>

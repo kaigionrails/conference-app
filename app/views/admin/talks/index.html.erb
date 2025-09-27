@@ -7,7 +7,6 @@
     <% this_event = @event == event %>
     <%= link_to event.slug, admin_talks_path(event: event.slug), class: "rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50 #{this_event ? "bg-gray-50" : "bg-white"}" %>
   <% end %>
-  </ol>
 </div>
 <div class="rounded-sm w-full pr-8 shadow-xs">
   <table class="w-full divide-y border">
