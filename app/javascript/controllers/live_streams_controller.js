@@ -233,4 +233,15 @@ export default class extends Controller {
     }
     navigator.share({text: hashtags}).then();
   }
+
+  clipboard() {
+    console.log("clipboard");
+    let hashtags = "#kaigionrails"
+    if(this.selectedTabValue === "red") {
+      hashtags += " #kaigionrails_red"
+    } else if(this.selectedTabValue === "blue") {
+      hashtags += " #kaigionrails_blue"
+    }
+    navigator.clipboard.writeText(hashtags).then();
+  }
 }
