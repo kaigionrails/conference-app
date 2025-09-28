@@ -11,9 +11,9 @@ RSpec.describe "LiveStreams", type: :request do
       end
     end
 
-    context "when event found" do
+    context "when event found and ongoing" do
       let(:user) { FactoryBot.create(:user) }
-      let!(:event) { FactoryBot.create(:event, slug: "2025") }
+      let!(:event) { FactoryBot.create(:event, slug: "2025", end_date: 1.minutes.since) }
 
       context "when not logged in" do
         it "redirect to root path" do
@@ -68,6 +68,69 @@ RSpec.describe "LiveStreams", type: :request do
         it "should be viewable" do
           get "/2025/live"
           expect(response).to have_http_status(200)
+        end
+      end
+    end
+
+    context "when event found but over" do
+      let(:user) { FactoryBot.create(:user) }
+      let!(:event) { FactoryBot.create(:event, slug: "2025", end_date: 1.minute.ago) }
+
+      context "when not logged in" do
+        it "redirect to check-in path" do
+          get "/2025/live"
+          expect(response).to have_http_status(302)
+          expect(response).to redirect_to "/2025/live/checkin"
+        end
+      end
+
+      context "when logged in but have not ticket" do
+        before do
+          sign_in user
+        end
+
+        it "redirect to check-in path" do
+          get "/2025/live"
+          expect(response).to have_http_status(302)
+          expect(response).to redirect_to "/2025/live/checkin"
+        end
+      end
+
+      context "when logged in and have ticket" do
+        let!(:tito_ticket) { FactoryBot.create(:tito_ticket, user: user, event: event, state: "complete") }
+        before do
+          sign_in user
+        end
+
+        it "redirect to root path" do
+          get "/2025/live"
+          expect(response).to have_http_status(302)
+          expect(response).to redirect_to "/"
+        end
+      end
+
+      context "when logged in and organizer" do
+        before do
+          user.update(role: "organizer")
+          sign_in user
+        end
+
+        it "should be viewable" do
+          get "/2025/live"
+          expect(response).to have_http_status(200)
+        end
+      end
+
+      context "when logged in an operator" do
+        before do
+          user.update(role: "operator")
+          sign_in user
+        end
+
+        it "redirect to root path" do
+          get "/2025/live"
+          expect(response).to have_http_status(302)
+          expect(response).to redirect_to "/"
         end
       end
     end
