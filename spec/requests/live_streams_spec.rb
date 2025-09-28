@@ -16,7 +16,7 @@ RSpec.describe "LiveStreams", type: :request do
       let!(:event) { FactoryBot.create(:event, slug: "2025", end_date: 1.minutes.since) }
 
       context "when not logged in" do
-        it "redirect to root path" do
+        it "redirect to check-in path" do
           get "/2025/live"
           expect(response).to have_http_status(302)
           expect(response).to redirect_to "/2025/live/checkin"
@@ -28,7 +28,7 @@ RSpec.describe "LiveStreams", type: :request do
           sign_in user
         end
 
-        it "redirect to root path" do
+        it "redirect to check-in path" do
           get "/2025/live"
           expect(response).to have_http_status(302)
           expect(response).to redirect_to "/2025/live/checkin"
