@@ -174,6 +174,7 @@ en:
       cannot_view_stream_in_venue: "You cannot view the live stream inside the venue. Please connect to a network outside the venue to watch."
       share_with_hashtags: "Post with hashtags or copy hashtags."
       wait_and_reload_if_stranged: "If the video or captions appear strange, please wait a moment and refresh the page."
+      event_ended: "The %{event_name} has ended. Thank you for watching!"
   sample_webpush_notifications:
     create:
       title: "Sample push notification"

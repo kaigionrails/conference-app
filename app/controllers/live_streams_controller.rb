@@ -6,6 +6,14 @@ class LiveStreamsController < ApplicationController
   # @rbs return: void
   def index
     @event = Event.find_by!(slug: params[:event_slug])
+
+    # TODO: policy management...
+    if Time.zone.now >= @event.end_date && !current_user&.organizer?
+      flash[:alert] = I18n.t("live_streams.index.event_ended", event_name: @event.name)
+      redirect_to root_path
+      return
+    end
+
     live_streams = CloudflareStreamLiveStream.where(event: @event)
     @backstage = if current_user&.organizer? || current_user&.operator?
       "true"
