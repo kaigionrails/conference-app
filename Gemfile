@@ -83,8 +83,8 @@ gem "alba"
 gem "rails-i18n", "~> 8.0.0"
 gem "i18n-js"
 
-gem "herb", "~> 0.7.4"
-gem "reactionview", "~> 0.1.2"
+gem "herb"
+gem "reactionview"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
