@@ -590,7 +590,7 @@ DEPENDENCIES
   faraday
   faraday-multipart
   faraday-retry
-  herb (~> 0.7.4)
+  herb
   i18n-js
   image_processing (~> 1.14)
   importmap-rails
@@ -615,7 +615,7 @@ DEPENDENCIES
   rbs
   rbs-inline
   rbs_rails
-  reactionview (~> 0.1.2)
+  reactionview
   redis (~> 5.4)
   redis-actionpack
   redis-store
