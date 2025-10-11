@@ -7,14 +7,14 @@
     <p class="mb-4">
       <span class="font-bold">Name:</span> <%= @cloudflare_stream_live_stream.name %>
     </p>
-    <p class="mb-4">
+    <div class="mb-4">
       <h4 class="font-bold text-lg mb-2">Stream API Response</h4>
       <pre><%= JSON.pretty_generate(@cloudflare_stream_live_stream.stream_raw_response) %></pre>
-    </p>
-    <p class="mb-4">
+    </div>
+    <div class="mb-4">
       <h4 class="font-bold text-lg mb-2">Live input API Response</h4>
       <pre><%= JSON.pretty_generate(@cloudflare_stream_live_stream.stream_videos_raw_response) %></pre>
-    </p>
+    </div>
     <p class="mb-4">
       <span class="font-bold">Created At:</span> <%= @cloudflare_stream_live_stream.created_at %>
     </p>
