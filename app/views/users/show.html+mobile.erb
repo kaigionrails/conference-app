@@ -7,75 +7,73 @@
       <% end %>
     </div>
   <% end %>
+
   <div class="w-full max-w-(--breakpoint-xl) pt-4 px-4 pb-6">
     <div class="w-full flex flex-col">
-        <div class="px-8">
-          <%= image_tag @profile.images.first, class: "rounded-lg mb-3 object-cover aspect-square" %>
-        </div>
-        <div class="px-2 mb-4">
-          <div class="grid grid-cols-6 gap-3" data-controller="lightbox">
-            <% @profile.images.each do |image| %>
-              <%= image_tag image, class: "rounded-lg w-full object-cover aspect-square" %>
-            <% end %>
-          </div>
-        </div>
+      <div class="px-8">
+        <%= image_tag @profile.images.first, class: "rounded-lg mb-3 object-cover aspect-square" %>
       </div>
-      <div class="px-2">
-        <div class="flex flex-row justify-between items-baseline mb-3">
-          <h2 class="font-bold text-3xl"><%= @profile.name %></h2>
-          <span class="text-lg">GitHub <%= link_to "@#{@user.name}", "https://github.com/#{@user.name}", target: "_blank", class: "underline" %></span>
-        </div>
-        <div class="markdown mb-4"><%= @profile.sanitized_description %></div>
-        <div class="flex flex-row flex-wrap pt-4 mb-4">
-          <% @profile.profile_badges.each do |profile_badge| %>
-            <div class="inline-block py-1 px-3 border-2 rounded-3xl text-theme-primary mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
+      <div class="px-2 mb-4">
+        <div class="grid grid-cols-6 gap-3" data-controller="lightbox">
+          <% @profile.images.each do |image| %>
+            <%= image_tag image, class: "rounded-lg w-full object-cover aspect-square" %>
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="px-2">
+      <div class="flex flex-row justify-between items-baseline mb-3">
+        <h2 class="font-bold text-3xl"><%= @profile.name %></h2>
+        <span class="text-lg">GitHub <%= link_to "@#{@user.name}", "https://github.com/#{@user.name}", target: "_blank", class: "underline" %></span>
       </div>
-      <div class="px-4">
-        <% @events.each do |event| %>
-          <% unless @event_friends[event].nil? %>
-            <div class="mb-8">
-              <h3 class="text-2xl font-bold mb-2"><%= t('users.show.friends_who_met_at_event', event_name: event.name, count: @user.number_of_friends(event)) %></h3>
-              <% if event == current_event %>
-                <ul class="mb-8">
-                  <% @event_friends[event].each do |profile_exchange| %>
-                    <li class="flex flex-row items-center">
-                      <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
-                        <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
-                        <div class="w-full flex flex-row flex-wrap">
-                          <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
-                          <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
-                        </div>
-                      <% end %>
-                    </li>
-                  <% end %>
-                  <li>
-                </ul>
-              <% else %>
-                <details>
-                  <summary class="text-xl mb-4"><%= t('users.show.show_friends') %></summary>
-                  <ul class="mb-8">
-                    <% @event_friends[event].each do |profile_exchange| %>
-                      <li class="flex flex-row items-center">
-                        <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
-                          <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg", loading: "lazy" %>
-                          <div class="w-full flex flex-row flex-wrap">
-                            <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
-                            <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
-                          </div>
-                        <% end %>
-                      </li>
-                    <% end %>
-                    <li>
-                  </ul>
-                </details>
-              <% end %>
-            </div>
-          <% end %>
+      <div class="markdown mb-4"><%= @profile.sanitized_description %></div>
+      <div class="flex flex-row flex-wrap pt-4 mb-4">
+        <% @profile.profile_badges.each do |profile_badge| %>
+          <div class="inline-block py-1 px-3 border-2 rounded-3xl text-theme-primary mr-2 mb-2" style="background-color: <%= profile_badge.background_color_code %>; border-color: <%= profile_badge.border_color_code %>"><%= profile_badge.text %></div>
         <% end %>
       </div>
     </div>
+  </div>
+
+  <div class="px-4">
+    <% @events.each do |event| %>
+      <% unless @event_friends[event].nil? %>
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-2"><%= t('users.show.friends_who_met_at_event', event_name: event.name, count: @user.number_of_friends(event)) %></h3>
+          <% if event == current_event %>
+            <ul class="mb-8">
+              <% @event_friends[event].each do |profile_exchange| %>
+                <li class="flex flex-row items-center">
+                  <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
+                    <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg" %>
+                    <div class="w-full flex flex-row flex-wrap">
+                      <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
+                      <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <details>
+              <summary class="text-xl mb-4"><%= t('users.show.show_friends') %></summary>
+              <ul class="mb-8">
+                <% @event_friends[event].each do |profile_exchange| %>
+                  <li class="flex flex-row items-center">
+                    <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row items-center mb-2" do %>
+                      <%= image_tag profile_exchange.friend.profile.images&.first || "", class: "w-20 h-20 mr-4 rounded-lg", loading: "lazy" %>
+                      <div class="w-full flex flex-row flex-wrap">
+                        <p class="text-xl mr-4"><%= profile_exchange.friend.profile.name %></p>
+                        <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
+                      </div>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </details>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
