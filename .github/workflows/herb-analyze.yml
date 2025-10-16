@@ -9,7 +9,7 @@ on:
 jobs:
   herb:
     name: herb analyze
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
