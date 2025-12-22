@@ -80,7 +80,7 @@ gem "mission_control-jobs"
 
 gem "alba"
 
-gem "rails-i18n", "~> 8.0.0"
+gem "rails-i18n", "~> 8.1.0"
 gem "i18n-js"
 
 gem "herb"
