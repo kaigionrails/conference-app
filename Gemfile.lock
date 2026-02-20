@@ -320,7 +320,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.5.2)
+    prism (1.7.0)
     propshaft (1.2.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -369,7 +369,7 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails-i18n (8.0.2)
+    rails-i18n (8.1.0)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
     rails_semantic_logger (4.18.0)
@@ -615,7 +615,7 @@ DEPENDENCIES
   puma (~> 6.6)
   rack-contrib (~> 2.5.0)
   rails (= 8.1.0.rc1)
-  rails-i18n (~> 8.0.0)
+  rails-i18n (~> 8.1.0)
   rails_semantic_logger
   rbs
   rbs-inline
