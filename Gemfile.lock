@@ -395,7 +395,7 @@ GEM
     rbs (3.10.3)
       logger
       tsort
-    rbs-inline (0.12.0)
+    rbs-inline (0.13.0)
       prism (>= 0.29)
       rbs (>= 3.8.0)
     rbs_rails (0.12.1)
