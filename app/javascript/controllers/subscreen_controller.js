@@ -16,6 +16,7 @@ export default class extends Controller {
     this.listernShiratakiEvent()
   }
 
+  // FIXME: Typo in method name
   listernShiratakiEvent() {
     // Japanese EventSource
     const jaEventSource = new EventSource(`${this.shiratakiUrlValue}/sse?room=${this.roomValue}&language=ja`)
