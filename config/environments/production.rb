@@ -58,9 +58,6 @@ Rails.application.configure do
   # Prevent health checks from clogging up the logs.
   config.silence_healthcheck_path = "/up"
 
-  # Don't log any deprecations.
-  config.active_support.report_deprecations = false
-
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.logger = Logger.new($stdout)
@@ -103,9 +100,6 @@ Rails.application.configure do
     config.rails_semantic_logger.add_file_appender = false
     config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
   end
-
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
 
   config.session_store :redis_store,
     servers: [ENV.fetch("REDIS_URL")],
