@@ -306,7 +306,7 @@ GEM
       stringio
       time
       uri
-    openssl (3.3.0)
+    openssl (4.0.1)
     parallel (1.26.3)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -561,9 +561,9 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    web-push (3.0.2)
+    web-push (3.1.0)
       jwt (~> 3.0)
-      openssl (~> 3.0)
+      openssl (>= 3.0)
     webmock (3.26.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
