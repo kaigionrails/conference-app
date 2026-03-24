@@ -9,10 +9,22 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-name: "rails"
-      - dependency-name: "actionpack"
-      - dependency-name: "actiontext"
+    groups:
+      rails:
+        patterns:
+          - "rails"
+          - "actioncable"
+          - "actionmailbox"
+          - "actionmailer"
+          - "actionpack"
+          - "actiontext"
+          - "actionview"
+          - "activejob"
+          - "activemodel"
+          - "activerecord"
+          - "activestorage"
+          - "activesupport"
+          - "railties"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
