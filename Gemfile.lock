@@ -104,7 +104,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.4.1)
-    bigdecimal (4.0.1)
+    bigdecimal (4.1.0)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -209,7 +209,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.19.2)
+    json (2.19.3)
     jwt (3.1.2)
       base64
     kaminari (1.2.2)
@@ -556,7 +556,7 @@ GEM
       date
     timeout (0.6.1)
     tsort (0.2.0)
-    turbo-rails (2.0.17)
+    turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
