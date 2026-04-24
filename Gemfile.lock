@@ -131,7 +131,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
     drb (2.2.3)
-    erb (6.0.3)
+    erb (6.0.4)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -702,7 +702,7 @@ CHECKSUMS
   debug (1.11.1) sha256=2e0b0ac6119f2207a6f8ac7d4a73ca8eb4e440f64da0a3136c30343146e952b6
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
-  erb (6.0.3) sha256=e43685a8a0a0ea6a924871b2162e8953ef73147ce46b75b36d1f6774fd286e91
+  erb (6.0.4) sha256=38e3803694be357fe2bfe312487c74beaf9fb4e5beb3e22498952fe1645b95d9
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.2.11) sha256=d26e868cc21db88280a9ec1a50aa3da5d267eb9b2037ba7b831d6c2731f5df64
   factory_bot (6.5.5) sha256=ce59295daee1b4704dab8a2fee6816f513d467c6aa3bc587860767d74a66efbe
