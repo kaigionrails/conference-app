@@ -484,7 +484,7 @@ GEM
     sawyer (0.9.2)
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
-    scout_apm (6.1.1)
+    scout_apm (6.2.0)
       parser
     securerandom (0.4.1)
     semantic_logger (4.18.0)
@@ -843,7 +843,7 @@ CHECKSUMS
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby-vips (2.2.3) sha256=41d12b1a805cd6ead4a7965201a8f7c5fe459bb58d3a7d967c9eb0719a6edc92
   sawyer (0.9.2) sha256=fa3a72d62a4525517b18857ddb78926aab3424de0129be6772a8e2ba240e7aca
-  scout_apm (6.1.1) sha256=e7e37e2ce00e1fc248ba80059d5fd57792d06029ba657baf931f1b8b49ebda9d
+  scout_apm (6.2.0) sha256=e386d15a63250cc4d486227322b0299e6822948b862af0b47e2d7cd2429f4789
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   semantic_logger (4.18.0) sha256=b00e4480b63d844628ce383e80d564626fe2fdb525ecf378dbc4df7828dead8b
   sentry-rails (6.5.0) sha256=ebf9d4d82c740c3e0e4a0840f11f7bbd0cf648a30afd9c67e5b50bb07018a0e4
