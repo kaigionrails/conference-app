@@ -9,7 +9,7 @@ on:
 jobs:
   rspec:
     name: rspec
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:15.4-bookworm
