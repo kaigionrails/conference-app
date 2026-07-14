@@ -54,7 +54,7 @@ jobs:
           aws-region: us-west-2
           role-skip-session-tagging: false
           role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
-      - uses: kayac/ecspresso@faae20ddbba25e33e5b459ffd89773bc3a9a79eb # v2.8.4-nightly-faae20d
+      - uses: kayac/ecspresso@03c3416ba35a35e6e545b54a208b54738ffdb468 # v2.8.4-nightly-faae20d
         with:
           version: latest
       - run: ecspresso run --config deploy/staging/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }} --overrides-file deploy/staging/runtask-db-migrate.jsonnet
@@ -73,7 +73,7 @@ jobs:
           aws-region: us-west-2
           role-skip-session-tagging: false
           role-to-assume: "arn:aws:iam::861452569180:role/ConferenceAppDeployer"
-      - uses: kayac/ecspresso@faae20ddbba25e33e5b459ffd89773bc3a9a79eb # v2.8.4-nightly-faae20d
+      - uses: kayac/ecspresso@03c3416ba35a35e6e545b54a208b54738ffdb468 # v2.8.4-nightly-faae20d
         with:
           version: latest
       - run: ecspresso deploy --config deploy/staging/ecspresso.jsonnet --ext-str IMAGE_SHA=${{ github.sha }}
