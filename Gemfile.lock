@@ -183,12 +183,12 @@ GEM
     hashdiff (1.2.1)
     hashie (5.1.0)
       logger
-    herb (0.10.1-aarch64-linux-gnu)
-    herb (0.10.1-aarch64-linux-musl)
-    herb (0.10.1-arm64-darwin)
-    herb (0.10.1-x86_64-darwin)
-    herb (0.10.1-x86_64-linux-gnu)
-    herb (0.10.1-x86_64-linux-musl)
+    herb (0.10.2-aarch64-linux-gnu)
+    herb (0.10.2-aarch64-linux-musl)
+    herb (0.10.2-arm64-darwin)
+    herb (0.10.2-x86_64-darwin)
+    herb (0.10.2-x86_64-linux-gnu)
+    herb (0.10.2-x86_64-linux-musl)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-js (4.2.4)
@@ -721,12 +721,12 @@ CHECKSUMS
   google-protobuf (4.34.1-x86_64-linux-musl) sha256=8c0e91436fbe504ffc64f0bd621f2e69adbcce8ed2c58439d7a21117069cfdd7
   hashdiff (1.2.1) sha256=9c079dbc513dfc8833ab59c0c2d8f230fa28499cc5efb4b8dd276cf931457cd1
   hashie (5.1.0) sha256=c266471896f323c446ea8207f8ffac985d2718df0a0ba98651a3057096ca3870
-  herb (0.10.1-aarch64-linux-gnu) sha256=fd9f4f8e0bcd9a421de55ff8810066550e9bcba8c8bf53737b32a04eb2fcbc49
-  herb (0.10.1-aarch64-linux-musl) sha256=bc6dac577c25bb7b35fe812987a9da7056aabd3a9394941c2aadf68bcca7c58e
-  herb (0.10.1-arm64-darwin) sha256=08d0434ae94d23a7353d767085dc974cc5e63943a07cd48bc99afd7fea919c1b
-  herb (0.10.1-x86_64-darwin) sha256=dc266814a63215eefb82cf4f55ce723bc20218395b13c1631c11ca7cfc782d07
-  herb (0.10.1-x86_64-linux-gnu) sha256=c7762d411a6d2e1a032cf403b0429155c01ab48b3b5be2a0aab1e921da6b8948
-  herb (0.10.1-x86_64-linux-musl) sha256=a5bb7c82bbc30a9eb80cb833fea749f543a0709d9f858f7db366a3c2616d969b
+  herb (0.10.2-aarch64-linux-gnu) sha256=7888e560a9eaede00db65475981858b0d7be287ea72686360a3a11a86d6a8011
+  herb (0.10.2-aarch64-linux-musl) sha256=23b546d207b813879373a439a39cf2de233e04b65671e436c59fd8644b173632
+  herb (0.10.2-arm64-darwin) sha256=49c89173478c83e3de241fc7d2c52892d1b788fd26076ba25dd2399656d7f561
+  herb (0.10.2-x86_64-darwin) sha256=b79c538c77506e21abeae80fca3eb14a700a35aae8e99a326ea5948a95fc821e
+  herb (0.10.2-x86_64-linux-gnu) sha256=7042322268a83c62bed32a5be4b64e0f4716c88d45a6ac372e839d646711a863
+  herb (0.10.2-x86_64-linux-musl) sha256=c91182c8b75431fe6a77c7a776f8be7db4b9a245ee95821f943e8d3725242664
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   i18n-js (4.2.4) sha256=61390d372f8fa68c495c5907d577657e8cc3a7031f4945db1e91f935e1391355
   image_processing (2.0.2) sha256=d0cf990f862d64efb1a14916044bf4b5bb2bccc7e235022413cde46019799cfa
