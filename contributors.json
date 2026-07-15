@@ -68,6 +68,10 @@
     "html_url": "https://github.com/ima1zumi"
   },
   {
+    "login": "github-actions[bot]",
+    "html_url": "https://github.com/apps/github-actions"
+  },
+  {
     "login": "nekonenene",
     "html_url": "https://github.com/nekonenene"
   }
