@@ -52,16 +52,16 @@
     "html_url": "https://github.com/champierre"
   },
   {
+    "login": "github-actions[bot]",
+    "html_url": "https://github.com/apps/github-actions"
+  },
+  {
     "login": "4geru",
     "html_url": "https://github.com/4geru"
   },
   {
     "login": "hayaokimura",
     "html_url": "https://github.com/hayaokimura"
-  },
-  {
-    "login": "github-actions[bot]",
-    "html_url": "https://github.com/apps/github-actions"
   },
   {
     "login": "marcoroth",
