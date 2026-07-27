@@ -1,0 +1,31 @@
+# Staging overrides, deep-merged onto config/deploy.yml.
+#
+# `service` is deliberately NOT overridden. kamal already separates destinations
+# everywhere it matters -- the deploy lock (`lock-<service>-<destination>`),
+# container names (`<service>-<role>-<destination>`) and container labels all
+# carry the destination. Overriding `service` would instead break the image
+# check: kamal verifies `LABEL service` on the pulled image against `service`,
+# and both destinations share one build.
+#
+# No `accessories` here on purpose: staging shares production's Redis container
+# and is separated by database number instead. Note that the definition is still
+# inherited through the merge, so never run `kamal accessory boot redis -d
+# staging` — it would try to bind host port 6380 a second time.
+
+proxy:
+  host: origin-app-staging.kaigionrails.org
+
+logging:
+  options:
+    awslogs-group: /lightsail/conference-app-staging
+    awslogs-create-group: "true"
+
+env:
+  clear:
+    SENTRY_ENV: staging
+    SCOUT_NAME: conference-app-staging
+    APPLICATION_URL: https://app-staging.kaigionrails.org
+    ORIGIN_HOST: origin-app-staging.kaigionrails.org
+    GITHUB_OAUTH_REDIRECT_URI: https://app-staging.kaigionrails.org/auth/github/callback
+    SHIRATAKI_URL: https://shirataki-staging.kaigionrails.org
+    REDIS_URL: redis://<%= ENV.fetch("KAMAL_WEB_SERVER_PRIVATE_ADDRESS") %>:6380/1
