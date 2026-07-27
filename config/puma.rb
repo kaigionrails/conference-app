@@ -28,6 +28,11 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
 threads threads_count, threads_count
 
+# Run in clustered mode only when explicitly asked for. Calling `workers` at all
+# switches Puma out of single mode, so leave it alone for the default of 1.
+web_concurrency = ENV.fetch("WEB_CONCURRENCY", 1).to_i
+workers web_concurrency if web_concurrency > 1
+
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT", 3000)
 
