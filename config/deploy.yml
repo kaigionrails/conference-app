@@ -1,0 +1,110 @@
+# Deploy configuration for production.
+#
+# KAMAL_WEB_SERVER_ADDRESS holds the Lightsail static IP (SSH target) and
+# KAMAL_WEB_SERVER_PRIVATE_ADDRESS the instance private IP (REDIS_URL is
+# container-to-host traffic).
+#
+# The Lightsail instance is shared with cfp-app: kamal-proxy and the host ports
+# are common ground, so do not reuse names or ports that cfp-app already claims.
+service: conference-app
+image: conference-app
+
+servers:
+  web:
+    hosts:
+      - <%= ENV.fetch("KAMAL_WEB_SERVER_ADDRESS") %>
+  job:
+    hosts:
+      - <%= ENV.fetch("KAMAL_WEB_SERVER_ADDRESS") %>
+    cmd: bin/jobs
+
+proxy:
+  ssl: true
+  host: origin-app.kaigionrails.org
+  app_port: 3000
+  # Preserve the X-Forwarded-* headers CloudFront sets instead of overwriting
+  # them, so the app can see the canonical host and the real client IP.
+  forward_headers: true
+  healthcheck:
+    path: /up
+
+registry:
+  server: 861452569180.dkr-ecr.ap-northeast-1.on.aws
+  username: AWS
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+ssh:
+  user: ubuntu
+  port: 9922
+
+# Ship container logs to CloudWatch Logs. The Docker daemon on the host already
+# carries the credentials for this, including permission to create the group.
+# Terraform does not manage /lightsail/* log groups -- retention is set once by
+# hand (see docs/deployment.md), since a group created here never expires.
+logging:
+  driver: awslogs
+  options:
+    awslogs-region: ap-northeast-1
+    awslogs-endpoint: https://logs.ap-northeast-1.api.aws
+    awslogs-group: /lightsail/conference-app
+    awslogs-create-group: "true"
+    tag: "{{.Name}}-{{.ID}}"
+
+env:
+  clear:
+    RAILS_ENV: production
+    RACK_ENV: production
+    # Deliberately overrides the ja_JP.UTF-8 set in the Dockerfile, matching what
+    # App Runner and ECS did before the migration.
+    LANG: en_US.UTF-8
+    RAILS_LOG_TO_STDOUT: enabled
+    RAILS_SERVE_STATIC_FILES: enabled
+    SENTRY_ENV: production
+    SCOUT_NAME: conference-app
+    APPLICATION_URL: https://app.kaigionrails.org
+    ORIGIN_HOST: origin-app.kaigionrails.org
+    GITHUB_OAUTH_REDIRECT_URI: https://app.kaigionrails.org/auth/github/callback
+    VAPID_SUBJECT_MAILTO: mailto:info@kaigionrails.org
+    SHIRATAKI_URL: https://shirataki.kaigionrails.org
+    # Reaches the accessory below over the instance's private IP.
+    REDIS_URL: redis://<%= ENV.fetch("KAMAL_WEB_SERVER_PRIVATE_ADDRESS") %>:6380/0
+  secret:
+    - DATABASE_URL
+    - SECRET_KEY_BASE
+    - GITHUB_APP_ID
+    - GITHUB_KEY
+    - GITHUB_SECRET
+    - GITHUB_PRIVATE_KEY
+    - SENTRY_DSN
+    - SCOUT_KEY
+    - CLOUDFLARE_ACCESS_KEY_ID
+    - CLOUDFLARE_SECRET_ACCESS_KEY
+    - CLOUDFLARE_R2_ENDPOINT
+    - CLOUDFLARE_R2_BUCKET_NAME
+    - CLOUDFLARE_ACCOUNT_ID
+    - CLOUDFLARE_API_TOKEN
+    - TITO_ACCOUNT_SLUG
+    - TITO_API_TOKEN
+    - TITO_WEBHOOK_SECRET
+    - VAPID_PUBLIC_KEY
+    - VAPID_PRIVATE_KEY
+    - CLOUDFRONT_ORIGIN_SECRET
+
+accessories:
+  redis:
+    image: public.ecr.aws/docker/library/redis:7
+    host: <%= ENV.fetch("KAMAL_WEB_SERVER_ADDRESS") %>
+    # Host port 6380: cfp-app's own Redis accessory holds 6379. Sessions live in
+    # here, so unlike cfp-app's this one persists to disk.
+    port: "6380:6379"
+    cmd: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy volatile-lru
+    volumes:
+      - /var/lib/conference-app-redis:/data
+
+# Keeps fingerprinted assets from the previous container reachable during a
+# rolling deploy (Propshaft).
+asset_path: /app/public/assets
