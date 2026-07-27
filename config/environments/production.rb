@@ -1,5 +1,9 @@
 require "active_support/core_ext/integer/time"
 
+# Required directly rather than autoloaded: this file is evaluated before Zeitwerk
+# is set up, so lib/middleware is excluded from autoload_lib in application.rb.
+require Rails.root.join("lib/middleware/origin_verification")
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -122,7 +126,24 @@ Rails.application.configure do
   config.redis_url = ENV["REDIS_URL"]
 
   config.application_url = ENV.fetch("APPLICATION_URL")
-  config.hosts << URI.parse(ENV.fetch("APPLICATION_URL")).host # e.g. "https://example.com" -> "example.com"
+
+  application_uri = URI.parse(config.application_url)
+  config.hosts << application_uri.host # e.g. "https://example.com" -> "example.com"
+  # The origin hostname CloudFront talks to, used by the kamal-proxy health check
+  # and the Let's Encrypt challenge.
+  config.hosts << ENV["ORIGIN_HOST"] if ENV["ORIGIN_HOST"].present?
+
+  # Generate URLs from APPLICATION_URL rather than the request. CloudFront sends
+  # the canonical host in X-Forwarded-Host, but kamal-proxy sits in between and
+  # may rewrite it, which would leak the origin hostname into redirects and mail.
+  url_options = {host: application_uri.host, protocol: application_uri.scheme}
+  config.action_controller.default_url_options = url_options
+  config.action_mailer.default_url_options = url_options
+  Rails.application.routes.default_url_options = url_options
+
+  # Reject requests that did not come through CloudFront. Must run before
+  # everything else, including host authorization.
+  config.middleware.insert_before 0, OriginVerification
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
