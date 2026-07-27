@@ -19,5 +19,10 @@ COPY . /app
 RUN bundle exec i18n export
 RUN GITHUB_PRIVATE_KEY=sample REDIS_URL=sample VAPID_PUBLIC_KEY=sample VAPID_PRIVATE_KEY=sample VAPID_SUBJECT_MAILTO=sample APPLICATION_URL=sample \
     SECRET_KEY_BASE=sample RAILS_ENV=production bundle exec rails assets:precompile
+# kamal verifies this label on the host after pulling, and refuses to deploy
+# without it. Both destinations share this image, so the value must match
+# `service` in config/deploy.yml -- do not override `service` per destination.
+LABEL service="conference-app"
+
 ENTRYPOINT ["bin/docker-entrypoint"]
 CMD ["./bin/rails", "server"]
