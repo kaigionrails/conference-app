@@ -1,3 +1,4 @@
 web: bin/rails server -p 3000
+js: pnpm run build:watch
 css: bin/rails tailwindcss:watch
 job: bin/jobs --recurring_schedule_file=config/recurring.yml
