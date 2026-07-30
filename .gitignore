@@ -34,6 +34,8 @@
 !/app/assets/builds/.keep
 /.gem_rbs_collection/
 
+/node_modules
+
 # Ignore environment files
 .env
 

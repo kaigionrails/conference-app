@@ -8,8 +8,7 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_import_module_tag "service_worker_installer" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= favicon_link_tag "icon.png" %>
     <%= favicon_link_tag "icons/2024/512.png", rel: "apple-touch-icon", type: 'image/png' %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
