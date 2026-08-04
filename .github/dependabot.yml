@@ -25,6 +25,14 @@ updates:
           - "activestorage"
           - "activesupport"
           - "railties"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      hotwired:
+        patterns:
+          - "@hotwired/*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
