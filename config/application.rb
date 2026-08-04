@@ -44,7 +44,17 @@ module ConferenceApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.rails_semantic_logger.format = :json
+    # https://logger.rocketjob.io/rails
+    config.rails_semantic_logger.appenders do |appenders|
+      if ENV["RAILS_LOG_TO_STDOUT"].present?
+        appenders.add(io: $stdout, formatter: :json)
+      else
+        appenders.add(file_name: Rails.root.join("log", "#{Rails.env}.log").to_s, formatter: :json)
+        # `rails server` / `rails console` 用のコンソール出力
+        appenders.add_server(formatter: :color)
+        appenders.add_console(formatter: :color)
+      end
+    end
     config.mission_control.jobs.http_basic_auth_enabled = false
     config.i18n.default_locale = :ja
   end

@@ -89,12 +89,7 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [:id]
 
-  # https://logger.rocketjob.io/rails
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    $stdout.sync = true
-    config.rails_semantic_logger.add_file_appender = false
-    config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
-  end
+  $stdout.sync = true if ENV["RAILS_LOG_TO_STDOUT"].present?
 
   config.session_store :redis_store,
     servers: [ENV.fetch("REDIS_URL")],
