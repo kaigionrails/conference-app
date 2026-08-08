@@ -38,6 +38,5 @@
 .env
 
 # auto generate file
-deploy/apprunner.json
 app/javascript/locales.js
 app/javascript/locales.json
