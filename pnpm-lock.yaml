@@ -34,8 +34,8 @@ importers:
         specifier: 1.7.0
         version: 1.7.0
       i18n-js:
-        specifier: 4.5.1
-        version: 4.5.1
+        specifier: 4.5.3
+        version: 4.5.3
       jose:
         specifier: 6.2.9
         version: 6.2.9
@@ -294,8 +294,8 @@ packages:
   hotkeys-js@4.0.4:
     resolution: {integrity: sha512-hseNiqaskxSnujuGp8aRMLJfcjaFiTSS0I2GQhqru82N/sx6CGyUf6pvU5X1iycvw2EqmvILkFIb5OzYFXY+9A==}
 
-  i18n-js@4.5.1:
-    resolution: {integrity: sha512-n7jojFj1WC0tztgr0I8jqTXuIlY1xNzXnC3mjKX/YjJhimdM+jXM8vOmn9d3xQFNC6qDHJ4ovhdrGXrRXLIGkA==}
+  i18n-js@4.5.3:
+    resolution: {integrity: sha512-5/tT6R9t9qlYqGhxGq9I9Ap3WKUaAMq5aRuO1gqAcUqm6xGbL0jwTAjSFjgbx935BAV8QbEzvQOzE796dUlEfA==}
 
   is-fullwidth-code-point@3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
@@ -576,7 +576,7 @@ snapshots:
 
   hotkeys-js@4.0.4: {}
 
-  i18n-js@4.5.1:
+  i18n-js@4.5.3:
     dependencies:
       bignumber.js: 9.3.1
       lodash: 4.18.0
