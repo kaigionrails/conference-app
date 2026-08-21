@@ -27,6 +27,27 @@ services:
       - conference-app-db
       - conference-app-worker
       - conference-app-css
+      - conference-app-js
+  conference-app-js:
+    container_name: conference-app-js
+    env_file:
+      - .env
+      - envs/conference-app.env
+    command:
+      - sh
+      - -c
+      - |
+        bundle install
+        bundle exec i18n export
+        pnpm install
+        pnpm run build:watch
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - conference-app-bundle:/usr/local/bundle
+    stdin_open: true
+    tty: true
   conference-app-css:
     container_name: conference-app-css
     env_file:

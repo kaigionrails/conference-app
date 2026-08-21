@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import { FetchRequest } from "@rails/request.js";
-import { locales } from "locales";
+import { locales } from "../locales";
 
 export default class extends Controller {
   static values = {

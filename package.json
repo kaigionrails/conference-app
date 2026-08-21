@@ -1,0 +1,32 @@
+{
+  "name": "conference-app",
+  "private": true,
+  "packageManager": "pnpm@10.33.1",
+  "dependencies": {
+    "@hotwired/turbo-rails": "8.0.23",
+    "@hotwired/stimulus": "3.2.2",
+    "@rails/actiontext": "8.1.300",
+    "@rails/request.js": "0.0.11",
+    "esbuild": "^0.25.0",
+    "hls.js": "1.5.17",
+    "i18n-js": "4.5.1",
+    "jose": "5.9.3",
+    "photoswipe": "5.4.4",
+    "qrcode": "1.5.4",
+    "stimulus-dropdown": "2.1.0",
+    "trix": "2.1.18"
+  },
+  "pnpm": {
+    "overrides": {
+      "stimulus-use": "0.52.2",
+      "dijkstrajs": "1.0.3",
+      "bignumber.js": "9.3.1",
+      "lodash": "4.18.0",
+      "make-plural": "7.4.0"
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "build:watch": "node esbuild.config.mjs --watch"
+  }
+}

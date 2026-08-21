@@ -12,8 +12,19 @@ RUN apt-get update -qq && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Node.js + pnpm (pnpm itself is fetched by corepack per package.json's
+# packageManager field; the prompt suppression keeps the build non-interactive)
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    corepack enable
+
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install -j2
+
+COPY package.json pnpm-lock.yaml /app/
+RUN pnpm install --frozen-lockfile
 
 COPY . /app
 RUN bundle exec i18n export

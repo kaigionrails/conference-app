@@ -1,0 +1,6 @@
+node_modules
+# Exclude build artifacts but keep the directory itself: propshaft only picks up
+# asset paths that exist when Rails boots, so a missing app/assets/builds means
+# tailwind.css and application.js never make it into the precompiled manifest.
+app/assets/builds/*
+!app/assets/builds/.keep

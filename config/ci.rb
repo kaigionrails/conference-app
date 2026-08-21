@@ -6,7 +6,7 @@ CI.run do
   # step "Style: Ruby", "bin/rubocop"
 
   step "Security: Gem audit", "bin/bundler-audit"
-  step "Security: Importmap vulnerability audit", "bin/importmap audit"
+  step "Security: pnpm vulnerability audit", "pnpm audit"
   step "Tests: Rails", "bin/rails spec"
   step "Tests: Seeds", "env RAILS_ENV=test bin/rails db:seed:replant"
 
