@@ -442,13 +442,13 @@ GEM
       actionpack (>= 5)
       redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
-    redis-client (0.25.1)
+    redis-client (0.30.1)
       connection_pool
     redis-rack (3.0.0)
       rack-session (>= 0.2.0)
       redis-store (>= 1.2, < 2)
-    redis-store (1.11.0)
-      redis (>= 4, < 6)
+    redis-store (1.12.0)
+      redis (>= 4, < 7)
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
@@ -857,9 +857,9 @@ CHECKSUMS
   reactionview (0.3.0) sha256=3bd363863776827eaf85a9baf75370c1ca52a4b0dad87ba5d672e4abe76eb640
   redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
   redis-actionpack (5.5.0) sha256=dc0570b78c14ec62b35c17b97fab778ee5986bc55e695bfb6826488088693311
-  redis-client (0.25.1) sha256=40130f8f95194c9c73eec322516781b0bfdd8293369a67dc175bd7bc391a68bd
+  redis-client (0.30.1) sha256=5151bc5c7bbfe48623732cdae3b900d8a22dc691cc7cdfacfb351ac55116522d
   redis-rack (3.0.0) sha256=abb50b82ae10ad4d11ca2e4901bfc2b98256cdafbbd95f80c86fc9e001478380
-  redis-store (1.11.0) sha256=edc4f3e239dcd1fdd9905584e6b1e623a84618e14436e6e8a07c70891008eda4
+  redis-store (1.12.0) sha256=bea7ed3f9a602d991934761bd56a3bdc78de068a1497d4ccf5e071d39e11d3da
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
