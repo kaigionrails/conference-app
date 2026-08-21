@@ -31,8 +31,8 @@ importers:
         specifier: ^0.25.0
         version: 0.25.12
       hls.js:
-        specifier: 1.5.17
-        version: 1.5.17
+        specifier: 1.7.0
+        version: 1.7.0
       i18n-js:
         specifier: 4.5.1
         version: 4.5.1
@@ -288,8 +288,8 @@ packages:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
 
-  hls.js@1.5.17:
-    resolution: {integrity: sha512-wA66nnYFvQa1o4DO/BFgLNRKnBTVXpNeldGRBJ2Y0SvFtdwvFKCbqa9zhHoZLoxHhZ+jYsj3aIBkWQQCPNOhMw==}
+  hls.js@1.7.0:
+    resolution: {integrity: sha512-NnQpT6Z//+2IB2qovSUbKbrlXY1MOpi0JynZ9L2NNOuTJiNCyMSQj9k2laEj1v7CxU/Hb8oTWR98eT3mVpPQVQ==}
 
   hotkeys-js@4.0.4:
     resolution: {integrity: sha512-hseNiqaskxSnujuGp8aRMLJfcjaFiTSS0I2GQhqru82N/sx6CGyUf6pvU5X1iycvw2EqmvILkFIb5OzYFXY+9A==}
@@ -572,7 +572,7 @@ snapshots:
 
   get-caller-file@2.0.5: {}
 
-  hls.js@1.5.17: {}
+  hls.js@1.7.0: {}
 
   hotkeys-js@4.0.4: {}
 
