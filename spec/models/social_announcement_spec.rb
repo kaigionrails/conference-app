@@ -22,6 +22,25 @@ RSpec.describe SocialAnnouncement, type: :model do
       FactoryBot.create(:social_announcement_target_platform, social_announcement: announcement, platform: "x")
       expect { announcement.reload.dispatch_all_posts! }.to raise_error(Social::PostError, /X is not connected/)
     end
+
+    it "creates pending posts and enqueues a job per combination" do
+      approve_all
+      expect { announcement.dispatch_all_posts! }
+        .to have_enqueued_job(SocialAnnouncementPostJob).exactly(4).times
+      expect(SocialAnnouncementPost.pending.count).to eq(4)
+    end
+
+    it "skips succeeded posts and re-enqueues failed ones" do
+      approve_all
+      FactoryBot.create(:social_announcement_post, :succeeded, social_announcement_text: texts.first, social_announcement_target_platform: mastodon)
+      failed = FactoryBot.create(:social_announcement_post, social_announcement_text: texts.first, social_announcement_target_platform: bluesky, status: "failed", last_error: "boom", last_error_at: Time.current)
+
+      expect { announcement.dispatch_all_posts! }
+        .to have_enqueued_job(SocialAnnouncementPostJob).exactly(3).times
+      expect(failed.reload).to be_pending
+      expect(failed.last_error).to be_nil
+      expect(SocialAnnouncementPost.succeeded.count).to eq(1)
+    end
   end
 
   describe "#dispatch_all_posts! with posts in flight" do
