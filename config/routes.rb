@@ -63,6 +63,16 @@ Rails.application.routes.draw do
     resources :signage_devices, only: [:new, :create, :edit, :update]
     resources :signage_device_assigns, only: [:new, :create, :update, :destroy]
     resources :signage_pages, only: [:index, :new, :create, :edit, :update, :destroy]
+
+    resources :social_announcements, only: [:index, :show, :new, :create, :edit, :update] do
+      resources :texts, only: [:create, :update], controller: "social_announcement_texts"
+      resources :text_reviews, only: [:create], controller: "social_announcement_text_reviews"
+      resource :target_platforms, only: [:update], controller: "social_announcement_target_platforms"
+      resources :media, only: [:create, :update, :destroy], controller: "social_announcement_media"
+      resource :dispatch, only: [:create], controller: "social_announcement_dispatches"
+    end
+    resource :social_x_connection, only: [:create, :destroy]
+    get "social_x_connection/callback", to: "social_x_connections#callback"
   end
 
   get "/admin", to: "admin#index"

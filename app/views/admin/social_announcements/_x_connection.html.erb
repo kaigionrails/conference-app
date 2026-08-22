@@ -1,0 +1,21 @@
+<%# locals: (x_token:) %>
+<% expected = Rails.configuration.x.social.x_screen_name.to_s %>
+<div class="mb-8 p-4 border rounded-sm mr-8">
+  <h3 class="font-bold text-lg mb-2">X connection</h3>
+  <% if x_token.nil? %>
+    <p class="mb-2">Not connected (expected account: @<%= expected.presence || "SOCIAL_X_SCREEN_NAME is not set" %>)</p>
+    <%= button_to "Connect X", admin_social_x_connection_path, method: :post, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+  <% else %>
+    <p class="mb-2">
+      Connected as @<%= x_token.screen_name %>
+      (by <%= x_token.connected_by.name %> at <%= x_token.connected_at.in_time_zone("Tokyo") %>)
+      <% if expected.present? && !x_token.screen_name.casecmp?(expected) %>
+        <span class="text-red-600">— does not match SOCIAL_X_SCREEN_NAME (@<%= expected %>). Reconnect.</span>
+      <% end %>
+    </p>
+    <div class="flex gap-4">
+      <%= button_to "Reconnect X", admin_social_x_connection_path, method: :post, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <%= button_to "Disconnect X", admin_social_x_connection_path, method: :delete, class: "border shadow-sm border-red-500 text-red-600 rounded-sm px-4 py-2 cursor-pointer", form: {data: {turbo_confirm: "Disconnect X?"}} %>
+    </div>
+  <% end %>
+</div>
