@@ -3,6 +3,7 @@ class Event < ApplicationRecord
 
   has_many :talks, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_many :social_announcements, dependent: :destroy
   has_many :profile_exchanges, dependent: :destroy
   has_many :tito_tickets, dependent: :destroy
   has_one :ongoing_event, dependent: :delete

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_09_19_171430) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_22_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -203,6 +203,95 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_19_171430) do
     t.bigint "event_id", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_signages_on_event_id"
+  end
+
+  create_table "social_announcement_media", force: :cascade do |t|
+    t.text "alt_text_en"
+    t.text "alt_text_ja"
+    t.datetime "created_at", null: false
+    t.integer "position", default: 0, null: false
+    t.bigint "social_announcement_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_announcement_id", "position"], name: "idx_on_social_announcement_id_position_e7bd668f58"
+    t.index ["social_announcement_id"], name: "index_social_announcement_media_on_social_announcement_id"
+  end
+
+  create_table "social_announcement_posts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "last_error"
+    t.datetime "last_error_at"
+    t.datetime "posted_at"
+    t.text "posted_body"
+    t.string "posted_media_digest"
+    t.string "remote_id"
+    t.string "remote_url"
+    t.bigint "social_announcement_target_platform_id", null: false
+    t.bigint "social_announcement_text_id", null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_announcement_target_platform_id"], name: "idx_on_social_announcement_target_platform_id_cd17fc44c9"
+    t.index ["social_announcement_text_id", "social_announcement_target_platform_id"], name: "idx_sap_on_text_and_target_platform", unique: true
+    t.index ["social_announcement_text_id"], name: "index_social_announcement_posts_on_social_announcement_text_id"
+  end
+
+  create_table "social_announcement_target_platforms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "platform", null: false
+    t.bigint "social_announcement_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_announcement_id", "platform"], name: "idx_on_social_announcement_id_platform_f6fbb46faa", unique: true
+    t.index ["social_announcement_id"], name: "idx_on_social_announcement_id_5bd9a9fd75"
+  end
+
+  create_table "social_announcement_text_reviews", force: :cascade do |t|
+    t.string "body_digest", null: false
+    t.datetime "created_at", null: false
+    t.string "media_digest", null: false
+    t.datetime "reviewed_at", null: false
+    t.bigint "reviewed_by_id", null: false
+    t.bigint "social_announcement_text_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reviewed_by_id"], name: "index_social_announcement_text_reviews_on_reviewed_by_id"
+    t.index ["social_announcement_text_id", "body_digest", "media_digest", "reviewed_by_id"], name: "idx_satr_on_text_digests_and_reviewer", unique: true
+    t.index ["social_announcement_text_id"], name: "idx_on_social_announcement_text_id_d4d20be72f"
+  end
+
+  create_table "social_announcement_texts", force: :cascade do |t|
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.string "locale", null: false
+    t.bigint "social_announcement_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_announcement_id", "locale"], name: "idx_on_social_announcement_id_locale_76dc741b8e", unique: true
+    t.index ["social_announcement_id"], name: "index_social_announcement_texts_on_social_announcement_id"
+  end
+
+  create_table "social_announcements", force: :cascade do |t|
+    t.string "campaign", null: false
+    t.datetime "created_at", null: false
+    t.bigint "created_by_id", null: false
+    t.bigint "event_id", null: false
+    t.text "note"
+    t.datetime "published_at"
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_social_announcements_on_created_by_id"
+    t.index ["event_id"], name: "index_social_announcements_on_event_id"
+  end
+
+  create_table "social_oauth_tokens", force: :cascade do |t|
+    t.text "access_token", null: false
+    t.datetime "access_token_expires_at", null: false
+    t.datetime "connected_at", null: false
+    t.bigint "connected_by_id", null: false
+    t.datetime "created_at", null: false
+    t.string "platform", null: false
+    t.text "refresh_token", null: false
+    t.string "remote_user_id", null: false
+    t.string "scopes", null: false
+    t.string "screen_name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connected_by_id"], name: "index_social_oauth_tokens_on_connected_by_id"
+    t.index ["platform"], name: "index_social_oauth_tokens_on_platform", unique: true
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
@@ -434,6 +523,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_19_171430) do
   add_foreign_key "signage_pages", "signage_schedules"
   add_foreign_key "signage_schedules", "signages"
   add_foreign_key "signages", "events"
+  add_foreign_key "social_announcement_media", "social_announcements"
+  add_foreign_key "social_announcement_posts", "social_announcement_target_platforms"
+  add_foreign_key "social_announcement_posts", "social_announcement_texts"
+  add_foreign_key "social_announcement_target_platforms", "social_announcements"
+  add_foreign_key "social_announcement_text_reviews", "social_announcement_texts"
+  add_foreign_key "social_announcement_text_reviews", "users", column: "reviewed_by_id"
+  add_foreign_key "social_announcement_texts", "social_announcements"
+  add_foreign_key "social_announcements", "events"
+  add_foreign_key "social_announcements", "users", column: "created_by_id"
+  add_foreign_key "social_oauth_tokens", "users", column: "connected_by_id"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
