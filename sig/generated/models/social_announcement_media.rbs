@@ -1,0 +1,26 @@
+# Generated from app/models/social_announcement_media.rb with RBS::Inline
+
+class SocialAnnouncementMedia < ApplicationRecord
+  MAX_PER_ANNOUNCEMENT: ::Integer
+
+  IMAGE_CONTENT_TYPES: untyped
+
+  ALLOWED_CONTENT_TYPES: untyped
+
+  # X: 画像5MB / Mastodon: 画像16MB / Bluesky: 画像2MB → 共通の最小値
+  MAX_IMAGE_BYTE_SIZE: untyped
+
+  # @rbs return: bool
+  def image?: () -> bool
+
+  # 投稿する Text の locale に対応する alt text。未入力は空文字
+  # @rbs locale: String
+  # @rbs return: String
+  def alt_text_for: (String locale) -> String
+
+  private def file_content_type: () -> untyped
+
+  private def file_size_within_limit: () -> untyped
+
+  private def count_within_limit: () -> untyped
+end

@@ -1,0 +1,23 @@
+# Generated from app/jobs/social_announcement_post_job.rb with RBS::Inline
+
+class SocialAnnouncementPostJob < ApplicationJob
+  # 投稿は成功したが、その間に claim を失った。retry_on の対象外
+  class ClaimLost < StandardError
+  end
+
+  # 外部 API 呼び出しは DB トランザクションの外で行う。トランザクションの中で呼ぶと、
+  # X の refresh token ローテーション (SocialOauthToken の更新) が投稿失敗時のロールバックに
+  # 巻き込まれ、X 側で既に失効した refresh token が DB に残って接続が死ぬ。
+  # 二重投稿は pending -> posting の条件付き UPDATE (1 行取れたジョブだけが投稿する) で防ぐ。
+  # @rbs text_id: Integer
+  # @rbs target_platform_id: Integer
+  # @rbs return: void
+  def perform: (Integer text_id, Integer target_platform_id) -> void
+
+  # 条件付き UPDATE。更新できた行数 (0 か 1) を返す
+  # @rbs post: SocialAnnouncementPost
+  # @rbs from: String
+  # @rbs to: String
+  # @rbs return: Integer
+  private def claim: (SocialAnnouncementPost post, from: String, to: String) -> Integer
+end

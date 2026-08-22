@@ -1,0 +1,19 @@
+# Generated from lib/social/base_client.rb with RBS::Inline
+
+module Social
+  class BaseClient
+    # media は Social::Attachment の配列。file と locale 解決済みの alt_text を使う
+    # langs は Text.locale 由来。X / Mastodon は無視してよい
+    # @rbs text: String
+    # @rbs media: Array[Social::Attachment]
+    # @rbs langs: Array[String]
+    # @rbs idempotency_key: String?
+    # @rbs return: Social::Result
+    def post: (text: String, ?media: Array[Social::Attachment], ?langs: Array[String], ?idempotency_key: String?) -> Social::Result
+
+    # @rbs value: untyped
+    # @rbs name: String
+    # @rbs return: untyped
+    private def require_credential!: (untyped value, String name) -> untyped
+  end
+end

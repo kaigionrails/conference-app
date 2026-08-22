@@ -1,0 +1,7 @@
+# Generated from app/models/social_announcement_target_platform.rb with RBS::Inline
+
+class SocialAnnouncementTargetPlatform < ApplicationRecord
+  private def sync_parent_published_at: () -> untyped
+
+  private def prevent_standalone_destroy_if_posted: () -> untyped
+end

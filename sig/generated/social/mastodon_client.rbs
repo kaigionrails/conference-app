@@ -1,0 +1,23 @@
+# Generated from lib/social/mastodon_client.rb with RBS::Inline
+
+module Social
+  class MastodonClient < BaseClient
+    # @rbs config: untyped -- Rails.configuration.x.social
+    def initialize: (?config: untyped) -> untyped
+
+    def post: (text: untyped, ?media: untyped, ?langs: untyped, ?idempotency_key: untyped) -> untyped
+
+    # @rbs return: String
+    private def base_url: () -> String
+
+    # @rbs return: String
+    private def access_token: () -> String
+
+    # @rbs return: Faraday::Connection
+    private def connection: () -> Faraday::Connection
+
+    # @rbs media: Social::Attachment
+    # @rbs return: String -- media id
+    private def upload_media: (Social::Attachment media) -> String
+  end
+end

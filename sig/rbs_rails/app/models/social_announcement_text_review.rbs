@@ -1,0 +1,425 @@
+# resolve-type-names: false
+
+class ::SocialAnnouncementTextReview < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::SocialAnnouncementTextReview, ::SocialAnnouncementTextReview::ActiveRecord_Relation, ::Integer]
+
+  module ::SocialAnnouncementTextReview::GeneratedAttributeMethods
+    def id: () -> ::Integer
+
+    def id=: (::Integer) -> ::Integer
+
+    def id?: () -> bool
+
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def id_change: () -> [ ::Integer?, ::Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> ::Integer?
+
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def id_previous_change: () -> ::Array[::Integer?]?
+
+    def id_previously_was: () -> ::Integer?
+
+    def id_before_last_save: () -> ::Integer?
+
+    def id_change_to_be_saved: () -> ::Array[::Integer?]?
+
+    def id_in_database: () -> ::Integer?
+
+    def saved_change_to_id: () -> ::Array[::Integer?]?
+
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
+
+    def social_announcement_text_id: () -> ::Integer
+
+    def social_announcement_text_id=: (::Integer) -> ::Integer
+
+    def social_announcement_text_id?: () -> bool
+
+    def social_announcement_text_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def social_announcement_text_id_change: () -> [ ::Integer?, ::Integer? ]
+
+    def social_announcement_text_id_will_change!: () -> void
+
+    def social_announcement_text_id_was: () -> ::Integer?
+
+    def social_announcement_text_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def social_announcement_text_id_previous_change: () -> ::Array[::Integer?]?
+
+    def social_announcement_text_id_previously_was: () -> ::Integer?
+
+    def social_announcement_text_id_before_last_save: () -> ::Integer?
+
+    def social_announcement_text_id_change_to_be_saved: () -> ::Array[::Integer?]?
+
+    def social_announcement_text_id_in_database: () -> ::Integer?
+
+    def saved_change_to_social_announcement_text_id: () -> ::Array[::Integer?]?
+
+    def saved_change_to_social_announcement_text_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def will_save_change_to_social_announcement_text_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def restore_social_announcement_text_id!: () -> void
+
+    def clear_social_announcement_text_id_change: () -> void
+
+    def social_announcement_text_id_before_type_cast: () -> ::Integer
+
+    def social_announcement_text_id_for_database: () -> ::Integer
+
+    def reviewed_by_id: () -> ::Integer
+
+    def reviewed_by_id=: (::Integer) -> ::Integer
+
+    def reviewed_by_id?: () -> bool
+
+    def reviewed_by_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def reviewed_by_id_change: () -> [ ::Integer?, ::Integer? ]
+
+    def reviewed_by_id_will_change!: () -> void
+
+    def reviewed_by_id_was: () -> ::Integer?
+
+    def reviewed_by_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def reviewed_by_id_previous_change: () -> ::Array[::Integer?]?
+
+    def reviewed_by_id_previously_was: () -> ::Integer?
+
+    def reviewed_by_id_before_last_save: () -> ::Integer?
+
+    def reviewed_by_id_change_to_be_saved: () -> ::Array[::Integer?]?
+
+    def reviewed_by_id_in_database: () -> ::Integer?
+
+    def saved_change_to_reviewed_by_id: () -> ::Array[::Integer?]?
+
+    def saved_change_to_reviewed_by_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def will_save_change_to_reviewed_by_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def restore_reviewed_by_id!: () -> void
+
+    def clear_reviewed_by_id_change: () -> void
+
+    def reviewed_by_id_before_type_cast: () -> ::Integer
+
+    def reviewed_by_id_for_database: () -> ::Integer
+
+    def body_digest: () -> ::String
+
+    def body_digest=: (::String) -> ::String
+
+    def body_digest?: () -> bool
+
+    def body_digest_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def body_digest_change: () -> [ ::String?, ::String? ]
+
+    def body_digest_will_change!: () -> void
+
+    def body_digest_was: () -> ::String?
+
+    def body_digest_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def body_digest_previous_change: () -> ::Array[::String?]?
+
+    def body_digest_previously_was: () -> ::String?
+
+    def body_digest_before_last_save: () -> ::String?
+
+    def body_digest_change_to_be_saved: () -> ::Array[::String?]?
+
+    def body_digest_in_database: () -> ::String?
+
+    def saved_change_to_body_digest: () -> ::Array[::String?]?
+
+    def saved_change_to_body_digest?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_body_digest?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_body_digest!: () -> void
+
+    def clear_body_digest_change: () -> void
+
+    def body_digest_before_type_cast: () -> ::String
+
+    def body_digest_for_database: () -> ::String
+
+    def media_digest: () -> ::String
+
+    def media_digest=: (::String) -> ::String
+
+    def media_digest?: () -> bool
+
+    def media_digest_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def media_digest_change: () -> [ ::String?, ::String? ]
+
+    def media_digest_will_change!: () -> void
+
+    def media_digest_was: () -> ::String?
+
+    def media_digest_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def media_digest_previous_change: () -> ::Array[::String?]?
+
+    def media_digest_previously_was: () -> ::String?
+
+    def media_digest_before_last_save: () -> ::String?
+
+    def media_digest_change_to_be_saved: () -> ::Array[::String?]?
+
+    def media_digest_in_database: () -> ::String?
+
+    def saved_change_to_media_digest: () -> ::Array[::String?]?
+
+    def saved_change_to_media_digest?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_media_digest?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_media_digest!: () -> void
+
+    def clear_media_digest_change: () -> void
+
+    def media_digest_before_type_cast: () -> ::String
+
+    def media_digest_for_database: () -> ::String
+
+    def reviewed_at: () -> ::ActiveSupport::TimeWithZone
+
+    def reviewed_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def reviewed_at?: () -> bool
+
+    def reviewed_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def reviewed_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def reviewed_at_will_change!: () -> void
+
+    def reviewed_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def reviewed_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def reviewed_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def reviewed_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def reviewed_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def reviewed_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def reviewed_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_reviewed_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_reviewed_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_reviewed_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_reviewed_at!: () -> void
+
+    def clear_reviewed_at_change: () -> void
+
+    def reviewed_at_before_type_cast: () -> ::Time
+
+    def reviewed_at_for_database: () -> ::Time
+
+    def created_at: () -> ::ActiveSupport::TimeWithZone
+
+    def created_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
+
+    def updated_at: () -> ::ActiveSupport::TimeWithZone
+
+    def updated_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
+  end
+  include ::SocialAnnouncementTextReview::GeneratedAttributeMethods
+  module ::SocialAnnouncementTextReview::GeneratedAliasAttributeMethods
+    include ::SocialAnnouncementTextReview::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::SocialAnnouncementTextReview::GeneratedAliasAttributeMethods
+
+  def social_announcement_text: () -> ::SocialAnnouncementText
+  def social_announcement_text=: (::SocialAnnouncementText?) -> ::SocialAnnouncementText?
+  def reload_social_announcement_text: () -> ::SocialAnnouncementText?
+  def build_social_announcement_text: (?untyped) -> ::SocialAnnouncementText
+  def create_social_announcement_text: (?untyped) -> ::SocialAnnouncementText
+  def create_social_announcement_text!: (?untyped) -> ::SocialAnnouncementText
+  def reviewed_by: () -> ::User
+  def reviewed_by=: (::User?) -> ::User?
+  def reload_reviewed_by: () -> ::User?
+  def build_reviewed_by: (?untyped) -> ::User
+  def create_reviewed_by: (?untyped) -> ::User
+  def create_reviewed_by!: (?untyped) -> ::User
+
+  module ::SocialAnnouncementTextReview::GeneratedAssociationMethods
+  end
+  include ::SocialAnnouncementTextReview::GeneratedAssociationMethods
+
+  module ::SocialAnnouncementTextReview::GeneratedRelationMethods
+  end
+
+  class ::SocialAnnouncementTextReview::ActiveRecord_Relation < ::ActiveRecord::Relation
+    include ::Enumerable[::SocialAnnouncementTextReview]
+    include ::SocialAnnouncementTextReview::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SocialAnnouncementTextReview, ::Integer]
+  end
+
+  class ::SocialAnnouncementTextReview::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::SocialAnnouncementTextReview]
+    include ::SocialAnnouncementTextReview::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SocialAnnouncementTextReview, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialAnnouncementTextReview
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialAnnouncementTextReview]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialAnnouncementTextReview
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialAnnouncementTextReview]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialAnnouncementTextReview
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialAnnouncementTextReview]
+    def reload: () -> ::Array[::SocialAnnouncementTextReview]
+
+    def replace: (::Array[::SocialAnnouncementTextReview]) -> void
+    def delete: (*::SocialAnnouncementTextReview | ::Integer) -> ::Array[::SocialAnnouncementTextReview]
+    def destroy: (*::SocialAnnouncementTextReview | ::Integer) -> ::Array[::SocialAnnouncementTextReview]
+    def <<: (*::SocialAnnouncementTextReview | ::Array[::SocialAnnouncementTextReview]) -> self
+    def prepend: (*::SocialAnnouncementTextReview | ::Array[::SocialAnnouncementTextReview]) -> self
+  end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::SocialAnnouncementText < ::ApplicationRecord
+end
+class ::User < ::ApplicationRecord
+end
