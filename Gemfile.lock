@@ -126,6 +126,12 @@ GEM
       bigdecimal
       rexml
     crass (1.0.7)
+    cruise (0.2.0-aarch64-linux-gnu)
+    cruise (0.2.0-aarch64-linux-musl)
+    cruise (0.2.0-arm64-darwin)
+    cruise (0.2.0-x86_64-darwin)
+    cruise (0.2.0-x86_64-linux-gnu)
+    cruise (0.2.0-x86_64-linux-musl)
     csv (3.3.3)
     date (3.5.1)
     debug (1.11.1)
@@ -433,9 +439,10 @@ GEM
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
-    reactionview (0.3.0)
+    reactionview (0.4.0)
       actionview (>= 7.0)
-      herb (>= 0.9.0, < 1.0.0)
+      cruise
+      herb (>= 0.10.0, < 0.11.0)
     redis (5.4.1)
       redis-client (>= 0.22.0)
     redis-actionpack (5.5.0)
@@ -724,6 +731,12 @@ CHECKSUMS
   connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.7) sha256=94868719948664c89ddcaf0a37c65048413dfcb1c869470a5f7a7ceb5390b295
+  cruise (0.2.0-aarch64-linux-gnu) sha256=87a5a3fbda8070b4a531b84161c7c5acbcc54f62e57b9ffa6960df61e9b9c2c3
+  cruise (0.2.0-aarch64-linux-musl) sha256=9f14c9a00aeeb67d75a29dd3d3bd4ce60bef23d148c35e525461e5990b986d25
+  cruise (0.2.0-arm64-darwin) sha256=fb3e9b265868e077dd754b4a430ab14d8abb209281c61c906b74f326b797a10a
+  cruise (0.2.0-x86_64-darwin) sha256=265dc1d479c5e5a45c099b37b2452810398cf714c0dd1dc7a97def387a79145e
+  cruise (0.2.0-x86_64-linux-gnu) sha256=3d16f6a6a3409f2cae5dbdb3fb322389fa61a6a18d80a2df50fc4c807f1f0fd9
+  cruise (0.2.0-x86_64-linux-musl) sha256=2be5c5f2fb474ff5a4f42e3421dbb27fb439008a53697f7a6a3d2f3ec2de711c
   csv (3.3.3) sha256=7e2966befb7bdaf7d5e9b36e1de73e6a5e7a72f584f180a1726aec88a1b0a900
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
   debug (1.11.1) sha256=2e0b0ac6119f2207a6f8ac7d4a73ca8eb4e440f64da0a3136c30343146e952b6
@@ -854,7 +867,7 @@ CHECKSUMS
   rbs-inline (0.14.0) sha256=eaf47b46690d63acddab1f6804c9cc205a4bc78e637cfc421a0b1239874ef51c
   rbs_rails (0.13.1) sha256=fc83e1f194a4e7fe46e8655e2771c3a00dd829124ae71f9b696cc151b085507e
   rdoc (8.0.0) sha256=03bf8c08a9639658855a0cfd77c0abca8325c227693f7f33f82957811348c469
-  reactionview (0.3.0) sha256=3bd363863776827eaf85a9baf75370c1ca52a4b0dad87ba5d672e4abe76eb640
+  reactionview (0.4.0) sha256=a0e4341415ac2c70fdd681b49746da1395d70a68750ac6e834d8e500fada38ee
   redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
   redis-actionpack (5.5.0) sha256=dc0570b78c14ec62b35c17b97fab778ee5986bc55e695bfb6826488088693311
   redis-client (0.30.1) sha256=5151bc5c7bbfe48623732cdae3b900d8a22dc691cc7cdfacfb351ac55116522d
