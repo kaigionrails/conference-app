@@ -23,7 +23,7 @@ importers:
         version: 8.0.23
       '@rails/actiontext':
         specifier: 8.1.301
-        version: 8.1.301(trix@2.1.18)
+        version: 8.1.301(trix@2.1.19)
       '@rails/request.js':
         specifier: 0.0.13
         version: 0.0.13
@@ -49,8 +49,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0(@hotwired/stimulus@3.2.2)(hotkeys-js@4.0.4)
       trix:
-        specifier: 2.1.18
-        version: 2.1.18
+        specifier: 2.1.19
+        version: 2.1.19
 
 packages:
 
@@ -269,8 +269,8 @@ packages:
   dijkstrajs@1.0.3:
     resolution: {integrity: sha512-qiSlmBq9+BCdCA/L46dw8Uy93mloxsPSbwnm5yrKn2vMPiy8KyAskTF6zuV/j5BMsmOGZDPs7KjU+mjb670kfA==}
 
-  dompurify@3.4.12:
-    resolution: {integrity: sha512-zQvGet8Z2sWbQhCmfFz/T5QWH2oBmjnqK3qvOjaqaNLrLEF912WamU+ohnTp0TCep/MFVHpdJuCZEdFOdTnEFg==}
+  dompurify@3.4.14:
+    resolution: {integrity: sha512-dVoH9z+MY+C9IilgGCk3YfFqjLi3fChm2OiKJMzh6axrJ5qwxqWaZamgmHrpv22CN/KdbZJuGEGgfQoL00LTdg==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -377,8 +377,8 @@ packages:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
 
-  trix@2.1.18:
-    resolution: {integrity: sha512-DWOdTsz3n9PO3YBc1R6pGh9MG1cXys/2+rouc/qsISncjc2MBew2UOW8nXh3NjUOjobKsXCIPR6LB02abg2EYg==}
+  trix@2.1.19:
+    resolution: {integrity: sha512-E7RA3EOeUiUwNJlrF5onIOkqCA06xUU6GmHOVxXyMnGMValrDK3Ce7uaMVgiVUOvVt4mzUERAHAzD10mxoLpOg==}
     engines: {node: '>= 18'}
 
   which-module@2.0.1:
@@ -490,10 +490,10 @@ snapshots:
 
   '@rails/actioncable@8.1.300': {}
 
-  '@rails/actiontext@8.1.301(trix@2.1.18)':
+  '@rails/actiontext@8.1.301(trix@2.1.19)':
     dependencies:
       '@rails/activestorage': 8.1.301
-      trix: 2.1.18
+      trix: 2.1.19
 
   '@rails/activestorage@8.1.301':
     dependencies:
@@ -530,7 +530,7 @@ snapshots:
 
   dijkstrajs@1.0.3: {}
 
-  dompurify@3.4.12:
+  dompurify@3.4.14:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
@@ -646,9 +646,9 @@ snapshots:
     dependencies:
       ansi-regex: 5.0.1
 
-  trix@2.1.18:
+  trix@2.1.19:
     dependencies:
-      dompurify: 3.4.12
+      dompurify: 3.4.14
 
   which-module@2.0.1: {}
 
