@@ -10,7 +10,7 @@
     "esbuild": "^0.28.2",
     "hls.js": "1.7.1",
     "i18n-js": "4.5.3",
-    "jose": "6.2.9",
+    "jose": "6.2.10",
     "photoswipe": "5.4.4",
     "qrcode": "1.5.4",
     "stimulus-dropdown": "2.1.0",
