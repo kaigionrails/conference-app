@@ -14,7 +14,7 @@
     "photoswipe": "5.4.4",
     "qrcode": "1.5.4",
     "stimulus-dropdown": "2.1.0",
-    "trix": "2.1.18"
+    "trix": "2.1.19"
   },
   "pnpm": {
     "overrides": {
