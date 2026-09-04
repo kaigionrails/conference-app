@@ -14,6 +14,12 @@ cloudflare:
   endpoint: <%= ENV["CLOUDFLARE_R2_ENDPOINT"] %>
   force_path_style: true
   bucket: <%= ENV["CLOUDFLARE_R2_BUCKET_NAME"] %>
+  # aws-sdk-s3 >= 1.178 adds a CRC32 checksum to every upload by default, on top of the
+  # Content-MD5 that Active Storage already sends. R2 rejects requests carrying both
+  # ("You can only specify one non-default checksum at a time"), so only send a checksum
+  # when the operation requires one.
+  request_checksum_calculation: when_required
+  response_checksum_validation: when_required
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
