@@ -100,4 +100,21 @@ Rails.application.configure do
   config.x.tito.webhook_secret = ENV["TITO_WEBHOOK_SECRET"]
 
   config.x.shirataki.url = ENV["SHIRATAKI_URL"]
+
+  # SNS 自動投稿。development は既定で dry-run (外部 API を叩かない)。
+  # 手元で実投稿を試すときだけ SOCIAL_DRY_RUN=false を環境変数で渡す (ファイルは書き換えない)
+  config.x.social.dry_run = ActiveModel::Type::Boolean.new.cast(ENV.fetch("SOCIAL_DRY_RUN", "true"))
+  config.x.social.x_client_id = ENV["SOCIAL_X_CLIENT_ID"]
+  config.x.social.x_client_secret = ENV["SOCIAL_X_CLIENT_SECRET"]
+  config.x.social.x_screen_name = ENV["SOCIAL_X_SCREEN_NAME"] # 接続時に一致必須
+  config.x.social.x_redirect_uri = "#{config.application_url}/admin/social_x_connection/callback"
+  config.x.social.mastodon_base_url = ENV["SOCIAL_MASTODON_BASE_URL"]
+  config.x.social.mastodon_access_token = ENV["SOCIAL_MASTODON_ACCESS_TOKEN"]
+  config.x.social.bluesky_handle = ENV["SOCIAL_BLUESKY_HANDLE"]
+  config.x.social.bluesky_app_password = ENV["SOCIAL_BLUESKY_APP_PASSWORD"]
+
+  # 未設定なら固定ダミー。ローカル専用
+  config.active_record.encryption.primary_key = ENV.fetch("ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY", "dev" * 11)
+  config.active_record.encryption.deterministic_key = ENV.fetch("ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY", "dev" * 11)
+  config.active_record.encryption.key_derivation_salt = ENV.fetch("ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT", "dev" * 11)
 end

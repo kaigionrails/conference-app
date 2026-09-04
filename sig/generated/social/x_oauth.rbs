@@ -1,0 +1,73 @@
+# Generated from lib/social/x_oauth.rb with RBS::Inline
+
+module Social
+  # X OAuth 2.0 Authorization Code + PKCE (User Context)。
+  # authorize URL の組み立て、code 交換、refresh、接続済みトークンの取得を担う。
+  module XOauth
+    AUTHORIZE_URL: ::String
+
+    API_BASE: ::String
+
+    TOKEN_PATH: ::String
+
+    REVOKE_PATH: ::String
+
+    ME_PATH: ::String
+
+    class Authorization < Data
+      attr_reader url(): untyped
+
+      attr_reader state(): untyped
+
+      attr_reader code_verifier(): untyped
+
+      def self.new: (untyped url, untyped state, untyped code_verifier) -> instance
+                  | (url: untyped, state: untyped, code_verifier: untyped) -> instance
+
+      def self.members: () -> [ :url, :state, :code_verifier ]
+
+      def members: () -> [ :url, :state, :code_verifier ]
+    end
+
+    # @rbs return: Social::XOauth::Authorization
+    def self.build_authorization: () -> Social::XOauth::Authorization
+
+    # @rbs code: String
+    # @rbs code_verifier: String
+    # @rbs return: Hash[String, untyped]
+    def self.exchange_code!: (code: String, code_verifier: String) -> Hash[String, untyped]
+
+    # @rbs refresh_token: String
+    # @rbs return: Hash[String, untyped]
+    def self.refresh!: (refresh_token: String) -> Hash[String, untyped]
+
+    # @rbs access_token: String
+    # @rbs return: Hash[String, untyped] -- {"id" =>, "username" =>, "name" =>}
+    def self.me!: (access_token: String) -> Hash[String, untyped]
+
+    # 接続済みの user access token を返す。期限が近ければ行ロックのうえ refresh する。
+    # @rbs force_refresh: bool
+    # @rbs return: String
+    def self.user_access_token!: (?force_refresh: bool) -> String
+
+    # X 側でトークンを失効させる (RFC 7009)。切断・再接続で DB から消す前に呼ぶ
+    # @rbs token: String
+    # @rbs token_type_hint: String -- "refresh_token" | "access_token"
+    # @rbs return: void
+    def self.revoke!: (token: String, token_type_hint: String) -> void
+
+    # @rbs params: Hash[Symbol, String]
+    # @rbs return: Hash[String, untyped]
+    def self.token_request: (Hash[Symbol, String] params) -> Hash[String, untyped]
+
+    # confidential client として Basic 認証でフォーム POST する
+    # @rbs path: String
+    # @rbs params: Hash[Symbol, String]
+    # @rbs return: Hash[String, untyped]
+    def self.oauth_post: (String path, Hash[Symbol, String] params) -> Hash[String, untyped]
+
+    def self.connection: () -> untyped
+
+    def self.config: () -> untyped
+  end
+end

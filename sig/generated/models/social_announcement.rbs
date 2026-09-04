@@ -1,0 +1,53 @@
+# Generated from app/models/social_announcement.rb with RBS::Inline
+
+class SocialAnnouncement < ApplicationRecord
+  LOCALES: untyped
+
+  PLATFORMS: untyped
+
+  # 告知に付ける想定のハッシュタグ。含まれていなくても投稿は止めず、UI で警告だけ出す。
+  # 前後が空白 (全角含む)・改行・文頭文末でないとハッシュタグとして成立しない
+  # (直前に文字が続くとタグにならず、直後に CJK が続くと別のタグになる) ので、境界も見る
+  RECOMMENDED_HASHTAG: untyped
+
+  RECOMMENDED_HASHTAG_PATTERN: ::Regexp
+
+  # メンションらしきもの (空白または文頭の直後の @ + 英数字)。本文は全プラットフォーム共通なので、
+  # 同じ @user が別のアカウントを指す。投稿は止めず UI で警告だけ出す
+  MENTION_PATTERN: ::Regexp
+
+  MAX_MEDIA: untyped
+
+  # @rbs return: bool
+  def fully_approved?: () -> bool
+
+  # @rbs return: Integer
+  def expected_post_count: () -> Integer
+
+  # @rbs return: bool
+  def fully_posted?: () -> bool
+
+  # @rbs return: Array[SocialAnnouncementMedia]
+  def media_for_post: () -> Array[SocialAnnouncementMedia]
+
+  # 並び・checksum・両 locale の alt_text からメディアセットの指紋を作る。
+  # alt を変えても未レビューに戻る。空セットでも安定した hex を返す。
+  # @rbs return: String
+  def current_media_digest: () -> String
+
+  # @rbs return: bool
+  def x_targeted?: () -> bool
+
+  # succeeded と投稿中以外の (Text, TargetPlatform) を pending にして enqueue する
+  # @rbs return: void
+  def dispatch_all_posts!: () -> void
+
+  # 全組み合わせが succeeded なら最後の posted_at を入れる。未完了なら nil に戻す
+  # (プラットフォーム追加後など)。
+  # @rbs return: void
+  def sync_published_at!: () -> void
+
+  private def succeeded_posts: () -> untyped
+
+  private def media_composition_valid: () -> untyped
+end

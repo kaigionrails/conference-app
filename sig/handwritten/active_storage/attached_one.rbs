@@ -1,0 +1,10 @@
+module ActiveStorage
+  class Attached::One
+    # NOTE: Attached::One delegates missing methods to the attachment / blob via method_missing.
+    #       The gem_rbs_collection signature only lists a few, so the ones this app uses are declared here.
+    def blob: () -> ActiveStorage::Blob
+    def content_type: () -> String?
+    def byte_size: () -> Integer
+    def filename: () -> untyped
+  end
+end

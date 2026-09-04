@@ -1,0 +1,26 @@
+# Generated from lib/social/bluesky_client.rb with RBS::Inline
+
+module Social
+  # AT Protocol。アプリパスワードでセッションを作り、投稿ごとに JWT を取り直す
+  class BlueskyClient < BaseClient
+    PDS_HOST: ::String
+
+    # @rbs config: untyped -- Rails.configuration.x.social
+    def initialize: (?config: untyped) -> untyped
+
+    def post: (text: untyped, ?media: untyped, ?langs: untyped, ?idempotency_key: untyped) -> untyped
+
+    # @rbs return: String
+    private def handle: () -> String
+
+    # @rbs return: Faraday::Connection
+    private def connection: () -> Faraday::Connection
+
+    private def ensure_session!: () -> untyped
+
+    # com.atproto.repo.uploadBlob でバイナリを送信し blob 参照を返す
+    # @rbs blob: ActiveStorage::Blob
+    # @rbs return: Hash[String, untyped]
+    private def upload_blob: (ActiveStorage::Blob blob) -> Hash[String, untyped]
+  end
+end

@@ -1,0 +1,22 @@
+# Generated from app/controllers/admin/social_x_connections_controller.rb with RBS::Inline
+
+class Admin::SocialXConnectionsController < AdminController
+  # 接続開始。PKCE の code_verifier と CSRF 用 state を session に置いて X へ送る
+  # @rbs return: void
+  def create: () -> void
+
+  # @rbs return: void
+  def callback: () -> void
+
+  # @rbs return: void
+  def destroy: () -> void
+
+  # X 側の revoke に失敗しても DB の削除・上書きは続行し、手動で外すよう促す
+  # @rbs token: SocialOauthToken
+  # @rbs return: String? -- 失敗時の警告文
+  private def revoke_best_effort: (SocialOauthToken token) -> String?
+
+  # @rbs message: String
+  # @rbs return: void
+  private def fail_with: (String message) -> void
+end

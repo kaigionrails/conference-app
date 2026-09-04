@@ -1,0 +1,15 @@
+# Generated from app/controllers/admin/social_announcement_media_controller.rb with RBS::Inline
+
+class Admin::SocialAnnouncementMediaController < AdminController
+  # @rbs return: void
+  def create: () -> void
+
+  # alt text と並び順の更新
+  # @rbs return: void
+  def update: () -> void
+
+  # @rbs return: void
+  def destroy: () -> void
+
+  private def media_params: () -> untyped
+end

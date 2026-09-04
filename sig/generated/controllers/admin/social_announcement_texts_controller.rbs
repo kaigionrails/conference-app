@@ -1,0 +1,16 @@
+# Generated from app/controllers/admin/social_announcement_texts_controller.rb with RBS::Inline
+
+class Admin::SocialAnnouncementTextsController < AdminController
+  # @rbs return: void
+  def create: () -> void
+
+  # @rbs return: void
+  def update: () -> void
+
+  private def text_params: () -> untyped
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs text: SocialAnnouncementText
+  # @rbs return: void
+  private def render_column: (SocialAnnouncement announcement, SocialAnnouncementText text) -> void
+end
