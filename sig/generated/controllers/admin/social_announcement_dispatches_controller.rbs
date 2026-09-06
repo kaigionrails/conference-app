@@ -1,0 +1,6 @@
+# Generated from app/controllers/admin/social_announcement_dispatches_controller.rb with RBS::Inline
+
+class Admin::SocialAnnouncementDispatchesController < AdminController
+  # @rbs return: void
+  def create: () -> void
+end

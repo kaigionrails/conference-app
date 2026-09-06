@@ -1,0 +1,40 @@
+<div class="mb-16">
+  <h2 class="font-bold text-xl mb-4">Social announcements</h2>
+  <%= render "admin/social_announcements/flash" %>
+  <%= render "admin/social_announcements/dry_run_banner" %>
+  <%= render "admin/social_announcements/x_connection", x_token: @x_token %>
+  <div class="mb-8 flex items-center gap-8">
+    <%= link_to "Create new social announcement", new_admin_social_announcement_path, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+    <%= form_with url: admin_social_announcements_path, method: :get, class: "flex items-center gap-2" do |f| %>
+      <%= f.label :event_id, "Event" %>
+      <%= f.select :event_id, options_from_collection_for_select(@events, :id, :name, @event&.id), {include_blank: "All"}, class: "rounded-sm border-1 border-gray-400", onchange: "this.form.requestSubmit()" %>
+    <% end %>
+  </div>
+  <div class="rounded-sm w-full pr-8 shadow-xs">
+    <table class="w-full divide-y border">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="py-2 px-3 text-left">Id</th>
+          <th class="py-2 px-3 text-left">Campaign</th>
+          <th class="py-2 px-3 text-left">Texts</th>
+          <th class="py-2 px-3 text-left">Platforms</th>
+          <th class="py-2 px-3 text-left">Published at</th>
+          <th class="py-2 px-3 text-left sr-only">Show</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 bg-white">
+        <% @social_announcements.each do |announcement| %>
+          <tr>
+            <td class="p-3"><%= announcement.id %></td>
+            <td class="p-3"><%= announcement.campaign %></td>
+            <td class="p-3"><%= announcement.texts.map(&:locale).sort.join(", ").presence || "-" %></td>
+            <td class="p-3"><%= announcement.target_platforms.map(&:platform).sort.join(", ").presence || "-" %></td>
+            <td class="p-3"><%= announcement.published_at&.in_time_zone("Tokyo") || "-" %></td>
+            <td class="p-3"><%= link_to "Show", admin_social_announcement_path(announcement), class: "underline" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= paginate @social_announcements %>
+</div>

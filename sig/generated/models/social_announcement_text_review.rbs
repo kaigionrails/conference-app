@@ -1,0 +1,11 @@
+# Generated from app/models/social_announcement_text_review.rb with RBS::Inline
+
+class SocialAnnouncementTextReview < ApplicationRecord
+  # レビュー作成のファクトリ。Text の現時点の本文とメディアセットをスナップショットして承認する。
+  # 過去にレビューした版へ戻した場合の再レビューでは、同じ digest の行を作り直さず
+  # reviewed_at を更新する (レビュアー + digest のユニーク制約はそのまま)。
+  # @rbs text: SocialAnnouncementText
+  # @rbs reviewer: User
+  # @rbs return: SocialAnnouncementTextReview
+  def self.create_for!: (SocialAnnouncementText text, reviewer: User) -> SocialAnnouncementTextReview
+end

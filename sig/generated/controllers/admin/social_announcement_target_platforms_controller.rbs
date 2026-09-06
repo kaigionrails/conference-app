@@ -1,0 +1,8 @@
+# Generated from app/controllers/admin/social_announcement_target_platforms_controller.rb with RBS::Inline
+
+class Admin::SocialAnnouncementTargetPlatformsController < AdminController
+  # チェックボックスの状態で TargetPlatform を作成・削除する。
+  # 投稿済みプラットフォームの削除はモデル側で中止される。
+  # @rbs return: void
+  def update: () -> void
+end

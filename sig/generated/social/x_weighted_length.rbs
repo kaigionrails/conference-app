@@ -1,0 +1,35 @@
+# Generated from lib/social/x_weighted_length.rb with RBS::Inline
+
+module Social
+  # X の weighted character count。全プラットフォーム共通の本文上限に使う。
+  # ルールは https://docs.x.com/fundamentals/counting-characters に従う:
+  # - デフォルト重み 2
+  # - 基本ラテン / Latin-1 / 一部の約物は重み 1
+  # - URL は t.co 相当で 23
+  # - CJK・絵文字は 2 (日本語だけなら 280 / 2 = 140 字)
+  class XWeightedLength
+    LIMIT: ::Integer
+
+    URL_WEIGHT: ::Integer
+
+    # twitter-text の config v3 相当
+    WEIGHT_ONE_RANGES: untyped
+
+    URL_PATTERN: ::Regexp
+
+    EMOJI_PATTERN: ::Regexp
+
+    # @rbs text: String?
+    def initialize: (String? text) -> untyped
+
+    # @rbs return: Integer
+    def to_i: () -> Integer
+
+    # @rbs return: bool
+    def valid?: () -> bool
+
+    # @rbs cluster: String
+    # @rbs return: Integer
+    private def weight_of: (String cluster) -> Integer
+  end
+end

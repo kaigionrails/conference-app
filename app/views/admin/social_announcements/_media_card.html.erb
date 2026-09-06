@@ -1,0 +1,31 @@
+<%# locals: (announcement:, medium:, published:, errors: []) %>
+<%= turbo_frame_tag "social_announcement_medium_#{medium.id}" do %>
+  <div class="border rounded-sm p-2 w-64">
+    <% if errors.any? %>
+      <p class="mb-1 text-sm text-red-700"><%= errors.join(", ") %></p>
+    <% end %>
+    <% if medium.file.attached? %>
+      <%= image_tag url_for(medium.file), class: "max-w-full max-h-40 mb-2", alt: (medium.alt_text_ja.presence || medium.alt_text_en).to_s %>
+      <p class="text-xs text-gray-600 mb-1"><%= medium.file.filename %> (<%= number_to_human_size(medium.file.byte_size) %>)</p>
+    <% end %>
+    <%= form_with url: admin_social_announcement_medium_path(announcement, medium), method: :patch, scope: :social_announcement_media do |f| %>
+      <%= f.label :position, "position", class: "text-sm" %>
+      <%= f.number_field :position, value: medium.position, readonly: published, class: "rounded-sm border-1 border-gray-400 w-16 mb-1 #{"bg-gray-100" if published}" %>
+      <%= f.label :alt_text_ja, "alt text ja (optional)", class: "block text-sm" %>
+      <%= f.text_area :alt_text_ja, value: medium.alt_text_ja, rows: 2, readonly: published, class: "block rounded-sm border-1 border-gray-400 w-full mb-1 #{"bg-gray-100" if published}" %>
+      <%= f.label :alt_text_en, "alt text en (optional)", class: "block text-sm" %>
+      <%= f.text_area :alt_text_en, value: medium.alt_text_en, rows: 2, readonly: published, class: "block rounded-sm border-1 border-gray-400 w-full mb-1 #{"bg-gray-100" if published}" %>
+      <% if published %>
+        <button type="button" disabled class="border rounded-sm px-2 py-1 text-gray-400 cursor-not-allowed text-sm">Update</button>
+      <% else %>
+        <%= f.submit "Update", class: "border shadow-sm border-gray-500 rounded-sm px-2 py-1 cursor-pointer text-sm" %>
+      <% end %>
+    <% end %>
+    <% if published %>
+      <button type="button" disabled class="mt-1 border rounded-sm px-2 py-1 text-gray-400 cursor-not-allowed text-sm">Remove</button>
+    <% else %>
+      <%# 削除はカードが消えてページ全体 (枚数カウンタ等) が変わるので frame を抜けて全画面遷移する %>
+      <%= button_to "Remove", admin_social_announcement_medium_path(announcement, medium), method: :delete, class: "mt-1 border shadow-sm border-red-500 text-red-600 rounded-sm px-2 py-1 cursor-pointer text-sm", form: {data: {turbo_confirm: "Remove this media?", turbo_frame: "_top"}} %>
+    <% end %>
+  </div>
+<% end %>

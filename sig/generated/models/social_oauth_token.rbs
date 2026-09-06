@@ -1,0 +1,21 @@
+# Generated from app/models/social_oauth_token.rb with RBS::Inline
+
+class SocialOauthToken < ApplicationRecord
+  PLATFORMS: untyped
+
+  X_SCOPES: untyped
+
+  REFRESH_SKEW: untyped
+
+  # @rbs return: bool
+  def expires_soon?: () -> bool
+
+  # X 側で refresh token を失効させる。access token は 2 時間で切れるので refresh だけ落とせばよい。
+  # 失敗は PostError のまま上げる (切断自体を止めるかは呼び出し側が決める)
+  # @rbs return: void
+  def revoke_remote!: () -> void
+
+  # refresh token は単回利用。呼び出し側で行ロックを取り、レスポンスの新しい refresh をすぐ書く。
+  # @rbs return: void
+  def refresh!: () -> void
+end

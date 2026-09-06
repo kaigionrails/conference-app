@@ -1,0 +1,5 @@
+<h2 class="font-bold text-xl mb-8">Create new social announcement</h2>
+<%= render "admin/social_announcements/flash" %>
+<div class="pr-8">
+  <%= render "admin/social_announcements/form", social_announcement: @social_announcement, url: admin_social_announcements_path, method: :post %>
+</div>

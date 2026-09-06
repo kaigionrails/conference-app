@@ -233,4 +233,30 @@ interface _RbsRailsPathHelpers
   def rails_storage_redirect_url: (*untyped) -> String
   def event_live_streams_path: (*untyped) -> String
   def event_live_checkin_path: (*untyped) -> String
+  def admin_social_announcement_texts_path: (*untyped) -> String
+  def admin_social_announcement_text_path: (*untyped) -> String
+  def admin_social_announcement_text_reviews_path: (*untyped) -> String
+  def admin_social_announcement_target_platforms_path: (*untyped) -> String
+  def admin_social_announcement_media_path: (*untyped) -> String
+  def admin_social_announcement_medium_path: (*untyped) -> String
+  def admin_social_announcement_dispatch_path: (*untyped) -> String
+  def admin_social_announcements_path: (*untyped) -> String
+  def new_admin_social_announcement_path: (*untyped) -> String
+  def edit_admin_social_announcement_path: (*untyped) -> String
+  def admin_social_announcement_path: (*untyped) -> String
+  def admin_social_x_connection_path: (*untyped) -> String
+  def admin_social_x_connection_callback_path: (*untyped) -> String
+  def admin_social_announcement_texts_url: (*untyped) -> String
+  def admin_social_announcement_text_url: (*untyped) -> String
+  def admin_social_announcement_text_reviews_url: (*untyped) -> String
+  def admin_social_announcement_target_platforms_url: (*untyped) -> String
+  def admin_social_announcement_media_url: (*untyped) -> String
+  def admin_social_announcement_medium_url: (*untyped) -> String
+  def admin_social_announcement_dispatch_url: (*untyped) -> String
+  def admin_social_announcements_url: (*untyped) -> String
+  def new_admin_social_announcement_url: (*untyped) -> String
+  def edit_admin_social_announcement_url: (*untyped) -> String
+  def admin_social_announcement_url: (*untyped) -> String
+  def admin_social_x_connection_url: (*untyped) -> String
+  def admin_social_x_connection_callback_url: (*untyped) -> String
 end

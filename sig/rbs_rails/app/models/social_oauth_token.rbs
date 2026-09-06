@@ -1,0 +1,577 @@
+# resolve-type-names: false
+
+class ::SocialOauthToken < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::SocialOauthToken, ::SocialOauthToken::ActiveRecord_Relation, ::Integer]
+
+  module ::SocialOauthToken::GeneratedAttributeMethods
+    def id: () -> ::Integer
+
+    def id=: (::Integer) -> ::Integer
+
+    def id?: () -> bool
+
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def id_change: () -> [ ::Integer?, ::Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> ::Integer?
+
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def id_previous_change: () -> ::Array[::Integer?]?
+
+    def id_previously_was: () -> ::Integer?
+
+    def id_before_last_save: () -> ::Integer?
+
+    def id_change_to_be_saved: () -> ::Array[::Integer?]?
+
+    def id_in_database: () -> ::Integer?
+
+    def saved_change_to_id: () -> ::Array[::Integer?]?
+
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
+
+    def platform: () -> ::String
+
+    def platform=: (::String) -> ::String
+
+    def platform?: () -> bool
+
+    def platform_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def platform_change: () -> [ ::String?, ::String? ]
+
+    def platform_will_change!: () -> void
+
+    def platform_was: () -> ::String?
+
+    def platform_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def platform_previous_change: () -> ::Array[::String?]?
+
+    def platform_previously_was: () -> ::String?
+
+    def platform_before_last_save: () -> ::String?
+
+    def platform_change_to_be_saved: () -> ::Array[::String?]?
+
+    def platform_in_database: () -> ::String?
+
+    def saved_change_to_platform: () -> ::Array[::String?]?
+
+    def saved_change_to_platform?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_platform?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_platform!: () -> void
+
+    def clear_platform_change: () -> void
+
+    def platform_before_type_cast: () -> ::String
+
+    def platform_for_database: () -> ::String
+
+    def access_token: () -> ::String
+
+    def access_token=: (::String) -> ::String
+
+    def access_token?: () -> bool
+
+    def access_token_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def access_token_change: () -> [ ::String?, ::String? ]
+
+    def access_token_will_change!: () -> void
+
+    def access_token_was: () -> ::String?
+
+    def access_token_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def access_token_previous_change: () -> ::Array[::String?]?
+
+    def access_token_previously_was: () -> ::String?
+
+    def access_token_before_last_save: () -> ::String?
+
+    def access_token_change_to_be_saved: () -> ::Array[::String?]?
+
+    def access_token_in_database: () -> ::String?
+
+    def saved_change_to_access_token: () -> ::Array[::String?]?
+
+    def saved_change_to_access_token?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_access_token?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_access_token!: () -> void
+
+    def clear_access_token_change: () -> void
+
+    def access_token_before_type_cast: () -> ::String
+
+    def access_token_for_database: () -> ::String
+
+    def refresh_token: () -> ::String
+
+    def refresh_token=: (::String) -> ::String
+
+    def refresh_token?: () -> bool
+
+    def refresh_token_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def refresh_token_change: () -> [ ::String?, ::String? ]
+
+    def refresh_token_will_change!: () -> void
+
+    def refresh_token_was: () -> ::String?
+
+    def refresh_token_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def refresh_token_previous_change: () -> ::Array[::String?]?
+
+    def refresh_token_previously_was: () -> ::String?
+
+    def refresh_token_before_last_save: () -> ::String?
+
+    def refresh_token_change_to_be_saved: () -> ::Array[::String?]?
+
+    def refresh_token_in_database: () -> ::String?
+
+    def saved_change_to_refresh_token: () -> ::Array[::String?]?
+
+    def saved_change_to_refresh_token?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_refresh_token?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_refresh_token!: () -> void
+
+    def clear_refresh_token_change: () -> void
+
+    def refresh_token_before_type_cast: () -> ::String
+
+    def refresh_token_for_database: () -> ::String
+
+    def access_token_expires_at: () -> ::ActiveSupport::TimeWithZone
+
+    def access_token_expires_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def access_token_expires_at?: () -> bool
+
+    def access_token_expires_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def access_token_expires_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def access_token_expires_at_will_change!: () -> void
+
+    def access_token_expires_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def access_token_expires_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def access_token_expires_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def access_token_expires_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def access_token_expires_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def access_token_expires_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def access_token_expires_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_access_token_expires_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_access_token_expires_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_access_token_expires_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_access_token_expires_at!: () -> void
+
+    def clear_access_token_expires_at_change: () -> void
+
+    def access_token_expires_at_before_type_cast: () -> ::Time
+
+    def access_token_expires_at_for_database: () -> ::Time
+
+    def screen_name: () -> ::String
+
+    def screen_name=: (::String) -> ::String
+
+    def screen_name?: () -> bool
+
+    def screen_name_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def screen_name_change: () -> [ ::String?, ::String? ]
+
+    def screen_name_will_change!: () -> void
+
+    def screen_name_was: () -> ::String?
+
+    def screen_name_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def screen_name_previous_change: () -> ::Array[::String?]?
+
+    def screen_name_previously_was: () -> ::String?
+
+    def screen_name_before_last_save: () -> ::String?
+
+    def screen_name_change_to_be_saved: () -> ::Array[::String?]?
+
+    def screen_name_in_database: () -> ::String?
+
+    def saved_change_to_screen_name: () -> ::Array[::String?]?
+
+    def saved_change_to_screen_name?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_screen_name?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_screen_name!: () -> void
+
+    def clear_screen_name_change: () -> void
+
+    def screen_name_before_type_cast: () -> ::String
+
+    def screen_name_for_database: () -> ::String
+
+    def remote_user_id: () -> ::String
+
+    def remote_user_id=: (::String) -> ::String
+
+    def remote_user_id?: () -> bool
+
+    def remote_user_id_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def remote_user_id_change: () -> [ ::String?, ::String? ]
+
+    def remote_user_id_will_change!: () -> void
+
+    def remote_user_id_was: () -> ::String?
+
+    def remote_user_id_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def remote_user_id_previous_change: () -> ::Array[::String?]?
+
+    def remote_user_id_previously_was: () -> ::String?
+
+    def remote_user_id_before_last_save: () -> ::String?
+
+    def remote_user_id_change_to_be_saved: () -> ::Array[::String?]?
+
+    def remote_user_id_in_database: () -> ::String?
+
+    def saved_change_to_remote_user_id: () -> ::Array[::String?]?
+
+    def saved_change_to_remote_user_id?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_remote_user_id?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_remote_user_id!: () -> void
+
+    def clear_remote_user_id_change: () -> void
+
+    def remote_user_id_before_type_cast: () -> ::String
+
+    def remote_user_id_for_database: () -> ::String
+
+    def scopes: () -> ::String
+
+    def scopes=: (::String) -> ::String
+
+    def scopes?: () -> bool
+
+    def scopes_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def scopes_change: () -> [ ::String?, ::String? ]
+
+    def scopes_will_change!: () -> void
+
+    def scopes_was: () -> ::String?
+
+    def scopes_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def scopes_previous_change: () -> ::Array[::String?]?
+
+    def scopes_previously_was: () -> ::String?
+
+    def scopes_before_last_save: () -> ::String?
+
+    def scopes_change_to_be_saved: () -> ::Array[::String?]?
+
+    def scopes_in_database: () -> ::String?
+
+    def saved_change_to_scopes: () -> ::Array[::String?]?
+
+    def saved_change_to_scopes?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def will_save_change_to_scopes?: (?from: ::String?, ?to: ::String?) -> bool
+
+    def restore_scopes!: () -> void
+
+    def clear_scopes_change: () -> void
+
+    def scopes_before_type_cast: () -> ::String
+
+    def scopes_for_database: () -> ::String
+
+    def connected_by_id: () -> ::Integer
+
+    def connected_by_id=: (::Integer) -> ::Integer
+
+    def connected_by_id?: () -> bool
+
+    def connected_by_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def connected_by_id_change: () -> [ ::Integer?, ::Integer? ]
+
+    def connected_by_id_will_change!: () -> void
+
+    def connected_by_id_was: () -> ::Integer?
+
+    def connected_by_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def connected_by_id_previous_change: () -> ::Array[::Integer?]?
+
+    def connected_by_id_previously_was: () -> ::Integer?
+
+    def connected_by_id_before_last_save: () -> ::Integer?
+
+    def connected_by_id_change_to_be_saved: () -> ::Array[::Integer?]?
+
+    def connected_by_id_in_database: () -> ::Integer?
+
+    def saved_change_to_connected_by_id: () -> ::Array[::Integer?]?
+
+    def saved_change_to_connected_by_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def will_save_change_to_connected_by_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
+
+    def restore_connected_by_id!: () -> void
+
+    def clear_connected_by_id_change: () -> void
+
+    def connected_by_id_before_type_cast: () -> ::Integer
+
+    def connected_by_id_for_database: () -> ::Integer
+
+    def connected_at: () -> ::ActiveSupport::TimeWithZone
+
+    def connected_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def connected_at?: () -> bool
+
+    def connected_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def connected_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def connected_at_will_change!: () -> void
+
+    def connected_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def connected_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def connected_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def connected_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def connected_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def connected_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def connected_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_connected_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_connected_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_connected_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_connected_at!: () -> void
+
+    def clear_connected_at_change: () -> void
+
+    def connected_at_before_type_cast: () -> ::Time
+
+    def connected_at_for_database: () -> ::Time
+
+    def created_at: () -> ::ActiveSupport::TimeWithZone
+
+    def created_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
+
+    def updated_at: () -> ::ActiveSupport::TimeWithZone
+
+    def updated_at=: (::ActiveSupport::TimeWithZone) -> ::ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ::ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ::ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
+  end
+  include ::SocialOauthToken::GeneratedAttributeMethods
+  module ::SocialOauthToken::GeneratedAliasAttributeMethods
+    include ::SocialOauthToken::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::SocialOauthToken::GeneratedAliasAttributeMethods
+
+  def connected_by: () -> ::User
+  def connected_by=: (::User?) -> ::User?
+  def reload_connected_by: () -> ::User?
+  def build_connected_by: (?untyped) -> ::User
+  def create_connected_by: (?untyped) -> ::User
+  def create_connected_by!: (?untyped) -> ::User
+
+  module ::SocialOauthToken::GeneratedAssociationMethods
+  end
+  include ::SocialOauthToken::GeneratedAssociationMethods
+
+  module ::SocialOauthToken::GeneratedRelationMethods
+  end
+
+  class ::SocialOauthToken::ActiveRecord_Relation < ::ActiveRecord::Relation
+    include ::Enumerable[::SocialOauthToken]
+    include ::SocialOauthToken::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SocialOauthToken, ::Integer]
+  end
+
+  class ::SocialOauthToken::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::SocialOauthToken]
+    include ::SocialOauthToken::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SocialOauthToken, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialOauthToken
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialOauthToken]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialOauthToken
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialOauthToken]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SocialOauthToken
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SocialOauthToken]
+    def reload: () -> ::Array[::SocialOauthToken]
+
+    def replace: (::Array[::SocialOauthToken]) -> void
+    def delete: (*::SocialOauthToken | ::Integer) -> ::Array[::SocialOauthToken]
+    def destroy: (*::SocialOauthToken | ::Integer) -> ::Array[::SocialOauthToken]
+    def <<: (*::SocialOauthToken | ::Array[::SocialOauthToken]) -> self
+    def prepend: (*::SocialOauthToken | ::Array[::SocialOauthToken]) -> self
+  end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::User < ::ApplicationRecord
+end

@@ -1,0 +1,26 @@
+# Generated from app/models/social_announcement_text.rb with RBS::Inline
+
+class SocialAnnouncementText < ApplicationRecord
+  # 現在の本文かつ現在のメディアセットに対する、本文の最終更新以降のレビューが存在するか。
+  # 本文またはメディアを変えると digest がずれ、未レビューに戻る。過去にレビューされた版へ
+  # 戻した場合も、古いレビューは数えず再レビューを要求する。
+  # @rbs return: bool
+  def approved?: () -> bool
+
+  # @rbs return: SocialAnnouncementTextReview?
+  def latest_review: () -> SocialAnnouncementTextReview?
+
+  # @rbs return: String
+  def current_body_digest: () -> String
+
+  private def current_reviews: () -> untyped
+
+  private def sync_parent_published_at: () -> untyped
+
+  # Event / SocialAnnouncement からの cascade では Post も消す。
+  # Admin から Text だけ消そうとしたときは投稿記録を守る。
+  private def prevent_standalone_destroy_if_posted: () -> untyped
+
+  # X の weighted 280 を全プラットフォーム共通の上限にする。
+  private def body_within_strictest_platform_limit: () -> untyped
+end

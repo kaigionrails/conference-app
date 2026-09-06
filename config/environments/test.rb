@@ -71,4 +71,19 @@ Rails.application.configure do
   config.x.tito.webhook_secret = "tito-webhook-secret-xxxxxx"
 
   config.x.shirataki.url = "http://localhost:4000"
+
+  # SNS 自動投稿。外部へ出ないダミー。dry_run は false のまま WebMock で検証する
+  config.x.social.dry_run = false
+  config.x.social.x_client_id = "test"
+  config.x.social.x_client_secret = "test"
+  config.x.social.x_screen_name = "testuser"
+  config.x.social.x_redirect_uri = "http://www.example.com/admin/social_x_connection/callback"
+  config.x.social.mastodon_base_url = "https://mastodon.test"
+  config.x.social.mastodon_access_token = "test"
+  config.x.social.bluesky_handle = "test.bsky.social"
+  config.x.social.bluesky_app_password = "test"
+
+  config.active_record.encryption.primary_key = "0" * 32
+  config.active_record.encryption.deterministic_key = "1" * 32
+  config.active_record.encryption.key_derivation_salt = "2" * 32
 end

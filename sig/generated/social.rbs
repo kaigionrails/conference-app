@@ -1,0 +1,44 @@
+# Generated from lib/social.rb with RBS::Inline
+
+module Social
+  class PostError < StandardError
+  end
+
+  class Result < Data
+    attr_reader remote_id(): untyped
+
+    attr_reader remote_url(): untyped
+
+    def self.new: (untyped remote_id, untyped remote_url) -> instance
+                | (remote_id: untyped, remote_url: untyped) -> instance
+
+    def self.members: () -> [ :remote_id, :remote_url ]
+
+    def members: () -> [ :remote_id, :remote_url ]
+  end
+
+  # クライアントに渡す添付。alt_text は投稿する Text の locale で解決済み
+  class Attachment < Data
+    attr_reader file(): untyped
+
+    attr_reader alt_text(): untyped
+
+    def self.new: (untyped file, untyped alt_text) -> instance
+                | (file: untyped, alt_text: untyped) -> instance
+
+    def self.members: () -> [ :file, :alt_text ]
+
+    def members: () -> [ :file, :alt_text ]
+  end
+
+  # 全クライアント共通の Faraday タイムアウト。1 投稿あたり最大 10 リクエスト程度
+  # (X: 画像 4 枚のアップロード + metadata + tweet) でも POSTING_STALE_AFTER (10 分) を超えないようにする
+  HTTP_TIMEOUTS: untyped
+
+  # @rbs return: bool
+  def self.dry_run?: () -> bool
+
+  # @rbs platform: String
+  # @rbs return: Social::BaseClient
+  def self.client_for: (String platform) -> Social::BaseClient
+end

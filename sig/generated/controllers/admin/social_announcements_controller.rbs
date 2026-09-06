@@ -1,0 +1,35 @@
+# Generated from app/controllers/admin/social_announcements_controller.rb with RBS::Inline
+
+class Admin::SocialAnnouncementsController < AdminController
+  include ApplicationHelper
+
+  @social_announcements: SocialAnnouncement::ActiveRecord_Relation
+
+  @social_announcement: SocialAnnouncement
+
+  @events: Event::ActiveRecord_Relation
+
+  @event: Event?
+
+  @x_token: SocialOauthToken?
+
+  # @rbs return: void
+  def index: () -> void
+
+  # @rbs return: void
+  def show: () -> void
+
+  # @rbs return: void
+  def new: () -> void
+
+  # @rbs return: void
+  def create: () -> void
+
+  # @rbs return: void
+  def edit: () -> void
+
+  # @rbs return: void
+  def update: () -> void
+
+  private def social_announcement_params: () -> untyped
+end

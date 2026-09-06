@@ -1,0 +1,136 @@
+<% announcement = @social_announcement %>
+<% x_connected = @x_token.present? %>
+<% published = announcement.published_at.present? %>
+<% can_dispatch = !published && announcement.fully_approved? && announcement.target_platforms.any? && (!announcement.x_targeted? || x_connected) %>
+<div class="mb-16 pr-8" data-controller="admin--social-announcement" data-admin--social-announcement-max-media-value="<%= SocialAnnouncement::MAX_MEDIA %>" data-admin--social-announcement-hashtag-value="<%= SocialAnnouncement::RECOMMENDED_HASHTAG %>">
+  <h2 class="font-bold text-xl mb-4">Social announcement 「<%= announcement.campaign %>」 (id:<%= announcement.id %>)</h2>
+  <%= render "admin/social_announcements/flash" %>
+  <%= render "admin/social_announcements/dry_run_banner" %>
+
+  <section class="mb-8">
+    <p class="mb-1">Event: <%= announcement.event.name %></p>
+    <p class="mb-1">Created by: <%= announcement.created_by.name %></p>
+    <p class="mb-1 whitespace-pre-wrap">Note: <%= announcement.note.presence || "-" %></p>
+    <p class="mb-1">Published at: <%= announcement.published_at&.in_time_zone("Tokyo") || "-" %></p>
+    <%= link_to "edit campaign / note", edit_admin_social_announcement_path(announcement), class: "underline" %>
+  </section>
+
+  <section class="mb-8 border rounded-sm p-4">
+    <h3 class="font-bold text-lg mb-1">Texts &amp; media (review scope)</h3>
+    <p class="text-sm text-gray-600 mb-4">A review approves a text together with the current media set (files, order, alt texts). Editing a body or changing media resets approval and requires re-review.</p>
+  <h4 class="font-bold mb-2">Texts</h4>
+    <div class="grid grid-cols-2 gap-6">
+      <% SocialAnnouncement::LOCALES.each do |locale| %>
+        <%= render "admin/social_announcements/text_column", announcement: announcement, locale: locale, text: announcement.texts.find { |t| t.locale == locale }, errors: [] %>
+      <% end %>
+    </div>
+  <h4 class="font-bold mb-2 mt-6">Media (<span data-admin--social-announcement-target="mediaCount"><%= announcement.media.size %></span>/<%= SocialAnnouncement::MAX_MEDIA %> attached)</h4>
+    <div class="flex flex-wrap gap-4 mb-4">
+      <% announcement.media.sort_by { |m| [m.position, m.id] }.each do |medium| %>
+        <%= render "admin/social_announcements/media_card", announcement: announcement, medium: medium, published: published, errors: [] %>
+      <% end %>
+    </div>
+    <% if published %>
+      <p class="text-sm text-gray-600">already published</p>
+    <% elsif announcement.media.size < SocialAnnouncement::MAX_MEDIA %>
+      <%= form_with url: admin_social_announcement_media_path(announcement), method: :post, scope: :social_announcement_media, multipart: true do |f| %>
+        <%= f.file_field :file, accept: SocialAnnouncementMedia::ALLOWED_CONTENT_TYPES.join(","), class: "block mb-2 cursor-pointer file:border file:shadow-sm file:border-gray-500 file:rounded-sm file:bg-white file:px-4 file:py-2 file:mr-3 file:cursor-pointer hover:file:bg-gray-100" %>
+        <%= f.submit "Attach", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <% end %>
+      <p class="text-sm text-gray-600 mt-1">jpeg / png / webp / gif, up to <%= SocialAnnouncementMedia::MAX_IMAGE_BYTE_SIZE / 1.megabyte %>MB each</p>
+    <% end %>
+  </section>
+
+  <section class="mb-8">
+    <h3 class="font-bold text-lg mb-2">Target platforms</h3>
+    <%= form_with url: admin_social_announcement_target_platforms_path(announcement), method: :patch, scope: :social_announcement do |f| %>
+      <% current = announcement.target_platforms.index_by(&:platform) %>
+      <div class="flex gap-6 mb-2">
+        <% SocialAnnouncement::PLATFORMS.each do |platform| %>
+          <% target = current[platform] %>
+          <% posted = target && target.posts.any? %>
+          <label class="flex items-center gap-2">
+            <%= check_box_tag "social_announcement[platforms][]", platform, target.present?, id: "platform_#{platform}", disabled: posted || published %>
+            <%= hidden_field_tag "social_announcement[platforms][]", platform if posted %>
+            <%= platform %><%= " (posted, cannot remove)" if posted && !published %>
+          </label>
+        <% end %>
+      </div>
+      <% if published %>
+        <button type="button" disabled class="border rounded-sm px-4 py-2 text-gray-400 cursor-not-allowed">Save platforms</button>
+        <span class="text-sm text-gray-600 ml-2">already published</span>
+      <% else %>
+        <%= f.submit "Save platforms", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <% end %>
+    <% end %>
+  </section>
+
+
+  <section class="mb-8">
+    <h3 class="font-bold text-lg mb-2">Posts</h3>
+    <% posts = announcement.posts.index_by { |p| [p.social_announcement_text_id, p.social_announcement_target_platform_id] } %>
+    <table class="divide-y border">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="py-2 px-3 text-left">Text \ Platform</th>
+          <% announcement.target_platforms.each do |target| %>
+            <th class="py-2 px-3 text-left"><%= target.platform %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 bg-white">
+        <% announcement.texts.each do |text| %>
+          <tr>
+            <td class="p-3 font-bold align-top"><%= text.locale %></td>
+            <% announcement.target_platforms.each do |target| %>
+              <% post = posts[[text.id, target.id]] %>
+              <td class="p-3 align-top max-w-xs">
+                <% if post.nil? %>
+                  <span class="text-gray-500">not dispatched</span>
+                <% elsif post.succeeded? %>
+                  <span class="inline-block px-2 py-0.5 rounded-sm bg-green-100 border border-green-400">succeeded</span>
+                  <p class="text-sm"><%= link_to post.remote_url, post.remote_url, class: "underline break-all", target: "_blank", rel: "noopener" %></p>
+                  <p class="text-sm text-gray-600"><%= post.posted_at&.in_time_zone("Tokyo") %></p>
+                  <p class="text-sm whitespace-pre-wrap"><%= truncate(post.posted_body.to_s, length: 80) %></p>
+                  <% if post.posted_body != text.body %>
+                    <p class="text-sm text-orange-700">current body differs from posted body</p>
+                  <% end %>
+                <% elsif post.failed? %>
+                  <span class="inline-block px-2 py-0.5 rounded-sm bg-red-100 border border-red-400">failed</span>
+                  <p class="text-sm text-red-700 break-all"><%= post.last_error %></p>
+                  <p class="text-sm text-gray-600"><%= post.last_error_at&.in_time_zone("Tokyo") %></p>
+                <% elsif post.posting? %>
+                  <span class="inline-block px-2 py-0.5 rounded-sm bg-blue-100 border border-blue-400">posting</span>
+                <% else %>
+                  <span class="inline-block px-2 py-0.5 rounded-sm bg-gray-100 border border-gray-400">pending</span>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mb-8">
+    <h3 class="font-bold text-lg mb-2">Dispatch</h3>
+    <% if can_dispatch %>
+      <%= button_to "Post to all platforms (#{announcement.expected_post_count} posts, skips succeeded)", admin_social_announcement_dispatch_path(announcement), method: :post, class: "border shadow-sm border-blue-600 rounded-sm px-4 py-2 cursor-pointer", form: {data: {turbo_confirm: "Post now?"}} %>
+    <% else %>
+      <button type="button" disabled class="border rounded-sm px-4 py-2 text-gray-400 cursor-not-allowed">Post to all platforms</button>
+      <% if published %>
+        <span class="text-sm text-gray-600 ml-2">already published</span>
+      <% else %>
+      <ul class="list-disc ml-6 text-gray-600 text-sm mt-2">
+        <li>all texts must be reviewed<%= announcement.fully_approved? ? " ✓" : "" %></li>
+        <li>at least one target platform<%= announcement.target_platforms.any? ? " ✓" : "" %></li>
+        <% if announcement.x_targeted? && !x_connected %>
+          <li>X must be connected (see <%= link_to "list page", admin_social_announcements_path, class: "underline" %>)</li>
+        <% end %>
+      </ul>
+      <% end %>
+    <% end %>
+  </section>
+
+  <%= link_to "back to list", admin_social_announcements_path(event_id: announcement.event_id), class: "underline" %>
+</div>

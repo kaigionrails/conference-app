@@ -1,0 +1,12 @@
+# Generated from app/models/social_announcement_post.rb with RBS::Inline
+
+class SocialAnnouncementPost < ApplicationRecord
+  # ジョブがこの時間を超えて posting のままなら、プロセス死などで取り残されたとみなして再 dispatch できる
+  POSTING_STALE_AFTER: untyped
+
+  # @rbs return: bool
+  def posting_in_flight?: () -> bool
+
+  # 別告知の Text と TargetPlatform を組み合わせる不整合をガードする
+  private def text_and_target_share_announcement: () -> untyped
+end

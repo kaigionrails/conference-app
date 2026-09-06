@@ -1,0 +1,26 @@
+# Generated from lib/social/x_client.rb with RBS::Inline
+
+module Social
+  class XClient < BaseClient
+    API_BASE: ::String
+
+    TWEETS_PATH: ::String
+
+    MEDIA_UPLOAD_PATH: ::String
+
+    MEDIA_METADATA_PATH: ::String
+
+    def post: (text: untyped, ?media: untyped, ?langs: untyped, ?idempotency_key: untyped) -> untyped
+
+    # @rbs access_token: String
+    # @rbs return: Faraday::Connection
+    private def connection: (String access_token) -> Faraday::Connection
+
+    # 初回は 2MB 以下の画像のみ。simple upload で足りる。
+    # 続けて media metadata で alt_text を付ける。Bearer は user access token。
+    # @rbs media: Social::Attachment
+    # @rbs access_token: String
+    # @rbs return: String -- media_id
+    private def upload_media: (Social::Attachment media, access_token: String) -> String
+  end
+end
