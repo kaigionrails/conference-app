@@ -14,18 +14,16 @@ class Admin::SocialAnnouncementMediaController < AdminController
     redirect_to admin_social_announcement_path(announcement)
   end
 
-  # alt text と並び順の更新。カードは Turbo Frame で、成功時のリダイレクトは自カードだけ
-  # 差し替えるため、他の入力欄の内容は消えない。失敗時はエラー付きカードを 422 で返す
+  # alt text と並び順の更新。カードは Turbo Frame で、成功時は自カードの差し替えと保存トーストを
+  # Turbo Stream で返すため、他の入力欄の内容は消えない。失敗時はエラー付きカードを 422 で返す
   # @rbs return: void
   def update
     announcement = SocialAnnouncement.find(params[:social_announcement_id])
     medium = announcement.media.find(params[:id])
     if medium.update(**media_params.slice(:alt_text_ja, :alt_text_en, :position))
-      redirect_to admin_social_announcement_path(announcement)
+      render_saved announcement, medium
     else
-      render partial: "admin/social_announcements/media_card",
-        locals: {announcement: announcement, medium: medium, published: announcement.published_at.present?, errors: medium.errors.full_messages},
-        status: :unprocessable_content
+      render_card announcement, medium, medium.errors.full_messages
     end
   end
 
@@ -40,5 +38,35 @@ class Admin::SocialAnnouncementMediaController < AdminController
 
   private def media_params
     params.require(:social_announcement_media).permit(:file, :alt_text_ja, :alt_text_en, :position)
+  end
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs medium: SocialAnnouncementMedia
+  # @rbs return: void
+  private def render_saved(announcement, medium)
+    no_errors = [] #: Array[String]
+    respond_to do |format|
+      format.html { redirect_to admin_social_announcement_path(announcement) }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace("social_announcement_medium_#{medium.id}",
+            partial: "admin/social_announcements/media_card",
+            locals: {announcement: announcement, medium: medium, published: announcement.published_at.present?, errors: no_errors}),
+          turbo_stream.append("toasts",
+            partial: "admin/social_announcements/toast",
+            locals: {type: :success, message: "Media ##{medium.id} updated"})
+        ]
+      end
+    end
+  end
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs medium: SocialAnnouncementMedia
+  # @rbs errors: Array[String]
+  # @rbs return: void
+  private def render_card(announcement, medium, errors)
+    render partial: "admin/social_announcements/media_card",
+      locals: {announcement: announcement, medium: medium, published: announcement.published_at.present?, errors: errors},
+      status: :unprocessable_content
   end
 end

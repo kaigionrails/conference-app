@@ -4,6 +4,8 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
   let(:admin) { FactoryBot.create(:user, role: "organizer") }
   let!(:event) { FactoryBot.create(:event, slug: Event::ONGOING_EVENT_SLUG) }
 
+  let(:turbo_stream_headers) { {"Accept" => "text/vnd.turbo-stream.html, text/html"} }
+
   before { sign_in(admin) }
 
   it "rejects non-organizers" do
@@ -95,6 +97,14 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       expect(text.reload.body).to eq("改稿")
     end
 
+    it "replaces the column and appends a toast on a Turbo Stream save" do
+      post admin_social_announcement_texts_path(announcement), params: {social_announcement_text: {locale: "ja", body: "初稿"}}, headers: turbo_stream_headers
+      expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+      expect(response.body).to include("social_announcement_text_ja")
+      expect(response.body).to include(%(target="toasts"))
+      expect(response.body).to include("Text (ja) saved")
+    end
+
     it "rejects over-limit body and re-renders the column with the error" do
       post admin_social_announcement_texts_path(announcement), params: {social_announcement_text: {locale: "ja", body: "あ" * 141}}
       expect(announcement.texts.count).to eq(0)
@@ -180,6 +190,15 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
 
       delete admin_social_announcement_medium_path(announcement, medium)
       expect(announcement.media.count).to eq(0)
+    end
+
+    it "replaces the card and appends a toast on a Turbo Stream update" do
+      medium = FactoryBot.create(:social_announcement_media, social_announcement: announcement)
+      patch admin_social_announcement_medium_path(announcement, medium), params: {social_announcement_media: {alt_text_ja: "new alt"}}, headers: turbo_stream_headers
+      expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+      expect(response.body).to include("social_announcement_medium_#{medium.id}")
+      expect(response.body).to include(%(target="toasts"))
+      expect(response.body).to include("Media ##{medium.id} updated")
     end
 
     it "re-renders the media card with the error when alt text is invalid" do

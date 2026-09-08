@@ -1,0 +1,10 @@
+<%# locals: (type:, message:) %>
+<% alert = type.to_s == "alert" %>
+<%# alert は消えると原因を追えないのでクリックするまで残す (duration 0) %>
+<div class="flex items-start gap-3 max-w-sm py-3 px-5 border rounded-sm shadow-lg transition-opacity duration-300 <%= alert ? "bg-red-50 border-red-300" : "bg-green-50 border-green-300" %>"
+  role="status"
+  data-controller="admin--toast"
+  data-admin--toast-duration-value="<%= alert ? 0 : 5000 %>">
+  <span><%= message %></span>
+  <button type="button" class="font-bold text-gray-500 cursor-pointer" aria-label="close" data-action="admin--toast#dismiss">×</button>
+</div>

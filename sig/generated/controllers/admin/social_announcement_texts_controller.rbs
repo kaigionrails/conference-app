@@ -12,5 +12,10 @@ class Admin::SocialAnnouncementTextsController < AdminController
   # @rbs announcement: SocialAnnouncement
   # @rbs text: SocialAnnouncementText
   # @rbs return: void
+  private def render_saved: (SocialAnnouncement announcement, SocialAnnouncementText text) -> void
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs text: SocialAnnouncementText
+  # @rbs return: void
   private def render_column: (SocialAnnouncement announcement, SocialAnnouncementText text) -> void
 end

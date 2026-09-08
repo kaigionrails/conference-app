@@ -13,6 +13,7 @@ import TalkBookmarksController from "./talk_bookmarks_controller";
 import UsersController from "./users_controller";
 import AdminProfileBadgeController from "./admin/profile_badge_controller";
 import AdminSocialAnnouncementController from "./admin/social_announcement_controller";
+import AdminToastController from "./admin/toast_controller";
 
 application.register("announcements", AnnouncementsController);
 application.register("live-streams", LiveStreamsController);
@@ -27,3 +28,4 @@ application.register("talk-bookmarks", TalkBookmarksController);
 application.register("users", UsersController);
 application.register("admin--profile-badge", AdminProfileBadgeController);
 application.register("admin--social-announcement", AdminSocialAnnouncementController);
+application.register("admin--toast", AdminToastController);
