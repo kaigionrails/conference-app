@@ -1,0 +1,5 @@
+# turbo-rails が ActionController::Base に mixin する turbo_stream ヘルパ。
+# gem に RBS が同梱されていないため手書きで補う。
+class ActionController::Base
+  def turbo_stream: () -> untyped
+end

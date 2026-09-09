@@ -4,7 +4,8 @@ class Admin::SocialAnnouncementMediaController < AdminController
   # @rbs return: void
   def create: () -> void
 
-  # alt text と並び順の更新
+  # alt text と並び順の更新。カードは Turbo Frame で、成功時は自カードの差し替えと保存トーストを
+  # Turbo Stream で返すため、他の入力欄の内容は消えない。失敗時はエラー付きカードを 422 で返す
   # @rbs return: void
   def update: () -> void
 
@@ -12,4 +13,15 @@ class Admin::SocialAnnouncementMediaController < AdminController
   def destroy: () -> void
 
   private def media_params: () -> untyped
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs medium: SocialAnnouncementMedia
+  # @rbs return: void
+  private def render_saved: (SocialAnnouncement announcement, SocialAnnouncementMedia medium) -> void
+
+  # @rbs announcement: SocialAnnouncement
+  # @rbs medium: SocialAnnouncementMedia
+  # @rbs errors: Array[String]
+  # @rbs return: void
+  private def render_card: (SocialAnnouncement announcement, SocialAnnouncementMedia medium, Array[String] errors) -> void
 end
