@@ -1,0 +1,3 @@
+module Admin::UsersHelper
+  def user_role_options: () -> Array[Array[String]]
+end
