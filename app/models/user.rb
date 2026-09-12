@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   enum :role, {organizer: "organizer", participant: "participant", operator: "operator"}
 
+  scope :name_starts_with, ->(name) {
+    where("users.name ILIKE ?", "#{sanitize_sql_like(name.strip)}%")
+  }
+
   # @rbs return: bool
   def have_unread_announcements?
     unread_announcement_count > 0

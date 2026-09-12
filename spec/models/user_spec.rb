@@ -3,6 +3,74 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
 
+  describe ".name_starts_with" do
+    context "with exact, prefix, and non-prefix matches" do
+      let!(:exact) { FactoryBot.create(:user, name: "alice") }
+      let!(:prefixed) { FactoryBot.create(:user, name: "alice_smith") }
+
+      before do
+        FactoryBot.create(:user, name: "malice")
+        FactoryBot.create(:user, name: "bob")
+      end
+
+      it "matches names starting with the prefix, including an exact match" do
+        expect(User.name_starts_with("alice")).to contain_exactly(exact, prefixed)
+      end
+    end
+
+    context "with different letter cases" do
+      let!(:matching) { FactoryBot.create(:user, name: "Alice") }
+
+      it "ignores case" do
+        expect(User.name_starts_with("ALi")).to contain_exactly(matching)
+      end
+    end
+
+    context "with surrounding whitespace" do
+      let!(:matching) { FactoryBot.create(:user, name: "alice") }
+
+      it "strips surrounding whitespace from the prefix" do
+        expect(User.name_starts_with("  ali  ")).to contain_exactly(matching)
+      end
+    end
+
+    context "with a percent sign in the prefix" do
+      let!(:matching) { FactoryBot.create(:user, name: "ali%ce") }
+
+      before do
+        FactoryBot.create(:user, name: "alice")
+      end
+
+      it "treats percent signs as literal characters" do
+        expect(User.name_starts_with("ali%")).to contain_exactly(matching)
+      end
+    end
+
+    context "with an underscore in the prefix" do
+      let!(:matching) { FactoryBot.create(:user, name: "ali_ce") }
+
+      before do
+        FactoryBot.create(:user, name: "alice")
+      end
+
+      it "treats underscores as literal characters" do
+        expect(User.name_starts_with("ali_")).to contain_exactly(matching)
+      end
+    end
+
+    context "with an existing role condition" do
+      let!(:matching) { FactoryBot.create(:user, name: "alice", role: :operator) }
+
+      before do
+        FactoryBot.create(:user, name: "alice_smith", role: :participant)
+      end
+
+      it "preserves other filtering conditions" do
+        expect(User.where(role: :operator).name_starts_with("ali")).to contain_exactly(matching)
+      end
+    end
+  end
+
   describe "#mark_all_announcement_unread!" do
     context "there is no published announcement" do
       let(:event) { FactoryBot.create(:event) }
