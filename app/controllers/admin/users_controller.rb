@@ -4,7 +4,9 @@ class Admin::UsersController < AdminController
 
   # @rbs return: void
   def index
-    @users = User.eager_load(:profile).order(created_at: :asc).page(params[:page])
+    scope = User.eager_load(:profile)
+    scope = scope.where(role: params[:role]) if User.roles.key?(params[:role])
+    @users = scope.order(created_at: :asc).page(params[:page])
   end
 
   # @rbs return: void

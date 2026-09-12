@@ -26,6 +26,18 @@ RSpec.describe "Admin::Users", type: :request do
         expect(response.body).to include("Users")
         expect(response.body).to include("sample_user_1")
       end
+
+      it "filters users by role" do
+        FactoryBot.create(:user, role: :organizer, name: "filtered_organizer")
+        FactoryBot.create(:user, role: :operator, name: "filtered_operator")
+
+        get admin_users_path, params: {role: "operator"}
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("filtered_operator")
+        expect(response.body).not_to include("filtered_organizer")
+        expect(response.body).not_to include("sample_user_1")
+      end
     end
   end
 
