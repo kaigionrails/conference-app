@@ -6,6 +6,7 @@ class Admin::UsersController < AdminController
   def index
     scope = User.eager_load(:profile)
     scope = scope.where(role: params[:role]) if User.roles.key?(params[:role])
+    scope = scope.name_starts_with(params[:name].to_s) if params[:name].present?
     @users = scope.order(created_at: :asc).page(params[:page])
   end
 

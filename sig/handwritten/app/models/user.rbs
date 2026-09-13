@@ -4,6 +4,8 @@ class User < ApplicationRecord
   #       refs: https://github.com/pocke/rbs_rails/pull/268
   def self.roles: () -> Hash[String, String]
 
+  def self.name_starts_with: (String name) -> User::ActiveRecord_Relation
+
   def organizer?: () -> bool
   def participant?: () -> bool
   def operator?: () -> bool
@@ -15,6 +17,8 @@ class User < ApplicationRecord
                                     | ...
 
   class ActiveRecord_Relation
+    def name_starts_with: (String name) -> User::ActiveRecord_Relation
+
     # NOTE: Added by kaminari
     def page: (untyped) -> self
     def per: (Integer) -> self

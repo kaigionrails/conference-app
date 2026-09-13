@@ -1,8 +1,17 @@
 <h2 class="font-bold text-xl mb-8">Users</h2>
-<%= form_with url: admin_users_path, method: :get, class: "flex items-center gap-2 mb-8" do |f| %>
-  <%= f.label :role, "Role" %>
-  <%= f.select :role, user_role_options, {include_blank: "All", selected: params[:role]}, class: "rounded-sm border-1 border-gray-400", onchange: "this.form.requestSubmit()" %>
-<% end %>
+<div class="flex flex-wrap items-center gap-8 mb-8">
+  <%= form_with url: admin_users_path, method: :get, class: "flex items-center gap-2" do |f| %>
+    <%= f.hidden_field :role, value: params[:role], id: nil %>
+    <%= f.label :name, "Name" %>
+    <%= f.search_field :name, value: params[:name], class: "rounded-sm border-1 border-gray-400" %>
+    <%= f.submit "Search", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+  <% end %>
+  <%= form_with url: admin_users_path, method: :get, class: "flex items-center gap-2" do |f| %>
+    <%= f.hidden_field :name, value: params[:name], id: nil %>
+    <%= f.label :role, "Role" %>
+    <%= f.select :role, user_role_options, {include_blank: "All", selected: params[:role]}, class: "rounded-sm border-1 border-gray-400", onchange: "this.form.requestSubmit()" %>
+  <% end %>
+</div>
 <div class="rounded-sm w-full pr-8 shadow-xs">
   <table class="w-full divide-y border">
     <thead class="bg-gray-50">

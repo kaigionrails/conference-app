@@ -27,16 +27,93 @@ RSpec.describe "Admin::Users", type: :request do
         expect(response.body).to include("sample_user_1")
       end
 
-      it "filters users by role" do
-        FactoryBot.create(:user, role: :organizer, name: "filtered_organizer")
-        FactoryBot.create(:user, role: :operator, name: "filtered_operator")
+      context "with a role filter" do
+        before do
+          FactoryBot.create(:user, role: :organizer, name: "filtered_organizer")
+          FactoryBot.create(:user, role: :operator, name: "filtered_operator")
+        end
 
-        get admin_users_path, params: {role: "operator"}
+        it "filters users by role" do
+          get admin_users_path, params: {role: "operator"}
 
-        expect(response).to have_http_status(:success)
-        expect(response.body).to include("filtered_operator")
-        expect(response.body).not_to include("filtered_organizer")
-        expect(response.body).not_to include("sample_user_1")
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("filtered_operator")
+          expect(response.body).not_to include("filtered_organizer")
+          expect(response.body).not_to include("sample_user_1")
+        end
+      end
+
+      context "with a name filter" do
+        before do
+          FactoryBot.create(:user, name: "other_user")
+        end
+
+        it "filters users by name prefix" do
+          get admin_users_path, params: {name: "sample_user"}
+
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("sample_user_1")
+          expect(response.body).to include("sample_user_2")
+          expect(response.body).to include("sample_user_3")
+          expect(response.body).not_to include("other_user")
+        end
+      end
+
+      context "with name and role filters" do
+        before do
+          FactoryBot.create(:user, name: "sample_operator", role: :operator)
+          FactoryBot.create(:user, name: "other_operator", role: :operator)
+        end
+
+        it "filters users by both name and role" do
+          get admin_users_path, params: {name: "sample", role: "operator"}
+
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("sample_operator")
+          expect(response.body).not_to include("sample_user_1", "other_operator")
+        end
+      end
+
+      context "with an invalid role" do
+        before do
+          FactoryBot.create(:user, name: "listed_organizer", role: :organizer)
+          FactoryBot.create(:user, name: "listed_operator", role: :operator)
+        end
+
+        it "shows the normal user list for an invalid role" do
+          get admin_users_path, params: {role: "invalid"}
+
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("sample_user_1", "sample_user_2", "sample_user_3", "listed_organizer", "listed_operator")
+        end
+      end
+
+      context "with a name filter and an invalid role" do
+        before do
+          FactoryBot.create(:user, name: "other_user")
+        end
+
+        it "still filters by name when the role is invalid" do
+          get admin_users_path, params: {name: "sample", role: "invalid"}
+
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("sample_user_1")
+          expect(response.body).not_to include("other_user")
+        end
+      end
+
+      context "with an empty name and a role filter" do
+        before do
+          FactoryBot.create(:user, name: "listed_operator", role: :operator)
+        end
+
+        it "keeps the role filter when the name search is cleared" do
+          get admin_users_path, params: {name: "", role: "operator"}
+
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("listed_operator")
+          expect(response.body).not_to include("sample_user_1")
+        end
       end
     end
   end
