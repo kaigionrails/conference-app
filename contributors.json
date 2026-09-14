@@ -32,6 +32,10 @@
     "html_url": "https://github.com/taketo1113"
   },
   {
+    "login": "github-actions[bot]",
+    "html_url": "https://github.com/apps/github-actions"
+  },
+  {
     "login": "geeknees",
     "html_url": "https://github.com/geeknees"
   },
@@ -42,10 +46,6 @@
   {
     "login": "megane42",
     "html_url": "https://github.com/megane42"
-  },
-  {
-    "login": "github-actions[bot]",
-    "html_url": "https://github.com/apps/github-actions"
   },
   {
     "login": "osyoyu",
