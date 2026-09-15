@@ -6,173 +6,240 @@
 # ========================================================================
 #
 # 【概要】
-# このスクリプトは、Kaigi on Rails のプログラム情報を
-# program.jsonから読み込み、
-# Railsアプリケーションで使用するシードデータ形式（db/seeds/{year}.yaml）に
-# 変換します。
+# cfp-app からエクスポートした program.json と、タイムテーブルツールから
+# エクスポートした time_slots.csv を突き合わせて、Rails アプリケーションの
+# シードデータ (db/seeds/{year}.yaml) を生成します。
+#
+# - トーク情報 (タイトル / 概要 / 登壇者) は program.json から
+# - 登壇開始時刻 (start_at) / 登壇時間 (duration_minutes) / 部屋 (track) は
+#   time_slots.csv から
+# を取得し、両者はタイトルの完全一致で紐付けます。
 #
 # 【使い方】
-# $ ruby script/convert_program_json_to_yaml.rb [年]
-# または
-# $ ./script/convert_program_json_to_yaml.rb [年]
+# $ ruby script/convert_program_json_to_yaml.rb 2026 --day1 2026-09-25
 #
-# 例:
-# $ ruby script/convert_program_json_to_yaml.rb 2025
-# $ ruby script/convert_program_json_to_yaml.rb  # 現在年をデフォルトで使用
+# --day1 には Day 1 の開催日 (YYYY-MM-DD) を渡します。time_slots.csv の
+# Conference Day は 1 / 2 という相対値なので、実日付への変換に必要です。
 #
 # 【前提条件】
-# 1. program.json がプロジェクトルートに存在すること
-#   - トークのタイトル、概要、スピーカー情報などを含むJSONファイル
-#   - cfp-appからエクスポートしたもの
+# 以下の 2 ファイルがプロジェクトルートに存在すること。
+#
+# - program.json
+#   - トークのタイトル、概要、スピーカー情報などを含む JSON ファイル
+#   - cfp-app からエクスポートしたもの
 #     - https://cfp.kaigionrails.org/events/:slug/staff/program/sessions
+# - time_slots.csv
+#   - タイムテーブルの各枠の日付、時刻、部屋を含む CSV ファイル
+#   - Conference Day, Start Time, End Time, Room Name, Title, Track Name,
+#     Session Format, Description, Presenter のヘッダを持つ
 #
 # 【出力】
 # db/seeds/{year}.yaml
-# - Railsのシードデータとして使用可能な形式のYAMLファイル
-# - タイムスタンプは自動生成されますが、プレースホルダーなので
-#   実際のカンファレンススケジュールに合わせて手動で調整が必要です
-#
-# 【処理の流れ】
-# 1. program.jsonを読み込み
-# 2. 各トークについて以下を処理：
-#    - タイトル、概要、トラック情報を設定
-#    - 発表時間を抽出（15分または30分）
-#    - 固定のプレースホルダータイムスタンプを生成
-#    - スピーカー情報をprogram.jsonから取得
-# 3. YAML形式で出力（特殊なタイムスタンプ形式を保持）
 #
 # 【注意事項】
-# - タイムスタンプは全て指定年の1月1日10:00の固定値として生成されます
-# - 実際のカンファレンススケジュールに合わせて手動調整してください
+# - Keynote は program.json に含まれないため、CSV の行からタイトルと時刻のみを
+#   取り込みます。概要と登壇者は空なので、生成後に手動で補完してください。
+# - GitHub アカウントが登録されていない登壇者は github_username / slug が
+#   空文字になります。slug には unique 制約があるため、生成後に手動で
+#   埋める必要があります。対象の登壇者はスクリプトの最後に一覧表示されます。
+# - GitHub アカウントの書式が不正な登壇者も同様に一覧表示されます。
+#   cfp-app 側の入力ミスなので、生成後に手動で修正してください。
 # ========================================================================
 
+require "csv"
+require "date"
+require "fileutils"
 require "json"
 require "yaml"
-require "time"
-require "fileutils"
-require "date"
-require_relative "../config/environment"
 
-# Parse command line arguments
-year =
-  if ARGV[0]
-    ARGV[0].to_i
-  else
-    Time.zone.today.year
-  end
+TIME_ZONE_OFFSET = "+09:00"
+GITHUB_USERNAME_PATTERN = /\A[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}\z/i
 
-puts "Processing for year: #{year}"
-
-# Load program.json
-program_json_path = File.join(__dir__, "..", "program.json")
-unless File.exist?(program_json_path)
-  puts "Error: program.json not found at #{program_json_path}"
+def abort_with(message)
+  warn "Error: #{message}"
   exit 1
 end
 
-# Parse file
-program_data = JSON.parse(File.read(program_json_path))
+# Parse command line arguments
+year = nil
+day1 = nil
 
-# Helper function to extract GitHub username from URL or username
-def extract_github_username(github_field)
-  return nil if github_field.nil?
+args = ARGV.dup
+until args.empty?
+  arg = args.shift
+  name, _, inline_value = arg.partition("=")
 
-  # If it's a URL, extract the username
-  if github_field.start_with?("http")
-    github_field.split("/").last
+  case name
+  when "--day1"
+    day1 = inline_value.empty? ? args.shift : inline_value
+  when /\A\d{4}\z/
+    year = name.to_i
   else
-    github_field
+    abort_with "Unknown argument: #{arg}"
   end
 end
 
-# Function to extract duration from format string
-def extract_duration(format_str)
-  return 30 if format_str.nil?
+abort_with "Year is required, e.g. ruby script/convert_program_json_to_yaml.rb 2026 --day1 2026-09-25" if year.nil?
+abort_with "--day1 is required, e.g. --day1 #{year}-09-25" if day1.nil?
 
-  case format_str
-  when /Long session \(30 min\)/i
-    30
-  when /Short session \(15 min\)/i
-    15
-  else
-    30 # default
+day1_date =
+  begin
+    Date.strptime(day1, "%Y-%m-%d")
+  rescue Date::Error
+    abort_with "--day1 must be in YYYY-MM-DD format: #{day1}"
   end
+
+project_root = File.expand_path("..", __dir__)
+program_json_path = File.join(project_root, "program.json")
+time_slots_csv_path = File.join(project_root, "time_slots.csv")
+output_path = File.join(project_root, "db", "seeds", "#{year}.yaml")
+
+abort_with "program.json not found at #{program_json_path}" unless File.exist?(program_json_path)
+abort_with "time_slots.csv not found at #{time_slots_csv_path}" unless File.exist?(time_slots_csv_path)
+
+puts "Processing for year: #{year} (Day 1: #{day1_date})"
+puts "  program.json:   #{program_json_path}"
+puts "  time_slots.csv: #{time_slots_csv_path}"
+
+# "10:00 am" / " 1:30 pm" のような表記を [hour, minute] に変換する
+def parse_time_of_day(value)
+  matched = value.to_s.strip.match(/\A(\d{1,2}):(\d{2})\s*(am|pm)\z/i)
+  raise ArgumentError, "Unparsable time: #{value.inspect}" if matched.nil?
+
+  hour = matched[1].to_i % 12
+  hour += 12 if matched[3].casecmp?("pm")
+  [hour, matched[2].to_i]
 end
 
-# Function to create a fixed placeholder timestamp
-def create_timestamp(year)
-  # Create a fixed timestamp for all talks: Jan 1 of the specified year, 10:00 AM JST
-  base_time = Time.parse("#{year}-01-01 10:00:00 +0900")
-
-  # Format as YAML timestamp
-  # Using the special YAML timestamp format
-  "!!timestamp #{base_time.strftime("%Y-%m-%dT%H:%M:%S%:z")}"
+def build_time(date, value)
+  hour, minute = parse_time_of_day(value)
+  Time.new(date.year, date.month, date.day, hour, minute, 0, TIME_ZONE_OFFSET)
 end
 
-# Convert program data to the seed data format
-converted_talks = []
+# GitHub アカウントは URL 形式で登録されている場合がある
+def extract_github_username(github_account)
+  value = github_account.to_s.strip
+  return "" if value.empty?
 
-program_data.each do |talk|
-  converted_talk = {
-    title: talk["title"],
-    abstract: talk["abstract"]
+  value.start_with?("http") ? value.split("/").last : value
+end
+
+# 部屋名 (Magenta) を track 名 (Magenta Hall) に変換する
+def build_track(room_name)
+  "#{room_name.to_s.strip} Hall"
+end
+
+# YAML の timestamp 型として出力するためのプレースホルダー
+def timestamp_placeholder(time)
+  "!!timestamp #{time.strftime("%Y-%m-%dT%H:%M:%S%:z")}"
+end
+
+# time_slots.csv からセッション行と Keynote 行を集める
+sessions_by_title = {}
+keynote_slots = []
+
+CSV.foreach(time_slots_csv_path, headers: true).with_index(1) do |row, row_number|
+  title = row["Title"].to_s.strip
+  next if title.empty?
+
+  start_at = build_time(day1_date + (row["Conference Day"].to_i - 1), row["Start Time"])
+  end_at = build_time(day1_date + (row["Conference Day"].to_i - 1), row["End Time"])
+  slot = {
+    title: title,
+    start_at: start_at,
+    duration_minutes: ((end_at - start_at) / 60).to_i,
+    track: build_track(row["Room Name"])
   }
 
-  # Add fixed placeholder timestamp (same for all talks)
-  converted_talk[:start_at] = create_timestamp(year)
-
-  # Extract duration from format
-  converted_talk[:duration_minutes] = extract_duration(talk["format"])
-
-  # Handle track (convert null to empty string)
-  converted_talk[:track] = talk["track"] || ""
-
-  # Process speakers
-  if talk["speakers"] && !talk["speakers"].empty?
-    speakers_array = []
-
-    talk["speakers"].each do |speaker|
-      speaker_name = speaker["name"]
-
-      # Use data from program.json
-      speaker_entry = {
-        name: speaker_name,
-        slug: extract_github_username(speaker["github_account"]),
-        github_username: extract_github_username(speaker["github_account"]),
-        gravatar_hash: speaker["gravatar_hash"],
-        bio: speaker["bio"] || ""
-      }
-
-      speakers_array << speaker_entry
-    end
-
-    converted_talk[:speakers] = speakers_array
+  if row["Session Format"].to_s.strip.empty?
+    keynote_slots << slot if title.match?(/keynote/i)
+  else
+    abort_with "Duplicated session title in time_slots.csv at row #{row_number}: #{title}" if sessions_by_title.key?(title)
+    sessions_by_title[title] = slot
   end
-
-  converted_talks << converted_talk
 end
 
-# Create the final structure
+program_data = JSON.parse(File.read(program_json_path))
+
+missing_slots = program_data.map { |talk| talk["title"] }.reject { |title| sessions_by_title.key?(title) }
+unless missing_slots.empty?
+  abort_with "No matching row in time_slots.csv for:\n" + missing_slots.map { |title| "  - #{title}" }.join("\n")
+end
+
+speakers_without_github = []
+speakers_with_invalid_github = []
+
+talks = program_data.map do |talk|
+  slot = sessions_by_title.fetch(talk["title"])
+
+  speakers = (talk["speakers"] || []).map do |speaker|
+    name = speaker["name"].to_s.strip
+    github_username = extract_github_username(speaker["github_account"])
+    if github_username.empty?
+      speakers_without_github << name
+    elsif !github_username.match?(GITHUB_USERNAME_PATTERN)
+      speakers_with_invalid_github << [name, github_username]
+    end
+
+    {
+      name: name,
+      slug: github_username,
+      github_username: github_username,
+      gravatar_hash: speaker["gravatar_hash"],
+      bio: speaker["bio"].to_s
+    }
+  end
+
+  {
+    title: talk["title"],
+    abstract: talk["abstract"].to_s,
+    start_at: slot[:start_at],
+    duration_minutes: slot[:duration_minutes],
+    track: slot[:track],
+    speakers: speakers
+  }
+end
+
+# Keynote は program.json に含まれないため、CSV の情報のみで枠を作る
+keynotes = keynote_slots.map do |slot|
+  {
+    title: slot[:title],
+    abstract: "",
+    start_at: slot[:start_at],
+    duration_minutes: slot[:duration_minutes],
+    track: slot[:track],
+    speakers: []
+  }
+end
+
+sorted_talks = (keynotes + talks).sort_by { |talk| [talk[:start_at], talk[:track]] }
 output_data = {
-  talks: converted_talks
+  talks: sorted_talks.map { |talk| talk.merge(start_at: timestamp_placeholder(talk[:start_at])) }
 }
 
-# Custom YAML generation to handle timestamp format
 yaml_content = YAML.dump(output_data)
-
-# Replace quoted timestamps with unquoted YAML timestamp format
+# プレースホルダーを YAML の timestamp 型に戻す
 yaml_content.gsub!(/'!!timestamp ([\d\-T:+]+)'/, '!!timestamp \1')
 yaml_content.gsub!(/"!!timestamp ([\d\-T:+]+)"/, '!!timestamp \1')
 
-# Output file path
-output_path = File.join(__dir__, "..", "db", "seeds", "#{year}.yaml")
-
-# Ensure the directory exists
 FileUtils.mkdir_p(File.dirname(output_path))
-
-# Write to file
 File.write(output_path, yaml_content)
 
-puts "Successfully converted program.json to #{output_path}"
-puts "Total talks converted: #{converted_talks.length}"
-puts "\nNote: All start_at timestamps are set to the same placeholder value (#{year}-01-01 10:00 JST) and must be manually adjusted to match the actual conference schedule."
+puts "Successfully converted program.json and time_slots.csv to #{output_path}"
+puts "Total talks converted: #{sorted_talks.length} (including #{keynotes.length} keynote(s))"
+
+unless keynotes.empty?
+  puts "\nNote: The following keynotes have no abstract and no speakers. Fill them in manually:"
+  keynotes.each { |keynote| puts "  - #{keynote[:title]}" }
+end
+
+unless speakers_without_github.empty?
+  puts "\nWarning: The following speakers have no GitHub account, so github_username and slug are empty."
+  puts "         slug has a unique constraint, so you must fill them in manually:"
+  speakers_without_github.uniq.each { |name| puts "  - #{name}" }
+end
+
+unless speakers_with_invalid_github.empty?
+  puts "\nWarning: The following speakers have a malformed GitHub account. Fix them manually:"
+  speakers_with_invalid_github.uniq.each { |name, github_username| puts "  - #{name}: #{github_username.inspect}" }
+end
