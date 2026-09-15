@@ -7,4 +7,5 @@ Sentry.init do |config|
   # To activate performance monitoring, set one of these options.
   # We recommend adjusting the value in production:
   config.traces_sample_rate = 0.0
+  config.rails.structured_logging.enabled = false
 end
