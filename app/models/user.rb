@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # users.name is the public handle: it addresses /@:username and is the issuer
   # of the profile exchange QR token. GitHub used to guarantee its uniqueness
   # for us, which stops being true as soon as a user arrives from anywhere else.
-  HANDLE_FORMAT = /\A[a-zA-Z0-9][a-zA-Z0-9-]{0,38}\z/
+  HANDLE_FORMAT = /\A[a-zA-Z0-9][a-zA-Z0-9_-]{0,38}\z/
 
   # Four-digit numbers stand in for event slugs (2023, 2024, ...) so that a
   # future one cannot be squatted. Listing them in reserved_handles.yml would

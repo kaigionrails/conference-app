@@ -3,10 +3,6 @@
 #
 # Event slugs are NOT listed here: User reserves every four-digit number with a
 # regexp, which already covers 2023, 2024, 2025 and every future one.
-#
-# Only values that could actually pass the handle format validation belong
-# here: names containing an underscore (locale_settings, tito_webhook, ...)
-# are already unreachable.
 ---
 # Impersonating the organizers
 - admin
@@ -24,13 +20,21 @@
 - about
 - auth
 - live
+- locale_settings
 - login
 - logout
 - manifest
 - operators
+- profile_badges
 - profiles
+- sample_webpush_notifications
 - setting
+- signage_devices
 - signages
 - subscreen
 - sw
+- talk_bookmarks
+- tito_webhook
+- unread_announcements
 - up
+- webpush_subscription

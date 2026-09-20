@@ -35,14 +35,15 @@ RSpec.describe User, type: :model do
     end
 
     context "with a percent sign in the prefix" do
-      let!(:matching) { FactoryBot.create(:user, name: "ali%ce") }
-
+      # A percent sign cannot appear in a handle, so the prefix is the only
+      # place it can reach the query. Unescaped it would act as a wildcard and
+      # match "alice".
       before do
         FactoryBot.create(:user, name: "alice")
       end
 
       it "treats percent signs as literal characters" do
-        expect(User.name_starts_with("ali%")).to contain_exactly(matching)
+        expect(User.name_starts_with("ali%")).to be_empty
       end
     end
 
