@@ -3,6 +3,82 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
 
+  describe "name validation" do
+    it "accepts letters, digits, hyphens and underscores" do
+      expect(FactoryBot.build(:user, name: "Octo_cat-1")).to be_valid
+    end
+
+    it "rejects a blank name" do
+      expect(FactoryBot.build(:user, name: "")).not_to be_valid
+    end
+
+    it "rejects a name that does not start with a letter or a digit" do
+      expect(FactoryBot.build(:user, name: "-octocat")).not_to be_valid
+    end
+
+    it "rejects characters outside the handle alphabet" do
+      expect(FactoryBot.build(:user, name: "octo cat")).not_to be_valid
+      expect(FactoryBot.build(:user, name: "octo.cat")).not_to be_valid
+    end
+
+    it "rejects a name longer than 39 characters" do
+      expect(FactoryBot.build(:user, name: "a" * 39)).to be_valid
+      expect(FactoryBot.build(:user, name: "a" * 40)).not_to be_valid
+    end
+
+    it "rejects a name already taken in a different case" do
+      FactoryBot.create(:user, name: "Octocat")
+
+      expect(FactoryBot.build(:user, name: "octocat")).not_to be_valid
+    end
+
+    it "rejects a reserved handle regardless of case" do
+      expect(FactoryBot.build(:user, name: "admin")).not_to be_valid
+      expect(FactoryBot.build(:user, name: "Admin")).not_to be_valid
+      expect(FactoryBot.build(:user, name: "locale_settings")).not_to be_valid
+    end
+
+    it "rejects any four-digit number, so event slugs cannot be taken" do
+      expect(FactoryBot.build(:user, name: "2025")).not_to be_valid
+      expect(FactoryBot.build(:user, name: "2099")).not_to be_valid
+      expect(FactoryBot.build(:user, name: "20250")).to be_valid
+    end
+  end
+
+  describe ".generate_handle" do
+    it "generates a handle matching the user- pattern" do
+      expect(User.generate_handle).to match(/\Auser-[a-z0-9]{6}\z/)
+    end
+
+    it "skips a handle that is already taken" do
+      taken = "user-abc123"
+      allow(SecureRandom).to receive(:alphanumeric).and_return("abc123", "def456")
+      FactoryBot.create(:user, name: taken)
+
+      expect(User.generate_handle).to eq "user-def456"
+    end
+
+    it "raises once it runs out of attempts" do
+      allow(SecureRandom).to receive(:alphanumeric).and_return("abc123")
+      FactoryBot.create(:user, name: "user-abc123")
+
+      expect { User.generate_handle }.to raise_error(User::HandleGenerationError)
+    end
+  end
+
+  describe ".find_by_handle!" do
+    let!(:target) { FactoryBot.create(:user, name: "Octocat") }
+
+    it "finds a user regardless of case" do
+      expect(User.find_by_handle!("octocat")).to eq target
+      expect(User.find_by_handle!("OCTOCAT")).to eq target
+    end
+
+    it "raises when no user holds the handle" do
+      expect { User.find_by_handle!("nobody") }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
   describe ".name_starts_with" do
     context "with exact, prefix, and non-prefix matches" do
       let!(:exact) { FactoryBot.create(:user, name: "alice") }
