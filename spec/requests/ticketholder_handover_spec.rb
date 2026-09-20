@@ -50,6 +50,45 @@ RSpec.describe "Ticketholder handover", type: :request do
     end
   end
 
+  # A session entry only proved that some ticket with that id existed, so a
+  # ticket for another event, or one that never completed, let its holder in.
+  context "when the ticket in the session stops qualifying" do
+    let!(:other_event) { FactoryBot.create(:event, slug: "2024", end_date: 1.minute.since) }
+    let!(:ticket) { FactoryBot.create(:tito_ticket, event: event, user: nil, reference: "ABCD-3") }
+
+    before do
+      check_in!(ticket)
+      # Guards against the rest of the example passing because check-in itself
+      # failed and left no session entry.
+      expect(session[:ticketholder]).to eq ticket.id
+    end
+
+    it "turns it away once it belongs to another event" do
+      ticket.update!(event: other_event)
+
+      get "/2025/live"
+      expect(response).to redirect_to("/2025/live/checkin")
+    end
+
+    it "turns it away once it is no longer complete" do
+      ticket.update!(state: "reminder")
+
+      get "/2025/live"
+      expect(response).to redirect_to("/2025/live/checkin")
+    end
+  end
+
+  context "when checking in with a ticket that never completed" do
+    let!(:ticket) { FactoryBot.create(:tito_ticket, event: event, user: nil, reference: "ABCD-4", state: "reminder") }
+
+    it "refuses the check-in rather than letting it fail later at the stream" do
+      check_in!(ticket)
+
+      expect(session[:ticketholder]).to be_nil
+      expect(response).to redirect_to("/2025/live/checkin")
+    end
+  end
+
   context "when the user logs in without checking in" do
     it "sets no ticketholder" do
       sign_in_through_github(user)
