@@ -1,6 +1,8 @@
 # Generated from app/controllers/auth_callback_controller.rb with RBS::Inline
 
 class AuthCallbackController < ApplicationController
+  PROVIDERS: untyped
+
   # @rbs return: void
   def create: () -> void
 end

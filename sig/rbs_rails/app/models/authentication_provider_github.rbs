@@ -1,4 +1,4 @@
-class AuthenticationProviderGithub < ::ApplicationRecord
+class AuthenticationProviderGithub < ::AuthenticationProvider
   extend ::_ActiveRecord_Relation_ClassMethods[::AuthenticationProviderGithub, ::AuthenticationProviderGithub::ActiveRecord_Relation, ::Integer]
 
   module GeneratedAttributeMethods
