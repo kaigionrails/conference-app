@@ -4,12 +4,37 @@
 module Authentication : ActionController::Base
   extend ActiveSupport::Concern
 
+  # Rails' rate_limit counts every request to the action before it runs, which
+  # would spend the budget on successful logins too. Only failures are counted
+  # here, so someone who knows their password is never locked out.
+  LOGIN_ATTEMPT_LIMIT: ::Integer
+
+  LOGIN_ATTEMPT_PERIOD: untyped
+
   # Establishes the session for a user who has just authenticated. Redirecting
   # is left to the caller: each entry point has its own landing page.
   #
   # @rbs user: User
   # @rbs return: void
   private def complete_login!: (User user) -> void
+
+  # @rbs return: bool
+  private def login_attempts_exceeded?: () -> bool
+
+  # The window runs from the first failure: increment applies expires_in only
+  # when it creates the key, and does not extend it afterwards.
+  #
+  # @rbs return: void
+  private def count_failed_login!: () -> void
+
+  # @rbs return: void
+  private def clear_failed_logins!: () -> void
+
+  # CloudFront appends the real client address to X-Forwarded-For and kamal
+  # passes the header through, so remote_ip cannot be spoofed here.
+  #
+  # @rbs return: String
+  private def login_attempts_key: () -> String
 
   # Path and query of an untrusted return_to, or the default when it is not a
   # path on this site.

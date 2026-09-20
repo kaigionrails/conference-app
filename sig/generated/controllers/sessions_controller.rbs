@@ -9,4 +9,13 @@ class SessionsController < ApplicationController
 
   # @rbs return: void
   def destroy: () -> void
+
+  # The same message whether or not the email exists, so the form does not
+  # confirm which addresses are registered.
+  #
+  # @rbs return: void
+  private def reject_login: () -> void
+
+  # @rbs return: void
+  private def reject_when_login_attempts_exceeded: () -> void
 end

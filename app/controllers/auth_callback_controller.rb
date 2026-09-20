@@ -5,7 +5,7 @@ class AuthCallbackController < ApplicationController
   def create
     provider = PROVIDERS[params[:provider]]
     if provider.nil?
-      flash[:alert] = "Unknown provider"
+      flash[:alert] = t("auth_callback.create.unknown_provider")
       redirect_to login_path
       return
     end
@@ -14,7 +14,7 @@ class AuthCallbackController < ApplicationController
     # successful auth phase, which used to be caught by the github-only guard.
     auth = request.env["omniauth.auth"]
     if auth.nil?
-      flash[:alert] = "Authentication failed"
+      flash[:alert] = t("auth_callback.create.failed")
       redirect_to login_path
       return
     end

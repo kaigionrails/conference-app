@@ -64,6 +64,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include LoginHelper, type: :request
+
+  # The memory store outlives an example, so a counter written by one would
+  # otherwise carry into the next.
+  config.before { Rails.cache.clear }
 end
 
 OmniAuth.config.test_mode = true

@@ -96,7 +96,15 @@ ja:
         one: "%{event_name}で知り合った人達(%{count}人)"
         other: "%{event_name}で知り合った人達(%{count}人)"
       show_friends: "一覧を見る"
+  auth_callback:
+    create:
+      unknown_provider: "不明なログイン方法です。"
+      failed: "ログインに失敗しました。もう一度お試しください。"
   sessions:
+    create:
+      unknown_provider: "不明なログイン方法です。"
+      invalid_email_or_password: "メールアドレスまたはパスワードが正しくありません。"
+      rate_limited: "ログインの試行回数が上限に達しました。しばらくしてからもう一度お試しください。"
     new:
       title: "ログイン"
       login_with_github: "GitHubアカウントでログインする"

@@ -97,7 +97,15 @@ en:
         one: "People met at %{event_name} (%{count} person)"
         other: "People met at %{event_name} (%{count} people)"
       show_friends: "View list"
+  auth_callback:
+    create:
+      unknown_provider: "Unknown login method."
+      failed: "Login failed. Please try again."
   sessions:
+    create:
+      unknown_provider: "Unknown login method."
+      invalid_email_or_password: "Invalid email or password."
+      rate_limited: "Too many login attempts. Please try again later."
     new:
       title: "Login"
       login_with_github: "Login with GitHub"
