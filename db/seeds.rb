@@ -8,8 +8,10 @@
 
 %w[organizer participant operator].each do |role|
   User.find_or_create_by!(role: role) do |user|
-    user.name = role.capitalize
-    user.build_profile(name: user.name)
+    # Prefixed so that seeding does not collide with a real GitHub handle such
+    # as "organizer", which uniqueness now compares case-insensitively.
+    user.name = "seed-#{role}"
+    user.build_profile(name: role.capitalize)
     user.build_authentication_provider_email_and_password(email: "#{role}@example.invalid", password: "password", password_confirmation: "password")
   end
 end

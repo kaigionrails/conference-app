@@ -1,0 +1,36 @@
+# Handles that users must not take. Compared case-insensitively against
+# users.name.
+#
+# Event slugs are NOT listed here: User reserves every four-digit number with a
+# regexp, which already covers 2023, 2024, 2025 and every future one.
+#
+# Only values that could actually pass the handle format validation belong
+# here: names containing an underscore (locale_settings, tito_webhook, ...)
+# are already unreachable.
+---
+# Impersonating the organizers
+- admin
+- administrator
+- help
+- kaigionrails
+- official
+- root
+- staff
+- support
+- system
+# Colliding with a top-level route. The current route is /@:username so these
+# do not actually collide today; they are reserved in case it ever becomes
+# /:username.
+- about
+- auth
+- live
+- login
+- logout
+- manifest
+- operators
+- profiles
+- setting
+- signages
+- subscreen
+- sw
+- up

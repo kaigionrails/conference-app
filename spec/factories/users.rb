@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    name { "foo" }
+    sequence(:name) { |n| "user#{n}" }
     role { "participant" }
 
     trait :with_profile_image do
