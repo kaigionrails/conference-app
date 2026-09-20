@@ -5,6 +5,12 @@ class DetermineUserRoleJob < ApplicationJob
     Sentry.capture_exception(error)
   end
 
+  # A user whose name predates the handle validation cannot be saved at all.
+  # Discard instead of retrying forever, and report so the stale name surfaces.
+  discard_on(ActiveRecord::RecordInvalid) do |_job, error|
+    Sentry.capture_exception(error)
+  end
+
   def perform(user_id)
     user = User.find(user_id)
 
