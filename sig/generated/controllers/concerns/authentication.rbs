@@ -1,0 +1,32 @@
+# Generated from app/controllers/concerns/authentication.rb with RBS::Inline
+
+# @rbs module-self ActionController::Base
+module Authentication : ActionController::Base
+  extend ActiveSupport::Concern
+
+  # Establishes the session for a user who has just authenticated. Redirecting
+  # is left to the caller: each entry point has its own landing page.
+  #
+  # @rbs user: User
+  # @rbs return: void
+  private def complete_login!: (User user) -> void
+
+  # Path and query of an untrusted return_to, or the default when it is not a
+  # path on this site.
+  #
+  # @rbs value: untyped
+  # @rbs default: String
+  # @rbs return: String
+  private def safe_return_to: (untyped value, default: String) -> String
+
+  # Path only, for callers that build their own query.
+  #
+  # @rbs value: untyped
+  # @rbs default: String
+  # @rbs return: String
+  private def safe_return_to_path: (untyped value, default: String) -> String
+
+  # @rbs value: untyped
+  # @rbs return: URI::Generic?
+  private def parse_return_to: (untyped value) -> URI::Generic?
+end

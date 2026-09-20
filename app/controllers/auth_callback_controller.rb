@@ -20,16 +20,9 @@ class AuthCallbackController < ApplicationController
     end
 
     user = provider.find_or_create_user_from_auth_hash(auth)
+    complete_login!(user)
 
-    reset_session
-    session[:user_id] = user.id
-
-    if request.env["omniauth.params"].key?("return_to")
-      # Prevent open redirect
-      uri = URI.parse(request.env["omniauth.params"]["return_to"])
-      redirect_to "#{uri.path}?#{uri.query}"
-    else
-      redirect_to setting_path
-    end
+    omniauth_params = request.env["omniauth.params"] || {}
+    redirect_to safe_return_to(omniauth_params["return_to"], default: setting_path)
   end
 end

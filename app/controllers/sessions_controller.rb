@@ -26,16 +26,8 @@ class SessionsController < ApplicationController
       return
     end
 
-    reset_session
-    session[:user_id] = user.id if user
-
-    if params.key?("return_to")
-      # Prevent open redirect
-      uri = URI.parse(params["return_to"])
-      redirect_to "#{uri.path}?#{uri.query}"
-    else
-      redirect_to operators_path
-    end
+    complete_login!(user)
+    redirect_to safe_return_to(params[:return_to], default: operators_path)
   end
 
   # @rbs return: void
