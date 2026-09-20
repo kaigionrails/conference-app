@@ -1,14 +1,16 @@
-class OngoingEvent < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::OngoingEvent, ::OngoingEvent::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::OngoingEvent < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::OngoingEvent, ::OngoingEvent::ActiveRecord_Relation, ::Integer]
+
+  module ::OngoingEvent::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class OngoingEvent < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def event_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def event_id?: () -> bool
 
-    def event_id_changed?: () -> bool
+    def event_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def event_id_was: () -> ::Integer?
 
-    def event_id_previously_changed?: () -> bool
+    def event_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class OngoingEvent < ::ApplicationRecord
 
     def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_event_id?: () -> bool
+    def saved_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_event_id?: () -> bool
+    def will_save_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_event_id!: () -> void
 
     def clear_event_id_change: () -> void
+
+    def event_id_before_type_cast: () -> ::Integer
+
+    def event_id_for_database: () -> ::Integer
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -80,7 +90,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -88,7 +98,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -102,13 +112,17 @@ class OngoingEvent < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -116,7 +130,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -124,7 +138,7 @@ class OngoingEvent < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -138,37 +152,106 @@ class OngoingEvent < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::OngoingEvent::GeneratedAttributeMethods
+  module ::OngoingEvent::GeneratedAliasAttributeMethods
+    include ::OngoingEvent::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::OngoingEvent::GeneratedAliasAttributeMethods
 
   def event: () -> ::Event
   def event=: (::Event?) -> ::Event?
   def reload_event: () -> ::Event?
-  def build_event: (untyped) -> ::Event
-  def create_event: (untyped) -> ::Event
-  def create_event!: (untyped) -> ::Event
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_event: (?untyped) -> ::Event
+  def create_event: (?untyped) -> ::Event
+  def create_event!: (?untyped) -> ::Event
 
-  module GeneratedRelationMethods
+  module ::OngoingEvent::GeneratedAssociationMethods
+  end
+  include ::OngoingEvent::GeneratedAssociationMethods
+
+  module ::OngoingEvent::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::OngoingEvent::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::OngoingEvent, ::Integer]
+  class ::OngoingEvent::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::OngoingEvent]
+    include ::OngoingEvent::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::OngoingEvent, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::OngoingEvent::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::OngoingEvent]
     include ::OngoingEvent::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::OngoingEvent, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::OngoingEvent, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::OngoingEvent
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::OngoingEvent]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::OngoingEvent
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::OngoingEvent]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::OngoingEvent
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::OngoingEvent]
+    def reload: () -> ::Array[::OngoingEvent]
+
+    def replace: (::Array[::OngoingEvent]) -> void
+    def delete: (*::OngoingEvent | ::Integer) -> ::Array[::OngoingEvent]
+    def destroy: (*::OngoingEvent | ::Integer) -> ::Array[::OngoingEvent]
+    def <<: (*::OngoingEvent | ::Array[::OngoingEvent]) -> self
+    def prepend: (*::OngoingEvent | ::Array[::OngoingEvent]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::Event < ::ApplicationRecord
 end

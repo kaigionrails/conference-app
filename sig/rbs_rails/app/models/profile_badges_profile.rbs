@@ -1,14 +1,16 @@
-class ProfileBadgesProfile < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::ProfileBadgesProfile, ::ProfileBadgesProfile::ActiveRecord_Relation, top]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::ProfileBadgesProfile < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::ProfileBadgesProfile, ::ProfileBadgesProfile::ActiveRecord_Relation, top]
+
+  module ::ProfileBadgesProfile::GeneratedAttributeMethods
     def profile_badge_id: () -> ::Integer
 
     def profile_badge_id=: (::Integer) -> ::Integer
 
     def profile_badge_id?: () -> bool
 
-    def profile_badge_id_changed?: () -> bool
+    def profile_badge_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def profile_badge_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def profile_badge_id_was: () -> ::Integer?
 
-    def profile_badge_id_previously_changed?: () -> bool
+    def profile_badge_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def profile_badge_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def saved_change_to_profile_badge_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_profile_badge_id?: () -> bool
+    def saved_change_to_profile_badge_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_profile_badge_id?: () -> bool
+    def will_save_change_to_profile_badge_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_profile_badge_id!: () -> void
 
     def clear_profile_badge_id_change: () -> void
+
+    def profile_badge_id_before_type_cast: () -> ::Integer
+
+    def profile_badge_id_for_database: () -> ::Integer
 
     def profile_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def profile_id?: () -> bool
 
-    def profile_id_changed?: () -> bool
+    def profile_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def profile_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def profile_id_was: () -> ::Integer?
 
-    def profile_id_previously_changed?: () -> bool
+    def profile_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def profile_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,43 +72,74 @@ class ProfileBadgesProfile < ::ApplicationRecord
 
     def saved_change_to_profile_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_profile_id?: () -> bool
+    def saved_change_to_profile_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_profile_id?: () -> bool
+    def will_save_change_to_profile_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_profile_id!: () -> void
 
     def clear_profile_id_change: () -> void
+
+    def profile_id_before_type_cast: () -> ::Integer
+
+    def profile_id_for_database: () -> ::Integer
   end
-  include GeneratedAttributeMethods
+  include ::ProfileBadgesProfile::GeneratedAttributeMethods
+  module ::ProfileBadgesProfile::GeneratedAliasAttributeMethods
+    include ::ProfileBadgesProfile::GeneratedAttributeMethods
+  end
+  include ::ProfileBadgesProfile::GeneratedAliasAttributeMethods
 
   def profile_badge: () -> ::ProfileBadge
   def profile_badge=: (::ProfileBadge?) -> ::ProfileBadge?
   def reload_profile_badge: () -> ::ProfileBadge?
-  def build_profile_badge: (untyped) -> ::ProfileBadge
-  def create_profile_badge: (untyped) -> ::ProfileBadge
-  def create_profile_badge!: (untyped) -> ::ProfileBadge
+  def build_profile_badge: (?untyped) -> ::ProfileBadge
+  def create_profile_badge: (?untyped) -> ::ProfileBadge
+  def create_profile_badge!: (?untyped) -> ::ProfileBadge
   def profile: () -> ::Profile
   def profile=: (::Profile?) -> ::Profile?
   def reload_profile: () -> ::Profile?
-  def build_profile: (untyped) -> ::Profile
-  def create_profile: (untyped) -> ::Profile
-  def create_profile!: (untyped) -> ::Profile
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_profile: (?untyped) -> ::Profile
+  def create_profile: (?untyped) -> ::Profile
+  def create_profile!: (?untyped) -> ::Profile
 
-  module GeneratedRelationMethods
+  module ::ProfileBadgesProfile::GeneratedAssociationMethods
+  end
+  include ::ProfileBadgesProfile::GeneratedAssociationMethods
+
+  module ::ProfileBadgesProfile::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::ProfileBadgesProfile::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileBadgesProfile, top]
+  class ::ProfileBadgesProfile::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::ProfileBadgesProfile]
+    include ::ProfileBadgesProfile::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::ProfileBadgesProfile, top]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::ProfileBadgesProfile]
     include ::ProfileBadgesProfile::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileBadgesProfile, top]
+    include ::ActiveRecord::Relation::Methods[::ProfileBadgesProfile, top]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadgesProfile
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadgesProfile]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadgesProfile
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadgesProfile]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadgesProfile
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadgesProfile]
+    def reload: () -> ::Array[::ProfileBadgesProfile]
+
+    def replace: (::Array[::ProfileBadgesProfile]) -> void
+    def delete: (*::ProfileBadgesProfile | top) -> ::Array[::ProfileBadgesProfile]
+    def destroy: (*::ProfileBadgesProfile | top) -> ::Array[::ProfileBadgesProfile]
+    def <<: (*::ProfileBadgesProfile | ::Array[::ProfileBadgesProfile]) -> self
+    def prepend: (*::ProfileBadgesProfile | ::Array[::ProfileBadgesProfile]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::ProfileBadge < ::ApplicationRecord
+end
+class ::Profile < ::ApplicationRecord
 end

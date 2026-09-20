@@ -1,14 +1,16 @@
-class TalkReminder < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::TalkReminder, ::TalkReminder::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::TalkReminder < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::TalkReminder, ::TalkReminder::ActiveRecord_Relation, ::Integer]
+
+  module ::TalkReminder::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class TalkReminder < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def user_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class TalkReminder < ::ApplicationRecord
 
     def user_id?: () -> bool
 
-    def user_id_changed?: () -> bool
+    def user_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class TalkReminder < ::ApplicationRecord
 
     def user_id_was: () -> ::Integer?
 
-    def user_id_previously_changed?: () -> bool
+    def user_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_user_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_user_id?: () -> bool
+    def saved_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_user_id?: () -> bool
+    def will_save_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_user_id!: () -> void
 
     def clear_user_id_change: () -> void
+
+    def user_id_before_type_cast: () -> ::Integer
+
+    def user_id_for_database: () -> ::Integer
 
     def talk_id: () -> ::Integer
 
@@ -80,7 +90,7 @@ class TalkReminder < ::ApplicationRecord
 
     def talk_id?: () -> bool
 
-    def talk_id_changed?: () -> bool
+    def talk_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def talk_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -88,7 +98,7 @@ class TalkReminder < ::ApplicationRecord
 
     def talk_id_was: () -> ::Integer?
 
-    def talk_id_previously_changed?: () -> bool
+    def talk_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def talk_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -102,13 +112,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_talk_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_talk_id?: () -> bool
+    def saved_change_to_talk_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_talk_id?: () -> bool
+    def will_save_change_to_talk_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_talk_id!: () -> void
 
     def clear_talk_id_change: () -> void
+
+    def talk_id_before_type_cast: () -> ::Integer
+
+    def talk_id_for_database: () -> ::Integer
 
     def scheduled_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -116,7 +130,7 @@ class TalkReminder < ::ApplicationRecord
 
     def scheduled_at?: () -> bool
 
-    def scheduled_at_changed?: () -> bool
+    def scheduled_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def scheduled_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -124,7 +138,7 @@ class TalkReminder < ::ApplicationRecord
 
     def scheduled_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def scheduled_at_previously_changed?: () -> bool
+    def scheduled_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def scheduled_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -138,13 +152,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_scheduled_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_scheduled_at?: () -> bool
+    def saved_change_to_scheduled_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_scheduled_at?: () -> bool
+    def will_save_change_to_scheduled_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_scheduled_at!: () -> void
 
     def clear_scheduled_at_change: () -> void
+
+    def scheduled_at_before_type_cast: () -> ::Time
+
+    def scheduled_at_for_database: () -> ::Time
 
     def sent_at: () -> ::ActiveSupport::TimeWithZone?
 
@@ -152,7 +170,7 @@ class TalkReminder < ::ApplicationRecord
 
     def sent_at?: () -> bool
 
-    def sent_at_changed?: () -> bool
+    def sent_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def sent_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class TalkReminder < ::ApplicationRecord
 
     def sent_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def sent_at_previously_changed?: () -> bool
+    def sent_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def sent_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,13 +192,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_sent_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_sent_at?: () -> bool
+    def saved_change_to_sent_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_sent_at?: () -> bool
+    def will_save_change_to_sent_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_sent_at!: () -> void
 
     def clear_sent_at_change: () -> void
+
+    def sent_at_before_type_cast: () -> ::Time?
+
+    def sent_at_for_database: () -> ::Time?
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -188,7 +210,7 @@ class TalkReminder < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -196,7 +218,7 @@ class TalkReminder < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -210,13 +232,17 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -224,7 +250,7 @@ class TalkReminder < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -232,7 +258,7 @@ class TalkReminder < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -246,43 +272,114 @@ class TalkReminder < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::TalkReminder::GeneratedAttributeMethods
+  module ::TalkReminder::GeneratedAliasAttributeMethods
+    include ::TalkReminder::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::TalkReminder::GeneratedAliasAttributeMethods
 
   def user: () -> ::User
   def user=: (::User?) -> ::User?
   def reload_user: () -> ::User?
-  def build_user: (untyped) -> ::User
-  def create_user: (untyped) -> ::User
-  def create_user!: (untyped) -> ::User
+  def build_user: (?untyped) -> ::User
+  def create_user: (?untyped) -> ::User
+  def create_user!: (?untyped) -> ::User
   def talk: () -> ::Talk
   def talk=: (::Talk?) -> ::Talk?
   def reload_talk: () -> ::Talk?
-  def build_talk: (untyped) -> ::Talk
-  def create_talk: (untyped) -> ::Talk
-  def create_talk!: (untyped) -> ::Talk
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_talk: (?untyped) -> ::Talk
+  def create_talk: (?untyped) -> ::Talk
+  def create_talk!: (?untyped) -> ::Talk
 
-  module GeneratedRelationMethods
+  module ::TalkReminder::GeneratedAssociationMethods
+  end
+  include ::TalkReminder::GeneratedAssociationMethods
+
+  module ::TalkReminder::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::TalkReminder::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TalkReminder, ::Integer]
+  class ::TalkReminder::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::TalkReminder]
+    include ::TalkReminder::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::TalkReminder, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::TalkReminder::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::TalkReminder]
     include ::TalkReminder::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TalkReminder, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::TalkReminder, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkReminder
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkReminder]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkReminder
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkReminder]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkReminder
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkReminder]
+    def reload: () -> ::Array[::TalkReminder]
+
+    def replace: (::Array[::TalkReminder]) -> void
+    def delete: (*::TalkReminder | ::Integer) -> ::Array[::TalkReminder]
+    def destroy: (*::TalkReminder | ::Integer) -> ::Array[::TalkReminder]
+    def <<: (*::TalkReminder | ::Array[::TalkReminder]) -> self
+    def prepend: (*::TalkReminder | ::Array[::TalkReminder]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::User < ::ApplicationRecord
+end
+class ::Talk < ::ApplicationRecord
 end

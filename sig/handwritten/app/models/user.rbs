@@ -1,15 +1,4 @@
 class User < ApplicationRecord
-  # NOTE: This method has been declared manually because current rbs_rails does not support enum definitions.
-  #       It should be removed if rbs_rails will support it.
-  #       refs: https://github.com/pocke/rbs_rails/pull/268
-  def self.roles: () -> Hash[String, String]
-
-  def self.name_starts_with: (String name) -> User::ActiveRecord_Relation
-
-  def organizer?: () -> bool
-  def participant?: () -> bool
-  def operator?: () -> bool
-
   # Every user has a Profile: each registration path creates one in the same
   # transaction as the user. authentication_provider_github is deliberately
   # left nilable, so that the callers which assume GitHub have to say so.
@@ -17,8 +6,6 @@ class User < ApplicationRecord
              | ...
 
   class ActiveRecord_Relation
-    def name_starts_with: (String name) -> User::ActiveRecord_Relation
-
     # A relation delegates class methods to the model; rbs_rails does not
     # reproduce that, so the ones called on a relation are declared by hand.
     def find_by_handle!: (String handle) -> User

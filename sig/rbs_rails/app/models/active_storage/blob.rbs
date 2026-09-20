@@ -1,15 +1,17 @@
-module ActiveStorage
-  class Blob < ::ActiveStorage::Record
-    extend ::_ActiveRecord_Relation_ClassMethods[::ActiveStorage::Blob, ::ActiveStorage::Blob::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-    module GeneratedAttributeMethods
+module ::ActiveStorage
+  class ::ActiveStorage::Blob < ::ActiveStorage::Record
+    extend ::ActiveRecord::Base::ClassMethods[::ActiveStorage::Blob, ::ActiveStorage::Blob::ActiveRecord_Relation, ::Integer]
+
+    module ::ActiveStorage::Blob::GeneratedAttributeMethods
       def id: () -> ::Integer
 
       def id=: (::Integer) -> ::Integer
 
       def id?: () -> bool
 
-      def id_changed?: () -> bool
+      def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -17,7 +19,7 @@ module ActiveStorage
 
       def id_was: () -> ::Integer?
 
-      def id_previously_changed?: () -> bool
+      def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -31,13 +33,17 @@ module ActiveStorage
 
       def saved_change_to_id: () -> ::Array[::Integer?]?
 
-      def saved_change_to_id?: () -> bool
+      def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_id?: () -> bool
+      def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_id!: () -> void
 
       def clear_id_change: () -> void
+
+      def id_before_type_cast: () -> ::Integer
+
+      def id_for_database: () -> ::Integer
 
       def key: () -> ::String
 
@@ -45,7 +51,7 @@ module ActiveStorage
 
       def key?: () -> bool
 
-      def key_changed?: () -> bool
+      def key_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def key_change: () -> [ ::String?, ::String? ]
 
@@ -53,7 +59,7 @@ module ActiveStorage
 
       def key_was: () -> ::String?
 
-      def key_previously_changed?: () -> bool
+      def key_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def key_previous_change: () -> ::Array[::String?]?
 
@@ -67,13 +73,17 @@ module ActiveStorage
 
       def saved_change_to_key: () -> ::Array[::String?]?
 
-      def saved_change_to_key?: () -> bool
+      def saved_change_to_key?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_key?: () -> bool
+      def will_save_change_to_key?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_key!: () -> void
 
       def clear_key_change: () -> void
+
+      def key_before_type_cast: () -> ::String
+
+      def key_for_database: () -> ::String
 
       def filename: () -> ::String
 
@@ -81,7 +91,7 @@ module ActiveStorage
 
       def filename?: () -> bool
 
-      def filename_changed?: () -> bool
+      def filename_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def filename_change: () -> [ ::String?, ::String? ]
 
@@ -89,7 +99,7 @@ module ActiveStorage
 
       def filename_was: () -> ::String?
 
-      def filename_previously_changed?: () -> bool
+      def filename_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def filename_previous_change: () -> ::Array[::String?]?
 
@@ -103,13 +113,17 @@ module ActiveStorage
 
       def saved_change_to_filename: () -> ::Array[::String?]?
 
-      def saved_change_to_filename?: () -> bool
+      def saved_change_to_filename?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_filename?: () -> bool
+      def will_save_change_to_filename?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_filename!: () -> void
 
       def clear_filename_change: () -> void
+
+      def filename_before_type_cast: () -> ::String
+
+      def filename_for_database: () -> ::String
 
       def content_type: () -> ::String?
 
@@ -117,7 +131,7 @@ module ActiveStorage
 
       def content_type?: () -> bool
 
-      def content_type_changed?: () -> bool
+      def content_type_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def content_type_change: () -> [ ::String?, ::String? ]
 
@@ -125,7 +139,7 @@ module ActiveStorage
 
       def content_type_was: () -> ::String?
 
-      def content_type_previously_changed?: () -> bool
+      def content_type_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def content_type_previous_change: () -> ::Array[::String?]?
 
@@ -139,13 +153,17 @@ module ActiveStorage
 
       def saved_change_to_content_type: () -> ::Array[::String?]?
 
-      def saved_change_to_content_type?: () -> bool
+      def saved_change_to_content_type?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_content_type?: () -> bool
+      def will_save_change_to_content_type?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_content_type!: () -> void
 
       def clear_content_type_change: () -> void
+
+      def content_type_before_type_cast: () -> ::String?
+
+      def content_type_for_database: () -> ::String?
 
       def metadata: () -> ::String?
 
@@ -153,7 +171,7 @@ module ActiveStorage
 
       def metadata?: () -> bool
 
-      def metadata_changed?: () -> bool
+      def metadata_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def metadata_change: () -> [ ::String?, ::String? ]
 
@@ -161,7 +179,7 @@ module ActiveStorage
 
       def metadata_was: () -> ::String?
 
-      def metadata_previously_changed?: () -> bool
+      def metadata_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def metadata_previous_change: () -> ::Array[::String?]?
 
@@ -175,13 +193,17 @@ module ActiveStorage
 
       def saved_change_to_metadata: () -> ::Array[::String?]?
 
-      def saved_change_to_metadata?: () -> bool
+      def saved_change_to_metadata?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_metadata?: () -> bool
+      def will_save_change_to_metadata?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_metadata!: () -> void
 
       def clear_metadata_change: () -> void
+
+      def metadata_before_type_cast: () -> ::String?
+
+      def metadata_for_database: () -> ::String?
 
       def service_name: () -> ::String
 
@@ -189,7 +211,7 @@ module ActiveStorage
 
       def service_name?: () -> bool
 
-      def service_name_changed?: () -> bool
+      def service_name_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def service_name_change: () -> [ ::String?, ::String? ]
 
@@ -197,7 +219,7 @@ module ActiveStorage
 
       def service_name_was: () -> ::String?
 
-      def service_name_previously_changed?: () -> bool
+      def service_name_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def service_name_previous_change: () -> ::Array[::String?]?
 
@@ -211,13 +233,17 @@ module ActiveStorage
 
       def saved_change_to_service_name: () -> ::Array[::String?]?
 
-      def saved_change_to_service_name?: () -> bool
+      def saved_change_to_service_name?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_service_name?: () -> bool
+      def will_save_change_to_service_name?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_service_name!: () -> void
 
       def clear_service_name_change: () -> void
+
+      def service_name_before_type_cast: () -> ::String
+
+      def service_name_for_database: () -> ::String
 
       def byte_size: () -> ::Integer
 
@@ -225,7 +251,7 @@ module ActiveStorage
 
       def byte_size?: () -> bool
 
-      def byte_size_changed?: () -> bool
+      def byte_size_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def byte_size_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -233,7 +259,7 @@ module ActiveStorage
 
       def byte_size_was: () -> ::Integer?
 
-      def byte_size_previously_changed?: () -> bool
+      def byte_size_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def byte_size_previous_change: () -> ::Array[::Integer?]?
 
@@ -247,13 +273,17 @@ module ActiveStorage
 
       def saved_change_to_byte_size: () -> ::Array[::Integer?]?
 
-      def saved_change_to_byte_size?: () -> bool
+      def saved_change_to_byte_size?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_byte_size?: () -> bool
+      def will_save_change_to_byte_size?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_byte_size!: () -> void
 
       def clear_byte_size_change: () -> void
+
+      def byte_size_before_type_cast: () -> ::Integer
+
+      def byte_size_for_database: () -> ::Integer
 
       def checksum: () -> ::String?
 
@@ -261,7 +291,7 @@ module ActiveStorage
 
       def checksum?: () -> bool
 
-      def checksum_changed?: () -> bool
+      def checksum_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def checksum_change: () -> [ ::String?, ::String? ]
 
@@ -269,7 +299,7 @@ module ActiveStorage
 
       def checksum_was: () -> ::String?
 
-      def checksum_previously_changed?: () -> bool
+      def checksum_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def checksum_previous_change: () -> ::Array[::String?]?
 
@@ -283,13 +313,17 @@ module ActiveStorage
 
       def saved_change_to_checksum: () -> ::Array[::String?]?
 
-      def saved_change_to_checksum?: () -> bool
+      def saved_change_to_checksum?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_checksum?: () -> bool
+      def will_save_change_to_checksum?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_checksum!: () -> void
 
       def clear_checksum_change: () -> void
+
+      def checksum_before_type_cast: () -> ::String?
+
+      def checksum_for_database: () -> ::String?
 
       def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -297,7 +331,7 @@ module ActiveStorage
 
       def created_at?: () -> bool
 
-      def created_at_changed?: () -> bool
+      def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -305,7 +339,7 @@ module ActiveStorage
 
       def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-      def created_at_previously_changed?: () -> bool
+      def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -319,15 +353,63 @@ module ActiveStorage
 
       def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-      def saved_change_to_created_at?: () -> bool
+      def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-      def will_save_change_to_created_at?: () -> bool
+      def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def restore_created_at!: () -> void
 
       def clear_created_at_change: () -> void
+
+      def created_at_before_type_cast: () -> ::Time
+
+      def created_at_for_database: () -> ::Time
     end
-    include GeneratedAttributeMethods
+    include ::ActiveStorage::Blob::GeneratedAttributeMethods
+    module ::ActiveStorage::Blob::GeneratedAliasAttributeMethods
+      include ::ActiveStorage::Blob::GeneratedAttributeMethods
+
+      alias id_value id
+
+      alias id_value= id=
+
+      alias id_value? id?
+
+      alias id_value_changed? id_changed?
+
+      alias id_value_change id_change
+
+      alias id_value_will_change! id_will_change!
+
+      alias id_value_was id_was
+
+      alias id_value_previously_changed? id_previously_changed?
+
+      alias id_value_previous_change id_previous_change
+
+      alias id_value_previously_was id_previously_was
+
+      alias id_value_before_last_save id_before_last_save
+
+      alias id_value_change_to_be_saved id_change_to_be_saved
+
+      alias id_value_in_database id_in_database
+
+      alias saved_change_to_id_value saved_change_to_id
+
+      alias saved_change_to_id_value? saved_change_to_id?
+
+      alias will_save_change_to_id_value? will_save_change_to_id?
+
+      alias restore_id_value! restore_id!
+
+      alias clear_id_value_change clear_id_change
+
+      alias id_value_before_type_cast id_before_type_cast
+
+      alias id_value_for_database id_for_database
+    end
+    include ::ActiveStorage::Blob::GeneratedAliasAttributeMethods
     def attachments: () -> ::ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy
     def attachments=: (::ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | ::Array[::ActiveStorage::Attachment]) -> (::ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy | ::Array[::ActiveStorage::Attachment])
     def attachment_ids: () -> ::Array[::Integer]
@@ -336,20 +418,21 @@ module ActiveStorage
     def variant_records=: (::ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | ::Array[::ActiveStorage::VariantRecord]) -> (::ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy | ::Array[::ActiveStorage::VariantRecord])
     def variant_record_ids: () -> ::Array[::Integer]
     def variant_record_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+
     def preview_image_attachment: () -> ::ActiveStorage::Attachment?
     def preview_image_attachment=: (::ActiveStorage::Attachment?) -> ::ActiveStorage::Attachment?
     def build_preview_image_attachment: (?untyped) -> ::ActiveStorage::Attachment
-    def create_preview_image_attachment: (untyped) -> ::ActiveStorage::Attachment
-    def create_preview_image_attachment!: (untyped) -> ::ActiveStorage::Attachment
+    def create_preview_image_attachment: (?untyped) -> ::ActiveStorage::Attachment
+    def create_preview_image_attachment!: (?untyped) -> ::ActiveStorage::Attachment
     def reload_preview_image_attachment: () -> ::ActiveStorage::Attachment?
     def preview_image_blob: () -> ::ActiveStorage::Blob?
     def preview_image_blob=: (::ActiveStorage::Blob?) -> ::ActiveStorage::Blob?
     def build_preview_image_blob: (?untyped) -> ::ActiveStorage::Blob
-    def create_preview_image_blob: (untyped) -> ::ActiveStorage::Blob
-    def create_preview_image_blob!: (untyped) -> ::ActiveStorage::Blob
+    def create_preview_image_blob: (?untyped) -> ::ActiveStorage::Blob
+    def create_preview_image_blob!: (?untyped) -> ::ActiveStorage::Blob
     def reload_preview_image_blob: () -> ::ActiveStorage::Blob?
 
-    module GeneratedAssociationMethods
+    module ::ActiveStorage::Blob::GeneratedAssociationMethods
       def preview_image: () -> ::ActiveStorage::Attached::One
 
       def preview_image=: (::ActionDispatch::Http::UploadedFile) -> ::ActionDispatch::Http::UploadedFile
@@ -359,20 +442,48 @@ module ActiveStorage
                         | ({ io: ::IO, filename: ::String, content_type: ::String? }) -> { io: ::IO, filename: ::String, content_type: ::String? }
                         | (nil) -> nil
     end
-    include GeneratedAssociationMethods
+    include ::ActiveStorage::Blob::GeneratedAssociationMethods
 
-    module GeneratedRelationMethods
+    def self.unattached: () -> ::ActiveStorage::Blob::ActiveRecord_Relation
+    def self.with_attached_preview_image: () -> ::ActiveStorage::Blob::ActiveRecord_Relation
+
+    module ::ActiveStorage::Blob::GeneratedRelationMethods
+      def unattached: () -> ::ActiveStorage::Blob::ActiveRecord_Relation
+
+      def with_attached_preview_image: () -> ::ActiveStorage::Blob::ActiveRecord_Relation
     end
 
-    class ActiveRecord_Relation < ::ActiveRecord::Relation
-      include ::ActiveStorage::Blob::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::ActiveStorage::Blob, ::Integer]
+    class ::ActiveStorage::Blob::ActiveRecord_Relation < ::ActiveRecord::Relation
       include ::Enumerable[::ActiveStorage::Blob]
+      include ::ActiveStorage::Blob::GeneratedRelationMethods
+      include ::ActiveRecord::Relation::Methods[::ActiveStorage::Blob, ::Integer]
     end
 
-    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    class ::ActiveStorage::Blob::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include ::Enumerable[::ActiveStorage::Blob]
       include ::ActiveStorage::Blob::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::ActiveStorage::Blob, ::Integer]
+      include ::ActiveRecord::Relation::Methods[::ActiveStorage::Blob, ::Integer]
+
+      def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ActiveStorage::Blob
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ActiveStorage::Blob]
+      def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ActiveStorage::Blob
+                | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ActiveStorage::Blob]
+      def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ActiveStorage::Blob
+                 | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ActiveStorage::Blob]
+      def reload: () -> ::Array[::ActiveStorage::Blob]
+
+      def replace: (::Array[::ActiveStorage::Blob]) -> void
+      def delete: (*::ActiveStorage::Blob | ::Integer) -> ::Array[::ActiveStorage::Blob]
+      def destroy: (*::ActiveStorage::Blob | ::Integer) -> ::Array[::ActiveStorage::Blob]
+      def <<: (*::ActiveStorage::Blob | ::Array[::ActiveStorage::Blob]) -> self
+      def prepend: (*::ActiveStorage::Blob | ::Array[::ActiveStorage::Blob]) -> self
     end
   end
+end
+
+class ::ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::ActiveStorage::VariantRecord < ::ActiveStorage::Record
+end
+class ::ActiveStorage::VariantRecord::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end

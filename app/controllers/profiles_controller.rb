@@ -33,8 +33,10 @@ class ProfilesController < ApplicationController
       ApplicationRecord.transaction do
         profile.update!(**profile_non_image_params)
         profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
-        profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids)
-        profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids))
+        # rbs_rails types << and destroy as variadic over records, but Active
+        # Record takes a relation as well.
+        profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids) # steep:ignore
+        profile.profile_badges.destroy(ProfileBadge.where(restricted: false, id: will_remove_profile_badge_ids)) # steep:ignore
       end
       flash[:success] = t(".succeeded")
       redirect_to profiles_path

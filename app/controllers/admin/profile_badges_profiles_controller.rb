@@ -18,8 +18,10 @@ class Admin::ProfileBadgesProfilesController < AdminController
     will_remove_profile_badge_ids = assigned_profile_badge_ids - given_profile_badge_ids
 
     ApplicationRecord.transaction do
-      @profile.profile_badges << ProfileBadge.where(id: will_assign_profile_badge_ids)
-      @profile.profile_badges.destroy(ProfileBadge.where(id: will_remove_profile_badge_ids))
+      # rbs_rails types << and destroy as variadic over records, but Active
+      # Record takes a relation as well.
+      @profile.profile_badges << ProfileBadge.where(id: will_assign_profile_badge_ids) # steep:ignore
+      @profile.profile_badges.destroy(ProfileBadge.where(id: will_remove_profile_badge_ids)) # steep:ignore
     end
 
     redirect_to admin_user_path(id: @profile.user.id)

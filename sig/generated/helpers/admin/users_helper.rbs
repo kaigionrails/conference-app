@@ -1,0 +1,6 @@
+# Generated from app/helpers/admin/users_helper.rb with RBS::Inline
+
+module Admin::UsersHelper
+  # @rbs return: Array[Array[String]]
+  def user_role_options: () -> Array[Array[String]]
+end

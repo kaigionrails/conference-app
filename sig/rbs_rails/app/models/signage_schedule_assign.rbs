@@ -1,14 +1,16 @@
-class SignageScheduleAssign < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::SignageScheduleAssign, ::SignageScheduleAssign::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::SignageScheduleAssign < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::SignageScheduleAssign, ::SignageScheduleAssign::ActiveRecord_Relation, ::Integer]
+
+  module ::SignageScheduleAssign::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def signage_schedule_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def signage_schedule_id?: () -> bool
 
-    def signage_schedule_id_changed?: () -> bool
+    def signage_schedule_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def signage_schedule_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def signage_schedule_id_was: () -> ::Integer?
 
-    def signage_schedule_id_previously_changed?: () -> bool
+    def signage_schedule_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def signage_schedule_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def saved_change_to_signage_schedule_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_signage_schedule_id?: () -> bool
+    def saved_change_to_signage_schedule_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_signage_schedule_id?: () -> bool
+    def will_save_change_to_signage_schedule_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_signage_schedule_id!: () -> void
 
     def clear_signage_schedule_id_change: () -> void
+
+    def signage_schedule_id_before_type_cast: () -> ::Integer
+
+    def signage_schedule_id_for_database: () -> ::Integer
 
     def signage_panel_id: () -> ::Integer
 
@@ -80,7 +90,7 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def signage_panel_id?: () -> bool
 
-    def signage_panel_id_changed?: () -> bool
+    def signage_panel_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def signage_panel_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -88,7 +98,7 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def signage_panel_id_was: () -> ::Integer?
 
-    def signage_panel_id_previously_changed?: () -> bool
+    def signage_panel_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def signage_panel_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -102,43 +112,114 @@ class SignageScheduleAssign < ::ApplicationRecord
 
     def saved_change_to_signage_panel_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_signage_panel_id?: () -> bool
+    def saved_change_to_signage_panel_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_signage_panel_id?: () -> bool
+    def will_save_change_to_signage_panel_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_signage_panel_id!: () -> void
 
     def clear_signage_panel_id_change: () -> void
+
+    def signage_panel_id_before_type_cast: () -> ::Integer
+
+    def signage_panel_id_for_database: () -> ::Integer
   end
-  include GeneratedAttributeMethods
+  include ::SignageScheduleAssign::GeneratedAttributeMethods
+  module ::SignageScheduleAssign::GeneratedAliasAttributeMethods
+    include ::SignageScheduleAssign::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::SignageScheduleAssign::GeneratedAliasAttributeMethods
 
   def signage_schedule: () -> ::SignageSchedule
   def signage_schedule=: (::SignageSchedule?) -> ::SignageSchedule?
   def reload_signage_schedule: () -> ::SignageSchedule?
-  def build_signage_schedule: (untyped) -> ::SignageSchedule
-  def create_signage_schedule: (untyped) -> ::SignageSchedule
-  def create_signage_schedule!: (untyped) -> ::SignageSchedule
+  def build_signage_schedule: (?untyped) -> ::SignageSchedule
+  def create_signage_schedule: (?untyped) -> ::SignageSchedule
+  def create_signage_schedule!: (?untyped) -> ::SignageSchedule
   def signage_panel: () -> ::SignagePanel
   def signage_panel=: (::SignagePanel?) -> ::SignagePanel?
   def reload_signage_panel: () -> ::SignagePanel?
-  def build_signage_panel: (untyped) -> ::SignagePanel
-  def create_signage_panel: (untyped) -> ::SignagePanel
-  def create_signage_panel!: (untyped) -> ::SignagePanel
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_signage_panel: (?untyped) -> ::SignagePanel
+  def create_signage_panel: (?untyped) -> ::SignagePanel
+  def create_signage_panel!: (?untyped) -> ::SignagePanel
 
-  module GeneratedRelationMethods
+  module ::SignageScheduleAssign::GeneratedAssociationMethods
+  end
+  include ::SignageScheduleAssign::GeneratedAssociationMethods
+
+  module ::SignageScheduleAssign::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::SignageScheduleAssign::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::SignageScheduleAssign, ::Integer]
+  class ::SignageScheduleAssign::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::SignageScheduleAssign]
+    include ::SignageScheduleAssign::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SignageScheduleAssign, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::SignageScheduleAssign::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::SignageScheduleAssign]
     include ::SignageScheduleAssign::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::SignageScheduleAssign, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::SignageScheduleAssign, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageScheduleAssign
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageScheduleAssign]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageScheduleAssign
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageScheduleAssign]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageScheduleAssign
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageScheduleAssign]
+    def reload: () -> ::Array[::SignageScheduleAssign]
+
+    def replace: (::Array[::SignageScheduleAssign]) -> void
+    def delete: (*::SignageScheduleAssign | ::Integer) -> ::Array[::SignageScheduleAssign]
+    def destroy: (*::SignageScheduleAssign | ::Integer) -> ::Array[::SignageScheduleAssign]
+    def <<: (*::SignageScheduleAssign | ::Array[::SignageScheduleAssign]) -> self
+    def prepend: (*::SignageScheduleAssign | ::Array[::SignageScheduleAssign]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::SignageSchedule < ::ApplicationRecord
+end
+class ::SignagePanel < ::ApplicationRecord
 end
