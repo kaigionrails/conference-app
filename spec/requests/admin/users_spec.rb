@@ -205,8 +205,11 @@ RSpec.describe "Admin::Users", type: :request do
     end
 
     context "already registered email" do
-      let(:user) { FactoryBot.create(:user) }
-      let!(:authentication_provider_email_and_password) { FactoryBot.create(:authentication_provider_email_and_password, user: user, email: "test@example.invalid") }
+      # Must not be named `user`: that is the signed-in organizer, and
+      # overriding it here signed in a participant instead, so the request was
+      # redirected by require_organizer and the email collision went untested.
+      let(:email_owner) { FactoryBot.create(:user) }
+      let!(:authentication_provider_email_and_password) { FactoryBot.create(:authentication_provider_email_and_password, user: email_owner, email: "test@example.invalid") }
       create_param = {
         user: {name: "new_user", role: "organizer"},
         auth: {email: "test@example.invalid", password: "password", password_confirmation: "password"}
