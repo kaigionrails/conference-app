@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   # @rbs return: void
   def show
-    @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by!(name: params[:username])
+    @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by_handle!(params[:username])
     @events = Event.all.order(start_date: :desc)
     @event_friends = @user.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
     @profile = @user.profile
@@ -19,13 +19,13 @@ class UsersController < ApplicationController
       begin
         token = JWT.decode(@token, nil, false)[0] # steep:ignore
         if Time.zone.at(token["exp"]) > Time.current # not expired
-          issuer_user = User.find_by!(name: token["iss"])
+          issuer_user = User.find_by_handle!(token["iss"])
           exchange_profile(issuer_user, current_user!) if issuer_user == @user
         else
-          flash.now[:alert] = I18n.t(".qr_code_expired")
+          flash.now[:alert] = I18n.t("users.show.qr_code_expired")
         end
       rescue JWT::DecodeError
-        flash.now[:alert] = I18n.t(".qr_code_read_failed")
+        flash.now[:alert] = I18n.t("users.show.qr_code_read_failed")
       end
     end
   end
