@@ -77,14 +77,26 @@ RSpec.describe "Sessions", type: :request do
     end
   end
 
-  describe "GET /logout" do
+  describe "DELETE /logout" do
     let!(:user) { FactoryBot.create(:user) }
-    before { sign_in(user) }
 
     it "should logout" do
-      get "/logout"
+      sign_in_through_github(user)
+      expect(session[:user_id]).to eq user.id
+
+      delete "/logout"
       expect(response).to redirect_to(about_path)
       expect(session[:user_id]).to be_nil
+    end
+
+    # GET is reachable by prefetch and by an <img> on another site, and carries
+    # no CSRF token.
+    it "is not reachable with GET" do
+      sign_in_through_github(user)
+
+      get "/logout"
+      expect(response).to have_http_status(:not_found)
+      expect(session[:user_id]).to eq user.id
     end
   end
 end

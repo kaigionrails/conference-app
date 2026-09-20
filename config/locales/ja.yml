@@ -98,10 +98,14 @@ ja:
       show_friends: "一覧を見る"
   sessions:
     new:
-      loging_with_github: "Loing with GitHub"
-      for_operators: "For operators"
-      you_are_logged_in: "You are logged in."
-      logout: "If you want to log out, click here."
+      title: "ログイン"
+      login_with_github: "GitHubアカウントでログインする"
+      for_operators: "運営向け"
+      email: "メールアドレス"
+      password: "パスワード"
+      submit: "ログイン"
+      you_are_logged_in: "ログイン済みです。"
+      logout: "ログアウトする"
   setting:
     index:
       title: "設定"

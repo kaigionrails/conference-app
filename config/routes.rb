@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   get "/auth/:provider/callback", to: "auth_callback#create"
   post "/auth/:provider", to: "sessions#create"
-  get "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
 
   # For PWA
   get "/sw.js", to: "pwa#service_worker", as: "service_worker"

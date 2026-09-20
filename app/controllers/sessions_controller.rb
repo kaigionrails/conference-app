@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
 
   # @rbs return: void
   def destroy
-    session[:user_id] = nil
     reset_session
     redirect_to about_path
   end

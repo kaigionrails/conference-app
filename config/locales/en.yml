@@ -99,10 +99,14 @@ en:
       show_friends: "View list"
   sessions:
     new:
-      loging_with_github: "Login with GitHub"
+      title: "Login"
+      login_with_github: "Login with GitHub"
       for_operators: "For operators"
+      email: "Email address"
+      password: "Password"
+      submit: "Login"
       you_are_logged_in: "You are logged in."
-      logout: "If you want to log out, click here."
+      logout: "Log out"
   setting:
     index:
       title: "Settings"

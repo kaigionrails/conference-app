@@ -69,9 +69,7 @@
                 <span><%= t('layouts.header_nav.admin_console') %></span>
               <% end %>
             <% end %>
-            <%= link_to logout_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
-              <span><%= t('layouts.header_nav.logout') %></span>
-            <% end %>
+            <%= button_to t('layouts.header_nav.logout'), logout_path, method: :delete, form: { data: { turbo: false } }, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
           <% else %>
             <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
               <%= button_tag type: "submit", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" do %>
