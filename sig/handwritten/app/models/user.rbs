@@ -10,14 +10,18 @@ class User < ApplicationRecord
   def participant?: () -> bool
   def operator?: () -> bool
 
-  # User has profile and authentication_provider_github at least one
+  # Every user has a Profile: each registration path creates one in the same
+  # transaction as the user. authentication_provider_github is deliberately
+  # left nilable, so that the callers which assume GitHub have to say so.
   def profile: () -> Profile
              | ...
-  def authentication_provider_github: () -> AuthenticationProviderGithub
-                                    | ...
 
   class ActiveRecord_Relation
     def name_starts_with: (String name) -> User::ActiveRecord_Relation
+
+    # A relation delegates class methods to the model; rbs_rails does not
+    # reproduce that, so the ones called on a relation are declared by hand.
+    def find_by_handle!: (String handle) -> User
 
     # NOTE: Added by kaminari
     def page: (untyped) -> self
