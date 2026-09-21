@@ -16,8 +16,8 @@ en:
       feature_push_notification_description1: "You can enable push notifications for bookmarked session times and announcements from organizers."
       feature_push_notification_description2: "For details, please check 'Settings' from the icon at the top right."
       feature_push_notification_setting_link: "You can also open it from here."
-      need_github_login: "To use the features of this app, you need to log in with your GitHub account."
-      github_login_flow: "Please log in with your GitHub account using the button below."
+      need_login: "To use the features of this app, you need to log in."
+      login_flow: "Please log in using the buttons below."
       contributors: "Contributors"
       app_contributors: "conference-app is developed by the following contributors (ordered by number of commits)."
   announcements:

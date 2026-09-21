@@ -16,8 +16,8 @@ ja:
       feature_push_notification_description1: ブックマークしたセッションの発表時刻および運営からのアナウンス作成時に、プッシュ通知を有効にすることができます。
       feature_push_notification_description2: 詳細については、右上のアイコンからの「Setting」にてご確認ください。
       feature_push_notification_setting_link: こちらからも開くことができます。
-      need_github_login: このアプリの機能を活用していただくためには、GitHubアカウントでログインしていただく必要があります。
-      github_login_flow: 以下のボタンから、GitHubアカウントでのログインをお願いします。
+      need_login: このアプリの機能を活用していただくためには、ログインしていただく必要があります。
+      login_flow: 以下のボタンからログインをお願いします。
       contributors: コントリビューター
       app_contributors: conference-appは以下のコントリビューターによって開発されています(コミット数順）。
   announcements:
