@@ -78,6 +78,10 @@ Rails.application.configure do
   config.x.github.client_secret = ENV["GITHUB_SECRET"]
   config.x.github.oauth_redirect_url = ENV["GITHUB_OAUTH_REDIRECT_URI"]
 
+  config.x.google.client_id = ENV["GOOGLE_CLIENT_ID"]
+  config.x.google.client_secret = ENV["GOOGLE_CLIENT_SECRET"]
+  config.x.google.oauth_redirect_url = ENV["GOOGLE_OAUTH_REDIRECT_URI"]
+
   config.x.sentry.dsn = ENV["SENTRY_DSN"]
   config.x.sentry.env = ENV.fetch("SENTRY_ENV", "development")
 

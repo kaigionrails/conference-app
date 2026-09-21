@@ -14,22 +14,27 @@ RSpec.describe "AuthCallback", type: :request do
       let(:auth) { OmniAuth::AuthHash.new(provider: "google_oauth2", uid: "google-user") }
       let(:provider) { double("Authentication provider") }
 
+      # google_oauth2 is registered with OmniAuth, so its test mode answers the
+      # callback and replaces omniauth.auth and omniauth.params; the auth hash
+      # goes through mock_auth and return_to through the request phase instead.
       before do
         stub_const("AuthCallbackController::PROVIDERS", AuthCallbackController::PROVIDERS.merge("google_oauth2" => provider))
+        OmniAuth.config.mock_auth[:google_oauth2] = auth
         allow(provider).to receive(:find_or_create_user_from_auth_hash).with(auth).and_return(user)
       end
 
       it "uses the same return location after authentication" do
         return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
 
-        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth, "omniauth.params" => {"return_to" => return_to}}
+        post "/auth/google_oauth2?#{{return_to:}.to_query}"
+        follow_redirect!
 
         expect(response).to redirect_to(return_to)
         expect(session[:user_id]).to eq(user.id)
       end
 
       it "uses the default page when no return location was provided" do
-        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth}
+        get "/auth/google_oauth2/callback"
 
         expect(response).to redirect_to(setting_path)
         expect(session[:user_id]).to eq(user.id)
