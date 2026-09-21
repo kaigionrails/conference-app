@@ -11,8 +11,8 @@
         <li class="mb-1"><%= t('.feature_profile') %></li>
       </ul>
       <% unless logged_in? %>
-        <p class="mb-2"><%= t('.need_github_login') %></p>
-        <p class="mb-2"><%= t('.github_login_flow') %></p>
+        <p class="mb-2"><%= t('.need_login') %></p>
+        <p class="mb-2"><%= t('.login_flow') %></p>
         <%= render "shared/login_providers", variant: :card %>
       <% end %>
     </section>
