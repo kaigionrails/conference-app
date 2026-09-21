@@ -68,6 +68,7 @@ env:
     APPLICATION_URL: https://app.kaigionrails.org
     ORIGIN_HOST: origin-app.kaigionrails.org
     GITHUB_OAUTH_REDIRECT_URI: https://app.kaigionrails.org/auth/github/callback
+    GOOGLE_OAUTH_REDIRECT_URI: https://app.kaigionrails.org/auth/google_oauth2/callback
     VAPID_SUBJECT_MAILTO: mailto:info@kaigionrails.org
     SHIRATAKI_URL: https://shirataki.kaigionrails.org
     # Reaches the accessory below over the instance's private IP.
@@ -78,6 +79,8 @@ env:
     - GITHUB_APP_ID
     - GITHUB_KEY
     - GITHUB_SECRET
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
     - GITHUB_PRIVATE_KEY
     - SENTRY_DSN
     - SCOUT_KEY
