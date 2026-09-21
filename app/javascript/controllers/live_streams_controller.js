@@ -73,11 +73,11 @@ export default class extends Controller {
       // videoElement.play(); // Uncomment if you want autoplay
     }
     if (this.selectedTabValue === "red") {
-      video.classList.remove("border-[var(--color-2025-primary)]");
-      video.classList.add("border-[var(--color-2025-danger)]");
+      video.classList.remove("border-[var(--color-hall-blue)]");
+      video.classList.add("border-[var(--color-hall-red)]");
     } else if (this.selectedTabValue === "blue") {
-      video.classList.remove("border-[var(--color-2025-danger)]");
-      video.classList.add("border-[var(--color-2025-primary)]");
+      video.classList.remove("border-[var(--color-hall-red)]");
+      video.classList.add("border-[var(--color-hall-blue)]");
     }
     this.updateShareTarget();
     this.whereAmI().then((location) => {
@@ -123,8 +123,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-2025-primary)]");
-    video.classList.add("border-[var(--color-2025-danger)]");
+    video.classList.remove("border-[var(--color-hall-blue)]");
+    video.classList.add("border-[var(--color-hall-red)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
@@ -158,8 +158,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-2025-primary)]");
-    video.classList.add("border-[var(--color-2025-danger)]");
+    video.classList.remove("border-[var(--color-hall-blue)]");
+    video.classList.add("border-[var(--color-hall-red)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
@@ -195,8 +195,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "blue"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-2025-danger)]");
-    video.classList.add("border-[var(--color-2025-primary)]");
+    video.classList.remove("border-[var(--color-hall-red)]");
+    video.classList.add("border-[var(--color-hall-blue)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
