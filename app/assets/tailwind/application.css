@@ -35,9 +35,9 @@
     /* 文字色 */
     --color-text-primary: #fff;      /* メインテキスト */
     --color-text-secondary: #61534f; /* 反転テキスト */
-    /* Track colors remain consistent with the Hall Red / Hall Blue labels. */
-    --color-hall-blue: #227fbb;
-    --color-hall-red: #de3263;
+    /* 2026年の会場カラー（Magenta Hall / Lime Hall） */
+    --color-hall-lime: var(--color-2026-primary);
+    --color-hall-magenta: var(--color-2026-danger);
 
     --background-image-2026: url('2026/backgrounds/background.webp');
   }

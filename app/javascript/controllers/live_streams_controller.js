@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 import Hls from "hls.js";
 
 export default class extends Controller {
+  // Stream and subtitle integration identifiers remain red / blue.
+  // The corresponding 2026 venue labels are Magenta Hall / Lime Hall.
   static values = {
     selectedTab: { type: String, default: "red" },
     day1RedJa: { type: String, default: "" },
@@ -73,11 +75,11 @@ export default class extends Controller {
       // videoElement.play(); // Uncomment if you want autoplay
     }
     if (this.selectedTabValue === "red") {
-      video.classList.remove("border-[var(--color-hall-blue)]");
-      video.classList.add("border-[var(--color-hall-red)]");
+      video.classList.remove("border-[var(--color-hall-lime)]");
+      video.classList.add("border-[var(--color-hall-magenta)]");
     } else if (this.selectedTabValue === "blue") {
-      video.classList.remove("border-[var(--color-hall-red)]");
-      video.classList.add("border-[var(--color-hall-blue)]");
+      video.classList.remove("border-[var(--color-hall-magenta)]");
+      video.classList.add("border-[var(--color-hall-lime)]");
     }
     this.updateShareTarget();
     this.whereAmI().then((location) => {
@@ -106,7 +108,7 @@ export default class extends Controller {
     }
   }
 
-  switchToRed() {
+  switchToMagenta() {
     const today = new Date();
     const day = today.getDate();
     if (this.hls == null) {
@@ -123,8 +125,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-blue)]");
-    video.classList.add("border-[var(--color-hall-red)]");
+    video.classList.remove("border-[var(--color-hall-lime)]");
+    video.classList.add("border-[var(--color-hall-magenta)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
@@ -141,7 +143,7 @@ export default class extends Controller {
     })
   }
 
-  switchToRedRaw() {
+  switchToMagentaRaw() {
     const today = new Date();
     const day = today.getDate();
     if (this.hls == null) {
@@ -158,8 +160,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-blue)]");
-    video.classList.add("border-[var(--color-hall-red)]");
+    video.classList.remove("border-[var(--color-hall-lime)]");
+    video.classList.add("border-[var(--color-hall-magenta)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
@@ -176,7 +178,7 @@ export default class extends Controller {
     })
   }
 
-  switchToBlue() {
+  switchToLime() {
     const today = new Date();
     const day = today.getDate();
     if (this.hls == null) {
@@ -195,8 +197,8 @@ export default class extends Controller {
     this.subscreenOnStreamsOutlet?.clearSubtitles();
     this.subscreenOnStreamsOutlet.roomValue = "blue"
     const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-red)]");
-    video.classList.add("border-[var(--color-hall-blue)]");
+    video.classList.remove("border-[var(--color-hall-magenta)]");
+    video.classList.add("border-[var(--color-hall-lime)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();

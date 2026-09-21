@@ -14,10 +14,19 @@
   white-space:nowrap;
   border-radius:100px
 }
+/* 過去のイベントの会場カラー */
 .pill__hall-red {
   color:rgb(255, 255, 255);
   background:rgb(254, 64, 83)
 }
 .pill__hall-blue {
   background:rgb(0, 197, 218)
+}
+
+/* 2026年の会場カラー（Magenta Hall / Lime Hall） */
+.pill__magenta-hall {
+  background:var(--color-hall-magenta)
+}
+.pill__lime-hall {
+  background:var(--color-hall-lime)
 }
