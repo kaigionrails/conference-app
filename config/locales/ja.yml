@@ -107,7 +107,7 @@ ja:
       rate_limited: "ログインの試行回数が上限に達しました。しばらくしてからもう一度お試しください。"
     new:
       title: "ログイン"
-      login_with_github: "GitHubアカウントでログインする"
+      login_with_github: "Login with GitHub"
       for_operators: "運営向け"
       email: "メールアドレス"
       password: "パスワード"
@@ -159,7 +159,7 @@ ja:
   users:
     show:
       login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"
-      login_with_github: "GitHubアカウントでログインする"
+      login_with_github: "Login with GitHub"
       friends_who_met_at_event:
         zero: "%{event_name}で知り合った人達"
         one: "%{event_name}で知り合った人達(%{count}人)"
