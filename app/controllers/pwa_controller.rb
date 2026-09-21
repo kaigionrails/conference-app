@@ -12,23 +12,23 @@ class PwaController < ApplicationController
     response.headers["Cache-Control"] = "no-cache"
 
     render json: {
-      name: "Kaigi on Rails 2025 conference-app", # MEMO: change every year
+      name: "Kaigi on Rails 2026 conference-app", # MEMO: change every year
       short_name: "Kaigi on Rails",
       description: "Web application for Kaigi on Rails attendees.",
-      theme_color: "#292220", # MEMO: change every year
-      background_color: "#292220", # MEMO: change every year
+      theme_color: "#000000", # MEMO: change every year
+      background_color: "#000000", # MEMO: change every year
       display: "standalone",
       orientation: "portrait",
       scope: "/",
       start_url: "/",
       icons: [
         {
-          src: view_context.image_path("icons/2025/512.png"), # MEMO: change every year
+          src: view_context.image_path("icons/2026/512.png"), # MEMO: change every year
           type: "image/png",
           sizes: "512x512"
         },
         {
-          src: view_context.image_path("icons/2025/512_maskable.png"), # MEMO: change every year
+          src: view_context.image_path("icons/2026/512_maskable.png"), # MEMO: change every year
           type: "image/png",
           sizes: "512x512",
           purpose: "maskable"

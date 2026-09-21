@@ -9,8 +9,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <%= favicon_link_tag "icon.png" %>
-    <%= favicon_link_tag "icons/2024/512.png", rel: "apple-touch-icon", type: 'image/png' %>
+    <%= favicon_link_tag "icons/2026/favicon.svg", type: "image/svg+xml" %>
+    <%= favicon_link_tag "icons/2026/apple-touch-icon.png", rel: "apple-touch-icon", type: 'image/png' %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
     <script>
       window.vapidPublicKey = new Uint8Array(<%= vapid_public_key_bytes %>)
