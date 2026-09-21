@@ -1,5 +1,5 @@
 # @rbs module-self ActionController::Base
-module Authentication
+module Authenticatable
   extend ActiveSupport::Concern
 
   # Rails' rate_limit counts every request to the action before it runs, which

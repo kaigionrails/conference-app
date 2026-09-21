@@ -89,7 +89,7 @@ RSpec.describe "Sessions", type: :request do
     end
 
     it "rejects further attempts once the limit is reached" do
-      Authentication::LOGIN_ATTEMPT_LIMIT.times { fail_login }
+      Authenticatable::LOGIN_ATTEMPT_LIMIT.times { fail_login }
 
       succeed_login
       expect(response).to redirect_to(login_path)
@@ -97,25 +97,25 @@ RSpec.describe "Sessions", type: :request do
     end
 
     it "still allows a login just below the limit" do
-      (Authentication::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
+      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
 
       succeed_login
       expect(session[:user_id]).to eq operator.id
     end
 
     it "resets the count after a successful login" do
-      (Authentication::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
+      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
       succeed_login
-      (Authentication::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
+      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
 
       succeed_login
       expect(session[:user_id]).to eq operator.id
     end
 
     it "forgets the attempts once the window passes" do
-      Authentication::LOGIN_ATTEMPT_LIMIT.times { fail_login }
+      Authenticatable::LOGIN_ATTEMPT_LIMIT.times { fail_login }
 
-      travel(Authentication::LOGIN_ATTEMPT_PERIOD + 1.minute) do
+      travel(Authenticatable::LOGIN_ATTEMPT_PERIOD + 1.minute) do
         succeed_login
         expect(session[:user_id]).to eq operator.id
       end

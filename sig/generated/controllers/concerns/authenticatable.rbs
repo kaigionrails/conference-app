@@ -1,7 +1,7 @@
-# Generated from app/controllers/concerns/authentication.rb with RBS::Inline
+# Generated from app/controllers/concerns/authenticatable.rb with RBS::Inline
 
 # @rbs module-self ActionController::Base
-module Authentication : ActionController::Base
+module Authenticatable : ActionController::Base
   extend ActiveSupport::Concern
 
   # Rails' rate_limit counts every request to the action before it runs, which

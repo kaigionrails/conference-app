@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # @rbs! include _RbsRailsPathHelpers
 
   include SessionsHelper
-  include Authentication
+  include Authenticatable
 
   before_action :set_variant!
 

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  include Authentication
+  include Authenticatable
 
   def require_logged_in: () -> untyped
 
