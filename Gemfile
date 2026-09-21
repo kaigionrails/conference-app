@@ -55,6 +55,7 @@ gem "ruby-vips"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-github"
+gem "omniauth-google-oauth2"
 
 gem "faraday"
 gem "faraday-retry"
