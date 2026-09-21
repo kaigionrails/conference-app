@@ -104,7 +104,6 @@ ja:
     create:
       unknown_provider: "不明なログイン方法です。"
       invalid_email_or_password: "メールアドレスまたはパスワードが正しくありません。"
-      rate_limited: "ログインの試行回数が上限に達しました。しばらくしてからもう一度お試しください。"
     new:
       title: "ログイン"
       login_with_github: "Login with GitHub"

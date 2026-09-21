@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :reject_when_login_attempts_exceeded, only: :create
-
   # @rbs return: void
   def new
   end
@@ -26,7 +24,6 @@ class SessionsController < ApplicationController
       return
     end
 
-    clear_failed_logins!
     complete_login!(user)
     redirect_to safe_return_to(params[:return_to], default: operators_path)
   end
@@ -42,16 +39,7 @@ class SessionsController < ApplicationController
   #
   # @rbs return: void
   private def reject_login
-    count_failed_login!
     flash[:alert] = t("sessions.create.invalid_email_or_password")
-    redirect_to login_path
-  end
-
-  # @rbs return: void
-  private def reject_when_login_attempts_exceeded
-    return unless login_attempts_exceeded?
-
-    flash[:alert] = t("sessions.create.rate_limited")
     redirect_to login_path
   end
 end
