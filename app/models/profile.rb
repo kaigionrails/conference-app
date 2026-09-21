@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :profile_badges_profiles, dependent: :destroy
+  has_many :profile_badges_profiles, dependent: :delete_all
   has_many :profile_badges, through: :profile_badges_profiles
 
   has_many_attached :images

@@ -1,6 +1,6 @@
 class Talk < ApplicationRecord
   belongs_to :event
-  has_many :speakers_talks, dependent: :destroy
+  has_many :speakers_talks, dependent: :delete_all
   has_many :speakers, through: :speakers_talks
   has_many :talk_bookmarks, dependent: :destroy
   has_many :talk_reminders, dependent: :destroy
