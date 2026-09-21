@@ -1,5 +1,8 @@
 class AuthCallbackController < ApplicationController
-  PROVIDERS = {"github" => AuthenticationProviderGithub}.freeze
+  PROVIDERS = {
+    "github" => AuthenticationProviderGithub,
+    "google_oauth2" => AuthenticationProviderGoogle
+  }.freeze
 
   # @rbs return: void
   def create

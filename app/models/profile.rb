@@ -5,23 +5,17 @@ class Profile < ApplicationRecord
 
   has_many_attached :images
 
+  # The provider passes the URL: it is the one that knows where its avatars
+  # live, and this way Profile does not reach back into a provider of its own.
+  #
+  # @rbs url: String?
+  # @rbs source: String
   # @rbs return: void
-  def ensure_image_from_github
-    profile_image = fetch_profile_image_from_github
-    return if profile_image.nil?
+  def ensure_image_from(url, source:)
+    return if url.blank?
 
+    profile_image = URI.open(url) # standard:disable Security/Open
     m = Marcel::Magic.by_magic profile_image
-    images.attach(io: profile_image, filename: "github.#{m.subtype}")
-  end
-
-  private def fetch_profile_image_from_github
-    # Only GitHub registration calls this, so the provider is there; the guard
-    # is what lets the type stay nilable for users who arrive another way.
-    github = user.authentication_provider_github
-    return if github.nil?
-
-    client = Octokit::Client.new
-    url = client.user(github.uid.to_i).avatar_url
-    URI.open(url) # standard:disable Security/Open
+    images.attach(io: profile_image, filename: "#{source}.#{m.subtype}")
   end
 end
