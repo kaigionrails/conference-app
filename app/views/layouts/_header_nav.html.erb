@@ -71,11 +71,7 @@
             <% end %>
             <%= button_to t('layouts.header_nav.logout'), logout_path, method: :delete, form: { data: { turbo: false } }, class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
           <% else %>
-            <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
-              <%= button_tag type: "submit", class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" do %>
-                <span><%= t('layouts.header_nav.login_with_github') %></span>
-              <% end %>
-            <% end %>
+            <%= render "shared/login_providers", variant: :menu %>
           <% end %>
         </div>
       </div>

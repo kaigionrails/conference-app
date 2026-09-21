@@ -101,13 +101,16 @@ en:
     create:
       unknown_provider: "Unknown login method."
       failed: "Login failed. Please try again."
+  shared:
+    login_providers:
+      github: "Login with GitHub"
+      google: "Login with Google"
   sessions:
     create:
       unknown_provider: "Unknown login method."
       invalid_email_or_password: "Invalid email or password."
     new:
       title: "Login"
-      login_with_github: "Login with GitHub"
       for_operators: "For operators"
       email: "Email address"
       password: "Password"
@@ -158,7 +161,6 @@ en:
   users:
     show:
       login_prompt: "Log in to save a history of people you've met via QR codes."
-      login_with_github: "Login with GitHub"
       friends_who_met_at_event:
         zero: "People met at %{event_name}"
         one: "People met at %{event_name} (%{count} person)"
@@ -177,7 +179,6 @@ en:
       setting: "Setting"
       admin_console: "Admin console"
       logout: "Logout"
-      login_with_github: "Login with GitHub"
       switch_to_ja: "Switch to ja locale"
       switch_to_en: "Switch to en locale"
   live_streams:

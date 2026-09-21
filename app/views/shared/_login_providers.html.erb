@@ -1,0 +1,48 @@
+<%# locals: (variant:, return_to: nil) -%>
+<%#
+  Every login button on the site renders through here, so adding a provider
+  touches this file alone.
+
+  variant picks the presentation:
+    :card   bordered button with the provider mark (login page, about, settings)
+    :menu   full-width row inside the header dropdown
+    :inline underlined text (the profile exchange prompt)
+-%>
+<% github_url = return_to.present? ? "/auth/github?return_to=#{return_to}" : "/auth/github" %>
+<% google_url = return_to.present? ? "/auth/google_oauth2?return_to=#{return_to}" : "/auth/google_oauth2" %>
+
+<% case variant %>
+<% when :card %>
+  <div class="flex flex-wrap items-center justify-center gap-3">
+    <%= form_tag github_url, method: :post, data: {turbo: false} do %>
+      <%= button_tag type: "submit", class: "bg-white px-4 py-2 text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center" do %>
+        <%= render "shared/github_mark" %>
+        <span class="font-semibold text-lg pl-3"><%= t("shared.login_providers.github") %></span>
+      <% end %>
+    <% end %>
+    <%= form_tag google_url, method: :post, data: {turbo: false} do %>
+      <%= button_tag type: "submit", class: "bg-white px-4 py-2 text-gray-900 rounded-lg shadow-sm border-black border flex flex-row items-center" do %>
+        <%= render "shared/google_mark" %>
+        <span class="font-semibold text-lg pl-3"><%= t("shared.login_providers.google") %></span>
+      <% end %>
+    <% end %>
+  </div>
+<% when :menu %>
+  <div class="flex flex-col gap-1">
+    <%= form_tag github_url, method: :post, data: {turbo: false} do %>
+      <%= button_tag t("shared.login_providers.github"), type: "submit", class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
+    <% end %>
+    <%= form_tag google_url, method: :post, data: {turbo: false} do %>
+      <%= button_tag t("shared.login_providers.google"), type: "submit", class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
+    <% end %>
+  </div>
+<% when :inline %>
+  <div class="flex flex-wrap items-center justify-center gap-4">
+    <%= form_tag github_url, method: :post, data: {turbo: false} do %>
+      <%= submit_tag t("shared.login_providers.github"), class: "underline text-lg cursor-pointer" %>
+    <% end %>
+    <%= form_tag google_url, method: :post, data: {turbo: false} do %>
+      <%= submit_tag t("shared.login_providers.google"), class: "underline text-lg cursor-pointer" %>
+    <% end %>
+  </div>
+<% end %>
