@@ -15,7 +15,4 @@ class SessionsController < ApplicationController
   #
   # @rbs return: void
   private def reject_login: () -> void
-
-  # @rbs return: void
-  private def reject_when_login_attempts_exceeded: () -> void
 end
