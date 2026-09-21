@@ -1,0 +1,53 @@
+# Generated from app/models/authentication_provider.rb with RBS::Inline
+
+# Base class for the providers a user can sign in through. Each one owns its
+# own table, so this is an abstract class rather than STI.
+#
+# A subclass supplies three things: the handle it would like to give a new
+# user, the display name for their profile, and whatever registration has to
+# do beyond what every provider shares.
+class AuthenticationProvider < ApplicationRecord
+  # A handle rejected between the availability check and the insert is retried
+  # with a freshly generated one. Bounded so that a failure with another cause
+  # -- a uid taken by a concurrent callback, say -- surfaces instead of looping.
+  CREATE_ATTEMPTS: ::Integer
+
+  # @rbs auth: untyped
+  # @rbs return: User
+  def self.find_or_create_user_from_auth_hash: (untyped auth) -> User
+
+  # @rbs auth: untyped
+  # @rbs return: User
+  def self.create_user_from_auth_hash: (untyped auth) -> User
+
+  # The handle the provider would like to use, when it is still available.
+  # It may not be: another provider could already hold it, or it could be
+  # reserved. Falling back to a generated handle keeps login working for a
+  # user who cannot do anything about the clash themselves.
+  #
+  # @rbs auth: untyped
+  # @rbs attempt: Integer
+  # @rbs return: String
+  def self.handle_for: (untyped auth, Integer attempt) -> String
+
+  # @rbs handle: String
+  # @rbs display_name: String
+  # @rbs uid: String
+  # @rbs return: User
+  def self.create_user!: (handle: String, display_name: String, uid: String) -> User
+
+  # Runs once, after a provider has created a brand new user. Subclasses that
+  # override this must call super.
+  #
+  # @rbs user: User
+  # @rbs return: void
+  def self.after_create_user: (User user) -> void
+
+  # @rbs auth: untyped
+  # @rbs return: String?
+  def self.preferred_handle: (untyped auth) -> String?
+
+  # @rbs auth: untyped
+  # @rbs return: String
+  def self.display_name_from: (untyped auth) -> String
+end

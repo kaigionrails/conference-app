@@ -1,14 +1,16 @@
-class TalkBookmark < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::TalkBookmark, ::TalkBookmark::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::TalkBookmark < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::TalkBookmark, ::TalkBookmark::ActiveRecord_Relation, ::Integer]
+
+  module ::TalkBookmark::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class TalkBookmark < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def user_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def user_id?: () -> bool
 
-    def user_id_changed?: () -> bool
+    def user_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def user_id_was: () -> ::Integer?
 
-    def user_id_previously_changed?: () -> bool
+    def user_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class TalkBookmark < ::ApplicationRecord
 
     def saved_change_to_user_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_user_id?: () -> bool
+    def saved_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_user_id?: () -> bool
+    def will_save_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_user_id!: () -> void
 
     def clear_user_id_change: () -> void
+
+    def user_id_before_type_cast: () -> ::Integer
+
+    def user_id_for_database: () -> ::Integer
 
     def talk_id: () -> ::Integer
 
@@ -80,7 +90,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def talk_id?: () -> bool
 
-    def talk_id_changed?: () -> bool
+    def talk_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def talk_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -88,7 +98,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def talk_id_was: () -> ::Integer?
 
-    def talk_id_previously_changed?: () -> bool
+    def talk_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def talk_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -102,13 +112,17 @@ class TalkBookmark < ::ApplicationRecord
 
     def saved_change_to_talk_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_talk_id?: () -> bool
+    def saved_change_to_talk_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_talk_id?: () -> bool
+    def will_save_change_to_talk_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_talk_id!: () -> void
 
     def clear_talk_id_change: () -> void
+
+    def talk_id_before_type_cast: () -> ::Integer
+
+    def talk_id_for_database: () -> ::Integer
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -116,7 +130,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -124,7 +138,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -138,13 +152,17 @@ class TalkBookmark < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -152,7 +170,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class TalkBookmark < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,43 +192,114 @@ class TalkBookmark < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::TalkBookmark::GeneratedAttributeMethods
+  module ::TalkBookmark::GeneratedAliasAttributeMethods
+    include ::TalkBookmark::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::TalkBookmark::GeneratedAliasAttributeMethods
 
   def user: () -> ::User
   def user=: (::User?) -> ::User?
   def reload_user: () -> ::User?
-  def build_user: (untyped) -> ::User
-  def create_user: (untyped) -> ::User
-  def create_user!: (untyped) -> ::User
+  def build_user: (?untyped) -> ::User
+  def create_user: (?untyped) -> ::User
+  def create_user!: (?untyped) -> ::User
   def talk: () -> ::Talk
   def talk=: (::Talk?) -> ::Talk?
   def reload_talk: () -> ::Talk?
-  def build_talk: (untyped) -> ::Talk
-  def create_talk: (untyped) -> ::Talk
-  def create_talk!: (untyped) -> ::Talk
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_talk: (?untyped) -> ::Talk
+  def create_talk: (?untyped) -> ::Talk
+  def create_talk!: (?untyped) -> ::Talk
 
-  module GeneratedRelationMethods
+  module ::TalkBookmark::GeneratedAssociationMethods
+  end
+  include ::TalkBookmark::GeneratedAssociationMethods
+
+  module ::TalkBookmark::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::TalkBookmark::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TalkBookmark, ::Integer]
+  class ::TalkBookmark::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::TalkBookmark]
+    include ::TalkBookmark::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::TalkBookmark, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::TalkBookmark::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::TalkBookmark]
     include ::TalkBookmark::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TalkBookmark, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::TalkBookmark, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkBookmark
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkBookmark]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkBookmark
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkBookmark]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TalkBookmark
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TalkBookmark]
+    def reload: () -> ::Array[::TalkBookmark]
+
+    def replace: (::Array[::TalkBookmark]) -> void
+    def delete: (*::TalkBookmark | ::Integer) -> ::Array[::TalkBookmark]
+    def destroy: (*::TalkBookmark | ::Integer) -> ::Array[::TalkBookmark]
+    def <<: (*::TalkBookmark | ::Array[::TalkBookmark]) -> self
+    def prepend: (*::TalkBookmark | ::Array[::TalkBookmark]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::User < ::ApplicationRecord
+end
+class ::Talk < ::ApplicationRecord
 end

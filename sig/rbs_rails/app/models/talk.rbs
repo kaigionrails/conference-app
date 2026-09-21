@@ -1,14 +1,16 @@
-class Talk < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::Talk, ::Talk::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::Talk < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::Talk, ::Talk::ActiveRecord_Relation, ::Integer]
+
+  module ::Talk::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class Talk < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def event_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class Talk < ::ApplicationRecord
 
     def event_id?: () -> bool
 
-    def event_id_changed?: () -> bool
+    def event_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class Talk < ::ApplicationRecord
 
     def event_id_was: () -> ::Integer?
 
-    def event_id_previously_changed?: () -> bool
+    def event_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_event_id?: () -> bool
+    def saved_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_event_id?: () -> bool
+    def will_save_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_event_id!: () -> void
 
     def clear_event_id_change: () -> void
+
+    def event_id_before_type_cast: () -> ::Integer
+
+    def event_id_for_database: () -> ::Integer
 
     def title: () -> ::String
 
@@ -80,7 +90,7 @@ class Talk < ::ApplicationRecord
 
     def title?: () -> bool
 
-    def title_changed?: () -> bool
+    def title_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def title_change: () -> [ ::String?, ::String? ]
 
@@ -88,7 +98,7 @@ class Talk < ::ApplicationRecord
 
     def title_was: () -> ::String?
 
-    def title_previously_changed?: () -> bool
+    def title_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def title_previous_change: () -> ::Array[::String?]?
 
@@ -102,13 +112,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_title: () -> ::Array[::String?]?
 
-    def saved_change_to_title?: () -> bool
+    def saved_change_to_title?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_title?: () -> bool
+    def will_save_change_to_title?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_title!: () -> void
 
     def clear_title_change: () -> void
+
+    def title_before_type_cast: () -> ::String
+
+    def title_for_database: () -> ::String
 
     def abstract: () -> ::String
 
@@ -116,7 +130,7 @@ class Talk < ::ApplicationRecord
 
     def abstract?: () -> bool
 
-    def abstract_changed?: () -> bool
+    def abstract_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def abstract_change: () -> [ ::String?, ::String? ]
 
@@ -124,7 +138,7 @@ class Talk < ::ApplicationRecord
 
     def abstract_was: () -> ::String?
 
-    def abstract_previously_changed?: () -> bool
+    def abstract_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def abstract_previous_change: () -> ::Array[::String?]?
 
@@ -138,13 +152,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_abstract: () -> ::Array[::String?]?
 
-    def saved_change_to_abstract?: () -> bool
+    def saved_change_to_abstract?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_abstract?: () -> bool
+    def will_save_change_to_abstract?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_abstract!: () -> void
 
     def clear_abstract_change: () -> void
+
+    def abstract_before_type_cast: () -> ::String
+
+    def abstract_for_database: () -> ::String
 
     def start_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -152,7 +170,7 @@ class Talk < ::ApplicationRecord
 
     def start_at?: () -> bool
 
-    def start_at_changed?: () -> bool
+    def start_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def start_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class Talk < ::ApplicationRecord
 
     def start_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def start_at_previously_changed?: () -> bool
+    def start_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def start_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,13 +192,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_start_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_start_at?: () -> bool
+    def saved_change_to_start_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_start_at?: () -> bool
+    def will_save_change_to_start_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_start_at!: () -> void
 
     def clear_start_at_change: () -> void
+
+    def start_at_before_type_cast: () -> ::Time
+
+    def start_at_for_database: () -> ::Time
 
     def duration_minutes: () -> ::Integer
 
@@ -188,7 +210,7 @@ class Talk < ::ApplicationRecord
 
     def duration_minutes?: () -> bool
 
-    def duration_minutes_changed?: () -> bool
+    def duration_minutes_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def duration_minutes_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -196,7 +218,7 @@ class Talk < ::ApplicationRecord
 
     def duration_minutes_was: () -> ::Integer?
 
-    def duration_minutes_previously_changed?: () -> bool
+    def duration_minutes_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def duration_minutes_previous_change: () -> ::Array[::Integer?]?
 
@@ -210,13 +232,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_duration_minutes: () -> ::Array[::Integer?]?
 
-    def saved_change_to_duration_minutes?: () -> bool
+    def saved_change_to_duration_minutes?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_duration_minutes?: () -> bool
+    def will_save_change_to_duration_minutes?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_duration_minutes!: () -> void
 
     def clear_duration_minutes_change: () -> void
+
+    def duration_minutes_before_type_cast: () -> ::Integer
+
+    def duration_minutes_for_database: () -> ::Integer
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -224,7 +250,7 @@ class Talk < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -232,7 +258,7 @@ class Talk < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -246,13 +272,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -260,7 +290,7 @@ class Talk < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -268,7 +298,7 @@ class Talk < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -282,13 +312,17 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
 
     def track: () -> ::String
 
@@ -296,7 +330,7 @@ class Talk < ::ApplicationRecord
 
     def track?: () -> bool
 
-    def track_changed?: () -> bool
+    def track_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def track_change: () -> [ ::String?, ::String? ]
 
@@ -304,7 +338,7 @@ class Talk < ::ApplicationRecord
 
     def track_was: () -> ::String?
 
-    def track_previously_changed?: () -> bool
+    def track_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def track_previous_change: () -> ::Array[::String?]?
 
@@ -318,19 +352,67 @@ class Talk < ::ApplicationRecord
 
     def saved_change_to_track: () -> ::Array[::String?]?
 
-    def saved_change_to_track?: () -> bool
+    def saved_change_to_track?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_track?: () -> bool
+    def will_save_change_to_track?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_track!: () -> void
 
     def clear_track_change: () -> void
+
+    def track_before_type_cast: () -> ::String
+
+    def track_for_database: () -> ::String
   end
-  include GeneratedAttributeMethods
+  include ::Talk::GeneratedAttributeMethods
+  module ::Talk::GeneratedAliasAttributeMethods
+    include ::Talk::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::Talk::GeneratedAliasAttributeMethods
   def speakers_talks: () -> ::SpeakersTalk::ActiveRecord_Associations_CollectionProxy
   def speakers_talks=: (::SpeakersTalk::ActiveRecord_Associations_CollectionProxy | ::Array[::SpeakersTalk]) -> (::SpeakersTalk::ActiveRecord_Associations_CollectionProxy | ::Array[::SpeakersTalk])
-  def speakers_talk_ids: () -> ::Array[::Integer]
-  def speakers_talk_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def speakers_talk_ids: () -> ::Array[top]
+  def speakers_talk_ids=: (::Array[top]) -> ::Array[top]
   def speakers: () -> ::Speaker::ActiveRecord_Associations_CollectionProxy
   def speakers=: (::Speaker::ActiveRecord_Associations_CollectionProxy | ::Array[::Speaker]) -> (::Speaker::ActiveRecord_Associations_CollectionProxy | ::Array[::Speaker])
   def speaker_ids: () -> ::Array[::Integer]
@@ -347,24 +429,61 @@ class Talk < ::ApplicationRecord
   def event: () -> ::Event
   def event=: (::Event?) -> ::Event?
   def reload_event: () -> ::Event?
-  def build_event: (untyped) -> ::Event
-  def create_event: (untyped) -> ::Event
-  def create_event!: (untyped) -> ::Event
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_event: (?untyped) -> ::Event
+  def create_event: (?untyped) -> ::Event
+  def create_event!: (?untyped) -> ::Event
 
-  module GeneratedRelationMethods
+  module ::Talk::GeneratedAssociationMethods
+  end
+  include ::Talk::GeneratedAssociationMethods
+
+  module ::Talk::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::Talk::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::Talk, ::Integer]
+  class ::Talk::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::Talk]
+    include ::Talk::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::Talk, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::Talk::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::Talk]
     include ::Talk::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::Talk, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::Talk, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Talk
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Talk]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Talk
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Talk]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Talk
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Talk]
+    def reload: () -> ::Array[::Talk]
+
+    def replace: (::Array[::Talk]) -> void
+    def delete: (*::Talk | ::Integer) -> ::Array[::Talk]
+    def destroy: (*::Talk | ::Integer) -> ::Array[::Talk]
+    def <<: (*::Talk | ::Array[::Talk]) -> self
+    def prepend: (*::Talk | ::Array[::Talk]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::SpeakersTalk < ::ApplicationRecord
+end
+class ::SpeakersTalk::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::Speaker < ::ApplicationRecord
+end
+class ::Speaker::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::TalkBookmark < ::ApplicationRecord
+end
+class ::TalkBookmark::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::TalkReminder < ::ApplicationRecord
+end
+class ::TalkReminder::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::Event < ::ApplicationRecord
 end

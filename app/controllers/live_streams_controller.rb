@@ -42,16 +42,20 @@ class LiveStreamsController < ApplicationController
   end
 
   private def require_ticket
+    event = Event.find_by(slug: params[:event_slug])
+
     # logged_in, has current event ticket or organizer
     if current_user &&
         (
-          current_user!.tito_tickets.where(event: Event.find_by(slug: params[:event_slug]), state: "complete").exists? \
-          || current_user!.organizer? \
-          || current_user!.operator?
+          current_user!.tito_tickets.where(event: event, state: "complete").exists? ||
+          current_user!.organizer? ||
+          current_user!.operator?
         )
       true
-    elsif session[:ticketholder] && TitoTicket.where(id: session[:ticketholder].to_i).exists?
-      # user has ticket. do nothing
+    elsif session[:ticketholder] &&
+        # Same conditions as the branch above. Checking only that the id exists
+        # let a ticket for another event, or one that never completed, through.
+        TitoTicket.where(id: session[:ticketholder].to_i, event: event, state: "complete").exists?
       true
     else
       redirect_to event_live_checkin_path(params[:event_slug])

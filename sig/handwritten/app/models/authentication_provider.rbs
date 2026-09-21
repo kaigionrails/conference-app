@@ -1,0 +1,13 @@
+# rbs_rails skips abstract classes (RbsRails::ActiveRecord.generatable? returns
+# false for them), so the belongs_to on this base class produces no signature.
+# Everything else about the class comes from rbs-inline.
+class AuthenticationProvider < ApplicationRecord
+  # rbs_rails gives concrete models their relation class methods through an
+  # `extend _ActiveRecord_Relation_ClassMethods[...]`, which needs a relation
+  # type this class does not have. Only eager_load is reached from here.
+  def self.eager_load: (*untyped) -> untyped
+
+  def user: () -> User
+
+  def user=: (User) -> User
+end

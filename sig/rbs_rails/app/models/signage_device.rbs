@@ -1,14 +1,16 @@
-class SignageDevice < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::SignageDevice, ::SignageDevice::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::SignageDevice < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::SignageDevice, ::SignageDevice::ActiveRecord_Relation, ::Integer]
+
+  module ::SignageDevice::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class SignageDevice < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class SignageDevice < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def device_name: () -> ::String
 
@@ -44,7 +50,7 @@ class SignageDevice < ::ApplicationRecord
 
     def device_name?: () -> bool
 
-    def device_name_changed?: () -> bool
+    def device_name_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def device_name_change: () -> [ ::String?, ::String? ]
 
@@ -52,7 +58,7 @@ class SignageDevice < ::ApplicationRecord
 
     def device_name_was: () -> ::String?
 
-    def device_name_previously_changed?: () -> bool
+    def device_name_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def device_name_previous_change: () -> ::Array[::String?]?
 
@@ -66,13 +72,17 @@ class SignageDevice < ::ApplicationRecord
 
     def saved_change_to_device_name: () -> ::Array[::String?]?
 
-    def saved_change_to_device_name?: () -> bool
+    def saved_change_to_device_name?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_device_name?: () -> bool
+    def will_save_change_to_device_name?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_device_name!: () -> void
 
     def clear_device_name_change: () -> void
+
+    def device_name_before_type_cast: () -> ::String
+
+    def device_name_for_database: () -> ::String
 
     def last_heaetbeated_at: () -> ::ActiveSupport::TimeWithZone?
 
@@ -80,7 +90,7 @@ class SignageDevice < ::ApplicationRecord
 
     def last_heaetbeated_at?: () -> bool
 
-    def last_heaetbeated_at_changed?: () -> bool
+    def last_heaetbeated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def last_heaetbeated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -88,7 +98,7 @@ class SignageDevice < ::ApplicationRecord
 
     def last_heaetbeated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def last_heaetbeated_at_previously_changed?: () -> bool
+    def last_heaetbeated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def last_heaetbeated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -102,13 +112,17 @@ class SignageDevice < ::ApplicationRecord
 
     def saved_change_to_last_heaetbeated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_last_heaetbeated_at?: () -> bool
+    def saved_change_to_last_heaetbeated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_last_heaetbeated_at?: () -> bool
+    def will_save_change_to_last_heaetbeated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_last_heaetbeated_at!: () -> void
 
     def clear_last_heaetbeated_at_change: () -> void
+
+    def last_heaetbeated_at_before_type_cast: () -> ::Time?
+
+    def last_heaetbeated_at_for_database: () -> ::Time?
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -116,7 +130,7 @@ class SignageDevice < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -124,7 +138,7 @@ class SignageDevice < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -138,13 +152,17 @@ class SignageDevice < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -152,7 +170,7 @@ class SignageDevice < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class SignageDevice < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,35 +192,105 @@ class SignageDevice < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::SignageDevice::GeneratedAttributeMethods
+  module ::SignageDevice::GeneratedAliasAttributeMethods
+    include ::SignageDevice::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::SignageDevice::GeneratedAliasAttributeMethods
   def signage_device_assigns: () -> ::SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy
   def signage_device_assigns=: (::SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy | ::Array[::SignageDeviceAssign]) -> (::SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy | ::Array[::SignageDeviceAssign])
   def signage_device_assign_ids: () -> ::Array[::Integer]
   def signage_device_assign_ids=: (::Array[::Integer]) -> ::Array[::Integer]
 
-  module GeneratedAssociationMethods
+  module ::SignageDevice::GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
+  include ::SignageDevice::GeneratedAssociationMethods
 
-  module GeneratedRelationMethods
+  module ::SignageDevice::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::SignageDevice::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::SignageDevice, ::Integer]
+  class ::SignageDevice::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::SignageDevice]
+    include ::SignageDevice::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::SignageDevice, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::SignageDevice::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::SignageDevice]
     include ::SignageDevice::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::SignageDevice, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::SignageDevice, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageDevice
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageDevice]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageDevice
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageDevice]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SignageDevice
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SignageDevice]
+    def reload: () -> ::Array[::SignageDevice]
+
+    def replace: (::Array[::SignageDevice]) -> void
+    def delete: (*::SignageDevice | ::Integer) -> ::Array[::SignageDevice]
+    def destroy: (*::SignageDevice | ::Integer) -> ::Array[::SignageDevice]
+    def <<: (*::SignageDevice | ::Array[::SignageDevice]) -> self
+    def prepend: (*::SignageDevice | ::Array[::SignageDevice]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::SignageDeviceAssign < ::ApplicationRecord
+end
+class ::SignageDeviceAssign::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end

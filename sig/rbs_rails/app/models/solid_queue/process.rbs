@@ -1,15 +1,17 @@
-module SolidQueue
-  class Process < ::SolidQueue::Record
-    extend ::_ActiveRecord_Relation_ClassMethods[::SolidQueue::Process, ::SolidQueue::Process::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-    module GeneratedAttributeMethods
+module ::SolidQueue
+  class ::SolidQueue::Process < ::SolidQueue::Record
+    extend ::ActiveRecord::Base::ClassMethods[::SolidQueue::Process, ::SolidQueue::Process::ActiveRecord_Relation, ::Integer]
+
+    module ::SolidQueue::Process::GeneratedAttributeMethods
       def id: () -> ::Integer
 
       def id=: (::Integer) -> ::Integer
 
       def id?: () -> bool
 
-      def id_changed?: () -> bool
+      def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -17,7 +19,7 @@ module SolidQueue
 
       def id_was: () -> ::Integer?
 
-      def id_previously_changed?: () -> bool
+      def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -31,13 +33,17 @@ module SolidQueue
 
       def saved_change_to_id: () -> ::Array[::Integer?]?
 
-      def saved_change_to_id?: () -> bool
+      def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_id?: () -> bool
+      def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_id!: () -> void
 
       def clear_id_change: () -> void
+
+      def id_before_type_cast: () -> ::Integer
+
+      def id_for_database: () -> ::Integer
 
       def kind: () -> ::String
 
@@ -45,7 +51,7 @@ module SolidQueue
 
       def kind?: () -> bool
 
-      def kind_changed?: () -> bool
+      def kind_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def kind_change: () -> [ ::String?, ::String? ]
 
@@ -53,7 +59,7 @@ module SolidQueue
 
       def kind_was: () -> ::String?
 
-      def kind_previously_changed?: () -> bool
+      def kind_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def kind_previous_change: () -> ::Array[::String?]?
 
@@ -67,13 +73,17 @@ module SolidQueue
 
       def saved_change_to_kind: () -> ::Array[::String?]?
 
-      def saved_change_to_kind?: () -> bool
+      def saved_change_to_kind?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_kind?: () -> bool
+      def will_save_change_to_kind?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_kind!: () -> void
 
       def clear_kind_change: () -> void
+
+      def kind_before_type_cast: () -> ::String
+
+      def kind_for_database: () -> ::String
 
       def last_heartbeat_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -81,7 +91,7 @@ module SolidQueue
 
       def last_heartbeat_at?: () -> bool
 
-      def last_heartbeat_at_changed?: () -> bool
+      def last_heartbeat_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def last_heartbeat_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -89,7 +99,7 @@ module SolidQueue
 
       def last_heartbeat_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-      def last_heartbeat_at_previously_changed?: () -> bool
+      def last_heartbeat_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def last_heartbeat_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -103,13 +113,17 @@ module SolidQueue
 
       def saved_change_to_last_heartbeat_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-      def saved_change_to_last_heartbeat_at?: () -> bool
+      def saved_change_to_last_heartbeat_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-      def will_save_change_to_last_heartbeat_at?: () -> bool
+      def will_save_change_to_last_heartbeat_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def restore_last_heartbeat_at!: () -> void
 
       def clear_last_heartbeat_at_change: () -> void
+
+      def last_heartbeat_at_before_type_cast: () -> ::Time
+
+      def last_heartbeat_at_for_database: () -> ::Time
 
       def supervisor_id: () -> ::Integer?
 
@@ -117,7 +131,7 @@ module SolidQueue
 
       def supervisor_id?: () -> bool
 
-      def supervisor_id_changed?: () -> bool
+      def supervisor_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def supervisor_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -125,7 +139,7 @@ module SolidQueue
 
       def supervisor_id_was: () -> ::Integer?
 
-      def supervisor_id_previously_changed?: () -> bool
+      def supervisor_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def supervisor_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -139,13 +153,17 @@ module SolidQueue
 
       def saved_change_to_supervisor_id: () -> ::Array[::Integer?]?
 
-      def saved_change_to_supervisor_id?: () -> bool
+      def saved_change_to_supervisor_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_supervisor_id?: () -> bool
+      def will_save_change_to_supervisor_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_supervisor_id!: () -> void
 
       def clear_supervisor_id_change: () -> void
+
+      def supervisor_id_before_type_cast: () -> ::Integer?
+
+      def supervisor_id_for_database: () -> ::Integer?
 
       def pid: () -> ::Integer
 
@@ -153,7 +171,7 @@ module SolidQueue
 
       def pid?: () -> bool
 
-      def pid_changed?: () -> bool
+      def pid_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def pid_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -161,7 +179,7 @@ module SolidQueue
 
       def pid_was: () -> ::Integer?
 
-      def pid_previously_changed?: () -> bool
+      def pid_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def pid_previous_change: () -> ::Array[::Integer?]?
 
@@ -175,13 +193,17 @@ module SolidQueue
 
       def saved_change_to_pid: () -> ::Array[::Integer?]?
 
-      def saved_change_to_pid?: () -> bool
+      def saved_change_to_pid?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_pid?: () -> bool
+      def will_save_change_to_pid?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_pid!: () -> void
 
       def clear_pid_change: () -> void
+
+      def pid_before_type_cast: () -> ::Integer
+
+      def pid_for_database: () -> ::Integer
 
       def hostname: () -> ::String?
 
@@ -189,7 +211,7 @@ module SolidQueue
 
       def hostname?: () -> bool
 
-      def hostname_changed?: () -> bool
+      def hostname_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def hostname_change: () -> [ ::String?, ::String? ]
 
@@ -197,7 +219,7 @@ module SolidQueue
 
       def hostname_was: () -> ::String?
 
-      def hostname_previously_changed?: () -> bool
+      def hostname_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def hostname_previous_change: () -> ::Array[::String?]?
 
@@ -211,13 +233,17 @@ module SolidQueue
 
       def saved_change_to_hostname: () -> ::Array[::String?]?
 
-      def saved_change_to_hostname?: () -> bool
+      def saved_change_to_hostname?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_hostname?: () -> bool
+      def will_save_change_to_hostname?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_hostname!: () -> void
 
       def clear_hostname_change: () -> void
+
+      def hostname_before_type_cast: () -> ::String?
+
+      def hostname_for_database: () -> ::String?
 
       def metadata: () -> ::String?
 
@@ -225,7 +251,7 @@ module SolidQueue
 
       def metadata?: () -> bool
 
-      def metadata_changed?: () -> bool
+      def metadata_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def metadata_change: () -> [ ::String?, ::String? ]
 
@@ -233,7 +259,7 @@ module SolidQueue
 
       def metadata_was: () -> ::String?
 
-      def metadata_previously_changed?: () -> bool
+      def metadata_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def metadata_previous_change: () -> ::Array[::String?]?
 
@@ -247,13 +273,17 @@ module SolidQueue
 
       def saved_change_to_metadata: () -> ::Array[::String?]?
 
-      def saved_change_to_metadata?: () -> bool
+      def saved_change_to_metadata?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_metadata?: () -> bool
+      def will_save_change_to_metadata?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_metadata!: () -> void
 
       def clear_metadata_change: () -> void
+
+      def metadata_before_type_cast: () -> ::String?
+
+      def metadata_for_database: () -> ::String?
 
       def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -261,7 +291,7 @@ module SolidQueue
 
       def created_at?: () -> bool
 
-      def created_at_changed?: () -> bool
+      def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -269,7 +299,7 @@ module SolidQueue
 
       def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-      def created_at_previously_changed?: () -> bool
+      def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -283,13 +313,17 @@ module SolidQueue
 
       def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-      def saved_change_to_created_at?: () -> bool
+      def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-      def will_save_change_to_created_at?: () -> bool
+      def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def restore_created_at!: () -> void
 
       def clear_created_at_change: () -> void
+
+      def created_at_before_type_cast: () -> ::Time
+
+      def created_at_for_database: () -> ::Time
 
       def name: () -> ::String
 
@@ -297,7 +331,7 @@ module SolidQueue
 
       def name?: () -> bool
 
-      def name_changed?: () -> bool
+      def name_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def name_change: () -> [ ::String?, ::String? ]
 
@@ -305,7 +339,7 @@ module SolidQueue
 
       def name_was: () -> ::String?
 
-      def name_previously_changed?: () -> bool
+      def name_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def name_previous_change: () -> ::Array[::String?]?
 
@@ -319,15 +353,63 @@ module SolidQueue
 
       def saved_change_to_name: () -> ::Array[::String?]?
 
-      def saved_change_to_name?: () -> bool
+      def saved_change_to_name?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_name?: () -> bool
+      def will_save_change_to_name?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_name!: () -> void
 
       def clear_name_change: () -> void
+
+      def name_before_type_cast: () -> ::String
+
+      def name_for_database: () -> ::String
     end
-    include GeneratedAttributeMethods
+    include ::SolidQueue::Process::GeneratedAttributeMethods
+    module ::SolidQueue::Process::GeneratedAliasAttributeMethods
+      include ::SolidQueue::Process::GeneratedAttributeMethods
+
+      alias id_value id
+
+      alias id_value= id=
+
+      alias id_value? id?
+
+      alias id_value_changed? id_changed?
+
+      alias id_value_change id_change
+
+      alias id_value_will_change! id_will_change!
+
+      alias id_value_was id_was
+
+      alias id_value_previously_changed? id_previously_changed?
+
+      alias id_value_previous_change id_previous_change
+
+      alias id_value_previously_was id_previously_was
+
+      alias id_value_before_last_save id_before_last_save
+
+      alias id_value_change_to_be_saved id_change_to_be_saved
+
+      alias id_value_in_database id_in_database
+
+      alias saved_change_to_id_value saved_change_to_id
+
+      alias saved_change_to_id_value? saved_change_to_id?
+
+      alias will_save_change_to_id_value? will_save_change_to_id?
+
+      alias restore_id_value! restore_id!
+
+      alias clear_id_value_change clear_id_change
+
+      alias id_value_before_type_cast id_before_type_cast
+
+      alias id_value_for_database id_for_database
+    end
+    include ::SolidQueue::Process::GeneratedAliasAttributeMethods
     def claimed_executions: () -> ::SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy
     def claimed_executions=: (::SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy | ::Array[::SolidQueue::ClaimedExecution]) -> (::SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy | ::Array[::SolidQueue::ClaimedExecution])
     def claimed_execution_ids: () -> ::Array[::Integer]
@@ -340,25 +422,56 @@ module SolidQueue
     def supervisor: () -> ::SolidQueue::Process?
     def supervisor=: (::SolidQueue::Process?) -> ::SolidQueue::Process?
     def reload_supervisor: () -> ::SolidQueue::Process?
-    def build_supervisor: (untyped) -> ::SolidQueue::Process
-    def create_supervisor: (untyped) -> ::SolidQueue::Process
-    def create_supervisor!: (untyped) -> ::SolidQueue::Process
-    module GeneratedAssociationMethods
-    end
-    include GeneratedAssociationMethods
+    def build_supervisor: (?untyped) -> ::SolidQueue::Process
+    def create_supervisor: (?untyped) -> ::SolidQueue::Process
+    def create_supervisor!: (?untyped) -> ::SolidQueue::Process
 
-    module GeneratedRelationMethods
+    module ::SolidQueue::Process::GeneratedAssociationMethods
+    end
+    include ::SolidQueue::Process::GeneratedAssociationMethods
+
+    module ::SolidQueue::Process::GeneratedRelationMethods
     end
 
-    class ActiveRecord_Relation < ::ActiveRecord::Relation
-      include ::SolidQueue::Process::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::SolidQueue::Process, ::Integer]
+    class ::SolidQueue::Process::ActiveRecord_Relation < ::ActiveRecord::Relation
       include ::Enumerable[::SolidQueue::Process]
+      include ::SolidQueue::Process::GeneratedRelationMethods
+      include ::ActiveRecord::Relation::Methods[::SolidQueue::Process, ::Integer]
     end
 
-    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    class ::SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include ::Enumerable[::SolidQueue::Process]
       include ::SolidQueue::Process::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::SolidQueue::Process, ::Integer]
+      include ::ActiveRecord::Relation::Methods[::SolidQueue::Process, ::Integer]
+
+      def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Process
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Process]
+      def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Process
+                | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Process]
+      def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Process
+                 | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Process]
+      def reload: () -> ::Array[::SolidQueue::Process]
+
+      def replace: (::Array[::SolidQueue::Process]) -> void
+      def delete: (*::SolidQueue::Process | ::Integer) -> ::Array[::SolidQueue::Process]
+      def destroy: (*::SolidQueue::Process | ::Integer) -> ::Array[::SolidQueue::Process]
+      def <<: (*::SolidQueue::Process | ::Array[::SolidQueue::Process]) -> self
+      def prepend: (*::SolidQueue::Process | ::Array[::SolidQueue::Process]) -> self
     end
   end
+end
+
+module ::SolidQueue
+end
+class ::SolidQueue::Record < ::ActiveRecord::Base
+end
+class ::SolidQueue::ClaimedExecution < ::SolidQueue::Execution
+end
+class ::SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::SolidQueue::Process < ::SolidQueue::Record
+end
+class ::SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::SolidQueue::Execution < ::SolidQueue::Record
 end

@@ -1,15 +1,17 @@
-module SolidQueue
-  class Pause < ::SolidQueue::Record
-    extend ::_ActiveRecord_Relation_ClassMethods[::SolidQueue::Pause, ::SolidQueue::Pause::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-    module GeneratedAttributeMethods
+module ::SolidQueue
+  class ::SolidQueue::Pause < ::SolidQueue::Record
+    extend ::ActiveRecord::Base::ClassMethods[::SolidQueue::Pause, ::SolidQueue::Pause::ActiveRecord_Relation, ::Integer]
+
+    module ::SolidQueue::Pause::GeneratedAttributeMethods
       def id: () -> ::Integer
 
       def id=: (::Integer) -> ::Integer
 
       def id?: () -> bool
 
-      def id_changed?: () -> bool
+      def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -17,7 +19,7 @@ module SolidQueue
 
       def id_was: () -> ::Integer?
 
-      def id_previously_changed?: () -> bool
+      def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -31,13 +33,17 @@ module SolidQueue
 
       def saved_change_to_id: () -> ::Array[::Integer?]?
 
-      def saved_change_to_id?: () -> bool
+      def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-      def will_save_change_to_id?: () -> bool
+      def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
       def restore_id!: () -> void
 
       def clear_id_change: () -> void
+
+      def id_before_type_cast: () -> ::Integer
+
+      def id_for_database: () -> ::Integer
 
       def queue_name: () -> ::String
 
@@ -45,7 +51,7 @@ module SolidQueue
 
       def queue_name?: () -> bool
 
-      def queue_name_changed?: () -> bool
+      def queue_name_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def queue_name_change: () -> [ ::String?, ::String? ]
 
@@ -53,7 +59,7 @@ module SolidQueue
 
       def queue_name_was: () -> ::String?
 
-      def queue_name_previously_changed?: () -> bool
+      def queue_name_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
       def queue_name_previous_change: () -> ::Array[::String?]?
 
@@ -67,13 +73,17 @@ module SolidQueue
 
       def saved_change_to_queue_name: () -> ::Array[::String?]?
 
-      def saved_change_to_queue_name?: () -> bool
+      def saved_change_to_queue_name?: (?from: ::String?, ?to: ::String?) -> bool
 
-      def will_save_change_to_queue_name?: () -> bool
+      def will_save_change_to_queue_name?: (?from: ::String?, ?to: ::String?) -> bool
 
       def restore_queue_name!: () -> void
 
       def clear_queue_name_change: () -> void
+
+      def queue_name_before_type_cast: () -> ::String
+
+      def queue_name_for_database: () -> ::String
 
       def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -81,7 +91,7 @@ module SolidQueue
 
       def created_at?: () -> bool
 
-      def created_at_changed?: () -> bool
+      def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -89,7 +99,7 @@ module SolidQueue
 
       def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-      def created_at_previously_changed?: () -> bool
+      def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -103,32 +113,100 @@ module SolidQueue
 
       def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-      def saved_change_to_created_at?: () -> bool
+      def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-      def will_save_change_to_created_at?: () -> bool
+      def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
       def restore_created_at!: () -> void
 
       def clear_created_at_change: () -> void
-    end
-    include GeneratedAttributeMethods
 
-    module GeneratedAssociationMethods
-    end
-    include GeneratedAssociationMethods
+      def created_at_before_type_cast: () -> ::Time
 
-    module GeneratedRelationMethods
+      def created_at_for_database: () -> ::Time
+    end
+    include ::SolidQueue::Pause::GeneratedAttributeMethods
+    module ::SolidQueue::Pause::GeneratedAliasAttributeMethods
+      include ::SolidQueue::Pause::GeneratedAttributeMethods
+
+      alias id_value id
+
+      alias id_value= id=
+
+      alias id_value? id?
+
+      alias id_value_changed? id_changed?
+
+      alias id_value_change id_change
+
+      alias id_value_will_change! id_will_change!
+
+      alias id_value_was id_was
+
+      alias id_value_previously_changed? id_previously_changed?
+
+      alias id_value_previous_change id_previous_change
+
+      alias id_value_previously_was id_previously_was
+
+      alias id_value_before_last_save id_before_last_save
+
+      alias id_value_change_to_be_saved id_change_to_be_saved
+
+      alias id_value_in_database id_in_database
+
+      alias saved_change_to_id_value saved_change_to_id
+
+      alias saved_change_to_id_value? saved_change_to_id?
+
+      alias will_save_change_to_id_value? will_save_change_to_id?
+
+      alias restore_id_value! restore_id!
+
+      alias clear_id_value_change clear_id_change
+
+      alias id_value_before_type_cast id_before_type_cast
+
+      alias id_value_for_database id_for_database
+    end
+    include ::SolidQueue::Pause::GeneratedAliasAttributeMethods
+
+    module ::SolidQueue::Pause::GeneratedAssociationMethods
+    end
+    include ::SolidQueue::Pause::GeneratedAssociationMethods
+
+    module ::SolidQueue::Pause::GeneratedRelationMethods
     end
 
-    class ActiveRecord_Relation < ::ActiveRecord::Relation
-      include ::SolidQueue::Pause::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::SolidQueue::Pause, ::Integer]
+    class ::SolidQueue::Pause::ActiveRecord_Relation < ::ActiveRecord::Relation
       include ::Enumerable[::SolidQueue::Pause]
+      include ::SolidQueue::Pause::GeneratedRelationMethods
+      include ::ActiveRecord::Relation::Methods[::SolidQueue::Pause, ::Integer]
     end
 
-    class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    class ::SolidQueue::Pause::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+      include ::Enumerable[::SolidQueue::Pause]
       include ::SolidQueue::Pause::GeneratedRelationMethods
-      include ::_ActiveRecord_Relation[::SolidQueue::Pause, ::Integer]
+      include ::ActiveRecord::Relation::Methods[::SolidQueue::Pause, ::Integer]
+
+      def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Pause
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Pause]
+      def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Pause
+                | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Pause]
+      def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::SolidQueue::Pause
+                 | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::SolidQueue::Pause]
+      def reload: () -> ::Array[::SolidQueue::Pause]
+
+      def replace: (::Array[::SolidQueue::Pause]) -> void
+      def delete: (*::SolidQueue::Pause | ::Integer) -> ::Array[::SolidQueue::Pause]
+      def destroy: (*::SolidQueue::Pause | ::Integer) -> ::Array[::SolidQueue::Pause]
+      def <<: (*::SolidQueue::Pause | ::Array[::SolidQueue::Pause]) -> self
+      def prepend: (*::SolidQueue::Pause | ::Array[::SolidQueue::Pause]) -> self
     end
   end
+end
+
+module ::SolidQueue
+end
+class ::SolidQueue::Record < ::ActiveRecord::Base
 end

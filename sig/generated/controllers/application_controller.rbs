@@ -5,10 +5,23 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+  include Authenticatable
+
   def require_logged_in: () -> untyped
 
   # @rbs { () -> untyped } -> untyped
   def switch_locale: () { () -> untyped } -> untyped
+
+  # Carries ?locale through every generated URL. A visitor who is not logged in
+  # has nowhere else to keep it -- LocaleSetting needs a user -- so without
+  # this it survives a single page view and the next link or redirect drops
+  # back to the default.
+  #
+  # @rbs return: Hash[Symbol, String]
+  def default_url_options: () -> Hash[Symbol, String]
+
+  # @rbs return: String?
+  private def requested_locale: () -> String?
 
   private def set_variant!: () -> untyped
 end

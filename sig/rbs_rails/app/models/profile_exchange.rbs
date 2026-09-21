@@ -1,14 +1,16 @@
-class ProfileExchange < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::ProfileExchange, ::ProfileExchange::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::ProfileExchange < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::ProfileExchange, ::ProfileExchange::ActiveRecord_Relation, ::Integer]
+
+  module ::ProfileExchange::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def event_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def event_id?: () -> bool
 
-    def event_id_changed?: () -> bool
+    def event_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def event_id_was: () -> ::Integer?
 
-    def event_id_previously_changed?: () -> bool
+    def event_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_event_id?: () -> bool
+    def saved_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_event_id?: () -> bool
+    def will_save_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_event_id!: () -> void
 
     def clear_event_id_change: () -> void
+
+    def event_id_before_type_cast: () -> ::Integer
+
+    def event_id_for_database: () -> ::Integer
 
     def user_id: () -> ::Integer
 
@@ -80,7 +90,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def user_id?: () -> bool
 
-    def user_id_changed?: () -> bool
+    def user_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -88,7 +98,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def user_id_was: () -> ::Integer?
 
-    def user_id_previously_changed?: () -> bool
+    def user_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -102,13 +112,17 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_user_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_user_id?: () -> bool
+    def saved_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_user_id?: () -> bool
+    def will_save_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_user_id!: () -> void
 
     def clear_user_id_change: () -> void
+
+    def user_id_before_type_cast: () -> ::Integer
+
+    def user_id_for_database: () -> ::Integer
 
     def friend_id: () -> ::Integer
 
@@ -116,7 +130,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def friend_id?: () -> bool
 
-    def friend_id_changed?: () -> bool
+    def friend_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def friend_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -124,7 +138,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def friend_id_was: () -> ::Integer?
 
-    def friend_id_previously_changed?: () -> bool
+    def friend_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def friend_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -138,13 +152,17 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_friend_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_friend_id?: () -> bool
+    def saved_change_to_friend_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_friend_id?: () -> bool
+    def will_save_change_to_friend_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_friend_id!: () -> void
 
     def clear_friend_id_change: () -> void
+
+    def friend_id_before_type_cast: () -> ::Integer
+
+    def friend_id_for_database: () -> ::Integer
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -152,7 +170,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,13 +192,17 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -188,7 +210,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -196,7 +218,7 @@ class ProfileExchange < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -210,49 +232,120 @@ class ProfileExchange < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::ProfileExchange::GeneratedAttributeMethods
+  module ::ProfileExchange::GeneratedAliasAttributeMethods
+    include ::ProfileExchange::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::ProfileExchange::GeneratedAliasAttributeMethods
 
   def event: () -> ::Event
   def event=: (::Event?) -> ::Event?
   def reload_event: () -> ::Event?
-  def build_event: (untyped) -> ::Event
-  def create_event: (untyped) -> ::Event
-  def create_event!: (untyped) -> ::Event
+  def build_event: (?untyped) -> ::Event
+  def create_event: (?untyped) -> ::Event
+  def create_event!: (?untyped) -> ::Event
   def user: () -> ::User
   def user=: (::User?) -> ::User?
   def reload_user: () -> ::User?
-  def build_user: (untyped) -> ::User
-  def create_user: (untyped) -> ::User
-  def create_user!: (untyped) -> ::User
+  def build_user: (?untyped) -> ::User
+  def create_user: (?untyped) -> ::User
+  def create_user!: (?untyped) -> ::User
   def friend: () -> ::User
   def friend=: (::User?) -> ::User?
   def reload_friend: () -> ::User?
-  def build_friend: (untyped) -> ::User
-  def create_friend: (untyped) -> ::User
-  def create_friend!: (untyped) -> ::User
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_friend: (?untyped) -> ::User
+  def create_friend: (?untyped) -> ::User
+  def create_friend!: (?untyped) -> ::User
 
-  module GeneratedRelationMethods
+  module ::ProfileExchange::GeneratedAssociationMethods
+  end
+  include ::ProfileExchange::GeneratedAssociationMethods
+
+  module ::ProfileExchange::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::ProfileExchange::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileExchange, ::Integer]
+  class ::ProfileExchange::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::ProfileExchange]
+    include ::ProfileExchange::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::ProfileExchange, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::ProfileExchange::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::ProfileExchange]
     include ::ProfileExchange::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileExchange, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::ProfileExchange, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileExchange
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileExchange]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileExchange
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileExchange]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileExchange
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileExchange]
+    def reload: () -> ::Array[::ProfileExchange]
+
+    def replace: (::Array[::ProfileExchange]) -> void
+    def delete: (*::ProfileExchange | ::Integer) -> ::Array[::ProfileExchange]
+    def destroy: (*::ProfileExchange | ::Integer) -> ::Array[::ProfileExchange]
+    def <<: (*::ProfileExchange | ::Array[::ProfileExchange]) -> self
+    def prepend: (*::ProfileExchange | ::Array[::ProfileExchange]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::Event < ::ApplicationRecord
+end
+class ::User < ::ApplicationRecord
 end

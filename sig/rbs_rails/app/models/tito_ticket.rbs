@@ -1,14 +1,16 @@
-class TitoTicket < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::TitoTicket, ::TitoTicket::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::TitoTicket < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::TitoTicket, ::TitoTicket::ActiveRecord_Relation, ::Integer]
+
+  module ::TitoTicket::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class TitoTicket < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def event_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class TitoTicket < ::ApplicationRecord
 
     def event_id?: () -> bool
 
-    def event_id_changed?: () -> bool
+    def event_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class TitoTicket < ::ApplicationRecord
 
     def event_id_was: () -> ::Integer?
 
-    def event_id_previously_changed?: () -> bool
+    def event_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,13 +72,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_event_id?: () -> bool
+    def saved_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_event_id?: () -> bool
+    def will_save_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_event_id!: () -> void
 
     def clear_event_id_change: () -> void
+
+    def event_id_before_type_cast: () -> ::Integer
+
+    def event_id_for_database: () -> ::Integer
 
     def user_id: () -> ::Integer?
 
@@ -80,7 +90,7 @@ class TitoTicket < ::ApplicationRecord
 
     def user_id?: () -> bool
 
-    def user_id_changed?: () -> bool
+    def user_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -88,7 +98,7 @@ class TitoTicket < ::ApplicationRecord
 
     def user_id_was: () -> ::Integer?
 
-    def user_id_previously_changed?: () -> bool
+    def user_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def user_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -102,13 +112,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_user_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_user_id?: () -> bool
+    def saved_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_user_id?: () -> bool
+    def will_save_change_to_user_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_user_id!: () -> void
 
     def clear_user_id_change: () -> void
+
+    def user_id_before_type_cast: () -> ::Integer?
+
+    def user_id_for_database: () -> ::Integer?
 
     def tito_id: () -> ::Integer
 
@@ -116,7 +130,7 @@ class TitoTicket < ::ApplicationRecord
 
     def tito_id?: () -> bool
 
-    def tito_id_changed?: () -> bool
+    def tito_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def tito_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -124,7 +138,7 @@ class TitoTicket < ::ApplicationRecord
 
     def tito_id_was: () -> ::Integer?
 
-    def tito_id_previously_changed?: () -> bool
+    def tito_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def tito_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -138,13 +152,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_tito_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_tito_id?: () -> bool
+    def saved_change_to_tito_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_tito_id?: () -> bool
+    def will_save_change_to_tito_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_tito_id!: () -> void
 
     def clear_tito_id_change: () -> void
+
+    def tito_id_before_type_cast: () -> ::Integer
+
+    def tito_id_for_database: () -> ::Integer
 
     def slug: () -> ::String
 
@@ -152,7 +170,7 @@ class TitoTicket < ::ApplicationRecord
 
     def slug?: () -> bool
 
-    def slug_changed?: () -> bool
+    def slug_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def slug_change: () -> [ ::String?, ::String? ]
 
@@ -160,7 +178,7 @@ class TitoTicket < ::ApplicationRecord
 
     def slug_was: () -> ::String?
 
-    def slug_previously_changed?: () -> bool
+    def slug_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def slug_previous_change: () -> ::Array[::String?]?
 
@@ -174,13 +192,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_slug: () -> ::Array[::String?]?
 
-    def saved_change_to_slug?: () -> bool
+    def saved_change_to_slug?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_slug?: () -> bool
+    def will_save_change_to_slug?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_slug!: () -> void
 
     def clear_slug_change: () -> void
+
+    def slug_before_type_cast: () -> ::String
+
+    def slug_for_database: () -> ::String
 
     def reference: () -> ::String
 
@@ -188,7 +210,7 @@ class TitoTicket < ::ApplicationRecord
 
     def reference?: () -> bool
 
-    def reference_changed?: () -> bool
+    def reference_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def reference_change: () -> [ ::String?, ::String? ]
 
@@ -196,7 +218,7 @@ class TitoTicket < ::ApplicationRecord
 
     def reference_was: () -> ::String?
 
-    def reference_previously_changed?: () -> bool
+    def reference_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def reference_previous_change: () -> ::Array[::String?]?
 
@@ -210,13 +232,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_reference: () -> ::Array[::String?]?
 
-    def saved_change_to_reference?: () -> bool
+    def saved_change_to_reference?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_reference?: () -> bool
+    def will_save_change_to_reference?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_reference!: () -> void
 
     def clear_reference_change: () -> void
+
+    def reference_before_type_cast: () -> ::String
+
+    def reference_for_database: () -> ::String
 
     def unique_url: () -> ::String
 
@@ -224,7 +250,7 @@ class TitoTicket < ::ApplicationRecord
 
     def unique_url?: () -> bool
 
-    def unique_url_changed?: () -> bool
+    def unique_url_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def unique_url_change: () -> [ ::String?, ::String? ]
 
@@ -232,7 +258,7 @@ class TitoTicket < ::ApplicationRecord
 
     def unique_url_was: () -> ::String?
 
-    def unique_url_previously_changed?: () -> bool
+    def unique_url_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def unique_url_previous_change: () -> ::Array[::String?]?
 
@@ -246,13 +272,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_unique_url: () -> ::Array[::String?]?
 
-    def saved_change_to_unique_url?: () -> bool
+    def saved_change_to_unique_url?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_unique_url?: () -> bool
+    def will_save_change_to_unique_url?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_unique_url!: () -> void
 
     def clear_unique_url_change: () -> void
+
+    def unique_url_before_type_cast: () -> ::String
+
+    def unique_url_for_database: () -> ::String
 
     def state: () -> ::String
 
@@ -260,7 +290,7 @@ class TitoTicket < ::ApplicationRecord
 
     def state?: () -> bool
 
-    def state_changed?: () -> bool
+    def state_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def state_change: () -> [ ::String?, ::String? ]
 
@@ -268,7 +298,7 @@ class TitoTicket < ::ApplicationRecord
 
     def state_was: () -> ::String?
 
-    def state_previously_changed?: () -> bool
+    def state_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def state_previous_change: () -> ::Array[::String?]?
 
@@ -282,13 +312,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_state: () -> ::Array[::String?]?
 
-    def saved_change_to_state?: () -> bool
+    def saved_change_to_state?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_state?: () -> bool
+    def will_save_change_to_state?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_state!: () -> void
 
     def clear_state_change: () -> void
+
+    def state_before_type_cast: () -> ::String
+
+    def state_for_database: () -> ::String
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -296,7 +330,7 @@ class TitoTicket < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -304,7 +338,7 @@ class TitoTicket < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -318,13 +352,17 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -332,7 +370,7 @@ class TitoTicket < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -340,7 +378,7 @@ class TitoTicket < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -354,43 +392,114 @@ class TitoTicket < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::TitoTicket::GeneratedAttributeMethods
+  module ::TitoTicket::GeneratedAliasAttributeMethods
+    include ::TitoTicket::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::TitoTicket::GeneratedAliasAttributeMethods
 
   def event: () -> ::Event
   def event=: (::Event?) -> ::Event?
   def reload_event: () -> ::Event?
-  def build_event: (untyped) -> ::Event
-  def create_event: (untyped) -> ::Event
-  def create_event!: (untyped) -> ::Event
+  def build_event: (?untyped) -> ::Event
+  def create_event: (?untyped) -> ::Event
+  def create_event!: (?untyped) -> ::Event
   def user: () -> ::User?
   def user=: (::User?) -> ::User?
   def reload_user: () -> ::User?
-  def build_user: (untyped) -> ::User
-  def create_user: (untyped) -> ::User
-  def create_user!: (untyped) -> ::User
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_user: (?untyped) -> ::User
+  def create_user: (?untyped) -> ::User
+  def create_user!: (?untyped) -> ::User
 
-  module GeneratedRelationMethods
+  module ::TitoTicket::GeneratedAssociationMethods
+  end
+  include ::TitoTicket::GeneratedAssociationMethods
+
+  module ::TitoTicket::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::TitoTicket::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TitoTicket, ::Integer]
+  class ::TitoTicket::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::TitoTicket]
+    include ::TitoTicket::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::TitoTicket, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::TitoTicket::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::TitoTicket]
     include ::TitoTicket::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::TitoTicket, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::TitoTicket, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TitoTicket
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TitoTicket]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TitoTicket
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TitoTicket]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::TitoTicket
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::TitoTicket]
+    def reload: () -> ::Array[::TitoTicket]
+
+    def replace: (::Array[::TitoTicket]) -> void
+    def delete: (*::TitoTicket | ::Integer) -> ::Array[::TitoTicket]
+    def destroy: (*::TitoTicket | ::Integer) -> ::Array[::TitoTicket]
+    def <<: (*::TitoTicket | ::Array[::TitoTicket]) -> self
+    def prepend: (*::TitoTicket | ::Array[::TitoTicket]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::Event < ::ApplicationRecord
+end
+class ::User < ::ApplicationRecord
 end

@@ -5,10 +5,13 @@ class AssignTitoTicketsController < ApplicationController
 
   def create
     event = Event.find_by!(slug: params[:event_slug])
+    # state must match what require_ticket accepts, or a check-in succeeds here
+    # and is then turned away at the stream.
     ticket = TitoTicket.find_by(
       reference: params[:tito_ticket_reference],
       event: event,
-      user: nil
+      user: nil,
+      state: "complete"
     )
     if ticket.nil?
       redirect_to event_live_checkin_path(event.slug), alert: I18n.t("assign_tito_tickets.create.failure")

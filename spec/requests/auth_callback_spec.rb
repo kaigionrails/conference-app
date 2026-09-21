@@ -54,6 +54,47 @@ RSpec.describe "AuthCallback", type: :request do
                                                                                     UnreadAnnouncement.count
                                                                                   }.by(1)
         end
+
+        it "names the user and the profile after the GitHub username" do
+          get "/auth/github/callback"
+
+          user = User.last
+          expect(user.name).to eq "octocat"
+          expect(user.profile.name).to eq "octocat"
+        end
+      end
+
+      context "create new user whose GitHub username is unavailable" do
+        let(:auth_hash) { {"info" => {"nickname" => nickname}, "uid" => "583231"} }
+
+        before do
+          OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+          expect_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil)
+        end
+
+        shared_examples "falls back to a generated handle" do
+          it "generates a handle but keeps the GitHub username as the display name" do
+            expect { get "/auth/github/callback" }.to change { User.count }.by(1)
+
+            user = User.last
+            expect(user.name).to match(/\Auser-[a-z0-9]{6}\z/)
+            expect(user.profile.name).to eq nickname
+          end
+        end
+
+        context "because another user already holds it" do
+          let(:nickname) { "octocat" }
+
+          before { FactoryBot.create(:user, name: "OctoCat") }
+
+          include_examples "falls back to a generated handle"
+        end
+
+        context "because it is reserved" do
+          let(:nickname) { "admin" }
+
+          include_examples "falls back to a generated handle"
+        end
       end
     end
   end

@@ -58,7 +58,10 @@ Rails.application.configure do
   config.solid_queue.logger = Logger.new($stdout)
 
   # Replace the default in-process memory cache store with a durable alternative.
-  # config.cache_store = :mem_cache_store
+  # The same Redis the session store uses. The default file store lives inside
+  # the container, so web and job would each keep their own copy of the login
+  # attempt counter and a deploy would reset it.
+  config.cache_store = :redis_cache_store, {url: ENV.fetch("REDIS_URL")}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

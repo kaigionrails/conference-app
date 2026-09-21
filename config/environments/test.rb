@@ -20,7 +20,9 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
-  config.cache_store = :null_store
+  # Not :null_store: its increment always returns nil, so a login attempt
+  # counter would never trip and its specs would pass without testing anything.
+  config.cache_store = :memory_store
 
   # Render exception templates for rescuable exceptions and raise for other exceptions.
   config.action_dispatch.show_exceptions = :rescuable

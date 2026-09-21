@@ -33,12 +33,15 @@ class Admin::UsersController < AdminController
       user.save!
       auth.save!
     end
-    if user.persisted?
-      flash[:success] = "Create succeeded"
-    else
-      flash[:alert] = "Create failed"
-      redirect_to new_admin_user_path(user)
-    end
+    flash[:success] = "Create succeeded"
+    redirect_to admin_user_path(user)
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique
+    # A rejected handle (taken, reserved or malformed) reaches here now that
+    # users.name is validated, so this is an ordinary path rather than a 500.
+    # RecordNotUnique covers what only the database rejects: an email that is
+    # already registered, and a handle lost to a concurrent insert.
+    flash[:alert] = "Create failed"
+    redirect_to new_admin_user_path
   end
 
   # @rbs return: void

@@ -4,7 +4,7 @@
   <%= form_with url: event_assign_tito_tickets_path(event_slug: @event.slug), method: :post do |f| %>
     <div class="mb-4 w-1/4 mx-auto text-center">
       <%= f.label :tito_ticket_reference, t(".tito_ticket_reference"), class: "block font-bold mb-4 text-center" %>
-      <%= f.password_field :tito_ticket_reference, class: "w-1/2 border rounded px-3 py-2 text-center", placeholder: "ABCD-1" %>
+      <%= f.text_field :tito_ticket_reference, class: "w-1/2 border rounded px-3 py-2 text-center", placeholder: "ABCD-1", autocomplete: "off", autocapitalize: "characters", spellcheck: false %>
     </div>
     <div class="text-center">
       <%= f.submit t(".submit"), class: "bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 cursor-pointer" %>

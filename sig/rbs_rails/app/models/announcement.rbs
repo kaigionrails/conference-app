@@ -1,14 +1,16 @@
-class Announcement < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::Announcement, ::Announcement::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::Announcement < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::Announcement, ::Announcement::ActiveRecord_Relation, ::Integer]
+
+  module ::Announcement::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class Announcement < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def event_id: () -> ::Integer
 
@@ -44,7 +50,7 @@ class Announcement < ::ApplicationRecord
 
     def event_id?: () -> bool
 
-    def event_id_changed?: () -> bool
+    def event_id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -52,7 +58,7 @@ class Announcement < ::ApplicationRecord
 
     def event_id_was: () -> ::Integer?
 
-    def event_id_previously_changed?: () -> bool
+    def event_id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def event_id_previous_change: () -> ::Array[::Integer?]?
 
@@ -66,21 +72,25 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_event_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_event_id?: () -> bool
+    def saved_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_event_id?: () -> bool
+    def will_save_change_to_event_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_event_id!: () -> void
 
     def clear_event_id_change: () -> void
 
+    def event_id_before_type_cast: () -> ::Integer
+
+    def event_id_for_database: () -> ::Integer
+
     def status: () -> ::String
 
-    def status=: (::String) -> ::String
+    def status=: (::String | ::Symbol) -> ::String
 
     def status?: () -> bool
 
-    def status_changed?: () -> bool
+    def status_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def status_change: () -> [ ::String?, ::String? ]
 
@@ -88,7 +98,7 @@ class Announcement < ::ApplicationRecord
 
     def status_was: () -> ::String?
 
-    def status_previously_changed?: () -> bool
+    def status_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def status_previous_change: () -> ::Array[::String?]?
 
@@ -102,13 +112,17 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_status: () -> ::Array[::String?]?
 
-    def saved_change_to_status?: () -> bool
+    def saved_change_to_status?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_status?: () -> bool
+    def will_save_change_to_status?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_status!: () -> void
 
     def clear_status_change: () -> void
+
+    def status_before_type_cast: () -> ::String
+
+    def status_for_database: () -> ::String
 
     def published_at: () -> ::ActiveSupport::TimeWithZone?
 
@@ -116,7 +130,7 @@ class Announcement < ::ApplicationRecord
 
     def published_at?: () -> bool
 
-    def published_at_changed?: () -> bool
+    def published_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def published_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -124,7 +138,7 @@ class Announcement < ::ApplicationRecord
 
     def published_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def published_at_previously_changed?: () -> bool
+    def published_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def published_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -138,13 +152,17 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_published_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_published_at?: () -> bool
+    def saved_change_to_published_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_published_at?: () -> bool
+    def will_save_change_to_published_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_published_at!: () -> void
 
     def clear_published_at_change: () -> void
+
+    def published_at_before_type_cast: () -> ::Time?
+
+    def published_at_for_database: () -> ::Time?
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -152,7 +170,7 @@ class Announcement < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -160,7 +178,7 @@ class Announcement < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -174,13 +192,17 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -188,7 +210,7 @@ class Announcement < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -196,7 +218,7 @@ class Announcement < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -210,13 +232,17 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
 
     def title: () -> ::String
 
@@ -224,7 +250,7 @@ class Announcement < ::ApplicationRecord
 
     def title?: () -> bool
 
-    def title_changed?: () -> bool
+    def title_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def title_change: () -> [ ::String?, ::String? ]
 
@@ -232,7 +258,7 @@ class Announcement < ::ApplicationRecord
 
     def title_was: () -> ::String?
 
-    def title_previously_changed?: () -> bool
+    def title_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def title_previous_change: () -> ::Array[::String?]?
 
@@ -246,43 +272,137 @@ class Announcement < ::ApplicationRecord
 
     def saved_change_to_title: () -> ::Array[::String?]?
 
-    def saved_change_to_title?: () -> bool
+    def saved_change_to_title?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_title?: () -> bool
+    def will_save_change_to_title?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_title!: () -> void
 
     def clear_title_change: () -> void
+
+    def title_before_type_cast: () -> ::String
+
+    def title_for_database: () -> ::String
   end
-  include GeneratedAttributeMethods
+  include ::Announcement::GeneratedAttributeMethods
+  module ::Announcement::GeneratedAliasAttributeMethods
+    include ::Announcement::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::Announcement::GeneratedAliasAttributeMethods
 
   def rich_text_content: () -> ::ActionText::RichText?
   def rich_text_content=: (::ActionText::RichText?) -> ::ActionText::RichText?
   def build_rich_text_content: (?untyped) -> ::ActionText::RichText
-  def create_rich_text_content: (untyped) -> ::ActionText::RichText
-  def create_rich_text_content!: (untyped) -> ::ActionText::RichText
+  def create_rich_text_content: (?untyped) -> ::ActionText::RichText
+  def create_rich_text_content!: (?untyped) -> ::ActionText::RichText
   def reload_rich_text_content: () -> ::ActionText::RichText?
   def event: () -> ::Event
   def event=: (::Event?) -> ::Event?
   def reload_event: () -> ::Event?
-  def build_event: (untyped) -> ::Event
-  def create_event: (untyped) -> ::Event
-  def create_event!: (untyped) -> ::Event
-  module GeneratedAssociationMethods
-  end
-  include GeneratedAssociationMethods
+  def build_event: (?untyped) -> ::Event
+  def create_event: (?untyped) -> ::Event
+  def create_event!: (?untyped) -> ::Event
 
-  module GeneratedRelationMethods
+  module ::Announcement::GeneratedAssociationMethods
+  end
+  include ::Announcement::GeneratedAssociationMethods
+
+  def draft!: () -> bool
+  def draft?: () -> bool
+  def published!: () -> bool
+  def published?: () -> bool
+  def self.statuses: () -> ::ActiveSupport::HashWithIndifferentAccess[::String, ::String]
+  def self.draft: () -> ::Announcement::ActiveRecord_Relation
+  def self.not_draft: () -> ::Announcement::ActiveRecord_Relation
+  def self.published: () -> ::Announcement::ActiveRecord_Relation
+  def self.not_published: () -> ::Announcement::ActiveRecord_Relation
+
+  module ::Announcement::GeneratedRelationMethods
+    def statuses: () -> ::ActiveSupport::HashWithIndifferentAccess[::String, ::String]
+
+    def draft: () -> ::Announcement::ActiveRecord_Relation
+
+    def not_draft: () -> ::Announcement::ActiveRecord_Relation
+
+    def published: () -> ::Announcement::ActiveRecord_Relation
+
+    def not_published: () -> ::Announcement::ActiveRecord_Relation
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::Announcement::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::Announcement, ::Integer]
+  class ::Announcement::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::Announcement]
+    include ::Announcement::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::Announcement, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::Announcement::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::Announcement]
     include ::Announcement::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::Announcement, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::Announcement, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Announcement
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Announcement]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Announcement
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Announcement]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::Announcement
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::Announcement]
+    def reload: () -> ::Array[::Announcement]
+
+    def replace: (::Array[::Announcement]) -> void
+    def delete: (*::Announcement | ::Integer) -> ::Array[::Announcement]
+    def destroy: (*::Announcement | ::Integer) -> ::Array[::Announcement]
+    def <<: (*::Announcement | ::Array[::Announcement]) -> self
+    def prepend: (*::Announcement | ::Array[::Announcement]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::ActionText::RichText < ::ActionText::Record
+end
+class ::Event < ::ApplicationRecord
+end
+class ::ActionText::Record < ::ActiveRecord::Base
+end
+module ::ActionText
 end

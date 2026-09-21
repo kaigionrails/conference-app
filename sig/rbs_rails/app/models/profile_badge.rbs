@@ -1,14 +1,16 @@
-class ProfileBadge < ::ApplicationRecord
-  extend ::_ActiveRecord_Relation_ClassMethods[::ProfileBadge, ::ProfileBadge::ActiveRecord_Relation, ::Integer]
+# resolve-type-names: false
 
-  module GeneratedAttributeMethods
+class ::ProfileBadge < ::ApplicationRecord
+  extend ::ActiveRecord::Base::ClassMethods[::ProfileBadge, ::ProfileBadge::ActiveRecord_Relation, ::Integer]
+
+  module ::ProfileBadge::GeneratedAttributeMethods
     def id: () -> ::Integer
 
     def id=: (::Integer) -> ::Integer
 
     def id?: () -> bool
 
-    def id_changed?: () -> bool
+    def id_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_change: () -> [ ::Integer?, ::Integer? ]
 
@@ -16,7 +18,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def id_was: () -> ::Integer?
 
-    def id_previously_changed?: () -> bool
+    def id_previously_changed?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def id_previous_change: () -> ::Array[::Integer?]?
 
@@ -30,13 +32,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_id: () -> ::Array[::Integer?]?
 
-    def saved_change_to_id?: () -> bool
+    def saved_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
-    def will_save_change_to_id?: () -> bool
+    def will_save_change_to_id?: (?from: ::Integer?, ?to: ::Integer?) -> bool
 
     def restore_id!: () -> void
 
     def clear_id_change: () -> void
+
+    def id_before_type_cast: () -> ::Integer
+
+    def id_for_database: () -> ::Integer
 
     def text: () -> ::String
 
@@ -44,7 +50,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def text?: () -> bool
 
-    def text_changed?: () -> bool
+    def text_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def text_change: () -> [ ::String?, ::String? ]
 
@@ -52,7 +58,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def text_was: () -> ::String?
 
-    def text_previously_changed?: () -> bool
+    def text_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def text_previous_change: () -> ::Array[::String?]?
 
@@ -66,13 +72,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_text: () -> ::Array[::String?]?
 
-    def saved_change_to_text?: () -> bool
+    def saved_change_to_text?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_text?: () -> bool
+    def will_save_change_to_text?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_text!: () -> void
 
     def clear_text_change: () -> void
+
+    def text_before_type_cast: () -> ::String
+
+    def text_for_database: () -> ::String
 
     def border_color_code: () -> ::String
 
@@ -80,7 +90,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def border_color_code?: () -> bool
 
-    def border_color_code_changed?: () -> bool
+    def border_color_code_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def border_color_code_change: () -> [ ::String?, ::String? ]
 
@@ -88,7 +98,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def border_color_code_was: () -> ::String?
 
-    def border_color_code_previously_changed?: () -> bool
+    def border_color_code_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def border_color_code_previous_change: () -> ::Array[::String?]?
 
@@ -102,13 +112,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_border_color_code: () -> ::Array[::String?]?
 
-    def saved_change_to_border_color_code?: () -> bool
+    def saved_change_to_border_color_code?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_border_color_code?: () -> bool
+    def will_save_change_to_border_color_code?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_border_color_code!: () -> void
 
     def clear_border_color_code_change: () -> void
+
+    def border_color_code_before_type_cast: () -> ::String
+
+    def border_color_code_for_database: () -> ::String
 
     def background_color_code: () -> ::String
 
@@ -116,7 +130,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def background_color_code?: () -> bool
 
-    def background_color_code_changed?: () -> bool
+    def background_color_code_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def background_color_code_change: () -> [ ::String?, ::String? ]
 
@@ -124,7 +138,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def background_color_code_was: () -> ::String?
 
-    def background_color_code_previously_changed?: () -> bool
+    def background_color_code_previously_changed?: (?from: ::String?, ?to: ::String?) -> bool
 
     def background_color_code_previous_change: () -> ::Array[::String?]?
 
@@ -138,13 +152,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_background_color_code: () -> ::Array[::String?]?
 
-    def saved_change_to_background_color_code?: () -> bool
+    def saved_change_to_background_color_code?: (?from: ::String?, ?to: ::String?) -> bool
 
-    def will_save_change_to_background_color_code?: () -> bool
+    def will_save_change_to_background_color_code?: (?from: ::String?, ?to: ::String?) -> bool
 
     def restore_background_color_code!: () -> void
 
     def clear_background_color_code_change: () -> void
+
+    def background_color_code_before_type_cast: () -> ::String
+
+    def background_color_code_for_database: () -> ::String
 
     def restricted: () -> bool
 
@@ -152,7 +170,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def restricted?: () -> bool
 
-    def restricted_changed?: () -> bool
+    def restricted_changed?: (?from: bool?, ?to: bool?) -> bool
 
     def restricted_change: () -> [ bool?, bool? ]
 
@@ -160,7 +178,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def restricted_was: () -> bool?
 
-    def restricted_previously_changed?: () -> bool
+    def restricted_previously_changed?: (?from: bool?, ?to: bool?) -> bool
 
     def restricted_previous_change: () -> ::Array[bool?]?
 
@@ -174,13 +192,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_restricted: () -> ::Array[bool?]?
 
-    def saved_change_to_restricted?: () -> bool
+    def saved_change_to_restricted?: (?from: bool?, ?to: bool?) -> bool
 
-    def will_save_change_to_restricted?: () -> bool
+    def will_save_change_to_restricted?: (?from: bool?, ?to: bool?) -> bool
 
     def restore_restricted!: () -> void
 
     def clear_restricted_change: () -> void
+
+    def restricted_before_type_cast: () -> bool
+
+    def restricted_for_database: () -> bool
 
     def created_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -188,7 +210,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def created_at?: () -> bool
 
-    def created_at_changed?: () -> bool
+    def created_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -196,7 +218,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def created_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def created_at_previously_changed?: () -> bool
+    def created_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def created_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -210,13 +232,17 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_created_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_created_at?: () -> bool
+    def saved_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_created_at?: () -> bool
+    def will_save_change_to_created_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_created_at!: () -> void
 
     def clear_created_at_change: () -> void
+
+    def created_at_before_type_cast: () -> ::Time
+
+    def created_at_for_database: () -> ::Time
 
     def updated_at: () -> ::ActiveSupport::TimeWithZone
 
@@ -224,7 +250,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def updated_at?: () -> bool
 
-    def updated_at_changed?: () -> bool
+    def updated_at_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_change: () -> [ ::ActiveSupport::TimeWithZone?, ::ActiveSupport::TimeWithZone? ]
 
@@ -232,7 +258,7 @@ class ProfileBadge < ::ApplicationRecord
 
     def updated_at_was: () -> ::ActiveSupport::TimeWithZone?
 
-    def updated_at_previously_changed?: () -> bool
+    def updated_at_previously_changed?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def updated_at_previous_change: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
@@ -246,39 +272,113 @@ class ProfileBadge < ::ApplicationRecord
 
     def saved_change_to_updated_at: () -> ::Array[::ActiveSupport::TimeWithZone?]?
 
-    def saved_change_to_updated_at?: () -> bool
+    def saved_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
-    def will_save_change_to_updated_at?: () -> bool
+    def will_save_change_to_updated_at?: (?from: ::ActiveSupport::TimeWithZone?, ?to: ::ActiveSupport::TimeWithZone?) -> bool
 
     def restore_updated_at!: () -> void
 
     def clear_updated_at_change: () -> void
+
+    def updated_at_before_type_cast: () -> ::Time
+
+    def updated_at_for_database: () -> ::Time
   end
-  include GeneratedAttributeMethods
+  include ::ProfileBadge::GeneratedAttributeMethods
+  module ::ProfileBadge::GeneratedAliasAttributeMethods
+    include ::ProfileBadge::GeneratedAttributeMethods
+
+    alias id_value id
+
+    alias id_value= id=
+
+    alias id_value? id?
+
+    alias id_value_changed? id_changed?
+
+    alias id_value_change id_change
+
+    alias id_value_will_change! id_will_change!
+
+    alias id_value_was id_was
+
+    alias id_value_previously_changed? id_previously_changed?
+
+    alias id_value_previous_change id_previous_change
+
+    alias id_value_previously_was id_previously_was
+
+    alias id_value_before_last_save id_before_last_save
+
+    alias id_value_change_to_be_saved id_change_to_be_saved
+
+    alias id_value_in_database id_in_database
+
+    alias saved_change_to_id_value saved_change_to_id
+
+    alias saved_change_to_id_value? saved_change_to_id?
+
+    alias will_save_change_to_id_value? will_save_change_to_id?
+
+    alias restore_id_value! restore_id!
+
+    alias clear_id_value_change clear_id_change
+
+    alias id_value_before_type_cast id_before_type_cast
+
+    alias id_value_for_database id_for_database
+  end
+  include ::ProfileBadge::GeneratedAliasAttributeMethods
   def profile_badges_profiles: () -> ::ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy
   def profile_badges_profiles=: (::ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy | ::Array[::ProfileBadgesProfile]) -> (::ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy | ::Array[::ProfileBadgesProfile])
-  def profile_badges_profile_ids: () -> ::Array[::Integer]
-  def profile_badges_profile_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def profile_badges_profile_ids: () -> ::Array[top]
+  def profile_badges_profile_ids=: (::Array[top]) -> ::Array[top]
   def profiles: () -> ::Profile::ActiveRecord_Associations_CollectionProxy
   def profiles=: (::Profile::ActiveRecord_Associations_CollectionProxy | ::Array[::Profile]) -> (::Profile::ActiveRecord_Associations_CollectionProxy | ::Array[::Profile])
   def profile_ids: () -> ::Array[::Integer]
   def profile_ids=: (::Array[::Integer]) -> ::Array[::Integer]
 
-  module GeneratedAssociationMethods
+  module ::ProfileBadge::GeneratedAssociationMethods
   end
-  include GeneratedAssociationMethods
+  include ::ProfileBadge::GeneratedAssociationMethods
 
-  module GeneratedRelationMethods
+  module ::ProfileBadge::GeneratedRelationMethods
   end
 
-  class ActiveRecord_Relation < ::ActiveRecord::Relation
-    include ::ProfileBadge::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileBadge, ::Integer]
+  class ::ProfileBadge::ActiveRecord_Relation < ::ActiveRecord::Relation
     include ::Enumerable[::ProfileBadge]
+    include ::ProfileBadge::GeneratedRelationMethods
+    include ::ActiveRecord::Relation::Methods[::ProfileBadge, ::Integer]
   end
 
-  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+  class ::ProfileBadge::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include ::Enumerable[::ProfileBadge]
     include ::ProfileBadge::GeneratedRelationMethods
-    include ::_ActiveRecord_Relation[::ProfileBadge, ::Integer]
+    include ::ActiveRecord::Relation::Methods[::ProfileBadge, ::Integer]
+
+    def build: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadge
+             | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadge]
+    def create: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadge
+              | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadge]
+    def create!: (?::ActiveRecord::Associations::CollectionProxy::_EachPair attributes) ?{ () -> untyped } -> ::ProfileBadge
+               | (::Array[::ActiveRecord::Associations::CollectionProxy::_EachPair] attributes) ?{ () -> untyped } -> ::Array[::ProfileBadge]
+    def reload: () -> ::Array[::ProfileBadge]
+
+    def replace: (::Array[::ProfileBadge]) -> void
+    def delete: (*::ProfileBadge | ::Integer) -> ::Array[::ProfileBadge]
+    def destroy: (*::ProfileBadge | ::Integer) -> ::Array[::ProfileBadge]
+    def <<: (*::ProfileBadge | ::Array[::ProfileBadge]) -> self
+    def prepend: (*::ProfileBadge | ::Array[::ProfileBadge]) -> self
   end
+end
+
+class ::ApplicationRecord < ::ActiveRecord::Base
+end
+class ::ProfileBadgesProfile < ::ApplicationRecord
+end
+class ::ProfileBadgesProfile::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+end
+class ::Profile < ::ApplicationRecord
+end
+class ::Profile::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end

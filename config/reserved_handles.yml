@@ -1,0 +1,40 @@
+# Handles that users must not take. Compared case-insensitively against
+# users.name.
+#
+# Event slugs are NOT listed here: User reserves every four-digit number with a
+# regexp, which already covers 2023, 2024, 2025 and every future one.
+---
+# Impersonating the organizers
+- admin
+- administrator
+- help
+- kaigionrails
+- official
+- root
+- staff
+- support
+- system
+# Colliding with a top-level route. The current route is /@:username so these
+# do not actually collide today; they are reserved in case it ever becomes
+# /:username.
+- about
+- auth
+- live
+- locale_settings
+- login
+- logout
+- manifest
+- operators
+- profile_badges
+- profiles
+- sample_webpush_notifications
+- setting
+- signage_devices
+- signages
+- subscreen
+- sw
+- talk_bookmarks
+- tito_webhook
+- unread_announcements
+- up
+- webpush_subscription
