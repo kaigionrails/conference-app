@@ -16,6 +16,7 @@ class User < ApplicationRecord
   HANDLE_GENERATION_ATTEMPTS = 10
 
   has_one :authentication_provider_github, dependent: :destroy
+  has_one :authentication_provider_google, dependent: :destroy
   has_one :authentication_provider_email_and_password, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_one :locale_setting, dependent: :destroy

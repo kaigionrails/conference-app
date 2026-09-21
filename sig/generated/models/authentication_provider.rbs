@@ -40,8 +40,9 @@ class AuthenticationProvider < ApplicationRecord
   # override this must call super.
   #
   # @rbs user: User
+  # @rbs auth: untyped
   # @rbs return: void
-  def self.after_create_user: (User user) -> void
+  def self.after_create_user: (User user, untyped auth) -> void
 
   # @rbs auth: untyped
   # @rbs return: String?
