@@ -220,4 +220,12 @@
   .hover\:text-theme-primary-500:hover {
     color: var(--color-primary-500);
   }
+
+  .theme-2026 {
+    font-family: "IBM Plex Sans JP", "Hiragino Sans", Meiryo, sans-serif;
+  }
+
+  .brand-2026, .theme-2026 h1, .theme-2026 h2, .theme-2026 h3 {
+    font-family: "Funnel Display", "IBM Plex Sans JP", "Hiragino Sans", Meiryo, sans-serif;
+  }
 }

@@ -1,7 +1,8 @@
 /* Application styles */
 
-/* https://fonts.google.com/specimen/Barlow+Semi+Condensed?query=bar */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap');
+/* https://fonts.google.com/specimen/Funnel+Display */
+/* https://fonts.google.com/specimen/IBM+Plex+Sans+JP */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600;700;800&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe.min.css');
 
 .pill {
