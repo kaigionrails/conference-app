@@ -1,11 +1,11 @@
-<nav class="bg-theme-background border-b border-theme-background z-20"><%# MEMO: z-20 is for 2025's background image %>
-  <div class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto px-3 py-2">
-    <%= link_to root_path, class: "flex items-center" do %>
-      <%= image_tag "icon.png", class: "h-8 mr-3" %>
-      <span class="font-black text-theme-primary">Kaigi on Rails Conference App</span>
+<nav class="header-2026 shrink-0 z-20"><%# MEMO: z-20 is for 2026's background image %>
+  <div class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto px-4 py-2 gap-3">
+    <%= link_to root_path, class: "brand-2026 flex items-center gap-3 min-w-0" do %>
+      <%= image_tag "2026/logos/hachiko.svg", alt: "Kaigi on Rails 2026", class: "h-8 w-auto" %>
+      <span class="font-bold text-theme-primary">Kaigi on Rails Conference App</span>
     <% end %>
-    <div data-controller="dropdown" class="flex items-center relative text-theme-primary z-30"><%# MEMO: z-30 is for 2025's background image %>
-      <button class="cursor-pointer" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+    <div data-controller="dropdown" class="flex items-center relative text-theme-primary z-30"><%# MEMO: z-30 is for 2026's background image %>
+      <button class="cursor-pointer p-2 color-2026-primary" aria-label="Menu" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -13,7 +13,7 @@
       <% if logged_in? && current_user!.have_unread_announcements? %>
         <div class="w-2 h-2 rounded-[50%] bg-theme-primary-600 absolute right-0 top-0"></div>
       <% end %>
-      <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 bg-white rounded-md w-56 z-10"
+      <div data-dropdown-target="menu" class="hidden transition transform origin-top-right absolute right-0 top-12 menu-2026 rounded-md w-56 z-10"
         data-transition-enter-from="opacity-0 scale-95"
         data-transition-enter-to="opacity-100 scale-100"
         data-transition-leave-from="opacity-100 scale-100"
@@ -23,56 +23,56 @@
           <div class="flex flex-row items-center mb-4">
             <% if logged_in? %>
               <%= image_tag current_user!.profile&.images&.first&.representation(resize_to_limit: [50, 50]) || "", class: "rounded-lg mr-3" %>
-              <span class="text-gray-900 text-lg"><%= "@#{current_user!.name}"%></span>
+              <span class="text-theme-primary text-lg"><%= "@#{current_user!.name}"%></span>
             <% else %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-gray-500 mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-theme-primary mr-3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="text-gray-700 text-sm"><%= t('layouts.header_nav.not_logged_in') %></span>
+              <span class="text-theme-primary text-sm"><%= t('layouts.header_nav.not_logged_in') %></span>
             <% end %>
           </div>
           <% if logged_in? %>
-            <%= link_to profiles_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+            <%= link_to profiles_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
               <span><%= t('layouts.header_nav.profile') %></span>
             <% end %>
           <% end %>
-          <%= link_to event_talks_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+          <%= link_to event_talks_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.talks') %></span>
           <% end %>
-          <%= link_to about_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+          <%= link_to about_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.about') %></span>
           <% end %>
-          <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+          <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.announcements') %></span>
             <% if logged_in? && current_user!.have_unread_announcements? %>
-              <span class="rounded-xl bg-theme-primary-300 px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
+              <span class="rounded-xl bg-theme-primary-300 text-black px-3 text-sm ml-2"><%= current_user!.unread_announcement_count %></span>
             <% end %>
           <% end %>
-          <%= link_to event_live_streams_path(event_slug: current_event.slug), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+          <%= link_to event_live_streams_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.live_streams') %></span>
           <% end %>
           <%= form_with url: locale_setting_path(return_to: request.path), method: :post, data: { turbo: false } do |f| %>
             <% if current_locale == :en %>
               <%= f.hidden_field :locale, value: "ja" %>
-              <%= f.submit t('layouts.header_nav.switch_to_ja'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+              <%= f.submit t('layouts.header_nav.switch_to_ja'), class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
             <% else %>
               <%= f.hidden_field :locale, value: "en" %>
-              <%= f.submit t('layouts.header_nav.switch_to_en'), class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+              <%= f.submit t('layouts.header_nav.switch_to_en'), class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
             <% end %>
           <% end %>
           <% if logged_in? %>
-            <%= link_to setting_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+            <%= link_to setting_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
               <span><%= t('layouts.header_nav.setting') %></span>
             <% end %>
             <% if current_user!.organizer? %>
-              <%= link_to admin_path, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3" do %>
+              <%= link_to admin_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
                 <span><%= t('layouts.header_nav.admin_console') %></span>
               <% end %>
             <% end %>
-            <%= button_to t('layouts.header_nav.logout'), logout_path, method: :delete, form: { data: { turbo: false } }, class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" %>
+            <%= button_to t('layouts.header_nav.logout'), logout_path, method: :delete, form: { data: { turbo: false } }, class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>
           <% else %>
             <%= form_tag "/auth/github", method: :post, data: { turbo: false } do %>
-              <%= button_tag type: "submit", class: "py-2 text-lg hover:bg-gray-100 text-gray-900 rounded-lg pl-3 w-full text-left" do %>
+              <%= button_tag type: "submit", class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" do %>
                 <span><%= t('layouts.header_nav.login_with_github') %></span>
               <% end %>
             <% end %>

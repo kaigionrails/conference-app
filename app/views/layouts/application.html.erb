@@ -10,32 +10,25 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <link rel="manifest" href="<%= pwa_manifest_path %>">
-    <%= favicon_link_tag "icon.png" %>
-    <%= favicon_link_tag "icons/2025/512.png", rel: "apple-touch-icon", type: 'image/png' %>
+    <%= favicon_link_tag "icons/2026/favicon.svg", type: "image/svg+xml" %>
+    <%= favicon_link_tag "icons/2026/apple-touch-icon.png", rel: "apple-touch-icon", type: 'image/png' %>
     <script>
       window.vapidPublicKey = new Uint8Array(<%= vapid_public_key_bytes %>)
     </script>
   </head>
 
-  <body class="bg-theme-background w-full pb-safe">
+  <body class="theme-2026 bg-theme-background w-full pb-safe">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
-      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>"><%# MEMO: relative and z-10 is for 2025's background image %>
+      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>"><%# MEMO: relative and z-10 is for 2026's background image %>
         <%= message %>
       </div>
     <% end %>
-    <main class="mx-auto flex text-theme-primary relative z-10"><%# MEMO: relative and z-10 is for 2025's background image %>
+    <main class="main-2026 mx-auto flex text-theme-primary relative z-10"><%# MEMO: relative and z-10 is for 2026's background image %>
       <%= yield %>
     </main>
-    <div class="background-2025-items">
-      <div class="background-2025-item background-2025-item-1"></div>
-      <div class="background-2025-item background-2025-item-2"></div>
-      <div class="background-2025-item background-2025-item-3"></div>
-      <div class="background-2025-item background-2025-item-4"></div>
-      <div class="background-2025-item background-2025-item-5"></div>
-      <div class="background-2025-item background-2025-item-6"></div>
-      <div class="background-2025-item background-2025-item-7"></div>
-      <div class="background-2025-item background-2025-item-8"></div>
+    <div class="background-2026-items" aria-hidden="true">
+      <div class="background-2026-item"></div>
     </div>
   </body>
 </html>
