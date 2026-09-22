@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     end
     resources :talks, only: [:index, :show, :edit, :update]
     resources :tito_tickets, only: [:index, :show]
+    resources :sponsor_qr_codes, only: [:index]
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :live_streams, only: [:index, :new, :create, :update, :show, :destroy]

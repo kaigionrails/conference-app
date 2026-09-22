@@ -1,0 +1,48 @@
+<h2 class="font-bold text-xl mb-2">Sponsor QR Codes</h2>
+<p class="mb-8"><%= @event.name %></p>
+<div
+  data-controller="sponsor-qr-codes"
+  data-sponsor-qr-codes-sponsors-value="<%= sponsor_qr_downloads(@sponsors).to_json %>"
+  data-sponsor-qr-codes-zip-filename-value="sponsor-qr-codes-<%= @event.slug %>.zip"
+>
+  <p class="mb-4 text-red-700" role="alert" data-sponsor-qr-codes-target="error" hidden>Could not generate the QR codes. Please try again.</p>
+  <p class="mb-4">Download a PNG for each sponsor and send the corresponding file to them.</p>
+  <button
+    type="button"
+    class="border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mb-4 disabled:cursor-wait disabled:opacity-50"
+    data-action="sponsor-qr-codes#downloadAll"
+  >
+    Download all as ZIP
+  </button>
+
+  <div class="rounded-sm w-full pr-8 shadow-xs">
+    <table class="w-full divide-y border">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="py-2 px-3 text-left">Sponsor</th>
+          <th class="py-2 px-3 text-left">Plan</th>
+          <th class="py-2 px-3 text-left">Stamp URL</th>
+          <th class="py-2 px-3 text-left">QR Code</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 bg-white">
+        <% @sponsors.each do |sponsor| %>
+          <tr>
+            <td class="p-3"><%= sponsor[:name] %></td>
+            <td class="p-3"><%= sponsor[:plan].capitalize %></td>
+            <td class="p-3 break-all"><%= sponsor[:stamp_url] %></td>
+            <td class="p-3">
+              <button type="button"
+                class="border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer whitespace-nowrap disabled:cursor-wait disabled:opacity-50"
+                data-url="<%= sponsor[:stamp_url] %>"
+                data-filename="<%= sponsor_qr_filename(sponsor) %>"
+                data-action="sponsor-qr-codes#download">
+                Download PNG
+              </button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
