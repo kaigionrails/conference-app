@@ -13,7 +13,7 @@ RSpec.describe "LiveStreams", type: :request do
 
     context "when event found and ongoing" do
       let(:user) { FactoryBot.create(:user) }
-      let!(:event) { FactoryBot.create(:event, slug: "2025", end_date: 1.minutes.since) }
+      let!(:event) { FactoryBot.create(:event, :make_ongoing, slug: "2025", end_date: 1.minutes.since) }
 
       context "when not logged in" do
         it "redirect to check-in path" do
@@ -74,7 +74,7 @@ RSpec.describe "LiveStreams", type: :request do
 
     context "when event found but over" do
       let(:user) { FactoryBot.create(:user) }
-      let!(:event) { FactoryBot.create(:event, slug: "2025", end_date: 1.minute.ago) }
+      let!(:event) { FactoryBot.create(:event, :make_ongoing, slug: "2025", end_date: 1.minute.ago) }
 
       context "when not logged in" do
         it "redirect to check-in path" do
