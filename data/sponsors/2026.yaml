@@ -1,0 +1,335 @@
+---
+:sponsors:
+- :key: mov.am
+  :name: mov inc.
+  :plan: ruby
+  :logo: S309_mov.am_ruby
+  :labels:
+  - :name: Print sticker sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: enito.co.jp
+  :name: with, Inc.
+  :plan: ruby
+  :logo: S310_enito.co.jp_ruby
+  :labels:
+  - :name: Print sticker sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: leaner.co.jp
+  :name: Leaner Technologies Inc.
+  :plan: ruby
+  :logo: S327_leaner.co.jp_ruby
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: wantedly.com
+  :name: Wantedly, Inc.
+  :plan: ruby
+  :logo: S338_wantedly.com_ruby
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: studyplus.jp
+  :name: Studyplus, Inc.
+  :plan: ruby
+  :logo: S341_studyplus.jp_ruby
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: timee.co.jp
+  :name: Timee, Inc.
+  :plan: ruby
+  :logo: S342_timee.co.jp_ruby
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: esm.co.jp
+  :name: ESM, Inc.
+  :plan: gold
+  :logo: S308_esm.co.jp_gold
+  :labels:
+  - :name: Print sticker sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: kickflow.com
+  :name: kickflow, Inc.
+  :plan: gold
+  :logo: S311_kickflow.com_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: coincheck.com
+  :name: Coincheck, Inc.
+  :plan: gold
+  :logo: S312_coincheck.com_gold
+- :key: smartbank.co.jp
+  :name: SmartBank, Inc.
+  :plan: gold
+  :logo: S313_smartbank.co.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: timetreeapp.com
+  :name: TimeTree, Inc.
+  :plan: gold
+  :logo: S315_timetreeapp.com_gold
+- :key: my-vision.co.jp
+  :name: MyVision
+  :plan: gold
+  :logo: S317_my-vision.co.jp_gold
+- :key: giftee.co
+  :name: giftee Inc.
+  :plan: gold
+  :logo: S318_giftee.co_gold
+  :labels:
+  - :name: Scholarship sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: kurashiru.co.jp
+  :name: Kurashiru, Inc.
+  :plan: gold
+  :logo: S319_kurashiru.co.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: lmi.ne.jp
+  :name: Link and Motivation Inc.
+  :plan: gold
+  :logo: S320_lmi.ne.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: itandi.co.jp
+  :name: ITANDI, Inc.
+  :plan: gold
+  :logo: S321_itandi.co.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: flatt.tech
+  :name: GMO Flatt Security Inc.
+  :plan: gold
+  :logo: S322_flatt.tech_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: ga-tech.co.jp
+  :name: GA technologies Co., Ltd.
+  :plan: gold
+  :logo: S323_ga-tech.co.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: hubble-inc.jp
+  :name: Hubble Inc.
+  :plan: gold
+  :logo: S331_hubble-inc.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: bm-sms.co.jp
+  :name: SMS Co., Ltd.
+  :plan: gold
+  :logo: S333_bm-sms.co.jp_gold
+- :key: gaji.jp
+  :name: Gaji-Labo Inc.
+  :plan: gold
+  :logo: S334_gaji.jp_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: unifa-e.com
+  :name: Unifa Inc.
+  :plan: gold
+  :logo: S336_unifa-e.com_gold
+  :labels:
+  - :name: Nursery sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: medpeer.co.jp
+  :name: MedPeer, Inc.
+  :plan: gold
+  :logo: S339_medpeer.co.jp_gold
+- :key: andpad.co.jp
+  :name: ANDPAD Inc.
+  :plan: gold
+  :logo: S343_andpad.co.jp_gold
+  :labels:
+  - :name: Drinks sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: sonicgarden.jp
+  :name: SonicGarden Inc.
+  :plan: gold
+  :logo: S344_sonicgarden.jp_gold
+  :labels:
+  - :name: Scholarship sponsor
+    :type: custom
+- :key: i3-systems.com
+  :name: i Cubed Systems, Inc.
+  :plan: gold
+  :logo: S345_i3-systems.com_gold
+  :labels:
+  - :name: Booth
+    :type: booth
+- :key: smarthr.co.jp
+  :name: SmartHR, Inc.
+  :plan: gold
+  :logo: S346_smarthr.co.jp_gold
+  :labels:
+  - :name: Scholarship sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: b4a.co.jp
+  :name: B4A, Inc.
+  :plan: gold
+  :logo: S347_b4a.co.jp_gold
+  :labels:
+  - :name: Snacks sponsor
+    :type: custom
+  - :name: Booth
+    :type: booth
+- :key: moneyforward.co.jp
+  :name: Money Forward, Inc.
+  :plan: gold
+  :logo: S348_moneyforward.co.jp_gold
+  :labels:
+  - :name: Snacks sponsor
+    :type: custom
+- :key: repro.io
+  :name: Repro Inc.
+  :plan: gold
+  :logo: S349_repro.io_gold
+  :labels:
+  - :name: Print sticker sponsor
+    :type: custom
+- :key: as-child.com
+  :name: A’s Child Inc.
+  :plan: silver
+  :logo: S306_as-child.com_silver
+- :key: lokka.jp
+  :name: フィヨルドブートキャンプ
+  :plan: silver
+  :logo: S307_lokka.jp_silver
+- :key: takeyuweb.co.jp
+  :name: TakeyuWeb Inc.
+  :plan: silver
+  :logo: S314_takeyuweb.co.jp_silver
+- :key: luxiar.com
+  :name: Luxiar Co., Ltd.
+  :plan: silver
+  :logo: S316_luxiar.com_silver
+- :key: trustdock.io
+  :name: TRUSTDOCK Inc.
+  :plan: silver
+  :logo: S324_trustdock.io_silver
+- :key: linkers.net
+  :name: Linkers Corporation
+  :plan: silver
+  :logo: S326_linkers.net_silver
+- :key: sansan.com
+  :name: Sansan株式会社
+  :plan: silver
+  :logo: S328_sansan.com_silver
+- :key: codetakt.com
+  :name: codeTakt Inc.
+  :plan: silver
+  :logo: S329_codetakt.com_silver
+- :key: freee.co.jp
+  :name: freee K.K.
+  :plan: silver
+  :logo: S330_freee.co.jp_silver
+- :key: dena.jp
+  :name: DeNA Co., Ltd.
+  :plan: silver
+  :logo: S332_dena.jp_silver
+- :key: ivry.jp
+  :name: IVRy Inc.
+  :plan: silver
+  :logo: S335_ivry.jp_silver
+- :key: everyleaf.com
+  :name: Everyleaf Corporation
+  :plan: silver
+  :logo: S337_everyleaf.com_silver
+- :key: ml.pixiv.co.jp
+  :name: pixiv Inc.
+  :plan: silver
+  :logo: S340_ml.pixiv.co.jp_silver
+- :key: twogate.com
+  :name: TwoGate Inc.
+  :plan: silver
+  :logo: S350_twogate.com_silver
+- :key: icare-carely.co.jp
+  :name: iCARE Co.,Ltd.
+  :plan: silver
+  :logo: S351_icare-carely.co.jp_silver
+- :key: my-best.com
+  :name: mybest,inc.
+  :plan: silver
+  :logo: S352_my-best.com_silver
+  :labels:
+  - :name: Drinks sponsor
+    :type: custom
+- :key: st.inc
+  :name: STORES, Inc.
+  :plan: silver
+  :logo: S353_st.inc_silver
+  :labels:
+  - :name: Women's lunch sponsor
+    :type: custom
+- :key: linc-well.com
+  :name: Linc'well Inc.
+  :plan: silver
+  :logo: S354_linc-well.com_silver
+  :labels:
+  - :name: Print sticker sponsor
+    :type: custom
+- :key: camp-fire.jp
+  :name: CAMPFIRE, Inc.
+  :plan: silver
+  :logo: S355_camp-fire.jp_silver
+- :key: shunju.io
+  :name: Shunju LLC
+  :plan: silver
+  :logo: S356_shunju.io_silver
+- :key: entm.jp
+  :name: ENTERTAINMENT INC.
+  :plan: silver
+  :logo: S357_entm.jp_silver
+- :key: nex-pro.com
+  :name: Nex-Pro Co., Ltd.
+  :plan: silver
+  :logo: S358_nex-pro.com_silver
+- :key: optim.co.jp
+  :name: OPTiM Corporation
+  :plan: silver
+  :logo: S359_optim.co.jp_silver
+- :key: lovegraph.me
+  :name: Lovegraph Inc.
+  :plan: silver
+  :logo: S272_lovegraph.me_silver
+  :labels:
+  - :name: Photo sponsor
+    :type: custom
+- :key: spherelinks.co.jp
+  :name: Spherelinks
+  :plan: silver
+  :logo: S1000_spherelinks.co.jp_silver
+  :labels:
+  - :name: Streaming sponsor
+    :type: custom
+- :key: avohq.io
+  :name: Avo
+  :plan: silver
+  :logo: S1100_avohq.io_silver
+  :labels:
+  - :name: Ruby passport sponsor
+    :type: custom
