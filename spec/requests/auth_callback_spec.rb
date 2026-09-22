@@ -9,6 +9,33 @@ RSpec.describe "AuthCallback", type: :request do
       end
     end
 
+    context "with an additional registered provider" do
+      let(:user) { FactoryBot.create(:user) }
+      let(:auth) { OmniAuth::AuthHash.new(provider: "google_oauth2", uid: "google-user") }
+      let(:provider) { double("Authentication provider") }
+
+      before do
+        stub_const("AuthCallbackController::PROVIDERS", AuthCallbackController::PROVIDERS.merge("google_oauth2" => provider))
+        allow(provider).to receive(:find_or_create_user_from_auth_hash).with(auth).and_return(user)
+      end
+
+      it "uses the same return location after authentication" do
+        return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+
+        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth, "omniauth.params" => {"return_to" => return_to}}
+
+        expect(response).to redirect_to(return_to)
+        expect(session[:user_id]).to eq(user.id)
+      end
+
+      it "uses the default page when no return location was provided" do
+        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth}
+
+        expect(response).to redirect_to(setting_path)
+        expect(session[:user_id]).to eq(user.id)
+      end
+    end
+
     context "provider is GitHub" do
       context "exists user" do
         let(:user) { FactoryBot.create(:user, name: "octocat") }
@@ -20,6 +47,15 @@ RSpec.describe "AuthCallback", type: :request do
             provider: :github,
             uid: auth_uid
           })
+        end
+
+        it "returns to the stamp URL after GitHub login" do
+          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+          post "/auth/github?#{{return_to:}.to_query}"
+          follow_redirect!
+
+          expect(response).to redirect_to(return_to)
+          expect(session[:user_id]).to eq(user.id)
         end
 
         it "should redirect to root_path" do

@@ -1,6 +1,20 @@
 require "rails_helper"
 
 RSpec.describe "Sessions", type: :request do
+  describe "GET /login" do
+    let!(:event) { FactoryBot.create(:event, :make_ongoing) }
+
+    it "passes the stamp URL through both login forms" do
+      return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+      get login_path(return_to:)
+
+      document = Nokogiri::HTML(response.body)
+      github_form = document.at_css("#github-login-form")
+      expect(Rack::Utils.parse_query(URI.parse(github_form["action"]).query)["return_to"]).to eq(return_to)
+      expect(document.at_css("form[action='/auth/email'] input[name='return_to']")["value"]).to eq(return_to)
+    end
+  end
+
   describe "POST /auth/email (email and password authentication)" do
     let!(:operator) { FactoryBot.create(:user, role: :operator) }
     let!(:auth) {
@@ -62,6 +76,13 @@ RSpec.describe "Sessions", type: :request do
     end
 
     context "given password is wrong" do
+      it "preserves the return location for another attempt" do
+        return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code"
+        post "/auth/email", params: {email: "sample@email.invalid", password: "wrong", return_to:}
+
+        expect(response).to redirect_to(login_path(return_to:))
+      end
+
       it "should not success to login" do
         post "/auth/email", params: {email: "sample@email.invalid", password: "p@ssw0rd"}
         expect(response).to redirect_to(login_path)

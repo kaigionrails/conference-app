@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:alert] = t("sessions.create.unknown_provider")
-      redirect_to login_path
+      redirect_to login_path(return_to: params[:return_to])
       return
     end
 
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
   private def reject_login
     count_failed_login!
     flash[:alert] = t("sessions.create.invalid_email_or_password")
-    redirect_to login_path
+    redirect_to login_path(return_to: params[:return_to])
   end
 
   # @rbs return: void
@@ -52,6 +52,6 @@ class SessionsController < ApplicationController
     return unless login_attempts_exceeded?
 
     flash[:alert] = t("sessions.create.rate_limited")
-    redirect_to login_path
+    redirect_to login_path(return_to: params[:return_to])
   end
 end
