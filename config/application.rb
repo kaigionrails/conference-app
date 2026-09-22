@@ -26,6 +26,7 @@ module ConferenceApp
 
     config.i18n.available_locales = %i[en ja ja-jp]
     config.i18n.fallbacks = [{"ja-jp": :ja}]
+    config.x.official_site_url = "https://kaigionrails.org"
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
