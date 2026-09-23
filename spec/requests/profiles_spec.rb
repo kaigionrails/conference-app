@@ -66,4 +66,54 @@ RSpec.describe "Profiles", type: :request do
       end
     end
   end
+  describe "PATCH /profiles/:id" do
+    before { sign_in(user) }
+
+    def update_with(handle)
+      patch "/profiles/#{profile.id}", params: {
+        handle: handle,
+        profile: {name: "表示名", description: "", profile_badge_ids: [""]}
+      }
+    end
+
+    it "changes the handle" do
+      update_with("new-handle")
+
+      expect(user.reload.name).to eq "new-handle"
+      expect(response).to redirect_to(profiles_path)
+    end
+
+    it "leaves the handle alone when the field is blank" do
+      before_name = user.name
+
+      update_with("")
+
+      expect(user.reload.name).to eq before_name
+    end
+
+    # A rejected handle has several possible reasons, so the message has to
+    # name the one that applied.
+    context "when the handle is rejected" do
+      it "says it is reserved" do
+        update_with("admin")
+
+        expect(user.reload.name).not_to eq "admin"
+        expect(flash[:alert]).to include("ハンドル")
+      end
+
+      it "says it is malformed" do
+        update_with("not a handle")
+
+        expect(flash[:alert]).to include("ハンドル")
+      end
+
+      it "says it is taken" do
+        FactoryBot.create(:user, name: "taken-one")
+
+        update_with("taken-one")
+
+        expect(flash[:alert]).to include("ハンドル")
+      end
+    end
+  end
 end

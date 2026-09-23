@@ -31,6 +31,9 @@ class ProfilesController < ApplicationController
 
     begin
       ApplicationRecord.transaction do
+        # The handle lives on User, not Profile, so it arrives outside the
+        # profile params.
+        current_user!.update!(name: params[:handle]) if params[:handle].present?
         profile.update!(**profile_non_image_params)
         profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
         # rbs_rails types << and destroy as variadic over records, but Active
@@ -40,6 +43,11 @@ class ProfilesController < ApplicationController
       end
       flash[:success] = t(".succeeded")
       redirect_to profiles_path
+    rescue ActiveRecord::RecordInvalid => e
+      # Say which field was rejected: a handle can fail for several reasons
+      # and "failed" alone leaves the user guessing.
+      flash[:alert] = "#{t(".failed")} #{e.record.errors.full_messages.to_sentence}"
+      redirect_to edit_profile_path
     rescue
       flash[:alert] = t(".failed")
       redirect_to edit_profile_path
