@@ -1,0 +1,6 @@
+# Generated from app/controllers/policies_controller.rb with RBS::Inline
+
+class PoliciesController < ApplicationController
+  # @rbs return: void
+  def index: () -> void
+end

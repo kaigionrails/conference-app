@@ -38,6 +38,7 @@ interface ::_RbsRailsPathHelpers
   def talk_bookmark_path: (*untyped) -> ::String
   def unread_announcement_path: (*untyped) -> ::String
   def about_path: (*untyped) -> ::String
+  def policies_path: (*untyped) -> ::String
   def signages_path: (*untyped) -> ::String
   def signage_devices_path: (*untyped) -> ::String
   def subscreen_index_path: (*untyped) -> ::String
@@ -173,6 +174,7 @@ interface ::_RbsRailsPathHelpers
   def talk_bookmark_url: (*untyped) -> ::String
   def unread_announcement_url: (*untyped) -> ::String
   def about_url: (*untyped) -> ::String
+  def policies_url: (*untyped) -> ::String
   def signages_url: (*untyped) -> ::String
   def signage_devices_url: (*untyped) -> ::String
   def subscreen_index_url: (*untyped) -> ::String
