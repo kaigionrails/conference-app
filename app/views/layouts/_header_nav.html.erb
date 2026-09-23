@@ -54,7 +54,7 @@
           <%= link_to event_live_streams_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.live_streams') %></span>
           <% end %>
-          <%= form_with url: locale_setting_path(return_to: request.path, locale: nil), method: :post, data: { turbo: false } do |f| %>
+          <%= form_with url: locale_setting_path(return_to: request.fullpath, locale: nil), method: :post, data: { turbo: false } do |f| %>
             <% if current_locale == :en %>
               <%= f.hidden_field :locale, value: "ja" %>
               <%= f.submit t('layouts.header_nav.switch_to_ja'), class: "py-2 text-lg menu-2026-item rounded-lg pl-3 w-full text-left" %>

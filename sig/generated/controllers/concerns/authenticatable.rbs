@@ -44,13 +44,6 @@ module Authenticatable : ActionController::Base
   # @rbs return: String
   private def safe_return_to: (untyped value, default: String) -> String
 
-  # Path only, for callers that build their own query.
-  #
-  # @rbs value: untyped
-  # @rbs default: String
-  # @rbs return: String
-  private def safe_return_to_path: (untyped value, default: String) -> String
-
   # @rbs value: untyped
   # @rbs return: URI::Generic?
   private def parse_return_to: (untyped value) -> URI::Generic?

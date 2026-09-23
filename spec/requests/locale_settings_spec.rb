@@ -72,6 +72,31 @@ RSpec.describe "LocaleSettings", type: :request do
   end
 
   describe "POST /locale_settings" do
+    it "replaces the locale while preserving encoded and repeated query parameters" do
+      return_to = "/login?return_to=%2Fsponsor_passports%2F2026%2Fstamps%2Fnew%3Fcode%3Da%26locale%3Dja&tag=one&tag=two&locale=ja&locale=ja"
+
+      post "/locale_settings", params: {locale: "en", return_to:}
+
+      uri = URI.parse(response.location)
+      expect(uri.path).to eq("/login")
+      expect(URI.decode_www_form(uri.query)).to eq([
+        ["return_to", "/sponsor_passports/2026/stamps/new?code=a&locale=ja"],
+        ["tag", "one"], ["tag", "two"], ["locale", "en"]
+      ])
+    end
+
+    it "keeps redirects on this site when the return location has another host" do
+      post "/locale_settings", params: {locale: "en", return_to: "https://example.org/about?code=abc"}
+
+      expect(response).to redirect_to("/about?code=abc&locale=en")
+    end
+
+    it "falls back to the root for an invalid return location" do
+      post "/locale_settings", params: {locale: "en", return_to: "////example.org"}
+
+      expect(response).to redirect_to("/?locale=en")
+    end
+
     context "when not logged in" do
       context "switch to en locale" do
         it "should redirect to return_to path with locale query parameter" do
