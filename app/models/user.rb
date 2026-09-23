@@ -16,6 +16,7 @@ class User < ApplicationRecord
   HANDLE_GENERATION_ATTEMPTS = 10
 
   has_one :authentication_provider_github, dependent: :destroy
+  has_one :authentication_provider_google, dependent: :destroy
   has_one :authentication_provider_email_and_password, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_one :locale_setting, dependent: :destroy
@@ -98,7 +99,7 @@ class User < ApplicationRecord
     return if name.blank?
 
     if RESERVED_HANDLES.include?(name.downcase) || name.match?(RESERVED_HANDLE_FORMAT)
-      errors.add(:name, :reserved, message: "is reserved")
+      errors.add(:name, :reserved)
     end
   end
 end

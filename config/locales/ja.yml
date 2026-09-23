@@ -16,8 +16,8 @@ ja:
       feature_push_notification_description1: ブックマークしたセッションの発表時刻および運営からのアナウンス作成時に、プッシュ通知を有効にすることができます。
       feature_push_notification_description2: 詳細については、右上のアイコンからの「Setting」にてご確認ください。
       feature_push_notification_setting_link: こちらからも開くことができます。
-      need_github_login: このアプリの機能を活用していただくためには、GitHubアカウントでログインしていただく必要があります。
-      github_login_flow: 以下のボタンから、GitHubアカウントでのログインをお願いします。
+      need_login: このアプリの機能を活用していただくためには、ログインしていただく必要があります。
+      login_flow: 以下のボタンからログインをお願いします。
       contributors: コントリビューター
       app_contributors: conference-appは以下のコントリビューターによって開発されています(コミット数順）。
   announcements:
@@ -82,6 +82,9 @@ ja:
       create_a_new_badge: "バッヂを新しく作る"
       update: "更新する"
       name: "表示名"
+      handle: "ハンドル"
+      handle_help: "URL（/@ の後ろ）に使われます。英数字・ハイフン・アンダースコアが使えます。"
+      name_help: "他の参加者に見える名前です。日本語も使えます。"
       name_placeholder: "見せたい名前"
       description: "自己紹介"
       description_placeholder: "Markdown記法が使用できます"
@@ -100,14 +103,16 @@ ja:
     create:
       unknown_provider: "不明なログイン方法です。"
       failed: "ログインに失敗しました。もう一度お試しください。"
+  shared:
+    login_providers:
+      github: "Login with GitHub"
+      google: "Login with Google"
   sessions:
     create:
       unknown_provider: "不明なログイン方法です。"
       invalid_email_or_password: "メールアドレスまたはパスワードが正しくありません。"
-      rate_limited: "ログインの試行回数が上限に達しました。しばらくしてからもう一度お試しください。"
     new:
       title: "ログイン"
-      login_with_github: "Login with GitHub"
       for_operators: "運営向け"
       email: "メールアドレス"
       password: "パスワード"
@@ -159,7 +164,6 @@ ja:
   users:
     show:
       login_prompt: "ログインすると、QRコードで読みとった人の履歴を残すことができます。"
-      login_with_github: "Login with GitHub"
       friends_who_met_at_event:
         zero: "%{event_name}で知り合った人達"
         one: "%{event_name}で知り合った人達(%{count}人)"
@@ -178,7 +182,6 @@ ja:
       setting: "Setting"
       admin_console: "Admin console"
       logout: "Logout"
-      login_with_github: "Login with GitHub"
       switch_to_ja: "Switch to ja locale"
       switch_to_en: "Switch to en locale"
   live_streams:
@@ -219,6 +222,13 @@ ja:
       webpush_subscription: "プッシュ通知設定"
       talk_bookmark: "ブックマーク"
       unread_announcement: "未読アナウンス"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              reserved: "は使用できません"
+              invalid: "は英数字・ハイフン・アンダースコアのみ使用できます（先頭は英数字、39文字以内）"
     attributes:
       profile:
         name: "表示名"
@@ -262,7 +272,7 @@ ja:
         track: "トラック"
         duration_minutes: "時間（分）"
       user:
-        name: "名前"
+        name: "ハンドル"
         role: "ロール"
       cloudflare_stream_live_stream:
         uid: "UID"

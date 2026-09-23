@@ -27,5 +27,6 @@ env:
     APPLICATION_URL: https://app-staging.kaigionrails.org
     ORIGIN_HOST: origin-app-staging.kaigionrails.org
     GITHUB_OAUTH_REDIRECT_URI: https://app-staging.kaigionrails.org/auth/github/callback
+    GOOGLE_OAUTH_REDIRECT_URI: https://app-staging.kaigionrails.org/auth/google_oauth2/callback
     SHIRATAKI_URL: https://shirataki-staging.kaigionrails.org
     REDIS_URL: redis://<%= ENV.fetch("KAMAL_WEB_SERVER_PRIVATE_ADDRESS") %>:6380/1

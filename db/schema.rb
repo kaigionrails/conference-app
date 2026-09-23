@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_21_075232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -79,6 +79,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
     t.bigint "user_id", null: false
     t.index ["uid"], name: "index_authentication_provider_githubs_on_uid", unique: true
     t.index ["user_id"], name: "index_authentication_provider_githubs_on_user_id"
+  end
+
+  create_table "authentication_provider_googles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "uid", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["uid"], name: "index_authentication_provider_googles_on_uid", unique: true
+    t.index ["user_id"], name: "index_authentication_provider_googles_on_user_id"
   end
 
   create_table "cloudflare_stream_live_streams", force: :cascade do |t|
@@ -514,6 +523,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_email_and_passwords", "users"
   add_foreign_key "authentication_provider_githubs", "users"
+  add_foreign_key "authentication_provider_googles", "users"
   add_foreign_key "cloudflare_stream_live_streams", "events"
   add_foreign_key "locale_settings", "users"
   add_foreign_key "ongoing_events", "events"

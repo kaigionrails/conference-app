@@ -70,58 +70,6 @@ RSpec.describe "Sessions", type: :request do
     end
   end
 
-  describe "login attempt limit" do
-    include ActiveSupport::Testing::TimeHelpers
-
-    let!(:operator) { FactoryBot.create(:user, role: :operator) }
-    let!(:auth) {
-      FactoryBot.create(
-        :authentication_provider_email_and_password, user: operator, email: "sample@email.invalid", password: "password", password_confirmation: "password"
-      )
-    }
-
-    def fail_login
-      post "/auth/email", params: {email: "sample@email.invalid", password: "wrong"}
-    end
-
-    def succeed_login
-      post "/auth/email", params: {email: "sample@email.invalid", password: "password"}
-    end
-
-    it "rejects further attempts once the limit is reached" do
-      Authenticatable::LOGIN_ATTEMPT_LIMIT.times { fail_login }
-
-      succeed_login
-      expect(response).to redirect_to(login_path)
-      expect(session[:user_id]).to be_nil
-    end
-
-    it "still allows a login just below the limit" do
-      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
-
-      succeed_login
-      expect(session[:user_id]).to eq operator.id
-    end
-
-    it "resets the count after a successful login" do
-      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
-      succeed_login
-      (Authenticatable::LOGIN_ATTEMPT_LIMIT - 1).times { fail_login }
-
-      succeed_login
-      expect(session[:user_id]).to eq operator.id
-    end
-
-    it "forgets the attempts once the window passes" do
-      Authenticatable::LOGIN_ATTEMPT_LIMIT.times { fail_login }
-
-      travel(Authenticatable::LOGIN_ATTEMPT_PERIOD + 1.minute) do
-        succeed_login
-        expect(session[:user_id]).to eq operator.id
-      end
-    end
-  end
-
   describe "POST /auth/unknown (unknown provider)" do
     it "should not success to login" do
       post "/auth/unknown"

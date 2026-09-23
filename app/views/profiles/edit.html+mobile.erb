@@ -24,7 +24,13 @@
       <div id="profile-image-fields"></div>
     </div>
     <div class="mb-4">
+      <%= label_tag :handle, t('profiles.edit.handle'), class: "block mb-2 font-medium font-bold text-theme-primary" %>
+      <p class="mb-2 text-sm"><%= t('profiles.edit.handle_help') %></p>
+      <%= text_field_tag :handle, current_user!.name, class: "block w-full rounded-md border-0 py-1.5 text-theme-primary shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
+    </div>
+    <div class="mb-4">
       <%= f.label :name, t('profiles.edit.name'), class: "block mb-2 font-medium font-bold text-theme-primary" %>
+      <p class="mb-2 text-sm"><%= t('profiles.edit.name_help') %></p>
       <%= f.text_field :name, placeholder: t('profiles.edit.name_placeholder'), class: "block w-full rounded-md border-0 py-1.5 text-theme-primary shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700" %>
     </div>
     <div class="mb-4">

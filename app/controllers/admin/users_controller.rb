@@ -36,10 +36,10 @@ class Admin::UsersController < AdminController
     flash[:success] = "Create succeeded"
     redirect_to admin_user_path(user)
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique
-    # A rejected handle (taken, reserved or malformed) reaches here now that
-    # users.name is validated, so this is an ordinary path rather than a 500.
-    # RecordNotUnique covers what only the database rejects: an email that is
-    # already registered, and a handle lost to a concurrent insert.
+    # A rejected handle or a registered email reaches here through validation,
+    # so this is an ordinary path rather than a 500. RecordNotUnique is the
+    # backstop for what only the database sees: a row lost to a concurrent
+    # insert between the validation and the write.
     flash[:alert] = "Create failed"
     redirect_to new_admin_user_path
   end
