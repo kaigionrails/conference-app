@@ -433,6 +433,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
     t.index ["talk_id"], name: "index_speakers_talks_on_talk_id"
   end
 
+  create_table "sponsor_visits", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "event_id", null: false
+    t.string "sponsor_key", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["event_id"], name: "index_sponsor_visits_on_event_id"
+    t.index ["user_id", "event_id", "sponsor_key"], name: "index_sponsor_visits_on_user_id_and_event_id_and_sponsor_key", unique: true
+    t.index ["user_id"], name: "index_sponsor_visits_on_user_id"
+  end
+
   create_table "talk_bookmarks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "talk_id", null: false
@@ -540,6 +551,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "sponsor_visits", "events"
+  add_foreign_key "sponsor_visits", "users"
   add_foreign_key "talk_bookmarks", "talks"
   add_foreign_key "talk_bookmarks", "users"
   add_foreign_key "talk_reminders", "talks"
