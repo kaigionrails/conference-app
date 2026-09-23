@@ -99,7 +99,7 @@ class User < ApplicationRecord
     return if name.blank?
 
     if RESERVED_HANDLES.include?(name.downcase) || name.match?(RESERVED_HANDLE_FORMAT)
-      errors.add(:name, :reserved, message: "is reserved")
+      errors.add(:name, :reserved)
     end
   end
 end

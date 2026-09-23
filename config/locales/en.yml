@@ -83,6 +83,9 @@ en:
       create_a_new_badge: "Create a new badge"
       update: "Update"
       name: "Display name"
+      handle: "Handle"
+      handle_help: "Used in your URL, after the /@. Letters, digits, hyphens and underscores."
+      name_help: "The name other attendees see."
       name_placeholder: "Name to display"
       description: "Self introduction"
       description_placeholder: "Markdown is supported"
@@ -219,6 +222,13 @@ en:
       webpush_subscription: "Push Notification Settings"
       talk_bookmark: "Bookmark"
       unread_announcement: "Unread Announcement"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              reserved: "is reserved"
+              invalid: "may only contain letters, digits, hyphens and underscores, must start with a letter or a digit, and may be at most 39 characters"
     attributes:
       profile:
         name: "Display name"
@@ -262,7 +272,7 @@ en:
         track: "Track"
         duration_minutes: "Duration (minutes)"
       user:
-        name: "Name"
+        name: "Handle"
         role: "Role"
       cloudflare_stream_live_stream:
         uid: "UID"

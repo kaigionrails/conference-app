@@ -82,6 +82,9 @@ ja:
       create_a_new_badge: "バッヂを新しく作る"
       update: "更新する"
       name: "表示名"
+      handle: "ハンドル"
+      handle_help: "URL（/@ の後ろ）に使われます。英数字・ハイフン・アンダースコアが使えます。"
+      name_help: "他の参加者に見える名前です。日本語も使えます。"
       name_placeholder: "見せたい名前"
       description: "自己紹介"
       description_placeholder: "Markdown記法が使用できます"
@@ -219,6 +222,13 @@ ja:
       webpush_subscription: "プッシュ通知設定"
       talk_bookmark: "ブックマーク"
       unread_announcement: "未読アナウンス"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              reserved: "は使用できません"
+              invalid: "は英数字・ハイフン・アンダースコアのみ使用できます（先頭は英数字、39文字以内）"
     attributes:
       profile:
         name: "表示名"
@@ -262,7 +272,7 @@ ja:
         track: "トラック"
         duration_minutes: "時間（分）"
       user:
-        name: "名前"
+        name: "ハンドル"
         role: "ロール"
       cloudflare_stream_live_stream:
         uid: "UID"
