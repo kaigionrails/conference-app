@@ -1,0 +1,13 @@
+<div class="relative mt-4" role="progressbar" aria-label="<%= t("sponsor_passports.show.progress") %>" aria-valuenow="<%= progress.visited_count %>" aria-valuemin="0" aria-valuemax="<%= progress.total_count %>">
+  <div class="relative h-3 overflow-hidden rounded-full passport-progress-track">
+    <div class="h-full rounded-full passport-progress-fill" style="width: <%= progress.percentage %>%"></div>
+    <% progress.milestones.each do |milestone| %>
+      <% next if milestone[:count] == progress.total_count %>
+      <span
+        class="absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white"
+        style="left: <%= progress.percentage(milestone[:count]) %>%"
+        title="<%= t("sponsor_passports.show.milestone_marker", count: milestone[:count]) %>"
+        aria-label="<%= t("sponsor_passports.show.milestone_marker", count: milestone[:count]) %>"></span>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="passport-summary grid grid-cols-2 items-end gap-4">
+  <div>
+    <p class="text-xs font-bold passport-muted"><%= t("sponsor_passports.show.progress") %></p>
+    <p class="passport-progress-count" aria-label="<%= t("sponsor_passports.show.progress_count", visited: passport.progress.visited_count, total: passport.progress.total_count) %>">
+      <span><%= passport.progress.visited_count %></span><span class="passport-progress-total"> / <%= passport.progress.total_count %></span>
+    </p>
+  </div>
+  <div class="min-w-0 text-right">
+    <p class="text-xs passport-muted"><%= t("sponsor_passports.community_stamp_count.label") %></p>
+    <p class="<%= class_names("passport-community-count", "community-stamp-count--updated" => local_assigns.fetch(:updated, false)) %>" data-community-stamp-count>
+      <%= t("sponsor_passports.community_stamp_count.count", count: passport.community_stamp_count, formatted_count: number_with_delimiter(passport.community_stamp_count)) %>
+    </p>
+  </div>
+</div>
+
+<%= render "sponsor_passports/progress_bar", progress: passport.progress %>
+
+<% if passport.progress.total_count.positive? && (milestone = passport.progress.current_milestone) %>
+  <p class="mt-2 text-xs passport-muted" data-earned-badge>
+    <span aria-hidden="true">✦</span> <%= t("sponsor_passports.show.milestones.#{milestone[:key]}") %>
+  </p>
+<% end %>

@@ -73,6 +73,40 @@ en:
   profile_images:
     destroy:
       succeeded: "Profile image deleted"
+  sponsor_stamps:
+    new:
+      back_to_passport: "Back to your passport"
+      plan: "%{plan} Sponsor"
+      collect_stamp: "Collect Stamp"
+      collecting_stamp: "Stamping your passport…"
+    show:
+      already_visited: "You already collected this stamp"
+      complete_title: "All Sponsors Completed!"
+      complete_message: "You visited every sponsor booth. Congratulations!"
+      plan: "%{plan} Sponsor"
+      stamp_number: "Passport stamp number %{number}"
+      next_sponsors_title: "Where to next?"
+      view_stamp_card: "View Passport"
+      back_to_profile: "Back to Profile"
+  sponsor_passports:
+    community_stamp_count:
+      label: "Collected together"
+      count:
+        one: "%{formatted_count} stamp"
+        other: "%{formatted_count} stamps"
+    show:
+      book_complete: "Every booth, one completed passport. Thanks for exploring!"
+      progress: "Your visits"
+      progress_count: "%{visited} / %{total} sponsors"
+      milestone_marker: "Badge milestone: %{count} sponsors"
+      stamp_number: "Passport stamp collected number %{number}"
+      empty: "Scan sponsor QR codes to collect stamps."
+      visited: "Collected ✓"
+      unvisited: "Not visited"
+      milestones:
+        hello_sponsors: "Hello, Sponsors!"
+        halfway: "Halfway There!"
+        complete: "All Complete!"
   profiles:
     edit:
       title: "Edit Profile"
@@ -171,6 +205,7 @@ en:
     header_nav:
       not_logged_in: "Not logged in"
       profile: "Profile"
+      sponsor_passports: "Sponsor Passport"
       talks: "Talks"
       about: "About"
       announcements: "Announcements"

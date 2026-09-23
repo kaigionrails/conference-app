@@ -35,6 +35,9 @@
             <%= link_to profiles_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
               <span><%= t('layouts.header_nav.profile') %></span>
             <% end %>
+            <%= link_to sponsor_passport_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
+              <span><%= t('layouts.header_nav.sponsor_passports') %></span>
+            <% end %>
           <% end %>
           <%= link_to event_talks_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.talks') %></span>

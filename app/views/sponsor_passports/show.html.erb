@@ -1,0 +1,21 @@
+<% content_for(:page_title, "SPONSOR PASSPORT") %>
+<% progress = @passport.progress %>
+
+<div class="passport-page w-full max-w-xl mx-auto px-4 pt-3 pb-6">
+  <header class="passport-cover">
+    <%= render "sponsor_passports/header", event: @passport.event %>
+
+    <section aria-label="<%= t(".progress") %>">
+      <%= render "sponsor_passports/progress", passport: @passport %>
+
+      <% if progress.total_count.positive? && progress.completed? %>
+        <p class="mt-2 text-xs passport-muted" data-passport-complete><%= t(".book_complete") %></p>
+      <% end %>
+    </section>
+    <% if progress.visited_count.zero? %>
+      <p class="mt-4 text-sm leading-relaxed passport-muted"><%= t(".empty") %></p>
+    <% end %>
+  </header>
+
+  <%= render "stamp_grid", passport: @passport %>
+</div>
