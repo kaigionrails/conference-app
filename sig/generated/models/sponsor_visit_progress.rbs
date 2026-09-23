@@ -1,0 +1,17 @@
+# Generated from app/models/sponsor_visit_progress.rb with RBS::Inline
+
+class SponsorVisitProgress
+  attr_reader visited_count: untyped
+
+  attr_reader total_count: untyped
+
+  def initialize: (visited_count: untyped, total_count: untyped) -> untyped
+
+  def current_milestone: () -> untyped
+
+  def completed?: () -> untyped
+
+  def milestones: () -> untyped
+
+  def percentage: (?untyped count) -> untyped
+end

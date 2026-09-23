@@ -1,0 +1,25 @@
+# Generated from app/models/sponsor_passport.rb with RBS::Inline
+
+class SponsorPassport
+  attr_reader event: untyped
+
+  def initialize: (event: untyped, user: untyped) -> untyped
+
+  def sponsors: () -> untyped
+
+  def visited?: (untyped sponsor_key) -> untyped
+
+  def stamp_number_for: (untyped sponsor_key) -> untyped
+
+  def progress: () -> untyped
+
+  def community_stamp_count: () -> untyped
+
+  def next_sponsors: () -> untyped
+
+  private
+
+  attr_reader user: untyped
+
+  def stamp_numbers: () -> untyped
+end
