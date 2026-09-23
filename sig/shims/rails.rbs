@@ -1,0 +1,9 @@
+module Rails
+  class Application < Engine
+    class Configuration < ::Rails::Engine::Configuration
+      # Custom configuration defined in config/environments/*.rb
+      def application_url: () -> String
+      def application_url=: (String) -> String
+    end
+  end
+end
