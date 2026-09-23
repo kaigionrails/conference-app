@@ -34,6 +34,43 @@ RSpec.describe "LocaleSettings", type: :request do
     end
   end
 
+  describe "switching languages repeatedly from the navigation menu" do
+    let!(:event) { FactoryBot.create(:event, :make_ongoing, slug: "2026") }
+
+    shared_examples "a working language toggle" do
+      it "switches to English, back to Japanese, and to English again" do
+        get "/about"
+
+        %w[en ja en].each do |locale|
+          document = response.parsed_body
+          form = document.css("form").find { |element| element.at_css("input[name='locale']") }
+          target_locale = form.at_css("input[name='locale']")["value"]
+          expect(target_locale).to eq(locale)
+
+          post form["action"], params: {locale: target_locale}
+
+          expect(response).to redirect_to("/about?locale=#{locale}")
+          follow_redirect!
+          expect(response.parsed_body.at_css("html")["lang"]).to eq(locale)
+          expect(user.reload.locale_setting.preferred_locale).to eq(locale) if user
+        end
+      end
+    end
+
+    context "when not logged in" do
+      let(:user) { nil }
+
+      include_examples "a working language toggle"
+    end
+
+    context "when logged in" do
+      let(:user) { FactoryBot.create(:user) }
+      before { sign_in(user) }
+
+      include_examples "a working language toggle"
+    end
+  end
+
   describe "POST /locale_settings" do
     context "when not logged in" do
       context "switch to en locale" do
