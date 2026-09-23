@@ -75,6 +75,7 @@ env:
   secret:
     - DATABASE_URL
     - SECRET_KEY_BASE
+    - SPONSOR_VISIT_TOKEN_SECRET
     - GITHUB_APP_ID
     - GITHUB_KEY
     - GITHUB_SECRET

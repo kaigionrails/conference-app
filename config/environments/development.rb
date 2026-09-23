@@ -101,6 +101,8 @@ Rails.application.configure do
 
   config.x.shirataki.url = ENV["SHIRATAKI_URL"]
 
+  config.x.sponsor_visit_token_secret = ENV.fetch("SPONSOR_VISIT_TOKEN_SECRET", "development-and-test-sponsor-visit-token-secret")
+
   # SNS 自動投稿。development は既定で dry-run (外部 API を叩かない)。
   # 手元で実投稿を試すときだけ SOCIAL_DRY_RUN=false を環境変数で渡す (ファイルは書き換えない)
   config.x.social.dry_run = ActiveModel::Type::Boolean.new.cast(ENV.fetch("SOCIAL_DRY_RUN", "true"))

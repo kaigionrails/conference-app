@@ -153,6 +153,8 @@ Rails.application.configure do
 
   config.x.shirataki.url = ENV["SHIRATAKI_URL"]
 
+  config.x.sponsor_visit_token_secret = ENV.fetch("SPONSOR_VISIT_TOKEN_SECRET")
+
   # SNS 自動投稿。staging / production は実投稿
   config.x.social.dry_run = false
   config.x.social.x_client_id = ENV["SOCIAL_X_CLIENT_ID"]

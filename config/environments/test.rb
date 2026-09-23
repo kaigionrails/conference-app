@@ -74,6 +74,8 @@ Rails.application.configure do
 
   config.x.shirataki.url = "http://localhost:4000"
 
+  config.x.sponsor_visit_token_secret = ENV.fetch("SPONSOR_VISIT_TOKEN_SECRET", "development-and-test-sponsor-visit-token-secret")
+
   # SNS 自動投稿。外部へ出ないダミー。dry_run は false のまま WebMock で検証する
   config.x.social.dry_run = false
   config.x.social.x_client_id = "test"
