@@ -1,0 +1,63 @@
+# Generated from app/models/sponsor_booth_qr_card.rb with RBS::Inline
+
+# A printable A5 card for a sponsor booth: the sponsor logo and the stamp QR code composited onto
+# the event's SponsorBoothQrCardTemplate.
+class SponsorBoothQrCard
+  # The layout is in pixels of a 1748x2480 (A5 at 300 dpi) template and is scaled by the template width.
+  BASE_WIDTH: Integer
+
+  LOGO_SIZE: Integer
+
+  LOGO_TOP: Integer
+
+  QR_MAX_SIZE: Integer
+
+  QR_TOP: Integer
+
+  # Nothing is drawn over the QR code, so level M is enough and keeps the modules large.
+  QR_LEVEL: Symbol
+
+  QR_QUIET_ZONE: Integer
+
+  A5_WIDTH_MM: Float
+
+  LOGO_FETCH_TIMEOUTS: Hash[Symbol, Integer]
+
+  @stamp_url: String
+
+  @logo: String
+
+  @template: String
+
+  # Downloads the template, fetches the @3x logo from the official site and returns the card as PNG.
+  # @rbs template: SponsorBoothQrCardTemplate
+  # @rbs sponsor: Hash[Symbol, untyped]
+  # @rbs return: String
+  def self.generate: (template: SponsorBoothQrCardTemplate, sponsor: Hash[Symbol, untyped]) -> String
+
+  # @rbs url: String
+  # @rbs return: String
+  def self.fetch_logo: (String url) -> String
+
+  # @rbs template: String -- binary of the template image
+  # @rbs logo: String -- binary of the logo image
+  # @rbs stamp_url: String -- URL encoded into the QR code
+  # @rbs return: void
+  def initialize: (template: String, logo: String, stamp_url: String) -> void
+
+  # @rbs return: String
+  def to_png: () -> String
+
+  # Brings any input to 8-bit sRGB with 3 bands. Transparent areas become white, the color of the paper.
+  # @rbs image: Vips::Image
+  # @rbs return: Vips::Image
+  private def normalize: (Vips::Image image) -> Vips::Image
+
+  # @rbs box: Integer -- side of the square the logo is fitted into
+  # @rbs return: Vips::Image
+  private def logo_image: (Integer box) -> Vips::Image
+
+  # @rbs max_size: Integer -- maximum side of the QR code including the quiet zone
+  # @rbs return: Vips::Image
+  private def qr_image: (Integer max_size) -> Vips::Image
+end

@@ -17,6 +17,11 @@ class SponsorCatalog
     "#{Rails.configuration.x.official_site_url}/#{Integer(year)}/images/sponsors/#{sponsor.fetch(:logo)}.png"
   end
 
+  # The official site keeps @3x logos for print alongside the 1x and @2x ones it displays.
+  def self.print_logo_url(year, sponsor)
+    "#{Rails.configuration.x.official_site_url}/#{Integer(year)}/images/sponsors/#{sponsor.fetch(:logo)}@3x.png"
+  end
+
   def self.load_sponsors(year)
     sponsors = YAML.safe_load_file(
       Rails.root.join("data/sponsors/#{year}.yaml"),

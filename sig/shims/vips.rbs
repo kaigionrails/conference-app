@@ -9,14 +9,44 @@ module Vips
 
     def self.new_from_buffer: (String data, String option_string, **untyped opts) -> Image
 
+    def self.new_from_array: (Array[Array[Numeric]] array, ?Numeric scale, ?Numeric offset) -> Image
+
     def self.black: (Integer width, Integer height, **untyped opts) -> Image
 
     def width: () -> Integer
 
     def height: () -> Integer
 
+    def interpretation: () -> Symbol
+
+    def has_alpha?: () -> bool
+
+    def get_typeof: (String name) -> Integer
+
     def autorot: (**untyped opts) -> Image
 
+    def icc_transform: (String output_profile, **untyped opts) -> Image
+
+    def colourspace: (Symbol space, **untyped opts) -> Image
+
+    def flatten: (**untyped opts) -> Image
+
+    def cast: (Symbol format, **untyped opts) -> Image
+
+    def resize: (Numeric scale, **untyped opts) -> Image
+
+    def embed: (Integer x, Integer y, Integer width, Integer height, **untyped opts) -> Image
+
+    def insert: (Image sub, Integer x, Integer y, **untyped opts) -> Image
+
+    def copy: (**untyped opts) -> Image
+
+    def mutate: () { (MutableImage) -> void } -> Image
+
     def write_to_buffer: (String format_string, **untyped opts) -> String
+  end
+
+  class MutableImage
+    def remove!: (String name) -> bool
   end
 end
