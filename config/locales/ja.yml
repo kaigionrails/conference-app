@@ -20,9 +20,6 @@ ja:
       github_login_flow: 以下のボタンから、GitHubアカウントでのログインをお願いします。
       contributors: コントリビューター
       app_contributors: conference-appは以下のコントリビューターによって開発されています(コミット数順）。
-      policies: "プライバシーポリシーと利用規約"
-      policies_description1: "本アプリのプライバシーポリシーと利用規約は、以下のページに掲載しています。"
-      policies_link: "プライバシーポリシーと利用規約を読む"
   policies:
     index:
       title: "Policies"
@@ -296,7 +293,6 @@ ja:
       sponsor_passports: "Sponsor Passport"
       talks: "Talks"
       about: "About"
-      policies: "Policies"
       announcements: "Announcements"
       live_streams: "Live Stream"
       setting: "Setting"

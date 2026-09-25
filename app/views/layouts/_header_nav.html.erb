@@ -45,9 +45,6 @@
           <%= link_to about_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.about') %></span>
           <% end %>
-          <%= link_to policies_path, class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
-            <span><%= t('layouts.header_nav.policies') %></span>
-          <% end %>
           <%= link_to event_announcements_path(event_slug: current_event.slug), class: "py-2 text-lg menu-2026-item rounded-lg pl-3" do %>
             <span><%= t('layouts.header_nav.announcements') %></span>
             <% if logged_in? && current_user!.have_unread_announcements? %>

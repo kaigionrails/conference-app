@@ -20,9 +20,6 @@ en:
       github_login_flow: "Please log in with your GitHub account using the button below."
       contributors: "Contributors"
       app_contributors: "conference-app is developed by the following contributors (ordered by number of commits)."
-      policies: "Privacy Policy and Terms of Service"
-      policies_description1: "The privacy policy and terms of service for this app are on the following page."
-      policies_link: "Read the Privacy Policy and Terms of Service"
   policies:
     index:
       title: "Policies"
@@ -298,7 +295,6 @@ en:
       sponsor_passports: "Sponsor Passport"
       talks: "Talks"
       about: "About"
-      policies: "Policies"
       announcements: "Announcements"
       live_streams: "Live Stream"
       setting: "Setting"
