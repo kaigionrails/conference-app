@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_25_160453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -433,6 +433,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
     t.index ["talk_id"], name: "index_speakers_talks_on_talk_id"
   end
 
+  create_table "sponsor_booth_qr_card_templates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "event_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_sponsor_booth_qr_card_templates_on_event_id", unique: true
+  end
+
   create_table "sponsor_visits", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "event_id", null: false
@@ -551,6 +558,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_20_110050) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "sponsor_booth_qr_card_templates", "events"
   add_foreign_key "sponsor_visits", "events"
   add_foreign_key "sponsor_visits", "users"
   add_foreign_key "talk_bookmarks", "talks"

@@ -1,0 +1,14 @@
+module ActiveStorage
+  module Attached::Model
+    # NOTE: gem_rbs_collection declares attachment_changes as returning void.
+    #       The change objects are internal to Active Storage, so only what this app reads is declared here.
+    def attachment_changes: () -> Hash[String, ActiveStorage::Attached::Changes::CreateOne]
+                          | ...
+  end
+
+  module Attached::Changes
+    class CreateOne
+      def attachable: () -> untyped
+    end
+  end
+end

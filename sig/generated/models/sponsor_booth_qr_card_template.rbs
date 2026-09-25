@@ -1,0 +1,26 @@
+# Generated from app/models/sponsor_booth_qr_card_template.rb with RBS::Inline
+
+# The background image that SponsorBoothQrCard composites a sponsor logo and a stamp QR code onto.
+# One per event; organizers upload it from the admin Sponsor QR Codes page.
+class SponsorBoothQrCardTemplate < ApplicationRecord
+  ALLOWED_CONTENT_TYPES: Array[String]
+
+  # width / height of A5 portrait. Templates with bleed (154:216 mm) fall outside the tolerance.
+  A5_ASPECT_RATIO: Float
+
+  ASPECT_RATIO_TOLERANCE: Float
+
+  private def image_content_type: () -> untyped
+
+  # Active Storage analyzes blobs in a background job, so the dimensions are read from the upload itself.
+  # Only a newly assigned image is read; a stored one was validated when it was uploaded.
+  private def image_aspect_ratio: () -> untyped
+
+  # @rbs attachable: untyped
+  # @rbs return: [Integer, Integer]
+  private def read_dimensions: (untyped attachable) -> [ Integer, Integer ]
+
+  # @rbs vips_image: Vips::Image
+  # @rbs return: [Integer, Integer]
+  private def dimensions_of: (Vips::Image vips_image) -> [ Integer, Integer ]
+end

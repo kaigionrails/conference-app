@@ -1,0 +1,22 @@
+# ruby-vips defines most operations dynamically through method_missing.
+# Only the methods this app calls are declared here.
+module Vips
+  class Error < RuntimeError
+  end
+
+  class Image
+    def self.new_from_file: (String name, **untyped opts) -> Image
+
+    def self.new_from_buffer: (String data, String option_string, **untyped opts) -> Image
+
+    def self.black: (Integer width, Integer height, **untyped opts) -> Image
+
+    def width: () -> Integer
+
+    def height: () -> Integer
+
+    def autorot: (**untyped opts) -> Image
+
+    def write_to_buffer: (String format_string, **untyped opts) -> String
+  end
+end
