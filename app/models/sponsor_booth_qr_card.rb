@@ -3,10 +3,10 @@
 class SponsorBoothQrCard
   # The layout is in pixels of a 1748x2480 (A5 at 300 dpi) template and is scaled by the template width.
   BASE_WIDTH = 1748 #: Integer
-  LOGO_SIZE = 900 #: Integer
-  LOGO_TOP = 640 #: Integer
-  QR_MAX_SIZE = 560 #: Integer
-  QR_TOP = 1620 #: Integer
+  LOGO_SIZE = 1000 #: Integer
+  LOGO_TOP = 590 #: Integer
+  QR_MAX_SIZE = 480 #: Integer
+  QR_TOP = 1710 #: Integer
   # Nothing is drawn over the QR code, so level M is enough and keeps the modules large.
   QR_LEVEL = :m #: Symbol
   QR_QUIET_ZONE = 4 #: Integer

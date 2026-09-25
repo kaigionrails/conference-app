@@ -31,23 +31,23 @@ RSpec.describe SponsorBoothQrCard, type: :model do
       expect(card.yres).to be_within(0.001).of(1748 / 148.0)
     end
 
-    it "places the logo in the 900px box centered horizontally at the top offset" do
-      # The box spans x 424-1324 and y 640-1540.
+    it "places the logo in the 1000px box centered horizontally at the top offset" do
+      # The box spans x 374-1374 and y 590-1590.
       expect(pixel(card, 874, 1090)).to eq([255, 0, 0])
-      expect(pixel(card, 425, 641)).to eq([255, 0, 0])
-      expect(pixel(card, 1323, 1539)).to eq([255, 0, 0])
-      expect(pixel(card, 423, 1090)).to eq(template_color)
-      expect(pixel(card, 874, 639)).to eq(template_color)
-      expect(pixel(card, 874, 1541)).to eq(template_color)
+      expect(pixel(card, 375, 591)).to eq([255, 0, 0])
+      expect(pixel(card, 1373, 1589)).to eq([255, 0, 0])
+      expect(pixel(card, 373, 1090)).to eq(template_color)
+      expect(pixel(card, 874, 589)).to eq(template_color)
+      expect(pixel(card, 874, 1591)).to eq(template_color)
     end
 
     it "draws every QR module at the expected position" do
       code = QRCode::Encoder::Code.build(stamp_url, level: :m)
       side = code.module_count + 8
-      cell = 560 / side
+      cell = 480 / side
       size = side * cell
       left = (1748 - size) / 2
-      qr = card.crop(left, 1620, size, size).extract_band(0)
+      qr = card.crop(left, 1710, size, size).extract_band(0)
       pixels = qr.write_to_memory.unpack("C*")
 
       code.modules.each_with_index do |row, r|
@@ -62,26 +62,26 @@ RSpec.describe SponsorBoothQrCard, type: :model do
     it "surrounds the QR code with a white quiet zone of 4 modules" do
       code = QRCode::Encoder::Code.build(stamp_url, level: :m)
       side = code.module_count + 8
-      cell = 560 / side
+      cell = 480 / side
       size = side * cell
       left = (1748 - size) / 2
       quiet = 4 * cell
 
       [
-        card.crop(left, 1620, size, quiet),
-        card.crop(left, 1620 + size - quiet, size, quiet),
-        card.crop(left, 1620, quiet, size),
-        card.crop(left + size - quiet, 1620, quiet, size)
+        card.crop(left, 1710, size, quiet),
+        card.crop(left, 1710 + size - quiet, size, quiet),
+        card.crop(left, 1710, quiet, size),
+        card.crop(left + size - quiet, 1710, quiet, size)
       ].each do |band|
         expect(band.min).to eq(255)
       end
-      expect(pixel(card, left - 1, 1620 + size / 2)).to eq(template_color)
+      expect(pixel(card, left - 1, 1710 + size / 2)).to eq(template_color)
     end
 
     it "keeps the aspect ratio of a non-square logo and centers it in the box" do
       card = render(template: solid_png(1748, 2480, template_color), logo: solid_png(400, 200, [255, 0, 0]))
 
-      # 400x200 is resized to 900x450, placed at y 865-1315 inside the 640-1540 box.
+      # 400x200 is resized to 1000x500, placed at y 840-1340 inside the 590-1590 box.
       expect(pixel(card, 874, 1090)).to eq([255, 0, 0])
       expect(pixel(card, 874, 700)).to eq(template_color)
       expect(pixel(card, 874, 1400)).to eq(template_color)
@@ -105,9 +105,9 @@ RSpec.describe SponsorBoothQrCard, type: :model do
     it "scales the layout with the template width" do
       card = render(template: solid_png(874, 1240, template_color))
 
-      # The logo box becomes 450px at x 212-662 and y 320-770.
+      # The logo box becomes 500px at x 187-687 and y 295-795.
       expect(pixel(card, 437, 545)).to eq([255, 0, 0])
-      expect(pixel(card, 437, 319)).to eq(template_color)
+      expect(pixel(card, 437, 294)).to eq(template_color)
       expect(card.xres).to be_within(0.001).of(874 / 148.0)
     end
   end
