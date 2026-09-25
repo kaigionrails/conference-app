@@ -1,0 +1,9 @@
+# Generated from app/controllers/admin/sponsor_booth_qr_card_templates_controller.rb with RBS::Inline
+
+class Admin::SponsorBoothQrCardTemplatesController < AdminController
+  # Creates the template of the ongoing event on the first upload and replaces its image afterwards.
+  # @rbs return: void
+  def update: () -> void
+
+  private def template_params: () -> untyped
+end

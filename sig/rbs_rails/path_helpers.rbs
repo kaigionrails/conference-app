@@ -3,6 +3,10 @@
 interface ::_RbsRailsPathHelpers
   def admin_sponsor_qr_codes_path: (*untyped) -> ::String
   def admin_sponsor_qr_codes_url: (*untyped) -> ::String
+  def admin_sponsor_booth_qr_card_template_path: (*untyped) -> ::String
+  def admin_sponsor_booth_qr_card_template_url: (*untyped) -> ::String
+  def admin_sponsor_booth_qr_card_path: (*untyped) -> ::String
+  def admin_sponsor_booth_qr_card_url: (*untyped) -> ::String
   def sponsor_passport_path: (*untyped) -> ::String
   def sponsor_passport_url: (*untyped) -> ::String
   def new_sponsor_passport_stamp_path: (*untyped) -> ::String

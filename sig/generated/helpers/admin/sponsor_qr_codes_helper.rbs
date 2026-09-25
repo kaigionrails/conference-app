@@ -4,4 +4,12 @@ module Admin::SponsorQrCodesHelper
   def sponsor_qr_filename: (untyped sponsor) -> untyped
 
   def sponsor_qr_downloads: (untyped sponsors) -> untyped
+
+  # @rbs sponsor: Hash[Symbol, untyped]
+  # @rbs return: String
+  def sponsor_booth_qr_card_filename: (Hash[Symbol, untyped] sponsor) -> String
+
+  # @rbs sponsor: Hash[Symbol, untyped]
+  # @rbs return: String
+  private def sanitized_sponsor_key: (Hash[Symbol, untyped] sponsor) -> String
 end

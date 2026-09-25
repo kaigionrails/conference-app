@@ -1,0 +1,7 @@
+# Generated from app/controllers/admin/sponsor_booth_qr_cards_controller.rb with RBS::Inline
+
+class Admin::SponsorBoothQrCardsController < AdminController
+  # Generates the card on each request. Failures to fetch the logo propagate as 500s and reach Sentry.
+  # @rbs return: void
+  def show: () -> void
+end

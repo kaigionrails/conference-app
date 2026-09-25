@@ -25,7 +25,8 @@ class SponsorBoothQrCardTemplate < ApplicationRecord
   # Only a newly assigned image is read; a stored one was validated when it was uploaded.
   private def image_aspect_ratio
     change = attachment_changes["image"]
-    return if change.nil?
+    # Removing the image (assigning nil) is left to the presence validation.
+    return unless change.is_a?(ActiveStorage::Attached::Changes::CreateOne)
     return unless ALLOWED_CONTENT_TYPES.include?(image.content_type)
 
     width, height = read_dimensions(change.attachable)
