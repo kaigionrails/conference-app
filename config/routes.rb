@@ -51,7 +51,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :events, only: [:index, :show, :new, :create, :edit, :update]
     resources :ongoing_events, only: [:create, :update]
-    resources :users, only: [:index, :show, :new, :create, :edit, :update]
+    resources :users, only: [:index, :show, :new, :create, :edit, :update] do
+      resource :sponsor_visits, only: [:destroy]
+    end
     resources :profiles, only: [:show] do
       resources :profile_badges_profiles, only: [:new, :create]
     end

@@ -1,0 +1,5 @@
+# Generated from app/controllers/admin/sponsor_visits_controller.rb with RBS::Inline
+
+class Admin::SponsorVisitsController < AdminController
+  def destroy: () -> untyped
+end

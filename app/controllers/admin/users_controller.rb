@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   # @rbs @users: User::ActiveRecord_Relation
   # @rbs @user: User
+  # @rbs @events: Event::ActiveRecord_Relation
 
   # @rbs return: void
   def index
@@ -13,6 +14,7 @@ class Admin::UsersController < AdminController
   # @rbs return: void
   def show
     @user = User.eager_load(profile: {images_attachments: :blob}).find(params[:id])
+    @events = Event.order(start_date: :desc) if @user.organizer?
   end
 
   # @rbs return: void
