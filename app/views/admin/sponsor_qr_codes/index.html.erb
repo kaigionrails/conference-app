@@ -1,19 +1,56 @@
 <h2 class="font-bold text-xl mb-2">Sponsor QR Codes</h2>
 <p class="mb-8"><%= @event.name %></p>
+
+<% card_available = @template.persisted? %>
+<section class="mb-8">
+  <h3 class="font-bold text-lg mb-2">Booth QR card template</h3>
+  <% if card_available %>
+    <div class="flex gap-4 items-start mb-4">
+      <%= image_tag @template.image.representation(resize_to_limit: [300, 300]), alt: "Booth QR card template", class: "border" %>
+      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+        <dt class="font-bold">File</dt>
+        <dd><%= @template.image.filename %></dd>
+        <dt class="font-bold">Size</dt>
+        <dd><%= number_to_human_size(@template.image.byte_size) %></dd>
+        <dt class="font-bold">Uploaded at</dt>
+        <dd><%= @template.image.blob.created_at.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></dd>
+      </dl>
+    </div>
+  <% else %>
+    <p class="mb-4">No template uploaded yet.</p>
+  <% end %>
+  <%= form_with model: @template, url: admin_sponsor_booth_qr_card_template_path, method: :patch, multipart: true do |f| %>
+    <%= f.file_field :image, accept: SponsorBoothQrCardTemplate::ALLOWED_CONTENT_TYPES.join(","), required: true, class: "block mb-2 cursor-pointer file:border file:shadow-sm file:border-gray-500 file:rounded-sm file:bg-white file:px-4 file:py-2 file:mr-3 file:cursor-pointer hover:file:bg-gray-100" %>
+    <%= f.submit "Upload template", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+  <% end %>
+  <p class="text-sm text-gray-600 mt-1">png / jpeg / webp, A5 portrait (148:210)</p>
+</section>
+
 <div
   data-controller="sponsor-qr-codes"
   data-sponsor-qr-codes-sponsors-value="<%= sponsor_qr_downloads(@sponsors).to_json %>"
   data-sponsor-qr-codes-zip-filename-value="sponsor-qr-codes-<%= @event.slug %>.zip"
+  data-sponsor-qr-codes-cards-value="<%= sponsor_booth_qr_card_downloads(@sponsors).to_json %>"
+  data-sponsor-qr-codes-card-zip-filename-value="sponsor-booth-qr-cards-<%= @event.slug %>.zip"
 >
   <p class="mb-4 text-red-700" role="alert" data-sponsor-qr-codes-target="error" hidden>Could not generate the QR codes. Please try again.</p>
+  <p class="mb-4 text-red-700" role="alert" data-sponsor-qr-codes-target="cardError" hidden></p>
   <p class="mb-4">Download a PNG for each sponsor and send the corresponding file to them.</p>
-  <button
-    type="button"
-    class="border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mb-4 disabled:cursor-wait disabled:opacity-50"
-    data-action="sponsor-qr-codes#downloadAll"
-  >
-    Download all as ZIP
-  </button>
+  <div class="flex gap-4 items-center mb-4">
+    <button
+      type="button"
+      class="border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer disabled:cursor-wait disabled:opacity-50"
+      data-action="sponsor-qr-codes#downloadAll"
+    >
+      Download all as ZIP
+    </button>
+    <%= tag.button "Download all cards as ZIP",
+      type: "button",
+      class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
+      disabled: !card_available,
+      data: {action: "sponsor-qr-codes#downloadAllCards"} %>
+    <span data-sponsor-qr-codes-target="cardProgress" aria-live="polite"></span>
+  </div>
 
   <div class="rounded-sm w-full pr-8 shadow-xs">
     <table class="w-full divide-y border">
@@ -23,6 +60,7 @@
           <th class="py-2 px-3 text-left">Plan</th>
           <th class="py-2 px-3 text-left">Stamp URL</th>
           <th class="py-2 px-3 text-left">QR Code</th>
+          <th class="py-2 px-3 text-left">QR Card</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-100 bg-white">
@@ -39,6 +77,24 @@
                 data-action="sponsor-qr-codes#download">
                 Download PNG
               </button>
+            </td>
+            <td class="p-3">
+              <div class="flex gap-3 items-center">
+                <%= tag.button "Download card",
+                  type: "button",
+                  class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-50",
+                  disabled: !card_available,
+                  data: {
+                    url: admin_sponsor_booth_qr_card_path(sponsor[:key]),
+                    filename: sponsor_booth_qr_card_filename(sponsor),
+                    action: "sponsor-qr-codes#downloadCard"
+                  } %>
+                <% if card_available %>
+                  <%= link_to "Preview", admin_sponsor_booth_qr_card_path(sponsor[:key], disposition: "inline"), target: "_blank", rel: "noopener", class: "underline" %>
+                <% else %>
+                  <span>—</span>
+                <% end %>
+              </div>
             </td>
           </tr>
         <% end %>
