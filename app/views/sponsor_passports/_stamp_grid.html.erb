@@ -1,0 +1,37 @@
+<div class="passport-book">
+  <% passport.sponsors.group_by { |sponsor| sponsor[:plan] }.each do |plan, plan_sponsors| %>
+    <section class="passport-book-section" aria-labelledby="sponsor-plan-<%= plan %>" data-sponsor-plan="<%= plan %>">
+      <h2 id="sponsor-plan-<%= plan %>" class="mb-4 text-base font-bold"><%= plan.to_s.capitalize %> Sponsors</h2>
+
+      <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <% plan_sponsors.each do |sponsor| %>
+          <% visited = passport.visited?(sponsor[:key]) %>
+          <li class="<%= class_names("passport-entry", "passport-entry--visited" => visited) %>">
+            <%= image_tag SponsorCatalog.logo_url(passport.event.slug, sponsor),
+                  alt: sponsor[:name],
+                  class: "passport-entry-logo",
+                  width: 120,
+                  height: 120 %>
+
+            <div class="passport-entry-stamp">
+              <% if visited %>
+                <% stamp_number = passport.stamp_number_for(sponsor[:key]) %>
+                <div class="passport-book-stamp" role="img" aria-label="<%= t("sponsor_passports.show.visited") %>. <%= t("sponsor_passports.show.stamp_number", number: stamp_number) %>">
+                  <span class="passport-book-stamp-caption" aria-hidden="true">VISITED</span>
+                  <span class="passport-book-stamp-number" aria-hidden="true">#<%= stamp_number.to_s.rjust(2, "0") %></span>
+                  <span class="passport-book-stamp-caption" aria-hidden="true">KoR <%= passport.event.slug %></span>
+                </div>
+              <% else %>
+                <div class="passport-book-stamp passport-book-stamp--empty" role="img" aria-label="<%= t("sponsor_passports.show.unvisited") %>">
+                  <span class="text-xl" aria-hidden="true">—</span>
+                  <span class="passport-book-stamp-caption" aria-hidden="true">STAMP</span>
+                </div>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+  <p class="passport-book-footer">KAIGI ON RAILS / <%= passport.event.slug %></p>
+</div>

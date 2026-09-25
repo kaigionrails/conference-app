@@ -5,9 +5,9 @@ RSpec.describe "Operators", type: :request do
 
   describe "GET /index" do
     context "not logged in" do
-      it "should redirect to /about" do
+      it "redirects to login with the return location" do
         get "/operators"
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(login_path(return_to: "/operators"))
       end
     end
 
@@ -15,7 +15,7 @@ RSpec.describe "Operators", type: :request do
       let(:user) { FactoryBot.create(:user, role: :participant) }
       before { sign_in(user) }
 
-      it "should redirect to /about" do
+      it "redirects to the about page" do
         get "/operators"
         expect(response).to redirect_to(about_path)
       end

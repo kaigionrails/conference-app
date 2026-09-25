@@ -1,0 +1,15 @@
+# Generated from app/models/sponsor_catalog.rb with RBS::Inline
+
+class SponsorCatalog
+  REQUIRED_ATTRIBUTES: untyped
+
+  # Catalogs are loaded once per year in each process. Restart the app after
+  # updating a sponsor file to reload it in production.
+  def self.for_year: (untyped year) -> untyped
+
+  def self.with_booth: (untyped year) -> untyped
+
+  def self.logo_url: (untyped year, untyped sponsor) -> untyped
+
+  def self.load_sponsors: (untyped year) -> untyped
+end

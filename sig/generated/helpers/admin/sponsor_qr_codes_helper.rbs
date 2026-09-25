@@ -1,0 +1,7 @@
+# Generated from app/helpers/admin/sponsor_qr_codes_helper.rb with RBS::Inline
+
+module Admin::SponsorQrCodesHelper
+  def sponsor_qr_filename: (untyped sponsor) -> untyped
+
+  def sponsor_qr_downloads: (untyped sponsors) -> untyped
+end

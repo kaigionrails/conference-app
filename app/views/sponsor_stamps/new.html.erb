@@ -1,0 +1,31 @@
+<% content_for(:page_title, @sponsor[:name]) %>
+
+<div class="passport-page w-full max-w-xl mx-auto px-4 pt-3 pb-6 text-center">
+  <section class="passport-cover passport-sheet" aria-labelledby="sponsor-name">
+    <%= render "sponsor_passports/header", event: @event %>
+
+    <div class="passport-logo-panel" data-sponsor-logo-stage>
+      <%= image_tag @sponsor_logo_url,
+            alt: "",
+            class: "mx-auto block h-auto w-full bg-white object-contain",
+            data: {sponsor_logo: true} %>
+    </div>
+
+    <div class="mt-6">
+      <p class="passport-sponsor-plan"><%= t(".plan", plan: @sponsor[:plan].capitalize) %></p>
+      <h2 id="sponsor-name" class="mt-2 break-words text-2xl font-bold"><%= @sponsor[:name] %></h2>
+      <%= render "shared/sponsor_labels", sponsor: @sponsor %>
+    </div>
+
+    <div class="passport-collection-action">
+      <%= button_to sponsor_passport_stamps_path(@event.slug),
+            params: {code: params[:code]},
+            class: "passport-collect-button inline-flex w-full items-center justify-center rounded-lg px-5 py-4 font-bold text-white disabled:cursor-wait disabled:opacity-70",
+            data: {turbo_submits_with: t(".collecting_stamp")},
+            aria: {live: "polite"} do %>
+        <%= t(".collect_stamp") %>
+      <% end %>
+      <%= link_to t(".back_to_passport"), sponsor_passport_path(event_slug: @event.slug), class: "mt-4 inline-block py-2 text-sm underline underline-offset-4 passport-muted" %>
+    </div>
+  </section>
+</div>

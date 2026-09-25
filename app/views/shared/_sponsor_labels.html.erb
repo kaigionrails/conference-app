@@ -1,0 +1,11 @@
+<% labels = sponsor.fetch(:labels, []).reject { |label| label[:type] == "booth" } %>
+
+<% if labels.any? %>
+  <ul class="mt-3 flex flex-wrap justify-center gap-2">
+    <% labels.each do |label| %>
+      <li class="rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-xs font-semibold leading-relaxed text-stone-700" data-sponsor-label>
+        <%= label[:name] %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -70,18 +70,6 @@ module Authenticatable
     uri.query.present? ? "#{uri.path}?#{uri.query}" : uri.path.to_s
   end
 
-  # Path only, for callers that build their own query.
-  #
-  # @rbs value: untyped
-  # @rbs default: String
-  # @rbs return: String
-  private def safe_return_to_path(value, default:)
-    uri = parse_return_to(value)
-    return default if uri.nil?
-
-    uri.path.to_s
-  end
-
   # @rbs value: untyped
   # @rbs return: URI::Generic?
   private def parse_return_to(value)

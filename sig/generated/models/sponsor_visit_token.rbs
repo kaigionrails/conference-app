@@ -1,0 +1,11 @@
+# Generated from app/models/sponsor_visit_token.rb with RBS::Inline
+
+class SponsorVisitToken
+  TOKEN_LENGTH: ::Integer
+
+  def self.stamp_url: (event_slug: untyped, sponsor_key: untyped) -> untyped
+
+  def self.generate: (event_slug: untyped, sponsor_key: untyped) -> untyped
+
+  def self.find_sponsor: (event_slug: untyped, sponsors: untyped, token: untyped) -> untyped
+end

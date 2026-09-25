@@ -1,15 +1,23 @@
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the SessionsHelper. For example:
-#
-# describe SessionsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe SessionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#omniauth_request_path" do
+    %i[github google_oauth2].each do |provider|
+      context "with #{provider}" do
+        it "preserves the return path and query as one parameter" do
+          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+
+          uri = URI.parse(helper.omniauth_request_path(provider, return_to:))
+
+          expect(uri.path).to eq("/auth/#{provider}")
+          expect(Rack::Utils.parse_query(uri.query)).to eq("return_to" => return_to)
+        end
+
+        it "omits a blank return location" do
+          expect(helper.omniauth_request_path(provider, return_to: nil)).to eq("/auth/#{provider}")
+          expect(helper.omniauth_request_path(provider, return_to: "")).to eq("/auth/#{provider}")
+        end
+      end
+    end
+  end
 end

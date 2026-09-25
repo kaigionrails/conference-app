@@ -7,6 +7,8 @@ module SessionsHelper : ActionController::Base
 
   @current_user: User
 
+  def omniauth_request_path: (untyped provider, return_to: untyped) -> untyped
+
   # @rbs return: User
   def current_user!: () -> User
 

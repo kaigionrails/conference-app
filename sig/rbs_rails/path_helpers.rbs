@@ -1,6 +1,16 @@
 # resolve-type-names: false
 
 interface ::_RbsRailsPathHelpers
+  def admin_sponsor_qr_codes_path: (*untyped) -> ::String
+  def admin_sponsor_qr_codes_url: (*untyped) -> ::String
+  def sponsor_passport_path: (*untyped) -> ::String
+  def sponsor_passport_url: (*untyped) -> ::String
+  def new_sponsor_passport_stamp_path: (*untyped) -> ::String
+  def new_sponsor_passport_stamp_url: (*untyped) -> ::String
+  def sponsor_passport_stamps_path: (*untyped) -> ::String
+  def sponsor_passport_stamps_url: (*untyped) -> ::String
+  def sponsor_passport_stamp_path: (*untyped) -> ::String
+  def sponsor_passport_stamp_url: (*untyped) -> ::String
   def rails_mailers_path: (*untyped) -> ::String
   def rails_info_properties_path: (*untyped) -> ::String
   def rails_info_routes_path: (*untyped) -> ::String

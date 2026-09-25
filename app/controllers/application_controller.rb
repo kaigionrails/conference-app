@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
 
   def require_logged_in
-    redirect_to login_path unless logged_in?
+    return if logged_in?
+
+    redirect_to login_path(return_to: request.get? ? request.fullpath : nil)
   end
 
   # @rbs { () -> untyped } -> untyped

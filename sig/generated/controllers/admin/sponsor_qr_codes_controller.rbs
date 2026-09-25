@@ -1,0 +1,5 @@
+# Generated from app/controllers/admin/sponsor_qr_codes_controller.rb with RBS::Inline
+
+class Admin::SponsorQrCodesController < AdminController
+  def index: () -> untyped
+end

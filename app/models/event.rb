@@ -1,10 +1,11 @@
 class Event < ApplicationRecord
-  ONGOING_EVENT_SLUG = "2025" # FIXME: Remove this const
+  ONGOING_EVENT_SLUG = "2026" # FIXME: Remove this const
 
   has_many :talks, dependent: :destroy
   has_many :announcements, dependent: :destroy
   has_many :social_announcements, dependent: :destroy
   has_many :profile_exchanges, dependent: :destroy
+  has_many :sponsor_visits, dependent: :destroy
   has_many :tito_tickets, dependent: :destroy
   has_one :ongoing_event, dependent: :delete
 

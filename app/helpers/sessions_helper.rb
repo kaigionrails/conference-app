@@ -5,6 +5,14 @@ module SessionsHelper
 
   # @rbs @current_user: User
 
+  def omniauth_request_path(provider, return_to:)
+    path = "/auth/#{provider}"
+    return path if return_to.blank?
+
+    query = {return_to:}.to_query
+    "#{path}?#{query}"
+  end
+
   # @rbs return: User
   def current_user!
     raise UnauthorizedError unless session[:user_id]

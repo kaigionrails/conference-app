@@ -1,0 +1,21 @@
+# Generated from app/controllers/sponsor_stamps_controller.rb with RBS::Inline
+
+class SponsorStampsController < ApplicationController
+  include ApplicationHelper
+
+  def new: () -> untyped
+
+  def create: () -> untyped
+
+  def show: () -> untyped
+
+  private
+
+  def set_event: () -> untyped
+
+  def set_sponsors: () -> untyped
+
+  def set_sponsor_from_code: () -> untyped
+
+  def set_visit: () -> untyped
+end

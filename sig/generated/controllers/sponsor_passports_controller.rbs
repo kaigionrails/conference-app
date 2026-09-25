@@ -1,0 +1,7 @@
+# Generated from app/controllers/sponsor_passports_controller.rb with RBS::Inline
+
+class SponsorPassportsController < ApplicationController
+  include ApplicationHelper
+
+  def show: () -> untyped
+end

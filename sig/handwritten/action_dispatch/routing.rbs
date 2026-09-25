@@ -1,0 +1,3 @@
+module ActionDispatch::Routing::RouteSet::RouteSet_AnonymousModule
+  extend _RbsRailsPathHelpers
+end

@@ -1,0 +1,4 @@
+class SponsorVisit < ApplicationRecord
+  # NOTE: This Active Record method is missing from the current gem RBS.
+  def previously_new_record?: () -> bool
+end
