@@ -2,11 +2,14 @@
 # the event's SponsorBoothQrCardTemplate.
 class SponsorBoothQrCard
   # The layout is in pixels of a 1748x2480 (A5 at 300 dpi) template and is scaled by the template width.
+  # It fits the white panel of the 2026 template (x 208-1540, y 568-2184). The QR code sits beside the
+  # Hachiko illustration in the lower right corner (from x 1260), leaving a 42px gap.
   BASE_WIDTH = 1748 #: Integer
-  LOGO_SIZE = 1000 #: Integer
-  LOGO_TOP = 590 #: Integer
-  QR_MAX_SIZE = 480 #: Integer
-  QR_TOP = 1710 #: Integer
+  LOGO_SIZE = 689 #: Integer
+  LOGO_TOP = 657 #: Integer
+  # The same size as the logo. 689px is 53 modules (version 7 with the quiet zone) of 13px each.
+  QR_MAX_SIZE = LOGO_SIZE #: Integer
+  QR_TOP = 1406 #: Integer
   # Nothing is drawn over the QR code, so level M is enough and keeps the modules large.
   QR_LEVEL = :m #: Symbol
   QR_QUIET_ZONE = 4 #: Integer
