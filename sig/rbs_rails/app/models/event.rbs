@@ -360,6 +360,12 @@ class ::Event < ::ApplicationRecord
   def create_ongoing_event: (?untyped) -> ::OngoingEvent
   def create_ongoing_event!: (?untyped) -> ::OngoingEvent
   def reload_ongoing_event: () -> ::OngoingEvent?
+  def sponsor_booth_qr_card_template: () -> ::SponsorBoothQrCardTemplate?
+  def sponsor_booth_qr_card_template=: (::SponsorBoothQrCardTemplate?) -> ::SponsorBoothQrCardTemplate?
+  def build_sponsor_booth_qr_card_template: (?untyped) -> ::SponsorBoothQrCardTemplate
+  def create_sponsor_booth_qr_card_template: (?untyped) -> ::SponsorBoothQrCardTemplate
+  def create_sponsor_booth_qr_card_template!: (?untyped) -> ::SponsorBoothQrCardTemplate
+  def reload_sponsor_booth_qr_card_template: () -> ::SponsorBoothQrCardTemplate?
 
   module ::Event::GeneratedAssociationMethods
   end
@@ -418,4 +424,6 @@ end
 class ::TitoTicket::ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
 end
 class ::OngoingEvent < ::ApplicationRecord
+end
+class ::SponsorBoothQrCardTemplate < ::ApplicationRecord
 end

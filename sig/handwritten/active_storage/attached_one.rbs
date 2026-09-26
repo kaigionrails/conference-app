@@ -6,5 +6,6 @@ module ActiveStorage
     def content_type: () -> String?
     def byte_size: () -> Integer
     def filename: () -> untyped
+    def download: () -> String
   end
 end

@@ -1,0 +1,12 @@
+# The qrcode gem does not ship signatures. Only the methods this app calls are declared here.
+module QRCode
+  module Encoder
+    class Code
+      def self.build: (String data, ?level: Symbol, ?mode: Symbol, ?size: Integer?, ?max_size: Integer?) -> Code
+
+      def modules: () -> Array[Array[bool]]
+
+      def module_count: () -> Integer
+    end
+  end
+end

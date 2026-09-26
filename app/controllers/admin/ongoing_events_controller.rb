@@ -1,4 +1,4 @@
-class Admin::OngoingEventsController < ApplicationController
+class Admin::OngoingEventsController < AdminController
   # @rbs @ongoing_event: OngoingEvent
 
   # @rbs return: void

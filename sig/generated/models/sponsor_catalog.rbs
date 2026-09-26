@@ -11,5 +11,8 @@ class SponsorCatalog
 
   def self.logo_url: (untyped year, untyped sponsor) -> untyped
 
+  # The official site keeps @3x logos for print alongside the 1x and @2x ones it displays.
+  def self.print_logo_url: (untyped year, untyped sponsor) -> untyped
+
   def self.load_sponsors: (untyped year) -> untyped
 end

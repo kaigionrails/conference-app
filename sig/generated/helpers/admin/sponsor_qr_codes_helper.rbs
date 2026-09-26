@@ -1,7 +1,22 @@
 # Generated from app/helpers/admin/sponsor_qr_codes_helper.rb with RBS::Inline
 
 module Admin::SponsorQrCodesHelper
+  include _RbsRailsPathHelpers
+
   def sponsor_qr_filename: (untyped sponsor) -> untyped
 
   def sponsor_qr_downloads: (untyped sponsors) -> untyped
+
+  # @rbs sponsor: Hash[Symbol, untyped]
+  # @rbs return: String
+  def sponsor_booth_qr_card_filename: (Hash[Symbol, untyped] sponsor) -> String
+
+  # The name is shown when a card cannot be generated while downloading all of them.
+  # @rbs sponsors: Array[Hash[Symbol, untyped]]
+  # @rbs return: Array[{name: String, url: String, filename: String}]
+  def sponsor_booth_qr_card_downloads: (Array[Hash[Symbol, untyped]] sponsors) -> Array[{ name: String, url: String, filename: String }]
+
+  # @rbs sponsor: Hash[Symbol, untyped]
+  # @rbs return: String
+  private def sanitized_sponsor_key: (Hash[Symbol, untyped] sponsor) -> String
 end

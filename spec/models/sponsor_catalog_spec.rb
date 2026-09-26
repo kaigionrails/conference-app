@@ -103,6 +103,17 @@ RSpec.describe SponsorCatalog do
     end
   end
 
+  describe ".print_logo_url" do
+    it "builds the URL of the @3x logo kept for print" do
+      allow(Rails.configuration.x).to receive(:official_site_url).and_return("https://official.example")
+      sponsor = {logo: "example-sponsor"}
+
+      expect(catalog.print_logo_url("2026", sponsor)).to eq(
+        "https://official.example/2026/images/sponsors/example-sponsor@3x.png"
+      )
+    end
+  end
+
   describe ".with_booth" do
     subject(:sponsors) { catalog.with_booth(2026) }
 
