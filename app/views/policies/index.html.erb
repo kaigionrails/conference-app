@@ -26,7 +26,7 @@
         <h4 class="font-bold text-xl mb-2"><%= t('.privacy_collected_data') %></h4>
         <p class="mb-2"><%= t('.privacy_collected_data_description1') %></p>
         <ul class="list-disc pl-6 mb-2">
-          <% %w[github profile activity sponsor_visit ticket webpush locale operator_account access_log].each do |item| %>
+          <% %w[github google profile activity sponsor_visit ticket webpush locale operator_account access_log].each do |item| %>
             <li class="mb-1"><%= t(".privacy_collected_data_#{item}") %></li>
           <% end %>
         </ul>
@@ -51,7 +51,7 @@
         <h4 class="font-bold text-xl mb-2"><%= t('.privacy_external_services') %></h4>
         <p class="mb-2"><%= t('.privacy_external_services_description1') %></p>
         <ul class="list-disc pl-6 mb-2">
-          <% %w[github tito cloudflare aws sentry scout webpush gravatar].each do |item| %>
+          <% %w[github google tito cloudflare aws sentry scout webpush gravatar].each do |item| %>
             <li class="mb-1"><%= t(".privacy_external_services_#{item}") %></li>
           <% end %>
         </ul>
