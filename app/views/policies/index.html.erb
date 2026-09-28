@@ -1,0 +1,132 @@
+<% content_for(:page_title, t('.title')) %>
+<div class="flex flex-col px-4 pt-5 lg:px-8 lg:pt-10 w-full max-w-(--breakpoint-xl) mx-auto">
+  <section class="mb-4">
+    <section class="mb-6">
+      <h2 class="font-bold text-3xl mb-2"><%= t('.title') %></h2>
+      <hr class="mb-3">
+      <p class="mb-2"><%= t('.authoritative_notice') %></p>
+      <p class="mb-2"><%= t('.established_on') %></p>
+      <p class="mb-2"><%= t('.last_updated_on') %></p>
+      <ul class="list-disc pl-6 mb-2">
+        <li class="mb-1"><%= link_to t('.privacy_title'), "#privacy", class: "underline" %></li>
+        <li class="mb-1"><%= link_to t('.terms_title'), "#terms", class: "underline" %></li>
+      </ul>
+    </section>
+
+    <section id="privacy" class="mb-6">
+      <h3 class="font-bold text-2xl mb-2"><%= t('.privacy_title') %></h3>
+      <p class="mb-2"><%= t('.privacy_description1') %></p>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_operator') %></h4>
+        <p class="mb-2"><%= t('.privacy_operator_description1') %></p>
+        <p class="mb-2"><%= t('.privacy_operator_description2') %></p>
+        <p class="mb-2"><%= mail_to "info@kaigionrails.org", class: "underline" %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_collected_data') %></h4>
+        <p class="mb-2"><%= t('.privacy_collected_data_description1') %></p>
+        <ul class="list-disc pl-6 mb-2">
+          <% %w[github profile activity sponsor_visit ticket webpush locale operator_account access_log].each do |item| %>
+            <li class="mb-1"><%= t(".privacy_collected_data_#{item}") %></li>
+          <% end %>
+        </ul>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_purpose') %></h4>
+        <p class="mb-2"><%= t('.privacy_purpose_description1') %></p>
+        <ul class="list-disc pl-6 mb-2">
+          <% %w[login features operation].each do |item| %>
+            <li class="mb-1"><%= t(".privacy_purpose_#{item}") %></li>
+          <% end %>
+        </ul>
+        <p class="mb-2"><%= t('.privacy_purpose_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_public_profile') %></h4>
+        <p class="mb-2"><%= t('.privacy_public_profile_description1') %></p>
+        <p class="mb-2"><%= t('.privacy_public_profile_description2') %></p>
+        <p class="mb-2"><%= t('.privacy_public_profile_description3') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_external_services') %></h4>
+        <p class="mb-2"><%= t('.privacy_external_services_description1') %></p>
+        <ul class="list-disc pl-6 mb-2">
+          <% %w[github tito cloudflare aws sentry scout webpush gravatar].each do |item| %>
+            <li class="mb-1"><%= t(".privacy_external_services_#{item}") %></li>
+          <% end %>
+        </ul>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_cookie') %></h4>
+        <p class="mb-2"><%= t('.privacy_cookie_description1') %></p>
+        <p class="mb-2"><%= t('.privacy_cookie_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_retention') %></h4>
+        <p class="mb-2"><%= t('.privacy_retention_description1') %></p>
+        <p class="mb-2"><%= t('.privacy_retention_description2') %></p>
+        <p class="mb-2"><%= t('.privacy_retention_description3') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_third_party') %></h4>
+        <p class="mb-2"><%= t('.privacy_third_party_description1') %></p>
+        <p class="mb-2"><%= t('.privacy_third_party_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.privacy_revision') %></h4>
+        <p class="mb-2"><%= t('.privacy_revision_description1') %></p>
+      </section>
+    </section>
+
+    <section id="terms" class="mb-6">
+      <h3 class="font-bold text-2xl mb-2"><%= t('.terms_title') %></h3>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_scope') %></h4>
+        <p class="mb-2"><%= t('.terms_scope_description1') %></p>
+        <p class="mb-2"><%= t('.terms_scope_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_account') %></h4>
+        <p class="mb-2"><%= t('.terms_account_description1') %></p>
+        <p class="mb-2"><%= t('.terms_account_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_prohibited') %></h4>
+        <p class="mb-2"><%= t('.terms_prohibited_description1') %></p>
+        <ul class="list-disc pl-6 mb-2">
+          <% %w[impersonation inappropriate_profile unauthorized_access disruption code_of_conduct law].each do |item| %>
+            <li class="mb-1"><%= t(".terms_prohibited_#{item}") %></li>
+          <% end %>
+        </ul>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_content') %></h4>
+        <p class="mb-2"><%= t('.terms_content_description1') %></p>
+        <p class="mb-2"><%= t('.terms_content_description2') %></p>
+        <p class="mb-2"><%= t('.terms_content_description3') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_service_change') %></h4>
+        <p class="mb-2"><%= t('.terms_service_change_description1') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_disclaimer') %></h4>
+        <p class="mb-2"><%= t('.terms_disclaimer_description1') %></p>
+        <p class="mb-2"><%= t('.terms_disclaimer_description2') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_revision') %></h4>
+        <p class="mb-2"><%= t('.terms_revision_description1') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_governing_law') %></h4>
+        <p class="mb-2"><%= t('.terms_governing_law_description1') %></p>
+      </section>
+      <section class="mb-4">
+        <h4 class="font-bold text-xl mb-2"><%= t('.terms_code_of_conduct') %></h4>
+        <p class="mb-2"><%= t('.terms_code_of_conduct_description1') %></p>
+        <p class="mb-2"><%= link_to t('.terms_code_of_conduct_link'), t('.terms_code_of_conduct_url', year: current_event.slug), class: "underline" %></p>
+      </section>
+    </section>
+  </section>
+</div>

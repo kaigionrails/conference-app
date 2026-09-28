@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   get "/about", to: "about#index"
+  get "/policies", to: "policies#index"
 
   post "/tito_webhook/:event_slug", to: "tito_webhook#create"
 
