@@ -32,8 +32,11 @@ class ProfilesController < ApplicationController
     begin
       ApplicationRecord.transaction do
         # The handle lives on User, not Profile, so it arrives outside the
-        # profile params.
-        current_user!.update!(name: params[:handle]) if params[:handle].present?
+        # profile params. The form always sends it, and saving it unchanged
+        # would still run every User validation, which a handle taken before
+        # those existed can fail.
+        user = current_user!
+        user.update!(name: params[:handle]) if params[:handle].present? && params[:handle] != user.name
         profile.update!(**profile_non_image_params)
         profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
         # rbs_rails types << and destroy as variadic over records, but Active

@@ -91,6 +91,21 @@ RSpec.describe "Profiles", type: :request do
       expect(user.reload.name).to eq before_name
     end
 
+    # Handles taken before the handle validation existed can fail it now. The
+    # form always sends the current handle, and that must not stop the rest of
+    # the profile from being saved.
+    context "when the user keeps a handle that predates the validation" do
+      before { user.update_column(:name, "admin") }
+
+      it "saves the profile" do
+        update_with("admin")
+
+        expect(response).to redirect_to(profiles_path)
+        expect(profile.reload.name).to eq "表示名"
+        expect(user.reload.name).to eq "admin"
+      end
+    end
+
     # A rejected handle has several possible reasons, so the message has to
     # name the one that applied.
     context "when the handle is rejected" do
