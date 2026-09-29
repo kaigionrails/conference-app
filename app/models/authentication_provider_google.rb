@@ -8,10 +8,14 @@ class AuthenticationProviderGoogle < AuthenticationProvider
     nil
   end
 
+  # Google does not promise a name even with the profile scope, and the strategy
+  # drops the key when it is missing, while profiles.name cannot be null. An
+  # empty name is the column default, and the user can fill it in later.
+  #
   # @rbs auth: untyped
   # @rbs return: String
   def self.display_name_from(auth)
-    auth["info"]["name"]
+    auth.dig("info", "name").presence || auth.dig("info", "first_name").presence || ""
   end
 
   # @rbs user: User
@@ -19,6 +23,6 @@ class AuthenticationProviderGoogle < AuthenticationProvider
   # @rbs return: void
   def self.after_create_user(user, auth)
     super
-    user.profile.ensure_image_from(auth["info"]["image"], source: "google")
+    user.profile.ensure_image_from(auth.dig("info", "image"), source: "google")
   end
 end

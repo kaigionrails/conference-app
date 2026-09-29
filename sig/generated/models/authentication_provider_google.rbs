@@ -8,6 +8,10 @@ class AuthenticationProviderGoogle < AuthenticationProvider
   # @rbs return: String?
   def self.preferred_handle: (untyped auth) -> String?
 
+  # Google does not promise a name even with the profile scope, and the strategy
+  # drops the key when it is missing, while profiles.name cannot be null. An
+  # empty name is the column default, and the user can fill it in later.
+  #
   # @rbs auth: untyped
   # @rbs return: String
   def self.display_name_from: (untyped auth) -> String

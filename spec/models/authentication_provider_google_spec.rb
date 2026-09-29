@@ -36,6 +36,25 @@ RSpec.describe AuthenticationProviderGoogle, type: :model do
       expect(user.role).to eq "participant"
     end
 
+    context "when Google sends no name" do
+      it "falls back to the given name" do
+        auth_hash["info"] = {"first_name" => "Yusuke"}
+
+        user = AuthenticationProviderGoogle.create_user_from_auth_hash(auth_hash)
+
+        expect(user.profile.name).to eq "Yusuke"
+      end
+
+      it "leaves the profile name empty when there is no name at all" do
+        auth_hash.delete("info")
+
+        user = AuthenticationProviderGoogle.create_user_from_auth_hash(auth_hash)
+
+        expect(user.profile.name).to eq ""
+        expect(user.profile.images).not_to be_attached
+      end
+    end
+
     it "attaches the avatar from the auth hash" do
       user = AuthenticationProviderGoogle.create_user_from_auth_hash(auth_hash)
 
