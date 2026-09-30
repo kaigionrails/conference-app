@@ -1,4 +1,6 @@
-FROM public.ecr.aws/docker/library/ruby:4.0.7-bookworm
+# mirror.gcr.io is Google's pull-through cache of Docker Hub. Unlike
+# public.ecr.aws, it has no rate limit for the anonymous pulls CI makes.
+FROM mirror.gcr.io/library/ruby:4.0.7-bookworm
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
