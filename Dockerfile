@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/ruby:4.0.7-bookworm
+FROM mirror.gcr.io/library/ruby:4.0.7-bookworm
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
