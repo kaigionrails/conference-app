@@ -35,7 +35,7 @@ class AuthenticationProvider < ApplicationRecord
       raise
     end
 
-    after_create_user(user)
+    after_create_user(user, auth)
     user
   end
 
@@ -76,8 +76,9 @@ class AuthenticationProvider < ApplicationRecord
   # override this must call super.
   #
   # @rbs user: User
+  # @rbs auth: untyped
   # @rbs return: void
-  def self.after_create_user(user)
+  def self.after_create_user(user, auth)
     user.mark_all_announcement_unread!
   end
 

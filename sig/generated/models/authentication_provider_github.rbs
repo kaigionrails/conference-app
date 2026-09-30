@@ -10,6 +10,11 @@ class AuthenticationProviderGithub < AuthenticationProvider
   def self.display_name_from: (untyped auth) -> String
 
   # @rbs user: User
+  # @rbs auth: untyped
   # @rbs return: void
-  def self.after_create_user: (User user) -> void
+  def self.after_create_user: (User user, untyped auth) -> void
+
+  # @rbs user: User
+  # @rbs return: String?
+  def self.avatar_url_for: (User user) -> String?
 end

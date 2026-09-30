@@ -14,22 +14,27 @@ RSpec.describe "AuthCallback", type: :request do
       let(:auth) { OmniAuth::AuthHash.new(provider: "google_oauth2", uid: "google-user") }
       let(:provider) { double("Authentication provider") }
 
+      # google_oauth2 is registered with OmniAuth, so its test mode answers the
+      # callback and replaces omniauth.auth and omniauth.params; the auth hash
+      # goes through mock_auth and return_to through the request phase instead.
       before do
         stub_const("AuthCallbackController::PROVIDERS", AuthCallbackController::PROVIDERS.merge("google_oauth2" => provider))
+        OmniAuth.config.mock_auth[:google_oauth2] = auth
         allow(provider).to receive(:find_or_create_user_from_auth_hash).with(auth).and_return(user)
       end
 
       it "uses the same return location after authentication" do
         return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
 
-        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth, "omniauth.params" => {"return_to" => return_to}}
+        post "/auth/google_oauth2?#{{return_to:}.to_query}"
+        follow_redirect!
 
         expect(response).to redirect_to(return_to)
         expect(session[:user_id]).to eq(user.id)
       end
 
       it "uses the default page when no return location was provided" do
-        get "/auth/google_oauth2/callback", env: {"omniauth.auth" => auth}
+        get "/auth/google_oauth2/callback"
 
         expect(response).to redirect_to(setting_path)
         expect(session[:user_id]).to eq(user.id)
@@ -37,6 +42,16 @@ RSpec.describe "AuthCallback", type: :request do
     end
 
     context "provider is GitHub" do
+      # The avatar URL is looked up through Octokit before Profile is asked to
+      # attach it, so the lookup needs a stub of its own.
+      before do
+        stub_request(:get, %r{\Ahttps://api\.github\.com/user/\d+\z})
+          .to_return(
+            body: {avatar_url: "https://avatars.example.invalid/octocat.png"}.to_json,
+            headers: {"Content-Type" => "application/json"}
+          )
+      end
+
       context "exists user" do
         let(:user) { FactoryBot.create(:user, name: "octocat") }
         let(:authentication_provider_github) { FactoryBot.create(:authentication_provider_github, user: user) }
@@ -74,7 +89,7 @@ RSpec.describe "AuthCallback", type: :request do
 
         before do
           OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
-          expect_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil)
+          expect_any_instance_of(Profile).to receive(:ensure_image_from).and_return(nil)
         end
 
         it "should create user, authentication_provider_github, profile, unread_announcement and enqueue job" do
@@ -105,7 +120,7 @@ RSpec.describe "AuthCallback", type: :request do
 
         before do
           OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
-          expect_any_instance_of(Profile).to receive(:ensure_image_from_github).and_return(nil)
+          expect_any_instance_of(Profile).to receive(:ensure_image_from).and_return(nil)
         end
 
         shared_examples "falls back to a generated handle" do
@@ -130,6 +145,52 @@ RSpec.describe "AuthCallback", type: :request do
           let(:nickname) { "admin" }
 
           include_examples "falls back to a generated handle"
+        end
+      end
+    end
+
+    context "provider is Google" do
+      let(:event) { FactoryBot.create(:event) }
+      let!(:ongoing_event) { FactoryBot.create(:ongoing_event, event: event) }
+      let(:auth_hash) do
+        {
+          "provider" => "google_oauth2",
+          "uid" => "108532000000000000001",
+          "info" => {"name" => "Yusuke Nakamura", "image" => "https://lh3.example.invalid/a/yusuke.jpg"}
+        }
+      end
+
+      before do
+        OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(auth_hash)
+      end
+
+      context "create new user" do
+        before { expect_any_instance_of(Profile).to receive(:ensure_image_from).and_return(nil) }
+
+        it "creates the user, the provider and the profile" do
+          expect { get "/auth/google_oauth2/callback" }.to change {
+            AuthenticationProviderGoogle.count
+          }.by(1).and change { User.count }.by(1).and change { Profile.count }.by(1)
+        end
+
+        it "logs the user in and gives them a generated handle" do
+          get "/auth/google_oauth2/callback"
+
+          user = User.last
+          expect(session[:user_id]).to eq user.id
+          expect(user.name).to match(/\Auser-[a-z0-9]{6}\z/)
+          expect(user.profile.name).to eq "Yusuke Nakamura"
+          expect(response).to redirect_to(setting_path)
+        end
+      end
+
+      context "exists user" do
+        let!(:existing) { FactoryBot.create(:authentication_provider_google, uid: "108532000000000000001") }
+
+        it "signs the existing user in without creating another" do
+          expect { get "/auth/google_oauth2/callback" }.not_to change { User.count }
+
+          expect(session[:user_id]).to eq existing.user.id
         end
       end
     end
