@@ -1,6 +1,6 @@
 # Standard targets the Ruby it runs on unless told otherwise; pin it to the
 # Ruby the app is deployed with (.ruby-version, Dockerfile) so a newer local
 # Ruby does not suggest methods production lacks.
-ruby_version: 3.4.4
+ruby_version: 4.0.7
 plugins:
   - standard-rails

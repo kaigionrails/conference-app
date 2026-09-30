@@ -7,7 +7,7 @@ class SponsorVisitProgress
   end
 
   def current_milestone
-    milestones.reverse.find { |milestone| visited_count >= milestone[:count] }
+    milestones.rfind { |milestone| visited_count >= milestone[:count] }
   end
 
   def completed?
