@@ -1,4 +1,5 @@
-# Test data for load testing staging with script/load_test/talks.js.
+# Test data for load testing staging with script/load_test/talks.js and
+# script/load_test/profile.js.
 #
 #   kamal app exec -d staging --reuse 'env LOAD_TEST_PASSWORD=... bin/rails load_test:seed'
 #   kamal app exec -d staging --reuse 'bin/rails load_test:clean'
@@ -22,7 +23,14 @@ namespace :load_test do
     user_count = Integer(ENV.fetch("USERS", "1000"))
     announcement_count = Integer(ENV.fetch("ANNOUNCEMENTS", "30"))
     bookmarks_per_user = Integer(ENV.fetch("BOOKMARKS_PER_USER", "5"))
+    # The default is a deliberate worst case: 90,000 exchanges, some 60 times
+    # what any year so far has seen.
+    friends_per_user = Integer(ENV.fetch("FRIENDS_PER_USER", "90"))
     password = ENV.fetch("LOAD_TEST_PASSWORD")
+
+    if friends_per_user.odd? || friends_per_user >= user_count
+      abort "FRIENDS_PER_USER must be even and less than USERS (got #{friends_per_user} for #{user_count} users)"
+    end
 
     # The same event the header counts unread announcements for.
     event = OngoingEvent.first&.event || Event.find_by(slug: Event::ONGOING_EVENT_SLUG) or abort "no current event"
@@ -80,16 +88,40 @@ namespace :load_test do
     end
     TalkBookmark.insert_all(bookmarks) if bookmarks.any?
 
+    # Users sit in a ring in name order, each a friend of the
+    # FRIENDS_PER_USER / 2 users on either side. Every pair then shows up from
+    # both ends, in both directions as UsersController#exchange_profile makes
+    # them. script/load_test/profile.js picks the pages to open from the same
+    # ring. profile_exchanges has no unique index, so any existing exchange
+    # skips the lot.
+    unless ProfileExchange.where(event:, user_id: user_ids).exists?
+      offsets = (1..friends_per_user / 2).flat_map { |distance| [-distance, distance] }
+      exchanges = user_ids.each_index.flat_map do |i|
+        offsets.map do |offset|
+          {event_id: event.id, user_id: user_ids[i], friend_id: user_ids[(i + offset) % user_ids.size], created_at: now, updated_at: now}
+        end
+      end
+      exchanges.each_slice(10_000) { |batch| ProfileExchange.insert_all(batch) }
+    end
+
     speaker_count = Speaker.joins(:talks).where(talks: {event:}).distinct.count
     puts "event=#{event.slug} users=#{users.size} talks=#{talk_ids.size} speakers=#{speaker_count} " \
       "announcements=#{announcement_ids.size} unread=#{UnreadAnnouncement.where(user_id: user_ids).count} " \
       "bookmarks=#{TalkBookmark.where(user_id: user_ids).count} " \
+      "exchanges=#{ProfileExchange.where(event:, user_id: user_ids).count} " \
       "profile_images=#{Profile.where(user_id: user_ids).joins(:images_attachments).count}"
   end
 
   desc "Delete what load_test:seed created"
   task clean: :guard do
     users = User.where("name LIKE ?", "#{user_prefix}%")
+
+    # Before the users: friend_id has a foreign key too, and User's
+    # dependent: :destroy only removes the rows on the user_id side.
+    exchanges = ProfileExchange.where(user: users).or(ProfileExchange.where(friend: users))
+    puts "deleting #{exchanges.count} profile exchanges"
+    exchanges.delete_all
+
     puts "deleting #{users.count} users"
     users.find_each(&:destroy!)
 
