@@ -1,15 +1,19 @@
 #!/usr/bin/env ruby
-# Breaks a k6 run of script/load_test/talks.js down by minute, which is one
-# step of PROFILE=step, so the rate at which latency breaks down stands out:
+# Breaks a k6 run of script/load_test/talks.js or profile.js down by minute,
+# which is one step of PROFILE=step, so the rate at which latency breaks down
+# stands out. The page tags to report come after the file, talks by default:
 #
 #   k6 run --out json=tmp/load_test/run.json.gz script/load_test/talks.js
 #   ruby script/load_test/summarize.rb tmp/load_test/run.json.gz
+#   ruby script/load_test/summarize.rb tmp/load_test/profile.json.gz user profiles
 
 require "json"
 require "time"
 require "zlib"
 
-path = ARGV.fetch(0) { abort "usage: #{$0} <k6 --out json file>" }
+path = ARGV.fetch(0) { abort "usage: #{$0} <k6 --out json file> [page...]" }
+pages = ARGV.drop(1)
+pages = ["talks"] if pages.empty?
 input = path.end_with?(".gz") ? Zlib::GzipReader.open(path) : File.open(path)
 
 durations = Hash.new { |h, k| h[k] = Hash.new { |hh, page| hh[page] = [] } }
@@ -50,14 +54,16 @@ def percentile(values, p)
   sorted[((sorted.size - 1) * p).round].round.to_s
 end
 
-row = "%-4s %8s %6s %5s %8s %8s %8s %8s %8s %8s %8s"
-puts format(row, "min", "iters/s", "drop", "vus", "talk p50", "talk p95", "talk p99", "talk max", "sw p95", "img p95", "failed")
+page_stats = {"p50" => 0.5, "p95" => 0.95, "p99" => 0.99, "max" => 1.0}
+page_headers = pages.product(page_stats.keys).map { |page, stat| "#{page} #{stat}" }
+row = ["%-4s %8s %6s %5s", *page_headers.map { |header| "%#{[header.size, 8].max}s" }, "%8s %8s %8s"].join(" ")
+
+puts format(row, "min", "iters/s", "drop", "vus", *page_headers, "sw p95", "img p95", "failed")
 (counts.keys | durations.keys).sort.each do |minute|
-  talks = durations[minute]["talks"]
   c = counts[minute]
   failed = c.select { |k, _| k.start_with?("failed_") }.sum { |_, v| v }
-  puts format(row, minute, format("%.1f", c["iterations"] / 60.0), c["dropped"], c["vus"],
-    percentile(talks, 0.5), percentile(talks, 0.95), percentile(talks, 0.99), percentile(talks, 1.0),
+  page_columns = pages.product(page_stats.values).map { |page, p| percentile(durations[minute][page], p) }
+  puts format(row, minute, format("%.1f", c["iterations"] / 60.0), c["dropped"], c["vus"], *page_columns,
     percentile(durations[minute]["sw"], 0.95), percentile(durations[minute]["image"], 0.95), failed)
 end
 puts "(durations in ms; the last minute may be partial)"
