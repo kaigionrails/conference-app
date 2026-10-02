@@ -223,6 +223,8 @@ ja:
     create:
       unknown_provider: "不明なログイン方法です。"
       failed: "ログインに失敗しました。もう一度お試しください。"
+      fill_in_your_profile: "ようこそ！ほかの参加者に知ってもらえるよう、プロフィールを入力しましょう。"
+      fill_in_your_profile_from_menu: "ようこそ！メニューの「Profile」からプロフィールを入力できます。"
   shared:
     login_providers:
       github: "Login with GitHub"

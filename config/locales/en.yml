@@ -226,6 +226,8 @@ en:
     create:
       unknown_provider: "Unknown login method."
       failed: "Login failed. Please try again."
+      fill_in_your_profile: "Welcome! Fill in your profile so other attendees can get to know you."
+      fill_in_your_profile_from_menu: "Welcome! You can fill in your profile from \"Profile\" in the menu."
   shared:
     login_providers:
       github: "Login with GitHub"

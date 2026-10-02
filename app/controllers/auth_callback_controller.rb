@@ -23,9 +23,25 @@ class AuthCallbackController < ApplicationController
     end
 
     user = provider.find_or_create_user_from_auth_hash(auth)
+    # Nothing saves a user again after creating them, so this tells the
+    # callback that created the user apart from every later login.
+    first_login = user.previously_new_record?
     complete_login!(user)
 
     omniauth_params = request.env["omniauth.params"] || {}
-    redirect_to safe_return_to(omniauth_params["return_to"], default: setting_path)
+    # A first login lands on the profile form, unless it was on its way
+    # somewhere: a stamp scanned before logging in still gets collected.
+    default = first_login ? edit_profile_path(user.profile) : setting_path
+    destination = safe_return_to(omniauth_params["return_to"], default:)
+    # Set after complete_login!, whose reset_session clears the flash too.
+    if first_login
+      flash[:notice] = if destination == default
+        t("auth_callback.create.fill_in_your_profile")
+      else
+        # The page they land on has no link to the form, so say where it is.
+        t("auth_callback.create.fill_in_your_profile_from_menu")
+      end
+    end
+    redirect_to destination
   end
 end
