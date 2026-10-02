@@ -4,7 +4,24 @@
 module ProfileDecorator : Profile
   def sanitized_description: () -> untyped
 
+  # The first image as the header shows it, or nil without one.
+  #
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
+  def icon_image: () -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil)
+
+  # The first image as friend lists show it, or nil without one.
+  #
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
+  def thumb_image: () -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil)
+
   @sanitizer: Rails::Html::SafeListSanitizer
 
   private def sanitizer: () -> untyped
+
+  # Uploads are not restricted to formats a variant can be made from (an SVG,
+  # say), and asking for one raises. Those are shown as they are.
+  #
+  # @rbs variant: Symbol
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
+  private def first_image_as: (Symbol variant) -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil)
 end

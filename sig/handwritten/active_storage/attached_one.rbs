@@ -7,5 +7,7 @@ module ActiveStorage
     def byte_size: () -> Integer
     def filename: () -> untyped
     def download: () -> String
+    def variable?: () -> bool
+    def variant: (Symbol | Hash[Symbol, untyped] transformations) -> ActiveStorage::VariantWithRecord
   end
 end

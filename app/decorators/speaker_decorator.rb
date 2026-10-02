@@ -7,8 +7,13 @@ module SpeakerDecorator
     sanitizer.sanitize(markdown).html_safe
   end
 
+  # An avatar that a variant cannot be made from is shown as it is.
+  #
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attached::One | String
   def avatar_image_url
-    avatar.attached? ? avatar : "https://www.gravatar.com/avatar/#{gravatar_hash}?s=100"
+    return "https://www.gravatar.com/avatar/#{gravatar_hash}?s=100" unless avatar.attached?
+
+    avatar.variable? ? avatar.variant(:thumb) : avatar
   end
 
   # @rbs @sanitizer: Rails::Html::SafeListSanitizer

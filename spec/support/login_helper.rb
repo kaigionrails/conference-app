@@ -1,6 +1,7 @@
 module LoginHelper
+  # Decorated as SessionsHelper#current_user! returns it.
   def sign_in(user)
-    allow_any_instance_of(SessionsHelper).to receive(:current_user!).and_return(user)
+    allow_any_instance_of(SessionsHelper).to receive(:current_user!).and_return(ActiveDecorator::Decorator.instance.decorate(user))
   end
 
   # Logs in through the GitHub callback, so that the session is established the

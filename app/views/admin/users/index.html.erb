@@ -27,7 +27,7 @@
         <tr>
           <td class="p-3">
             <% if user.profile&.images&.first %>
-              <%= image_tag user.profile.images.first.representation(resize_to_limit: [50, 50]), class: "rounded-sm" %>
+              <%= image_tag user.profile.icon_image, class: "rounded-sm" %>
             <% end %>
           </td>
           <td class="p-3"><%= user.name %></td>
