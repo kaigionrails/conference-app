@@ -2,8 +2,8 @@
   <h2 class="text-lg font-bold mb-3"><%= t('profiles.edit.title') %></h2>
   <div class="flex mb-4 overflow-scroll">
     <% @profile.images.each do |profile_image| %>
-      <div class="mr-4 text-center">
-        <%= image_tag profile_image, class: "mb-2 rounded-lg" %>
+      <div class="mr-4 text-center shrink-0">
+        <%= image_tag @profile.image_as(profile_image, :thumb), class: "w-24 h-24 object-cover rounded-lg mb-2" %>
         <%= form_with url: profile_profile_image_path(@profile.id, profile_image.id), method: :delete do |f| %>
           <%= f.submit t('profiles.edit.remove_this_image'), class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
         <% end %>

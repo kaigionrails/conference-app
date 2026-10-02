@@ -123,5 +123,22 @@ RSpec.describe "Users", type: :request do
         end
       end
     end
+
+    # A Google account can come without a picture, and anyone can delete all
+    # of their images.
+    context "profile without images" do
+      before { FactoryBot.create(:profile, user: FactoryBot.create(:user, name: "noimage")) }
+
+      {
+        "desktop" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "smartphone" => "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1"
+      }.each do |device, user_agent|
+        it "shows the default icon on #{device}" do
+          get "/@noimage", headers: {"User-Agent" => user_agent}
+          expect(response).to have_http_status(:success)
+          expect(response.body).to include("default_user_icon")
+        end
+      end
+    end
   end
 end
