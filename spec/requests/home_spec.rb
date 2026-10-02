@@ -19,5 +19,14 @@ RSpec.describe "Homes", type: :request do
         expect(response).to have_http_status(:success)
       end
     end
+
+    context "logged-in with a profile image" do
+      let(:user) { FactoryBot.create(:user, :with_profile_image) }
+      before { sign_in(user) }
+      it "shows the image in the header as the :icon variant" do
+        get "/"
+        expect(response.body).to include(user.profile.images.first.variant(:icon).variation.key)
+      end
+    end
   end
 end

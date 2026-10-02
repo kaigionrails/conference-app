@@ -114,6 +114,13 @@ RSpec.describe "Users", type: :request do
           expect(response.body).to include("一覧を見る")
           expect(response.body).to include("@baz")
         end
+
+        it "shows friends' images as the :thumb variant, in both lists" do
+          get "/@foo"
+          [friend1, friend2].each do |friend|
+            expect(response.body).to include(friend.profile.images.first.variant(:thumb).variation.key)
+          end
+        end
       end
     end
   end

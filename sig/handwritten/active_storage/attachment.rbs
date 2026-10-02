@@ -1,0 +1,12 @@
+module ActiveStorage
+  class Attachment
+    # NOTE: Attachment delegates missing methods to its blob via delegate_missing_to.
+    #       The gem_rbs_collection signature lists none of them, so the ones this app uses are declared here.
+    def variable?: () -> bool
+    def variant: (Symbol | Hash[Symbol, untyped] transformations) -> ActiveStorage::VariantWithRecord
+  end
+
+  # NOTE: Not in gem_rbs_collection. What Attachment#variant returns while variants are tracked.
+  class VariantWithRecord
+  end
+end
