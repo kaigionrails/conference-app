@@ -4,6 +4,14 @@ module ActiveStorage
     #       The change objects are internal to Active Storage, so only what this app reads is declared here.
     def attachment_changes: () -> Hash[String, ActiveStorage::Attached::Changes::CreateOne | ActiveStorage::Attached::Changes::DeleteOne]
                           | ...
+
+    module ClassMethods
+      # NOTE: gem_rbs_collection omits the block that defines named variants.
+      def has_one_attached: ((::String | ::Symbol) name, ?dependent: ::Symbol, ?service: (::String | ::Symbol | nil), ?strict_loading: bool) { (untyped attachable) -> void } -> void
+                          | ...
+      def has_many_attached: ((::String | ::Symbol) name, ?dependent: ::Symbol, ?service: (::String | ::Symbol | nil), ?strict_loading: bool) { (untyped attachable) -> void } -> void
+                           | ...
+    end
   end
 
   module Attached::Changes

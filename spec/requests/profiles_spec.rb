@@ -63,6 +63,18 @@ RSpec.describe "Profiles", type: :request do
           expect(response.body).to include("一覧を見る")
           expect(response.body).to include("@baz")
         end
+
+        {
+          "desktop" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+          "smartphone" => "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1"
+        }.each do |device, user_agent|
+          it "shows friends' images as the :thumb variant, in both lists, on #{device}" do
+            get "/profiles", headers: {"User-Agent" => user_agent}
+            [friend1, friend2].each do |friend|
+              expect(response.body).to include(friend.profile.images.first.variant(:thumb).variation.key)
+            end
+          end
+        end
       end
     end
   end

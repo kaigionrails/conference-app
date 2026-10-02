@@ -4,7 +4,10 @@
 module SpeakerDecorator : Speaker
   def sanitized_bio: () -> untyped
 
-  def avatar_image_url: () -> untyped
+  # An avatar that a variant cannot be made from is shown as it is.
+  #
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attached::One | String
+  def avatar_image_url: () -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attached::One | String)
 
   @sanitizer: Rails::Html::SafeListSanitizer
 

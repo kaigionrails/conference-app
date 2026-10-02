@@ -24,4 +24,25 @@ RSpec.describe ProfileDecorator do
       expect(sanitized).not_to include("window.alert")
     end
   end
+
+  describe "#icon_image and #thumb_image" do
+    let(:profile) { FactoryBot.create(:profile).extend ProfileDecorator }
+
+    it "return the variants of the first image" do
+      profile.images.attach(io: Rails.root.join("spec/assets/sample.png").open, filename: "sample.png")
+      expect(profile.icon_image.variation.transformations).to include(resize_to_limit: [50, 50])
+      expect(profile.thumb_image.variation.transformations).to include(resize_to_limit: [240, 240])
+    end
+
+    it "return an image no variant can be made from as it is" do
+      profile.images.attach(io: StringIO.new(%(<svg xmlns="http://www.w3.org/2000/svg"/>)), filename: "icon.svg", content_type: "image/svg+xml")
+      expect(profile.icon_image).to eq(profile.images.first)
+      expect(profile.thumb_image).to eq(profile.images.first)
+    end
+
+    it "return nil without an image" do
+      expect(profile.icon_image).to be_nil
+      expect(profile.thumb_image).to be_nil
+    end
+  end
 end
