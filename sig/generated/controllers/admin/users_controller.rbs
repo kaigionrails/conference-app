@@ -5,6 +5,8 @@ class Admin::UsersController < AdminController
 
   @user: User
 
+  @events: Event::ActiveRecord_Relation
+
   # @rbs return: void
   def index: () -> void
 
