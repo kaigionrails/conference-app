@@ -38,7 +38,10 @@ class ProfilesController < ApplicationController
         user = current_user!
         user.update!(name: params[:handle]) if params[:handle].present? && params[:handle] != user.name
         profile.update!(**profile_non_image_params)
-        profile.images.attach([profile_image_params[:images]]) if profile_image_params[:images].present?
+        # The multiple file field sends an empty value along with the files,
+        # and on its own when none were picked.
+        images = Array(profile_image_params[:images]).compact_blank
+        profile.images.attach(images) if images.any?
         # rbs_rails types << and destroy as variadic over records, but Active
         # Record takes a relation as well.
         profile.profile_badges << ProfileBadge.where(restricted: false, id: will_assign_profile_badge_ids) # steep:ignore

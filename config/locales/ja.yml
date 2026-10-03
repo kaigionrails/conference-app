@@ -196,11 +196,13 @@ ja:
     edit:
       title: "プロフィール編集"
       remove_this_image: "この写真を削除する"
+      remove_selected_image: "この画像を選択から外す"
       add_profile_image: "プロフィール画像を追加する"
       add_badge: "バッヂをつける"
       badges: "バッヂ一覧"
       create_a_new_badge: "バッヂを新しく作る"
       update: "更新する"
+      updating: "保存中…"
       name: "表示名"
       handle: "ハンドル"
       handle_help: "URL（/@ の後ろ）に使われます。英数字・ハイフン・アンダースコアが使えます。"
