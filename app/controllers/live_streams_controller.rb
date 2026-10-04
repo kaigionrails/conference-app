@@ -20,7 +20,6 @@ class LiveStreamsController < ApplicationController
     else
       "false"
     end
-    @shirataki_url = Rails.configuration.x.shirataki.url
     # FIXME: too hardcoded...
     @live_streams = {
       day1: {
