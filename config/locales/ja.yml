@@ -175,7 +175,7 @@ ja:
       next_sponsors_title: "次はどこへ？"
       view_stamp_card: "スタンプ帳を見る"
       back_to_profile: "プロフィールへ戻る"
-  sponsor_passports:
+  sponsor_stamp_cards:
     community_stamp_count:
       label: "みんなで集めたスタンプ"
       count: "%{formatted_count}個"
@@ -303,7 +303,7 @@ ja:
     header_nav:
       not_logged_in: "ログインしていません"
       profile: "Profile"
-      sponsor_passports: "Sponsor Passport"
+      sponsor_stamp_cards: "Sponsor Passport"
       talks: "Talks"
       about: "About"
       announcements: "Announcements"

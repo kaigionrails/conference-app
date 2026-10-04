@@ -176,7 +176,7 @@ en:
       next_sponsors_title: "Where to next?"
       view_stamp_card: "View Passport"
       back_to_profile: "Back to Profile"
-  sponsor_passports:
+  sponsor_stamp_cards:
     community_stamp_count:
       label: "Collected together"
       count:
@@ -307,7 +307,7 @@ en:
     header_nav:
       not_logged_in: "Not logged in"
       profile: "Profile"
-      sponsor_passports: "Sponsor Passport"
+      sponsor_stamp_cards: "Sponsor Passport"
       talks: "Talks"
       about: "About"
       announcements: "Announcements"

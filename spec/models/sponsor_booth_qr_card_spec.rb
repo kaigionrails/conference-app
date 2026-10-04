@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe SponsorBoothQrCard, type: :model do
-  let(:stamp_url) { "https://app.example.invalid/sponsor_passports/2026/stamps/new?code=#{"a" * 43}" }
+  let(:stamp_url) { "https://app.example.invalid/sponsor_stamp_cards/2026/stamps/new?code=#{"a" * 43}" }
   let(:template_color) { [40, 40, 40] }
 
   def solid_png(width, height, color)

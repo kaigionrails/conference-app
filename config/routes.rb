@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   resources :talk_bookmarks, only: [:create, :destroy]
   resources :unread_announcements, only: [:destroy]
-  resources :sponsor_passports, only: [:show], param: :event_slug do
+  resources :sponsor_stamp_cards, only: [:show], param: :event_slug do
     resources :stamps, controller: "sponsor_stamps", only: [:new, :create, :show], constraints: {id: /\d+/}, format: false
   end
 

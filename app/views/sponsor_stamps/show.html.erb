@@ -2,7 +2,7 @@
 
 <div class="passport-page passport-result w-full max-w-xl mx-auto px-4 pt-3 pb-6 text-center">
   <section class="passport-cover passport-sheet" aria-labelledby="passport-title">
-    <%= render "sponsor_passports/header", event: @event %>
+    <%= render "sponsor_stamp_cards/header", event: @event %>
 
     <% if @progress.completed? %>
       <h2 class="text-xl font-bold sm:text-2xl"><%= t(".complete_title") %></h2>
@@ -40,15 +40,15 @@
       <%= render "shared/sponsor_labels", sponsor: @sponsor %>
     </div>
 
-    <section class="passport-next-goal text-left" aria-label="<%= t("sponsor_passports.show.progress") %>">
-      <%= render "sponsor_passports/progress", passport: @passport, updated: @newly_visited %>
+    <section class="passport-next-goal text-left" aria-label="<%= t("sponsor_stamp_cards.show.progress") %>">
+      <%= render "sponsor_stamp_cards/progress", stamp_card: @stamp_card, updated: @newly_visited %>
     </section>
 
-    <% if @passport.next_sponsors.any? %>
+    <% if @stamp_card.next_sponsors.any? %>
       <section class="passport-next-goal text-left" aria-labelledby="next-sponsors-title">
         <h2 id="next-sponsors-title" class="text-base font-bold"><%= t(".next_sponsors_title") %></h2>
         <ul class="mt-2 grid grid-cols-2 gap-2">
-          <% @passport.next_sponsors.each do |sponsor| %>
+          <% @stamp_card.next_sponsors.each do |sponsor| %>
             <li class="passport-entry passport-suggestion" data-next-sponsor="<%= sponsor[:key] %>">
               <p class="passport-sponsor-plan"><%= t(".plan", plan: sponsor[:plan].capitalize) %></p>
               <p class="mt-1 break-words text-sm font-bold leading-snug"><%= sponsor[:name] %></p>
@@ -59,7 +59,7 @@
     <% end %>
 
     <div class="passport-collection-action">
-      <%= link_to t(".view_stamp_card"), sponsor_passport_path(event_slug: @event.slug), class: "passport-collect-button inline-flex w-full items-center justify-center rounded-lg px-5 py-3 font-bold text-white" %>
+      <%= link_to t(".view_stamp_card"), sponsor_stamp_card_path(event_slug: @event.slug), class: "passport-collect-button inline-flex w-full items-center justify-center rounded-lg px-5 py-3 font-bold text-white" %>
       <%= link_to t(".back_to_profile"), profiles_path, class: "mt-2 inline-block py-2 text-sm underline underline-offset-4 passport-muted" %>
     </div>
   </section>

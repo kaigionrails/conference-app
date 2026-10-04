@@ -5,7 +5,7 @@ RSpec.describe SessionsHelper, type: :helper do
     %i[github google_oauth2].each do |provider|
       context "with #{provider}" do
         it "preserves the return path and query as one parameter" do
-          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+          return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code&locale=en"
 
           uri = URI.parse(helper.omniauth_request_path(provider, return_to:))
 

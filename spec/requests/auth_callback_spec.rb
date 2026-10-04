@@ -27,7 +27,7 @@ RSpec.describe "AuthCallback", type: :request do
       end
 
       it "uses the same return location after authentication" do
-        return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+        return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code&locale=en"
 
         post "/auth/google_oauth2?#{{return_to:}.to_query}"
         follow_redirect!
@@ -68,7 +68,7 @@ RSpec.describe "AuthCallback", type: :request do
         end
 
         it "returns to the stamp URL after GitHub login" do
-          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+          return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code&locale=en"
           post "/auth/github?#{{return_to:}.to_query}"
           follow_redirect!
 
@@ -130,7 +130,7 @@ RSpec.describe "AuthCallback", type: :request do
         end
 
         it "still returns to the stamp URL, with a prompt" do
-          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+          return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code&locale=en"
           post "/auth/github?#{{return_to:}.to_query}"
           follow_redirect!
 

@@ -1,4 +1,4 @@
-class SponsorPassport
+class SponsorStampCard
   attr_reader :event
 
   def initialize(event:, user:)
