@@ -2,7 +2,7 @@
 <div class="pr-8 mb-8">
   <h3 class="font-bold text-lg mb-8">target profile</h3>
   <div class="flex flex-row items-center">
-    <%= image_tag @profile.images.first, class: "w-24 h-24 rounded-lg mr-4" %>
+    <%= image_tag @profile.images.attached? ? @profile.images.first : 'default_user_icon.png', class: "w-24 h-24 object-cover rounded-lg mr-4" %>
     <p class="text-lg"><%= @profile.name %></p>
   </div>
 </div>

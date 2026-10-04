@@ -14,13 +14,19 @@ module ProfileDecorator : Profile
   # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
   def thumb_image: () -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil)
 
+  # One of the images as the given variant. Uploads are not restricted to
+  # formats a variant can be made from (an SVG, say), and asking for one
+  # raises. Those are shown as they are.
+  #
+  # @rbs image: ActiveStorage::Attachment
+  # @rbs variant: Symbol
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment
+  def image_as: (ActiveStorage::Attachment image, Symbol variant) -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment)
+
   @sanitizer: Rails::Html::SafeListSanitizer
 
   private def sanitizer: () -> untyped
 
-  # Uploads are not restricted to formats a variant can be made from (an SVG,
-  # say), and asking for one raises. Those are shown as they are.
-  #
   # @rbs variant: Symbol
   # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
   private def first_image_as: (Symbol variant) -> (ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil)

@@ -15,7 +15,7 @@
   <h4 class="font-bold text-lg mb-2">Images</h4>
   <div class="flex flex-row flex-wrap mb-4">
     <% @user.profile.images.each do |profile_image| %>
-      <%= image_tag profile_image, class: "w-28 h-28 rounded-lg mr-4"%>
+      <%= image_tag profile_image, class: "w-28 h-28 object-cover rounded-lg mr-4"%>
     <% end %>
   </div>
   <div class="mb-4">

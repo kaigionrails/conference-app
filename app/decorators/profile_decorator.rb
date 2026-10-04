@@ -21,21 +21,29 @@ module ProfileDecorator
     first_image_as(:thumb)
   end
 
+  # One of the images as the given variant. Uploads are not restricted to
+  # formats a variant can be made from (an SVG, say), and asking for one
+  # raises. Those are shown as they are.
+  #
+  # @rbs image: ActiveStorage::Attachment
+  # @rbs variant: Symbol
+  # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment
+  def image_as(image, variant)
+    image.variable? ? image.variant(variant) : image
+  end
+
   # @rbs @sanitizer: Rails::Html::SafeListSanitizer
 
   private def sanitizer
     @sanitizer ||= Rails::Html::SafeListSanitizer.new
   end
 
-  # Uploads are not restricted to formats a variant can be made from (an SVG,
-  # say), and asking for one raises. Those are shown as they are.
-  #
   # @rbs variant: Symbol
   # @rbs return: ActiveStorage::VariantWithRecord | ActiveStorage::Attachment | nil
   private def first_image_as(variant)
     image = images.first
     return if image.nil?
 
-    image.variable? ? image.variant(variant) : image
+    image_as(image, variant)
   end
 end

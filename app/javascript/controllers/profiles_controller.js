@@ -5,10 +5,17 @@ import PhotoSwipe from "photoswipe";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 
 export default class extends Controller {
-  static targets = ["qrcodeImg", "profileImg", "showQrcode", "hideQrcode"];
+  static targets = [
+    "qrcodeImg",
+    "profileImg",
+    "showQrcode",
+    "hideQrcode",
+    "submitButton",
+  ];
   static values = {
     baseUrl: String,
     username: String,
+    submittingLabel: String,
   };
 
   connect() {
@@ -16,27 +23,26 @@ export default class extends Controller {
     this.setupLightbox();
   }
 
-  addProfileImageField(event, className) {
-    event.preventDefault();
-    const insertTargetElement = document.getElementById("profile-image-fields");
-    let fieldElement = document.createElement("input");
-    fieldElement.setAttribute("type", "file");
-    fieldElement.setAttribute("name", "profile[images][]");
-    fieldElement.setAttribute("accept", "image/png, image/jpeg");
-    fieldElement.setAttribute("class", className);
-    insertTargetElement.append(fieldElement);
+  // The profile form is sent without Turbo, so data-turbo-submits-with does
+  // nothing there. This does its job instead: the images upload before the
+  // next page comes, which takes seconds from a phone, and the form must not be
+  // sent twice meanwhile.
+  showSubmitting() {
+    const button = this.submitButtonTarget;
+    this.submitButtonContent = Array.from(button.childNodes);
+    button.disabled = true;
+    button.textContent = this.submittingLabelValue;
   }
 
-  addProfileImageFieldForPc(event) {
-    const className =
-      "block w-96 text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-hidden mb-4";
-    this.addProfileImageField(event, className);
-  }
+  // Going back to the form can restore it from the back/forward cache as it
+  // was left, with the button still disabled.
+  restoreSubmit(event) {
+    if (!event.persisted || this.submitButtonContent === undefined) return;
 
-  addProfileImageFieldForSp(event) {
-    const className =
-      "block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-hidden mb-4";
-    this.addProfileImageField(event, className);
+    const button = this.submitButtonTarget;
+    button.replaceChildren(...this.submitButtonContent);
+    button.disabled = false;
+    this.submitButtonContent = undefined;
   }
 
   async showQrcode() {

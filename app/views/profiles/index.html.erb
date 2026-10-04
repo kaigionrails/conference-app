@@ -27,7 +27,7 @@
       </div>
       <div class="grid grid-cols-4 gap-3" data-controller="lightbox" id="lightbox">
         <% @profile.images.each do |profile_image| %>
-          <%= link_to profile_image, data: {"pswp-width": "1200", "pswp-height": "1200"} do %>
+          <%= link_to profile_image, data: {"pswp-width": profile_image.metadata.fetch(:width, 1200), "pswp-height": profile_image.metadata.fetch(:height, 1200)} do %>
             <%= image_tag profile_image, class: "w-full object-cover rounded-lg aspect-square", data: {} %>
           <% end %>
         <% end %>

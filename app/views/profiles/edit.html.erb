@@ -1,9 +1,9 @@
-<div data-controller="profiles" class="w-4/5 max-w-5xl m-auto pt-2 px-2">
+<div data-controller="profiles profile-image-picker" data-profiles-submitting-label-value="<%= t('profiles.edit.updating') %>" class="w-4/5 max-w-5xl m-auto pt-2 px-2">
   <h2 class="text-xl font-bold mb-3"><%= t('profiles.edit.title') %></h2>
   <div class="flex mb-6 overflow-x-auto">
     <% @profile.images.each do |profile_image| %>
-      <div class="mr-4 text-center">
-        <%= image_tag profile_image, class: "mb-2 rounded-lg" %>
+      <div class="mr-4 text-center shrink-0">
+        <%= image_tag @profile.image_as(profile_image, :thumb), class: "w-24 h-24 object-cover rounded-lg mx-auto mb-2" %>
         <%= form_with url: profile_profile_image_path(@profile.id, profile_image.id), method: :delete do |f| %>
           <%= f.submit t('profiles.edit.remove_this_image'), class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
         <% end %>
@@ -11,17 +11,28 @@
     <% end %>
   </div>
 
-  <%= form_with model: @profile, multipart: true do |f| %>
+  <%# Submitted without Turbo, so the page after saving is loaded in full. An image that failed
+      while its variant was still being generated, such as the header icon right after the first
+      login, is requested again; a Turbo visit keeps showing the failure. %>
+  <%= form_with model: @profile, multipart: true, data: {turbo: false, action: "submit->profiles#showSubmitting pageshow@window->profiles#restoreSubmit"} do |f| %>
     <div class="mb-4">
-      <button data-action="profiles#addProfileImageFieldForPc" class="mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50">
+      <%# The input sits inside the label so that focus-within shows where keyboard focus is. %>
+      <%= f.label :images, class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50 cursor-pointer focus-within:ring-2 focus-within:ring-(--color-primary-500)" do %>
         <span class="text-gray-900">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
           </svg>
         </span>
         <span><%= t('profiles.edit.add_profile_image') %></span>
-      </button>
-      <div id="profile-image-fields"></div>
+        <%= f.file_field :images, multiple: true, accept: "image/png, image/jpeg", class: "sr-only", data: {profile_image_picker_target: "input", action: "change->profile-image-picker#preview"} %>
+      <% end %>
+      <div class="flex flex-wrap gap-4" data-profile-image-picker-target="previews"></div>
+      <template data-profile-image-picker-target="template">
+        <div class="relative">
+          <img src="" alt="" class="w-24 h-24 object-cover rounded-lg">
+          <button type="button" data-action="profile-image-picker#remove" aria-label="<%= t('profiles.edit.remove_selected_image') %>" class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white text-gray-900 font-semibold shadow-xs ring-1 ring-inset ring-gray-300 hover:bg-gray-50">×</button>
+        </div>
+      </template>
     </div>
     <div class="mb-4">
       <%= label_tag :handle, t('profiles.edit.handle'), class: "block mb-2 font-medium font-bold text-theme-primary" %>
@@ -50,13 +61,11 @@
         <%= link_to t('profiles.edit.create_a_new_badge'), new_profile_badge_path, class: "underline text-lg" %>
       </details>
     </div>
-    <%= f.button type: "submit" do %>
-      <button class="mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>
-        <%= t('profiles.edit.update') %>
-      </button>
+    <%= f.button type: "submit", class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50", data: {profiles_target: "submitButton"} do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+      <%= t('profiles.edit.update') %>
     <% end %>
   <% end %>
 </div>

@@ -9,7 +9,7 @@
   <div class="w-full max-w-(--breakpoint-xl) mx-auto pt-4 px-4 pb-6" data-controller="users">
     <div class="w-full flex flex-row mb-8">
       <div class="w-1/3 pr-2">
-        <%= image_tag @profile.images.first, class: "rounded-lg mb-3 w-full object-cover aspect-square" %>
+        <%= image_tag @profile.images.attached? ? @profile.images.first : 'default_user_icon.png', class: "rounded-lg mb-3 w-full object-cover aspect-square" %>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3" data-controller="lightbox">
           <% @profile.images.each do |image| %>
             <%= image_tag image, class: "rounded-lg w-full object-cover aspect-square" %>
@@ -39,7 +39,7 @@
                 <% @event_friends[event]&.each do |profile_exchange| %>
                   <li class="flex flex-row items-center">
                     <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row mb-4" do %>
-                      <%= image_tag profile_exchange.friend.profile.thumb_image || "", class: "w-20 h-20 mr-4 rounded-lg", width: 80, height: 80, loading: "lazy" %>
+                      <%= image_tag profile_exchange.friend.profile.thumb_image || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square", width: 80, height: 80, loading: "lazy" %>
                       <p class="text-2xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                       <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
                     <% end %>
@@ -53,7 +53,7 @@
                   <% @event_friends[event]&.each do |profile_exchange| %>
                     <li class="flex flex-row items-center">
                       <%= link_to user_path(username: profile_exchange.friend.name), class: "inline-block w-full flex flex-row mb-4" do %>
-                        <%= image_tag profile_exchange.friend.profile.thumb_image || "", class: "w-20 h-20 mr-4 rounded-lg", width: 80, height: 80, loading: "lazy" %>
+                        <%= image_tag profile_exchange.friend.profile.thumb_image || "", class: "w-20 h-20 mr-4 rounded-lg object-cover aspect-square", width: 80, height: 80, loading: "lazy" %>
                         <p class="text-2xl mr-4"><%= profile_exchange.friend.profile.name %></p>
                         <p class="underline underline-offset-2"><%= "@#{profile_exchange.friend.name}" %></p>
                       <% end %>

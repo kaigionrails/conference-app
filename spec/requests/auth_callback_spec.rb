@@ -10,7 +10,10 @@ RSpec.describe "AuthCallback", type: :request do
     end
 
     context "with an additional registered provider" do
-      let(:user) { FactoryBot.create(:user) }
+      # Reloaded so the stub returns an existing user: the instance create
+      # hands back still reports previously_new_record?, which the callback
+      # reads as a first login.
+      let(:user) { FactoryBot.create(:user).reload }
       let(:auth) { OmniAuth::AuthHash.new(provider: "google_oauth2", uid: "google-user") }
       let(:provider) { double("Authentication provider") }
 
@@ -78,6 +81,11 @@ RSpec.describe "AuthCallback", type: :request do
           expect(response).to redirect_to(setting_path)
           expect(session[:user_id]).to eq user.id
         end
+
+        it "does not prompt for the profile" do
+          get "/auth/github/callback"
+          expect(flash[:notice]).to be_nil
+        end
       end
 
       context "create new user" do
@@ -112,6 +120,22 @@ RSpec.describe "AuthCallback", type: :request do
           user = User.last
           expect(user.name).to eq "octocat"
           expect(user.profile.name).to eq "octocat"
+        end
+
+        it "sends the user to the profile form with a prompt" do
+          get "/auth/github/callback"
+
+          expect(response).to redirect_to(edit_profile_path(User.last.profile))
+          expect(flash[:notice]).to be_present
+        end
+
+        it "still returns to the stamp URL, with a prompt" do
+          return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+          post "/auth/github?#{{return_to:}.to_query}"
+          follow_redirect!
+
+          expect(response).to redirect_to(return_to)
+          expect(flash[:notice]).to be_present
         end
       end
 
@@ -180,7 +204,8 @@ RSpec.describe "AuthCallback", type: :request do
           expect(session[:user_id]).to eq user.id
           expect(user.name).to match(/\Auser-[a-z0-9]{6}\z/)
           expect(user.profile.name).to eq "Yusuke Nakamura"
-          expect(response).to redirect_to(setting_path)
+          expect(response).to redirect_to(edit_profile_path(user.profile))
+          expect(flash[:notice]).to be_present
         end
       end
 
@@ -191,6 +216,13 @@ RSpec.describe "AuthCallback", type: :request do
           expect { get "/auth/google_oauth2/callback" }.not_to change { User.count }
 
           expect(session[:user_id]).to eq existing.user.id
+        end
+
+        it "lands on the default page without a prompt" do
+          get "/auth/google_oauth2/callback"
+
+          expect(response).to redirect_to(setting_path)
+          expect(flash[:notice]).to be_nil
         end
       end
     end
