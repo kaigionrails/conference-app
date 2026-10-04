@@ -14,7 +14,7 @@ class Admin::AnnouncementsController < AdminController
 
   # @rbs return: void
   def new
-    event = Event.find_by!(slug: Event::ONGOING_EVENT_SLUG)
+    event = OngoingEvent.first!.event
     @announcement = Announcement.new(event: event)
   end
 
