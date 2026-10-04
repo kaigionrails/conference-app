@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Admin::SocialAnnouncements", type: :request do
   let(:admin) { FactoryBot.create(:user, role: "organizer") }
-  let!(:event) { FactoryBot.create(:event, slug: Event::ONGOING_EVENT_SLUG) }
+  let!(:event) { FactoryBot.create(:event, :make_ongoing) }
 
   let(:turbo_stream_headers) { {"Accept" => "text/vnd.turbo-stream.html, text/html"} }
 
@@ -23,15 +23,15 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       expect(response.body).to include("Connect X")
     end
 
-    it "defaults to the OngoingEvent when one exists" do
-      ongoing = FactoryBot.create(:event, :make_ongoing, name: "Kaigi on Rails ongoing")
-      FactoryBot.create(:social_announcement, event: ongoing, campaign: "Ongoing one")
-      FactoryBot.create(:social_announcement, event: event, campaign: "Slug one")
+    it "defaults to the OngoingEvent" do
+      other = FactoryBot.create(:event, name: "Kaigi on Rails other")
+      FactoryBot.create(:social_announcement, event: event, campaign: "Ongoing one")
+      FactoryBot.create(:social_announcement, event: other, campaign: "Other one")
 
       get admin_social_announcements_path
       expect(response).to have_http_status(:ok)
       expect(response.body).to include("Ongoing one")
-      expect(response.body).not_to include("Slug one")
+      expect(response.body).not_to include("Other one")
     end
   end
 
