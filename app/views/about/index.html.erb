@@ -40,10 +40,13 @@
     <section class="mb-6">
       <h3 class="font-bold text-2xl mb-2"><%= t('.contributors') %></h3>
       <p class="mb-2"><%= t('.app_contributors') %></p>
-      <ul>
+      <ul class="flex flex-wrap gap-2">
         <% JSON.load_file('contributors.json').each do |contributor| %>
           <li>
-            <%= link_to contributor['login'], contributor['html_url'], class: 'underline' %>
+            <%= link_to contributor['html_url'], class: 'group relative block rounded-lg' do %>
+              <%= image_tag "#{contributor['avatar_url']}&s=96", alt: contributor['login'], width: 48, height: 48, loading: 'lazy', class: 'w-12 h-12 rounded-lg' %>
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-white px-2 py-1 text-xs text-black opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"><%= contributor['login'] %></span>
+            <% end %>
           </li>
         <% end %>
       </ul>
