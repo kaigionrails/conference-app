@@ -25,3 +25,17 @@
     <%= link_to "edit profile badges", new_admin_profile_profile_badges_profile_path(profile_id: @user.profile.id), class: "underline" %>
   </div>
 </div>
+<% if @user.organizer? %>
+  <div class="mb-8">
+    <h3 class="font-bold text-lg mb-2">Sponsor stamps</h3>
+    <p class="mb-4">Reset all stamps for the selected event.</p>
+    <%= form_with url: admin_user_sponsor_visits_path(@user), method: :delete, data: { turbo_confirm: "Are you sure you want to reset? This cannot be undone." } do |form| %>
+      <%= form.label :event_id, "Event" %>
+      <%= form.collection_select :event_id, @events, :id, :name, { prompt: "Select an event", selected: @events.first&.id }, { required: true, class: "border rounded-sm px-3 py-2" } %>
+      <%= form.submit "Reset", class: "border border-red-500 text-red-600 rounded-sm px-4 py-2 cursor-pointer" %>
+    <% end %>
+    <% if flash[:success] %>
+      <p role="status" class="mt-4 text-green-700"><%= flash[:success] %></p>
+    <% end %>
+  </div>
+<% end %>
