@@ -1,14 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Sponsor stamp cards", type: :request do
-  let!(:event) do
-    FactoryBot.create(
-      :event,
-      :make_ongoing,
-      name: "Kaigi on Rails 2026",
-      slug: "2026"
-    )
-  end
+  let!(:event) { FactoryBot.create(:event, :make_ongoing) }
   let(:user) { FactoryBot.create(:user) }
   let(:primary_sponsor) { sponsors.first }
   let(:non_booth_sponsor_key) { "non-booth-sponsor.example" }
@@ -42,7 +35,7 @@ RSpec.describe "Sponsor stamp cards", type: :request do
     end
 
     it "returns not found for a past event" do
-      past_event = FactoryBot.create(:event, name: "Kaigi on Rails 2025", slug: "2025")
+      past_event = FactoryBot.create(:event)
       sign_in(user)
 
       get sponsor_stamp_card_path(event_slug: past_event.slug)
@@ -59,7 +52,7 @@ RSpec.describe "Sponsor stamp cards", type: :request do
 
   describe "GET /sponsor_stamp_cards/:event_slug/stamps/new" do
     it "returns not found for a past event" do
-      past_event = FactoryBot.create(:event, slug: "2025")
+      past_event = FactoryBot.create(:event)
       code = SponsorVisitToken.generate(event_slug: past_event.slug, sponsor_key: primary_sponsor[:key])
       sign_in(user)
 
@@ -101,7 +94,7 @@ RSpec.describe "Sponsor stamp cards", type: :request do
 
   describe "POST /sponsor_stamp_cards/:event_slug/stamps" do
     it "does not record a visit for a past event" do
-      past_event = FactoryBot.create(:event, slug: "2025")
+      past_event = FactoryBot.create(:event)
       code = SponsorVisitToken.generate(event_slug: past_event.slug, sponsor_key: primary_sponsor[:key])
       sign_in(user)
 
@@ -173,7 +166,8 @@ RSpec.describe "Sponsor stamp cards", type: :request do
 
     it "does not accept a code generated for another event" do
       sign_in(user)
-      other_event_code = SponsorVisitToken.generate(event_slug: "2025", sponsor_key: primary_sponsor[:key])
+      other_event = FactoryBot.build(:event)
+      other_event_code = SponsorVisitToken.generate(event_slug: other_event.slug, sponsor_key: primary_sponsor[:key])
 
       expect {
         post sponsor_stamp_card_stamps_path(event.slug), params: {code: other_event_code}
@@ -215,7 +209,7 @@ RSpec.describe "Sponsor stamp cards", type: :request do
 
     it "does not show the user's visit from another event" do
       sign_in(user)
-      other_event = FactoryBot.create(:event, name: "Kaigi on Rails 2025", slug: "2025")
+      other_event = FactoryBot.create(:event)
       visit = FactoryBot.create(:sponsor_visit, user: user, event: other_event, sponsor_key: primary_sponsor[:key])
 
       get sponsor_stamp_card_stamp_path(event.slug, visit)

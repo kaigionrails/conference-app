@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe SponsorStampCard do
-  let(:event) { FactoryBot.create(:event, slug: "2026") }
+  let(:event) { FactoryBot.create(:event) }
   let(:user) { FactoryBot.create(:user) }
   let(:sponsors) do
     [
@@ -13,7 +13,7 @@ RSpec.describe SponsorStampCard do
   subject(:stamp_card) { described_class.new(event:, user:) }
 
   before do
-    allow(SponsorCatalog).to receive(:with_booth).with("2026").and_return(sponsors)
+    allow(SponsorCatalog).to receive(:with_booth).with(event.slug).and_return(sponsors)
   end
 
   it "represents the user's event-specific stamp card" do
@@ -53,7 +53,7 @@ RSpec.describe SponsorStampCard do
     FactoryBot.create(:sponsor_visit, user:, event:, sponsor_key: "second.example")
     FactoryBot.create(:sponsor_visit, user: FactoryBot.create(:user), event:, sponsor_key: "first.example")
     FactoryBot.create(:sponsor_visit, user: FactoryBot.create(:user), event:, sponsor_key: "not-in-stamp-rally.example")
-    other_event = FactoryBot.create(:event, slug: "2025")
+    other_event = FactoryBot.create(:event)
     FactoryBot.create(:sponsor_visit, user: FactoryBot.create(:user), event: other_event, sponsor_key: "first.example")
 
     expect(stamp_card.community_stamp_count).to eq(2)
