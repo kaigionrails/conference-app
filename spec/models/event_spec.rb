@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Event, type: :model do
-  describe "#community_profile_exchange_count" do
+  describe "#profile_exchange_count" do
     let(:event) { FactoryBot.create(:event) }
     let(:other_event) { FactoryBot.create(:event) }
     let(:users) { FactoryBot.create_list(:user, 4) }
@@ -15,18 +15,18 @@ RSpec.describe Event, type: :model do
       exchange(event, users[0], users[1])
       exchange(event, users[0], users[2])
 
-      expect(event.community_profile_exchange_count).to eq(3)
+      expect(event.profile_exchange_count).to eq(3)
     end
 
     it "leaves out exchanges at other events" do
       exchange(event, users[0], users[1])
       exchange(other_event, users[2], users[3])
 
-      expect(event.community_profile_exchange_count).to eq(2)
+      expect(event.profile_exchange_count).to eq(2)
     end
 
     it "is zero before anyone has exchanged" do
-      expect(event.community_profile_exchange_count).to eq(0)
+      expect(event.profile_exchange_count).to eq(0)
     end
   end
 end

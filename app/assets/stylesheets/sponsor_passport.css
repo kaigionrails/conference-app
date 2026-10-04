@@ -184,7 +184,7 @@
 
 /* The profile pages pulse their exchange count the same way. Nothing plays
    before it there, so it starts almost at once. */
-.community-profile-exchange-count--updated {
+.profile-exchange-count--updated {
   animation: community-stamp-count-pulse 700ms 200ms ease-out both;
 }
 
@@ -264,7 +264,7 @@
   .passport-stamp-new-label,
   .passport-confetti span,
   .community-stamp-count--updated,
-  .community-profile-exchange-count--updated {
+  .profile-exchange-count--updated {
     animation: none;
   }
 }

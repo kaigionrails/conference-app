@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   @user: User
 
-  @community_profile_exchange_count: Integer?
+  @profile_exchange_count: Integer?
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # @rbs @profile: Profile
   # @rbs @token: String?
   # @rbs @newly_exchanged: bool
-  # @rbs @community_profile_exchange_count: Integer?
+  # @rbs @profile_exchange_count: Integer?
 
   # @rbs return: void
   def show
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     # has just been met.
     @events = Event.all.order(start_date: :desc)
     @event_friends = @user.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
-    @community_profile_exchange_count = current_event&.community_profile_exchange_count
+    @profile_exchange_count = current_event&.profile_exchange_count
   end
 
   # Returns whether either direction of the exchange was stored just now.

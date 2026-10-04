@@ -5,9 +5,9 @@
 
   updated pulses the number, for the page a fresh exchange lands on.
 -%>
-<div class="mb-8" data-community-profile-exchange-count>
+<div class="mb-8" data-profile-exchange-count>
   <p class="text-sm"><%= t(".label", event_name: event.name) %></p>
-  <p class="<%= class_names("inline-block rounded-md px-1 -mx-1 text-3xl font-bold tabular-nums", "community-profile-exchange-count--updated" => updated) %>">
+  <p class="<%= class_names("inline-block rounded-md px-1 -mx-1 text-3xl font-bold tabular-nums", "profile-exchange-count--updated" => updated) %>">
     <%= t(".count", count:, formatted_count: number_with_delimiter(count)) %>
   </p>
 </div>

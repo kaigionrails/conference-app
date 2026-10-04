@@ -72,12 +72,12 @@ RSpec.describe "Users", type: :request do
 
         it "counts the exchange just made and pulses the count only on that page" do
           get "/@bar?token=#{token}"
-          count = Nokogiri::HTML(response.body).at_css("[data-community-profile-exchange-count]")
+          count = Nokogiri::HTML(response.body).at_css("[data-profile-exchange-count]")
           expect(count.text.squish).to eq "Kaigi on Rails 2023でプロフィールを交換した人 2人"
-          expect(count.at_css(".community-profile-exchange-count--updated")).not_to be_nil
+          expect(count.at_css(".profile-exchange-count--updated")).not_to be_nil
 
           get "/@bar?token=#{token}" # reloaded
-          expect(response.body).not_to include("community-profile-exchange-count--updated")
+          expect(response.body).not_to include("profile-exchange-count--updated")
         end
 
         it "stores the missing direction of a one-way exchange, and pulses the count" do
@@ -86,7 +86,7 @@ RSpec.describe "Users", type: :request do
           get "/@bar?token=#{token}"
           expect(ProfileExchange.where(event:, user:, friend: other_user)).to exist
           expect(ProfileExchange.count).to eq 2
-          expect(response.body).to include("community-profile-exchange-count--updated")
+          expect(response.body).to include("profile-exchange-count--updated")
         end
       end
     end
@@ -171,7 +171,7 @@ RSpec.describe "Users", type: :request do
     end
 
     # Shown to visitors who are not logged in as well: it is only a total.
-    context "community profile exchange count" do
+    context "profile exchange count" do
       let(:friend) { FactoryBot.create(:user, :with_profile_image, name: "bar") }
       let(:others) { FactoryBot.create_list(:user, 2) }
       let(:strangers) { FactoryBot.create_list(:user, 2) }
@@ -183,7 +183,7 @@ RSpec.describe "Users", type: :request do
       end
 
       def count_text
-        Nokogiri::HTML(response.body).at_css("[data-community-profile-exchange-count]")&.text&.squish
+        Nokogiri::HTML(response.body).at_css("[data-profile-exchange-count]")&.text&.squish
       end
 
       {
@@ -198,7 +198,7 @@ RSpec.describe "Users", type: :request do
           get "/@foo", headers: {"User-Agent" => user_agent}
 
           expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 4人"
-          expect(response.body).not_to include("community-profile-exchange-count--updated")
+          expect(response.body).not_to include("profile-exchange-count--updated")
         end
 
         it "shows zero before anyone has exchanged, on #{device}" do

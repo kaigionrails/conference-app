@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="w-full">
-      <% if @community_profile_exchange_count %>
-        <%= render "shared/community_profile_exchange_count", event: current_event, count: @community_profile_exchange_count, updated: @newly_exchanged %>
+      <% if @profile_exchange_count %>
+        <%= render "shared/profile_exchange_count", event: current_event, count: @profile_exchange_count, updated: @newly_exchanged %>
       <% end %>
       <% @events.each do |event| %>
         <% unless @event_friends[event].nil? %>

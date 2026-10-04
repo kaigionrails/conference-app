@@ -231,7 +231,7 @@ ja:
     login_providers:
       github: "Login with GitHub"
       google: "Login with Google"
-    community_profile_exchange_count:
+    profile_exchange_count:
       label: "%{event_name}でプロフィールを交換した人"
       count: "%{formatted_count}人"
   sessions:

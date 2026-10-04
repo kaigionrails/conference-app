@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   # user_id alone covers everyone.
   #
   # @rbs return: Integer
-  def community_profile_exchange_count
+  def profile_exchange_count
     profile_exchanges.distinct.count(:user_id)
   end
 end

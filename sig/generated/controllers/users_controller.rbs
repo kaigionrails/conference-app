@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   @newly_exchanged: bool
 
-  @community_profile_exchange_count: Integer?
+  @profile_exchange_count: Integer?
 
   # @rbs return: void
   def show: () -> void
