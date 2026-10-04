@@ -13,11 +13,17 @@ class UsersController < ApplicationController
 
   @token: String?
 
+  @newly_exchanged: bool
+
+  @profile_exchange_count: Integer?
+
   # @rbs return: void
   def show: () -> void
 
+  # Returns whether either direction of the exchange was stored just now.
+  #
   # @rbs user1: User
   # @rbs user2: User
-  # @rbs return: void
-  private def exchange_profile: (User user1, User user2) -> void
+  # @rbs return: bool
+  private def exchange_profile: (User user1, User user2) -> bool
 end

@@ -1,5 +1,5 @@
 <div class="w-full" data-controller="users">
-  <% if !logged_in? & @token %>
+  <% if !logged_in? && @token %>
     <div class="w-full bg-theme-primary-200 text-theme-primary text-center py-2">
       <p class="text-sm mb-1"><%= t('users.show.login_prompt') %></p>
       <%= render "shared/login_providers", variant: :inline, return_to: user_path(username: @user.name, token: @token) %>
@@ -34,6 +34,9 @@
   </div>
 
   <div class="px-4">
+    <% if @profile_exchange_count %>
+      <%= render "shared/profile_exchange_count", event: current_event, count: @profile_exchange_count, updated: @newly_exchanged %>
+    <% end %>
     <% @events.each do |event| %>
       <% unless @event_friends[event].nil? %>
         <div class="mb-8">

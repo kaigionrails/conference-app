@@ -1,0 +1,13 @@
+<%# locals: (event:, count:, updated: false) -%>
+<%#
+  How many people have exchanged profiles at the event, shown on the profile
+  pages the way the sponsor passport shows the stamps collected together.
+
+  updated pulses the number, for the page a fresh exchange lands on.
+-%>
+<div class="mb-8" data-profile-exchange-count>
+  <p class="text-sm"><%= t(".label", event_name: event.name) %></p>
+  <p class="<%= class_names("inline-block rounded-md px-1 -mx-1 text-3xl font-bold tabular-nums", "profile-exchange-count--updated" => updated) %>">
+    <%= t(".count", count:, formatted_count: number_with_delimiter(count)) %>
+  </p>
+</div>

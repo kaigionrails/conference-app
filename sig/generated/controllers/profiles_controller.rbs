@@ -1,6 +1,8 @@
 # Generated from app/controllers/profiles_controller.rb with RBS::Inline
 
 class ProfilesController < ApplicationController
+  include ApplicationHelper
+
   @profile: Profile
 
   @events: Event::ActiveRecord_Relation
@@ -8,6 +10,8 @@ class ProfilesController < ApplicationController
   @event_friends: untyped
 
   @user: User
+
+  @profile_exchange_count: Integer?
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 

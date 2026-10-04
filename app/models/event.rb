@@ -18,4 +18,13 @@ class Event < ApplicationRecord
   def ongoing?
     OngoingEvent.first&.event_id == id
   end
+
+  # The number of people who exchanged profiles at this event, not the
+  # number of exchanges. Each exchange is stored in both directions, so
+  # user_id alone covers everyone.
+  #
+  # @rbs return: Integer
+  def profile_exchange_count
+    profile_exchanges.distinct.count(:user_id)
+  end
 end

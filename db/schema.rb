@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_25_160453) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_04_115317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -148,7 +148,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_25_160453) do
     t.bigint "friend_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_profile_exchanges_on_event_id"
+    t.index ["event_id", "user_id", "friend_id"], name: "index_profile_exchanges_on_event_id_and_user_id_and_friend_id", unique: true
     t.index ["friend_id"], name: "index_profile_exchanges_on_friend_id"
     t.index ["user_id"], name: "index_profile_exchanges_on_user_id"
   end
