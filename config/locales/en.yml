@@ -163,31 +163,32 @@ en:
       succeeded: "Profile image deleted"
   sponsor_stamps:
     new:
-      back_to_passport: "Back to your passport"
+      back_to_stamp_card: "Back to your stamp card"
       plan: "%{plan} Sponsor"
       collect_stamp: "Collect Stamp"
-      collecting_stamp: "Stamping your passport…"
+      collecting_stamp: "Collecting your stamp…"
     show:
       already_visited: "You already collected this stamp"
       complete_title: "All Sponsors Completed!"
       complete_message: "You visited every sponsor booth. Congratulations!"
       plan: "%{plan} Sponsor"
-      stamp_number: "Passport stamp number %{number}"
+      stamp_number: "Stamp number %{number}"
       next_sponsors_title: "Where to next?"
-      view_stamp_card: "View Passport"
+      view_stamp_card: "View Stamp Card"
       back_to_profile: "Back to Profile"
   sponsor_stamp_cards:
+    title: "Sponsor Booth Stamp Rally"
     community_stamp_count:
       label: "Collected together"
       count:
         one: "%{formatted_count} stamp"
         other: "%{formatted_count} stamps"
     show:
-      book_complete: "Every booth, one completed passport. Thanks for exploring!"
+      book_complete: "You collected every booth’s stamp. Thanks for exploring!"
       progress: "Your visits"
       progress_count: "%{visited} / %{total} sponsors"
       milestone_marker: "Badge milestone: %{count} sponsors"
-      stamp_number: "Passport stamp collected number %{number}"
+      stamp_number: "Collected stamp number %{number}"
       empty: "Scan sponsor QR codes to collect stamps."
       visited: "Collected ✓"
       unvisited: "Not visited"
@@ -307,7 +308,7 @@ en:
     header_nav:
       not_logged_in: "Not logged in"
       profile: "Profile"
-      sponsor_stamp_cards: "Sponsor Passport"
+      sponsor_stamp_cards: "Stamp Rally"
       talks: "Talks"
       about: "About"
       announcements: "Announcements"

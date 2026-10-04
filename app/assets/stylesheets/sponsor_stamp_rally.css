@@ -1,4 +1,4 @@
-.passport-stamp-stage {
+.stamp-rally-stamp-stage {
   position: relative;
   display: grid;
   width: 100%;
@@ -8,7 +8,7 @@
   isolation: isolate;
 }
 
-.passport-stamp {
+.stamp-rally-stamp {
   position: relative;
   z-index: 2;
   display: flex;
@@ -17,55 +17,55 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 8px double var(--passport-ink, #852d36);
+  border: 8px double var(--stamp-rally-ink, #852d36);
   border-radius: 50%;
-  color: var(--passport-ink, #852d36);
+  color: var(--stamp-rally-ink, #852d36);
   background: rgb(255 255 255);
   box-shadow: 0 10px 24px rgb(127 29 29 / 18%);
   transform: rotate(-6deg);
 }
 
-.passport-stamp-stage--new .passport-stamp {
-  animation: passport-stamp-slam 1050ms 100ms cubic-bezier(0.18, 0.89, 0.32, 1.28) both;
+.stamp-rally-stamp-stage--new .stamp-rally-stamp {
+  animation: stamp-rally-stamp-slam 1050ms 100ms cubic-bezier(0.18, 0.89, 0.32, 1.28) both;
 }
 
-.passport-stamp-burst,
-.passport-stamp-burst::before,
-.passport-stamp-burst::after {
+.stamp-rally-stamp-burst,
+.stamp-rally-stamp-burst::before,
+.stamp-rally-stamp-burst::after {
   position: absolute;
   z-index: 1;
   width: 112px;
   height: 112px;
-  border: 5px solid var(--passport-ink, #852d36);
+  border: 5px solid var(--stamp-rally-ink, #852d36);
   border-radius: 50%;
   opacity: 0;
 }
 
-.passport-stamp-burst::before,
-.passport-stamp-burst::after {
+.stamp-rally-stamp-burst::before,
+.stamp-rally-stamp-burst::after {
   content: "";
 }
 
-.passport-stamp-burst {
+.stamp-rally-stamp-burst {
   top: 50%;
   left: 50%;
   margin-top: -56px;
   margin-left: -56px;
-  animation: passport-burst 900ms 360ms ease-out both;
+  animation: stamp-rally-burst 900ms 360ms ease-out both;
 }
 
-.passport-stamp-burst::before {
+.stamp-rally-stamp-burst::before {
   inset: -5px;
-  animation: passport-burst 900ms 500ms ease-out both;
+  animation: stamp-rally-burst 900ms 500ms ease-out both;
 }
 
-.passport-stamp-burst::after {
+.stamp-rally-stamp-burst::after {
   inset: -5px;
   border-color: #bc955a;
-  animation: passport-burst 900ms 640ms ease-out both;
+  animation: stamp-rally-burst 900ms 640ms ease-out both;
 }
 
-.passport-stamp-new-label {
+.stamp-rally-stamp-new-label {
   position: absolute;
   z-index: 4;
   top: 8px;
@@ -80,10 +80,10 @@
   font-weight: 900;
   letter-spacing: 0.08em;
   transform: rotate(8deg);
-  animation: passport-new-label-pop 600ms 760ms cubic-bezier(0.18, 0.89, 0.32, 1.4) both;
+  animation: stamp-rally-new-label-pop 600ms 760ms cubic-bezier(0.18, 0.89, 0.32, 1.4) both;
 }
 
-.passport-confetti {
+.stamp-rally-confetti {
   position: absolute;
   z-index: 3;
   inset: 0;
@@ -91,7 +91,7 @@
   pointer-events: none;
 }
 
-.passport-confetti span {
+.stamp-rally-confetti span {
   --confetti-x: 0px;
   --confetti-y: 0px;
   --confetti-rotate: 180deg;
@@ -101,78 +101,78 @@
   width: 8px;
   height: 14px;
   border-radius: 2px;
-  background: var(--passport-ink, #852d36);
+  background: var(--stamp-rally-ink, #852d36);
   opacity: 0;
-  animation: passport-confetti-fly 1100ms 360ms ease-out both;
+  animation: stamp-rally-confetti-fly 1100ms 360ms ease-out both;
 }
 
-.passport-confetti span:nth-child(2n) {
+.stamp-rally-confetti span:nth-child(2n) {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #e5c58c;
 }
 
-.passport-confetti span:nth-child(3n) {
+.stamp-rally-confetti span:nth-child(3n) {
   background: #7c958b;
 }
 
-.passport-confetti span:nth-child(1) {
+.stamp-rally-confetti span:nth-child(1) {
   --confetti-x: -132px;
   --confetti-y: -70px;
   --confetti-rotate: -240deg;
 }
-.passport-confetti span:nth-child(2) {
+.stamp-rally-confetti span:nth-child(2) {
   --confetti-x: -82px;
   --confetti-y: -94px;
   --confetti-rotate: 210deg;
 }
-.passport-confetti span:nth-child(3) {
+.stamp-rally-confetti span:nth-child(3) {
   --confetti-x: -28px;
   --confetti-y: -104px;
   --confetti-rotate: -170deg;
 }
-.passport-confetti span:nth-child(4) {
+.stamp-rally-confetti span:nth-child(4) {
   --confetti-x: 38px;
   --confetti-y: -100px;
   --confetti-rotate: 280deg;
 }
-.passport-confetti span:nth-child(5) {
+.stamp-rally-confetti span:nth-child(5) {
   --confetti-x: 94px;
   --confetti-y: -82px;
   --confetti-rotate: -210deg;
 }
-.passport-confetti span:nth-child(6) {
+.stamp-rally-confetti span:nth-child(6) {
   --confetti-x: 132px;
   --confetti-y: -38px;
   --confetti-rotate: 190deg;
 }
-.passport-confetti span:nth-child(7) {
+.stamp-rally-confetti span:nth-child(7) {
   --confetti-x: 126px;
   --confetti-y: 52px;
   --confetti-rotate: -260deg;
 }
-.passport-confetti span:nth-child(8) {
+.stamp-rally-confetti span:nth-child(8) {
   --confetti-x: 76px;
   --confetti-y: 94px;
   --confetti-rotate: 230deg;
 }
-.passport-confetti span:nth-child(9) {
+.stamp-rally-confetti span:nth-child(9) {
   --confetti-x: 16px;
   --confetti-y: 106px;
   --confetti-rotate: -190deg;
 }
-.passport-confetti span:nth-child(10) {
+.stamp-rally-confetti span:nth-child(10) {
   --confetti-x: -58px;
   --confetti-y: 98px;
   --confetti-rotate: 250deg;
 }
-.passport-confetti span:nth-child(11) {
+.stamp-rally-confetti span:nth-child(11) {
   --confetti-x: -112px;
   --confetti-y: 68px;
   --confetti-rotate: -220deg;
 }
-.passport-confetti span:nth-child(12) {
+.stamp-rally-confetti span:nth-child(12) {
   --confetti-x: -136px;
   --confetti-y: 4px;
   --confetti-rotate: 200deg;
@@ -188,7 +188,7 @@
   animation: community-stamp-count-pulse 700ms 200ms ease-out both;
 }
 
-@keyframes passport-stamp-slam {
+@keyframes stamp-rally-stamp-slam {
   0% {
     opacity: 0;
     transform: scale(2.2) rotate(-18deg);
@@ -209,7 +209,7 @@
   }
 }
 
-@keyframes passport-burst {
+@keyframes stamp-rally-burst {
   0% {
     opacity: 0.8;
     transform: scale(0.72);
@@ -220,7 +220,7 @@
   }
 }
 
-@keyframes passport-new-label-pop {
+@keyframes stamp-rally-new-label-pop {
   0% {
     opacity: 0;
     transform: scale(0.3) rotate(-12deg);
@@ -235,7 +235,7 @@
   }
 }
 
-@keyframes passport-confetti-fly {
+@keyframes stamp-rally-confetti-fly {
   0% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.4) rotate(0);
@@ -257,78 +257,78 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .passport-stamp-stage--new .passport-stamp,
-  .passport-stamp-burst,
-  .passport-stamp-burst::before,
-  .passport-stamp-burst::after,
-  .passport-stamp-new-label,
-  .passport-confetti span,
+  .stamp-rally-stamp-stage--new .stamp-rally-stamp,
+  .stamp-rally-stamp-burst,
+  .stamp-rally-stamp-burst::before,
+  .stamp-rally-stamp-burst::after,
+  .stamp-rally-stamp-new-label,
+  .stamp-rally-confetti span,
   .community-stamp-count--updated,
   .profile-exchange-count--updated {
     animation: none;
   }
 }
 
-.passport-page {
-  --passport-ink: #852d36;
-  --passport-paper: #fcf8ef;
-  --passport-line: #ded5c5;
+.stamp-rally-page {
+  --stamp-rally-ink: #852d36;
+  --stamp-rally-paper: #fcf8ef;
+  --stamp-rally-line: #ded5c5;
 }
 
-.passport-page h1,
-.passport-page h2 {
+.stamp-rally-page h1,
+.stamp-rally-page h2 {
   color: inherit;
 }
 
-.passport-page a.underline:hover {
-  color: var(--passport-ink);
+.stamp-rally-page a.underline:hover {
+  color: var(--stamp-rally-ink);
 }
 
-.passport-cover {
+.stamp-rally-cover {
   padding: 16px 20px;
-  border-top: 5px solid var(--passport-ink);
+  border-top: 5px solid var(--stamp-rally-ink);
   border-radius: 6px 6px 0 0;
   color: #302d28;
-  background: var(--passport-paper);
+  background: var(--stamp-rally-paper);
 }
 
-.passport-eyebrow,
-.passport-year,
-.passport-book-footer {
+.stamp-rally-eyebrow,
+.stamp-rally-year,
+.stamp-rally-book-footer {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.16em;
 }
 
-.passport-page .passport-eyebrow {
-  color: var(--passport-ink);
+.stamp-rally-page .stamp-rally-eyebrow {
+  color: var(--stamp-rally-ink);
 }
 
-.passport-year {
+.stamp-rally-year {
   padding: 4px 8px;
-  border: 1px solid var(--passport-line);
+  border: 1px solid var(--stamp-rally-line);
   border-radius: 3px;
 }
 
-.passport-muted {
+.stamp-rally-muted {
   color: #706758;
 }
 
-.passport-progress-count {
+.stamp-rally-progress-count {
   margin-top: 4px;
-  color: var(--passport-ink);
+  color: var(--stamp-rally-ink);
   font-size: 44px;
   font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
-.passport-summary .passport-progress-count {
+.stamp-rally-summary .stamp-rally-progress-count {
   font-size: clamp(24px, 5vw, 44px);
   overflow-wrap: anywhere;
 }
 
-.passport-community-count {
+.stamp-rally-community-count {
   margin-top: 4px;
   color: #706758;
   font-size: 16px;
@@ -338,46 +338,46 @@
   overflow-wrap: anywhere;
 }
 
-.passport-progress-total {
+.stamp-rally-progress-total {
   color: #706758;
   font-size: 20px;
   font-weight: 400;
 }
 
-.passport-next-goal {
+.stamp-rally-next-goal {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px dashed var(--passport-line);
+  border-top: 1px dashed var(--stamp-rally-line);
 }
 
-.passport-book {
+.stamp-rally-book {
   padding: 0 20px 20px;
   border-radius: 0 0 6px 6px;
   color: #302d28;
-  background: var(--passport-paper);
+  background: var(--stamp-rally-paper);
 }
 
-.passport-book-section {
+.stamp-rally-book-section {
   padding-top: 24px;
   padding-bottom: 24px;
-  border-top: 1px dashed var(--passport-line);
+  border-top: 1px dashed var(--stamp-rally-line);
 }
 
-.passport-entry {
+.stamp-rally-entry {
   display: flex;
   min-width: 0;
   flex-direction: column;
   padding: 14px 12px 10px;
-  border: 1px solid var(--passport-line);
+  border: 1px solid var(--stamp-rally-line);
   border-radius: 4px;
   background: #fff;
 }
 
-.passport-entry--visited {
+.stamp-rally-entry--visited {
   border-color: #ba8e8c;
 }
 
-.passport-entry-logo {
+.stamp-rally-entry-logo {
   display: block;
   width: 120px;
   max-width: 100%;
@@ -387,7 +387,7 @@
   object-fit: contain;
 }
 
-.passport-entry-stamp {
+.stamp-rally-entry-stamp {
   display: flex;
   min-height: 82px;
   align-items: center;
@@ -396,129 +396,129 @@
   border-top: 1px solid #f0ebe2;
 }
 
-.passport-book-stamp {
+.stamp-rally-book-stamp {
   display: flex;
   width: 68px;
   height: 68px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 4px double var(--passport-ink);
+  border: 4px double var(--stamp-rally-ink);
   border-radius: 50%;
-  color: var(--passport-ink);
+  color: var(--stamp-rally-ink);
   transform: rotate(-7deg);
 }
 
-.passport-book-stamp-caption {
+.stamp-rally-book-stamp-caption {
   font-size: 8px;
   font-weight: 700;
   line-height: 1.5;
   letter-spacing: 0.08em;
 }
 
-.passport-book-stamp-number {
+.stamp-rally-book-stamp-number {
   font-size: 24px;
   font-weight: 800;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
 }
 
-.passport-book-stamp--empty {
+.stamp-rally-book-stamp--empty {
   border: 1px dashed #b6ad9e;
   color: #706758;
   transform: none;
 }
 
-.passport-book-footer {
+.stamp-rally-book-footer {
   padding-top: 16px;
-  border-top: 1px dashed var(--passport-line);
+  border-top: 1px dashed var(--stamp-rally-line);
   color: #706758;
   text-align: center;
 }
 
 @media (max-width: 380px) {
-  .passport-cover {
+  .stamp-rally-cover {
     padding: 16px;
   }
 
-  .passport-book {
+  .stamp-rally-book {
     padding-right: 16px;
     padding-left: 16px;
   }
 
-  .passport-entry {
+  .stamp-rally-entry {
     padding-right: 8px;
     padding-left: 8px;
   }
 }
 
-.passport-sheet {
+.stamp-rally-sheet {
   border-radius: 6px;
 }
 
-.passport-logo-panel {
+.stamp-rally-logo-panel {
   width: 216px;
   max-width: 100%;
   margin-inline: auto;
-  border: 1px solid var(--passport-line);
+  border: 1px solid var(--stamp-rally-line);
   border-radius: 4px;
   background: #fff;
 }
 
-.passport-sponsor-plan {
-  color: var(--passport-ink);
+.stamp-rally-sponsor-plan {
+  color: var(--stamp-rally-ink);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-.passport-collection-action {
+.stamp-rally-collection-action {
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px dashed var(--passport-line);
+  border-top: 1px dashed var(--stamp-rally-line);
 }
 
-.passport-collect-button {
-  background: var(--passport-ink);
+.stamp-rally-collect-button {
+  background: var(--stamp-rally-ink);
   cursor: pointer;
 }
 
-.passport-collect-button:hover:not(:disabled) {
+.stamp-rally-collect-button:hover:not(:disabled) {
   background: #69212a;
 }
 
-.passport-collect-button:focus-visible {
-  outline: 2px solid var(--passport-ink);
+.stamp-rally-collect-button:focus-visible {
+  outline: 2px solid var(--stamp-rally-ink);
   outline-offset: 4px;
 }
 
-.passport-progress-track {
+.stamp-rally-progress-track {
   background: #e9e1d4;
 }
 
-.passport-progress-fill {
-  background: var(--passport-ink);
+.stamp-rally-progress-fill {
+  background: var(--stamp-rally-ink);
 }
 
-.passport-result .passport-next-goal,
-.passport-result .passport-collection-action {
+.stamp-rally-result .stamp-rally-next-goal,
+.stamp-rally-result .stamp-rally-collection-action {
   margin-top: 12px;
   padding-top: 12px;
 }
 
-.passport-result .passport-progress-count {
+.stamp-rally-result .stamp-rally-progress-count {
   font-size: 32px;
 }
 
-.passport-suggestion {
+.stamp-rally-suggestion {
   padding: 10px;
 }
 
-.passport-suggestion .passport-sponsor-plan {
+.stamp-rally-suggestion .stamp-rally-sponsor-plan {
   font-size: 12px;
 }
 
-.passport-header {
+.stamp-rally-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
