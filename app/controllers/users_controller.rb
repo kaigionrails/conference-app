@@ -10,8 +10,6 @@ class UsersController < ApplicationController
   # @rbs return: void
   def show
     @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by_handle!(params[:username])
-    @events = Event.all.order(start_date: :desc)
-    @event_friends = @user.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
     @profile = @user.profile
     @token = params[:token]
 
@@ -28,6 +26,11 @@ class UsersController < ApplicationController
         flash.now[:alert] = I18n.t("users.show.qr_code_read_failed")
       end
     end
+
+    # Loaded after the exchange above, so the page shows the person who
+    # has just been met.
+    @events = Event.all.order(start_date: :desc)
+    @event_friends = @user.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
   end
 
   # @rbs user1: User

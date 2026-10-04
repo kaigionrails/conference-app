@@ -63,6 +63,12 @@ RSpec.describe "Users", type: :request do
           get "/@bar?token=#{token}" # twice!
           expect(ProfileExchange.count).to eq 2 # not changed
         end
+
+        it "lists the person who has just scanned the code" do
+          get "/@bar?token=#{token}"
+          expect(response.body).to include("Kaigi on Rails 2023で知り合った人達(1人)")
+          expect(Nokogiri::HTML(response.body).at_css("ul a[href='/@foo']")).not_to be_nil
+        end
       end
     end
 
