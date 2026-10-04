@@ -1,10 +1,13 @@
 class ProfilesController < ApplicationController
+  include ApplicationHelper
+
   before_action :require_logged_in
 
   # @rbs @profile: Profile
   # @rbs @events: Event::ActiveRecord_Relation
   # @rbs @event_friends: untyped
   # @rbs @user: User
+  # @rbs @community_profile_exchange_count: Integer?
   # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
 
   # @rbs return: void
@@ -14,6 +17,7 @@ class ProfilesController < ApplicationController
     @event_friends = current_user!.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
 
     @user = User.preload(:friends).find(current_user!.id)
+    @community_profile_exchange_count = current_event&.community_profile_exchange_count
   end
 
   def edit

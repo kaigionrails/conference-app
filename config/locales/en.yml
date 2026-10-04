@@ -234,6 +234,11 @@ en:
     login_providers:
       github: "Login with GitHub"
       google: "Login with Google"
+    community_profile_exchange_count:
+      label: "People who exchanged profiles at %{event_name}"
+      count:
+        one: "%{formatted_count} person"
+        other: "%{formatted_count} people"
   sessions:
     create:
       unknown_provider: "Unknown login method."

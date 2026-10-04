@@ -77,6 +77,44 @@ RSpec.describe "Profiles", type: :request do
         end
       end
     end
+
+    context "community profile exchange count" do
+      let(:friend) { FactoryBot.create(:user, :with_profile_image, name: "bar") }
+      let(:others) { FactoryBot.create_list(:user, 2) }
+      let(:strangers) { FactoryBot.create_list(:user, 2) }
+      let(:other_event) { FactoryBot.create(:event, name: "Kaigi on Rails 2024") }
+
+      def exchange(event, user1, user2)
+        ProfileExchange.create!(event:, user: user1, friend: user2)
+        ProfileExchange.create!(event:, user: user2, friend: user1)
+      end
+
+      def count_text
+        Nokogiri::HTML(response.body).at_css("[data-community-profile-exchange-count]")&.text&.squish
+      end
+
+      {
+        "desktop" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "smartphone" => "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1"
+      }.each do |device, user_agent|
+        it "counts everyone who exchanged at the ongoing event, on #{device}" do
+          exchange(event, user, friend)
+          exchange(event, others[0], others[1])
+          exchange(other_event, strangers[0], strangers[1])
+
+          get "/profiles", headers: {"User-Agent" => user_agent}
+
+          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 4人"
+          expect(response.body).not_to include("community-profile-exchange-count--updated")
+        end
+
+        it "shows zero before anyone has exchanged, on #{device}" do
+          get "/profiles", headers: {"User-Agent" => user_agent}
+
+          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 0人"
+        end
+      end
+    end
   end
   describe "GET /profiles/:id/edit" do
     before { sign_in(user) }

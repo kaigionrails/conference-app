@@ -182,6 +182,12 @@
   animation: community-stamp-count-pulse 700ms 950ms ease-out both;
 }
 
+/* The profile pages pulse their exchange count the same way. Nothing plays
+   before it there, so it starts almost at once. */
+.community-profile-exchange-count--updated {
+  animation: community-stamp-count-pulse 700ms 200ms ease-out both;
+}
+
 @keyframes passport-stamp-slam {
   0% {
     opacity: 0;
@@ -257,7 +263,8 @@
   .passport-stamp-burst::after,
   .passport-stamp-new-label,
   .passport-confetti span,
-  .community-stamp-count--updated {
+  .community-stamp-count--updated,
+  .community-profile-exchange-count--updated {
     animation: none;
   }
 }

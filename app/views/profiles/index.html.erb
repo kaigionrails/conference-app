@@ -46,6 +46,9 @@
   <div class="mb-8">
     <%= link_to t('.edit'), edit_profile_path(@profile), type: "button", class: "rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 hover:bg-gray-50" %>
   </div>
+  <% if @community_profile_exchange_count %>
+    <%= render "shared/community_profile_exchange_count", event: current_event, count: @community_profile_exchange_count %>
+  <% end %>
   <div>
     <% @events.each do |event| %>
       <% unless @event_friends[event].nil? %>

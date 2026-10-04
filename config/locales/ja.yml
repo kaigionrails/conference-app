@@ -231,6 +231,9 @@ ja:
     login_providers:
       github: "Login with GitHub"
       google: "Login with Google"
+    community_profile_exchange_count:
+      label: "%{event_name}でプロフィールを交換した人"
+      count: "%{formatted_count}人"
   sessions:
     create:
       unknown_provider: "不明なログイン方法です。"

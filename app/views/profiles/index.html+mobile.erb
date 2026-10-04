@@ -50,6 +50,9 @@
           <span><%= t('profiles.index.edit') %></span>
         </button>
       <% end %>
+      <% if @community_profile_exchange_count %>
+        <%= render "shared/community_profile_exchange_count", event: current_event, count: @community_profile_exchange_count %>
+      <% end %>
       <div>
         <% @events.each do |event| %>
           <% unless @event_friends[event].nil? %>
