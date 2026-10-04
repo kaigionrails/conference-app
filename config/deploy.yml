@@ -71,6 +71,7 @@ env:
     GOOGLE_OAUTH_REDIRECT_URI: https://app.kaigionrails.org/auth/google_oauth2/callback
     VAPID_SUBJECT_MAILTO: mailto:info@kaigionrails.org
     SHIRATAKI_URL: https://shirataki.kaigionrails.org
+    WEB_CONCURRENCY: 2
     # Reaches the accessory below over the instance's private IP.
     REDIS_URL: redis://<%= ENV.fetch("KAMAL_WEB_SERVER_PRIVATE_ADDRESS") %>:6380/0
   secret:
