@@ -35,9 +35,12 @@ class UsersController < ApplicationController
   # @rbs return: void
   private def exchange_profile(user1, user2)
     unless user1 == user2
+      # Two people can scan each other's codes at the same moment. Inserting
+      # first lets the unique index settle the race, where a find first
+      # would let both requests insert.
       ApplicationRecord.transaction do
-        ProfileExchange.find_or_create_by!(event: current_event, user: user1, friend: user2)
-        ProfileExchange.find_or_create_by!(event: current_event, user: user2, friend: user1)
+        ProfileExchange.create_or_find_by!(event: current_event, user: user1, friend: user2)
+        ProfileExchange.create_or_find_by!(event: current_event, user: user2, friend: user1)
       end
     end
   end
