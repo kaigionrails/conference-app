@@ -94,6 +94,16 @@ RSpec.describe "Profiles", type: :request do
         expect(input).not_to be_nil
         expect(input["multiple"]).to eq "multiple"
       end
+
+      # A Turbo visit after saving would keep showing an image that failed
+      # while its variant was being generated, such as the header icon right
+      # after the first login.
+      it "saves without Turbo, so the next page is loaded in full, on #{device}" do
+        get "/profiles/#{profile.id}/edit", headers: {"User-Agent" => user_agent}
+
+        form = Nokogiri::HTML(response.body).at_css("form[action='#{profile_path(profile)}']")
+        expect(form["data-turbo"]).to eq "false"
+      end
     end
   end
 

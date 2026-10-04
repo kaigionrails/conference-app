@@ -205,7 +205,6 @@ en:
       badges: "Badge list"
       create_a_new_badge: "Create a new badge"
       update: "Update"
-      updating: "Saving…"
       name: "Display name"
       handle: "Handle"
       handle_help: "Used in your URL, after the /@. Letters, digits, hyphens and underscores."

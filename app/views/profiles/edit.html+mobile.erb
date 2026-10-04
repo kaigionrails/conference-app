@@ -11,7 +11,10 @@
     <% end %>
   </div>
 
-  <%= form_with model: @profile, multipart: true do |f| %>
+  <%# Submitted without Turbo, so the page after saving is loaded in full. An image that failed
+      while its variant was still being generated, such as the header icon right after the first
+      login, is requested again; a Turbo visit keeps showing the failure. %>
+  <%= form_with model: @profile, multipart: true, data: {turbo: false} do |f| %>
     <div class="mb-4">
       <%# The input sits inside the label so that focus-within shows where keyboard focus is. %>
       <%= f.label :images, class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50 cursor-pointer focus-within:ring-2 focus-within:ring-(--color-primary-500)" do %>
@@ -58,7 +61,7 @@
         <%= link_to t('profiles.edit.create_a_new_badge'), new_profile_badge_path, class: "underline text-lg" %>
       </details>
     </div>
-    <%= f.button type: "submit", class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50", data: {turbo_submits_with: t('profiles.edit.updating')} do %>
+    <%= f.button type: "submit", class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50" do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
