@@ -5,15 +5,44 @@ import PhotoSwipe from "photoswipe";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 
 export default class extends Controller {
-  static targets = ["qrcodeImg", "profileImg", "showQrcode", "hideQrcode"];
+  static targets = [
+    "qrcodeImg",
+    "profileImg",
+    "showQrcode",
+    "hideQrcode",
+    "submitButton",
+  ];
   static values = {
     baseUrl: String,
     username: String,
+    submittingLabel: String,
   };
 
   connect() {
     console.info("profiles controller");
     this.setupLightbox();
+  }
+
+  // The profile form is sent without Turbo, so data-turbo-submits-with does
+  // nothing there. This does its job instead: the images upload before the
+  // next page comes, which takes seconds from a phone, and the form must not be
+  // sent twice meanwhile.
+  showSubmitting() {
+    const button = this.submitButtonTarget;
+    this.submitButtonContent = Array.from(button.childNodes);
+    button.disabled = true;
+    button.textContent = this.submittingLabelValue;
+  }
+
+  // Going back to the form can restore it from the back/forward cache as it
+  // was left, with the button still disabled.
+  restoreSubmit(event) {
+    if (!event.persisted || this.submitButtonContent === undefined) return;
+
+    const button = this.submitButtonTarget;
+    button.replaceChildren(...this.submitButtonContent);
+    button.disabled = false;
+    this.submitButtonContent = undefined;
   }
 
   async showQrcode() {

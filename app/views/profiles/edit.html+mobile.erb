@@ -1,4 +1,4 @@
-<div data-controller="profiles profile-image-picker" class="w-full pt-2 px-2">
+<div data-controller="profiles profile-image-picker" data-profiles-submitting-label-value="<%= t('profiles.edit.updating') %>" class="w-full pt-2 px-2">
   <h2 class="text-lg font-bold mb-3"><%= t('profiles.edit.title') %></h2>
   <div class="flex mb-4 overflow-scroll">
     <% @profile.images.each do |profile_image| %>
@@ -14,7 +14,7 @@
   <%# Submitted without Turbo, so the page after saving is loaded in full. An image that failed
       while its variant was still being generated, such as the header icon right after the first
       login, is requested again; a Turbo visit keeps showing the failure. %>
-  <%= form_with model: @profile, multipart: true, data: {turbo: false} do |f| %>
+  <%= form_with model: @profile, multipart: true, data: {turbo: false, action: "submit->profiles#showSubmitting pageshow@window->profiles#restoreSubmit"} do |f| %>
     <div class="mb-4">
       <%# The input sits inside the label so that focus-within shows where keyboard focus is. %>
       <%= f.label :images, class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50 cursor-pointer focus-within:ring-2 focus-within:ring-(--color-primary-500)" do %>
@@ -61,7 +61,7 @@
         <%= link_to t('profiles.edit.create_a_new_badge'), new_profile_badge_path, class: "underline text-lg" %>
       </details>
     </div>
-    <%= f.button type: "submit", class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50" do %>
+    <%= f.button type: "submit", class: "mb-4 inline-flex items-center gap-x-2 rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-xs hover:bg-gray-50", data: {profiles_target: "submitButton"} do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
