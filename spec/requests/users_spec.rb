@@ -66,6 +66,27 @@ RSpec.describe "Users", type: :request do
       end
     end
 
+    context "login prompt on a smartphone" do
+      let(:user_agent) { "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1" }
+      let(:token) { JWT.encode({iss: user.name, iat: 1.second.ago.to_i, exp: 5.minutes.since.to_i}, nil, "none") }
+
+      it "is shown to a visitor who is not logged in and came with a token" do
+        get "/@foo?token=#{token}", headers: {"User-Agent" => user_agent}
+        expect(response.body).to include(I18n.t("users.show.login_prompt"))
+      end
+
+      it "is not shown to a visitor who came without a token" do
+        get "/@foo", headers: {"User-Agent" => user_agent}
+        expect(response.body).not_to include(I18n.t("users.show.login_prompt"))
+      end
+
+      it "is not shown to a logged-in user" do
+        sign_in(user)
+        get "/@foo?token=#{token}", headers: {"User-Agent" => user_agent}
+        expect(response.body).not_to include(I18n.t("users.show.login_prompt"))
+      end
+    end
+
     context "profile exchanged friends" do
       context "no profile exchanged" do
         it "should not display '知り合った人達'" do

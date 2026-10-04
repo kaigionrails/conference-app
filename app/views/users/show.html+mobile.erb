@@ -1,5 +1,5 @@
 <div class="w-full" data-controller="users">
-  <% if !logged_in? & @token %>
+  <% if !logged_in? && @token %>
     <div class="w-full bg-theme-primary-200 text-theme-primary text-center py-2">
       <p class="text-sm mb-1"><%= t('users.show.login_prompt') %></p>
       <%= render "shared/login_providers", variant: :inline, return_to: user_path(username: @user.name, token: @token) %>
