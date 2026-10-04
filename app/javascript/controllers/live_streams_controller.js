@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import Hls from "hls.js";
 
 export default class extends Controller {
-  // Stream and subtitle integration identifiers remain red / blue.
+  // Stream identifiers remain red / blue.
   // The corresponding 2026 venue labels are Magenta Hall / Lime Hall.
   static values = {
     selectedTab: { type: String, default: "red" },
@@ -14,8 +14,6 @@ export default class extends Controller {
     test: { type: String, default: "" },
     backstage: { type: Boolean, default: false },
   };
-
-  static outlets = ["subscreen-on-streams"];
 
   static targets = ["cannotViewStreamInVenue", "shareToX"];
 
@@ -121,16 +119,12 @@ export default class extends Controller {
       this.videoSrc = this.day2RedJaValue;
       this.selectedTabValue = "red";
     }
-    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
-    this.subscreenOnStreamsOutlet?.clearSubtitles();
-    this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-hall-lime)]");
     video.classList.add("border-[var(--color-hall-magenta)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
-    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -156,16 +150,12 @@ export default class extends Controller {
       this.videoSrc = this.day2RedRawValue;
       this.selectedTabValue = "red";
     }
-    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
-    this.subscreenOnStreamsOutlet?.clearSubtitles();
-    this.subscreenOnStreamsOutlet.roomValue = "red"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-hall-lime)]");
     video.classList.add("border-[var(--color-hall-magenta)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
-    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -193,16 +183,12 @@ export default class extends Controller {
     } else {
       console.warn("unknown day or tab value");
     }
-    this.subscreenOnStreamsOutlet?.closeShiratakiEvent();
-    this.subscreenOnStreamsOutlet?.clearSubtitles();
-    this.subscreenOnStreamsOutlet.roomValue = "blue"
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-hall-magenta)]");
     video.classList.add("border-[var(--color-hall-lime)]");
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
-    this.subscreenOnStreamsOutlet.listernShiratakiEvent();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
