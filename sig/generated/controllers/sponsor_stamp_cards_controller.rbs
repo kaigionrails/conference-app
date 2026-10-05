@@ -1,0 +1,7 @@
+# Generated from app/controllers/sponsor_stamp_cards_controller.rb with RBS::Inline
+
+class SponsorStampCardsController < ApplicationController
+  include ApplicationHelper
+
+  def show: () -> untyped
+end

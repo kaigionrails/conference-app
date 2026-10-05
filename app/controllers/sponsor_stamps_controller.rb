@@ -9,7 +9,7 @@ class SponsorStampsController < ApplicationController
 
   def new
     visit = current_user!.sponsor_visits.find_by(event: @event, sponsor_key: @sponsor[:key])
-    return redirect_to sponsor_passport_stamp_path(@event.slug, visit) if visit
+    return redirect_to sponsor_stamp_card_stamp_path(@event.slug, visit) if visit
 
     @sponsor_logo_url = SponsorCatalog.logo_url(@event.slug, @sponsor)
   end
@@ -18,7 +18,7 @@ class SponsorStampsController < ApplicationController
     visit = current_user!.sponsor_visits.find_or_create_by!(event: @event, sponsor_key: @sponsor[:key])
     flash[:newly_visited] = visit.previously_new_record?
 
-    redirect_to sponsor_passport_stamp_path(@event.slug, visit), status: :see_other
+    redirect_to sponsor_stamp_card_stamp_path(@event.slug, visit), status: :see_other
   end
 
   def show
@@ -28,16 +28,16 @@ class SponsorStampsController < ApplicationController
     @newly_visited = flash[:newly_visited] == true
     flash.delete(:newly_visited)
 
-    @passport = SponsorPassport.new(event: @event, user: current_user!)
-    @visit_number = @passport.stamp_number_for(@sponsor[:key])
-    @progress = @passport.progress
+    @stamp_card = SponsorStampCard.new(event: @event, user: current_user!)
+    @visit_number = @stamp_card.stamp_number_for(@sponsor[:key])
+    @progress = @stamp_card.progress
   end
 
   private
 
   def set_event
     @event = current_event
-    raise ActiveRecord::RecordNotFound unless @event&.slug == params[:sponsor_passport_event_slug]
+    raise ActiveRecord::RecordNotFound unless @event&.slug == params[:sponsor_stamp_card_event_slug]
   end
 
   def set_sponsors

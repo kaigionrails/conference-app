@@ -1,0 +1,22 @@
+<div class="stamp-rally-summary grid grid-cols-2 items-end gap-4">
+  <div>
+    <p class="text-xs font-bold stamp-rally-muted"><%= t("sponsor_stamp_cards.show.progress") %></p>
+    <p class="stamp-rally-progress-count" aria-label="<%= t("sponsor_stamp_cards.show.progress_count", visited: stamp_card.progress.visited_count, total: stamp_card.progress.total_count) %>">
+      <span><%= stamp_card.progress.visited_count %></span><span class="stamp-rally-progress-total"> / <%= stamp_card.progress.total_count %></span>
+    </p>
+  </div>
+  <div class="min-w-0 text-right">
+    <p class="text-xs stamp-rally-muted"><%= t("sponsor_stamp_cards.community_stamp_count.label") %></p>
+    <p class="<%= class_names("stamp-rally-community-count", "community-stamp-count--updated" => local_assigns.fetch(:updated, false)) %>" data-community-stamp-count>
+      <%= t("sponsor_stamp_cards.community_stamp_count.count", count: stamp_card.community_stamp_count, formatted_count: number_with_delimiter(stamp_card.community_stamp_count)) %>
+    </p>
+  </div>
+</div>
+
+<%= render "sponsor_stamp_cards/progress_bar", progress: stamp_card.progress %>
+
+<% if stamp_card.progress.total_count.positive? && (milestone = stamp_card.progress.current_milestone) %>
+  <p class="mt-2 text-xs stamp-rally-muted" data-earned-badge>
+    <span aria-hidden="true">✦</span> <%= t("sponsor_stamp_cards.show.milestones.#{milestone[:key]}") %>
+  </p>
+<% end %>

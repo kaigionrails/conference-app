@@ -1,0 +1,21 @@
+<% content_for(:page_title, t("sponsor_stamp_cards.title")) %>
+<% progress = @stamp_card.progress %>
+
+<div class="stamp-rally-page w-full max-w-xl mx-auto px-4 pt-3 pb-6">
+  <header class="stamp-rally-cover">
+    <%= render "sponsor_stamp_cards/header", event: @stamp_card.event %>
+
+    <section aria-label="<%= t(".progress") %>">
+      <%= render "sponsor_stamp_cards/progress", stamp_card: @stamp_card %>
+
+      <% if progress.total_count.positive? && progress.completed? %>
+        <p class="mt-2 text-xs stamp-rally-muted" data-stamp-rally-complete><%= t(".book_complete") %></p>
+      <% end %>
+    </section>
+    <% if progress.visited_count.zero? %>
+      <p class="mt-4 text-sm leading-relaxed stamp-rally-muted"><%= t(".empty") %></p>
+    <% end %>
+  </header>
+
+  <%= render "stamp_grid", stamp_card: @stamp_card %>
+</div>

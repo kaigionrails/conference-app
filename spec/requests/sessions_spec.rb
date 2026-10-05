@@ -5,7 +5,7 @@ RSpec.describe "Sessions", type: :request do
     let!(:event) { FactoryBot.create(:event, :make_ongoing) }
 
     it "passes the stamp URL through both login forms" do
-      return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code&locale=en"
+      return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code&locale=en"
       get login_path(return_to:)
 
       document = Nokogiri::HTML(response.body)
@@ -77,7 +77,7 @@ RSpec.describe "Sessions", type: :request do
 
     context "given password is wrong" do
       it "preserves the return location for another attempt" do
-        return_to = "/sponsor_passports/2026/stamps/new?code=stamp-code"
+        return_to = "/sponsor_stamp_cards/2026/stamps/new?code=stamp-code"
         post "/auth/email", params: {email: "sample@email.invalid", password: "wrong", return_to:}
 
         expect(response).to redirect_to(login_path(return_to:))

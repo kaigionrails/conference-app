@@ -1,0 +1,37 @@
+<div class="stamp-rally-book">
+  <% stamp_card.sponsors.group_by { |sponsor| sponsor[:plan] }.each do |plan, plan_sponsors| %>
+    <section class="stamp-rally-book-section" aria-labelledby="sponsor-plan-<%= plan %>" data-sponsor-plan="<%= plan %>">
+      <h2 id="sponsor-plan-<%= plan %>" class="mb-4 text-base font-bold"><%= plan.to_s.capitalize %> Sponsors</h2>
+
+      <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <% plan_sponsors.each do |sponsor| %>
+          <% visited = stamp_card.visited?(sponsor[:key]) %>
+          <li class="<%= class_names("stamp-rally-entry", "stamp-rally-entry--visited" => visited) %>">
+            <%= image_tag SponsorCatalog.logo_url(stamp_card.event.slug, sponsor),
+                  alt: sponsor[:name],
+                  class: "stamp-rally-entry-logo",
+                  width: 120,
+                  height: 120 %>
+
+            <div class="stamp-rally-entry-stamp">
+              <% if visited %>
+                <% stamp_number = stamp_card.stamp_number_for(sponsor[:key]) %>
+                <div class="stamp-rally-book-stamp" role="img" aria-label="<%= t("sponsor_stamp_cards.show.visited") %>. <%= t("sponsor_stamp_cards.show.stamp_number", number: stamp_number) %>">
+                  <span class="stamp-rally-book-stamp-caption" aria-hidden="true">VISITED</span>
+                  <span class="stamp-rally-book-stamp-number" aria-hidden="true">#<%= stamp_number.to_s.rjust(2, "0") %></span>
+                  <span class="stamp-rally-book-stamp-caption" aria-hidden="true">KoR <%= stamp_card.event.slug %></span>
+                </div>
+              <% else %>
+                <div class="stamp-rally-book-stamp stamp-rally-book-stamp--empty" role="img" aria-label="<%= t("sponsor_stamp_cards.show.unvisited") %>">
+                  <span class="text-xl" aria-hidden="true">—</span>
+                  <span class="stamp-rally-book-stamp-caption" aria-hidden="true">STAMP</span>
+                </div>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+  <p class="stamp-rally-book-footer">KAIGI ON RAILS / <%= stamp_card.event.slug %></p>
+</div>

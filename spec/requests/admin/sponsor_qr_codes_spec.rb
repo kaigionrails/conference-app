@@ -17,7 +17,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       expected_code = SponsorVisitToken.generate(event_slug: event.slug, sponsor_key: booth_sponsor[:key])
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Booth Sponsor")
-      expect(response.body).to include(new_sponsor_passport_stamp_path(event.slug, code: expected_code))
+      expect(response.body).to include(new_sponsor_stamp_card_stamp_path(event.slug, code: expected_code))
     end
 
     context "with a booth QR card template" do

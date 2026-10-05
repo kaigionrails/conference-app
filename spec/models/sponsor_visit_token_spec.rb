@@ -31,7 +31,7 @@ RSpec.describe SponsorVisitToken do
       token = described_class.generate(event_slug: "2026", sponsor_key: "sponsor.example")
 
       expect(described_class.stamp_url(event_slug: "2026", sponsor_key: "sponsor.example")).to eq(
-        "https://conference.example:8443/app/sponsor_passports/2026/stamps/new?code=#{token}"
+        "https://conference.example:8443/app/sponsor_stamp_cards/2026/stamps/new?code=#{token}"
       )
     end
   end

@@ -1,6 +1,6 @@
-# Generated from app/models/sponsor_passport.rb with RBS::Inline
+# Generated from app/models/sponsor_stamp_card.rb with RBS::Inline
 
-class SponsorPassport
+class SponsorStampCard
   attr_reader event: untyped
 
   def initialize: (event: untyped, user: untyped) -> untyped

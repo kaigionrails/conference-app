@@ -73,14 +73,14 @@ RSpec.describe "LocaleSettings", type: :request do
 
   describe "POST /locale_settings" do
     it "replaces the locale while preserving encoded and repeated query parameters" do
-      return_to = "/login?return_to=%2Fsponsor_passports%2F2026%2Fstamps%2Fnew%3Fcode%3Da%26locale%3Dja&tag=one&tag=two&locale=ja&locale=ja"
+      return_to = "/login?return_to=%2Fsponsor_stamp_cards%2F2026%2Fstamps%2Fnew%3Fcode%3Da%26locale%3Dja&tag=one&tag=two&locale=ja&locale=ja"
 
       post "/locale_settings", params: {locale: "en", return_to:}
 
       uri = URI.parse(response.location)
       expect(uri.path).to eq("/login")
       expect(URI.decode_www_form(uri.query)).to eq([
-        ["return_to", "/sponsor_passports/2026/stamps/new?code=a&locale=ja"],
+        ["return_to", "/sponsor_stamp_cards/2026/stamps/new?code=a&locale=ja"],
         ["tag", "one"], ["tag", "two"], ["locale", "en"]
       ])
     end

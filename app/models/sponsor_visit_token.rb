@@ -3,7 +3,7 @@ class SponsorVisitToken
 
   def self.stamp_url(event_slug:, sponsor_key:)
     uri = URI.parse(Rails.configuration.application_url)
-    Rails.application.routes.url_helpers.new_sponsor_passport_stamp_url(
+    Rails.application.routes.url_helpers.new_sponsor_stamp_card_stamp_url(
       event_slug,
       code: generate(event_slug:, sponsor_key:),
       host: uri.host,
