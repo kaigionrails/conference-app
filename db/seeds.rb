@@ -41,8 +41,15 @@ end
 
 TalkImporter.new(event: event_2025).import! if event_2025.talks.empty?
 
+event_2026 = Event.find_or_create_by!(name: "Kaigi on Rails 2026", slug: "2026") do |event|
+  event.start_date = Time.zone.parse("2026-10-16 00:00:00 +0900")
+  event.end_date = Time.zone.parse("2026-10-17 23:59:59 +0900")
+end
+
+TalkImporter.new(event: event_2026).import! if event_2026.talks.empty?
+
 ongoing_event = OngoingEvent.first
 
-if ongoing_event != event_2025
-  ongoing_event.update!(event: event_2025)
+if ongoing_event.event != event_2026
+  ongoing_event.update!(event: event_2026)
 end
