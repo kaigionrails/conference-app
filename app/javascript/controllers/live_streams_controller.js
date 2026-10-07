@@ -28,7 +28,7 @@ export default class extends Controller {
     const today = new Date();
     const day = today.getDate();
 
-    if (day === 26 || day === 25) {
+    if (day === 16 || day === 15) {
       if (currentHash === "magenta") {
         this.videoSrc = this.day1MagentaJaValue;
         this.selectedTabValue = "magenta";
@@ -38,7 +38,7 @@ export default class extends Controller {
       } else {
         console.warn("unknown day or tab value");
       }
-    } else if (day === 27) {
+    } else if (day === 17) {
       if (currentHash === "magenta") {
         this.videoSrc = this.day2MagentaJaValue;
         this.selectedTabValue = "magenta";
@@ -112,10 +112,10 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
+    if (day === 16 || day === 15) {
       this.videoSrc = this.day1MagentaJaValue;
       this.selectedTabValue = "magenta";
-    } else if (day === 27) {
+    } else if (day === 17) {
       this.videoSrc = this.day2MagentaJaValue;
       this.selectedTabValue = "magenta";
     }
@@ -143,10 +143,10 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
+    if (day === 16 || day === 15) {
       this.videoSrc = this.day1MagentaJaValue;
       this.selectedTabValue = "magenta";
-    } else if (day === 27) {
+    } else if (day === 17) {
       this.videoSrc = this.day2MagentaRawValue;
       this.selectedTabValue = "magenta";
     }
@@ -174,10 +174,10 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
+    if (day === 16 || day === 15) {
       this.videoSrc = this.day1LimeJaValue;
       this.selectedTabValue = "lime";
-    } else if (day === 27) {
+    } else if (day === 17) {
       this.videoSrc = this.day2LimeJaValue;
       this.selectedTabValue = "lime";
     } else {
