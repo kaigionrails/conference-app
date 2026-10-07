@@ -1,3 +1,5 @@
+# Imported by TalkImporter (app/models/talk_importer.rb), which db:seed, bin/rails talks:import[2026]
+# and Maintenance::ImportTalksTask use. See it for the keys and the checks run before importing.
 ---
 :tracks:
 - Magenta Hall
