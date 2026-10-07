@@ -16,7 +16,7 @@ module TalkDecorator
     # The halls of 2026
     tags << "kaigionrails_magenta" if track&.include?("Magenta")
     tags << "kaigionrails_lime" if track&.include?("Lime")
-    "https://twitter.com/intent/tweet?hashtags=#{tags.join(",")}"
+    "https://x.com/intent/tweet?hashtags=#{tags.join(",")}"
   end
 
   # @rbs @sanitizer: Rails::Html::SafeListSanitizer

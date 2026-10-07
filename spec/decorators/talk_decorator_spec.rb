@@ -29,40 +29,40 @@ RSpec.describe TalkDecorator do
     context "Hall Red" do
       before { talk.track = "Hall Red" }
       it "should return hashtagged intent url for room red (#kaigionrails_red)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
       end
     end
     context "Hall Blue" do
       before { talk.track = "Hall Blue" }
       it "should return hashtagged intent url for room blue (#kaigionrails_blue)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_blue"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails,kaigionrails_blue"
       end
     end
 
     context "Magenta Hall" do
       before { talk.track = "Magenta Hall" }
       it "should return hashtagged intent url for magenta hall (#kaigionrails_magenta)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_magenta"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails,kaigionrails_magenta"
       end
     end
     context "Lime Hall" do
       before { talk.track = "Lime Hall" }
       it "should return hashtagged intent url for lime hall (#kaigionrails_lime)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_lime"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails,kaigionrails_lime"
       end
     end
 
     context "Room Red (wrong name)" do
       before { talk.track = "Room Red" }
       it "should return hashtagged intent url for room blue (#kaigionrails_blue)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails,kaigionrails_red"
       end
     end
 
     context "room not specified" do
       before { talk.track = nil }
       it "should return hashtagged intent url only #kaigionrails (#kaigionrails)" do
-        expect(talk.hashtagged_twitter_intent_url).to eq "https://twitter.com/intent/tweet?hashtags=kaigionrails"
+        expect(talk.hashtagged_twitter_intent_url).to eq "https://x.com/intent/tweet?hashtags=kaigionrails"
       end
     end
   end
