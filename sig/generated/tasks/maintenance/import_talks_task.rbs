@@ -1,0 +1,12 @@
+# Generated from app/tasks/maintenance/import_talks_task.rb with RBS::Inline
+
+module Maintenance
+  # Imports the talks of an event from db/seeds/<event_slug>.yaml, as bin/rails talks:import does.
+  # This is how talks are loaded in production, from the admin pages.
+  class ImportTalksTask < MaintenanceTasks::Task
+    attr_accessor event_slug: String?
+
+    # @rbs return: void
+    def process: () -> void
+  end
+end

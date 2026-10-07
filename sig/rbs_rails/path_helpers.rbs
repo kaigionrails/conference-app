@@ -21,6 +21,7 @@ interface ::_RbsRailsPathHelpers
   def rails_info_notes_path: (*untyped) -> ::String
   def rails_info_path: (*untyped) -> ::String
   def admin_mission_control_jobs_path: (*untyped) -> ::String
+  def admin_maintenance_tasks_path: (*untyped) -> ::String
   def root_path: (*untyped) -> ::String
   def login_path: (*untyped) -> ::String
   def logout_path: (*untyped) -> ::String
@@ -157,6 +158,7 @@ interface ::_RbsRailsPathHelpers
   def rails_info_notes_url: (*untyped) -> ::String
   def rails_info_url: (*untyped) -> ::String
   def admin_mission_control_jobs_url: (*untyped) -> ::String
+  def admin_maintenance_tasks_url: (*untyped) -> ::String
   def root_url: (*untyped) -> ::String
   def login_url: (*untyped) -> ::String
   def logout_url: (*untyped) -> ::String
