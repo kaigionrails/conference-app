@@ -69,6 +69,9 @@ class TalkImporter
       end
       problems << "#{label}: no speakers" if speakers.empty?
       speakers.each do |speaker|
+        # An empty slug passes NOT NULL, and every speaker without one would become the same speaker.
+        problems << "#{label}: speaker #{speaker[:name].inspect} has no slug" if speaker[:slug].blank?
+
         url = speaker[:avatar_url]
         next if url.nil? || https_url?(url)
 
@@ -108,7 +111,7 @@ class TalkImporter
 
     speakers_data.each do |speaker|
       slug = speaker[:slug]
-      next if slug.blank? || with_avatar.include?(slug)
+      next if with_avatar.include?(slug)
 
       blob = speaker[:avatar_url] ? fetch_avatar(slug, speaker[:avatar_url]) : read_avatar(slug)
       avatars[slug] = blob if blob

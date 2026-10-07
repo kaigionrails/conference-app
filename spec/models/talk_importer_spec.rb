@@ -205,6 +205,14 @@ RSpec.describe TalkImporter do
         }.not_to change { counts }
       end
 
+      it "fails on a speaker without slug" do
+        expect {
+          expect {
+            import([talk_data("First", speakers: [speaker_data("alice", slug: ""), speaker_data("bob", name: "Bob", slug: nil)])])
+          }.to raise_error(StandardError, /talks\[0\] "First": speaker "Alice" has no slug; talks\[0\] "First": speaker "Bob" has no slug/)
+        }.not_to change { counts }
+      end
+
       it "fails on avatar_url that is not https" do
         expect {
           expect {
