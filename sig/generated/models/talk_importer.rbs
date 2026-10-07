@@ -1,0 +1,75 @@
+# Generated from app/models/talk_importer.rb with RBS::Inline
+
+# Imports the talks of an event and their speakers from a YAML file such as db/seeds/2026.yaml.
+# db:seed, bin/rails talks:import and Maintenance::ImportTalksTask all go through this class.
+#
+# An event is imported once. Talks are fixed afterwards on the admin pages, as importing again
+# could not tell an edited talk from a new one.
+class TalkImporter
+  AVATAR_FETCH_TIMEOUTS: Hash[Symbol, Integer]
+
+  @event: Event
+
+  @path: Pathname
+
+  @avatar_dir: Pathname
+
+  # @rbs event: Event
+  # @rbs path: Pathname -- the YAML file of the talks
+  # @rbs avatar_dir: Pathname -- where avatar images named after speaker slugs are, if it exists
+  # @rbs return: void
+  def initialize: (event: Event, ?path: Pathname, ?avatar_dir: Pathname) -> void
+
+  # Creates the talks and the speakers, and attaches avatars to speakers without one. Nothing is
+  # changed when this raises.
+  #
+  # @rbs return: Array[Talk]
+  def import!: () -> Array[Talk]
+
+  # @rbs return: Array[Hash[Symbol, untyped]]
+  private def load_talks: () -> Array[Hash[Symbol, untyped]]
+
+  # Missing attributes are left to the constraints of the database. These are what it cannot catch.
+  #
+  # @rbs talks: Array[Hash[Symbol, untyped]]
+  # @rbs tracks: Array[String]? -- the tracks talks may be in; any track when nil
+  # @rbs return: Array[String]
+  private def problems_in: (Array[Hash[Symbol, untyped]] talks, tracks: Array[String]?) -> Array[String]
+
+  # @rbs url: untyped
+  # @rbs return: bool
+  private def https_url?: (untyped url) -> bool
+
+  # @rbs return: void
+  private def ensure_not_imported: () -> void
+
+  # Uploads the avatars before the transaction. A file attached with io: is uploaded in the
+  # after_commit of the record, and a failed upload there would leave an attachment without its
+  # file, which importing again cannot fix as the talks are already there.
+  #
+  # @rbs talks_data: Array[Hash[Symbol, untyped]]
+  # @rbs avatars: Hash[String, ActiveStorage::Blob] -- receives the uploaded blobs by speaker slug
+  # @rbs return: void
+  private def upload_avatars: (Array[Hash[Symbol, untyped]] talks_data, Hash[String, ActiveStorage::Blob] avatars) -> void
+
+  # @rbs slug: String
+  # @rbs url: String
+  # @rbs return: ActiveStorage::Blob
+  private def fetch_avatar: (String slug, String url) -> ActiveStorage::Blob
+
+  # @rbs slug: String
+  # @rbs return: ActiveStorage::Blob?
+  private def read_avatar: (String slug) -> ActiveStorage::Blob?
+
+  # @rbs talk_data: Hash[Symbol, untyped]
+  # @rbs avatars: Hash[String, ActiveStorage::Blob]
+  # @rbs return: Talk
+  private def create_talk: (Hash[Symbol, untyped] talk_data, Hash[String, ActiveStorage::Blob] avatars) -> Talk
+
+  # Speakers who spoke in earlier years take the attributes in this file.
+  #
+  # @rbs speaker_data: Hash[Symbol, untyped]
+  # @rbs avatars: Hash[String, ActiveStorage::Blob]
+  # @rbs return: Speaker
+  private def save_speaker: (Hash[Symbol, untyped] speaker_data, Hash[String, ActiveStorage::Blob] avatars) -> Speaker
+end
