@@ -1,0 +1,14 @@
+# The maintenance_tasks gem does not ship signatures. Only what the tasks in app/tasks use is declared here.
+module MaintenanceTasks
+  class Task
+    extend ActiveModel::Attributes::ClassMethods
+    extend ActiveModel::Validations::ClassMethods
+    include ActiveModel::Attributes
+    include ActiveModel::AttributeAssignment
+    include ActiveModel::Validations
+
+    def self.no_collection: () -> void
+
+    def process: (?untyped item) -> void
+  end
+end

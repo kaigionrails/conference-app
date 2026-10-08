@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  # The engines do not go through AdminController, so organizers are told apart here.
+  organizer_only = Module.new {
+    def self.matches?(request)
+      request.session[:user_id].present? && User.find(request.session[:user_id]).organizer?
+    end
+  }
+
   namespace :admin do
-    mount MissionControl::Jobs::Engine, at: "/jobs", constraints: Module.new {
-      def self.matches?(request)
-        request.session[:user_id].present? && User.find(request.session[:user_id]).organizer?
-      end
-    }
+    mount MissionControl::Jobs::Engine, at: "/jobs", constraints: organizer_only
+    mount MaintenanceTasks::Engine, at: "/maintenance_tasks", constraints: organizer_only
   end
 
   root "home#index"

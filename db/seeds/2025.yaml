@@ -242,7 +242,7 @@
     Queueの使い方を学ぶ前に押さえておきたい、非同期ジョブの設計原則をお伝えします。\r\n本セッションを通じて、非同期ジョブを安全かつスケーラブルに設計・運用するための判断基準と設計方針を持ち帰っていただければと思います。"
   :start_at: !!timestamp 2025-09-27T11:05:00+09:00
   :duration_minutes: 30
-  :track: 'Hell Red'
+  :track: 'Hall Red'
   :speakers:
   - :name: morihirok
     :slug: morihirok

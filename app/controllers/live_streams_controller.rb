@@ -23,13 +23,13 @@ class LiveStreamsController < ApplicationController
     # FIXME: too hardcoded...
     @live_streams = {
       day1: {
-        red_ja: live_streams.detect { |s| s.name.include?("day1-red-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        blue_ja: live_streams.detect { |s| s.name.include?("day1-blue-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
+        magenta_ja: live_streams.detect { |s| s.name.include?("day1-magenta-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
+        lime_ja: live_streams.detect { |s| s.name.include?("day1-lime-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
       },
       day2: {
-        red_ja: live_streams.detect { |s| s.name.include?("day2-red-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        red_raw: live_streams.detect { |s| s.name.include?("day2-red-raw") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        blue_ja: live_streams.detect { |s| s.name.include?("day2-blue-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
+        magenta_ja: live_streams.detect { |s| s.name.include?("day2-magenta-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
+        magenta_raw: live_streams.detect { |s| s.name.include?("day2-magenta-raw") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
+        lime_ja: live_streams.detect { |s| s.name.include?("day2-lime-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
       },
       test: live_streams.detect { |s| s.name.include?("test") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
     }

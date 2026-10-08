@@ -83,6 +83,7 @@ gem "web-push"
 
 gem "solid_queue"
 gem "mission_control-jobs"
+gem "maintenance_tasks"
 
 gem "alba"
 

@@ -1,0 +1,500 @@
+# Imported by TalkImporter (app/models/talk_importer.rb), which db:seed, bin/rails talks:import[2026]
+# and Maintenance::ImportTalksTask use. See it for the keys and the checks run before importing.
+---
+:tracks:
+- Magenta Hall
+- Lime Hall
+:talks:
+- :title: "Keynote: Where the tracks go next"
+  :abstract: ''
+  :start_at: !!timestamp 2026-10-16T11:20:00+09:00
+  :duration_minutes: 40
+  :track: Magenta Hall
+  :speakers:
+  - :name: David Heinemeier Hansson
+    :slug: dhh
+    :github_username: dhh
+    :bio: Father of three, Creator of Ruby on Rails + Omarchy, Co-owner & CTO of 37signals, Shopify director, NYT best-selling author, and Le Mans 24h class-winner.
+    :avatar_url: https://kaigionrails.org/2026/images/speakers/dhh.webp
+- :title: FactoryBotをやめればRSpecは速くなるのか？
+  :abstract: "「いつの間にかCIの実行時間が伸びている…」\r\n\r\nRailsアプリケーションを運用するなかで、そんな経験をした方も多いのではないでしょうか？\r\n私もその一人です。\r\n\r\nCI高速化の手がかりを探していたある日、XでDHHのポストを発見しました。\r\n\r\n>
+    [FactoryBot is the quickest way to kill your test suite performance with Rails.
+    ... The secret? Rails Fixtures! ](https://x.com/dhh/status/1919291397909233858)\r\n\r\nこのポストに影響を受けた私は、FactoryBotをRails
+    Fixturesへ移行する取り組みを始めました。\r\nしかし、単純な置き換えでは済みませんでした。また、Fixturesを使えば必ず速くなるわけでもありませんでした。\r\n\r\n本セッションでは、FactoryBotからFixturesへの移行で直面した課題や失敗を振り返りながら、`let_it_be`やFixtureKitなども含め、それぞれの手段の特徴を整理します。\r\nそのうえで、実行速度、保守性、導入コストといった観点から、改善手段を選ぶための判断軸を紹介します。"
+  :start_at: !!timestamp 2026-10-16T13:30:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: nissyi
+    :slug: nissyi-gh
+    :github_username: nissyi-gh
+    :gravatar_hash: 0d800adc06437cd1214a94c12d7c98d6
+    :bio: 株式会社スマートバンクでエンジニアをしています。元電車の運転士です。
+- :title: Active Record Connection Adaptersにおける長年の課題に再び取り組む
+  :abstract: "日々のCI failureや細かなライブラリの互換性変更といった、緊急性の高い作業に生成AIを活用できるようになった結果、これまで後回しにせざるを得なかった「重要だが緊急ではない」課題に、ようやく時間を割けるようになりました。\r\n\r\n私にとっては、Active
+    RecordのConnection Adaptersにある2つの課題がそれにあたります。ひとつは2019年に自分の力不足で断念したマイグレーションのサードパーティアダプター対応で、いまも設計を何度も練り直しながら取り組んでいます。もうひとつは2017年から動きが止まっていた、SUPER権限なしでPostgreSQLの外部キー制約を一時的に無効化する対応で、こちらはPostgreSQLの修正をおこなったパッチがPostgreSQL
+    18.4でリリースされ、それを前提にRails 8.2でリリースされる予定です。\r\n\r\n生成AIはどんな問いにもそれなりの答えを返してくれるからこそ、その問いは本当に重要なのか、その答えは自分の課題を本当に解決するのかを考え抜く必要がある
+    — この1年で得たその実感も含めてお話しします。"
+  :start_at: !!timestamp 2026-10-16T13:30:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Yasuo Honda
+    :slug: yahonda
+    :github_username: yahonda
+    :gravatar_hash: e2cb998e15d8e8fdef4f11a1f510fe74
+    :bio: Maintainer of Active Record Oracle enhanced adapter | Ruby on Rails committer
+- :title: Local CI × GitHub Actions ― 長所を活かすハイブリッドCIの実践
+  :abstract: "Rails 8.1で追加されたLocal CIは、CIの大幅な速度向上とコスト削減を両立する大きな可能性を秘めています。しかし、\r\n\r\n-
+    全てのCIをローカルで実行するのは不安\r\n- Dependabotなど、自動で起票されたPRの作業が不便になりそう\r\n\r\nなどの懸念から導入を見送っていませんか？\r\n弊社では、Local
+    CIとGitHub Actionsを併用することでこれらの懸念を解消し、それぞれの強みを活かして開発をしています。具体的には、mainブランチへのマージ時やDependabotのPRでは引き続きGitHub
+    Actionsを利用しつつ、平常時はLocal CIを活用し、約140のモデルを持つRailsアプリケーションのCI実行時間を10分から2分程度に短縮しました。またGitHub
+    Actionsのコストも約45%削減しました。\r\n本トークでは、まずLocal CIとそれを支えるGitHub CLI 拡張機能のgh-signoffを紹介し、Local
+    CIの結果をGitHub上に安全に反映する仕組みについてお話しします。その後、Rails 8.2で導入予定の`group`を活用した高速化のコツ、CIの併用に必要なBranch
+    protection rulesやWorkflowsの設定、両者の実行コマンドをDRYに保つ方法など、半年間の実運用で得たTipsを余すことなくお伝えします。"
+  :start_at: !!timestamp 2026-10-16T14:10:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: gogutan
+    :slug: gogutan
+    :github_username: gogutan
+    :gravatar_hash: dd22f5a9a3a0c5d89f24322be74640a1
+    :bio: フィヨルドブートキャンプを卒業後、株式会社キャタルで子どもたちの英語学習を支援するアプリケーションを開発しています。英語、競プロ、料理、麻雀などが好きです。
+- :title: AIエージェントのデバッグ能力を向上させよう — AI時代にRailsが輝く理由
+  :abstract: "AIエージェントにバグ修正を任せると、得意と不得意がはっきり分かれます。コードとテスト出力から原因を特定できるバグには強い一方、実行時の状態(レコードの実値、saveで実際に変わった属性、メモ化に残った古い値)に依存するバグでは切れ味が鈍ります。実行中のプロセスをその場で確かめる手段がないため、printの差し込みと再実行を重ね、最後は「動作確認をお願いします」と検証が人間に返ってきます。\r\n\r\n本トークでは、debug
+    gemをMCP(AIエージェントに外部ツールを接続する共通規格)経由でAIに開放します。AIは実行中のRailsアプリをブレークポイントで止め、その瞬間の内部状態を自分で確かめ、仮説を事実として確定させてから修正し、直ったことまで変数レベルで検証できるようになります。\r\n実際にAIがrdbgに接続しバグを修正する様子をデモでお見せします。応用として、テスト失敗の瞬間のプロセスを保全しAIに調査させる構想にも触れます。\r\n\r\nこの解法を支えているのは、Railsが積み上げてきた資産です。ActiveSupport::Notificationsを使えば、アプリのコードに手を入れずにSQL発行やジョブ投入をAIに観測させられます。モデルのリフレクションを使えば、スキーマ、関連、バリデーション定義をAIがその場で確認できます。これらがAI時代になぜ効くのかを整理して紹介します。"
+  :start_at: !!timestamp 2026-10-16T14:10:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: rira100000000
+    :slug: rira100000000
+    :github_username: rira100000000
+    :gravatar_hash: 7033cd0080ade67d4fd58bcb78c34d25
+    :bio: "株式会社ネットワーク応用通信研究所(NaCl)のRailsエンジニアです。\r\nAI×Ruby の領域でOSSを公開しています。"
+- :title: 'Domain Modeling with Vanilla Rails: 「操作」から再考するRailsの設計論'
+  :abstract: "複雑なロジックをどこに実装すべきか、そのために新しいレイヤーを導入すべきか。導入するならどこまでの責務を持たせるべきか。Railsコミュニティはこうした問いを長らく議論してきました。本発表は、これらの問いを一度手放すことを提案します。実装先に迷うとき、多くの場合、起きているのはレイヤーの不足ではなくモデリングの不足だからです。\r\n\r\nRailsのモデルはテーブルと対となる形で定義され、比較的単純なアプリケーションであればうまく機能します。しかし、機能要求が複雑になると、注文の確定や在庫の補充、ポイントの付与といった「操作」に固有のルールが現れます。Railsでは、操作のルールはその主体や対象となるモデルに実装されやすく、独立した概念として見落とされる傾向があります。その結果、これらのモデルが静かに肥大化し、保守性が低下していきます。\r\n\r\n本発表では、モデルとそのCRUD操作を中心としたRailsの設計が、高い生産性と引き換えにドメインにおける重要な操作を見落としやすい構造を持つことを解き明かします。そのうえで、ドメインのルールを、それを担うモデルごとに整理し、どの既存のモデルにも帰属しないルールから新しいモデルが生まれるまでの過程を設計判断とともに示します。\r\n\r\n本発表のあと、みなさんは実装先やレイヤーを議論する前に問うべきことを手にしているはずです。「このルールを担う概念は何か」という問いです。"
+  :start_at: !!timestamp 2026-10-16T14:35:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Yuichi Goto
+    :slug: yasaichi
+    :github_username: yasaichi
+    :gravatar_hash: b8e501d93b98a553abf0b5cee0c33503
+    :bio: 2015年にピクスタ株式会社に新卒入社し、開発基盤の整備や開発プロセス改善に従事。2020年に執行役員CTOに就任。2023年より株式会社EARTHBRAINでデータプラットフォーム開発を主導。その後、英国ロンドンへ拠点を移し、現在はWASO
+      LTD.のテックリード兼フルスタックエンジニアとしてプロダクト開発に携わっている。著作に『パーフェクトRuby on Rails【増補改訂版】』（共著、技術評論社）がある。
+- :title: 'Inertia Rails: The One-Person Framework with React & Friends'
+  :abstract: 'Rails promises a small team can stay productive across the whole stack.
+    But what if you want to build your UI in React (or Vue, or Svelte)? Reach for
+    it the usual way and Rails loses some of its magic. It becomes a JSON API behind
+    a separate React app, and your small application grows into two codebases you
+    sync by hand. The Rails ecosystem has a way out. Inertia Rails turns React into
+    a view layer: your controllers still render the pages, with no API and no tangled
+    client-state in between. Let''s see how React learns to play by the rules of the
+    One-Person Framework!'
+  :start_at: !!timestamp 2026-10-16T14:35:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Svyatoslav Kryukov
+    :slug: skryukov
+    :github_username: skryukov
+    :gravatar_hash: f589902f0cc0223723ecd6b43c1add20
+    :bio: Senior Backend Engineer at Evil Martians, dedicated to bridging Rails and
+      the JavaScript ecosystem. A core maintainer of Inertia Rails, and the creator
+      of Typelizer (automatic TypeScript types from Ruby) and TurboMount (component-based
+      widgets for Hotwire). Writes about Rails and frontend on the Evil Martians blog.
+- :title: 現場と育てるRailsモデリング 〜Spreadsheetから始めたモデル設計〜
+  :abstract: "「エンジニアの知らないところで作られたSpreadsheetが重要な業務の一部になっている。Spreadsheetの運用をRailsアプリに移行したい。」\r\n\r\nこうした状況は多くの現場にあると思います。\r\n\r\n弊社は英語塾でRailsを使った学習管理システムを開発しています。弊社でもコーチングに欠かせない「レッスン報告」がGoogleスプレッドシート(以下、Spreadsheet)で管理されていました。\r\n\r\n東京から福岡まで分散する9つの校舎がそれぞれ独自のSpreadsheetを作り、レッスンごとに引き継ぎなどの業務日報を記録していました。レッスン報告は随時追記されるため、上書きで消える、データごとの権限管理ができないといった問題がありましたが、校舎ごとの差異が大きく、Railsアプリへの移行は長らく出来ずにいました。\r\n\r\nそこで私たちが最初に作ったのは「全校舎共通のシンプルなSpreadsheet」でした。\r\n\r\n当初は妥協案でしたが、このSpreadsheetが現場と業務概念を整理する場として機能し始めます。本セッションでは、半年の運用を通して業務概念が整理され、Railsアプリへの移行と約7万件のデータ移行が実現した過程を紹介します。\r\n\r\n理想のモデルを最初から設計できない状況で、現場と一緒に段階的にモデリングを進めるヒントを持ち帰っていただけたら嬉しいです。"
+  :start_at: !!timestamp 2026-10-16T15:50:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: Emiko Ando
+    :slug: siroemk
+    :github_username: siroemk
+    :gravatar_hash: 1a7588f0bf16cdca032d28449dfbdaad
+    :bio: 2024年から英語塾を運営する株式会社キャタルで学習管理システムを開発しています。Railsエンジニア3年目。以前はカスタマーサポートとして働いていました。趣味はサッカー観戦です。
+- :title: PumaからFalconに移行したRailsアプリケーションでの実践
+  :abstract: "ライブエンタメのチケット販売や会場物販、ECでは、熱狂的なファンが販売開始と同時にアクセスし、販売プラットフォーム全体で数分間に100万件を超えるリクエストが発生します。一方、クラウドプラットフォームの提供するオートスケーリングでは、アクセス増加の検知からコンテナ起動まで約5分かかり、増設が完了する頃にはピークを過ぎてしまいます。\r\n\r\nそこで、外部ID基盤とのプロトコル変換で販売開始時のログインを支えるRailsアプリケーションに、Fiberを活用するRack対応アプリケーションサーバ「Falcon」を使えないか検討しました。Pumaは外部API待ちにもスレッドを使いますが、FalconはFiber
+    Scheduler対応のHTTP通信を待つ間に別のFiberへ処理を切り替えられます。定常時のコンテナ数を増やさず、短時間のピークを効率良く処理できる点に着目しました。\r\n\r\nこのトークでは、既存のRailsアプリケーションへのFalcon本番導入を紹介します。既存のgemとHTTP通信の見直し、PumaとFalconを並行稼働させた段階導入、切り戻せる状態で比較・評価を進めた方法をお話しします。Falconと新しいHTTPクライアントを組み合わせた構成のレイテンシとCPU使用量、移行中の500エラー、運用上の注意点を、具体的な本番データで共有します。"
+  :start_at: !!timestamp 2026-10-16T15:50:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: Hayato OKUMOTO
+    :slug: falcon8823
+    :github_username: falcon8823
+    :gravatar_hash: af5dcc1970148a511bf8a393f42dda96
+    :bio: As Director and CTO of TwoGate, Inc., I built the engineering organization
+      from the ground up and have led it since day one. I own our technology strategy
+      end-to-end — architecture, infrastructure, backend, and frontend — and drive
+      the technical direction of the company.
+- :title: ActionController meets Protocol Buffers… たのしい API スキーマ定義!
+  :abstract: "Protocol Buffers (aka: Protobuf). 主にgRPCで利用するものだと思われている事が多いかもしれません。実はスキーマ付きデータフォーマットとして、gRPCなどに留まらず気軽に利用できる仕組みです。バイナリ列にシリアライズできる・言語を問わない以上に、分かりやすくスキーマ定義を行える点が非常に強力です。\r\n\r\n本講演ではprotobufをフル活用し、ActionContollerのAPIリクエスト・レスポンスからActiveRecordのjson型データまで、あらゆる所でスキーマ定義をしたRailsアプリを元に、活用法を紹介します。これには
+    `{foo: 42, …}` といった雑なHashリテラルが存在せず、ほとんど全てProtobufを通してデータを生成しています。さらにOpenAPIスキーマもProtobufから自動生成されクライアントへ提供しています。\r\n\r\nまた、実験的にConnect
+    RPCやgRPCをRailsで提供してみています。これまでRailsにおけるgRPCサーバーはUnicorn/Pumaではなくgrpc gemを利用する必要があり、これはRackではないため、開発や運用で難がありました。本セッションではFalconでActionControllerを通したRPCサーバーの実装も紹介します。"
+  :start_at: !!timestamp 2026-10-16T16:15:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Sorah Fukumori
+    :slug: 'sorah'
+    :github_username: 'sorah'
+    :gravatar_hash: 626ca235e8dab778c5bad6fc10e94ad8
+    :bio: 'Principal Software Engineer for IVRy. Also: RubyKaigi organizer / Ruby
+      committer. https://sorah.jp/'
+- :title: 'Herb in Rails 8.2: Your ERB views, now HTML-aware'
+  :abstract: "With teams, companies, and open source projects adopting Herb, it's
+    proving itself at scale and is on track to become an opt-in view engine in Rails
+    8.2. \r\n\r\nThis talk explores what Herb brings to Rails, from its ActionView
+    integration to the tooling and developer experience it unlocks. Then I'll introduce
+    the first production-ready version of ReActionView, bringing Phoenix LiveView-like
+    fine-grained reactivity to standard HTML+ERB templates. Optional, gradual, no
+    JavaScript framework, no new file format."
+  :start_at: !!timestamp 2026-10-16T16:15:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Marco Roth
+    :slug: 'marcoroth'
+    :github_username: 'marcoroth'
+    :gravatar_hash: 181f6cd1105b6202785fbdb147fe874a
+    :bio: Marco is a passionate full-stack developer and a dedicated open-source contributor.
+      He is the creator of Herb, an HTML-aware ERB parser and tooling foundation,
+      and ReActionView, an experimental initiative exploring structured and reactive
+      view rendering in Ruby. He has open-sourced, maintained, and contributed to
+      numerous libraries in the Ruby ecosystem and was awarded the Rails Luminary
+      Award in 2025.
+- :title: Railsバージョンを4倍にした話 〜Rails 2系から8系へ〜
+  :abstract: Ruby 1.8.7 / Rails 2.3で長年稼働してきた社内製品の管理サーバを、Ruby 3.4 / Rails 8へ載せ替えた実録です。フレームワークの破壊的変更だけでなく、散在する設計書、本番と乖離したブランチ、誰も触らなくなった運用が、バージョンアップを何倍も難しくします。Gemの移行、GET/POSTの食い違い、一気に上げるか段階的に上げるかの判断といったRailsのEoLに関する情報に加えて、ドキュメント探しの修行、AIにレガシー文脈を教える工夫、ブランチ整理の修羅場といった周辺の知識も含めて、チームで実際に踏んだ話としてお届けします。
+  :start_at: !!timestamp 2026-10-16T16:55:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: skytomo
+    :slug: skytomo221
+    :github_username: skytomo221
+    :gravatar_hash: 6a4dd2cd5b6d586220452fd7ae7c0e20
+    :bio: "株式会社オプティムのRailsエンジニアです。\r\n2022年に入社してから社内の複数製品のEoL対応を行っていました。\r\n最近はiOSやAndroidにも手を出し始めています。"
+- :title: 小さく作ってわかるRailsの仕組み 〜mini-rails〜
+  :abstract: "ブラウザから送られたHTTPリクエストは、Rails内で「Rack → Router → Controller → View → Response」という流れで処理されています。この仕組みを知りたいと思っても、どこから読み進めればいいのかわからずにいました。\r\nそこで、最小限のRails実装であるmini-railsを自分で作ってみることにしました。\r\n\r\n本発表では、mini-rails上で簡易的なブログが動く様子を見ながら、リクエストを受け付けてからレスポンスを返すまでの実装をお話しします。\r\n普段何気なく使っているRailsの内部がどうなっているのかを、一緒に覗いてみましょう。\r\n"
+  :start_at: !!timestamp 2026-10-16T16:55:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: Nobo
+    :slug: Hitoshi-Noborikawa Hitoshi-Noborikawa
+    :github_username: Hitoshi-Noborikawa Hitoshi-Noborikawa
+    :gravatar_hash: b694cd65650bc153c970bf143ae1fed7
+    :bio: "株式会社ソニックガーデンのプログラマです。\r\nSeto.rb 運営をしてます。"
+- :title: Railsのためのパスキー実践入門 〜マルチテナントSaaSでの意思決定〜
+  :abstract: "パスキーによるログインは、金融機関から大手Webサービスまで急速に広がっています。そろそろ自社のサービスでも、と思いつつ、しくみがよく分からない、何から検討すればいいのか分からない、と後回しにしていませんか。\r\n\r\nこのトークでは、まずパスキーそのものについて解説します。パスキーとは何か、どういうしくみでログインできるのかを、登録・認証のフローとRailsでの実装例とあわせて解説します。\r\n\r\nそのうえで、パスキーをマルチテナントのRailsアプリケーションに実装するときにどういう意思決定が必要になるのかを、SmartHRでの導入により得られた知見をもとに紹介します。パスキーをオートフィルで呼び出すか、専用ボタンで呼び出すかの意思決定や、サブドメインでテナントを分けるマルチテナント構成でのRP
+    IDの決め方など、実際に下した判断とその理由についてお話しします。"
+  :start_at: !!timestamp 2026-10-16T17:20:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: utakaha
+    :slug: utakaha
+    :github_username: utakaha
+    :gravatar_hash: 0e9e9350c30e0eab929f8a025f1c46aa
+    :bio: 株式会社SmartHRのプロダクトエンジニアです。認証やセキュリティ領域の開発を経て、現在は情シス向けのプロダクト開発に携わっています。
+- :title: Event is what happens
+  :abstract: "Rails 8.1 でStructured Event Reportingという新機能が導入されました。\r\nこれはRailsのアプリケーションレイヤにpub/subの仕組みを導入するという機能です。\r\n\r\nRails.event.notify()でなんらかの「イベント」が起こったことを通知でき、通知されたイベントは事前に登録されているサブスクライバで処理されます。典型的には、サービス内で発生したコンバージョンのログ取得などに役立つでしょう。\r\n\r\nさらに、イベントという語はDB論理設計にも現れます。コトを表す「イベントエンティティ」ですね。CRUDのシンプルさを実アプリケーションに適用するために重要な概念です。\r\n\r\n他方で、アプリケーション設計における「イベント」といえば、イベント駆動アーキテクチャ(EDA)も想起されます。EDAは、システム内で発生した状態の変化すなわちイベントを起点にして処理を動作させる設計パターンです。話者は、RailsでこのEDAを手軽に導入する手段としても、このRails.eventに可能性を感じています。\r\n\r\n本トークでは、これが同じ「イベント」と呼ばれる理由を考察し、「サービスで大事なことが起きた」ことを扱う標準のインターフェースが導入されたことを讃えながら、Structured
+    Event Reportingの発展的な利用法を紹介します。"
+  :start_at: !!timestamp 2026-10-16T17:20:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: MOROHASHI Kyosuke
+    :slug: moro
+    :github_username: moro
+    :gravatar_hash: 70e13d9877054026fda46d5a5b53a236
+    :bio: "日々Railsアプリケーションを書いているプログラマ。著書に「Rails 3レシピブック(共著)」「はじめる! Cucumber」など。\r\nXPの実践を通じて、Rubyistがいきいきと働ける場を作りたいと考えている。\r\n\r\n好きなメソッドの変遷は、Array#each
+      から Object#extend を経て Hash#compact。"
+- :title: 全ての永続トークンを、生まれる前に消し去りたい！
+  :abstract: "「すべての永続トークンを、生まれる前に消し去りたい！すべての宇宙、過去と未来の全ての永続トークンを、この手で」\r\n\r\n外部サービス連携やマイクロサービスにおいて、アクセストークンを永続的に利用可能なものに設定して使い続けたい、と思ったことはあるでしょう。しかし同時に、それがセキュリティホールであるということもなんとなく感じていることでしょう。また、トークンリフレッシュというものについて聞いたことはあるけれど、トークンのライフサイクルの管理が難しい、ということも考えたことがあるでしょう。\r\n\r\nこのトークでは、永続トークンをやめる理由、やめるための方法、その上でも気をつけるべきセキュリティ上の懸念事項などについて話します。みなさんの使う・作るサービスの認証について、改めて考えてみませんか？"
+  :start_at: !!timestamp 2026-10-16T18:00:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Ryo Kajiwara (sylph01)
+    :slug: sylph01
+    :github_username: sylph01
+    :gravatar_hash: 3cffaccb703ff33ea0028f9f0caa8e4d
+    :bio: やせいのプログラマ。暗号とか認証認可とかできます。Ruby/Rails的にはただの人。
+- :title: 真のREST 2026
+  :abstract: "RESTはRailsにおいて重要な要素であり、RESTという用語が普及するひとつのきっかけにもなりました。しかし多くの現場で、「RESTはAPIの設計手法」のように誤解されています。\r\n\r\n本来のRESTは、Webがなぜ成功したかを分析した9つの制約です。本発表ではまず、この制約を満たすと「古いものを壊さずに新しいものを足せる」拡張性と、「制御できない相手と通信しても壊れない」インターネット規模という2つの特性が得られることを、RESTの原典の論文に基づいて解説します。そのうえで、Hotwire、React
+    + JSON API、Inertiaといった現在のRailsで採用されるアーキテクチャが、2つの特性のどれを得てどれを失っているかを一枚の図で診断します。\r\n\r\n両方の特性を満たす「真のREST
+    API」、すなわちハイパーメディアAPIは、理想だが現実には難しいと長年言われてきました。その評価が、いま反転しつつあります。真のREST APIが前提としていた、あるクライアントがついに現れたからです。後半では、同じToDoアプリをHotwire版とReact
+    + JSON API版で用意し、そのクライアントで動作させる比較を行います。どちらのスタイルの開発者も、自分の設計の現在地と、明日から取れる一歩を持ち帰れます。\r\n"
+  :start_at: !!timestamp 2026-10-16T18:00:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Toru Kawamura
+    :slug: tkawa
+    :github_username: tkawa
+    :gravatar_hash: 4bc8a6fb46ecbd1a5432e58225954ea3
+    :bio: 株式会社ソニックガーデンのプログラマ。RESTおじさん(RESTafarian)。Sendagaya.rb 共同主催。
+- :title: Keynote
+  :abstract: ''
+  :start_at: !!timestamp 2026-10-17T10:15:00+09:00
+  :duration_minutes: 40
+  :track: Magenta Hall
+  :speakers:
+  - :name: Yukihiro "Matz" Matsumoto
+    :slug: matz
+    :github_username: matz
+    :bio: The Creator of Ruby
+    :avatar_url: https://kaigionrails.org/2026/images/speakers/matz.webp
+- :title: デプロイの先まで全部面倒を見る ― Kamal を社内 PaaS に育てた話
+  :abstract: "「試しにアプリをデプロイしたい」— そう思っても、サーバーの準備に加えて DB やストレージを整えるにはインフラの知識が必要で、\"ちょっと試す\"
+    には敷居が高い。結局ローカルで動かして終わり、という経験はないでしょうか。\r\n\r\nRails 8 に標準搭載された Kamal を使うと、自前サーバーへのデプロイ自体はコマンド一発になります。それでも「アプリを動かすこと」までで、DB
+    やストレージの準備、複数サーバーをうまく扱う運用の手間は、変わらず残ります。\r\n\r\nそこで、Kamal を土台に、その \"残り\" を丸ごと引き受ける社内
+    PaaS を Rails で作りました。リポジトリを選んでボタンを押すだけでサービスが動き出す、例えるなら社内版 Heroku です。\r\n狙いは \"動かす\"
+    だけではなく、限られたサーバー群に多数のアプリを安全に同居させ、実運用に耐えること。複数サーバーへの自動分散やゼロダウンタイム入れ替えも裏側で担います。運用もデバッグもブラウザだけで完結。さらに
+    API を通じて、AI Agent に会話で原因調査や修正まで任せられます。\r\n\r\n本発表では、Kamal にどこまで任せ、どこを作り込んだのかを紹介しながら、「インフラの仕組みも、使い慣れた
+    Rails の道具で作れる」という実感を、きっと持ち帰ってもらえるはずです。"
+  :start_at: !!timestamp 2026-10-17T11:05:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: Hiroyuki Kanda
+    :slug: 'dkan75'
+    :github_username: 'dkan75'
+    :gravatar_hash: 1369a4156ba4b610f90ca0f194a6526b
+    :bio: "株式会社ソニックガーデンのインフラプログラマです。AWSを中心にITインフラで約15年の経験があります。\r\n"
+    :avatar_url: https://kaigionrails.org/2026/images/speakers/dkan75.webp
+- :title: 作れる、でも消せるか？──安全に「枯らして消す」機能削除術
+  :abstract: "機能を作るのは簡単になりました。でも、消すのはどうでしょう？\r\nどこからも呼ばれていないと判断することは可能です、でも「呼ばれる経路は残っているが、使われない」機能はどうでしょう？\r\n\r\n目的があって追加した機能も、機能刷新や、別の機能に役割を奪われたりする場合もあります。検証のために追加したが、役目を終え不要になるケースもあります。そうして\"あまり\"使われなくなった機能は静かに積み上がります。残したままにすると、回帰テストは膨らみ、コードは少しずつ重くなり、変更のたびに足を引っ張る。\r\n\r\nでは、どうすれば安全に消せるのか。鍵は「もう誰からも呼ばれていない」状態を作ることです。別のコードからも、積まれたジョブからも、古いアプリからも呼ばれなくなれば、その機能は安心して消せます。この「呼ばれなくしていく」作業を、このトークでは「枯らす」と呼びます。いきなり消すのではなく、まず使わせない。値を返すのをやめる。旧バージョンのアプリを壊さないよう受け止める。そうしてトラフィックやデータが枯れてから、順序を守って消す。\r\n\r\n実際に廃止したRails
+    APIの機能を題材に、この「枯らしてから消す」一連の流れをお見せします。型を持てば、削除は一大事ではなく日常の選択肢になる。すると、作る合間に消せる。作るときから「どう消すか」も一緒に考える。そんな当たり前を持ち帰ってもらう15分です。"
+  :start_at: !!timestamp 2026-10-17T11:05:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: Miyuki Koshiba
+    :slug: ksbmyk
+    :github_username: ksbmyk
+    :gravatar_hash: 618ca491dc06ae0a7cd84153ff236d70
+    :bio: PicoRubyist & Creative Coder / 株式会社スマートバンクでAI家計簿アプリ「ワンバンク」の開発・運用をしている。Ruby
+      on Railsによるモバイルアプリケーション向けAPI開発を主に担当。
+- :title: Zen and the Art of File Upload Maintenance
+  :abstract: "ファイルアップロードは一見地味ですが、現代のWebサービスには欠かせない機能です。一方Railsでは、Active Storage登場以前のライブラリが本番環境で動き続けていることも多く、設計の負債が溜まりやすい領域でもあります。\r\n\r\nこのトークでは、とある人事労務系SaaSで長年稼働してきたファイルアップロード機能を題材に、サービスを止めずに改善してきた実践の記録をお話しします。動き続ける古い基盤に対して、「どの順番で負債をほどくか」「今ある大量のデータをどう扱うか」「既存ライブラリをどこまで延命し、どこまでモンキーパッチし、どこから置き換えを検討するか」などなどの、現場の試行錯誤と格闘の過程をそのまま開示します。\r\n\r\n具体的には以下のテーマを扱います。\r\n\r\n-
+    ファイルアップロードライブラリに共通するライフサイクルなど基本事項の理解\r\n- ファイルパスの決定ロジックや、「[履歴機能](https://kaigionrails.org/2025/talks/hypermkt/)」との相性が生んだ課題\r\n-
+    負債を一つずつほどいていく改善ロードマップと、その裏での試行錯誤\r\n- ライブラリを更新するか、置き換えるかの判断基準\r\n\r\nこのトークが、皆さんにとって自分のサービスの負債と向き合うための道標となり、ファイルアップロード機能の「禅」に触れるきっかけになれば幸いです。"
+  :start_at: !!timestamp 2026-10-17T11:30:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Kondo Uchio
+    :slug: udzura
+    :github_username: udzura
+    :gravatar_hash: 2cf373725ded741824c50fd571eda6e1
+    :bio: "Product engineer at SmartHR, now working on platform engineering and technical
+      debt reduction after several years building the company's core HR management
+      features.\r\nA RubyKaigi speaker from 2016 through 2026, and a local organizer
+      of RubyKaigi 2019 Fukuoka. Lives in Fukuoka, and can usually be found at Fukuoka.rb
+      or a coffee shop near Yakuin.\r\nCo-translator of Learning eBPF (Japanese edition
+      『入門eBPF』, O'Reilly Japan)."
+- :title: 'The Revenge of the Cucumber: Safety Nets for AI Code'
+  :abstract: "AI can generate code at unprecedented speed, but it can also generate
+    bugs and regressions at unprecedented speed. As software creation becomes cheaper,
+    the bottleneck shifts from writing code to verifying behavior.\r\n\r\nThis talk
+    revisits the rise and fall of Cucumber and BDD, exploring why executable specifications
+    struggled to gain adoption and how AI may have changed the economics behind them.
+    We'll discuss how Ruby teams can build practical testing pipelines for AI-generated
+    code using AI-assisted system tests as a safety net."
+  :start_at: !!timestamp 2026-10-17T11:30:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Cristian Planas
+    :slug: 'Gawyn'
+    :github_username: 'Gawyn'
+    :gravatar_hash: 0fff9ca11ef44ea536976fcab499f8fe
+    :bio: Cristian Planas is a Ruby developer, conference speaker, and author of *Rails
+      Scales!*. With over 15 years of Rails experience, he has helped build and scale
+      large applications at Zendesk and now works at Combinaut, exploring the intersection
+      of Ruby, testing, and AI-assisted development.
+- :title: Hypertext on Rails — HATEOAS が示す Rails の正しさ
+  :abstract: "普段Railsで開発していて、フロントエンドとバックエンドを二重に管理している感覚はありませんか？その問題の原因と解決策のひとつは、RESTの**忘れ去られた4つめの制約**にあるのかもしれません。\r\n\r\nRESTの統一インターフェースには4つの制約があります。最初の3つはRESTful
+    API設計でおなじみのものです。しかし4つめは **H**ypermedia **a**s **t**he **E**ngine **o**f **A**pplication
+    **S**tateという制約で、後にHATEOASと名付けられましたが、あまり多くは語られてきませんでした。\r\n\r\nFielding博士はこうも言っています。\r\n\r\n>
+    REST APIs must be hypertext-driven\r\n\r\n気になります。私は「作者の気持ちを答えよ」の本当の正解が気になって仕方がないたちです。\r\nそこで、私はRailsでHATEOASを実践することをテーマに自分用の易占い（六十四卦）アプリを作り始めました。\r\n\r\n本トークでは易占いアプリの、特にHATEOASを意識した仕様や実装を紹介しながら、**アプリケーションの状態遷移をハイパーメディアに駆動させる**という設計がもたらす恩恵を具体的にお見せします。そして、普通のRailsアプリとHATEOASの関係、HotwireがHTMLを扱う必然性にも迫ります。"
+  :start_at: !!timestamp 2026-10-17T13:30:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: Taiju HIGASHI
+    :slug: taiju
+    :github_username: taiju
+    :gravatar_hash: 5415725875ebac1064e0e979ab149607
+    :bio: "株式会社永和システムマネジメント所属のプログラマです。\r\n社内転職で Ruby/Rails を扱うアジャイル事業部に join して早 4
+      年。Rails 歴も同じく 4 年になります。\r\nfukui.rb のオーガナイザ、北陸Ruby会議の運営メンバも務めています。"
+- :title: RailsはAIという責務をどう受け入れるのか — AIという新しい責務をRailsらしく設計する
+  :abstract: "LLMを利用したAI機能をRailsアプリケーションへ組み込むこと自体は、それほど難しくありません。APIへプロンプトを送り、結果を受け取るだけであれば、これまでの外部API連携と同じように実装できます。\r\n\r\nしかし、実際にプロダクトへ導入してみると、プロンプト管理、モデル選択、Structured
+    Output、非同期実行など、AIならではの設計上の課題に直面しました。AIでは、API通信だけでなく、アプリケーション側がAIの振る舞いそのものを設計する必要があります。\r\n\r\n本セッションでは、RailsアプリケーションへAI機能を導入した実例をもとに、「AIという責務をRailsでどのように設計するべきか」という問いに向き合った過程を紹介します。\r\n\r\n当初の実装でどのような課題が生まれたのか、どのような選択肢を検討したのか、そして最終的にどのような観点で責務を整理したのかを、実際の設計判断や採用しなかった選択肢も交えながら共有します。\r\n\r\nこれからAI機能を導入する方はもちろん、すでに導入しているものの設計や責務分割に悩んでいるRailsエンジニアにとって、AIという新しい責務をRailsアプリケーションの中でどのように位置付けるべきかを考えるきっかけとなるセッションです。"
+  :start_at: !!timestamp 2026-10-17T13:30:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: Ryusei Aoki
+    :slug: aoki-ryusei
+    :github_username: aoki-ryusei
+    :gravatar_hash: a1a65f683a72acc6a021278870cdf474
+    :bio: "2025年から株式会社ギフティでWebエンジニアとして働いています。\r\n元々はPHPと仲良くしていましたが、ここ1年でRailsとお友達になりました。"
+- :title: Railsで挑む大量データ永続化 〜600億件を永続化するための設計とボトルネックとの戦い〜
+  :abstract: "Railsアプリでの大量データ永続化や移行では、普段のCRUD中心の開発とは異なる設計が求められます。\r\nデータ量が増えるにつれ、単純な保存処理だけではなく、データモデル、データストア、バッチアーキテクチャ、システム負荷まで考慮した設計が必要になります。\r\n弊社では、ユーザーの不正利用対策等のために、2.5億件を超える電話番号と、その20年以上にわたる使用履歴データをRailsアプリケーションへ取り込むプロジェクトに取り組みました。\r\n最初の課題は、20年以上の使用履歴をそのまま保存すると、600億件を超えるレコードになってしまうことでした。そこで、「状態が変化したタイミングだけを保存する」データモデルへ変更し、保存件数を大幅に削減しました。\r\nこの変更により保存件数を大幅に削減できました。しかし、それでも数億件規模のデータを扱う必要があり、データストア選定、50GBを超えるCSVのストリーミング読み込み、並列Bulk
+    Upsert、バッチのリラン設計、OOM、デッドロック、RDBMSのCPU負荷など、さまざまな課題に直面しました。\r\n本セッションでは、それぞれの課題に対する設計判断と、そのトレードオフを紹介します。\r\n単なる高速化テクニックではなく、Railsアプリケーションで大量データを安全かつ継続的に扱うための設計の考え方を持ち帰っていただける内容を目指します。"
+  :start_at: !!timestamp 2026-10-17T13:55:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: occhi
+    :slug: sho-work
+    :github_username: sho-work
+    :gravatar_hash: 2d7a28abc5c1c3f2b2be38745e48f1b9
+    :bio: "株式会社スマートバンク ソフトウェアエンジニア\r\nAI家計簿アプリ「ワンバンク」の開発・運用をしています。\r\nRuby on Rails
+      による モバイルアプリケーション 向け API 開発が主な業務内容です。"
+- :title: ActionCableの相手はブラウザだけじゃない — Railsでデバイス群をリアルタイム管制する
+  :abstract: "ActionCable の相手は、いつもブラウザとは限りません。センサーを積んだ Raspberry Pi をコンシューマにすると、Rails
+    はデバイス群にコマンドを配り、結果を受け取る「制御プレーン」になります。\r\n\r\n本発表では、その設計を実機の Raspberry Pi を繋いだ動くシステムで紹介します。物理デバイスを
+    Device モデルと状態機械で扱い、heartbeat と定期照合で生死を追いかける。ActionCable を双方向の transport にして、結果は冪等に取り込む。ActiveJob
+    で「実行先が物理デバイス」なジョブを組み、落ちる前提でリトライとバックプレッシャを設計する——おなじみの道具だけで、ここまで作れます。\r\n\r\n山場は「リアルタイムで
+    Turbo Streams と生 ActionCable をどう使い分けるか」。毎秒届くスペクトルを HTML で撒くと転送量は約26倍、毎フレーム257個の
+    DOM ノードが生まれます。実測ベンチから、低頻度の状態変化は Turbo Streams、高頻度の数値ストリームは生 ActionCable + canvas
+    という判断基準を導きます。通知やダッシュボードなど、ふつうの Rails 開発にそのまま効く勘所です。\r\n\r\nライブデモとともに、見慣れた Rails
+    の意外な射程をお見せします。"
+  :start_at: !!timestamp 2026-10-17T13:55:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Yuji Teshima
+    :slug: yujiteshima
+    :github_username: yujiteshima
+    :gravatar_hash: c7dc9741353359b42c60a2422e587479
+    :bio: 株式会社スタジアム（スタメングループ）で Rails による Web サービス開発をしているエンジニアです。RubyKaigi 2026 では
+      LT「The Joy of Talking to Hardware in Ruby」に登壇しました。個人では GPU まわりの効率化やエッジ端末でのプログラミングにも取り組み、mruby
+      から GPU(Vulkan) を扱う gem「mruby-gpu-narray」を開発しています。最近は Raspberry Pi を ActionCable
+      でつなぎ、Rails を分散システムの制御プレーンとして使う実験に取り組んでいます。Hotwire・ActionCable・mruby・GPU が好きです。
+- :title: 'Browser Spec: HotwireをRubyでテストする'
+  :abstract: "現代Webの動作環境において、JSは欠かすことができません。\r\nフルスタックRailsアプリケーションですら、TurboやStimulusやその他JSのコードを当たり前のように使っています。\r\nしかし、いざ動作確認をしようとすると、ヘッドレスブラウザを使ったSystem
+    Specが必要となり、遅い上にflakyなテストとの戦いが勃発します。つらい。\r\n\r\n本発表では、新たなテストの枠組みとしてBrowser Specを提唱し、その実装であるDommy::Browserについて解説します。\r\nDommyはRubyで書かれたDOM実装で、Dommy::BrowserはDommy上に構築されたテスト向け軽量ブラウザです。本セッションではDommy::Browserを使って、単一のRubyプロセス内でJSを使ったWebアプリケーションのテストを行い、Railsにおけるテストの可能性を広げることに挑戦します。\r\n"
+  :start_at: !!timestamp 2026-10-17T14:35:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Masayoshi Takahashi
+    :slug: 'takahashim'
+    :github_username: 'takahashim'
+    :gravatar_hash: 21a4b941766d805333e11c5766be43b4
+    :bio: 株式会社達人出版会・一般社団法人日本Rubyの会代表理事。RailsはRubyConf 2004でのDHHによるRailsお披露目の際に触ったのが最初なのでRails歴だけなら20年ほどあります。好きな作家は新井素子。
+- :title: How Reasonable Decisions Created a Security Incident
+  :abstract: A security incident exposed the resumes of 460 job seekers. The surprising
+    part? There was no single bug or obviously wrong decision to blame. Instead, a
+    series of reasonable technical choices interacted in unexpected ways, creating
+    a vulnerability that went unnoticed until it was too late. In this talk, I’ll
+    share how the incident was discovered, investigated, and resolved, along with
+    practical lessons on security, complexity, and hidden assumptions in Ruby on Rails
+    applications.
+  :start_at: !!timestamp 2026-10-17T14:35:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Paul McMahon
+    :slug: pwim
+    :github_username: pwim
+    :gravatar_hash: a91e97b5278c384a1d452297df90e83b
+    :bio: Paul McMahon is the founder of TokyoDev and has been building Ruby on Rails
+      applications for over 20 years. He has lived in Japan since 2006, founded the
+      Tokyo Rubyist Meetup in 2010, and previously co-founded the event platform Doorkeeper.
+      Today he runs TokyoDev, helping international software developers advance their
+      careers in Japan while staying hands-on with the development and operation of
+      the site’s Rails application.
+- :title: その Valkey 使いこなしていますか？
+  :abstract: "Valkey (Redis) は単なる KVS ではありません。多彩なデータ構造を備えたインメモリデータストアです。\r\n\r\nそれなのに、普段のアプリケーション開発では
+    session store や cache、Sidekiq の queue としてしか使っていない、というケースは少なくないのではないでしょうか。せっかくそこにある機能を使わないのは、少しもったいないと思っています。\r\n\r\nこのセッションでは、まず
+    Sorted Set を使ったランキング実装を題材にして Valkey のパワーを紹介します。ランキング専用のロジックをアプリケーション側に持たず、Valkey
+    のデータ構造そのものに仕事を任せる設計は、とても気持ちが良いものです。\r\n\r\nさらに、公式モジュールである Valkey Search によるベクトル検索や、Bloom
+    Filter のような確率的データ構造にも触れ、「Valkey をアプリケーションの機能として使う」という発想を紹介します。\r\n\r\n「Valkey
+    = キャッシュ」ではもったいない。ランキング、検索、レコメンド、重複判定など、アプリケーションの中核となる機能を支えるデータストアとして Valkey を使い倒す。その面白さを、実例を交えながらお話しします。\r\n"
+  :start_at: !!timestamp 2026-10-17T15:50:00+09:00
+  :duration_minutes: 15
+  :track: Lime Hall
+  :speakers:
+  - :name: Takafumi ONAKA
+    :slug: onk
+    :github_username: onk
+    :gravatar_hash: f79eeaf69c0ec75a91525a823805c04b
+    :bio: Web アプリケーションエンジニア＠はてな
+- :title: Refining Active Record
+  :abstract: "以下のコードのように、文字列操作やArelのようなメソッドチェインではなく、Rubyの自然な式でクエリを書きたいと思いませんか？\r\n\r\n```ruby\r\nEmployee.where
+    { :age >= 50 }.select { [avg(:vacation_hours), sum(:sick_leave_hours)] }\r\n```\r\n\r\nかつてRefinementsを使ってwhereを拡張するactiverecord-refinementsというgemがありましたが、Refinementsをブロックスコープで有効にする機能が処理系の実装上の都合でRuby
+    2.0から削除されてしまい、その夢は潰えました。\r\nRuby 4.1の新機能となる予定のProc#refinedを使って、activerecord-refinementsを現代に蘇らせてみましょう。\r\n"
+  :start_at: !!timestamp 2026-10-17T15:50:00+09:00
+  :duration_minutes: 15
+  :track: Magenta Hall
+  :speakers:
+  - :name: Shugo Maeda
+    :slug: 'shugo'
+    :github_username: 'shugo'
+    :gravatar_hash: b228a25d1de35688505c7140787a5229
+    :bio: "株式会社ネットワーク応用通信研究所の社長を務めています。\r\nRubyコミッタとして、callcc、Refinements、Hashの値省略記法、String#{byteindex,bytesplice}などの導入をしてきました。\r\nRailsには、ActiveRecord::Locking::Pessimisticの導入、ActiveSupport::SafeBuffer#subなどのブロック内における後方参照のサポート、その他いくつかのバグ修正を行ってきました。\r\n好きなテキストエディタはTextbringerです。"
+    :avatar_url: https://kaigionrails.org/2026/images/speakers/shugo.webp
+- :title: 3回つくってわかった、定期実行ジョブ基盤の本質情報
+  :abstract: "多くのRailsアプリケーションには、日次の集計やデータ連携のような、決まった時刻に動くジョブがあります。こうした処理は、Solid QueueやSidekiqのような非同期ジョブを使えば手軽に始められます。しかし、業務システムが複雑になると、定期実行ジョブには単なるスケジューリング以上の要件が求められるようになります。\r\n\r\nたとえば、同時実行の防止、長時間実行による突き抜け、失敗時の再実行、依存関係の制御、実行履歴の追跡、通知、可観測性などです。これらを扱うには、専用の実行管理基盤として進化させる必要があります。\r\n\r\nまた、こうした基盤をアプリケーションの外につくっても、ジョブが実行するドメインロジックはRailsアプリケーションの中にあります。そのため、Railsに書かれた処理を基盤からうまく呼び出す工夫が欠かせません。\r\n\r\nこの発表は、sidekiq-schedulerの定期実行ジョブを、AWS中心のクラウドネイティブな実行基盤へ移行した経験にもとづきます。発表者が定期実行ジョブ基盤をつくるのは、これで3回目です。Railsアプリケーションのための定期実行ジョブ基盤をどのように設計し、実装するかに焦点を当てます。どうやって既存のジョブを移行しやすくするか、どうやってアプリケーションエンジニアの認知的負荷を下げるか、どうやって運用しやすくするか、という観点から具体的に議論します。"
+  :start_at: !!timestamp 2026-10-17T16:15:00+09:00
+  :duration_minutes: 30
+  :track: Lime Hall
+  :speakers:
+  - :name: Naoto Takai
+    :slug: takai
+    :github_username: takai
+    :gravatar_hash: cf7b553387b247d737c60cfceabb2cea
+    :bio: Webエンジニアとしてキャリアを始め、これまで複数の企業でVPoEという立場から、エンジニア組織のマネジメント、採用、開発プロセスの改善、技術的な意思決定に関わってきました。現在はIVRyで、マネジメント職ではなく
+      Individual Contributor として、プロダクト開発とエンジニアリング組織の改善の両方に取り組んでいます。
+- :title: How to Design Configuration for Rails Applications
+  :abstract: "Railsアプリケーションを動かすには、Railsやインフラの設定、アプリケーション固有の設定など、数多くの設定が必要です。その管理方法にも、環境変数、Credentials、YAML、DB、PaaSやIaaSの設定管理機能、各種gemなど、多くの選択肢があります。さらに、管理した設定値をアプリケーションからどのように参照するかにも、ENV、config.x、独自のクラスやメソッドなどの選択肢があります。これらをどのように組み合わせれば、開発者がアプリケーション開発に集中できるでしょうか。\r\n\r\n設定の管理方法は、アプリケーション開発の初期には深く検討されないことも少なくありません。そして、問題に気づいてもリファクタリングされにくい領域です。設定の変更は障害につながる可能性があり変更の心理的ハードルが高いうえ、そもそも設定の管理方法をリファクタリングするという発想自体が生まれにくいからです。\r\n\r\nこの発表では、設定を「起点・中継点・終点」という流れと、秘密性や変更タイミングなどの性質から整理したうえで、「まとめる」「確認しやすい形にする」という2つの方針を軸に、Railsアプリケーションにおける設定の設計方法を説明します。発表を通じて、アプリケーションの規模や要件に応じて設定方法を選択し、設定に関する負債を溜めにくい設計を考えられるようになることを目指します。"
+  :start_at: !!timestamp 2026-10-17T16:15:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Shinichi Maeshima
+    :slug: willnet
+    :github_username: willnet
+    :gravatar_hash: 6ac7c50770603b53964d44db373e8e48
+    :bio: 株式会社ウィルネット代表。複数の会社の技術顧問をしています。ginza.rb主催。著書にパーフェクトRuby on Rails(共著)
+- :title: Web Framework Benchmark Battle 2026, Any%
+  :abstract: "世間に出回っている「webフレームワークベンチマーク対決」みたいなコンテンツを眺めていると、Ruby on Railsは他言語のプロダクトたちに比べてかなり遅い部類のフレームワークという位置付けにされていることに気づきます。やられ役ですね。かませ犬ですね。そんな立場に甘んじているのはRailsのマーケティング上よろしくありません。どうにかしたいですね。\r\n\r\nそこで、本セッションでは、この手のベンチマークのスコアを、あらゆる手段を用いて改善してみます。要はRails本体をホゲるISUC○Nです。\r\nレギュレーションは、Any%とします。すなわち、対象のベンチマークがそれっぽく完走しさえすれば過程は問わないという競技となっています。\r\n\r\n本セッションを通じて、参加者の皆さまには、以下のようなものをお伝えできる予定です。\r\n-
+    ソフトウェアのパフォーマンスをチューニングする際の考え方や進め方\r\n- Rails本体にパッチを当てる実作業の風景\r\n- OSSで遊ぶたのしさ"
+  :start_at: !!timestamp 2026-10-17T16:55:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Akira Matsuda
+    :slug: amatsuda
+    :github_username: amatsuda
+    :gravatar_hash: 76a777ff80f30bd3b390e275cce625bc
+    :bio: Rails committer. Rails Luminary 2024.
+- :title: 'Solid Queue: two years on Rails'
+  :abstract: 'Solid Queue 1.0 was released on 26 Sept 2024 and added as the default
+    Active Job backend in Rails. Two years later, we''re ready for version 2.0 in
+    a totally different world. Let''s review the basics and explore the path to a
+    new major version. We''ll go through new features such as single-process mode,
+    batches or sharding, the non-linear path to them, and how maintaining an open-source
+    project has changed since Solid Queue got started. '
+  :start_at: !!timestamp 2026-10-17T17:35:00+09:00
+  :duration_minutes: 30
+  :track: Magenta Hall
+  :speakers:
+  - :name: Rosa Gutierrez
+    :slug: rosa
+    :github_username: rosa
+    :gravatar_hash: 04e295da8115b1e136803c209822b2be
+    :bio: 'Rosa is a principal programmer at 37signals and the author of Solid Queue.
+      She loves maths, theoretical computer science, Ruby conferences, languages for
+      both humans and computers, and her dog Mochi. '

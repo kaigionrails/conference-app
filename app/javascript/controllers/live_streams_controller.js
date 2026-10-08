@@ -2,15 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 import Hls from "hls.js";
 
 export default class extends Controller {
-  // Stream identifiers remain red / blue.
-  // The corresponding 2026 venue labels are Magenta Hall / Lime Hall.
+  // Tabs, URL hashes and hashtags are named after the 2026 venues, Magenta Hall / Lime Hall.
+  // The streams come from the Cloudflare live inputs named day1-magenta-ja and so on.
   static values = {
-    selectedTab: { type: String, default: "red" },
-    day1RedJa: { type: String, default: "" },
-    day1BlueJa: { type: String, default: "" },
-    day2RedJa: { type: String, default: "" },
-    day2RedRaw: { type: String, default: "" },
-    day2BlueJa: { type: String, default: "" },
+    selectedTab: { type: String, default: "magenta" },
+    day1MagentaJa: { type: String, default: "" },
+    day1LimeJa: { type: String, default: "" },
+    day2MagentaJa: { type: String, default: "" },
+    day2MagentaRaw: { type: String, default: "" },
+    day2LimeJa: { type: String, default: "" },
     test: { type: String, default: "" },
     backstage: { type: Boolean, default: false },
   };
@@ -20,7 +20,7 @@ export default class extends Controller {
   connect() {
     const video = document.getElementById("video");
     let currentHash = new URL(location.href).hash.replace("#", "");
-    if (currentHash == "") {currentHash = "red"}
+    if (currentHash == "") {currentHash = "magenta"}
 
     console.log("Current hash:", currentHash);
 
@@ -28,23 +28,23 @@ export default class extends Controller {
     const today = new Date();
     const day = today.getDate();
 
-    if (day === 26 || day === 25) {
-      if (currentHash === "red") {
-        this.videoSrc = this.day1RedJaValue;
-        this.selectedTabValue = "red";
-      } else if (currentHash === "blue") {
-        this.videoSrc = this.day1BlueJaValue;
-        this.selectedTabValue = "blue";
+    if (day === 16 || day === 15) {
+      if (currentHash === "magenta") {
+        this.videoSrc = this.day1MagentaJaValue;
+        this.selectedTabValue = "magenta";
+      } else if (currentHash === "lime") {
+        this.videoSrc = this.day1LimeJaValue;
+        this.selectedTabValue = "lime";
       } else {
         console.warn("unknown day or tab value");
       }
-    } else if (day === 27) {
-      if (currentHash === "red") {
-        this.videoSrc = this.day2RedJaValue;
-        this.selectedTabValue = "red";
-      } else if (currentHash === "blue") {
-        this.videoSrc = this.day2BlueJaValue;
-        this.selectedTabValue = "blue";
+    } else if (day === 17) {
+      if (currentHash === "magenta") {
+        this.videoSrc = this.day2MagentaJaValue;
+        this.selectedTabValue = "magenta";
+      } else if (currentHash === "lime") {
+        this.videoSrc = this.day2LimeJaValue;
+        this.selectedTabValue = "lime";
       } else {
         console.warn("unknown day or tab value");
       }
@@ -72,10 +72,10 @@ export default class extends Controller {
       }
       // videoElement.play(); // Uncomment if you want autoplay
     }
-    if (this.selectedTabValue === "red") {
+    if (this.selectedTabValue === "magenta") {
       video.classList.remove("border-[var(--color-hall-lime)]");
       video.classList.add("border-[var(--color-hall-magenta)]");
-    } else if (this.selectedTabValue === "blue") {
+    } else if (this.selectedTabValue === "lime") {
       video.classList.remove("border-[var(--color-hall-magenta)]");
       video.classList.add("border-[var(--color-hall-lime)]");
     }
@@ -112,12 +112,12 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
-      this.videoSrc = this.day1RedJaValue;
-      this.selectedTabValue = "red";
-    } else if (day === 27) {
-      this.videoSrc = this.day2RedJaValue;
-      this.selectedTabValue = "red";
+    if (day === 16 || day === 15) {
+      this.videoSrc = this.day1MagentaJaValue;
+      this.selectedTabValue = "magenta";
+    } else if (day === 17) {
+      this.videoSrc = this.day2MagentaJaValue;
+      this.selectedTabValue = "magenta";
     }
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-hall-lime)]");
@@ -143,12 +143,12 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
-      this.videoSrc = this.day1RedJaValue;
-      this.selectedTabValue = "red";
-    } else if (day === 27) {
-      this.videoSrc = this.day2RedRawValue;
-      this.selectedTabValue = "red";
+    if (day === 16 || day === 15) {
+      this.videoSrc = this.day1MagentaJaValue;
+      this.selectedTabValue = "magenta";
+    } else if (day === 17) {
+      this.videoSrc = this.day2MagentaRawValue;
+      this.selectedTabValue = "magenta";
     }
     const video = document.getElementById("video");
     video.classList.remove("border-[var(--color-hall-lime)]");
@@ -174,12 +174,12 @@ export default class extends Controller {
     if (this.hls == null) {
       this.hls = new Hls();
     }
-    if (day === 26 || day === 25) {
-      this.videoSrc = this.day1BlueJaValue;
-      this.selectedTabValue = "blue";
-    } else if (day === 27) {
-      this.videoSrc = this.day2BlueJaValue;
-      this.selectedTabValue = "blue";
+    if (day === 16 || day === 15) {
+      this.videoSrc = this.day1LimeJaValue;
+      this.selectedTabValue = "lime";
+    } else if (day === 17) {
+      this.videoSrc = this.day2LimeJaValue;
+      this.selectedTabValue = "lime";
     } else {
       console.warn("unknown day or tab value");
     }
@@ -203,10 +203,10 @@ export default class extends Controller {
 
   updateShareTarget() {
     let hashtags = "kaigionrails"
-    if(this.selectedTabValue === "red") {
-      hashtags += ",kaigionrails_red"
-    } else if(this.selectedTabValue === "blue") {
-      hashtags += ",kaigionrails_blue"
+    if(this.selectedTabValue === "magenta") {
+      hashtags += ",kaigionrails_magenta"
+    } else if(this.selectedTabValue === "lime") {
+      hashtags += ",kaigionrails_lime"
     }
     this.shareToXTarget.href = `https://x.com/intent/tweet?hashtags=${encodeURIComponent(hashtags)}`;
   }
@@ -214,10 +214,10 @@ export default class extends Controller {
   webShare() {
     console.log("webShare");
     let hashtags = "#kaigionrails"
-    if(this.selectedTabValue === "red") {
-      hashtags += " #kaigionrails_red"
-    } else if(this.selectedTabValue === "blue") {
-      hashtags += " #kaigionrails_blue"
+    if(this.selectedTabValue === "magenta") {
+      hashtags += " #kaigionrails_magenta"
+    } else if(this.selectedTabValue === "lime") {
+      hashtags += " #kaigionrails_lime"
     }
     navigator.share({text: hashtags}).then();
   }
@@ -225,10 +225,10 @@ export default class extends Controller {
   clipboard() {
     console.log("clipboard");
     let hashtags = "#kaigionrails"
-    if(this.selectedTabValue === "red") {
-      hashtags += " #kaigionrails_red"
-    } else if(this.selectedTabValue === "blue") {
-      hashtags += " #kaigionrails_blue"
+    if(this.selectedTabValue === "magenta") {
+      hashtags += " #kaigionrails_magenta"
+    } else if(this.selectedTabValue === "lime") {
+      hashtags += " #kaigionrails_lime"
     }
     navigator.clipboard.writeText(hashtags).then();
   }
