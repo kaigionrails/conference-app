@@ -319,6 +319,7 @@ ja:
       cannot_view_stream_in_venue: "会場内ではライブ配信を視聴できません。会場外のネットワークに接続してご覧ください。"
       share_with_hashtags: "ハッシュタグを付けて投稿、またはハッシュタグを共有"
       event_ended: "%{event_name} は終了しました。ご視聴ありがとうございました。"
+      yoyo_translate: "字幕を見る (YOYO translate)"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"

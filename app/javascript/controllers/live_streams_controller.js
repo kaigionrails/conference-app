@@ -13,9 +13,11 @@ export default class extends Controller {
     day2LimeJa: { type: String, default: "" },
     test: { type: String, default: "" },
     backstage: { type: Boolean, default: false },
+    yoyoTranslateMagentaHallUrl: { type: String, default: "" },
+    yoyoTranslateLimeHallUrl: { type: String, default: "" },
   };
 
-  static targets = ["cannotViewStreamInVenue", "shareToX"];
+  static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink"];
 
   connect() {
     const video = document.getElementById("video");
@@ -80,6 +82,7 @@ export default class extends Controller {
       video.classList.add("border-[var(--color-hall-lime)]");
     }
     this.updateShareTarget();
+    this.updateYoyoTranslateLink();
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
         this.cannotViewStreamInVenueTarget.classList.remove("hidden");
@@ -125,6 +128,7 @@ export default class extends Controller {
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.updateYoyoTranslateLink();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -156,6 +160,7 @@ export default class extends Controller {
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.updateYoyoTranslateLink();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -189,6 +194,7 @@ export default class extends Controller {
     this.hls.loadSource(this.videoSrc);
     this.hls.attachMedia(video);
     this.updateShareTarget();
+    this.updateYoyoTranslateLink();
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
@@ -209,6 +215,18 @@ export default class extends Controller {
       hashtags += ",kaigionrails_lime"
     }
     this.shareToXTarget.href = `https://x.com/intent/tweet?hashtags=${encodeURIComponent(hashtags)}`;
+  }
+
+  // Links to the subtitles of the selected hall, and hides the link while that hall has no URL.
+  // The Venue sound tab is also "magenta", so it gets the Magenta Hall subtitles.
+  updateYoyoTranslateLink() {
+    const url = this.selectedTabValue === "lime" ? this.yoyoTranslateLimeHallUrlValue : this.yoyoTranslateMagentaHallUrlValue;
+    if (url) {
+      this.yoyoTranslateLinkTarget.href = url;
+      this.yoyoTranslateLinkTarget.classList.remove("hidden");
+    } else {
+      this.yoyoTranslateLinkTarget.classList.add("hidden");
+    }
   }
 
   webShare() {

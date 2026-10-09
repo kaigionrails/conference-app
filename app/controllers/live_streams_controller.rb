@@ -2,6 +2,7 @@ class LiveStreamsController < ApplicationController
   before_action :require_ticket
 
   # @rbs @live_stream: CloudflareStreamLiveStream
+  # @rbs @yoyo_translate_setting: YoyoTranslateSetting?
 
   # @rbs return: void
   def index
@@ -33,6 +34,7 @@ class LiveStreamsController < ApplicationController
       },
       test: live_streams.detect { |s| s.name.include?("test") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
     }
+    @yoyo_translate_setting = @event.yoyo_translate_setting
   end
 
   # @rbs return: void
