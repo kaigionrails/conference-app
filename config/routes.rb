@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :live_streams, only: [:index, :new, :create, :update, :show, :destroy]
+    resource :yoyo_translate_setting, only: [:update]
     resources :signages, only: [:index, :new, :create, :update]
     resources :signage_schedules, only: [:new, :create, :edit, :update, :destroy]
     resources :signage_schedule_assigns, only: [:new, :create, :destroy]

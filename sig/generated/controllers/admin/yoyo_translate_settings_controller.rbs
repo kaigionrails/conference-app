@@ -1,0 +1,14 @@
+# Generated from app/controllers/admin/yoyo_translate_settings_controller.rb with RBS::Inline
+
+class Admin::YoyoTranslateSettingsController < AdminController
+  @yoyo_translate_setting: YoyoTranslateSetting
+
+  @cloudflare_stream_live_streams: CloudflareStreamLiveStream::ActiveRecord_Relation
+
+  # Creates the setting of the ongoing event on the first save and updates it afterwards.
+  # The admin layout does not render flash, so a failure re-renders the Live page with the errors on the form.
+  # @rbs return: void
+  def update: () -> void
+
+  private def yoyo_translate_setting_params: () -> untyped
+end

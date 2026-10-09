@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   has_many :tito_tickets, dependent: :destroy
   has_one :ongoing_event, dependent: :delete
   has_one :sponsor_booth_qr_card_template, dependent: :destroy
+  has_one :yoyo_translate_setting, dependent: :destroy
 
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true

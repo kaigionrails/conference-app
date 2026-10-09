@@ -1,0 +1,6 @@
+# Generated from app/models/yoyo_translate_setting.rb with RBS::Inline
+
+# The YOYO Translate (subtitle service) pages linked from the live stream page, one per hall.
+# One per event; organizers set them from the admin Live page.
+class YoyoTranslateSetting < ApplicationRecord
+end

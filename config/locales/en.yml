@@ -355,6 +355,7 @@ en:
       webpush_subscription: "Push Notification Settings"
       talk_bookmark: "Bookmark"
       unread_announcement: "Unread Announcement"
+      yoyo_translate_setting: "YOYO translate Setting"
     errors:
       models:
         user:
@@ -362,6 +363,12 @@ en:
             name:
               reserved: "is reserved"
               invalid: "may only contain letters, digits, hyphens and underscores, must start with a letter or a digit, and may be at most 39 characters"
+        yoyo_translate_setting:
+          attributes:
+            magenta_hall_url:
+              invalid: "must start with https://"
+            lime_hall_url:
+              invalid: "must start with https://"
     attributes:
       profile:
         name: "Display name"
@@ -412,6 +419,9 @@ en:
       event:
         name: "Event name"
         slug: "Slug"
+      yoyo_translate_setting:
+        magenta_hall_url: "Magenta Hall URL"
+        lime_hall_url: "Lime Hall URL"
   time:
     formats:
       announcement_published_at: "Published at %m/%d %H:%M"

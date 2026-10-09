@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_07_133757) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_09_080052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -559,6 +559,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_07_133757) do
     t.index ["user_id"], name: "index_webpush_subscriptions_on_user_id"
   end
 
+  create_table "yoyo_translate_settings", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "magenta_hall_url"
+    t.string "lime_hall_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_yoyo_translate_settings_on_event_id", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authentication_provider_email_and_passwords", "users"
@@ -601,4 +610,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_07_133757) do
   add_foreign_key "unread_announcements", "announcements"
   add_foreign_key "unread_announcements", "users"
   add_foreign_key "webpush_subscriptions", "users"
+  add_foreign_key "yoyo_translate_settings", "events"
 end
