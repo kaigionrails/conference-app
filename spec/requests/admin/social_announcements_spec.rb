@@ -43,6 +43,10 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       announcement = SocialAnnouncement.last
       expect(announcement.created_by).to eq(admin)
       expect(response).to redirect_to(admin_social_announcement_path(announcement))
+
+      follow_redirect!
+      expect(response.body.scan(%(id="toasts")).size).to eq(1)
+      expect(response.body.scan(%(data-controller="admin--toast")).size).to eq(1)
     end
   end
 

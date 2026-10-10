@@ -67,6 +67,10 @@ RSpec.describe "Admin::Events", type: :request do
         event.reload
         expect(event.name).to eq("Kaigi on Rails 2001")
         expect(event.start_date.in_time_zone("Tokyo")).to eq(Time.zone.parse("2001-01-01 00:00:00 +0900"))
+
+        follow_redirect!
+        expect(response.body).to include(%(id="toasts"))
+        expect(response.body).to include("Update succeeded")
       end
     end
 

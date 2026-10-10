@@ -26,6 +26,16 @@ RSpec.describe "Admin::SponsorVisits", type: :request do
         expect(response).to have_http_status(:see_other)
         expect(flash[:success]).to eq("Reset succeeded for #{event.name}.")
       end
+
+      it "shows the result once on the user page" do
+        # admin/users/show renders the profile
+        FactoryBot.create(:profile, user: target_user)
+
+        delete admin_user_sponsor_visits_path(target_user), params: {event_id: event.id}
+        follow_redirect!
+
+        expect(response.body.scan("Reset succeeded for #{event.name}.").size).to eq(1)
+      end
     end
 
     context "when the acting user is a participant" do

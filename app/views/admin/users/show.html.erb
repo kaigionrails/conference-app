@@ -34,8 +34,5 @@
       <%= form.collection_select :event_id, @events, :id, :name, { prompt: "Select an event", selected: @events.first&.id }, { required: true, class: "border rounded-sm px-3 py-2" } %>
       <%= form.submit "Reset", class: "border border-red-500 text-red-600 rounded-sm px-4 py-2 cursor-pointer" %>
     <% end %>
-    <% if flash[:success] %>
-      <p role="status" class="mt-4 text-green-700"><%= flash[:success] %></p>
-    <% end %>
   </div>
 <% end %>
