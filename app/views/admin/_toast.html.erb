@@ -1,6 +1,6 @@
 <%# locals: (type:, message:) %>
-<% alert = type.to_s == "alert" %>
-<%# alert は消えると原因を追えないのでクリックするまで残す (duration 0) %>
+<% alert = %w[alert error].include?(type.to_s) %>
+<%# alert と error は消えると原因を追えないのでクリックするまで残す (duration 0) %>
 <div class="flex items-start gap-3 max-w-sm py-3 px-5 border rounded-sm shadow-lg transition-opacity duration-300 <%= alert ? "bg-red-50 border-red-300" : "bg-green-50 border-green-300" %>"
   role="status"
   data-turbo-temporary
