@@ -53,7 +53,7 @@ class Admin::SocialAnnouncementMediaController < AdminController
             partial: "admin/social_announcements/media_card",
             locals: {announcement: announcement, medium: medium, published: announcement.published_at.present?, errors: no_errors}),
           turbo_stream.append("toasts",
-            partial: "admin/social_announcements/toast",
+            partial: "admin/toast",
             locals: {type: :success, message: "Media ##{medium.id} updated"})
         ]
       end

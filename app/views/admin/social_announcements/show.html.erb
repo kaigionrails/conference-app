@@ -4,7 +4,7 @@
 <% can_dispatch = !published && announcement.fully_approved? && announcement.target_platforms.any? && (!announcement.x_targeted? || x_connected) %>
 <div class="mb-16 pr-8" data-controller="admin--social-announcement" data-admin--social-announcement-max-media-value="<%= SocialAnnouncement::MAX_MEDIA %>" data-admin--social-announcement-hashtag-value="<%= SocialAnnouncement::RECOMMENDED_HASHTAG %>">
   <h2 class="font-bold text-xl mb-4">Social announcement 「<%= announcement.campaign %>」 (id:<%= announcement.id %>)</h2>
-  <%= render "admin/social_announcements/flash" %>
+  <%= render "admin/flash" %>
   <%= render "admin/social_announcements/dry_run_banner" %>
 
   <section class="mb-8">
