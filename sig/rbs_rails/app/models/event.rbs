@@ -366,6 +366,12 @@ class ::Event < ::ApplicationRecord
   def create_sponsor_booth_qr_card_template: (?untyped) -> ::SponsorBoothQrCardTemplate
   def create_sponsor_booth_qr_card_template!: (?untyped) -> ::SponsorBoothQrCardTemplate
   def reload_sponsor_booth_qr_card_template: () -> ::SponsorBoothQrCardTemplate?
+  def yoyo_translate_setting: () -> ::YoyoTranslateSetting?
+  def yoyo_translate_setting=: (::YoyoTranslateSetting?) -> ::YoyoTranslateSetting?
+  def build_yoyo_translate_setting: (?untyped) -> ::YoyoTranslateSetting
+  def create_yoyo_translate_setting: (?untyped) -> ::YoyoTranslateSetting
+  def create_yoyo_translate_setting!: (?untyped) -> ::YoyoTranslateSetting
+  def reload_yoyo_translate_setting: () -> ::YoyoTranslateSetting?
 
   module ::Event::GeneratedAssociationMethods
   end
@@ -426,4 +432,6 @@ end
 class ::OngoingEvent < ::ApplicationRecord
 end
 class ::SponsorBoothQrCardTemplate < ::ApplicationRecord
+end
+class ::YoyoTranslateSetting < ::ApplicationRecord
 end

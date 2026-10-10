@@ -1,10 +1,14 @@
 class Admin::LiveStreamsController < AdminController
   # @rbs @cloudflare_stream_live_streams: CloudflareStreamLiveStream::ActiveRecord_Relation
   # @rbs @cloudflare_stream_live_stream: CloudflareStreamLiveStream
+  # @rbs @yoyo_translate_setting: YoyoTranslateSetting
 
   # @rbs return: void
   def index
     @cloudflare_stream_live_streams = CloudflareStreamLiveStream.all
+    event = OngoingEvent.first!.event
+    # Not build_yoyo_translate_setting, which would detach an existing setting from the event.
+    @yoyo_translate_setting = event.yoyo_translate_setting || YoyoTranslateSetting.new(event: event)
   end
 
   # @rbs return: void

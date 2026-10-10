@@ -45,6 +45,22 @@ RSpec.describe "LiveStreams", type: :request do
           get "/2025/live"
           expect(response).to have_http_status(200)
         end
+
+        it "passes the YOYO Translate URLs of the event to the page" do
+          FactoryBot.create(:yoyo_translate_setting, event: event)
+
+          get "/2025/live"
+
+          expect(response.body).to include('data-live-streams-yoyo-translate-magenta-hall-url-value="https://example.com/magenta"')
+          expect(response.body).to include('data-live-streams-yoyo-translate-lime-hall-url-value="https://example.com/lime"')
+        end
+
+        it "passes empty YOYO Translate URLs without the setting" do
+          get "/2025/live"
+
+          expect(response.body).to include('data-live-streams-yoyo-translate-magenta-hall-url-value=""')
+          expect(response.body).to include('data-live-streams-yoyo-translate-lime-hall-url-value=""')
+        end
       end
 
       context "when logged in and organizer" do

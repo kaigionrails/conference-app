@@ -78,6 +78,7 @@ interface ::_RbsRailsPathHelpers
   def admin_live_streams_path: (*untyped) -> ::String
   def new_admin_live_stream_path: (*untyped) -> ::String
   def admin_live_stream_path: (*untyped) -> ::String
+  def admin_yoyo_translate_setting_path: (*untyped) -> ::String
   def admin_signages_path: (*untyped) -> ::String
   def new_admin_signage_path: (*untyped) -> ::String
   def admin_signage_path: (*untyped) -> ::String
@@ -217,6 +218,7 @@ interface ::_RbsRailsPathHelpers
   def admin_live_streams_url: (*untyped) -> ::String
   def new_admin_live_stream_url: (*untyped) -> ::String
   def admin_live_stream_url: (*untyped) -> ::String
+  def admin_yoyo_translate_setting_url: (*untyped) -> ::String
   def admin_signages_url: (*untyped) -> ::String
   def new_admin_signage_url: (*untyped) -> ::String
   def admin_signage_url: (*untyped) -> ::String

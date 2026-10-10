@@ -319,6 +319,7 @@ ja:
       cannot_view_stream_in_venue: "会場内ではライブ配信を視聴できません。会場外のネットワークに接続してご覧ください。"
       share_with_hashtags: "ハッシュタグを付けて投稿、またはハッシュタグを共有"
       event_ended: "%{event_name} は終了しました。ご視聴ありがとうございました。"
+      yoyo_translate: "字幕を見る (YOYO translate)"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"
@@ -351,6 +352,7 @@ ja:
       webpush_subscription: "プッシュ通知設定"
       talk_bookmark: "ブックマーク"
       unread_announcement: "未読アナウンス"
+      yoyo_translate_setting: "YOYO translate 設定"
     errors:
       models:
         user:
@@ -358,6 +360,12 @@ ja:
             name:
               reserved: "は使用できません"
               invalid: "は英数字・ハイフン・アンダースコアのみ使用できます（先頭は英数字、39文字以内）"
+        yoyo_translate_setting:
+          attributes:
+            magenta_hall_url:
+              invalid: "は https:// で始まる URL を入力してください"
+            lime_hall_url:
+              invalid: "は https:// で始まる URL を入力してください"
     attributes:
       profile:
         name: "表示名"
@@ -408,6 +416,9 @@ ja:
       event:
         name: "イベント名"
         slug: "slug"
+      yoyo_translate_setting:
+        magenta_hall_url: "Magenta Hall URL"
+        lime_hall_url: "Lime Hall URL"
   time:
     formats:
       announcement_published_at: "%m/%d %H:%M 公開"

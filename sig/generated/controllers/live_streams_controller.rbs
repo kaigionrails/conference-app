@@ -3,6 +3,8 @@
 class LiveStreamsController < ApplicationController
   @live_stream: CloudflareStreamLiveStream
 
+  @yoyo_translate_setting: YoyoTranslateSetting?
+
   # @rbs return: void
   def index: () -> void
 
