@@ -63,6 +63,8 @@ interface ::_RbsRailsPathHelpers
   def admin_talks_path: (*untyped) -> ::String
   def edit_admin_talk_path: (*untyped) -> ::String
   def admin_talk_path: (*untyped) -> ::String
+  def edit_admin_talk_speaker_path: (*untyped) -> ::String
+  def admin_talk_speaker_path: (*untyped) -> ::String
   def admin_tito_tickets_path: (*untyped) -> ::String
   def admin_tito_ticket_path: (*untyped) -> ::String
   def admin_announcements_path: (*untyped) -> ::String
@@ -200,6 +202,8 @@ interface ::_RbsRailsPathHelpers
   def admin_talks_url: (*untyped) -> ::String
   def edit_admin_talk_url: (*untyped) -> ::String
   def admin_talk_url: (*untyped) -> ::String
+  def edit_admin_talk_speaker_url: (*untyped) -> ::String
+  def admin_talk_speaker_url: (*untyped) -> ::String
   def admin_tito_tickets_url: (*untyped) -> ::String
   def admin_tito_ticket_url: (*untyped) -> ::String
   def admin_announcements_url: (*untyped) -> ::String
