@@ -1,0 +1,9 @@
+# The faraday-multipart gem does not ship signatures. Only the constants this app uses are declared here.
+module Faraday
+  module Multipart
+    # The gem aliases this to Multipart::Post::UploadIO from multipart-post.
+    class FilePart
+      def initialize: (String | IO filename_or_io, String content_type, ?String? filename, ?Hash[String, String] opts) -> void
+    end
+  end
+end
