@@ -1,6 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 import Hls from "hls.js";
 
+// While the live input is not broadcasting, load it again every 10 seconds for up to 30 minutes.
+const RETRY_INTERVAL_MS = 10000;
+const RETRY_LIMIT = 180;
+
 export default class extends Controller {
   // Tabs, URL hashes and hashtags are named after the 2026 venues, Magenta Hall / Lime Hall.
   // The streams come from the Cloudflare live inputs named magenta-raw, magenta-interpretation,
@@ -24,6 +28,8 @@ export default class extends Controller {
     // Going back with Turbo Drive renders the page from its cache, which can still show the button.
     this.mutedByBrowser = false;
     this.unmuteButtonTarget.classList.add("hidden");
+    this.retryCount = 0;
+    this.atVenue = false;
 
     let currentHash = new URL(location.href).hash.replace("#", "");
     if (!Object.hasOwn(this.streams(), currentHash)) {currentHash = "magenta"}
@@ -35,6 +41,7 @@ export default class extends Controller {
 
   // Leaving the page with Turbo Drive does not stop hls.js, which keeps fetching the stream.
   disconnect() {
+    clearTimeout(this.retryTimer);
     this.hls?.destroy();
     this.hls = null;
   }
@@ -83,25 +90,10 @@ export default class extends Controller {
     }
     this.updateSelection(hall, audio);
 
-    // Stop the previous stream first, so a stream without URL leaves the video empty.
-    this.hls?.destroy();
-    this.hls = null;
-    video.removeAttribute("src");
-    video.load();
-
-    if (url) {
-      if (Hls.isSupported()) {
-        this.hls = new Hls();
-        this.hls.loadSource(url);
-        this.hls.attachMedia(video);
-        this.hls.on(Hls.Events.MANIFEST_PARSED, () => this.startPlayback(video));
-      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = url;
-        this.startPlayback(video);
-      } else {
-        console.log("HLS is not supported in this browser");
-      }
-    }
+    // The retries of the previous stream must not load it over this one.
+    clearTimeout(this.retryTimer);
+    this.retryCount = 0;
+    this.loadStream(video, url);
     this.updateUnmuteButton();
     if (hall === "magenta") {
       video.classList.remove("border-[var(--color-hall-lime)]");
@@ -115,6 +107,8 @@ export default class extends Controller {
 
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
+        this.atVenue = true;
+        clearTimeout(this.retryTimer);
         this.cannotViewStreamInVenueTarget.classList.remove("hidden");
         // Also remove the src, which a browser playing HLS natively keeps fetching even when hidden.
         this.hls?.destroy();
@@ -127,6 +121,51 @@ export default class extends Controller {
         // do nothing
       }
     })
+  }
+
+  // Stop the previous stream first, so a stream without URL leaves the video empty.
+  loadStream(video, url) {
+    this.hls?.destroy();
+    this.hls = null;
+    video.removeAttribute("src");
+    video.load();
+    if (!url) return;
+
+    if (Hls.isSupported()) {
+      this.hls = new Hls();
+      this.hls.loadSource(url);
+      this.hls.attachMedia(video);
+      this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        this.retryCount = 0;
+        this.startPlayback(video);
+      });
+      this.hls.on(Hls.Events.ERROR, (_event, data) => {
+        if (data.fatal) this.scheduleRetry(video, url);
+      });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = url;
+      this.startPlayback(video);
+    } else {
+      console.log("HLS is not supported in this browser");
+    }
+  }
+
+  // The live input answers 204 with no playlist while it is not broadcasting.
+  // Load it again every 10 seconds, so that the stream starts without a reload, for up to 30 minutes.
+  scheduleRetry(video, url) {
+    this.hls?.destroy();
+    this.hls = null;
+    if (this.atVenue) return;
+    if (this.retryCount >= RETRY_LIMIT) {
+      console.warn("Gave up retrying the stream; reload the page to try again");
+      return;
+    }
+    this.retryCount += 1;
+    console.warn(`Retrying the stream in ${RETRY_INTERVAL_MS / 1000} seconds (${this.retryCount}/${RETRY_LIMIT})`);
+    this.retryTimer = setTimeout(() => {
+      this.retryTimer = null;
+      this.loadStream(video, url);
+    }, RETRY_INTERVAL_MS);
   }
 
   // Browsers block autoplay with sound until the viewer interacts with the page, as on a reload.

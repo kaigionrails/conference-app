@@ -41,7 +41,9 @@ class CloudflareStreamLiveStream < ApplicationRecord
     save
   end
 
+  # The HLS URL of the live input itself, which plays only the ongoing broadcast.
+  # The URL of a video from the videos API plays its recording once the broadcast ends.
   def url
-    stream_videos_raw_response&.dig("result", 0, "playback", "hls")
+    stream_raw_response&.dig("result", "playback", "hls")
   end
 end
