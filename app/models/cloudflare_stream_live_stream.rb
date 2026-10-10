@@ -15,12 +15,13 @@ class CloudflareStreamLiveStream < ApplicationRecord
     live_stream.save
   end
 
-  def update_stream
+  # @rbs destroy_when_gone: bool
+  def update_stream(destroy_when_gone: true)
     client = CloudflareApiClient.new
     live_response = client.retrieve_live_input(uid)
     if !live_response["success"]
       # maybe the live input has gone.
-      destroy
+      destroy if destroy_when_gone
       return false
     end
 

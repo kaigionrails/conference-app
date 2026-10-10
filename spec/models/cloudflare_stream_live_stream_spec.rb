@@ -153,6 +153,11 @@ RSpec.describe CloudflareStreamLiveStream, type: :model do
         live_stream.update_stream
         expect(CloudflareStreamLiveStream.where(uid: "uidfortest").count).to eq 0
       end
+
+      it "keeps the CloudflareStreamLiveStream with destroy_when_gone: false" do
+        expect(live_stream.update_stream(destroy_when_gone: false)).to eq false
+        expect(CloudflareStreamLiveStream.where(uid: "uidfortest").count).to eq 1
+      end
     end
   end
 

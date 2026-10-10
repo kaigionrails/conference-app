@@ -5,7 +5,8 @@ class CloudflareStreamLiveStream < ApplicationRecord
   # @rbs return: boolish
   def self.create_by_stream_uid: (String uid) -> boolish
 
-  def update_stream: () -> untyped
+  # @rbs destroy_when_gone: bool
+  def update_stream: (?destroy_when_gone: bool) -> untyped
 
   def retrieve_videos: () -> untyped
 

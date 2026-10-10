@@ -1,8 +1,9 @@
 <h2 h2 class="font-bold text-xl mb-8">Live</h2>
 
 <div class="pr-8">
-  <div class="mb-8">
-  <%= link_to "Create new live stream", new_admin_live_stream_path, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+  <div class="mb-8 flex gap-4 items-center">
+    <%= link_to "Create new live stream", new_admin_live_stream_path, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+    <%= button_to "Update all live streams from API", admin_live_stream_bulk_update_path, method: :post, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
   </div>
   <div class="mb-8">
     <h3 class="font-bold text-lg">YOYO Translate (<%= @yoyo_translate_setting.event.name %>)</h3>
