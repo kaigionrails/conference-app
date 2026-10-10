@@ -61,6 +61,50 @@ RSpec.describe "LiveStreams", type: :request do
           expect(response.body).to include('data-live-streams-yoyo-translate-magenta-hall-url-value=""')
           expect(response.body).to include('data-live-streams-yoyo-translate-lime-hall-url-value=""')
         end
+
+        it "passes the streams of the live inputs found by their names to the page" do
+          {
+            "kaigionrails-2026-magenta-raw" => "https://example.com/magenta-raw.m3u8",
+            "kaigionrails-2026-magenta-interpretation" => "https://example.com/magenta-interpretation.m3u8",
+            "kaigionrails-2026-lime-raw" => "https://example.com/lime-raw.m3u8",
+            "kaigionrails-2026-lime-interpretation" => "https://example.com/lime-interpretation.m3u8"
+          }.each do |name, hls|
+            FactoryBot.create(
+              :cloudflare_stream_live_stream,
+              event: event,
+              name: name,
+              stream_raw_response: {"result" => {"playback" => {"hls" => hls}}},
+              stream_videos_raw_response: {"result" => [{"playback" => {"hls" => "https://example.com/recording.m3u8"}}]}
+            )
+          end
+
+          get "/2025/live"
+
+          expect(response.body).to include('data-live-streams-magenta-raw-value="https://example.com/magenta-raw.m3u8"')
+          expect(response.body).to include('data-live-streams-magenta-interpretation-value="https://example.com/magenta-interpretation.m3u8"')
+          expect(response.body).to include('data-live-streams-lime-raw-value="https://example.com/lime-raw.m3u8"')
+          expect(response.body).to include('data-live-streams-lime-interpretation-value="https://example.com/lime-interpretation.m3u8"')
+          # The recording of the last broadcast is not played.
+          expect(response.body).not_to include("https://example.com/recording.m3u8")
+        end
+
+        it "passes empty streams without the live inputs" do
+          get "/2025/live"
+
+          expect(response.body).to include('data-live-streams-magenta-raw-value=""')
+          expect(response.body).to include('data-live-streams-magenta-interpretation-value=""')
+          expect(response.body).to include('data-live-streams-lime-raw-value=""')
+          expect(response.body).to include('data-live-streams-lime-interpretation-value=""')
+        end
+
+        it "passes an empty stream for a live input whose response has no playback URL" do
+          FactoryBot.create(:cloudflare_stream_live_stream, event: event, name: "kaigionrails-2026-magenta-raw")
+
+          get "/2025/live"
+
+          expect(response).to have_http_status(200)
+          expect(response.body).to include('data-live-streams-magenta-raw-value=""')
+        end
       end
 
       context "when logged in and organizer" do

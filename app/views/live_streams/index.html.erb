@@ -1,30 +1,38 @@
 <div class="w-full flex flex-col items-center grow">
   <div data-controller="live-streams"
-    data-live-streams-day1-magenta-ja-value="<%=  @live_streams[:day1][:magenta_ja] %>"
-    data-live-streams-day1-lime-ja-value="<%= @live_streams[:day1][:lime_ja] %>"
-    data-live-streams-day2-magenta-ja-value="<%=  @live_streams[:day2][:magenta_ja] %>"
-    data-live-streams-day2-magenta-raw-value="<%= @live_streams[:day2][:magenta_raw] %>"
-    data-live-streams-day2-lime-ja-value="<%= @live_streams[:day2][:lime_ja] %>"
+    data-live-streams-magenta-raw-value="<%= @live_streams[:magenta_raw] %>"
+    data-live-streams-magenta-interpretation-value="<%= @live_streams[:magenta_interpretation] %>"
+    data-live-streams-lime-raw-value="<%= @live_streams[:lime_raw] %>"
+    data-live-streams-lime-interpretation-value="<%= @live_streams[:lime_interpretation] %>"
     data-live-streams-test-value="<%= @live_streams[:test] %>"
     data-live-streams-yoyo-translate-magenta-hall-url-value="<%= @yoyo_translate_setting&.magenta_hall_url %>"
     data-live-streams-yoyo-translate-lime-hall-url-value="<%= @yoyo_translate_setting&.lime_hall_url %>"
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
     data-live-streams-selected-tab-value="magenta"
   >
-    <div>
-      <div class="flex space-x-6 justify-center pt-6">
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToMagentaRaw" id="magenta-hall-raw-button">Magenta Hall (Venue sound)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToMagenta" id="magenta-hall-ja-button">Magenta Hall (JA)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToLime" id="lime-hall-button">Lime Hall</button>
-      </div>
-    </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
-      <video id="video" src="" autoplay muted controls class="aspect-video lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm"></video>
+      <div role="tablist" aria-label="<%= t(".halls") %>" class="flex gap-1 px-2">
+        <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-magenta)] aria-selected:bg-[var(--color-hall-magenta)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="magenta" data-action="live-streams#switchHall">Magenta Hall</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-lime)] aria-selected:bg-[var(--color-hall-lime)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="lime" data-action="live-streams#switchHall">Lime Hall</button>
+      </div>
+      <div class="relative">
+        <video id="video" src="" autoplay playsinline controls class="aspect-video object-cover lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm" data-action="volumechange->live-streams#volumeChanged"></video>
+        <button type="button" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/70 px-5 py-3 text-white font-bold text-base md:text-xl cursor-pointer" data-live-streams-target="unmuteButton" data-action="live-streams#unmute">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="inline-block align-middle size-6 md:size-8 mr-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+          </svg>
+          <span class="align-middle"><%= t(".unmute") %></span>
+        </button>
+      </div>
       <div id="cannot-view-stream-in-venue" data-live-streams-target="cannotViewStreamInVenue" class="hidden">
         <p><%= t(".cannot_view_stream_in_venue") %></p>
       </div>
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mb-3">
+      <div role="group" aria-label="<%= t(".audio") %>" class="inline-flex ml-2 mt-1 mb-2 rounded-full border-2 border-[var(--color-text-primary)] overflow-hidden text-xs md:text-sm font-bold">
+        <button type="button" aria-pressed="false" class="px-3 py-1 cursor-pointer aria-pressed:bg-[var(--color-text-primary)] aria-pressed:text-[var(--color-text-secondary)]" data-live-streams-target="audioButton" data-live-streams-audio-param="raw" data-action="live-streams#switchAudio">Venue</button>
+        <button type="button" aria-pressed="false" class="px-3 py-1 cursor-pointer aria-pressed:bg-[var(--color-text-primary)] aria-pressed:text-[var(--color-text-secondary)]" data-live-streams-target="audioButton" data-live-streams-audio-param="interpretation" data-action="live-streams#switchAudio">Interpretation</button>
+      </div>
       <div class="flex flex-row space-x-2 justify-end text-2xl items-center">
         <p class="text-sm block"><%= t(".share_with_hashtags") %></p>
         <%= link_to "\u{1D54F}", "", class: "block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded text-center", data: { "live-streams-target" => "shareToX" }, target: "_blank", rel: "noopener" %>

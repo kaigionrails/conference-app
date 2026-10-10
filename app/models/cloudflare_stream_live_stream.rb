@@ -15,12 +15,13 @@ class CloudflareStreamLiveStream < ApplicationRecord
     live_stream.save
   end
 
-  def update_stream
+  # @rbs destroy_when_gone: bool
+  def update_stream(destroy_when_gone: true)
     client = CloudflareApiClient.new
     live_response = client.retrieve_live_input(uid)
     if !live_response["success"]
       # maybe the live input has gone.
-      destroy
+      destroy if destroy_when_gone
       return false
     end
 
@@ -41,7 +42,9 @@ class CloudflareStreamLiveStream < ApplicationRecord
     save
   end
 
+  # The HLS URL of the live input itself, which plays only the ongoing broadcast.
+  # The URL of a video from the videos API plays its recording once the broadcast ends.
   def url
-    stream_videos_raw_response.dig("result", 0, "playback", "hls")
+    stream_raw_response&.dig("result", "playback", "hls")
   end
 end

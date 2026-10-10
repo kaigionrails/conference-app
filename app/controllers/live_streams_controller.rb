@@ -23,16 +23,11 @@ class LiveStreamsController < ApplicationController
     end
     # FIXME: too hardcoded...
     @live_streams = {
-      day1: {
-        magenta_ja: live_streams.detect { |s| s.name.include?("day1-magenta-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        lime_ja: live_streams.detect { |s| s.name.include?("day1-lime-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
-      },
-      day2: {
-        magenta_ja: live_streams.detect { |s| s.name.include?("day2-magenta-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        magenta_raw: live_streams.detect { |s| s.name.include?("day2-magenta-raw") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || "",
-        lime_ja: live_streams.detect { |s| s.name.include?("day2-lime-ja") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
-      },
-      test: live_streams.detect { |s| s.name.include?("test") }&.stream_videos_raw_response&.dig("result", 0, "playback", "hls") || ""
+      magenta_raw: live_streams.detect { |s| s.name.include?("magenta-raw") }&.url || "",
+      magenta_interpretation: live_streams.detect { |s| s.name.include?("magenta-interpretation") }&.url || "",
+      lime_raw: live_streams.detect { |s| s.name.include?("lime-raw") }&.url || "",
+      lime_interpretation: live_streams.detect { |s| s.name.include?("lime-interpretation") }&.url || "",
+      test: live_streams.detect { |s| s.name.include?("test") }&.url || ""
     }
     @yoyo_translate_setting = @event.yoyo_translate_setting
   end

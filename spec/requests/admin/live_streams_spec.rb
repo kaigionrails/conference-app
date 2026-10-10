@@ -16,5 +16,16 @@ RSpec.describe "Admin::LiveStreams", type: :request do
       expect(response.body).to include('value="https://example.com/magenta"')
       expect(response.body).to include('value="https://example.com/lime"')
     end
+
+    it "lists the live streams in the order of their ids even after one is updated" do
+      first = FactoryBot.create(:cloudflare_stream_live_stream, event: event, name: "kaigionrails-2026-magenta-raw")
+      FactoryBot.create(:cloudflare_stream_live_stream, event: event, name: "kaigionrails-2026-lime-raw")
+      # Like "Update Live Stream from API", which moves the row to the end of the table in PostgreSQL.
+      first.update!(name: "kaigionrails-2026-magenta-raw updated")
+
+      get admin_live_streams_path
+
+      expect(response.body.index("kaigionrails-2026-magenta-raw updated")).to be < response.body.index("kaigionrails-2026-lime-raw")
+    end
   end
 end

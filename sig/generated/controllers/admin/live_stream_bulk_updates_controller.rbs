@@ -1,0 +1,9 @@
+# Generated from app/controllers/admin/live_stream_bulk_updates_controller.rb with RBS::Inline
+
+class Admin::LiveStreamBulkUpdatesController < AdminController
+  # Updates every live stream on the Live page from the Cloudflare API.
+  # Unlike the update of each live stream, a failure keeps the live stream,
+  # so that an outage or an expired token of the API does not remove them all.
+  # @rbs return: void
+  def create: () -> void
+end
