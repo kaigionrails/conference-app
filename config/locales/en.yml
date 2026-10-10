@@ -326,6 +326,7 @@ en:
       yoyo_translate: "Subtitles (YOYO translate)"
       halls: "Hall"
       audio: "Audio"
+      unmute: "Unmute"
   sample_webpush_notifications:
     create:
       title: "Sample push notification"

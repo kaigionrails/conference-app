@@ -18,9 +18,13 @@ export default class extends Controller {
     yoyoTranslateLimeHallUrl: { type: String, default: "" },
   };
 
-  static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink", "hallTab", "audioButton"];
+  static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink", "hallTab", "audioButton", "unmuteButton"];
 
   connect() {
+    // Going back with Turbo Drive renders the page from its cache, which can still show the button.
+    this.mutedByBrowser = false;
+    this.unmuteButtonTarget.classList.add("hidden");
+
     let currentHash = new URL(location.href).hash.replace("#", "");
     if (!Object.hasOwn(this.streams(), currentHash)) {currentHash = "magenta"}
 
@@ -90,12 +94,15 @@ export default class extends Controller {
         this.hls = new Hls();
         this.hls.loadSource(url);
         this.hls.attachMedia(video);
+        this.hls.on(Hls.Events.MANIFEST_PARSED, () => this.startPlayback(video));
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = url;
+        this.startPlayback(video);
       } else {
         console.log("HLS is not supported in this browser");
       }
     }
+    this.updateUnmuteButton();
     if (hall === "magenta") {
       video.classList.remove("border-[var(--color-hall-lime)]");
       video.classList.add("border-[var(--color-hall-magenta)]");
@@ -109,13 +116,53 @@ export default class extends Controller {
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
         this.cannotViewStreamInVenueTarget.classList.remove("hidden");
+        // Also remove the src, which a browser playing HLS natively keeps fetching even when hidden.
         this.hls?.destroy();
         this.hls = null;
+        video.removeAttribute("src");
+        video.load();
         video.classList.add("hidden");
+        this.unmuteButtonTarget.classList.add("hidden");
       } else {
         // do nothing
       }
     })
+  }
+
+  // Browsers block autoplay with sound until the viewer interacts with the page, as on a reload.
+  // Then play it muted, and show the button to unmute.
+  startPlayback(video) {
+    video.play().catch((error) => {
+      // AbortError comes when the stream is switched before it starts playing.
+      if (error.name !== "NotAllowedError") return;
+      video.muted = true;
+      this.mutedByBrowser = true;
+      this.updateUnmuteButton();
+      video.play().catch(() => {});
+    });
+  }
+
+  unmute() {
+    const video = document.getElementById("video");
+    video.muted = false;
+    if (video.paused) {
+      video.play().catch(() => {});
+    }
+  }
+
+  // Unmuting with the button or the controls of the video comes here.
+  volumeChanged() {
+    if (!document.getElementById("video").muted) {
+      this.mutedByBrowser = false;
+      this.updateUnmuteButton();
+    }
+  }
+
+  // Shown only while the browser keeps the video muted, and not over a stream without URL.
+  // Viewers who mute the video themselves do not see it.
+  updateUnmuteButton() {
+    const visible = this.mutedByBrowser && Boolean(this.streams()[this.currentStream].url);
+    this.unmuteButtonTarget.classList.toggle("hidden", !visible);
   }
 
   async whereAmI() {

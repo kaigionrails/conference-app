@@ -15,7 +15,15 @@
         <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-magenta)] aria-selected:bg-[var(--color-hall-magenta)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="magenta" data-action="live-streams#switchHall">Magenta Hall</button>
         <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-lime)] aria-selected:bg-[var(--color-hall-lime)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="lime" data-action="live-streams#switchHall">Lime Hall</button>
       </div>
-      <video id="video" src="" autoplay muted controls class="aspect-video object-cover lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm"></video>
+      <div class="relative">
+        <video id="video" src="" autoplay playsinline controls class="aspect-video object-cover lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm" data-action="volumechange->live-streams#volumeChanged"></video>
+        <button type="button" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/70 px-5 py-3 text-white font-bold text-base md:text-xl cursor-pointer" data-live-streams-target="unmuteButton" data-action="live-streams#unmute">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="inline-block align-middle size-6 md:size-8 mr-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+          </svg>
+          <span class="align-middle"><%= t(".unmute") %></span>
+        </button>
+      </div>
       <div id="cannot-view-stream-in-venue" data-live-streams-target="cannotViewStreamInVenue" class="hidden">
         <p><%= t(".cannot_view_stream_in_venue") %></p>
       </div>

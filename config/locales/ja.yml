@@ -322,6 +322,7 @@ ja:
       yoyo_translate: "字幕を見る (YOYO translate)"
       halls: "ホール"
       audio: "音声"
+      unmute: "音声をオンにする"
   sample_webpush_notifications:
     create:
       title: "プッシュ通知のサンプルです"
