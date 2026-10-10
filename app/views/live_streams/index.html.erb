@@ -10,21 +10,21 @@
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
     data-live-streams-selected-tab-value="magenta"
   >
-    <div>
-      <div class="grid grid-cols-[auto_auto] gap-x-2 md:gap-x-6 gap-y-2 justify-center px-4 pt-6">
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="magenta">Magenta Hall (Venue)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="magenta-interpretation">Magenta Hall (Interpretation)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="lime">Lime Hall (Venue)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="lime-interpretation">Lime Hall (Interpretation)</button>
-      </div>
-    </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
-      <video id="video" src="" autoplay muted controls class="aspect-video lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm"></video>
+      <div role="tablist" aria-label="<%= t(".halls") %>" class="flex gap-1 px-2">
+        <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-magenta)] aria-selected:bg-[var(--color-hall-magenta)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="magenta" data-action="live-streams#switchHall">Magenta Hall</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="video" class="px-4 py-2 rounded-t-lg font-bold text-sm md:text-base cursor-pointer text-[var(--color-hall-lime)] aria-selected:bg-[var(--color-hall-lime)] aria-selected:text-black" data-live-streams-target="hallTab" data-live-streams-hall-param="lime" data-action="live-streams#switchHall">Lime Hall</button>
+      </div>
+      <video id="video" src="" autoplay muted controls class="aspect-video object-cover lg:min-w-[640px] md:max-w-full md:min-w-0 sm:min-w-0 border-2 rounded-sm"></video>
       <div id="cannot-view-stream-in-venue" data-live-streams-target="cannotViewStreamInVenue" class="hidden">
         <p><%= t(".cannot_view_stream_in_venue") %></p>
       </div>
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mb-3">
+      <div role="group" aria-label="<%= t(".audio") %>" class="inline-flex ml-2 mt-1 mb-2 rounded-full border-2 border-[var(--color-text-primary)] overflow-hidden text-xs md:text-sm font-bold">
+        <button type="button" aria-pressed="false" class="px-3 py-1 cursor-pointer aria-pressed:bg-[var(--color-text-primary)] aria-pressed:text-[var(--color-text-secondary)]" data-live-streams-target="audioButton" data-live-streams-audio-param="raw" data-action="live-streams#switchAudio">Venue</button>
+        <button type="button" aria-pressed="false" class="px-3 py-1 cursor-pointer aria-pressed:bg-[var(--color-text-primary)] aria-pressed:text-[var(--color-text-secondary)]" data-live-streams-target="audioButton" data-live-streams-audio-param="interpretation" data-action="live-streams#switchAudio">Interpretation</button>
+      </div>
       <div class="flex flex-row space-x-2 justify-end text-2xl items-center">
         <p class="text-sm block"><%= t(".share_with_hashtags") %></p>
         <%= link_to "\u{1D54F}", "", class: "block w-[30px] h-[30px] bg-[var(--color-text-primary)] text-[var(--color-text-secondary)] rounded text-center", data: { "live-streams-target" => "shareToX" }, target: "_blank", rel: "noopener" %>

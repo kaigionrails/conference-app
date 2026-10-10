@@ -7,6 +7,7 @@ export default class extends Controller {
   // lime-raw and lime-interpretation, which are used on every day of the event.
   static values = {
     selectedTab: { type: String, default: "magenta" },
+    selectedAudio: { type: String, default: "raw" },
     magentaRaw: { type: String, default: "" },
     magentaInterpretation: { type: String, default: "" },
     limeRaw: { type: String, default: "" },
@@ -17,7 +18,7 @@ export default class extends Controller {
     yoyoTranslateLimeHallUrl: { type: String, default: "" },
   };
 
-  static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink"];
+  static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink", "hallTab", "audioButton"];
 
   connect() {
     let currentHash = new URL(location.href).hash.replace("#", "");
@@ -28,25 +29,55 @@ export default class extends Controller {
     this.playStream(currentHash);
   }
 
-  // URL hash => the hall of the stream and its URL. #magenta and #lime are the venue sound.
+  // Leaving the page with Turbo Drive does not stop hls.js, which keeps fetching the stream.
+  disconnect() {
+    this.hls?.destroy();
+    this.hls = null;
+  }
+
+  // URL hash => the hall of the stream, its audio and its URL. #magenta and #lime are the venue sound.
   streams() {
     return {
-      "magenta": { hall: "magenta", url: this.magentaRawValue },
-      "magenta-interpretation": { hall: "magenta", url: this.magentaInterpretationValue },
-      "lime": { hall: "lime", url: this.limeRawValue },
-      "lime-interpretation": { hall: "lime", url: this.limeInterpretationValue },
-      "test": { hall: "magenta", url: this.testValue },
+      "magenta": { hall: "magenta", audio: "raw", url: this.magentaRawValue },
+      "magenta-interpretation": { hall: "magenta", audio: "interpretation", url: this.magentaInterpretationValue },
+      "lime": { hall: "lime", audio: "raw", url: this.limeRawValue },
+      "lime-interpretation": { hall: "lime", audio: "interpretation", url: this.limeInterpretationValue },
+      "test": { hall: "magenta", audio: null, url: this.testValue },
     };
   }
 
-  switchStream({ params: { stream } }) {
+  // Switching the hall keeps the audio, and switching the audio keeps the hall.
+  switchHall({ params: { hall } }) {
+    this.switchTo(this.streamOf(hall, this.selectedAudioValue));
+  }
+
+  switchAudio({ params: { audio } }) {
+    this.switchTo(this.streamOf(this.selectedTabValue, audio));
+  }
+
+  streamOf(hall, audio) {
+    return audio === "interpretation" ? `${hall}-interpretation` : hall;
+  }
+
+  switchTo(stream) {
+    if (stream === this.currentStream) {
+      return;
+    }
+    // Keep history.state, where Turbo Drive puts what it needs to restore the page on going back.
+    history.replaceState(history.state, "", `#${stream}`);
     this.playStream(stream);
   }
 
   playStream(stream) {
-    const { hall, url } = this.streams()[stream];
+    const { hall, audio, url } = this.streams()[stream];
     const video = document.getElementById("video");
+    this.currentStream = stream;
     this.selectedTabValue = hall;
+    // #test has no audio, so the audio chosen before is kept.
+    if (audio) {
+      this.selectedAudioValue = audio;
+    }
+    this.updateSelection(hall, audio);
 
     // Stop the previous stream first, so a stream without URL leaves the video empty.
     this.hls?.destroy();
@@ -100,6 +131,15 @@ export default class extends Controller {
     } else {
       return "at-venue";
     }
+  }
+
+  updateSelection(hall, audio) {
+    this.hallTabTargets.forEach((tab) => {
+      tab.setAttribute("aria-selected", String(tab.dataset.liveStreamsHallParam === hall));
+    });
+    this.audioButtonTargets.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.liveStreamsAudioParam === audio));
+    });
   }
 
   updateShareTarget() {
