@@ -10,7 +10,7 @@ class Admin::YoyoTranslateSettingsController < AdminController
     if @yoyo_translate_setting.update(yoyo_translate_setting_params)
       redirect_to admin_live_streams_path
     else
-      @cloudflare_stream_live_streams = CloudflareStreamLiveStream.all
+      @cloudflare_stream_live_streams = CloudflareStreamLiveStream.order(:id)
       render "admin/live_streams/index", status: :unprocessable_content
     end
   end

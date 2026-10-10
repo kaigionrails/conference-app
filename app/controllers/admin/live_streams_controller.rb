@@ -5,7 +5,7 @@ class Admin::LiveStreamsController < AdminController
 
   # @rbs return: void
   def index
-    @cloudflare_stream_live_streams = CloudflareStreamLiveStream.all
+    @cloudflare_stream_live_streams = CloudflareStreamLiveStream.order(:id)
     event = OngoingEvent.first!.event
     # Not build_yoyo_translate_setting, which would detach an existing setting from the event.
     @yoyo_translate_setting = event.yoyo_translate_setting || YoyoTranslateSetting.new(event: event)
