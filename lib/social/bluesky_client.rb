@@ -17,7 +17,7 @@ module Social
         "text" => text,
         "createdAt" => Time.current.iso8601(3),
         "langs" => langs
-      }
+      } #: Hash[String, untyped]
 
       if media.any?
         blobs = media.map { |m| upload_blob(m.file.blob) }

@@ -6,7 +6,7 @@ class DigestedAssetsPathResolver
     @manifest = if File.exist?(manifest_path)
       JSON.parse(File.read(manifest_path))
     else
-      {}
+      {} #: Hash[String, String]
     end
   end
 

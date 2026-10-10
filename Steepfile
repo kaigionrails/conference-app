@@ -5,6 +5,7 @@ target :lib do
   library "yaml"
 
   check "app"
+  check "lib"
 end
 
 # target :test do

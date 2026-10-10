@@ -34,10 +34,11 @@ class OriginVerification
     forwarded_for = env["HTTP_X_FORWARDED_FOR"] || env["REMOTE_ADDR"]
     Rails.logger.warn("OriginVerification: rejected path=#{request.path} forwarded_for=#{forwarded_for}")
 
+    body = [] #: Array[String]
     if request.get? || request.head?
-      [301, {"location" => "#{@application_url}#{request.fullpath}"}, []]
+      [301, {"location" => "#{@application_url}#{request.fullpath}"}, body]
     else
-      [403, {"content-type" => "text/plain"}, []]
+      [403, {"content-type" => "text/plain"}, body]
     end
   end
 end

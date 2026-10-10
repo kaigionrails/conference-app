@@ -1,0 +1,8 @@
+module Faraday
+  class Response
+    # NOTE: gem_rbs_collection declares body as String, but the response middleware decides its type.
+    #       With `response :json` it is the parsed JSON, so an untyped overload is put in front.
+    def body: () -> untyped
+            | ...
+  end
+end
