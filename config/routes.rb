@@ -61,7 +61,9 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show] do
       resources :profile_badges_profiles, only: [:new, :create]
     end
-    resources :talks, only: [:index, :show, :edit, :update]
+    resources :talks, only: [:index, :show, :edit, :update] do
+      resources :speakers, only: [:edit, :update]
+    end
     resources :tito_tickets, only: [:index, :show]
     resources :sponsor_qr_codes, only: [:index]
     resource :sponsor_booth_qr_card_template, only: [:update]

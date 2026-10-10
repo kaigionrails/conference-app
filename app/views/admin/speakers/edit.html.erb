@@ -1,0 +1,27 @@
+<h2 class="font-bold text-xl mb-2">Edit speaker 「<%= @speaker.name_was %>」 (id:<%= @speaker.id %>)</h2>
+<p class="mb-2">Changes apply to every talk of this speaker.</p>
+<%= link_to "Back", admin_talk_path(@talk), class: "block underline mb-8" %>
+<div>
+  <h3 class="font-bold text-lg mb-2"><%= Speaker.human_attribute_name(:slug) %></h3>
+  <p class="mb-4"><%= @speaker.slug %></p>
+  <h3 class="font-bold text-lg mb-2"><%= Speaker.human_attribute_name(:avatar) %></h3>
+  <%= image_tag @speaker.avatar_image_url, class: "rounded-sm mb-8" %>
+  <% if @speaker.errors.any? %>
+    <ul class="mb-4 text-sm text-red-700">
+      <% @speaker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_with model: @speaker, url: admin_talk_speaker_path(@talk, @speaker) do |f| %>
+    <%= f.label :name, class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :name, class: "block rounded-sm border-1 border-gray-400 mb-4 w-[40rem]" %>
+    <%= f.label :github_username, class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :github_username, class: "block rounded-sm border-1 border-gray-400 mb-4" %>
+    <%= f.label :gravatar_hash, class: "block text-lg font-bold mb-2" %>
+    <%= f.text_field :gravatar_hash, class: "block rounded-sm border-1 border-gray-400 mb-4" %>
+    <%= f.label :bio, class: "block text-lg font-bold mb-2" %>
+    <%= f.text_area :bio, size: "100x20", class: "block rounded-sm border-1 border-gray-400 mb-8" %>
+    <%= f.submit class: "block border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+  <% end %>
+</div>

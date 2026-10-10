@@ -1,0 +1,15 @@
+# Generated from app/controllers/admin/speakers_controller.rb with RBS::Inline
+
+class Admin::SpeakersController < AdminController
+  @talk: Talk
+
+  @speaker: Speaker
+
+  # @rbs return: void
+  def edit: () -> void
+
+  # @rbs return: void
+  def update: () -> void
+
+  private def speaker_params: () -> untyped
+end
