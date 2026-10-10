@@ -67,6 +67,9 @@ RSpec.describe "Admin::Speakers", type: :request do
           gravatar_hash: "0123456789abcdef0123456789abcdef",
           bio: "Creator of Ruby on Rails."
         )
+
+        follow_redirect!
+        expect(response.body).to include("Update succeeded")
       end
 
       it "renders the form again with 422 when the name is blank" do
@@ -74,6 +77,10 @@ RSpec.describe "Admin::Speakers", type: :request do
           patch admin_talk_speaker_path(talk, speaker), params: {speaker: {name: ""}}
         }.not_to change { speaker.reload.name }
         expect(response).to have_http_status(:unprocessable_content)
+        expect(response.body).to include("Update failed")
+
+        get admin_talks_path
+        expect(response.body).not_to include("Update failed")
       end
 
       it "does not update a speaker of another talk" do
