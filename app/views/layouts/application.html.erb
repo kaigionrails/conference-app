@@ -20,7 +20,7 @@
   <body class="theme-2026 bg-theme-background w-full pb-safe">
     <%= render partial: "layouts/header_nav" %>
     <% flash.each do |message_type, message| %>
-      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>"><%# MEMO: relative and z-10 is for 2026's background image %>
+      <div class="py-3 px-5 mb-4 relative z-10 <%= message_type_style(message_type) %>" data-turbo-temporary><%# MEMO: relative and z-10 is for 2026's background image %>
         <%= message %>
       </div>
     <% end %>

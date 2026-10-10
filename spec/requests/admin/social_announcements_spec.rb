@@ -43,6 +43,10 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       announcement = SocialAnnouncement.last
       expect(announcement.created_by).to eq(admin)
       expect(response).to redirect_to(admin_social_announcement_path(announcement))
+
+      follow_redirect!
+      expect(response.body.scan(%(id="toasts")).size).to eq(1)
+      expect(response.body.scan(%(data-controller="admin--toast")).size).to eq(1)
     end
   end
 
@@ -97,7 +101,7 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       expect(text.reload.body).to eq("改稿")
     end
 
-    it "replaces the column and appends a toast on a Turbo Stream save" do
+    it "replaces the column and prepends a toast on a Turbo Stream save" do
       post admin_social_announcement_texts_path(announcement), params: {social_announcement_text: {locale: "ja", body: "初稿"}}, headers: turbo_stream_headers
       expect(response.media_type).to eq("text/vnd.turbo-stream.html")
       expect(response.body).to include("social_announcement_text_ja")
@@ -192,7 +196,7 @@ RSpec.describe "Admin::SocialAnnouncements", type: :request do
       expect(announcement.media.count).to eq(0)
     end
 
-    it "replaces the card and appends a toast on a Turbo Stream update" do
+    it "replaces the card and prepends a toast on a Turbo Stream update" do
       medium = FactoryBot.create(:social_announcement_media, social_announcement: announcement)
       patch admin_social_announcement_medium_path(announcement, medium), params: {social_announcement_media: {alt_text_ja: "new alt"}}, headers: turbo_stream_headers
       expect(response.media_type).to eq("text/vnd.turbo-stream.html")

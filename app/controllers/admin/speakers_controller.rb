@@ -13,8 +13,10 @@ class Admin::SpeakersController < AdminController
     @talk = Talk.find(params[:talk_id])
     @speaker = @talk.speakers.find(params[:id])
     if @speaker.update(**speaker_params)
+      flash[:success] = "Update succeeded"
       redirect_to admin_talk_path(@talk)
     else
+      flash.now[:alert] = "Update failed"
       # Turbo Drive renders a response to a form submission only when it is an error.
       render :edit, status: :unprocessable_content
     end

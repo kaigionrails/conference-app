@@ -50,6 +50,11 @@ RSpec.describe "Admin::Events", type: :request do
         }
         post admin_events_path, params: {event: event_param}
         expect(Event.find_by(slug: "2001")).to be_nil
+        expect(response).to have_http_status(:unprocessable_content)
+        expect(response.body).to include("Create failed")
+
+        get admin_events_path
+        expect(response.body).not_to include("Create failed")
       end
     end
   end
@@ -67,10 +72,16 @@ RSpec.describe "Admin::Events", type: :request do
         event.reload
         expect(event.name).to eq("Kaigi on Rails 2001")
         expect(event.start_date.in_time_zone("Tokyo")).to eq(Time.zone.parse("2001-01-01 00:00:00 +0900"))
+
+        follow_redirect!
+        expect(response.body).to include(%(id="toasts"))
+        expect(response.body).to include("Update succeeded")
       end
     end
 
     context "with invalid params" do
+      let!(:ongoing_event) { FactoryBot.create(:ongoing_event, event: event) }
+
       it "should failed to update event" do
         event_param = {
           name: "Kaigi on Rails 2001",
@@ -82,6 +93,12 @@ RSpec.describe "Admin::Events", type: :request do
         event.reload
         expect(event.name).to eq("Kaigi on Rails 2000")
         expect(event.start_date.in_time_zone("Tokyo")).to eq(Time.zone.parse("2000-01-01 00:00:00 +0900"))
+        expect(response).to have_http_status(:unprocessable_content)
+        expect(response.body).to include("Update failed")
+        expect(response.body).to include(admin_ongoing_event_path(ongoing_event))
+
+        get admin_events_path
+        expect(response.body).not_to include("Update failed")
       end
     end
   end

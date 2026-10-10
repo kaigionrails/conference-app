@@ -40,8 +40,8 @@ class Admin::SocialAnnouncementTextsController < AdminController
           turbo_stream.replace("social_announcement_text_#{text.locale}",
             partial: "admin/social_announcements/text_column",
             locals: {announcement: announcement, locale: text.locale, text: text, errors: no_errors}),
-          turbo_stream.append("toasts",
-            partial: "admin/social_announcements/toast",
+          turbo_stream.prepend("toasts",
+            partial: "admin/toast",
             locals: {type: :success, message: "Text (#{text.locale}) saved"})
         ]
       end

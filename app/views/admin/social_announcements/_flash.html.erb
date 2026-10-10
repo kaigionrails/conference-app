@@ -1,6 +1,0 @@
-<%# flash も Turbo Stream 経由の保存通知 (turbo_stream.append "toasts") も同じコンテナに積む %>
-<div id="toasts" class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
-  <% flash.each do |message_type, message| %>
-    <%= render "admin/social_announcements/toast", type: message_type, message: message %>
-  <% end %>
-</div>

@@ -37,8 +37,8 @@ class Admin::EventsController < AdminController
       flash[:success] = "Create succeeded"
       redirect_to admin_event_path(@event)
     else
-      flash[:alert] = "Create failed"
-      render :new
+      flash.now[:alert] = "Create failed"
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -54,8 +54,9 @@ class Admin::EventsController < AdminController
       flash[:success] = "Update succeeded"
       redirect_to admin_event_path(@event)
     else
-      flash[:alert] = "Update failed"
-      render :edit
+      flash.now[:alert] = "Update failed"
+      @ongoing_event = OngoingEvent.first
+      render :edit, status: :unprocessable_content
     end
   end
 
