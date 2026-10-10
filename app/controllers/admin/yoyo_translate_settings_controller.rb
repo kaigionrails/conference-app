@@ -3,7 +3,7 @@ class Admin::YoyoTranslateSettingsController < AdminController
   # @rbs @cloudflare_stream_live_streams: CloudflareStreamLiveStream::ActiveRecord_Relation
 
   # Creates the setting of the ongoing event on the first save and updates it afterwards.
-  # The admin layout does not render flash, so a failure re-renders the Live page with the errors on the form.
+  # A failure re-renders the Live page, which keeps the input and shows the errors on the form.
   # @rbs return: void
   def update
     @yoyo_translate_setting = YoyoTranslateSetting.find_or_initialize_by(event: OngoingEvent.first!.event)
