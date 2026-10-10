@@ -3,14 +3,14 @@ import Hls from "hls.js";
 
 export default class extends Controller {
   // Tabs, URL hashes and hashtags are named after the 2026 venues, Magenta Hall / Lime Hall.
-  // The streams come from the Cloudflare live inputs named day1-magenta-ja and so on.
+  // The streams come from the Cloudflare live inputs named magenta-raw, magenta-interpretation,
+  // lime-raw and lime-interpretation, which are used on every day of the event.
   static values = {
     selectedTab: { type: String, default: "magenta" },
-    day1MagentaJa: { type: String, default: "" },
-    day1LimeJa: { type: String, default: "" },
-    day2MagentaJa: { type: String, default: "" },
-    day2MagentaRaw: { type: String, default: "" },
-    day2LimeJa: { type: String, default: "" },
+    magentaRaw: { type: String, default: "" },
+    magentaInterpretation: { type: String, default: "" },
+    limeRaw: { type: String, default: "" },
+    limeInterpretation: { type: String, default: "" },
     test: { type: String, default: "" },
     backstage: { type: Boolean, default: false },
     yoyoTranslateMagentaHallUrl: { type: String, default: "" },
@@ -20,73 +20,66 @@ export default class extends Controller {
   static targets = ["cannotViewStreamInVenue", "shareToX", "yoyoTranslateLink"];
 
   connect() {
-    const video = document.getElementById("video");
     let currentHash = new URL(location.href).hash.replace("#", "");
-    if (currentHash == "") {currentHash = "magenta"}
+    if (!Object.hasOwn(this.streams(), currentHash)) {currentHash = "magenta"}
 
     console.log("Current hash:", currentHash);
 
-    // Get today's date
-    const today = new Date();
-    const day = today.getDate();
+    this.playStream(currentHash);
+  }
 
-    if (day === 16 || day === 15) {
-      if (currentHash === "magenta") {
-        this.videoSrc = this.day1MagentaJaValue;
-        this.selectedTabValue = "magenta";
-      } else if (currentHash === "lime") {
-        this.videoSrc = this.day1LimeJaValue;
-        this.selectedTabValue = "lime";
-      } else {
-        console.warn("unknown day or tab value");
-      }
-    } else if (day === 17) {
-      if (currentHash === "magenta") {
-        this.videoSrc = this.day2MagentaJaValue;
-        this.selectedTabValue = "magenta";
-      } else if (currentHash === "lime") {
-        this.videoSrc = this.day2LimeJaValue;
-        this.selectedTabValue = "lime";
-      } else {
-        console.warn("unknown day or tab value");
-      }
-    } else {
-      console.warn("unknown day or tab value");
-    }
+  // URL hash => the hall of the stream and its URL. #magenta and #lime are the venue sound.
+  streams() {
+    return {
+      "magenta": { hall: "magenta", url: this.magentaRawValue },
+      "magenta-interpretation": { hall: "magenta", url: this.magentaInterpretationValue },
+      "lime": { hall: "lime", url: this.limeRawValue },
+      "lime-interpretation": { hall: "lime", url: this.limeInterpretationValue },
+      "test": { hall: "magenta", url: this.testValue },
+    };
+  }
 
-    if (currentHash === "test") {
-      this.videoSrc = this.testValue;
-    }
-    // temp
-    // this.videoSrc = this.testValue;
+  switchStream({ params: { stream } }) {
+    this.playStream(stream);
+  }
 
-    // Apply video source if set
-    const videoSrc = this.videoSrc;
-    if (this.videoSrc) {
+  playStream(stream) {
+    const { hall, url } = this.streams()[stream];
+    const video = document.getElementById("video");
+    this.selectedTabValue = hall;
+
+    // Stop the previous stream first, so a stream without URL leaves the video empty.
+    this.hls?.destroy();
+    this.hls = null;
+    video.removeAttribute("src");
+    video.load();
+
+    if (url) {
       if (Hls.isSupported()) {
         this.hls = new Hls();
-        this.hls.loadSource(videoSrc);
+        this.hls.loadSource(url);
         this.hls.attachMedia(video);
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = videoSrc;
+        video.src = url;
       } else {
         console.log("HLS is not supported in this browser");
       }
-      // videoElement.play(); // Uncomment if you want autoplay
     }
-    if (this.selectedTabValue === "magenta") {
+    if (hall === "magenta") {
       video.classList.remove("border-[var(--color-hall-lime)]");
       video.classList.add("border-[var(--color-hall-magenta)]");
-    } else if (this.selectedTabValue === "lime") {
+    } else if (hall === "lime") {
       video.classList.remove("border-[var(--color-hall-magenta)]");
       video.classList.add("border-[var(--color-hall-lime)]");
     }
     this.updateShareTarget();
     this.updateYoyoTranslateLink();
+
     this.whereAmI().then((location) => {
       if (location === "at-venue") {
         this.cannotViewStreamInVenueTarget.classList.remove("hidden");
         this.hls?.destroy();
+        this.hls = null;
         video.classList.add("hidden");
       } else {
         // do nothing
@@ -109,104 +102,6 @@ export default class extends Controller {
     }
   }
 
-  switchToMagenta() {
-    const today = new Date();
-    const day = today.getDate();
-    if (this.hls == null) {
-      this.hls = new Hls();
-    }
-    if (day === 16 || day === 15) {
-      this.videoSrc = this.day1MagentaJaValue;
-      this.selectedTabValue = "magenta";
-    } else if (day === 17) {
-      this.videoSrc = this.day2MagentaJaValue;
-      this.selectedTabValue = "magenta";
-    }
-    const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-lime)]");
-    video.classList.add("border-[var(--color-hall-magenta)]");
-    this.hls.loadSource(this.videoSrc);
-    this.hls.attachMedia(video);
-    this.updateShareTarget();
-    this.updateYoyoTranslateLink();
-
-    this.whereAmI().then((location) => {
-      if (location === "at-venue") {
-        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
-        this.hls?.destroy();
-        video.classList.add("hidden");
-      } else {
-        // do nothing
-      }
-    })
-  }
-
-  switchToMagentaRaw() {
-    const today = new Date();
-    const day = today.getDate();
-    if (this.hls == null) {
-      this.hls = new Hls();
-    }
-    if (day === 16 || day === 15) {
-      this.videoSrc = this.day1MagentaJaValue;
-      this.selectedTabValue = "magenta";
-    } else if (day === 17) {
-      this.videoSrc = this.day2MagentaRawValue;
-      this.selectedTabValue = "magenta";
-    }
-    const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-lime)]");
-    video.classList.add("border-[var(--color-hall-magenta)]");
-    this.hls.loadSource(this.videoSrc);
-    this.hls.attachMedia(video);
-    this.updateShareTarget();
-    this.updateYoyoTranslateLink();
-
-    this.whereAmI().then((location) => {
-      if (location === "at-venue") {
-        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
-        this.hls?.destroy();
-        video.classList.add("hidden");
-      } else {
-        // do nothing
-      }
-    })
-  }
-
-  switchToLime() {
-    const today = new Date();
-    const day = today.getDate();
-    if (this.hls == null) {
-      this.hls = new Hls();
-    }
-    if (day === 16 || day === 15) {
-      this.videoSrc = this.day1LimeJaValue;
-      this.selectedTabValue = "lime";
-    } else if (day === 17) {
-      this.videoSrc = this.day2LimeJaValue;
-      this.selectedTabValue = "lime";
-    } else {
-      console.warn("unknown day or tab value");
-    }
-    const video = document.getElementById("video");
-    video.classList.remove("border-[var(--color-hall-magenta)]");
-    video.classList.add("border-[var(--color-hall-lime)]");
-    this.hls.loadSource(this.videoSrc);
-    this.hls.attachMedia(video);
-    this.updateShareTarget();
-    this.updateYoyoTranslateLink();
-
-    this.whereAmI().then((location) => {
-      if (location === "at-venue") {
-        this.cannotViewStreamInVenueTarget.classList.remove("hidden");
-        this.hls?.destroy();
-        video.classList.add("hidden");
-      } else {
-        // do nothing
-      }
-    })
-  }
-
   updateShareTarget() {
     let hashtags = "kaigionrails"
     if(this.selectedTabValue === "magenta") {
@@ -218,7 +113,7 @@ export default class extends Controller {
   }
 
   // Links to the subtitles of the selected hall, and hides the link while that hall has no URL.
-  // The Venue sound tab is also "magenta", so it gets the Magenta Hall subtitles.
+  // The venue sound and the interpretation of a hall get the same subtitles.
   updateYoyoTranslateLink() {
     const url = this.selectedTabValue === "lime" ? this.yoyoTranslateLimeHallUrlValue : this.yoyoTranslateMagentaHallUrlValue;
     if (url) {

@@ -1,10 +1,9 @@
 <div class="w-full flex flex-col items-center grow">
   <div data-controller="live-streams"
-    data-live-streams-day1-magenta-ja-value="<%=  @live_streams[:day1][:magenta_ja] %>"
-    data-live-streams-day1-lime-ja-value="<%= @live_streams[:day1][:lime_ja] %>"
-    data-live-streams-day2-magenta-ja-value="<%=  @live_streams[:day2][:magenta_ja] %>"
-    data-live-streams-day2-magenta-raw-value="<%= @live_streams[:day2][:magenta_raw] %>"
-    data-live-streams-day2-lime-ja-value="<%= @live_streams[:day2][:lime_ja] %>"
+    data-live-streams-magenta-raw-value="<%= @live_streams[:magenta_raw] %>"
+    data-live-streams-magenta-interpretation-value="<%= @live_streams[:magenta_interpretation] %>"
+    data-live-streams-lime-raw-value="<%= @live_streams[:lime_raw] %>"
+    data-live-streams-lime-interpretation-value="<%= @live_streams[:lime_interpretation] %>"
     data-live-streams-test-value="<%= @live_streams[:test] %>"
     data-live-streams-yoyo-translate-magenta-hall-url-value="<%= @yoyo_translate_setting&.magenta_hall_url %>"
     data-live-streams-yoyo-translate-lime-hall-url-value="<%= @yoyo_translate_setting&.lime_hall_url %>"
@@ -12,10 +11,11 @@
     data-live-streams-selected-tab-value="magenta"
   >
     <div>
-      <div class="flex space-x-6 justify-center pt-6">
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToMagentaRaw" id="magenta-hall-raw-button">Magenta Hall (Venue sound)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToMagenta" id="magenta-hall-ja-button">Magenta Hall (JA)</button>
-        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchToLime" id="lime-hall-button">Lime Hall</button>
+      <div class="grid grid-cols-[auto_auto] gap-x-2 md:gap-x-6 gap-y-2 justify-center px-4 pt-6">
+        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="magenta">Magenta Hall (Venue)</button>
+        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-magenta)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="magenta-interpretation">Magenta Hall (Interpretation)</button>
+        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="lime">Lime Hall (Venue)</button>
+        <button class="p-2 border rounded-full text-black bg-[var(--color-hall-lime)] cursor-pointer font-bold text-xs md:text-base" data-action="live-streams#switchStream" data-live-streams-stream-param="lime-interpretation">Lime Hall (Interpretation)</button>
       </div>
     </div>
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">

@@ -42,6 +42,6 @@ class CloudflareStreamLiveStream < ApplicationRecord
   end
 
   def url
-    stream_videos_raw_response.dig("result", 0, "playback", "hls")
+    stream_videos_raw_response&.dig("result", 0, "playback", "hls")
   end
 end
