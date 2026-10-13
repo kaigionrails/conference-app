@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_080052) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_13_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -471,6 +471,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_080052) do
     t.index ["event_id"], name: "index_sponsor_booth_qr_card_templates_on_event_id", unique: true
   end
 
+  create_table "sponsor_stamp_rally_completions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "completed_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_sponsor_stamp_rally_completions_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_sponsor_stamp_rally_completions_on_user_id_and_event_id", unique: true
+  end
+
   create_table "sponsor_visits", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
@@ -600,6 +610,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_080052) do
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "sponsor_booth_qr_card_templates", "events"
+  add_foreign_key "sponsor_stamp_rally_completions", "events"
+  add_foreign_key "sponsor_stamp_rally_completions", "users"
   add_foreign_key "sponsor_visits", "events"
   add_foreign_key "sponsor_visits", "users"
   add_foreign_key "talk_bookmarks", "talks"

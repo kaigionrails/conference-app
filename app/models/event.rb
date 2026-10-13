@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :social_announcements, dependent: :destroy
   has_many :profile_exchanges, dependent: :destroy
   has_many :sponsor_visits, dependent: :destroy
+  has_many :sponsor_stamp_rally_completions, dependent: :destroy
   has_many :tito_tickets, dependent: :destroy
   has_one :ongoing_event, dependent: :delete
   has_one :sponsor_booth_qr_card_template, dependent: :destroy

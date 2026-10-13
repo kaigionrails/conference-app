@@ -269,6 +269,11 @@ class ::User < ::ApplicationRecord
   def friends=: (::User::ActiveRecord_Associations_CollectionProxy | ::Array[::User]) -> (::User::ActiveRecord_Associations_CollectionProxy | ::Array[::User])
   def friend_ids: () -> ::Array[::Integer]
   def friend_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+  def sponsor_stamp_rally_completions: () -> ::SponsorStampRallyCompletion::ActiveRecord_Associations_CollectionProxy
+  def sponsor_stamp_rally_completions=: (::SponsorStampRallyCompletion::ActiveRecord_Associations_CollectionProxy | ::Array[::SponsorStampRallyCompletion]) -> (::SponsorStampRallyCompletion::ActiveRecord_Associations_CollectionProxy | ::Array[::SponsorStampRallyCompletion])
+  def sponsor_stamp_rally_completion_ids: () -> ::Array[::Integer]
+  def sponsor_stamp_rally_completion_ids=: (::Array[::Integer]) -> ::Array[::Integer]
+
   def sponsor_visits: () -> ::SponsorVisit::ActiveRecord_Associations_CollectionProxy
   def sponsor_visits=: (::SponsorVisit::ActiveRecord_Associations_CollectionProxy | ::Array[::SponsorVisit]) -> (::SponsorVisit::ActiveRecord_Associations_CollectionProxy | ::Array[::SponsorVisit])
   def sponsor_visit_ids: () -> ::Array[::Integer]
