@@ -8,8 +8,10 @@
     <section aria-label="<%= t(".progress") %>">
       <%= render "sponsor_stamp_cards/progress", stamp_card: @stamp_card %>
 
-      <% if progress.total_count.positive? && progress.completed? %>
-        <p class="mt-2 text-xs stamp-rally-muted" data-stamp-rally-complete><%= t(".book_complete") %></p>
+      <% if @stamp_card.completion %>
+        <%= render "completion_badge", completion: @stamp_card.completion, size: :medium %>
+      <% elsif progress.total_count.positive? %>
+        <p class="mt-2 text-xs stamp-rally-muted"><%= t(".completion_badge_hint") %></p>
       <% end %>
     </section>
     <% if progress.visited_count.zero? %>

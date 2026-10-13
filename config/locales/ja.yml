@@ -168,8 +168,6 @@ ja:
       collecting_stamp: "スタンプを押しています…"
     show:
       already_visited: "獲得済みのスタンプです"
-      complete_title: "全スポンサー完全制覇！"
-      complete_message: "すべてのスポンサーブースを訪問しました。おめでとうございます！"
       plan: "%{plan} Sponsor"
       stamp_number: "%{number}個目のスタンプ"
       next_sponsors_title: "次はどこへ？"
@@ -177,11 +175,13 @@ ja:
       back_to_profile: "プロフィールへ戻る"
   sponsor_stamp_cards:
     title: "スポンサーブース スタンプラリー"
+    completion_badge:
+      description: "全ブース訪問達成"
     community_stamp_count:
       label: "みんなで集めたスタンプ"
       count: "%{formatted_count}個"
     show:
-      book_complete: "すべてのブースのスタンプが揃いました。ご参加ありがとうございます！"
+      completion_badge_hint: "すべて集めると今年の記念バッジを獲得できます"
       progress: "あなたの訪問数"
       progress_count: "%{visited} / %{total} 社"
       milestone_marker: "バッジ獲得ライン：%{count}社"

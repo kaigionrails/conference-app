@@ -117,62 +117,62 @@
   background: #7c958b;
 }
 
-.stamp-rally-confetti span:nth-child(1) {
+.stamp-rally-confetti span:nth-child(12n+1) {
   --confetti-x: -132px;
   --confetti-y: -70px;
   --confetti-rotate: -240deg;
 }
-.stamp-rally-confetti span:nth-child(2) {
+.stamp-rally-confetti span:nth-child(12n+2) {
   --confetti-x: -82px;
   --confetti-y: -94px;
   --confetti-rotate: 210deg;
 }
-.stamp-rally-confetti span:nth-child(3) {
+.stamp-rally-confetti span:nth-child(12n+3) {
   --confetti-x: -28px;
   --confetti-y: -104px;
   --confetti-rotate: -170deg;
 }
-.stamp-rally-confetti span:nth-child(4) {
+.stamp-rally-confetti span:nth-child(12n+4) {
   --confetti-x: 38px;
   --confetti-y: -100px;
   --confetti-rotate: 280deg;
 }
-.stamp-rally-confetti span:nth-child(5) {
+.stamp-rally-confetti span:nth-child(12n+5) {
   --confetti-x: 94px;
   --confetti-y: -82px;
   --confetti-rotate: -210deg;
 }
-.stamp-rally-confetti span:nth-child(6) {
+.stamp-rally-confetti span:nth-child(12n+6) {
   --confetti-x: 132px;
   --confetti-y: -38px;
   --confetti-rotate: 190deg;
 }
-.stamp-rally-confetti span:nth-child(7) {
+.stamp-rally-confetti span:nth-child(12n+7) {
   --confetti-x: 126px;
   --confetti-y: 52px;
   --confetti-rotate: -260deg;
 }
-.stamp-rally-confetti span:nth-child(8) {
+.stamp-rally-confetti span:nth-child(12n+8) {
   --confetti-x: 76px;
   --confetti-y: 94px;
   --confetti-rotate: 230deg;
 }
-.stamp-rally-confetti span:nth-child(9) {
+.stamp-rally-confetti span:nth-child(12n+9) {
   --confetti-x: 16px;
   --confetti-y: 106px;
   --confetti-rotate: -190deg;
 }
-.stamp-rally-confetti span:nth-child(10) {
+.stamp-rally-confetti span:nth-child(12n+10) {
   --confetti-x: -58px;
   --confetti-y: 98px;
   --confetti-rotate: 250deg;
 }
-.stamp-rally-confetti span:nth-child(11) {
+.stamp-rally-confetti span:nth-child(12n+11) {
   --confetti-x: -112px;
   --confetti-y: 68px;
   --confetti-rotate: -220deg;
 }
-.stamp-rally-confetti span:nth-child(12) {
+.stamp-rally-confetti span:nth-child(12n+12) {
   --confetti-x: -136px;
   --confetti-y: 4px;
   --confetti-rotate: 200deg;
@@ -525,4 +525,188 @@
   gap: 12px;
   margin-bottom: 16px;
   text-align: left;
+}
+
+.stamp-rally-completion-badge {
+  --completion-size: 72px;
+  --completion-accent: #657568;
+  --completion-highlight: #d6decf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.stamp-rally-completion-badge[data-completion-year="2026"] {
+  --completion-accent: #ee87b4;
+  --completion-highlight: #ffdd82;
+}
+
+.stamp-rally-completion-badge--large {
+  --completion-size: 112px;
+}
+
+.stamp-rally-completion-badge--small {
+  --completion-size: 48px;
+}
+
+.stamp-rally-completion-emblem {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--completion-size);
+  height: var(--completion-size);
+  margin-top: 18px;
+}
+
+.stamp-rally-completion-crown {
+  position: absolute;
+  width: 36%;
+  height: auto;
+  top: -18%;
+  left: 32%;
+  color: var(--completion-highlight);
+  filter: drop-shadow(0 1px 0 var(--completion-accent));
+}
+
+.stamp-rally-completion-emblem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stamp-rally-completion-caption {
+  max-width: 12rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+
+.stamp-rally-stamp-stage--complete .stamp-rally-stamp {
+  animation: stamp-rally-complete-slam 1300ms 100ms cubic-bezier(0.18, 0.89, 0.32, 1.28) both;
+}
+
+.stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst,
+.stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst::before,
+.stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst::after {
+  animation-duration: 1200ms;
+  border-color: #bc955a;
+}
+
+.stamp-rally-stamp-stage--complete .stamp-rally-confetti {
+  inset: -32px 0;
+}
+
+.stamp-rally-stamp-stage--complete .stamp-rally-confetti span {
+  animation-duration: 1300ms;
+}
+
+.stamp-rally-stamp-stage--complete .stamp-rally-confetti span:nth-child(n+13) {
+  animation-delay: 550ms;
+}
+
+.stamp-rally-stamp-stage--complete[data-completion-year="2026"] .stamp-rally-confetti span {
+  background: #ee87b4;
+}
+
+.stamp-rally-stamp-stage--complete[data-completion-year="2026"] .stamp-rally-confetti span:nth-child(2n) {
+  background: #ffdd82;
+}
+
+@keyframes stamp-rally-complete-slam {
+  0% { opacity: 0; transform: scale(2.6) rotate(-24deg); }
+  38% { opacity: 1; transform: scale(0.7) rotate(-3deg); }
+  58% { transform: scale(1.2) rotate(-10deg); }
+  76% { transform: scale(0.95) rotate(-4deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-rally-stamp-stage--complete .stamp-rally-stamp,
+  .stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst,
+  .stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst::before,
+  .stamp-rally-stamp-stage--complete .stamp-rally-stamp-burst::after,
+  .stamp-rally-stamp-stage--complete .stamp-rally-confetti span {
+    animation: none;
+  }
+}
+
+.stamp-rally-completion-panel {
+  position: relative;
+  isolation: isolate;
+  margin-top: 24px;
+  padding: 20px 12px;
+  border: 1px solid #d9cba2;
+  border-radius: 16px;
+  background: #fffbef;
+  box-shadow: 0 8px 28px rgb(188 149 90 / 12%);
+}
+
+.stamp-rally-completion-panel[data-completion-year="2026"] {
+  background: radial-gradient(ellipse at 50% 35%, #fff1cf, #fff8ef 65%);
+}
+
+.stamp-rally-completion-panel .stamp-rally-completion-badge {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.stamp-rally-completion-panel .stamp-rally-completion-caption {
+  max-width: 100%;
+  font-size: 1.125rem;
+  letter-spacing: 0.08em;
+}
+
+/* The final stamp settles at 1400ms; reveal its reward afterwards. */
+.stamp-rally-completion-panel--new {
+  animation: stamp-rally-completion-reveal 1200ms 1400ms cubic-bezier(0.18, 0.89, 0.32, 1.2) both;
+}
+
+.stamp-rally-completion-panel-sparkles {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+  color: #bc955a;
+}
+
+.stamp-rally-completion-panel-sparkles span {
+  position: absolute;
+  opacity: 0;
+  animation: stamp-rally-completion-twinkle 1400ms 1600ms ease-in-out 3 both;
+}
+
+.stamp-rally-completion-panel-sparkles span:nth-child(1) { top: 10%; left: 15%; }
+.stamp-rally-completion-panel-sparkles span:nth-child(2) { top: 25%; right: 12%; animation-delay: 1950ms; }
+.stamp-rally-completion-panel-sparkles span:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 2300ms; }
+.stamp-rally-completion-panel-sparkles span:nth-child(4) { bottom: 10%; right: 15%; animation-delay: 1800ms; }
+
+@keyframes stamp-rally-completion-reveal {
+  0% { opacity: 0; transform: translateY(12px) scale(0.94); }
+  70% { opacity: 1; transform: translateY(-2px) scale(1.015); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes stamp-rally-completion-twinkle {
+  0% { opacity: 0; transform: scale(0.4) rotate(-15deg); }
+  40% { opacity: 1; transform: scale(1.25) rotate(10deg); }
+  100% { opacity: 0; transform: scale(0.8) rotate(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-rally-completion-panel--new,
+  .stamp-rally-completion-panel-sparkles span {
+    animation: none;
+  }
+
+  .stamp-rally-completion-panel-sparkles {
+    display: none;
+  }
 }

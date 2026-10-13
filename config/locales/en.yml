@@ -169,8 +169,6 @@ en:
       collecting_stamp: "Collecting your stamp…"
     show:
       already_visited: "You already collected this stamp"
-      complete_title: "All Sponsors Completed!"
-      complete_message: "You visited every sponsor booth. Congratulations!"
       plan: "%{plan} Sponsor"
       stamp_number: "Stamp number %{number}"
       next_sponsors_title: "Where to next?"
@@ -178,13 +176,15 @@ en:
       back_to_profile: "Back to Profile"
   sponsor_stamp_cards:
     title: "Sponsor Booth Stamp Rally"
+    completion_badge:
+      description: "Visited every booth"
     community_stamp_count:
       label: "Collected together"
       count:
         one: "%{formatted_count} stamp"
         other: "%{formatted_count} stamps"
     show:
-      book_complete: "You collected every booth’s stamp. Thanks for exploring!"
+      completion_badge_hint: "Collect all stamps to earn this year's badge."
       progress: "Your visits"
       progress_count: "%{visited} / %{total} sponsors"
       milestone_marker: "Badge milestone: %{count} sponsors"

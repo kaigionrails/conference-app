@@ -1,0 +1,5 @@
+# Generated from app/helpers/sponsor_stamp_cards_helper.rb with RBS::Inline
+
+module SponsorStampCardsHelper
+  def completion_badge_icon_path: (untyped completion) -> untyped
+end

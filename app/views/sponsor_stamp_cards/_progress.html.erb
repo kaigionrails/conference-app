@@ -15,7 +15,7 @@
 
 <%= render "sponsor_stamp_cards/progress_bar", progress: stamp_card.progress %>
 
-<% if stamp_card.progress.total_count.positive? && (milestone = stamp_card.progress.current_milestone) %>
+<% if (milestone = stamp_card.progress.current_milestone) && milestone[:key] != :complete %>
   <p class="mt-2 text-xs stamp-rally-muted" data-earned-badge>
     <span aria-hidden="true">✦</span> <%= t("sponsor_stamp_cards.show.milestones.#{milestone[:key]}") %>
   </p>
