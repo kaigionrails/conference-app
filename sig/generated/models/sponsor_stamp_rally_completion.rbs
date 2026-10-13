@@ -1,7 +1,7 @@
 # Generated from app/models/sponsor_stamp_rally_completion.rb with RBS::Inline
 
 class SponsorStampRallyCompletion < ApplicationRecord
-  # Call inside user.with_lock so concurrent stamp collections serialize.
+  # Serialize awards per user, joining any transaction already held by collection.
   # @rbs user: User
   # @rbs event: Event
   # @rbs return: SponsorStampRallyCompletion?

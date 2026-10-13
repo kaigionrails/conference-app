@@ -24,8 +24,12 @@ RSpec.describe SponsorStampRallyCompletion do
       expect(completion).not_to be_valid
     end
 
-    it "allows a completion for another event" do
-      expect(FactoryBot.build(:sponsor_stamp_rally_completion, user:, event: other_event)).to be_valid
+    context "for another event" do
+      subject(:completion) { FactoryBot.build(:sponsor_stamp_rally_completion, user:, event: other_event) }
+
+      it "is valid" do
+        expect(completion).to be_valid
+      end
     end
 
     it "enforces uniqueness in the database" do
