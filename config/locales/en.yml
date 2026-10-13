@@ -236,10 +236,10 @@ en:
       github: "Login with GitHub"
       google: "Login with Google"
     profile_exchange_count:
-      label: "People who exchanged profiles at %{event_name}"
+      label: "Profile exchanges by everyone"
       count:
-        one: "%{formatted_count} person"
-        other: "%{formatted_count} people"
+        one: "%{formatted_count} person joined"
+        other: "%{formatted_count} people joined"
   sessions:
     create:
       unknown_provider: "Unknown login method."

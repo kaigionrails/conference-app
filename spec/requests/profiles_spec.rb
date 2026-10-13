@@ -104,14 +104,14 @@ RSpec.describe "Profiles", type: :request do
 
           get "/profiles", headers: {"User-Agent" => user_agent}
 
-          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 4人"
+          expect(count_text).to eq "みんなのプロフィール交換 4人が参加"
           expect(response.body).not_to include("profile-exchange-count--updated")
         end
 
         it "shows zero before anyone has exchanged, on #{device}" do
           get "/profiles", headers: {"User-Agent" => user_agent}
 
-          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 0人"
+          expect(count_text).to eq "みんなのプロフィール交換 0人が参加"
         end
       end
     end
