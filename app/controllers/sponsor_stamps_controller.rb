@@ -15,22 +15,29 @@ class SponsorStampsController < ApplicationController
   end
 
   def create
-    visit = current_user!.sponsor_visits.find_or_create_by!(event: @event, sponsor_key: @sponsor[:key])
-    flash[:newly_visited] = visit.previously_new_record?
+    result = SponsorStampCollector.new(user: current_user!, event: @event).collect!(sponsor_key: @sponsor[:key])
+    flash[:stamp_collection] = {
+      visit_id: result.visit.id,
+      newly_visited: result.newly_visited,
+      newly_completed: result.newly_completed
+    }
 
-    redirect_to sponsor_stamp_card_stamp_path(@event.slug, visit), status: :see_other
+    redirect_to sponsor_stamp_card_stamp_path(@event.slug, result.visit), status: :see_other
   end
 
   def show
     @sponsor = @sponsors.find { |sponsor| sponsor[:key] == @visit.sponsor_key }
     raise ActiveRecord::RecordNotFound unless @sponsor
 
-    @newly_visited = flash[:newly_visited] == true
-    flash.delete(:newly_visited)
+    collection = flash[:stamp_collection]&.with_indifferent_access
+    flash.delete(:stamp_collection)
+    @newly_visited = collection&.dig(:visit_id) == @visit.id && collection[:newly_visited] == true
+    @newly_completed = collection&.dig(:visit_id) == @visit.id && collection[:newly_completed] == true
 
     @stamp_card = SponsorStampCard.new(event: @event, user: current_user!)
     @visit_number = @stamp_card.stamp_number_for(@sponsor[:key])
     @progress = @stamp_card.progress
+    @completion = @stamp_card.completion
   end
 
   private

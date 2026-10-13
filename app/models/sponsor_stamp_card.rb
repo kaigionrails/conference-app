@@ -25,6 +25,10 @@ class SponsorStampCard
     )
   end
 
+  def completion
+    @completion ||= user.sponsor_stamp_rally_completions.find_by(event:)
+  end
+
   def community_stamp_count
     @community_stamp_count ||= SponsorVisit.where(event:, sponsor_key: sponsors.pluck(:key)).count
   end

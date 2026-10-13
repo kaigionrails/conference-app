@@ -13,6 +13,8 @@ class SponsorStampCard
 
   def progress: () -> untyped
 
+  def completion: () -> untyped
+
   def community_stamp_count: () -> untyped
 
   def next_sponsors: () -> untyped
