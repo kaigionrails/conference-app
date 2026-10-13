@@ -233,8 +233,8 @@ ja:
       github: "Login with GitHub"
       google: "Login with Google"
     profile_exchange_count:
-      label: "%{event_name}でプロフィールを交換した人"
-      count: "%{formatted_count}人"
+      label: "みんなのプロフィール交換"
+      count: "%{formatted_count}人が参加"
   sessions:
     create:
       unknown_provider: "不明なログイン方法です。"

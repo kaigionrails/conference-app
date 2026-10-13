@@ -51,7 +51,7 @@
         </button>
       <% end %>
       <% if @profile_exchange_count %>
-        <%= render "shared/profile_exchange_count", event: current_event, count: @profile_exchange_count %>
+        <%= render "shared/profile_exchange_count", count: @profile_exchange_count %>
       <% end %>
       <div>
         <% @events.each do |event| %>

@@ -73,7 +73,7 @@ RSpec.describe "Users", type: :request do
         it "counts the exchange just made and pulses the count only on that page" do
           get "/@bar?token=#{token}"
           count = Nokogiri::HTML(response.body).at_css("[data-profile-exchange-count]")
-          expect(count.text.squish).to eq "Kaigi on Rails 2023でプロフィールを交換した人 2人"
+          expect(count.text.squish).to eq "みんなのプロフィール交換 2人が参加"
           expect(count.at_css(".profile-exchange-count--updated")).not_to be_nil
 
           get "/@bar?token=#{token}" # reloaded
@@ -197,14 +197,14 @@ RSpec.describe "Users", type: :request do
 
           get "/@foo", headers: {"User-Agent" => user_agent}
 
-          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 4人"
+          expect(count_text).to eq "みんなのプロフィール交換 4人が参加"
           expect(response.body).not_to include("profile-exchange-count--updated")
         end
 
         it "shows zero before anyone has exchanged, on #{device}" do
           get "/@foo", headers: {"User-Agent" => user_agent}
 
-          expect(count_text).to eq "Kaigi on Rails 2023でプロフィールを交換した人 0人"
+          expect(count_text).to eq "みんなのプロフィール交換 0人が参加"
         end
       end
     end
