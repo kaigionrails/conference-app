@@ -9,6 +9,7 @@
     data-live-streams-yoyo-translate-lime-hall-url-value="<%= @yoyo_translate_setting&.lime_hall_url %>"
     data-live-streams-backstage-value="<%= @backstage.to_s %>"
     data-live-streams-selected-tab-value="magenta"
+    data-live-streams-selected-audio-value="<%= I18n.locale == :en ? "en" : "ja" %>"
   >
     <div class="w-full lg:max-w-4xl md:max-w-full mt-6 mb-1">
       <div role="tablist" aria-label="<%= t(".halls") %>" class="flex gap-1 px-2">

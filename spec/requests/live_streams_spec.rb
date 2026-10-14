@@ -152,6 +152,18 @@ RSpec.describe "LiveStreams", type: :request do
 
           expect(response.body).to include('data-live-streams-magenta-ja-value=""')
         end
+
+        it "starts with the JA audio" do
+          get "/2025/live"
+
+          expect(response.body).to include('data-live-streams-selected-audio-value="ja"')
+        end
+
+        it "starts with the EN audio in the en locale" do
+          get "/2025/live?locale=en"
+
+          expect(response.body).to include('data-live-streams-selected-audio-value="en"')
+        end
       end
 
       context "when logged in and organizer" do
