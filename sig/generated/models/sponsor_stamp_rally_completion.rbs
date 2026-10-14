@@ -1,0 +1,9 @@
+# Generated from app/models/sponsor_stamp_rally_completion.rb with RBS::Inline
+
+class SponsorStampRallyCompletion < ApplicationRecord
+  # Serialize awards per user, joining any transaction already held by collection.
+  # @rbs user: User
+  # @rbs event: Event
+  # @rbs return: SponsorStampRallyCompletion?
+  def self.award_if_eligible!: (user: User, event: Event) -> SponsorStampRallyCompletion?
+end

@@ -11,10 +11,12 @@ class SponsorVisitProgress
   end
 
   def completed?
-    visited_count >= total_count
+    total_count.positive? && visited_count >= total_count
   end
 
   def milestones
+    return [] if total_count.zero?
+
     [
       {count: [total_count / 4, 1].max, key: :hello_sponsors},
       {count: (total_count / 2) + 1, key: :halfway}

@@ -1,0 +1,22 @@
+# Generated from app/models/sponsor_stamp_collector.rb with RBS::Inline
+
+class SponsorStampCollector
+  class Result < Data
+    attr_reader visit(): untyped
+
+    attr_reader newly_visited(): untyped
+
+    attr_reader newly_completed(): untyped
+
+    def self.new: (untyped visit, untyped newly_visited, untyped newly_completed) -> instance
+                | (visit: untyped, newly_visited: untyped, newly_completed: untyped) -> instance
+
+    def self.members: () -> [ :visit, :newly_visited, :newly_completed ]
+
+    def members: () -> [ :visit, :newly_visited, :newly_completed ]
+  end
+
+  def initialize: (user: untyped, event: untyped) -> untyped
+
+  def collect!: (sponsor_key: untyped) -> untyped
+end
