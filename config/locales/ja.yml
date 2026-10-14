@@ -185,7 +185,7 @@ ja:
       progress: "あなたの訪問数"
       progress_count: "%{visited} / %{total} 社"
       stamp_number: "%{number}個目に獲得したスタンプ"
-      empty: "スポンサーのQRコードを読み取って、スタンプを集めましょう。"
+      empty: "ブースのQRコードを読み取ってスタート"
       visited: "獲得済み ✓"
       unvisited: "未訪問"
       milestones:

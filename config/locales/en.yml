@@ -188,7 +188,7 @@ en:
       progress: "Your visits"
       progress_count: "%{visited} / %{total} sponsors"
       stamp_number: "Collected stamp number %{number}"
-      empty: "Scan sponsor QR codes to collect stamps."
+      empty: "Scan a booth QR code to start."
       visited: "Collected ✓"
       unvisited: "Not visited"
       milestones:

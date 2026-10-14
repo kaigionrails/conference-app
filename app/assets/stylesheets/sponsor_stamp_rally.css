@@ -329,11 +329,11 @@
 }
 
 .stamp-rally-community-count {
-  margin-top: 4px;
+  margin-top: 10px;
   color: #706758;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }

@@ -10,7 +10,7 @@
 
       <% if @stamp_card.completion %>
         <%= render "completion_badge", completion: @stamp_card.completion, size: :medium %>
-      <% elsif progress.total_count.positive? %>
+      <% elsif progress.visited_count.positive? && progress.total_count.positive? %>
         <p class="mt-2 text-xs stamp-rally-muted"><%= t(".completion_badge_hint") %></p>
       <% end %>
     </section>
