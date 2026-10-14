@@ -50,6 +50,7 @@
           <span><%= t('profiles.index.edit') %></span>
         </button>
       <% end %>
+      <%= render "shared/stamp_rally_badges", completions: @stamp_rally_completions %>
       <% if @profile_exchange_count %>
         <%= render "shared/profile_exchange_count", count: @profile_exchange_count %>
       <% end %>

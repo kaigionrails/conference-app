@@ -15,6 +15,28 @@ RSpec.describe "Profiles", type: :request do
       expect(response).to have_http_status(:success)
     end
 
+    context "with a stamp rally completion" do
+      let(:completion_event) { FactoryBot.create(:event, slug: "2026") }
+      let!(:completion) { FactoryBot.create(:sponsor_stamp_rally_completion, user:, event: completion_event) }
+      let(:headers) { {} }
+
+      subject(:show_profile) { get profiles_path, headers: }
+
+      it "returns success" do
+        show_profile
+        expect(response).to have_http_status(:success)
+      end
+
+      context "on a smartphone" do
+        let(:headers) { {"User-Agent" => "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1"} }
+
+        it "returns success" do
+          show_profile
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
     context "profile exchanged friends" do
       context "no profile exchanged" do
         it "should not display '知り合った人達'" do

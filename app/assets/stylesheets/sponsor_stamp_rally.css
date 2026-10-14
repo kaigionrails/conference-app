@@ -329,11 +329,11 @@
 }
 
 .stamp-rally-community-count {
-  margin-top: 4px;
+  margin-top: 10px;
   color: #706758;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
@@ -492,12 +492,64 @@
   outline-offset: 4px;
 }
 
+.stamp-rally-railway {
+  position: relative;
+  padding-top: 48px;
+}
+
 .stamp-rally-progress-track {
-  background: #e9e1d4;
+  position: relative;
+  height: 18px;
+  background: repeating-linear-gradient(to right, transparent 0 6px, #c7b89f 6px 12px, transparent 12px 18px);
+}
+
+.stamp-rally-progress-track::after {
+  position: absolute;
+  inset: 3px 0;
+  border-block: 3px solid #81786c;
+  content: "";
 }
 
 .stamp-rally-progress-fill {
-  background: var(--stamp-rally-ink);
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: repeating-linear-gradient(to right, transparent 0 6px, var(--stamp-rally-ink) 6px 12px, transparent 12px 18px);
+}
+
+.stamp-rally-goal-station {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  width: 90px;
+  height: 53px;
+  overflow: hidden;
+}
+
+.stamp-rally-goal-station img {
+  position: absolute;
+  top: -27.28px;
+  left: -15.72px;
+  width: 123.376px;
+  height: 98.736px;
+  max-width: none;
+  image-rendering: pixelated;
+}
+
+.stamp-rally-train-route {
+  position: absolute;
+  z-index: 2;
+  inset: auto 72px 0 -15px;
+  height: 72px;
+}
+
+.stamp-rally-train {
+  position: absolute;
+  top: 0;
+  width: 72px;
+  height: 72px;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .stamp-rally-result .stamp-rally-next-goal,
@@ -709,4 +761,100 @@
   .stamp-rally-completion-panel-sparkles {
     display: none;
   }
+}
+
+.profile-stamp-rally-badges {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.profile-stamp-rally-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+.profile-stamp-rally-badges-list li {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-badge {
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-emblem {
+  margin-top: 10px;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-caption {
+  max-width: 10rem;
+  font-size: 0.75rem;
+}
+
+.profile-stamp-rally-badge-trigger {
+  display: block;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile-stamp-rally-badge-trigger:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.profile-stamp-rally-badge-trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.profile-stamp-rally-badge-trigger .stamp-rally-completion-caption {
+  display: none;
+}
+
+.profile-stamp-rally-badge-popover {
+  position: fixed;
+  inset: 0;
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  margin: auto;
+  padding: 24px;
+  border: 1px solid #d9cba2;
+  border-radius: 16px;
+  background: #fffbef;
+  color: #3b2c21;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 30%);
+}
+
+.profile-stamp-rally-badge-popover::backdrop {
+  background: rgb(0 0 0 / 30%);
+}
+
+.profile-stamp-rally-badge-popover .stamp-rally-completion-badge {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-stamp-rally-badge-popover .stamp-rally-completion-caption {
+  max-width: 100%;
+  font-size: 0.875rem;
+}
+
+.profile-stamp-rally-badge-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  cursor: pointer;
 }

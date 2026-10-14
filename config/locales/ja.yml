@@ -184,9 +184,8 @@ ja:
       completion_badge_hint: "すべて集めると今年の記念バッジを獲得できます"
       progress: "あなたの訪問数"
       progress_count: "%{visited} / %{total} 社"
-      milestone_marker: "バッジ獲得ライン：%{count}社"
       stamp_number: "%{number}個目に獲得したスタンプ"
-      empty: "スポンサーのQRコードを読み取って、スタンプを集めましょう。"
+      empty: "ブースのQRコードを読み取ってスタート"
       visited: "獲得済み ✓"
       unvisited: "未訪問"
       milestones:
@@ -229,6 +228,11 @@ ja:
       fill_in_your_profile: "ようこそ！ほかの参加者に知ってもらえるよう、プロフィールを入力しましょう。"
       fill_in_your_profile_from_menu: "ようこそ！メニューの「Profile」からプロフィールを入力できます。"
   shared:
+    stamp_rally_badges:
+      title: "記念バッチ"
+      open: "%{year}年の記念バッチの詳細を見る"
+      detail_title: "スタンプラリーの達成バッチ"
+      close: "閉じる"
     login_providers:
       github: "Login with GitHub"
       google: "Login with Google"

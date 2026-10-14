@@ -6,6 +6,28 @@ RSpec.describe "Users", type: :request do
   describe "GET /@:username" do
     let!(:user) { FactoryBot.create(:user, :with_profile_image, name: "foo") }
 
+    context "with a stamp rally completion" do
+      let(:completion_event) { FactoryBot.create(:event, slug: "2026") }
+      let!(:completion) { FactoryBot.create(:sponsor_stamp_rally_completion, user:, event: completion_event) }
+      let(:headers) { {} }
+
+      subject(:show_profile) { get user_path(username: user.name), headers: }
+
+      it "returns success for a visitor" do
+        show_profile
+        expect(response).to have_http_status(:success)
+      end
+
+      context "on a smartphone" do
+        let(:headers) { {"User-Agent" => "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1"} }
+
+        it "returns success for a visitor" do
+          show_profile
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
     context "not logged in" do
       context "when no token" do
         it "should success, no effects" do

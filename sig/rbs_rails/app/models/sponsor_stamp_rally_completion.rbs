@@ -307,7 +307,10 @@ class ::SponsorStampRallyCompletion < ::ApplicationRecord
   end
   include ::SponsorStampRallyCompletion::GeneratedAssociationMethods
 
+  def self.newest_event_first: () -> ::SponsorStampRallyCompletion::ActiveRecord_Relation
+
   module ::SponsorStampRallyCompletion::GeneratedRelationMethods
+    def newest_event_first: () -> ::SponsorStampRallyCompletion::ActiveRecord_Relation
   end
 
   class ::SponsorStampRallyCompletion::ActiveRecord_Relation < ::ActiveRecord::Relation

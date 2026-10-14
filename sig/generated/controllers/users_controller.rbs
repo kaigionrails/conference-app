@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
   @profile_exchange_count: Integer?
 
+  @stamp_rally_completions: Array[SponsorStampRallyCompletion]
+
   # @rbs return: void
   def show: () -> void
 
