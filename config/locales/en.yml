@@ -232,6 +232,11 @@ en:
       fill_in_your_profile: "Welcome! Fill in your profile so other attendees can get to know you."
       fill_in_your_profile_from_menu: "Welcome! You can fill in your profile from \"Profile\" in the menu."
   shared:
+    stamp_rally_badges:
+      title: "Commemorative badges"
+      open: "View your %{year} commemorative badge"
+      detail_title: "Stamp rally completion badge"
+      close: "Close"
     login_providers:
       github: "Login with GitHub"
       google: "Login with Google"

@@ -1,0 +1,23 @@
+<%# locals: (completions:) -%>
+<% if completions.any? %>
+  <section class="profile-stamp-rally-badges" aria-labelledby="stamp-rally-badges-title" data-profile-stamp-rally-badges>
+    <h3 id="stamp-rally-badges-title" class="sr-only"><%= t(".title") %></h3>
+    <ul class="profile-stamp-rally-badges-list">
+      <% completions.each do |completion| %>
+        <li>
+          <% popover_id = "stamp-rally-badge-#{completion.id}" %>
+          <%= button_tag type: "button", class: "profile-stamp-rally-badge-trigger", popovertarget: popover_id,
+                aria: {label: t(".open", year: completion.event.slug)} do %>
+            <%= render "sponsor_stamp_cards/completion_badge", completion:, size: :small %>
+          <% end %>
+          <div id="<%= popover_id %>" class="profile-stamp-rally-badge-popover" popover role="dialog" aria-labelledby="<%= popover_id %>-title">
+            <h4 id="<%= popover_id %>-title" class="text-center text-sm font-bold"><%= t(".detail_title") %></h4>
+            <%= button_tag "×", type: "button", class: "profile-stamp-rally-badge-close", popovertarget: popover_id,
+                  popovertargetaction: "hide", aria: {label: t(".close")} %>
+            <%= render "sponsor_stamp_cards/completion_badge", completion:, size: :medium %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

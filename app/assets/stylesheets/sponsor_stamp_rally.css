@@ -710,3 +710,99 @@
     display: none;
   }
 }
+
+.profile-stamp-rally-badges {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.profile-stamp-rally-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+.profile-stamp-rally-badges-list li {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-badge {
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-emblem {
+  margin-top: 10px;
+}
+
+.profile-stamp-rally-badges .stamp-rally-completion-caption {
+  max-width: 10rem;
+  font-size: 0.75rem;
+}
+
+.profile-stamp-rally-badge-trigger {
+  display: block;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile-stamp-rally-badge-trigger:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.profile-stamp-rally-badge-trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.profile-stamp-rally-badge-trigger .stamp-rally-completion-caption {
+  display: none;
+}
+
+.profile-stamp-rally-badge-popover {
+  position: fixed;
+  inset: 0;
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  margin: auto;
+  padding: 24px;
+  border: 1px solid #d9cba2;
+  border-radius: 16px;
+  background: #fffbef;
+  color: #3b2c21;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 30%);
+}
+
+.profile-stamp-rally-badge-popover::backdrop {
+  background: rgb(0 0 0 / 30%);
+}
+
+.profile-stamp-rally-badge-popover .stamp-rally-completion-badge {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-stamp-rally-badge-popover .stamp-rally-completion-caption {
+  max-width: 100%;
+  font-size: 0.875rem;
+}
+
+.profile-stamp-rally-badge-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  cursor: pointer;
+}

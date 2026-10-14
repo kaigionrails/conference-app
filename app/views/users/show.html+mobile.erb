@@ -34,6 +34,7 @@
   </div>
 
   <div class="px-4">
+    <%= render "shared/stamp_rally_badges", completions: @stamp_rally_completions %>
     <% if @profile_exchange_count %>
       <%= render "shared/profile_exchange_count", count: @profile_exchange_count, updated: @newly_exchanged %>
     <% end %>
