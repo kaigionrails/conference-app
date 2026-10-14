@@ -5,6 +5,8 @@ class SponsorStampRallyCompletion < ApplicationRecord
   validates :completed_at, presence: true
   validates :user_id, uniqueness: {scope: :event_id}
 
+  scope :newest_event_first, -> { joins(:event).order("events.start_date DESC, events.id DESC") }
+
   # Serialize awards per user, joining any transaction already held by collection.
   # @rbs user: User
   # @rbs event: Event

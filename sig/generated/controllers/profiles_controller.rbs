@@ -15,6 +15,8 @@ class ProfilesController < ApplicationController
 
   @profile_badges: ProfileBadge::ActiveRecord_Relation
 
+  @stamp_rally_completions: Array[SponsorStampRallyCompletion]
+
   # @rbs return: void
   def index: () -> void
 

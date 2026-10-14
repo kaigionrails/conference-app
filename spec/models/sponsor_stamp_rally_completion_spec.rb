@@ -7,6 +7,22 @@ RSpec.describe SponsorStampRallyCompletion do
 
   subject(:completion) { FactoryBot.build(:sponsor_stamp_rally_completion, user:, event:, completed_at:) }
 
+  describe ".newest_event_first" do
+    let(:older_event) { FactoryBot.create(:event, start_date: Date.new(2024, 10, 1)) }
+    let(:newer_event) { FactoryBot.create(:event, start_date: Date.new(2025, 10, 1)) }
+    let(:tied_event) { FactoryBot.create(:event, start_date: newer_event.start_date) }
+    let!(:older_completion) { FactoryBot.create(:sponsor_stamp_rally_completion, user:, event: older_event, completed_at: Time.zone.local(2026, 10, 1)) }
+    let!(:newer_completion) { FactoryBot.create(:sponsor_stamp_rally_completion, user:, event: newer_event, completed_at: Time.zone.local(2025, 10, 1)) }
+    let!(:tied_completion) { FactoryBot.create(:sponsor_stamp_rally_completion, user:, event: tied_event) }
+    let!(:other_completion) { FactoryBot.create(:sponsor_stamp_rally_completion, event: newer_event) }
+
+    subject(:completions) { user.sponsor_stamp_rally_completions.newest_event_first }
+
+    it "orders the user's completions by event start date and then event ID descending" do
+      expect(completions).to eq([tied_completion, newer_completion, older_completion])
+    end
+  end
+
   context "without a completion timestamp" do
     let(:completed_at) { nil }
 

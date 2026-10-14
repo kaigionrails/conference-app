@@ -8,11 +8,13 @@ class UsersController < ApplicationController
   # @rbs @token: String?
   # @rbs @newly_exchanged: bool
   # @rbs @profile_exchange_count: Integer?
+  # @rbs @stamp_rally_completions: Array[SponsorStampRallyCompletion]
 
   # @rbs return: void
   def show
     @user = User.preload({profile: [:profile_badges, images_attachments: :blob]}).find_by_handle!(params[:username])
     @profile = @user.profile
+    @stamp_rally_completions = @user.sponsor_stamp_rally_completions.newest_event_first.preload(:event).to_a
     @token = params[:token]
     @newly_exchanged = false
 

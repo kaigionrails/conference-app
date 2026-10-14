@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
   # @rbs @user: User
   # @rbs @profile_exchange_count: Integer?
   # @rbs @profile_badges: ProfileBadge::ActiveRecord_Relation
+  # @rbs @stamp_rally_completions: Array[SponsorStampRallyCompletion]
 
   # @rbs return: void
   def index
@@ -17,6 +18,7 @@ class ProfilesController < ApplicationController
     @event_friends = current_user!.profile_exchanges.preload(:event, friend: {profile: {images_attachments: :blob}}).group_by(&:event)
 
     @user = User.preload(:friends).find(current_user!.id)
+    @stamp_rally_completions = @user.sponsor_stamp_rally_completions.newest_event_first.preload(:event).to_a
     @profile_exchange_count = current_event&.profile_exchange_count
   end
 
