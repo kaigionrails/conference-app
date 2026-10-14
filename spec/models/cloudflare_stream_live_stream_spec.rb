@@ -168,4 +168,42 @@ RSpec.describe CloudflareStreamLiveStream, type: :model do
   describe "#url" do
     pending
   end
+
+  describe "#hall and #lang" do
+    it "returns the values in the meta" do
+      live_stream = FactoryBot.build(:cloudflare_stream_live_stream, stream_raw_response: {"result" => {"meta" => {"hall" => "magenta", "lang" => "ja"}}})
+      expect(live_stream.hall).to eq "magenta"
+      expect(live_stream.lang).to eq "ja"
+    end
+
+    it "returns nil without the meta" do
+      live_stream = FactoryBot.build(:cloudflare_stream_live_stream, stream_raw_response: {"result" => {}})
+      expect(live_stream.hall).to be_nil
+      expect(live_stream.lang).to be_nil
+    end
+
+    it "returns nil without the response" do
+      live_stream = FactoryBot.build(:cloudflare_stream_live_stream, stream_raw_response: nil)
+      expect(live_stream.hall).to be_nil
+      expect(live_stream.lang).to be_nil
+    end
+  end
+
+  describe "#test?" do
+    def live_stream_with_meta(meta)
+      FactoryBot.build(:cloudflare_stream_live_stream, stream_raw_response: {"result" => {"meta" => meta}})
+    end
+
+    it "is true with any value in the test key" do
+      expect(live_stream_with_meta({"test" => "true"}).test?).to eq true
+      expect(live_stream_with_meta({"test" => "1"}).test?).to eq true
+    end
+
+    it "is false with a blank value or without the test key" do
+      expect(live_stream_with_meta({"test" => ""}).test?).to eq false
+      expect(live_stream_with_meta({"test" => " "}).test?).to eq false
+      expect(live_stream_with_meta({"test" => false}).test?).to eq false
+      expect(live_stream_with_meta({"name" => "test stream"}).test?).to eq false
+    end
+  end
 end
