@@ -7,15 +7,15 @@ const RETRY_LIMIT = 180;
 
 export default class extends Controller {
   // Tabs, URL hashes and hashtags are named after the 2026 venues, Magenta Hall / Lime Hall.
-  // The streams come from the Cloudflare live inputs named magenta-raw, magenta-interpretation,
-  // lime-raw and lime-interpretation, which are used on every day of the event.
+  // The streams come from the Cloudflare live inputs assigned by the hall (magenta / lime) and
+  // the lang (ja / en) in their meta, which are used on every day of the event.
   static values = {
     selectedTab: { type: String, default: "magenta" },
-    selectedAudio: { type: String, default: "raw" },
-    magentaRaw: { type: String, default: "" },
-    magentaInterpretation: { type: String, default: "" },
-    limeRaw: { type: String, default: "" },
-    limeInterpretation: { type: String, default: "" },
+    selectedAudio: { type: String, default: "ja" },
+    magentaJa: { type: String, default: "" },
+    magentaEn: { type: String, default: "" },
+    limeJa: { type: String, default: "" },
+    limeEn: { type: String, default: "" },
     test: { type: String, default: "" },
     backstage: { type: Boolean, default: false },
     yoyoTranslateMagentaHallUrl: { type: String, default: "" },
@@ -32,7 +32,13 @@ export default class extends Controller {
     this.atVenue = false;
 
     let currentHash = new URL(location.href).hash.replace("#", "");
-    if (!Object.hasOwn(this.streams(), currentHash)) {currentHash = "magenta"}
+    // #magenta and #lime, without the audio, open the hall in the default audio.
+    if (currentHash === "magenta" || currentHash === "lime") {
+      currentHash = this.streamOf(currentHash, this.selectedAudioValue);
+    }
+    if (!Object.hasOwn(this.streams(), currentHash)) {
+      currentHash = this.streamOf("magenta", this.selectedAudioValue);
+    }
 
     console.log("Current hash:", currentHash);
 
@@ -46,13 +52,13 @@ export default class extends Controller {
     this.hls = null;
   }
 
-  // URL hash => the hall of the stream, its audio and its URL. #magenta and #lime are the venue sound.
+  // URL hash => the hall of the stream, its audio and its URL.
   streams() {
     return {
-      "magenta": { hall: "magenta", audio: "raw", url: this.magentaRawValue },
-      "magenta-interpretation": { hall: "magenta", audio: "interpretation", url: this.magentaInterpretationValue },
-      "lime": { hall: "lime", audio: "raw", url: this.limeRawValue },
-      "lime-interpretation": { hall: "lime", audio: "interpretation", url: this.limeInterpretationValue },
+      "magenta-ja": { hall: "magenta", audio: "ja", url: this.magentaJaValue },
+      "magenta-en": { hall: "magenta", audio: "en", url: this.magentaEnValue },
+      "lime-ja": { hall: "lime", audio: "ja", url: this.limeJaValue },
+      "lime-en": { hall: "lime", audio: "en", url: this.limeEnValue },
       "test": { hall: "magenta", audio: null, url: this.testValue },
     };
   }
@@ -67,7 +73,7 @@ export default class extends Controller {
   }
 
   streamOf(hall, audio) {
-    return audio === "interpretation" ? `${hall}-interpretation` : hall;
+    return `${hall}-${audio}`;
   }
 
   switchTo(stream) {
@@ -239,7 +245,7 @@ export default class extends Controller {
   }
 
   // Links to the subtitles of the selected hall, and hides the link while that hall has no URL.
-  // The venue sound and the interpretation of a hall get the same subtitles.
+  // The JA and EN audio of a hall get the same subtitles.
   updateYoyoTranslateLink() {
     const url = this.selectedTabValue === "lime" ? this.yoyoTranslateLimeHallUrlValue : this.yoyoTranslateMagentaHallUrlValue;
     if (url) {

@@ -22,12 +22,14 @@ class LiveStreamsController < ApplicationController
       "false"
     end
     # FIXME: too hardcoded...
+    # A live input for #test never comes up in the tabs of the halls.
+    streams_of_halls = live_streams.reject(&:test?)
     @live_streams = {
-      magenta_raw: live_streams.detect { |s| s.name.include?("magenta-raw") }&.url || "",
-      magenta_interpretation: live_streams.detect { |s| s.name.include?("magenta-interpretation") }&.url || "",
-      lime_raw: live_streams.detect { |s| s.name.include?("lime-raw") }&.url || "",
-      lime_interpretation: live_streams.detect { |s| s.name.include?("lime-interpretation") }&.url || "",
-      test: live_streams.detect { |s| s.name.include?("test") }&.url || ""
+      magenta_ja: streams_of_halls.detect { |s| s.hall == "magenta" && s.lang == "ja" }&.url || "",
+      magenta_en: streams_of_halls.detect { |s| s.hall == "magenta" && s.lang == "en" }&.url || "",
+      lime_ja: streams_of_halls.detect { |s| s.hall == "lime" && s.lang == "ja" }&.url || "",
+      lime_en: streams_of_halls.detect { |s| s.hall == "lime" && s.lang == "en" }&.url || "",
+      test: live_streams.detect(&:test?)&.url || ""
     }
     @yoyo_translate_setting = @event.yoyo_translate_setting
   end
