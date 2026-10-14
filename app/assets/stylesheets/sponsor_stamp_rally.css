@@ -492,12 +492,64 @@
   outline-offset: 4px;
 }
 
+.stamp-rally-railway {
+  position: relative;
+  padding-top: 48px;
+}
+
 .stamp-rally-progress-track {
-  background: #e9e1d4;
+  position: relative;
+  height: 18px;
+  background: repeating-linear-gradient(to right, transparent 0 6px, #c7b89f 6px 12px, transparent 12px 18px);
+}
+
+.stamp-rally-progress-track::after {
+  position: absolute;
+  inset: 3px 0;
+  border-block: 3px solid #81786c;
+  content: "";
 }
 
 .stamp-rally-progress-fill {
-  background: var(--stamp-rally-ink);
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: repeating-linear-gradient(to right, transparent 0 6px, var(--stamp-rally-ink) 6px 12px, transparent 12px 18px);
+}
+
+.stamp-rally-goal-station {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  width: 90px;
+  height: 53px;
+  overflow: hidden;
+}
+
+.stamp-rally-goal-station img {
+  position: absolute;
+  top: -27.28px;
+  left: -15.72px;
+  width: 123.376px;
+  height: 98.736px;
+  max-width: none;
+  image-rendering: pixelated;
+}
+
+.stamp-rally-train-route {
+  position: absolute;
+  z-index: 2;
+  inset: auto 72px 0 -15px;
+  height: 72px;
+}
+
+.stamp-rally-train {
+  position: absolute;
+  top: 0;
+  width: 72px;
+  height: 72px;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .stamp-rally-result .stamp-rally-next-goal,
