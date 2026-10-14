@@ -47,4 +47,27 @@ class CloudflareStreamLiveStream < ApplicationRecord
   def url
     stream_raw_response&.dig("result", "playback", "hls")
   end
+
+  # A live input cannot be renamed after it is created, so the live stream page
+  # assigns it to a hall and an audio by the keys of its meta instead of its name.
+  # @rbs return: Hash[String, untyped]
+  def meta
+    stream_raw_response&.dig("result", "meta") || {}
+  end
+
+  # @rbs return: String?
+  def hall
+    meta["hall"]
+  end
+
+  # @rbs return: String?
+  def lang
+    meta["lang"]
+  end
+
+  # Any value in the test key, such as "true" or "1", makes it the stream of #test.
+  # @rbs return: bool
+  def test?
+    meta["test"].present?
+  end
 end

@@ -13,4 +13,19 @@ class CloudflareStreamLiveStream < ApplicationRecord
   # The HLS URL of the live input itself, which plays only the ongoing broadcast.
   # The URL of a video from the videos API plays its recording once the broadcast ends.
   def url: () -> untyped
+
+  # A live input cannot be renamed after it is created, so the live stream page
+  # assigns it to a hall and an audio by the keys of its meta instead of its name.
+  # @rbs return: Hash[String, untyped]
+  def meta: () -> Hash[String, untyped]
+
+  # @rbs return: String?
+  def hall: () -> String?
+
+  # @rbs return: String?
+  def lang: () -> String?
+
+  # Any value in the test key, such as "true" or "1", makes it the stream of #test.
+  # @rbs return: bool
+  def test?: () -> bool
 end
