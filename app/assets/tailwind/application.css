@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/forms";
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -228,5 +229,14 @@
   .card-2026 {
     background: #0009;
     border: 1px solid #ffffff66;
+  }
+  /* The plugin's white background would hide the theme's white input text */
+  .theme-2026 :where(input:not([type=checkbox], [type=radio], [type=submit], [type=button], [type=reset]), textarea, select) {
+    background-color: transparent;
+  }
+  /* The plugin's blue focus border overlaps the :focus-visible outline; select only, since text inputs draw their frame with ring */
+  .theme-2026 select:focus {
+    --tw-ring-color: transparent;
+    border-color: var(--color-gray-500);
   }
 }
