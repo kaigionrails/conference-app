@@ -6,7 +6,7 @@
         <%= render "shared/login_providers", variant: :card, return_to: params[:return_to] %>
       </div>
       <div class="mb-14">
-        <details class="text-center w-72">
+        <details class="text-center w-72 mx-auto">
           <summary class="mb-4"><%= t('sessions.new.for_operators') %></summary>
           <%= form_with url: "/auth/email", method: :post, data: { turbo: false } do |f| %>
             <%= f.hidden_field :return_to, value: params[:return_to] %>
@@ -14,7 +14,7 @@
             <%= f.email_field :email, class: "block rounded-sm mb-4 w-full" %>
             <%= f.label :password, t('sessions.new.password'), class: "block font-bold mb-2 text-left" %>
             <%= f.password_field :password, class: "block rounded-sm mb-4 w-full" %>
-            <%= f.submit t('sessions.new.submit'), class: "block border bg-white shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mx-auto" %>
+            <%= f.submit t('sessions.new.submit'), class: "block border bg-white text-gray-900 shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer mx-auto" %>
           <% end %>
         </details>
       </div>
