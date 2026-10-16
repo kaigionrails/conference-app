@@ -77,7 +77,7 @@ class User < ApplicationRecord
   def send_push_notification(message)
     webpush_subscriptions.each do |subscription|
       subscription.send_webpush!(message)
-    rescue WebPush::ExpiredSubscription
+    rescue WebPush::ExpiredSubscription, WebPush::InvalidSubscription
       subscription.destroy!
       next
     end

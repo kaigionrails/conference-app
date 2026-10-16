@@ -7,15 +7,13 @@ class SendTalkReminderPushNotificationJob < ApplicationJob
     will_send_reminders = TalkReminder
       .eager_load(talk: :event, user: :webpush_subscriptions).where(sent_at: nil, scheduled_at: 5.minutes.ago..Time.current)
 
-    assets_resolver = DigestedAssetsPathResolver.new
+    icon = ActionController::Base.helpers.image_url("icons/2026/512.png", host: Rails.configuration.application_url) # MEMO: change every year
 
     will_send_reminders.each do |reminder|
       message = {
         title: I18n.t("talk_reminder.bookmarked_talk_will_start_soon"),
         body: reminder.talk.title,
-        icon: URI.join(
-          Rails.configuration.application_url, assets_resolver.digested_asset_path("icons/2024/512.png")
-        ).to_s,
+        icon: icon,
         data: {
           url: event_talk_url(
             event_slug: reminder.talk.event.slug,
