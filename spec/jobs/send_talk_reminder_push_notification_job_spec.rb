@@ -28,6 +28,22 @@ RSpec.describe SendTalkReminderPushNotificationJob, type: :job do
     expect(reminder.reload.sent_at).to be_present
   end
 
+  it "drops a subscription the push service does not know and goes on to the other reminders" do
+    stale = FactoryBot.create(:webpush_subscription)
+    alive = FactoryBot.create(:webpush_subscription)
+    stale_reminder = FactoryBot.create(:talk_reminder, user: stale.user, talk: talk, scheduled_at: 1.minute.ago)
+    alive_reminder = FactoryBot.create(:talk_reminder, user: alive.user, talk: talk, scheduled_at: 1.minute.ago)
+    stub_request(:post, stale.endpoint).to_return(status: 404)
+    push = stub_request(:post, alive.endpoint).to_return(status: 201)
+
+    described_class.perform_now
+
+    expect(WebpushSubscription.exists?(stale.id)).to be(false)
+    expect(push).to have_been_requested
+    expect(stale_reminder.reload.sent_at).to be_present
+    expect(alive_reminder.reload.sent_at).to be_present
+  end
+
   it "leaves reminders outside the last 5 minutes alone" do
     missed = FactoryBot.create(:talk_reminder, talk: talk, scheduled_at: 10.minutes.ago)
     upcoming = FactoryBot.create(:talk_reminder, talk: talk, scheduled_at: 1.minute.from_now)
