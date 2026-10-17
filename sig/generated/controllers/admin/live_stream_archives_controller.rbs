@@ -1,0 +1,28 @@
+# Generated from app/controllers/admin/live_stream_archives_controller.rb with RBS::Inline
+
+class Admin::LiveStreamArchivesController < AdminController
+  @before: ActiveSupport::TimeWithZone?
+
+  @videos: Array[CloudflareStreamVideo]
+
+  @older_before: ActiveSupport::TimeWithZone?
+
+  @live_streams: Hash[String, CloudflareStreamLiveStream]
+
+  @video: CloudflareStreamVideo
+
+  @live_stream: CloudflareStreamLiveStream?
+
+  # Lists the recordings on Cloudflare Stream, including those whose live input is gone from it or from the app.
+  # @rbs return: void
+  def index: () -> void
+
+  # The URL of this page is the link to share the archive.
+  # @rbs return: void
+  def show: () -> void
+
+  # A value that is not ISO 8601, such as one rewritten by hand, falls back to the newest page.
+  # @rbs value: untyped
+  # @rbs return: ActiveSupport::TimeWithZone?
+  private def parse_before: (untyped value) -> ActiveSupport::TimeWithZone?
+end

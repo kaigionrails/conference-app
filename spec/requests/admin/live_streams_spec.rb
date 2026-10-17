@@ -42,5 +42,12 @@ RSpec.describe "Admin::LiveStreams", type: :request do
       expect(response.body).to include("hall: magenta / lang: ja / test: no")
       expect(response.body).to include("hall: - / lang: - / test: no")
     end
+
+    it "links to the archives" do
+      get admin_live_streams_path
+
+      expect(response.body).to include("Archives")
+      expect(response.body).to include(%(href="#{admin_live_stream_archives_path}">Open archives))
+    end
   end
 end

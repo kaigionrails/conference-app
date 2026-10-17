@@ -1,0 +1,7 @@
+<%# locals: (live_input_uid:, live_stream:) %>
+<%# The meta of a recording has no hall or lang, so they come from the live stream registered in the app. %>
+<% if live_stream %>
+  <p class="mb-2 text-sm"><%= "#{live_stream.name} (#{live_stream.event.name} / hall: #{live_stream.hall || "-"} / lang: #{live_stream.lang || "-"})" %></p>
+<% else %>
+  <p class="mb-2 text-sm"><%= "live input: #{live_input_uid} (not registered)" %></p>
+<% end %>

@@ -1,0 +1,29 @@
+<h2 class="font-bold text-xl mb-8">Live archives</h2>
+
+<div class="pr-8">
+  <% if @videos.empty? %>
+    <p class="mb-8">No archives</p>
+  <% end %>
+  <% @videos.each do |video| %>
+    <div class="mb-4">
+      <% thumbnail_url = video.thumbnail_url(height: 120) %>
+      <% if thumbnail_url %>
+        <%= image_tag thumbnail_url, alt: video.display_name, loading: "lazy", class: "mb-2" %>
+      <% end %>
+      <h4 class="font-bold text-lg mb-2"><%= video.display_name %></h4>
+      <%= render "admin/live_stream_archives/live_input", live_input_uid: video.live_input_uid, live_stream: @live_streams[video.live_input_uid] %>
+      <p class="mb-2 text-sm"><%= "created: #{video.created_at&.in_time_zone("Tokyo")&.strftime("%Y-%m-%d %H:%M") || "-"} / duration: #{video.duration_text || "-"}" %></p>
+      <%= link_to "watch", admin_live_stream_archive_path(video.uid), class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+    </div>
+  <% end %>
+  <% if @before || @older_before %>
+    <div class="flex gap-4 mt-8 mb-8">
+      <% if @before %>
+        <%= link_to "Newest", admin_live_stream_archives_path, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <% end %>
+      <% if @older_before %>
+        <%= link_to "Older", admin_live_stream_archives_path(before: @older_before.utc.iso8601(6)), class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
