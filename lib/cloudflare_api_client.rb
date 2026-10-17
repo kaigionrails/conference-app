@@ -49,10 +49,13 @@ class CloudflareApiClient
     client.get("/client/v4/accounts/#{@account_id}/stream").body
   end
 
+  # The admin pages call the API while rendering, so a slow API must not hold them
+  # for the 60 seconds that Net::HTTP waits by default.
   private def client
     @client ||= Faraday.new(
       url: "https://api.cloudflare.com",
-      headers: {Authorization: "Bearer #{@api_token}", "Content-Type": "application/json"}
+      headers: {Authorization: "Bearer #{@api_token}", "Content-Type": "application/json"},
+      request: {open_timeout: 5, timeout: 10}
     ) do |builder|
       builder.response :json
     end
