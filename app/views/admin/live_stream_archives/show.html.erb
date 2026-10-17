@@ -1,0 +1,15 @@
+<h2 class="font-bold text-xl mb-8"><%= @video.display_name %></h2>
+
+<div class="pr-8">
+  <div class="mb-8">
+    <%= render "admin/live_stream_archives/live_input", live_input_uid: @video.live_input_uid, live_stream: @live_stream %>
+    <p class="mb-2 text-sm"><%= "created: #{@video.created_at&.in_time_zone("Tokyo")&.strftime("%Y-%m-%d %H:%M") || "-"} / duration: #{@video.duration_text || "-"}" %></p>
+    <p class="mb-4 text-sm"><%= "uid: #{@video.uid}" %></p>
+    <% if @video.player_url %>
+      <iframe src="<%= @video.player_url %>" class="aspect-video w-full" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
+    <% else %>
+      <p>The player is not available</p>
+    <% end %>
+  </div>
+  <%= link_to "Back to archives", admin_live_stream_archives_path, class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
+</div>

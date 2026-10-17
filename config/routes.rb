@@ -72,6 +72,8 @@ Rails.application.routes.draw do
     resources :announcements, only: [:index, :new, :create, :show, :edit, :update]
     resources :profile_badges, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :live_streams, only: [:index, :new, :create, :update, :show, :destroy]
+    # The id is the uid of a recording on Cloudflare Stream, which the shared link of the archive carries.
+    resources :live_stream_archives, only: [:index, :show], constraints: {id: /\h{32}/}
     resource :live_stream_bulk_update, only: [:create]
     resource :yoyo_translate_setting, only: [:update]
     resources :signages, only: [:index, :new, :create, :update]
