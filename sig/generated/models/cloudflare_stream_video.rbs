@@ -1,0 +1,80 @@
+# Generated from app/models/cloudflare_stream_video.rb with RBS::Inline
+
+# A video on Cloudflare Stream, which the Stream API returns as a Hash.
+# The recording of each broadcast to a live input is a video that has the live input in liveInput,
+# and it stays on Stream even after the live input is deleted.
+class CloudflareStreamVideo
+  PER_PAGE: ::Integer
+
+  @attributes: Hash[String, untyped]
+
+  # The newest videos that are ready to stream, created before the given time, up to one more than PER_PAGE,
+  # so that the 51st tells whether older ones exist.
+  # They include the videos uploaded without a live input. The caller picks the recordings out of the page
+  # after taking the cursor of the next page from the 50th, so that no video is skipped or repeated.
+  # @rbs before: ActiveSupport::TimeWithZone?
+  # @rbs return: Array[CloudflareStreamVideo]?
+  def self.ready_videos: (?before: ActiveSupport::TimeWithZone?) -> Array[CloudflareStreamVideo]?
+
+  # Any video, whether it is a recording that is ready or not; the caller checks #archive?.
+  # @rbs uid: String
+  # @rbs return: CloudflareStreamVideo?
+  def self.find: (String uid) -> CloudflareStreamVideo?
+
+  # The JSON middleware leaves an HTML page of an error as a String,
+  # whose String#[] returns "success" when the page contains the word.
+  # @rbs response: untyped
+  # @rbs return: bool
+  def self.succeeded?: (untyped response) -> bool
+
+  # @rbs response: untyped
+  # @rbs return: untyped
+  def self.errors_of: (untyped response) -> untyped
+
+  # @rbs attributes: Hash[String, untyped]
+  # @rbs return: void
+  def initialize: (Hash[String, untyped] attributes) -> void
+
+  # @rbs return: String
+  def uid: () -> String
+
+  # Stream names a recording after the live input and the time it started, such as
+  # "kaigionrails-2026-magenta-raw 17 Oct 26 00:29 UTC". The hall and the lang in the meta of the live input
+  # do not come along.
+  # @rbs return: String?
+  def name: () -> String?
+
+  # @rbs return: String
+  def display_name: () -> String
+
+  # @rbs return: String?
+  def state: () -> String?
+
+  # @rbs return: String?
+  def live_input_uid: () -> String?
+
+  # A recording of a live input that is ready to stream, which is what the archive pages deal with.
+  # An ongoing broadcast is in "live-inprogress", and an uploaded video has no live input.
+  # @rbs return: bool
+  def archive?: () -> bool
+
+  # @rbs return: ActiveSupport::TimeWithZone?
+  def created_at: () -> ActiveSupport::TimeWithZone?
+
+  # Stream resizes the thumbnail to the height, but crops it to the default width of 640 unless fit is clip.
+  # @rbs height: Integer
+  # @rbs return: String?
+  def thumbnail_url: (height: Integer) -> String?
+
+  # Whole seconds, or nil while Stream does not know the duration, which it returns as -1.
+  # @rbs return: Integer?
+  def duration: () -> Integer?
+
+  # @rbs return: String?
+  def duration_text: () -> String?
+
+  # The Stream Player, which lives on the customer subdomain of the preview URL.
+  # The preview URL comes only after the encoding completes.
+  # @rbs return: String?
+  def player_url: () -> String?
+end

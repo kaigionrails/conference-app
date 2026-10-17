@@ -26,8 +26,21 @@ class CloudflareApiClient
   # @rbs return: Hash[untyped, untyped]
   def retrieve_live_input_videos: (String uid) -> Hash[untyped, untyped]
 
+  # The recordings of live inputs come as type=vod, not type=live, so this takes no type.
+  # It neither takes include_counts, which turns the result into an object holding the videos.
+  # @see https://developers.cloudflare.com/api/resources/stream/methods/list/
+  # @rbs status: String?
+  # @rbs before: String?
+  # @rbs limit: Integer?
   # @rbs return: Hash[untyped, untyped]
-  def list_streams: () -> Hash[untyped, untyped]
+  def list_streams: (?status: String?, ?before: String?, ?limit: Integer?) -> Hash[untyped, untyped]
 
+  # @see https://developers.cloudflare.com/api/resources/stream/methods/get/
+  # @rbs uid: String
+  # @rbs return: Hash[untyped, untyped]
+  def retrieve_stream: (String uid) -> Hash[untyped, untyped]
+
+  # The admin pages call the API while rendering, so a slow API must not hold them
+  # for the 60 seconds that Net::HTTP waits by default.
   private def client: () -> untyped
 end
