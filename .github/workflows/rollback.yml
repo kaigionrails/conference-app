@@ -37,7 +37,7 @@ jobs:
       KAMAL_WEB_SERVER_PRIVATE_ADDRESS: ${{ secrets.KAMAL_WEB_SERVER_PRIVATE_ADDRESS }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: ruby/setup-ruby@651ff0d62c5c79bed6d53ec518387aae20e72c1a # v1.329.0
+      - uses: ruby/setup-ruby@26e5b7d197ebf60545ee9667bcbace0be11ccaec # v1.334.0
         with:
           bundler-cache: true
       - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
