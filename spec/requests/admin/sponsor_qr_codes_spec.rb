@@ -68,6 +68,84 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       expect(document.at_css("a[href*='disposition=inline']")).to be_nil
     end
 
+    context "with stamp counts" do
+      let(:organizer) { FactoryBot.create(:user, role: :organizer) }
+      let!(:other_event) { FactoryBot.create(:event, slug: "2025", name: "Kaigi on Rails 2025") }
+      let(:unvisited_sponsor) { booth_sponsor.merge(key: "unvisited.example", name: "Unvisited Sponsor") }
+
+      before do
+        sign_in(organizer)
+        allow(SponsorCatalog).to receive(:with_booth).with(event.slug).and_return([booth_sponsor, unvisited_sponsor])
+        FactoryBot.create(:sponsor_visit, user: organizer, event:, sponsor_key: booth_sponsor[:key])
+        FactoryBot.create(:sponsor_visit, event:, sponsor_key: booth_sponsor[:key])
+        FactoryBot.create(:sponsor_visit, event: other_event, sponsor_key: booth_sponsor[:key])
+      end
+
+      it "shows all-event totals, event totals and sponsor counts including organizers and zero counts" do
+        get admin_sponsor_qr_codes_path
+
+        document = Nokogiri::HTML(response.body)
+        expect(document.at_css('[data-stamp-count="all"]').text).to eq("3")
+        expect(document.at_css('[data-stamp-count="event"]').text).to eq("2")
+        expect(document.css('[data-stamp-count="sponsor"]').map(&:text)).to eq(["2", "0"])
+        expect(document.at_css("select[name='event_id'] option[selected]")["value"]).to eq(event.id.to_s)
+      end
+
+      it "shows recorded sponsor keys and counts when the selected event has no catalog" do
+        get admin_sponsor_qr_codes_path(event_id: other_event.id)
+
+        expect(response).to have_http_status(:ok)
+        document = Nokogiri::HTML(response.body)
+        expect(document.at_css('[data-stamp-count="all"]').text).to eq("3")
+        expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
+        expect(document.at_css("tbody tr").text).to include(booth_sponsor[:key])
+        expect(document.at_css('[data-stamp-count="sponsor"]').text).to eq("1")
+        expect(document.at_css('[data-action="sponsor-qr-codes#download"]')).to be_nil
+        expect(document.at_css('[data-action="sponsor-qr-codes#downloadAll"]')["disabled"]).not_to be_nil
+        expect(document.at_css("form[enctype='multipart/form-data']")["action"])
+          .to eq(admin_sponsor_booth_qr_card_template_path(event_id: other_event.id))
+      end
+
+      it "switches counts, QR URLs and download destinations to the selected event" do
+        allow(SponsorCatalog).to receive(:available_for_year?).with(other_event.slug).and_return(true)
+        allow(SponsorCatalog).to receive(:with_booth).with(other_event.slug).and_return([booth_sponsor])
+        FactoryBot.create(:sponsor_booth_qr_card_template, event: other_event)
+
+        get admin_sponsor_qr_codes_path(event_id: other_event.id)
+
+        document = Nokogiri::HTML(response.body)
+        expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
+        expect(document.at_css('[data-action="sponsor-qr-codes#download"]')["data-url"])
+          .to eq(SponsorVisitToken.stamp_url(event_slug: other_event.slug, sponsor_key: booth_sponsor[:key]))
+        expect(document.at_css('[data-action="sponsor-qr-codes#downloadCard"]')["data-url"])
+          .to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: other_event.id))
+        controller = document.at_css('[data-controller="sponsor-qr-codes"]')
+        expect(JSON.parse(controller["data-sponsor-qr-codes-cards-value"]).first.fetch("url"))
+          .to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: other_event.id))
+      end
+
+      it "keeps counts for sponsors no longer in the catalog visible" do
+        FactoryBot.create(:sponsor_visit, event:, sponsor_key: "removed.example")
+
+        get admin_sponsor_qr_codes_path
+
+        document = Nokogiri::HTML(response.body)
+        row = document.css("tbody tr").find { |tr| tr.text.include?("removed.example") }
+        expect(row.at_css('[data-stamp-count="sponsor"]').text).to eq("1")
+        expect(row.css("button")).to be_empty
+        expect(document.at_css('[data-stamp-count="event"]').text).to eq("3")
+      end
+    end
+
+    it "shows zero totals without any visits" do
+      sign_in(FactoryBot.create(:user, role: :organizer))
+
+      get admin_sponsor_qr_codes_path
+
+      document = Nokogiri::HTML(response.body)
+      expect(document.css("[data-stamp-count]").map(&:text)).to eq(["0", "0", "0"])
+    end
+
     it "defaults to the latest event when there is no ongoing event" do
       OngoingEvent.destroy_all
       older_event = FactoryBot.create(:event, start_date: event.start_date - 1.year)
