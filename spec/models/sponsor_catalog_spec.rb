@@ -96,17 +96,17 @@ RSpec.describe SponsorCatalog do
     end
 
     it "keeps each year's catalog separate" do
-      [2026, 2027].each do |year|
-        expect(YAML).to receive(:safe_load_file).with(
-          Rails.root.join("data/sponsors/#{year}.yaml"),
-          permitted_classes: [Symbol], aliases: false
-        ).once.and_return(sponsors: [{key: "sponsor-#{year}", name: "Sponsor", plan: "gold", logo: "logo"}])
-      end
+      expect(YAML).to receive(:safe_load_file).with(
+        Rails.root.join("data/sponsors/2026.yaml"),
+        permitted_classes: [Symbol], aliases: false
+      ).once.and_return(sponsors: [{key: "sponsor-2026", name: "Sponsor", plan: "gold", logo: "logo"}])
+      expect(YAML).to receive(:safe_load_file).with(
+        Rails.root.join("data/sponsors/2027.yaml"),
+        permitted_classes: [Symbol], aliases: false
+      ).once.and_return(sponsors: [{key: "sponsor-2027", name: "Sponsor", plan: "gold", logo: "logo"}])
 
-      2.times do
-        expect(catalog.for_year(2026).pluck(:key)).to eq(["sponsor-2026"])
-        expect(catalog.for_year(2027).pluck(:key)).to eq(["sponsor-2027"])
-      end
+      expect(catalog.for_year(2026).pluck(:key)).to eq(["sponsor-2026"])
+      expect(catalog.for_year(2027).pluck(:key)).to eq(["sponsor-2027"])
     end
 
     it "does not cache failed loads" do

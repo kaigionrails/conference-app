@@ -8,6 +8,7 @@ RSpec.describe "Admin::SponsorBoothQrCards", type: :request do
   let(:logo_url) { SponsorCatalog.print_logo_url(event.slug, booth_sponsor) }
 
   before do
+    allow(SponsorCatalog).to receive(:available_for_year?).with(event.slug).and_return(true)
     allow(SponsorCatalog).to receive(:with_booth).with(event.slug).and_return([booth_sponsor])
   end
 
@@ -65,21 +66,36 @@ RSpec.describe "Admin::SponsorBoothQrCards", type: :request do
         expect(response).to have_http_status(:not_found)
       end
 
-      it "generates a card using the selected event's template and sponsor" do
-        selected_event = FactoryBot.create(:event, slug: "2025")
-        template = FactoryBot.create(:sponsor_booth_qr_card_template, event: selected_event)
-        allow(SponsorCatalog).to receive(:available_for_year?).with(selected_event.slug).and_return(true)
-        allow(SponsorCatalog).to receive(:with_booth).with(selected_event.slug).and_return([booth_sponsor])
-        expect(SponsorBoothQrCard).to receive(:generate).with(template:, sponsor: booth_sponsor).and_return("selected card")
+      context "with a selected event" do
+        let(:selected_event) { FactoryBot.create(:event) }
+        let(:selected_sponsor) { booth_sponsor.merge(key: "selected-sponsor.example", logo: "selected-sponsor") }
+        let(:selected_logo_url) { SponsorCatalog.print_logo_url(selected_event.slug, selected_sponsor) }
+        let(:selected_template) { FactoryBot.create(:sponsor_booth_qr_card_template, event: selected_event) }
+        let(:template_png) { Vips::Image.black(296, 420, bands: 3).write_to_buffer(".png") }
 
-        get admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: selected_event.id)
+        before do
+          selected_template.image.attach(io: StringIO.new(template_png), filename: "selected-template.png", content_type: "image/png")
+          FactoryBot.create(:sponsor_booth_qr_card_template, event:)
+          allow(SponsorCatalog).to receive(:available_for_year?).with(selected_event.slug).and_return(true)
+          allow(SponsorCatalog).to receive(:with_booth).with(selected_event.slug).and_return([selected_sponsor])
+          stub_request(:get, selected_logo_url)
+            .to_return(body: Vips::Image.black(78, 78, bands: 3).write_to_buffer(".png"))
+        end
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to eq("selected card")
+        it "generates a card using the selected event's template and sponsor" do
+          get admin_sponsor_booth_qr_card_path(selected_sponsor[:key], event_id: selected_event.id)
+
+          expect(response).to have_http_status(:ok)
+          expect(response.media_type).to eq("image/png")
+          card = Vips::Image.new_from_buffer(response.body, "")
+          expect([card.width, card.height]).to eq([296, 420])
+          expect(a_request(:get, selected_logo_url)).to have_been_made.once
+        end
       end
 
       it "returns 404 for an event without a catalog" do
-        selected_event = FactoryBot.create(:event, slug: "2025")
+        selected_event = FactoryBot.create(:event)
+        allow(SponsorCatalog).to receive(:available_for_year?).with(selected_event.slug).and_return(false)
 
         get admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: selected_event.id)
 

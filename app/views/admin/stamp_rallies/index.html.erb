@@ -10,11 +10,11 @@
   <dl class="flex flex-wrap items-center gap-x-12 gap-y-4 rounded-sm border border-gray-200 bg-gray-50 px-6 py-5 mb-6">
     <div>
       <dt class="text-gray-500 mb-1">Total stamps (selected event)</dt>
-      <dd class="text-xl text-gray-600 tabular-nums" data-stamp-count="event"><%= number_with_delimiter(@event_stamp_count) %></dd>
+      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@event_stamp_count) %></dd>
     </div>
     <div>
       <dt class="text-gray-500 mb-1">Total stamps (all events)</dt>
-      <dd class="text-xl text-gray-600 tabular-nums" data-stamp-count="all"><%= number_with_delimiter(@total_stamp_count) %></dd>
+      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@total_stamp_count) %></dd>
     </div>
   </dl>
 
@@ -97,7 +97,7 @@
             <tr class="hover:bg-gray-50">
               <td class="px-4 py-3 font-medium"><%= sponsor[:name] %></td>
               <td class="px-4 py-3 text-gray-500"><%= sponsor[:plan].capitalize %></td>
-              <td class="px-4 py-3 text-right font-semibold tabular-nums" data-stamp-count="sponsor"><%= number_with_delimiter(@sponsor_stamp_counts.fetch(sponsor[:key], 0)) %></td>
+              <td class="px-4 py-3 text-right font-semibold tabular-nums"><%= number_with_delimiter(@sponsor_stamp_counts.fetch(sponsor[:key], 0)) %></td>
               <% if sponsor[:stamp_url] %>
                 <td class="px-4 py-3">
                   <button type="button"
