@@ -3,22 +3,22 @@
     <h2 class="font-bold text-xl mb-4">Stamp Rally</h2>
     <%= form_with url: admin_stamp_rallies_path, method: :get, class: "flex flex-wrap gap-3 items-center" do |f| %>
       <%= f.label :event_id, "Event", class: "text-gray-500" %>
-      <%= f.collection_select :event_id, @events, :id, :name, {selected: @event.id}, class: "w-auto max-w-full border border-gray-300 rounded-sm pl-3 pr-8 py-2 bg-white", onchange: "this.form.requestSubmit()" %>
+      <%= f.collection_select :event_id, @events, :id, :name, {selected: @stamp_rally.event.id}, class: "w-auto max-w-full border border-gray-300 rounded-sm pl-3 pr-8 py-2 bg-white", onchange: "this.form.requestSubmit()" %>
     <% end %>
   </header>
 
   <dl class="flex flex-wrap items-center gap-x-12 gap-y-4 rounded-sm border border-gray-200 bg-gray-50 px-6 py-5 mb-6">
     <div>
       <dt class="text-gray-500 mb-1">Total stamps (selected event)</dt>
-      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@event_stamp_count) %></dd>
+      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@stamp_rally.event_stamp_count) %></dd>
     </div>
     <div>
       <dt class="text-gray-500 mb-1">Total stamps (all events)</dt>
-      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@total_stamp_count) %></dd>
+      <dd class="text-xl text-gray-600 tabular-nums"><%= number_with_delimiter(@stamp_rally.total_stamp_count) %></dd>
     </div>
   </dl>
 
-  <% card_available = @template.persisted? %>
+  <% card_available = @stamp_rally.template.persisted? %>
   <details class="mb-6 rounded-sm border border-gray-200">
     <summary class="px-4 py-3 cursor-pointer hover:bg-gray-50">
       <h3 class="inline font-medium">Booth QR card template</h3>
@@ -26,20 +26,20 @@
     <div class="border-t border-gray-200 p-4">
       <% if card_available %>
         <div class="flex gap-4 items-start mb-4">
-          <%= image_tag @template.image.representation(resize_to_limit: [300, 300]), alt: "Booth QR card template", class: "border" %>
+          <%= image_tag @stamp_rally.template.image.representation(resize_to_limit: [300, 300]), alt: "Booth QR card template", class: "border" %>
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
             <dt class="font-bold">File</dt>
-            <dd><%= @template.image.filename %></dd>
+            <dd><%= @stamp_rally.template.image.filename %></dd>
             <dt class="font-bold">Size</dt>
-            <dd><%= number_to_human_size(@template.image.byte_size) %></dd>
+            <dd><%= number_to_human_size(@stamp_rally.template.image.byte_size) %></dd>
             <dt class="font-bold">Uploaded at</dt>
-            <dd><%= @template.image.blob.created_at.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></dd>
+            <dd><%= @stamp_rally.template.image.blob.created_at.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></dd>
           </dl>
         </div>
       <% else %>
         <p class="mb-4">No template uploaded yet.</p>
       <% end %>
-      <%= form_with model: @template, url: admin_sponsor_booth_qr_card_template_path(event_id: @event.id), method: :patch, multipart: true do |f| %>
+      <%= form_with model: @stamp_rally.template, url: admin_sponsor_booth_qr_card_template_path(event_id: @stamp_rally.event.id), method: :patch, multipart: true do |f| %>
         <%= f.file_field :image, accept: SponsorBoothQrCardTemplate::ALLOWED_CONTENT_TYPES.join(","), required: true, class: "block mb-2 cursor-pointer file:border file:shadow-sm file:border-gray-500 file:rounded-sm file:bg-white file:px-4 file:py-2 file:mr-3 file:cursor-pointer hover:file:bg-gray-100" %>
         <%= f.submit "Upload template", class: "border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer" %>
       <% end %>
@@ -49,10 +49,10 @@
 
   <div
     data-controller="stamp-rally"
-    data-stamp-rally-sponsors-value="<%= sponsor_qr_downloads(@qr_sponsors).to_json %>"
-    data-stamp-rally-zip-filename-value="sponsor-qr-codes-<%= @event.slug %>.zip"
-    data-stamp-rally-cards-value="<%= sponsor_booth_qr_card_downloads(@qr_sponsors, event_id: @event.id).to_json %>"
-    data-stamp-rally-card-zip-filename-value="sponsor-booth-qr-cards-<%= @event.slug %>.zip"
+    data-stamp-rally-sponsors-value="<%= sponsor_qr_downloads(@stamp_rally.qr_sponsors).to_json %>"
+    data-stamp-rally-zip-filename-value="sponsor-qr-codes-<%= @stamp_rally.event.slug %>.zip"
+    data-stamp-rally-cards-value="<%= sponsor_booth_qr_card_downloads(@stamp_rally.qr_sponsors, event_id: @stamp_rally.event.id).to_json %>"
+    data-stamp-rally-card-zip-filename-value="sponsor-booth-qr-cards-<%= @stamp_rally.event.slug %>.zip"
   >
     <p class="mb-4 text-red-700" role="alert" data-stamp-rally-target="error" hidden>Could not generate the QR codes. Please try again.</p>
     <p class="mb-4 text-red-700" role="alert" data-stamp-rally-target="cardError" hidden></p>
@@ -68,14 +68,14 @@
         type="button"
         class="border border-gray-300 rounded-sm px-4 py-2 cursor-pointer hover:bg-gray-50 disabled:cursor-wait disabled:opacity-50"
         data-action="stamp-rally#downloadAll"
-        <% if @qr_sponsors.empty? %>disabled<% end %>
+        <% if @stamp_rally.qr_sponsors.empty? %>disabled<% end %>
       >
         Download all as ZIP
       </button>
       <%= tag.button "Download all cards as ZIP",
         type: "button",
         class: "border border-gray-300 rounded-sm px-4 py-2 cursor-pointer hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50",
-        disabled: !card_available || @qr_sponsors.empty?,
+        disabled: !card_available || @stamp_rally.qr_sponsors.empty?,
         data: {action: "stamp-rally#downloadAllCards"} %>
       <span data-stamp-rally-target="cardProgress" aria-live="polite"></span>
     </div>
@@ -93,11 +93,11 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 bg-white">
-          <% @sponsors.each do |sponsor| %>
+          <% @stamp_rally.sponsors.each do |sponsor| %>
             <tr class="hover:bg-gray-50">
               <td class="px-4 py-3 font-medium"><%= sponsor[:name] %></td>
               <td class="px-4 py-3 text-gray-500"><%= sponsor[:plan].capitalize %></td>
-              <td class="px-4 py-3 text-right font-semibold tabular-nums"><%= number_with_delimiter(@sponsor_stamp_counts.fetch(sponsor[:key], 0)) %></td>
+              <td class="px-4 py-3 text-right font-semibold tabular-nums"><%= number_with_delimiter(@stamp_rally.stamp_count_for(sponsor[:key])) %></td>
               <% if sponsor[:stamp_url] %>
                 <td class="px-4 py-3">
                   <button type="button"
@@ -125,12 +125,12 @@
                       class: "text-gray-600 underline underline-offset-4 decoration-gray-300 hover:text-gray-900 cursor-pointer whitespace-nowrap disabled:no-underline disabled:text-gray-400 disabled:cursor-not-allowed",
                       disabled: !card_available,
                       data: {
-                        url: admin_sponsor_booth_qr_card_path(sponsor[:key], event_id: @event.id),
+                        url: admin_sponsor_booth_qr_card_path(sponsor[:key], event_id: @stamp_rally.event.id),
                         filename: sponsor_booth_qr_card_filename(sponsor),
                         action: "stamp-rally#downloadCard"
                       } %>
                     <% if card_available %>
-                      <%= link_to "Preview", admin_sponsor_booth_qr_card_path(sponsor[:key], event_id: @event.id, disposition: "inline"), target: "_blank", rel: "noopener", class: "text-gray-600 underline underline-offset-4 decoration-gray-300 hover:text-gray-900" %>
+                      <%= link_to "Preview", admin_sponsor_booth_qr_card_path(sponsor[:key], event_id: @stamp_rally.event.id, disposition: "inline"), target: "_blank", rel: "noopener", class: "text-gray-600 underline underline-offset-4 decoration-gray-300 hover:text-gray-900" %>
                     <% else %>
                       <span>—</span>
                     <% end %>
