@@ -1,4 +1,4 @@
-module Admin::SponsorQrCodesHelper
+module Admin::StampRalliesHelper
   # @rbs! include _RbsRailsPathHelpers
 
   def sponsor_qr_filename(sponsor)

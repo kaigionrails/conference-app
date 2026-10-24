@@ -17,7 +17,7 @@ class Admin::SponsorBoothQrCardTemplatesController < AdminController
     else
       flash[:alert] = template.errors.full_messages.join(", ")
     end
-    redirect_to admin_sponsor_qr_codes_path(event_id: params[:event_id].presence)
+    redirect_to admin_stamp_rallies_path(event_id: params[:event_id].presence)
   end
 
   private def template_params

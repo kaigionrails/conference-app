@@ -1,4 +1,4 @@
-class Admin::SponsorQrCodesController < AdminController
+class Admin::StampRalliesController < AdminController
   def index
     @event = if params[:event_id].present?
       Event.find(params[:event_id])

@@ -16,7 +16,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
         patch admin_sponsor_booth_qr_card_template_path,
           params: {sponsor_booth_qr_card_template: {image: upload(width: 1748, height: 2480)}}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path)
+        expect(response).to redirect_to(admin_stamp_rallies_path)
         expect(flash[:success]).to eq("Booth QR card template uploaded")
         expect(event.reload.sponsor_booth_qr_card_template.image).to be_attached
       end
@@ -28,7 +28,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
         patch admin_sponsor_booth_qr_card_template_path,
           params: {sponsor_booth_qr_card_template: {image: upload(width: 1748, height: 2480, filename: "new.png")}}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path)
+        expect(response).to redirect_to(admin_stamp_rallies_path)
         expect(SponsorBoothQrCardTemplate.count).to eq(1)
         expect(template.reload.image.blob).not_to eq(old_blob)
         expect(template.image.filename.to_s).to eq("new.png")
@@ -42,7 +42,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
         patch admin_sponsor_booth_qr_card_template_path(event_id: selected_event.id),
           params: {sponsor_booth_qr_card_template: {image: upload(width: 1748, height: 2480)}}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path(event_id: selected_event.id))
+        expect(response).to redirect_to(admin_stamp_rallies_path(event_id: selected_event.id))
         expect(selected_event.reload.sponsor_booth_qr_card_template.image).to be_attached
         expect(ongoing_template.reload.image.blob).to eq(old_blob)
       end
@@ -52,7 +52,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
 
         patch admin_sponsor_booth_qr_card_template_path(event_id: selected_event.id), params: {}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path(event_id: selected_event.id))
+        expect(response).to redirect_to(admin_stamp_rallies_path(event_id: selected_event.id))
         expect(flash[:alert]).to be_present
         expect(SponsorBoothQrCardTemplate.count).to eq(0)
       end
@@ -73,7 +73,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
         patch admin_sponsor_booth_qr_card_template_path,
           params: {sponsor_booth_qr_card_template: {image: upload(width: 2480, height: 1748)}}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path)
+        expect(response).to redirect_to(admin_stamp_rallies_path)
         expect(flash[:alert]).to include("must be A5 portrait (148:210), got 2480x1748")
         expect(template.reload.image.blob).to eq(old_blob)
       end
@@ -81,7 +81,7 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
       it "reports a missing file instead of failing with 400" do
         patch admin_sponsor_booth_qr_card_template_path, params: {}
 
-        expect(response).to redirect_to(admin_sponsor_qr_codes_path)
+        expect(response).to redirect_to(admin_stamp_rallies_path)
         expect(flash[:alert]).to be_present
         expect(SponsorBoothQrCardTemplate.count).to eq(0)
       end

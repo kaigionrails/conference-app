@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Admin::SponsorQrCodes", type: :request do
+RSpec.describe "Admin::StampRallies", type: :request do
   let!(:event) { FactoryBot.create(:event, :make_ongoing, name: "Kaigi on Rails 2026", slug: "2026") }
   let(:booth_sponsor) { {key: "booth-sponsor.example", name: "Booth Sponsor", plan: "gold", logo: "booth-sponsor", booth: true} }
 
@@ -8,11 +8,11 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
     allow(SponsorCatalog).to receive(:with_booth).with(event.slug).and_return([booth_sponsor])
   end
 
-  describe "GET /admin/sponsor_qr_codes" do
+  describe "GET /admin/stamp_rallies" do
     it "shows stamp URLs for booth sponsors to an organizer" do
       sign_in(FactoryBot.create(:user, role: "organizer"))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       expected_code = SponsorVisitToken.generate(event_slug: event.slug, sponsor_key: booth_sponsor[:key])
       expect(response).to have_http_status(:success)
@@ -27,14 +27,14 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       end
 
       it "offers the card downloads and a preview" do
-        get admin_sponsor_qr_codes_path
+        get admin_stamp_rallies_path
 
         document = Nokogiri::HTML(response.body)
-        card_button = document.at_css("button[data-action='sponsor-qr-codes#downloadCard']")
+        card_button = document.at_css("button[data-action='stamp-rally#downloadCard']")
         expect(card_button["data-url"]).to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id))
         expect(card_button["data-filename"]).to eq("sponsor-booth-qr-card-booth-sponsor.example.png")
         expect(card_button["disabled"]).to be_nil
-        expect(document.at_css("button[data-action='sponsor-qr-codes#downloadAllCards']")["disabled"]).to be_nil
+        expect(document.at_css("button[data-action='stamp-rally#downloadAllCards']")["disabled"]).to be_nil
         expect(document.at_css("a[href='#{admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id, disposition: "inline")}']").text)
           .to eq("Preview")
         expect(response.body).to include("template.png")
@@ -42,29 +42,29 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       end
 
       it "passes the cards to the Stimulus controller" do
-        get admin_sponsor_qr_codes_path
+        get admin_stamp_rallies_path
 
-        controller_element = Nokogiri::HTML(response.body).at_css("[data-controller='sponsor-qr-codes']")
-        expect(JSON.parse(controller_element["data-sponsor-qr-codes-cards-value"])).to eq([
+        controller_element = Nokogiri::HTML(response.body).at_css("[data-controller='stamp-rally']")
+        expect(JSON.parse(controller_element["data-stamp-rally-cards-value"])).to eq([
           {
             "name" => "Booth Sponsor",
             "url" => admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id),
             "filename" => "sponsor-booth-qr-card-booth-sponsor.example.png"
           }
         ])
-        expect(controller_element["data-sponsor-qr-codes-card-zip-filename-value"]).to eq("sponsor-booth-qr-cards-2026.zip")
+        expect(controller_element["data-stamp-rally-card-zip-filename-value"]).to eq("sponsor-booth-qr-cards-2026.zip")
       end
     end
 
     it "disables the card downloads without a template" do
       sign_in(FactoryBot.create(:user, role: "organizer"))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       document = Nokogiri::HTML(response.body)
       expect(response.body).to include("No template uploaded yet.")
-      expect(document.at_css("button[data-action='sponsor-qr-codes#downloadCard']")["disabled"]).to be_present
-      expect(document.at_css("button[data-action='sponsor-qr-codes#downloadAllCards']")["disabled"]).to be_present
+      expect(document.at_css("button[data-action='stamp-rally#downloadCard']")["disabled"]).to be_present
+      expect(document.at_css("button[data-action='stamp-rally#downloadAllCards']")["disabled"]).to be_present
       expect(document.at_css("a[href*='disposition=inline']")).to be_nil
     end
 
@@ -82,7 +82,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       end
 
       it "shows all-event totals, event totals and sponsor counts including organizers and zero counts" do
-        get admin_sponsor_qr_codes_path
+        get admin_stamp_rallies_path
 
         document = Nokogiri::HTML(response.body)
         expect(document.at_css('[data-stamp-count="all"]').text).to eq("3")
@@ -92,17 +92,17 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       end
 
       it "offers copying the stamp URL without displaying the long URL as text" do
-        get admin_sponsor_qr_codes_path
+        get admin_stamp_rallies_path
 
         document = Nokogiri::HTML(response.body)
-        button = document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')
+        button = document.at_css('[data-action="stamp-rally#copyUrl"]')
         expect(button.text.strip).to eq("Copy URL")
         expect(button["data-url"]).to eq(SponsorVisitToken.stamp_url(event_slug: event.slug, sponsor_key: booth_sponsor[:key]))
         expect(document.at_css("table").text).not_to include(button["data-url"])
       end
 
       it "shows recorded sponsor keys and counts when the selected event has no catalog" do
-        get admin_sponsor_qr_codes_path(event_id: other_event.id)
+        get admin_stamp_rallies_path(event_id: other_event.id)
 
         expect(response).to have_http_status(:ok)
         document = Nokogiri::HTML(response.body)
@@ -110,8 +110,8 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
         expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
         expect(document.at_css("tbody tr").text).to include(booth_sponsor[:key])
         expect(document.at_css('[data-stamp-count="sponsor"]').text).to eq("1")
-        expect(document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')).to be_nil
-        expect(document.at_css('[data-action="sponsor-qr-codes#downloadAll"]')["disabled"]).not_to be_nil
+        expect(document.at_css('[data-action="stamp-rally#copyUrl"]')).to be_nil
+        expect(document.at_css('[data-action="stamp-rally#downloadAll"]')["disabled"]).not_to be_nil
         expect(document.at_css("form[enctype='multipart/form-data']")["action"])
           .to eq(admin_sponsor_booth_qr_card_template_path(event_id: other_event.id))
       end
@@ -121,23 +121,23 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
         allow(SponsorCatalog).to receive(:with_booth).with(other_event.slug).and_return([booth_sponsor])
         FactoryBot.create(:sponsor_booth_qr_card_template, event: other_event)
 
-        get admin_sponsor_qr_codes_path(event_id: other_event.id)
+        get admin_stamp_rallies_path(event_id: other_event.id)
 
         document = Nokogiri::HTML(response.body)
         expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
-        expect(document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')["data-url"])
+        expect(document.at_css('[data-action="stamp-rally#copyUrl"]')["data-url"])
           .to eq(SponsorVisitToken.stamp_url(event_slug: other_event.slug, sponsor_key: booth_sponsor[:key]))
-        expect(document.at_css('[data-action="sponsor-qr-codes#downloadCard"]')["data-url"])
+        expect(document.at_css('[data-action="stamp-rally#downloadCard"]')["data-url"])
           .to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: other_event.id))
-        controller = document.at_css('[data-controller="sponsor-qr-codes"]')
-        expect(JSON.parse(controller["data-sponsor-qr-codes-cards-value"]).first.fetch("url"))
+        controller = document.at_css('[data-controller="stamp-rally"]')
+        expect(JSON.parse(controller["data-stamp-rally-cards-value"]).first.fetch("url"))
           .to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: other_event.id))
       end
 
       it "keeps counts for sponsors no longer in the catalog visible" do
         FactoryBot.create(:sponsor_visit, event:, sponsor_key: "removed.example")
 
-        get admin_sponsor_qr_codes_path
+        get admin_stamp_rallies_path
 
         document = Nokogiri::HTML(response.body)
         row = document.css("tbody tr").find { |tr| tr.text.include?("removed.example") }
@@ -150,7 +150,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
     it "shows zero totals without any visits" do
       sign_in(FactoryBot.create(:user, role: :organizer))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       document = Nokogiri::HTML(response.body)
       expect(document.css("[data-stamp-count]").map(&:text)).to eq(["0", "0", "0"])
@@ -161,7 +161,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       older_event = FactoryBot.create(:event, start_date: event.start_date - 1.year)
       sign_in(FactoryBot.create(:user, role: :organizer))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       expect(response).to have_http_status(:ok)
       document = Nokogiri::HTML(response.body)
@@ -172,7 +172,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
     it "returns not found for an invalid event without falling back to the ongoing event" do
       sign_in(FactoryBot.create(:user, role: :organizer))
 
-      get admin_sponsor_qr_codes_path(event_id: "missing")
+      get admin_stamp_rallies_path(event_id: "missing")
 
       expect(response).to have_http_status(:not_found)
     end
@@ -180,7 +180,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
     it "redirects an operator" do
       sign_in(FactoryBot.create(:user, role: :operator))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       expect(response).to redirect_to(root_path)
     end
@@ -188,13 +188,13 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
     it "redirects a participant" do
       sign_in(FactoryBot.create(:user, role: "participant"))
 
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       expect(response).to redirect_to(root_path)
     end
 
     it "redirects a logged-out user" do
-      get admin_sponsor_qr_codes_path
+      get admin_stamp_rallies_path
 
       expect(response).to redirect_to(root_path)
     end
