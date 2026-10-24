@@ -91,6 +91,16 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
         expect(document.at_css("select[name='event_id'] option[selected]")["value"]).to eq(event.id.to_s)
       end
 
+      it "offers copying the stamp URL without displaying the long URL as text" do
+        get admin_sponsor_qr_codes_path
+
+        document = Nokogiri::HTML(response.body)
+        button = document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')
+        expect(button.text.strip).to eq("Copy URL")
+        expect(button["data-url"]).to eq(SponsorVisitToken.stamp_url(event_slug: event.slug, sponsor_key: booth_sponsor[:key]))
+        expect(document.at_css("table").text).not_to include(button["data-url"])
+      end
+
       it "shows recorded sponsor keys and counts when the selected event has no catalog" do
         get admin_sponsor_qr_codes_path(event_id: other_event.id)
 
@@ -100,7 +110,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
         expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
         expect(document.at_css("tbody tr").text).to include(booth_sponsor[:key])
         expect(document.at_css('[data-stamp-count="sponsor"]').text).to eq("1")
-        expect(document.at_css('[data-action="sponsor-qr-codes#download"]')).to be_nil
+        expect(document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')).to be_nil
         expect(document.at_css('[data-action="sponsor-qr-codes#downloadAll"]')["disabled"]).not_to be_nil
         expect(document.at_css("form[enctype='multipart/form-data']")["action"])
           .to eq(admin_sponsor_booth_qr_card_template_path(event_id: other_event.id))
@@ -115,7 +125,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
 
         document = Nokogiri::HTML(response.body)
         expect(document.at_css('[data-stamp-count="event"]').text).to eq("1")
-        expect(document.at_css('[data-action="sponsor-qr-codes#download"]')["data-url"])
+        expect(document.at_css('[data-action="sponsor-qr-codes#copyUrl"]')["data-url"])
           .to eq(SponsorVisitToken.stamp_url(event_slug: other_event.slug, sponsor_key: booth_sponsor[:key]))
         expect(document.at_css('[data-action="sponsor-qr-codes#downloadCard"]')["data-url"])
           .to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: other_event.id))

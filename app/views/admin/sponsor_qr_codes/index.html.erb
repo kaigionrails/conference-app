@@ -52,6 +52,12 @@
 >
   <p class="mb-4 text-red-700" role="alert" data-sponsor-qr-codes-target="error" hidden>Could not generate the QR codes. Please try again.</p>
   <p class="mb-4 text-red-700" role="alert" data-sponsor-qr-codes-target="cardError" hidden></p>
+  <template data-sponsor-qr-codes-target="copySuccess">
+    <%= render "admin/toast", type: :success, message: "URL copied." %>
+  </template>
+  <template data-sponsor-qr-codes-target="copyError">
+    <%= render "admin/toast", type: :error, message: "Could not copy the URL. Please try again." %>
+  </template>
   <p class="mb-4">Download a PNG for each sponsor and send the corresponding file to them.</p>
   <div class="flex gap-4 items-center mb-4">
     <button
@@ -89,7 +95,9 @@
             <td class="p-3"><%= sponsor[:plan].capitalize %></td>
             <td class="p-3 text-right" data-stamp-count="sponsor"><%= number_with_delimiter(@sponsor_stamp_counts.fetch(sponsor[:key], 0)) %></td>
             <% if sponsor[:stamp_url] %>
-            <td class="p-3 break-all"><%= sponsor[:stamp_url] %></td>
+            <td class="p-3">
+              <button type="button" class="border rounded-sm px-4 py-2 cursor-pointer" data-url="<%= sponsor[:stamp_url] %>" data-action="sponsor-qr-codes#copyUrl">Copy URL</button>
+            </td>
             <td class="p-3">
               <button type="button"
                 class="border shadow-sm border-gray-500 rounded-sm px-4 py-2 cursor-pointer whitespace-nowrap disabled:cursor-wait disabled:opacity-50"
