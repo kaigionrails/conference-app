@@ -1,0 +1,25 @@
+# Generated from app/models/sponsor_stamp_rally.rb with RBS::Inline
+
+class SponsorStampRally
+  attr_reader event: Event
+
+  # @rbs event: Event
+  # @rbs return: void
+  def initialize: (event: Event) -> void
+
+  def total_stamp_count: () -> untyped
+
+  def event_stamp_count: () -> untyped
+
+  def stamp_count_for: (untyped sponsor_key) -> untyped
+
+  def sponsors: () -> untyped
+
+  def qr_sponsors: () -> untyped
+
+  def template: () -> untyped
+
+  private
+
+  def sponsor_stamp_counts: () -> untyped
+end

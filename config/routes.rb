@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       resources :speakers, only: [:edit, :update]
     end
     resources :tito_tickets, only: [:index, :show]
-    resources :sponsor_qr_codes, only: [:index]
+    resources :stamp_rallies, only: [:index]
     resource :sponsor_booth_qr_card_template, only: [:update]
     # Sponsor keys contain dots such as "mov.am", so they must not be split off as a format.
     resources :sponsor_booth_qr_cards, only: [:show], param: :sponsor_key, constraints: {sponsor_key: %r{[^/]+}}, format: false

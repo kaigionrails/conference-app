@@ -3,7 +3,7 @@ import JSZip from "jszip";
 import QRCode from "qrcode";
 
 export default class extends Controller {
-  static targets = ["error", "cardError", "cardProgress"];
+  static targets = ["error", "cardError", "cardProgress", "copySuccess", "copyError"];
 
   static values = {
     sponsors: Array,
@@ -11,6 +11,22 @@ export default class extends Controller {
     cards: Array,
     cardZipFilename: String,
   };
+
+  async copyUrl(event) {
+    event.preventDefault();
+    try {
+      await navigator.clipboard.writeText(event.currentTarget.dataset.url);
+      this.showCopyToast(this.copySuccessTarget);
+    } catch {
+      this.showCopyToast(this.copyErrorTarget);
+    }
+  }
+
+  showCopyToast(template) {
+    this.copyToast?.remove();
+    this.copyToast = template.content.firstElementChild.cloneNode(true);
+    document.getElementById("toasts").prepend(this.copyToast);
+  }
 
   async download(event) {
     event.preventDefault();

@@ -1,0 +1,5 @@
+# Generated from app/controllers/admin/stamp_rallies_controller.rb with RBS::Inline
+
+class Admin::StampRalliesController < AdminController
+  def index: () -> untyped
+end
