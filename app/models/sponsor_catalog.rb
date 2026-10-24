@@ -1,6 +1,13 @@
 class SponsorCatalog
   REQUIRED_ATTRIBUTES = %i[key name plan logo].freeze
 
+  # @rbs year: String
+  # @rbs return: bool
+  def self.available_for_year?(year)
+    year = Integer(year, exception: false)
+    !year.nil? && Rails.root.join("data/sponsors/#{year}.yaml").file?
+  end
+
   # Catalogs are loaded once per year in each process. Restart the app after
   # updating a sponsor file to reload it in production.
   def self.for_year(year)

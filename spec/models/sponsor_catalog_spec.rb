@@ -1,4 +1,5 @@
 require "rails_helper"
+require "tmpdir"
 
 RSpec.describe SponsorCatalog do
   let(:catalog) { Class.new(described_class) }
@@ -57,6 +58,31 @@ RSpec.describe SponsorCatalog do
       sponsor = sponsors.find { |entry| entry[:key] == "ruby-sponsor.example" }
 
       expect(sponsor[:labels]).to include(name: "Community supporter", type: "custom")
+    end
+  end
+
+  describe ".available_for_year?" do
+    let(:catalog_root) { Pathname(Dir.mktmpdir) }
+
+    before do
+      catalog_root.join("data/sponsors").mkpath
+      catalog_root.join("data/sponsors/2026.yaml").write("")
+      allow(Rails).to receive(:root).and_return(catalog_root)
+    end
+
+    after { FileUtils.remove_entry(catalog_root) }
+
+    it "recognizes a year with catalog data" do
+      expect(catalog.available_for_year?("2026")).to be(true)
+    end
+
+    it "recognizes a year without catalog data" do
+      expect(catalog.available_for_year?("2025")).to be(false)
+    end
+
+    it "rejects non-year slugs" do
+      expect(catalog.available_for_year?("example")).to be(false)
+      expect(catalog.available_for_year?("../2026")).to be(false)
     end
   end
 
