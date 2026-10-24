@@ -1,7 +1,15 @@
 class Admin::SponsorQrCodesController < AdminController
   def index
-    @event = OngoingEvent.first!.event
-    @sponsors = SponsorCatalog.with_booth(@event.slug).map do |sponsor|
+    @event = if params[:event_id].present?
+      Event.find(params[:event_id])
+    else
+      OngoingEvent.first&.event || Event.order(start_date: :desc, id: :desc).first!
+    end
+
+    @events = Event.order(start_date: :desc, id: :desc)
+    sponsors = [] #: Array[Hash[Symbol, untyped]]
+    sponsors = SponsorCatalog.with_booth(@event.slug) if SponsorCatalog.available_for_year?(@event.slug)
+    @sponsors = sponsors.map do |sponsor|
       sponsor.merge(stamp_url: SponsorVisitToken.stamp_url(event_slug: @event.slug, sponsor_key: sponsor.fetch(:key)))
     end
     # Not build_sponsor_booth_qr_card_template, which would detach an existing template from the event.

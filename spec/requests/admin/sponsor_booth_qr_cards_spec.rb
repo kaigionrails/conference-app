@@ -64,6 +64,33 @@ RSpec.describe "Admin::SponsorBoothQrCards", type: :request do
 
         expect(response).to have_http_status(:not_found)
       end
+
+      it "generates a card using the selected event's template and sponsor" do
+        selected_event = FactoryBot.create(:event, slug: "2025")
+        template = FactoryBot.create(:sponsor_booth_qr_card_template, event: selected_event)
+        allow(SponsorCatalog).to receive(:available_for_year?).with(selected_event.slug).and_return(true)
+        allow(SponsorCatalog).to receive(:with_booth).with(selected_event.slug).and_return([booth_sponsor])
+        expect(SponsorBoothQrCard).to receive(:generate).with(template:, sponsor: booth_sponsor).and_return("selected card")
+
+        get admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: selected_event.id)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to eq("selected card")
+      end
+
+      it "returns 404 for an event without a catalog" do
+        selected_event = FactoryBot.create(:event, slug: "2025")
+
+        get admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: selected_event.id)
+
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "returns 404 for an invalid event without using the ongoing event" do
+        get admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: "missing")
+
+        expect(response).to have_http_status(:not_found)
+      end
     end
 
     it "redirects a participant" do

@@ -31,11 +31,11 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
 
         document = Nokogiri::HTML(response.body)
         card_button = document.at_css("button[data-action='sponsor-qr-codes#downloadCard']")
-        expect(card_button["data-url"]).to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key]))
+        expect(card_button["data-url"]).to eq(admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id))
         expect(card_button["data-filename"]).to eq("sponsor-booth-qr-card-booth-sponsor.example.png")
         expect(card_button["disabled"]).to be_nil
         expect(document.at_css("button[data-action='sponsor-qr-codes#downloadAllCards']")["disabled"]).to be_nil
-        expect(document.at_css("a[href='#{admin_sponsor_booth_qr_card_path(booth_sponsor[:key], disposition: "inline")}']").text)
+        expect(document.at_css("a[href='#{admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id, disposition: "inline")}']").text)
           .to eq("Preview")
         expect(response.body).to include("template.png")
         expect(response.body).not_to include("No template uploaded yet.")
@@ -48,7 +48,7 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
         expect(JSON.parse(controller_element["data-sponsor-qr-codes-cards-value"])).to eq([
           {
             "name" => "Booth Sponsor",
-            "url" => admin_sponsor_booth_qr_card_path(booth_sponsor[:key]),
+            "url" => admin_sponsor_booth_qr_card_path(booth_sponsor[:key], event_id: event.id),
             "filename" => "sponsor-booth-qr-card-booth-sponsor.example.png"
           }
         ])
@@ -66,6 +66,35 @@ RSpec.describe "Admin::SponsorQrCodes", type: :request do
       expect(document.at_css("button[data-action='sponsor-qr-codes#downloadCard']")["disabled"]).to be_present
       expect(document.at_css("button[data-action='sponsor-qr-codes#downloadAllCards']")["disabled"]).to be_present
       expect(document.at_css("a[href*='disposition=inline']")).to be_nil
+    end
+
+    it "defaults to the latest event when there is no ongoing event" do
+      OngoingEvent.destroy_all
+      older_event = FactoryBot.create(:event, start_date: event.start_date - 1.year)
+      sign_in(FactoryBot.create(:user, role: :organizer))
+
+      get admin_sponsor_qr_codes_path
+
+      expect(response).to have_http_status(:ok)
+      document = Nokogiri::HTML(response.body)
+      expect(document.at_css("option[selected]")["value"]).to eq(event.id.to_s)
+      expect(document.css("select option").pluck("value")).to eq([event.id, older_event.id].map(&:to_s))
+    end
+
+    it "returns not found for an invalid event without falling back to the ongoing event" do
+      sign_in(FactoryBot.create(:user, role: :organizer))
+
+      get admin_sponsor_qr_codes_path(event_id: "missing")
+
+      expect(response).to have_http_status(:not_found)
+    end
+
+    it "redirects an operator" do
+      sign_in(FactoryBot.create(:user, role: :operator))
+
+      get admin_sponsor_qr_codes_path
+
+      expect(response).to redirect_to(root_path)
     end
 
     it "redirects a participant" do

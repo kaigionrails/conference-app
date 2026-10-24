@@ -34,6 +34,38 @@ RSpec.describe "Admin::SponsorBoothQrCardTemplates", type: :request do
         expect(template.image.filename.to_s).to eq("new.png")
       end
 
+      it "uploads to the selected event and keeps that event selected after redirecting" do
+        selected_event = FactoryBot.create(:event)
+        ongoing_template = FactoryBot.create(:sponsor_booth_qr_card_template, event: event)
+        old_blob = ongoing_template.image.blob
+
+        patch admin_sponsor_booth_qr_card_template_path(event_id: selected_event.id),
+          params: {sponsor_booth_qr_card_template: {image: upload(width: 1748, height: 2480)}}
+
+        expect(response).to redirect_to(admin_sponsor_qr_codes_path(event_id: selected_event.id))
+        expect(selected_event.reload.sponsor_booth_qr_card_template.image).to be_attached
+        expect(ongoing_template.reload.image.blob).to eq(old_blob)
+      end
+
+      it "keeps the selected event after an invalid upload" do
+        selected_event = FactoryBot.create(:event)
+
+        patch admin_sponsor_booth_qr_card_template_path(event_id: selected_event.id), params: {}
+
+        expect(response).to redirect_to(admin_sponsor_qr_codes_path(event_id: selected_event.id))
+        expect(flash[:alert]).to be_present
+        expect(SponsorBoothQrCardTemplate.count).to eq(0)
+      end
+
+      it "returns not found for an invalid event without updating the ongoing event" do
+        expect do
+          patch admin_sponsor_booth_qr_card_template_path(event_id: "missing"),
+            params: {sponsor_booth_qr_card_template: {image: upload(width: 1748, height: 2480)}}
+        end.not_to change(SponsorBoothQrCardTemplate, :count)
+
+        expect(response).to have_http_status(:not_found)
+      end
+
       it "rejects an image that is not A5 portrait and keeps the current one" do
         template = FactoryBot.create(:sponsor_booth_qr_card_template, event: event)
         old_blob = template.image.blob

@@ -1,8 +1,14 @@
 class Admin::SponsorBoothQrCardTemplatesController < AdminController
-  # Creates the template of the ongoing event on the first upload and replaces its image afterwards.
+  # Creates the template of the selected event on the first upload and replaces its image afterwards.
   # @rbs return: void
   def update
-    template = SponsorBoothQrCardTemplate.find_or_initialize_by(event: OngoingEvent.first!.event)
+    event = if params[:event_id].present?
+      Event.find(params[:event_id])
+    else
+      OngoingEvent.first&.event || Event.order(start_date: :desc, id: :desc).first!
+    end
+
+    template = SponsorBoothQrCardTemplate.find_or_initialize_by(event: event)
     # Assign even when no file was sent, so that the presence validation reports it instead of a 400
     # and an existing template is not saved unchanged as if it had been uploaded.
     template.image = template_params[:image]
@@ -11,7 +17,7 @@ class Admin::SponsorBoothQrCardTemplatesController < AdminController
     else
       flash[:alert] = template.errors.full_messages.join(", ")
     end
-    redirect_to admin_sponsor_qr_codes_path
+    redirect_to admin_sponsor_qr_codes_path(event_id: params[:event_id].presence)
   end
 
   private def template_params
