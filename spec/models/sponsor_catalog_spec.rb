@@ -1,4 +1,5 @@
 require "rails_helper"
+require "tmpdir"
 
 RSpec.describe SponsorCatalog do
   let(:catalog) { Class.new(described_class) }
@@ -60,6 +61,31 @@ RSpec.describe SponsorCatalog do
     end
   end
 
+  describe ".available_for_year?" do
+    let(:catalog_root) { Pathname(Dir.mktmpdir) }
+
+    before do
+      catalog_root.join("data/sponsors").mkpath
+      catalog_root.join("data/sponsors/2026.yaml").write("")
+      allow(Rails).to receive(:root).and_return(catalog_root)
+    end
+
+    after { FileUtils.remove_entry(catalog_root) }
+
+    it "recognizes a year with catalog data" do
+      expect(catalog.available_for_year?("2026")).to be(true)
+    end
+
+    it "recognizes a year without catalog data" do
+      expect(catalog.available_for_year?("2025")).to be(false)
+    end
+
+    it "rejects non-year slugs" do
+      expect(catalog.available_for_year?("example")).to be(false)
+      expect(catalog.available_for_year?("../2026")).to be(false)
+    end
+  end
+
   describe "catalog caching" do
     it "reuses the loaded catalog across lookup methods and year representations" do
       expect(YAML).to receive(:safe_load_file).once.and_return(sponsors: sponsor_data)
@@ -70,17 +96,17 @@ RSpec.describe SponsorCatalog do
     end
 
     it "keeps each year's catalog separate" do
-      [2026, 2027].each do |year|
-        expect(YAML).to receive(:safe_load_file).with(
-          Rails.root.join("data/sponsors/#{year}.yaml"),
-          permitted_classes: [Symbol], aliases: false
-        ).once.and_return(sponsors: [{key: "sponsor-#{year}", name: "Sponsor", plan: "gold", logo: "logo"}])
-      end
+      expect(YAML).to receive(:safe_load_file).with(
+        Rails.root.join("data/sponsors/2026.yaml"),
+        permitted_classes: [Symbol], aliases: false
+      ).once.and_return(sponsors: [{key: "sponsor-2026", name: "Sponsor", plan: "gold", logo: "logo"}])
+      expect(YAML).to receive(:safe_load_file).with(
+        Rails.root.join("data/sponsors/2027.yaml"),
+        permitted_classes: [Symbol], aliases: false
+      ).once.and_return(sponsors: [{key: "sponsor-2027", name: "Sponsor", plan: "gold", logo: "logo"}])
 
-      2.times do
-        expect(catalog.for_year(2026).pluck(:key)).to eq(["sponsor-2026"])
-        expect(catalog.for_year(2027).pluck(:key)).to eq(["sponsor-2027"])
-      end
+      expect(catalog.for_year(2026).pluck(:key)).to eq(["sponsor-2026"])
+      expect(catalog.for_year(2027).pluck(:key)).to eq(["sponsor-2027"])
     end
 
     it "does not cache failed loads" do

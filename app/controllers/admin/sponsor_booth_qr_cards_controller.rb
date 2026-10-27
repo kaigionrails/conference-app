@@ -2,7 +2,14 @@ class Admin::SponsorBoothQrCardsController < AdminController
   # Generates the card on each request. Failures to fetch the logo propagate as 500s and reach Sentry.
   # @rbs return: void
   def show
-    event = OngoingEvent.first!.event
+    event = if params[:event_id].present?
+      Event.find(params[:event_id])
+    else
+      OngoingEvent.first&.event || Event.order(start_date: :desc, id: :desc).first!
+    end
+
+    raise ActiveRecord::RecordNotFound unless SponsorCatalog.available_for_year?(event.slug)
+
     sponsor = SponsorCatalog.with_booth(event.slug).find { |candidate| candidate.fetch(:key) == params[:sponsor_key] }
     raise ActiveRecord::RecordNotFound, "Booth sponsor not found: #{params[:sponsor_key]}" if sponsor.nil?
 

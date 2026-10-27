@@ -1,4 +1,4 @@
-module Admin::SponsorQrCodesHelper
+module Admin::StampRalliesHelper
   # @rbs! include _RbsRailsPathHelpers
 
   def sponsor_qr_filename(sponsor)
@@ -17,12 +17,13 @@ module Admin::SponsorQrCodesHelper
 
   # The name is shown when a card cannot be generated while downloading all of them.
   # @rbs sponsors: Array[Hash[Symbol, untyped]]
+  # @rbs event_id: Integer?
   # @rbs return: Array[{name: String, url: String, filename: String}]
-  def sponsor_booth_qr_card_downloads(sponsors)
+  def sponsor_booth_qr_card_downloads(sponsors, event_id: nil)
     sponsors.map do |sponsor|
       {
         name: sponsor.fetch(:name),
-        url: admin_sponsor_booth_qr_card_path(sponsor.fetch(:key)),
+        url: admin_sponsor_booth_qr_card_path(sponsor.fetch(:key), event_id:),
         filename: sponsor_booth_qr_card_filename(sponsor)
       }
     end

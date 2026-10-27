@@ -3,6 +3,10 @@
 class SponsorCatalog
   REQUIRED_ATTRIBUTES: untyped
 
+  # @rbs year: String
+  # @rbs return: bool
+  def self.available_for_year?: (String year) -> bool
+
   # Catalogs are loaded once per year in each process. Restart the app after
   # updating a sponsor file to reload it in production.
   def self.for_year: (untyped year) -> untyped
