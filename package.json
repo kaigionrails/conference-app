@@ -8,7 +8,7 @@
     "@rails/actiontext": "8.1.400",
     "@rails/request.js": "0.0.13",
     "esbuild": "^0.28.2",
-    "hls.js": "1.7.3",
+    "hls.js": "1.7.4",
     "i18n-js": "4.5.4",
     "jose": "6.2.13",
     "jszip": "3.10.2",
