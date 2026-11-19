@@ -1,4 +1,4 @@
-FROM ghcr.io/sorah-rbpkg/ruby:4.0.9-dev-bookworm
+FROM mirror.gcr.io/library/ruby:4.0.10-bookworm
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
