@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   private def set_variant!
-    if Woothee.parse(request.user_agent)[:category] == :smartphone
+    if Woothee.parse(request.user_agent.to_s)[:category] == :smartphone
       request.variant = :mobile
     end
   end

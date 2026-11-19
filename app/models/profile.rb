@@ -25,6 +25,8 @@ class Profile < ApplicationRecord
 
     profile_image = URI.open(url) # standard:disable Security/Open
     m = Marcel::Magic.by_magic profile_image
+    return if m.nil?
+
     images.attach(io: profile_image, filename: "#{source}.#{m.subtype}")
   end
 end
