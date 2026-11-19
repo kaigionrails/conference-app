@@ -28,7 +28,9 @@ class TalkImporter
     talks_data = load_talks
     ensure_not_imported
 
-    avatars = {} #: Hash[String, ActiveStorage::Blob]
+    # Steep ignores a `#:` annotation on an empty Hash whose values are ActiveStorage::Blob.
+    # @type var avatars: Hash[String, ActiveStorage::Blob]
+    avatars = {}
     begin
       upload_avatars(talks_data, avatars)
       ApplicationRecord.transaction do
