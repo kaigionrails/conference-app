@@ -79,7 +79,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.1)
       public_suffix (>= 2.0.2, < 8.0)
-    alba (4.0.2)
+    alba (4.0.3)
     amazing_print (3.0.0)
     ast (2.4.3)
     auth-sanitizer (0.2.3)
@@ -752,7 +752,7 @@ CHECKSUMS
   activestorage (8.1.4.1) sha256=0f4e2f114f3584723a80a2c089aacc6170e765a0b2c385c9782e26ed78f05c66
   activesupport (8.1.4.1) sha256=16ac4f341ca65c85a1fcdb8ac73f68891aae9e3c4a6f9c3a27daed8b00017ed7
   addressable (2.9.1) sha256=f1212365945455c84e8d031eea40fc6bedf0c663a78d95b3ab93591040bc5c35
-  alba (4.0.2) sha256=67ce2694b60db9ebf25d0b98f342dcc2b002cd494e1f21effd047a402c5a6115
+  alba (4.0.3) sha256=ad9b87b3fa90051504d89c8739a1a3ce8c0db1388eba8b5dad2c2cfac2d897c7
   amazing_print (3.0.0) sha256=2ceb5886e9b3593a7af357eb819b198fe65c982a30cda37914ccef30ba346bbe
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   auth-sanitizer (0.2.3) sha256=db10aac92cfbe4c64ab637eebcbe1d67395d1694798041362173370f59933e3c
