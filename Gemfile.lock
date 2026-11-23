@@ -406,7 +406,7 @@ GEM
     qrcode (0.2.1)
     raabro (1.5.0)
     racc (1.8.1)
-    rack (3.2.8)
+    rack (3.2.9)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-protection (4.2.1)
@@ -511,7 +511,7 @@ GEM
     rspec-mocks (3.13.9)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (8.0.5)
+    rspec-rails (8.1.0)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
       railties (>= 7.2)
@@ -720,7 +720,7 @@ DEPENDENCIES
   redis (~> 5.4)
   redis-actionpack
   redis-store
-  rspec-rails (~> 8.0)
+  rspec-rails (~> 8.1)
   ruby-vips
   scout_apm
   sentry-rails
@@ -914,7 +914,7 @@ CHECKSUMS
   qrcode (0.2.1) sha256=cc0ac04497c703724a93d5de36c35d8503c0f49063c4101806673facbd22a9e6
   raabro (1.5.0) sha256=3f998a7bc84f9c84df3ab580634d2e0a5bda4f0841168d56035f529c9877440a
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
-  rack (3.2.8) sha256=1fecc85e463ebc7a2a945fff829ffcd549babeb1556384796fad946c28dc4ec7
+  rack (3.2.9) sha256=8235c1d08f0c461bedcff4413bbeba888173e5b09e1332ae951c98f0ee460dcc
   rack-contrib (2.5.0) sha256=51bd2ce82b8a3270f9173130c4cdaea72aab8b03dce8cd6af1c4344d84a32d02
   rack-protection (4.2.1) sha256=cf6e2842df8c55f5e4d1a4be015e603e19e9bc3a7178bae58949ccbb58558bac
   rack-session (2.1.2) sha256=595434f8c0c3473ae7d7ac56ecda6cc6dfd9d37c0b2b5255330aa1576967ffe8
@@ -948,7 +948,7 @@ CHECKSUMS
   rspec-core (3.13.7) sha256=c64ff16d9788119805cbc6a3f4b6d87cc22417c2d25976a3330de136896b5469
   rspec-expectations (3.13.6) sha256=bf538ca6d367ff5b0d85a87fdb5c0c6038f2cd1308a0eeba07476caa02d22f35
   rspec-mocks (3.13.9) sha256=ea5c7ff3054a6098ca6039aacef80aec69d5a8a3ef80be8fc88337359b672a30
-  rspec-rails (8.0.5) sha256=190feca858d9b5ad632200005034a56c72dab6d74a44244b1e31b9cf31690df6
+  rspec-rails (8.1.0) sha256=5e6c6a4e7f7d644b56e412d410824f6480c1e5a9c61b8448998236b4a4dbf3be
   rspec-support (3.13.8) sha256=e4160030309b7e3e9d9863dfe720a35dfcc577162f5402cd68fc8c5258a0ffd6
   rubocop (1.91.0) sha256=9c82b7bf391c5d7e3798c5b9996e22a1fe3bd7468e351dfdeb96140c058296d0
   rubocop-ast (1.53.0) sha256=027984d28485d6502ae4c72f9341080f54f538599f5dbb54f81875a4ddcad574

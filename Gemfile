@@ -101,7 +101,7 @@ group :development, :test do
   gem "bundler-audit", require: false
 
   gem "factory_bot_rails", "~> 6.5.1"
-  gem "rspec-rails", "~> 8.0"
+  gem "rspec-rails", "~> 8.1"
 
   gem "standard"
   gem "standard-rails"
